@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONI Resource Calculator — onimath</title>
+  <meta name="description" content="Double-entry resource balance accounting calculator for Oxygen Not Included. Models machines, plants, critters, duplicants, and geysers with live net cancellation." />
+  <link rel="icon" href="images/icons/Oxygen.png" type="image/png" />
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header & Navigation -->
+    <header class="app-header">
+      <div class="header-top">
+        <div class="brand-wrapper">
+          <h1 class="brand-title">
+            <span>Oxygen Not Included</span>
+            <code>onimath</code>
+          </h1>
+          <span class="brand-subtitle">Resource Balance Calculator</span>
+        </div>
+        <div class="theme-controls" aria-label="Theme selection">
+          <button type="button" class="theme-btn active" data-theme="auto">Auto</button>
+          <button type="button" class="theme-btn" data-theme="light">Light</button>
+          <button type="button" class="theme-btn" data-theme="dark">Dark</button>
+        </div>
+      </div>
+
+      <!-- Controls Toolbar -->
+      <nav class="toolbar" aria-label="Calculator controls">
+        <div class="toolbar-left">
+          <select id="preset-select" class="preset-select" aria-label="Load system preset">
+            <option value="" disabled selected>Load a Preset...</option>
+          </select>
+
+          <div class="segmented-control" role="group" aria-label="Rate display unit">
+            <button type="button" class="segmented-btn rate-mode-btn active" data-mode="s" title="Display rates per second">/s</button>
+            <button type="button" class="segmented-btn rate-mode-btn" data-mode="c" title="Display rates per cycle (600s)">/cycle</button>
+          </div>
+
+          <label class="toggle-label" title="When enabled, requires exact pipe/free state matching before cancelling resources.">
+            <input type="checkbox" id="strict-pipe-toggle" checked />
+            <span>Strict pipe state matching</span>
+          </label>
+        </div>
+
+        <div class="toolbar-right">
+          <button type="button" id="copy-share-btn" class="btn-secondary" title="Copy shareable link with current design to clipboard">
+            <span class="btn-icon" aria-hidden="true">🔗</span>
+            <span>Copy Share Link</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Calculator Ledger Table -->
+    <main class="calc-table-wrapper">
+      <table class="calc-table" aria-label="Resource accounting table">
+        <thead>
+          <tr>
+            <th scope="col" class="col-machine">Machine</th>
+            <th scope="col" class="col-inputs">Inputs</th>
+            <th scope="col" class="col-outputs">Outputs</th>
+          </tr>
+        </thead>
+        <tbody id="calc-table-body">
+          <!-- Dynamically populated rows and add-row trigger -->
+        </tbody>
+        <tfoot id="calc-table-foot">
+          <!-- NET summary row rendered dynamically -->
+        </tfoot>
+      </table>
+    </main>
+
+    <!-- Footer & Attribution -->
+    <footer style="margin-top: 24px; text-align: center; color: var(--fg-muted); font-size: 11px;">
+      <p>Data from <a href="https://oxygennotincluded.wiki.gg" target="_blank" rel="noopener noreferrer" style="color: var(--accent-primary); text-decoration: none;">oxygennotincluded.wiki.gg</a>.</p>
+    </footer>
+  </div>
+
+  <!-- Main ES Module Entry Point -->
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
