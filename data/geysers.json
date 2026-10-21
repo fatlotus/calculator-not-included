@@ -1,49 +1,112 @@
 [
   {
+    "id": "geyser_water_geyser",
+    "name": "Water Geyser",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Water_Geyser.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Water",
+        "rate": 3000.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 95 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (1800 kg/cycle = 3000 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Water",
+            "rate": 3000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 95 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (3000 kg/cycle = 5000 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Water",
+            "rate": 5000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 95 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water_Geyser.png/32px-Water_Geyser.png?883210"
+  },
+  {
     "id": "geyser_water",
-    "name": "Water",
+    "name": "Water Geyser",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Water.png",
+    "icon": "images/icons/Water_Geyser.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "95 \u00b0C / 203 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Water",
+        "rate": 3000.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ 95 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (1800 kg/cycle = 3000 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "95 \u00b0C / 203 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (1800 kg/cycle = 3000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "95 \u00b0C / 203 \u00b0F",
+            "resource": "Water",
             "rate": 3000.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 95 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (3000 kg/cycle = 5000 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Water",
+            "rate": 5000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 95 \u00b0C"
           }
         ]
       }
@@ -60,53 +123,53 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water_Geyser.png/32px-Water_Geyser.png?883210"
   },
   {
-    "id": "geyser_polluted_water",
-    "name": "Polluted Water",
+    "id": "geyser_cool_slush_geyser",
+    "name": "Cool Slush Geyser",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Polluted_Water.png",
+    "icon": "images/icons/Cool_Slush_Geyser.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "-10 \u00b0C / 14 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Polluted Water",
+        "rate": 1500.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ -10 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (900 kg/cycle = 1500 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "-10 \u00b0C / 14 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (900 kg/cycle = 1500 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "-10 \u00b0C / 14 \u00b0F",
+            "resource": "Polluted Water",
             "rate": 1500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ -10 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (1500 kg/cycle = 2500 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Polluted Water",
+            "rate": 2500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ -10 \u00b0C"
           }
         ]
       }
@@ -123,53 +186,53 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cool_Slush_Geyser.png/32px-Cool_Slush_Geyser.png?408297"
   },
   {
-    "id": "geyser_steam",
-    "name": "Steam",
+    "id": "geyser_cool_steam_vent",
+    "name": "Cool Steam Vent",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Steam.png",
+    "icon": "images/icons/Cool_Steam_Vent.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "110 \u00b0C / 230 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Steam",
+        "rate": 1500.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ 110 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (900 kg/cycle = 1500 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "110 \u00b0C / 230 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (900 kg/cycle = 1500 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "110 \u00b0C / 230 \u00b0F",
+            "resource": "Steam",
             "rate": 1500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 110 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (1500 kg/cycle = 2500 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Steam",
+            "rate": 2500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 110 \u00b0C"
           }
         ]
       }
@@ -186,53 +249,53 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cool_Steam_Vent.png/32px-Cool_Steam_Vent.png?b9dbd8"
   },
   {
-    "id": "geyser_salt_water",
-    "name": "Salt Water",
+    "id": "geyser_salt_water_geyser",
+    "name": "Salt Water Geyser",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Salt_Water.png",
+    "icon": "images/icons/Salt_Water_Geyser.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "95 \u00b0C / 203 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Salt Water",
+        "rate": 3000.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ 95 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (1800 kg/cycle = 3000 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "95 \u00b0C / 203 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (1800 kg/cycle = 3000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "95 \u00b0C / 203 \u00b0F",
+            "resource": "Salt Water",
             "rate": 3000.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 95 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (3000 kg/cycle = 5000 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Salt Water",
+            "rate": 5000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 95 \u00b0C"
           }
         ]
       }
@@ -249,53 +312,53 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt_Water.png/24px-Salt_Water.png?8067b5"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt_Water_Geyser.png/32px-Salt_Water_Geyser.png?48e9eb"
   },
   {
-    "id": "geyser_steam",
-    "name": "Steam",
+    "id": "geyser_steam_vent",
+    "name": "Steam Vent",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Steam.png",
+    "icon": "images/icons/Steam_Vent.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "500 \u00b0C / 932 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Steam",
+        "rate": 750.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ 500 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (450 kg/cycle = 750 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "500 \u00b0C / 932 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (450 kg/cycle = 750 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "500 \u00b0C / 932 \u00b0F",
+            "resource": "Steam",
             "rate": 750.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 500 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (750 kg/cycle = 1250 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Steam",
+            "rate": 1250.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 500 \u00b0C"
           }
         ]
       }
@@ -312,53 +375,53 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam_Vent.png/32px-Steam_Vent.png?a3f4f2"
   },
   {
-    "id": "geyser_polluted_water_with_food_poisoning",
-    "name": "Polluted Water with Food Poisoning",
+    "id": "geyser_polluted_water_vent",
+    "name": "Polluted Water Vent",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Polluted_Water.png",
+    "icon": "images/icons/Polluted_Water_Vent.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "30 \u00b0C / 86 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Polluted Water",
+        "rate": 3000.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ 30 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (1800 kg/cycle = 3000 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "30 \u00b0C / 86 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (1800 kg/cycle = 3000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "30 \u00b0C / 86 \u00b0F",
+            "resource": "Polluted Water",
             "rate": 3000.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 30 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (3000 kg/cycle = 5000 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Polluted Water",
+            "rate": 5000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 30 \u00b0C"
           }
         ]
       }
@@ -375,53 +438,53 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water_Vent.png/32px-Polluted_Water_Vent.png?bc11e4"
   },
   {
-    "id": "geyser_brine",
-    "name": "Brine",
+    "id": "geyser_cool_salt_slush_geyser",
+    "name": "Cool Salt Slush Geyser",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Brine.png",
+    "icon": "images/icons/Cool_Salt_Slush_Geyser.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "-10 \u00b0C / 14 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Brine",
+        "rate": 1500.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ -10 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (900 kg/cycle = 1500 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "-10 \u00b0C / 14 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (900 kg/cycle = 1500 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "-10 \u00b0C / 14 \u00b0F",
+            "resource": "Brine",
             "rate": 1500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ -10 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (1500 kg/cycle = 2500 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Brine",
+            "rate": 2500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ -10 \u00b0C"
           }
         ]
       }
@@ -438,935 +501,53 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine.png/24px-Brine.png?925651"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cool_Salt_Slush_Geyser.png/32px-Cool_Salt_Slush_Geyser.png?134765"
   },
   {
-    "id": "geyser_molten_copper",
-    "name": "Molten Copper",
+    "id": "geyser_copper_volcano",
+    "name": "Copper Volcano",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Molten_Copper.png",
+    "icon": "images/icons/Copper_Volcano.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
-        "rate": 1300.0,
+        "resource": "Molten Copper",
+        "rate": 300.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ 2226.85 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
+        "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
-            "rate": 1300.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (180 kg/cycle = 300 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
+            "resource": "Molten Copper",
             "rate": 300.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Copper.png/24px-Molten_Copper.png?3c18f0"
-  },
-  {
-    "id": "geyser_molten_iron",
-    "name": "Molten Iron",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Molten_Iron.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "2526.85 \u00b0C / 4580.33 \u00b0F",
-        "rate": 1300.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "2526.85 \u00b0C / 4580.33 \u00b0F",
-            "rate": 1300.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
+            "temp": "@ 2226.85 \u00b0C"
           }
         ]
       },
       {
         "id": "active_avg",
-        "name": "Average Active Period (180 kg/cycle = 300 g/s)",
+        "name": "Average Active Period (300 kg/cycle = 500 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "2526.85 \u00b0C / 4580.33 \u00b0F",
-            "rate": 300.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
-  },
-  {
-    "id": "geyser_molten_gold",
-    "name": "Molten Gold",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Molten_Gold.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "2626.85 \u00b0C / 4760.33 \u00b0F",
-        "rate": 1300.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "2626.85 \u00b0C / 4760.33 \u00b0F",
-            "rate": 1300.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (180 kg/cycle = 300 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "2626.85 \u00b0C / 4760.33 \u00b0F",
-            "rate": 300.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Gold.png/24px-Molten_Gold.png?658b8f"
-  },
-  {
-    "id": "geyser_molten_aluminum",
-    "name": "Molten Aluminum",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Molten_Aluminum.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-        "rate": 1300.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-            "rate": 1300.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (180 kg/cycle = 300 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-            "rate": 300.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Aluminum.png/24px-Molten_Aluminum.png?5b6c67"
-  },
-  {
-    "id": "geyser_molten_tungsten",
-    "name": "Molten Tungsten",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Molten_Tungsten.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "3726.85 \u00b0C / 6740.33 \u00b0F",
-        "rate": 1300.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "3726.85 \u00b0C / 6740.33 \u00b0F",
-            "rate": 1300.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (180 kg/cycle = 300 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "3726.85 \u00b0C / 6740.33 \u00b0F",
-            "rate": 300.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
-  },
-  {
-    "id": "geyser_molten_cobalt",
-    "name": "Molten Cobalt",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Molten_Cobalt.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
-        "rate": 1300.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
-            "rate": 1300.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (180 kg/cycle = 300 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
-            "rate": 300.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
-  },
-  {
-    "id": "geyser_molten_niobium",
-    "name": "Molten Niobium",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Molten_Niobium.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "3226.85 \u00b0C / 5840.33 \u00b0F",
-        "rate": 15000.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (9000 kg/cycle = 15000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "3226.85 \u00b0C / 5840.33 \u00b0F",
-            "rate": 15000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (720 kg/cycle = 1200 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "3226.85 \u00b0C / 5840.33 \u00b0F",
-            "rate": 1200.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Niobium.png/24px-Molten_Niobium.png?bd76f8"
-  },
-  {
-    "id": "geyser_magma",
-    "name": "Magma",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Magma.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-        "rate": 15000.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (9000 kg/cycle = 15000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-            "rate": 15000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (720 kg/cycle = 1200 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-            "rate": 1200.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
-  },
-  {
-    "id": "geyser_magma",
-    "name": "Magma",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Magma.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-        "rate": 15000.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (9000 kg/cycle = 15000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-            "rate": 15000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (360 kg/cycle = 600 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-            "rate": 600.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
-  },
-  {
-    "id": "geyser_polluted_oxygen",
-    "name": "Polluted Oxygen",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Polluted_Oxygen.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "500 \u00b0C / 932 \u00b0F",
-        "rate": 1000.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "500 \u00b0C / 932 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (63 kg/cycle = 105 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "500 \u00b0C / 932 \u00b0F",
-            "rate": 105.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Oxygen.png/24px-Polluted_Oxygen.png?69c186"
-  },
-  {
-    "id": "geyser_polluted_brine",
-    "name": "Polluted Brine",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Polluted_Brine.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "95 \u00b0C / 203 \u00b0F",
-        "rate": 1000.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "95 \u00b0C / 203 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (1800 kg/cycle = 3000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "95 \u00b0C / 203 \u00b0F",
-            "rate": 3000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Brine.png/24px-Polluted_Brine.png?15187b"
-  },
-  {
-    "id": "geyser_liquid_sulfur",
-    "name": "Liquid Sulfur",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Liquid_Sulfur.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "165.2 \u00b0C / 329.36 \u00b0F",
-        "rate": 1000.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "165.2 \u00b0C / 329.36 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (900 kg/cycle = 1500 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "165.2 \u00b0C / 329.36 \u00b0F",
-            "rate": 1500.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur.png/24px-Liquid_Sulfur.png?dccb21"
-  },
-  {
-    "id": "geyser_hydrogen_gas",
-    "name": "Hydrogen Gas",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Hydrogen_Gas.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "500 \u00b0C / 932 \u00b0F",
-        "rate": 1000.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "500 \u00b0C / 932 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (63 kg/cycle = 105 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "500 \u00b0C / 932 \u00b0F",
-            "rate": 105.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Hydrogen_Gas.png/24px-Hydrogen_Gas.png?b5ff3e"
-  },
-  {
-    "id": "geyser_natural_gas",
-    "name": "Natural Gas",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Natural_Gas.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "150 \u00b0C / 302 \u00b0F",
-        "rate": 1000.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "150 \u00b0C / 302 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (63 kg/cycle = 105 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "150 \u00b0C / 302 \u00b0F",
-            "rate": 105.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Natural_Gas.png/24px-Natural_Gas.png?17cb55"
-  },
-  {
-    "id": "geyser_crude_oil",
-    "name": "Crude Oil",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Crude_Oil.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "326.85 \u00b0C / 620.33 \u00b0F",
-        "rate": 500.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": null
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (300 kg/cycle = 500 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "326.85 \u00b0C / 620.33 \u00b0F",
+            "resource": "Molten Copper",
             "rate": 500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (75 kg/cycle = 125 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "326.85 \u00b0C / 620.33 \u00b0F",
-            "rate": 125.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
+            "temp": "@ 2226.85 \u00b0C"
           }
         ]
       }
@@ -1383,53 +564,557 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Crude_Oil.png/24px-Crude_Oil.png?d7ab3a"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper_Volcano.png/32px-Copper_Volcano.png?c14244"
   },
   {
-    "id": "geyser_polluted_oxygen_with_slimelung",
-    "name": "Polluted Oxygen with Slimelung",
+    "id": "geyser_iron_volcano",
+    "name": "Iron Volcano",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Polluted_Oxygen.png",
+    "icon": "images/icons/Iron_Volcano.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "60 \u00b0C / 140 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Molten Iron",
+        "rate": 300.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ 2526.85 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "60 \u00b0C / 140 \u00b0F",
-            "rate": 1000.0,
+            "resource": "Molten Iron",
+            "rate": 300.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 2526.85 \u00b0C"
           }
         ]
       },
       {
         "id": "active_avg",
-        "name": "Average Active Period (63 kg/cycle = 105 g/s)",
+        "name": "Average Active Period (300 kg/cycle = 500 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "60 \u00b0C / 140 \u00b0F",
+            "resource": "Molten Iron",
+            "rate": 500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 2526.85 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron_Volcano.png/32px-Iron_Volcano.png?a7790a"
+  },
+  {
+    "id": "geyser_gold_volcano",
+    "name": "Gold Volcano",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Gold_Volcano.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Molten Gold",
+        "rate": 300.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 2626.85 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Molten Gold",
+            "rate": 300.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 2626.85 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (300 kg/cycle = 500 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Molten Gold",
+            "rate": 500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 2626.85 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gold_Volcano.png/32px-Gold_Volcano.png?32d0cb"
+  },
+  {
+    "id": "geyser_aluminum_volcano",
+    "name": "Aluminum Volcano",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Aluminum_Volcano.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Molten Aluminum",
+        "rate": 300.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 1726.85 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Molten Aluminum",
+            "rate": 300.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 1726.85 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (300 kg/cycle = 500 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Molten Aluminum",
+            "rate": 500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 1726.85 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum_Volcano.png/32px-Aluminum_Volcano.png?3b8e73"
+  },
+  {
+    "id": "geyser_tungsten_volcano",
+    "name": "Tungsten Volcano",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Tungsten_Volcano.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Molten Tungsten",
+        "rate": 300.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 3726.85 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Molten Tungsten",
+            "rate": 300.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 3726.85 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (300 kg/cycle = 500 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Molten Tungsten",
+            "rate": 500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 3726.85 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tungsten_Volcano.png/32px-Tungsten_Volcano.png?ea8ee8"
+  },
+  {
+    "id": "geyser_cobalt_volcano",
+    "name": "Cobalt Volcano",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Cobalt_Volcano.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Molten Cobalt",
+        "rate": 300.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 2226.85 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Molten Cobalt",
+            "rate": 300.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 2226.85 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (300 kg/cycle = 500 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Molten Cobalt",
+            "rate": 500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 2226.85 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cobalt_Volcano.png/32px-Cobalt_Volcano.png?8359e0"
+  },
+  {
+    "id": "geyser_niobium_volcano",
+    "name": "Niobium Volcano",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Niobium_Volcano.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Molten Niobium",
+        "rate": 1200.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 3226.85 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (720 kg/cycle = 1200 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Molten Niobium",
+            "rate": 1200.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 3226.85 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (1200 kg/cycle = 2000 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Molten Niobium",
+            "rate": 2000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 3226.85 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Niobium_Volcano.png/32px-Niobium_Volcano.png?efcc58"
+  },
+  {
+    "id": "geyser_volcano",
+    "name": "Volcano",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Volcano.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Magma",
+        "rate": 1200.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 1726.85 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (720 kg/cycle = 1200 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Magma",
+            "rate": 1200.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 1726.85 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (1200 kg/cycle = 2000 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Magma",
+            "rate": 2000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 1726.85 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Volcano.png/32px-Volcano.png?5655f1"
+  },
+  {
+    "id": "geyser_minor_volcano",
+    "name": "Minor Volcano",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Minor_Volcano.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Magma",
+        "rate": 600.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 1726.85 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (360 kg/cycle = 600 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Magma",
+            "rate": 600.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 1726.85 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (600 kg/cycle = 1000 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Magma",
+            "rate": 1000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 1726.85 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Minor_Volcano.png/32px-Minor_Volcano.png?20abfb"
+  },
+  {
+    "id": "geyser_hot_polluted_oxygen_vent",
+    "name": "Hot Polluted Oxygen Vent",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Hot_Polluted_Oxygen_Vent.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Polluted Oxygen",
+        "rate": 105.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 500 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Polluted Oxygen",
             "rate": 105.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 500 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Polluted Oxygen",
+            "rate": 175.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 500 \u00b0C"
           }
         ]
       }
@@ -1446,53 +1131,179 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Oxygen.png/24px-Polluted_Oxygen.png?69c186"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Hot_Polluted_Oxygen_Vent.png/32px-Hot_Polluted_Oxygen_Vent.png?838ba4"
   },
   {
-    "id": "geyser_chlorine_gas",
-    "name": "Chlorine Gas",
+    "id": "geyser_polluted_brine_vent",
+    "name": "Polluted Brine Vent",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Chlorine_Gas.png",
+    "icon": "images/icons/Polluted_Brine_Vent.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "60 \u00b0C / 140 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Polluted Brine",
+        "rate": 3000.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ 95 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (1800 kg/cycle = 3000 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "60 \u00b0C / 140 \u00b0F",
-            "rate": 1000.0,
+            "resource": "Polluted Brine",
+            "rate": 3000.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 95 \u00b0C"
           }
         ]
       },
       {
         "id": "active_avg",
-        "name": "Average Active Period (63 kg/cycle = 105 g/s)",
+        "name": "Average Active Period (3000 kg/cycle = 5000 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "60 \u00b0C / 140 \u00b0F",
+            "resource": "Polluted Brine",
+            "rate": 5000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 95 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Brine_Vent.png/32px-Polluted_Brine_Vent.png?7c81fb"
+  },
+  {
+    "id": "geyser_liquid_sulfur_geyser",
+    "name": "Liquid Sulfur Geyser",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Liquid_Sulfur_Geyser.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Liquid Sulfur",
+        "rate": 1500.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 165.2 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (900 kg/cycle = 1500 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Liquid Sulfur",
+            "rate": 1500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 165.2 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (1500 kg/cycle = 2500 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Liquid Sulfur",
+            "rate": 2500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 165.2 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur_Geyser.png/32px-Liquid_Sulfur_Geyser.png?b99c76"
+  },
+  {
+    "id": "geyser_hydrogen_vent",
+    "name": "Hydrogen Vent",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Hydrogen_Vent.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Hydrogen",
+        "rate": 105.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 500 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Hydrogen",
             "rate": 105.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 500 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Hydrogen",
+            "rate": 175.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 500 \u00b0C"
           }
         ]
       }
@@ -1509,53 +1320,53 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Chlorine_Gas.png/24px-Chlorine_Gas.png?3cc9d7"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Hydrogen_Vent.png/32px-Hydrogen_Vent.png?2cec87"
   },
   {
-    "id": "geyser_chlorine_gas",
-    "name": "Chlorine Gas",
+    "id": "geyser_natural_gas_geyser",
+    "name": "Natural Gas Geyser",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Chlorine_Gas.png",
+    "icon": "images/icons/Natural_Gas_Geyser.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "5 \u00b0C / 41 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Natural Gas",
+        "rate": 105.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ 150 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "5 \u00b0C / 41 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (63 kg/cycle = 105 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "5 \u00b0C / 41 \u00b0F",
+            "resource": "Natural Gas",
             "rate": 105.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 150 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Natural Gas",
+            "rate": 175.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 150 \u00b0C"
           }
         ]
       }
@@ -1572,53 +1383,53 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Chlorine_Gas.png/24px-Chlorine_Gas.png?3cc9d7"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Natural_Gas_Geyser.png/32px-Natural_Gas_Geyser.png?12a9ab"
   },
   {
-    "id": "geyser_carbon_dioxide",
-    "name": "Carbon Dioxide",
+    "id": "geyser_natural_gas",
+    "name": "Natural Gas Geyser",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Carbon_Dioxide.png",
+    "icon": "images/icons/Natural_Gas_Geyser.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "500 \u00b0C / 932 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Natural Gas",
+        "rate": 105.0,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ 150 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "500 \u00b0C / 932 \u00b0F",
-            "rate": 1000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (63 kg/cycle = 105 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "500 \u00b0C / 932 \u00b0F",
+            "resource": "Natural Gas",
             "rate": 105.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 150 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Natural Gas",
+            "rate": 175.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 150 \u00b0C"
           }
         ]
       }
@@ -1635,53 +1446,368 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Natural_Gas_Geyser.png/32px-Natural_Gas_Geyser.png?12a9ab"
   },
   {
-    "id": "geyser_liquid_carbon_dioxide",
-    "name": "Liquid Carbon Dioxide",
+    "id": "geyser_leaky_oil_fissure",
+    "name": "Leaky Oil Fissure",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Liquid_Carbon_Dioxide.png",
+    "icon": "images/icons/Leaky_Oil_Fissure.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],
     "outputs": [
       {
-        "resource": "-55.15 \u00b0C / -67.27 \u00b0F",
-        "rate": 1000.0,
+        "resource": "Crude Oil",
+        "rate": 125.5,
         "unit": "g/s",
         "state": "free",
-        "temp": null
+        "temp": "@ 326.85 \u00b0C"
       }
     ],
     "recipes": [
       {
         "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+        "name": "Average Lifetime Yield (75.3 kg/cycle = 125.5 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "-55.15 \u00b0C / -67.27 \u00b0F",
-            "rate": 1000.0,
+            "resource": "Crude Oil",
+            "rate": 125.5,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ 326.85 \u00b0C"
           }
         ]
       },
       {
         "id": "active_avg",
-        "name": "Average Active Period (90 kg/cycle = 150 g/s)",
+        "name": "Average Active Period (125.5 kg/cycle = 209.17 g/s)",
         "inputs": [],
         "outputs": [
           {
-            "resource": "-55.15 \u00b0C / -67.27 \u00b0F",
+            "resource": "Crude Oil",
+            "rate": 209.17,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 326.85 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Leaky_Oil_Fissure.png/32px-Leaky_Oil_Fissure.png?e23bf6"
+  },
+  {
+    "id": "geyser_infectious_polluted_oxygen_vent",
+    "name": "Infectious Polluted Oxygen Vent",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Infectious_Polluted_Oxygen_Vent.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Polluted Oxygen",
+        "rate": 105.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 60 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Polluted Oxygen",
+            "rate": 105.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 60 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Polluted Oxygen",
+            "rate": 175.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 60 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Infectious_Polluted_Oxygen_Vent.png/32px-Infectious_Polluted_Oxygen_Vent.png?368154"
+  },
+  {
+    "id": "geyser_chlorine_gas_vent",
+    "name": "Chlorine Gas Vent",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Chlorine_Gas_Vent.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Chlorine",
+        "rate": 105.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 60 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Chlorine",
+            "rate": 105.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 60 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Chlorine",
+            "rate": 175.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 60 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Chlorine_Gas_Vent.png/32px-Chlorine_Gas_Vent.png?bc8db6"
+  },
+  {
+    "id": "geyser_cool_chlorine_gas_vent",
+    "name": "Cool Chlorine Gas Vent",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Chlorine_Gas_Vent.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Chlorine",
+        "rate": 105.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 5 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Chlorine",
+            "rate": 105.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 5 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Chlorine",
+            "rate": 175.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 5 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Chlorine_Gas_Vent.png/32px-Chlorine_Gas_Vent.png?bc8db6"
+  },
+  {
+    "id": "geyser_carbon_dioxide_vent",
+    "name": "Carbon Dioxide Vent",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Carbon_Dioxide_Vent.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Carbon Dioxide",
+        "rate": 105.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 500 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 105.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 500 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 175.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 500 \u00b0C"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "geotuned_1",
+        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+        "output_multiplier": 1.2
+      },
+      {
+        "id": "geotuned_5",
+        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+        "output_multiplier": 2.0
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide_Vent.png/32px-Carbon_Dioxide_Vent.png?408c14"
+  },
+  {
+    "id": "geyser_carbon_dioxide_geyser",
+    "name": "Carbon Dioxide Geyser",
+    "category": "Geyser",
+    "subcategory": "Vent / Volcano",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+    "icon": "images/icons/Carbon_Dioxide_Geyser.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Liquid Carbon Dioxide",
+        "rate": 150.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ -55.15 \u00b0C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "lifetime_avg",
+        "name": "Average Lifetime Yield (90 kg/cycle = 150 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Liquid Carbon Dioxide",
             "rate": 150.0,
             "unit": "g/s",
             "state": "free",
-            "temp": null
+            "temp": "@ -55.15 \u00b0C"
+          }
+        ]
+      },
+      {
+        "id": "active_avg",
+        "name": "Average Active Period (150 kg/cycle = 250 g/s)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Liquid Carbon Dioxide",
+            "rate": 250.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ -55.15 \u00b0C"
           }
         ]
       }
@@ -1698,6 +1824,6 @@
         "output_multiplier": 2.0
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon_Dioxide.png/24px-Liquid_Carbon_Dioxide.png?254ea5"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide_Geyser.png/32px-Carbon_Dioxide_Geyser.png?32a521"
   }
 ]

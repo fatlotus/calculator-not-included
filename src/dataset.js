@@ -767,11 +767,11 @@ export const ONI_DATASET = {
           "heat": 2.0
         },
         {
-          "id": "polluted_water_full",
-          "name": "Polluted Water (10 kg/s)",
+          "id": "biodiesel",
+          "name": "Biodiesel (10 kg/s)",
           "inputs": [
             {
-              "resource": "Polluted Water",
+              "resource": "Biodiesel",
               "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
@@ -780,7 +780,7 @@ export const ONI_DATASET = {
           ],
           "outputs": [
             {
-              "resource": "Polluted Water",
+              "resource": "Biodiesel",
               "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
@@ -791,7 +791,55 @@ export const ONI_DATASET = {
           "heat": 2.0
         },
         {
-          "id": "crude_oil_full",
+          "id": "brackene",
+          "name": "Brackene (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Brackene",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brackene",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "brine",
+          "name": "Brine (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Brine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "crude_oil",
           "name": "Crude Oil (10 kg/s)",
           "inputs": [
             {
@@ -815,7 +863,919 @@ export const ONI_DATASET = {
           "heat": 2.0
         },
         {
-          "id": "petroleum_full",
+          "id": "crude_oil_full",
+          "name": "Crude Oil (Max Capacity 10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Crude Oil",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Crude Oil",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "ethanol",
+          "name": "Ethanol (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Ethanol",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Ethanol",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "gunk",
+          "name": "Gunk (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Gunk",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Gunk",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "latex",
+          "name": "Latex (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Latex",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Latex",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_carbon",
+          "name": "Liquid Carbon (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Carbon",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Carbon",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_carbon_dioxide",
+          "name": "Liquid Carbon Dioxide (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Carbon Dioxide",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Carbon Dioxide",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_chlorine",
+          "name": "Liquid Chlorine (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Chlorine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Chlorine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_helium",
+          "name": "Liquid Helium (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Helium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Helium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_hydrogen",
+          "name": "Liquid Hydrogen (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Hydrogen",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Hydrogen",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_methane",
+          "name": "Liquid Methane (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Methane",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Methane",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_naphtha",
+          "name": "Liquid Naphtha (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Naphtha",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Naphtha",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_nuclear_waste",
+          "name": "Liquid Nuclear Waste (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Nuclear Waste",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Nuclear Waste",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_oxygen",
+          "name": "Liquid Oxygen (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Oxygen",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Oxygen",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_phosphorus",
+          "name": "Liquid Phosphorus (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Phosphorus",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Phosphorus",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_propane",
+          "name": "Liquid Propane (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Propane",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Propane",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_sucrose",
+          "name": "Liquid Sucrose (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Sucrose",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Sucrose",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_sulfur",
+          "name": "Liquid Sulfur (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Sulfur",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Sulfur",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_uranium",
+          "name": "Liquid Uranium (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Uranium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Uranium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "magma",
+          "name": "Magma (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Magma",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Magma",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "mercury",
+          "name": "Mercury (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Mercury",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mercury",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_aluminum",
+          "name": "Molten Aluminum (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Aluminum",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Aluminum",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_cobalt",
+          "name": "Molten Cobalt (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Cobalt",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Cobalt",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_copper",
+          "name": "Molten Copper (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Copper",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Copper",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_glass",
+          "name": "Molten Glass (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Glass",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Glass",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_gold",
+          "name": "Molten Gold (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Gold",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Gold",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_iridium",
+          "name": "Molten Iridium (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Iridium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Iridium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_iron",
+          "name": "Molten Iron (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Iron",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Iron",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_lead",
+          "name": "Molten Lead (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Lead",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Lead",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_nickel",
+          "name": "Molten Nickel (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Nickel",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Nickel",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_niobium",
+          "name": "Molten Niobium (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Niobium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Niobium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_salt",
+          "name": "Molten Salt (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Salt",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Salt",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_steel",
+          "name": "Molten Steel (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Steel",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Steel",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_syngas",
+          "name": "Molten Syngas (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Syngas",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Syngas",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_tungsten",
+          "name": "Molten Tungsten (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Tungsten",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Tungsten",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_zinc",
+          "name": "Molten Zinc (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Zinc",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Zinc",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "mucin",
+          "name": "Mucin (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Mucin",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mucin",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "nectar",
+          "name": "Nectar (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Nectar",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Nectar",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "ovolene",
+          "name": "Ovolene (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Ovolene",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Ovolene",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "petroleum",
           "name": "Petroleum (10 kg/s)",
           "inputs": [
             {
@@ -829,6 +1789,270 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Petroleum",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "petroleum_full",
+          "name": "Petroleum (Max Capacity 10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Petroleum",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Petroleum",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "phyto_oil",
+          "name": "Phyto Oil (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Phyto Oil",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Phyto Oil",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "polluted_brine",
+          "name": "Polluted Brine (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Polluted Brine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Brine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "polluted_water",
+          "name": "Polluted Water (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "polluted_water_full",
+          "name": "Polluted Water (Max Capacity 10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "resin",
+          "name": "Resin (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Resin",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Resin",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "salt_water",
+          "name": "Salt Water (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Salt Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Salt Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "sap",
+          "name": "Sap (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Sap",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sap",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "squid_ink",
+          "name": "Squid Ink (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Squid Ink",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Squid Ink",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "super_coolant",
+          "name": "Super Coolant (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Super Coolant",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Super Coolant",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "visco_gel_fluid",
+          "name": "Visco-Gel Fluid (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Visco-Gel Fluid",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Visco-Gel Fluid",
               "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
@@ -854,7 +2078,7 @@ export const ONI_DATASET = {
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Mini_Liquid_Pump",
       "icon": "images/icons/Mini_Liquid_Pump.png",
       "power": -60.0,
-      "heat": 0.5,
+      "heat": 0.0,
       "inputs": [
         {
           "resource": "Water",
@@ -889,6 +2113,1230 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Water",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "biodiesel",
+          "name": "Biodiesel (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Biodiesel",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Biodiesel",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "brackene",
+          "name": "Brackene (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Brackene",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brackene",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "brine",
+          "name": "Brine (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Brine",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brine",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "crude_oil",
+          "name": "Crude Oil (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Crude Oil",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Crude Oil",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "ethanol",
+          "name": "Ethanol (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Ethanol",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Ethanol",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "gunk",
+          "name": "Gunk (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Gunk",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Gunk",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "latex",
+          "name": "Latex (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Latex",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Latex",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_carbon",
+          "name": "Liquid Carbon (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Carbon",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Carbon",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_carbon_dioxide",
+          "name": "Liquid Carbon Dioxide (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Carbon Dioxide",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Carbon Dioxide",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_chlorine",
+          "name": "Liquid Chlorine (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Chlorine",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Chlorine",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_helium",
+          "name": "Liquid Helium (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Helium",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Helium",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_hydrogen",
+          "name": "Liquid Hydrogen (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Hydrogen",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Hydrogen",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_methane",
+          "name": "Liquid Methane (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Methane",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Methane",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_naphtha",
+          "name": "Liquid Naphtha (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Naphtha",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Naphtha",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_nuclear_waste",
+          "name": "Liquid Nuclear Waste (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Nuclear Waste",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Nuclear Waste",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_oxygen",
+          "name": "Liquid Oxygen (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Oxygen",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Oxygen",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_phosphorus",
+          "name": "Liquid Phosphorus (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Phosphorus",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Phosphorus",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_propane",
+          "name": "Liquid Propane (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Propane",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Propane",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_sucrose",
+          "name": "Liquid Sucrose (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Sucrose",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Sucrose",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_sulfur",
+          "name": "Liquid Sulfur (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Sulfur",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Sulfur",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "liquid_uranium",
+          "name": "Liquid Uranium (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Uranium",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Uranium",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "magma",
+          "name": "Magma (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Magma",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Magma",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "mercury",
+          "name": "Mercury (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Mercury",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mercury",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_aluminum",
+          "name": "Molten Aluminum (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Aluminum",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Aluminum",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_cobalt",
+          "name": "Molten Cobalt (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Cobalt",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Cobalt",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_copper",
+          "name": "Molten Copper (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Copper",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Copper",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_glass",
+          "name": "Molten Glass (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Glass",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Glass",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_gold",
+          "name": "Molten Gold (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Gold",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Gold",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_iridium",
+          "name": "Molten Iridium (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Iridium",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Iridium",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_iron",
+          "name": "Molten Iron (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Iron",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Iron",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_lead",
+          "name": "Molten Lead (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Lead",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Lead",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_nickel",
+          "name": "Molten Nickel (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Nickel",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Nickel",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_niobium",
+          "name": "Molten Niobium (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Niobium",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Niobium",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_salt",
+          "name": "Molten Salt (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Salt",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Salt",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_steel",
+          "name": "Molten Steel (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Steel",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Steel",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_syngas",
+          "name": "Molten Syngas (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Syngas",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Syngas",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_tungsten",
+          "name": "Molten Tungsten (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Tungsten",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Tungsten",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "molten_zinc",
+          "name": "Molten Zinc (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Zinc",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Zinc",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "mucin",
+          "name": "Mucin (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Mucin",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mucin",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "nectar",
+          "name": "Nectar (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Nectar",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Nectar",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "ovolene",
+          "name": "Ovolene (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Ovolene",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Ovolene",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "petroleum",
+          "name": "Petroleum (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Petroleum",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Petroleum",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "phyto_oil",
+          "name": "Phyto Oil (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Phyto Oil",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Phyto Oil",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "polluted_brine",
+          "name": "Polluted Brine (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Polluted Brine",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Brine",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "polluted_water",
+          "name": "Polluted Water (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "resin",
+          "name": "Resin (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Resin",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Resin",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "salt_water",
+          "name": "Salt Water (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Salt Water",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Salt Water",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "sap",
+          "name": "Sap (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Sap",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sap",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "squid_ink",
+          "name": "Squid Ink (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Squid Ink",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Squid Ink",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "super_coolant",
+          "name": "Super Coolant (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Super Coolant",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Super Coolant",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "visco_gel_fluid",
+          "name": "Visco-Gel Fluid (1 kg/s)",
+          "inputs": [
+            {
+              "resource": "Visco-Gel Fluid",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Visco-Gel Fluid",
               "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
@@ -1040,6 +3488,678 @@ export const ONI_DATASET = {
           ],
           "power": -240.0,
           "heat": 2.0
+        },
+        {
+          "id": "aluminum_gas",
+          "name": "Aluminum Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Aluminum Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Aluminum Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "carbon_gas",
+          "name": "Carbon Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Carbon Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Carbon Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "chlorine",
+          "name": "Chlorine (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Chlorine",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Chlorine",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "cobalt_gas",
+          "name": "Cobalt Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Cobalt Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Cobalt Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "copper_gas",
+          "name": "Copper Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Copper Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Copper Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "ethanol_gas",
+          "name": "Ethanol Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Ethanol Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Ethanol Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "gold_gas",
+          "name": "Gold Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Gold Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Gold Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "helium",
+          "name": "Helium (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Helium",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Helium",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "iridium_gas",
+          "name": "Iridium Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Iridium Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Iridium Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "iron_gas",
+          "name": "Iron Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Iron Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Iron Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "lead_gas",
+          "name": "Lead Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Lead Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Lead Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "mercury_gas",
+          "name": "Mercury Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Mercury Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mercury Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "nickel_gas",
+          "name": "Nickel Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Nickel Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Nickel Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "niobium_gas",
+          "name": "Niobium Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Niobium Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Niobium Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "nuclear_fallout",
+          "name": "Nuclear Fallout (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Nuclear Fallout",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Nuclear Fallout",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "phosphorus_gas",
+          "name": "Phosphorus Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Phosphorus Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Phosphorus Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "polluted_oxygen",
+          "name": "Polluted Oxygen (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Polluted Oxygen",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Oxygen",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "propane",
+          "name": "Propane (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Propane",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Propane",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "rock_gas",
+          "name": "Rock Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Rock Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Rock Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "salt_gas",
+          "name": "Salt Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Salt Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Salt Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "sour_gas",
+          "name": "Sour Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Sour Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sour Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "steam",
+          "name": "Steam (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Steam",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Steam",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "steel_gas",
+          "name": "Steel Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Steel Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Steel Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "sulfur_gas",
+          "name": "Sulfur Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Sulfur Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sulfur Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "super_coolant_gas",
+          "name": "Super Coolant Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Super Coolant Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Super Coolant Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "syngas",
+          "name": "Syngas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Syngas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Syngas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "tungsten_gas",
+          "name": "Tungsten Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Tungsten Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Tungsten Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "zinc_gas",
+          "name": "Zinc Gas (500 g/s)",
+          "inputs": [
+            {
+              "resource": "Zinc Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Zinc Gas",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
         }
       ],
       "modifiers": [],
@@ -1112,6 +4232,726 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Hydrogen",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "aluminum_gas",
+          "name": "Aluminum Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Aluminum Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Aluminum Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "carbon_dioxide",
+          "name": "Carbon Dioxide (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "carbon_gas",
+          "name": "Carbon Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Carbon Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Carbon Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "chlorine",
+          "name": "Chlorine (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Chlorine",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Chlorine",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "cobalt_gas",
+          "name": "Cobalt Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Cobalt Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Cobalt Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "copper_gas",
+          "name": "Copper Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Copper Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Copper Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "ethanol_gas",
+          "name": "Ethanol Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Ethanol Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Ethanol Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "gold_gas",
+          "name": "Gold Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Gold Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Gold Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "helium",
+          "name": "Helium (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Helium",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Helium",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "iridium_gas",
+          "name": "Iridium Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Iridium Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Iridium Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "iron_gas",
+          "name": "Iron Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Iron Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Iron Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "lead_gas",
+          "name": "Lead Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Lead Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Lead Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "mercury_gas",
+          "name": "Mercury Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Mercury Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mercury Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "natural_gas",
+          "name": "Natural Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Natural Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Natural Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "nickel_gas",
+          "name": "Nickel Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Nickel Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Nickel Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "niobium_gas",
+          "name": "Niobium Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Niobium Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Niobium Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "nuclear_fallout",
+          "name": "Nuclear Fallout (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Nuclear Fallout",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Nuclear Fallout",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "phosphorus_gas",
+          "name": "Phosphorus Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Phosphorus Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Phosphorus Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "polluted_oxygen",
+          "name": "Polluted Oxygen (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Polluted Oxygen",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Oxygen",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "propane",
+          "name": "Propane (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Propane",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Propane",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "rock_gas",
+          "name": "Rock Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Rock Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Rock Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "salt_gas",
+          "name": "Salt Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Salt Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Salt Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "sour_gas",
+          "name": "Sour Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Sour Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sour Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "steam",
+          "name": "Steam (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Steam",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Steam",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "steel_gas",
+          "name": "Steel Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Steel Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Steel Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "sulfur_gas",
+          "name": "Sulfur Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Sulfur Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sulfur Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "super_coolant_gas",
+          "name": "Super Coolant Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Super Coolant Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Super Coolant Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "syngas",
+          "name": "Syngas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Syngas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Syngas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "tungsten_gas",
+          "name": "Tungsten Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Tungsten Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Tungsten Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -60.0,
+          "heat": 0.0
+        },
+        {
+          "id": "zinc_gas",
+          "name": "Zinc Gas (50 g/s)",
+          "inputs": [
+            {
+              "resource": "Zinc Gas",
+              "rate": 50.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Zinc Gas",
               "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
@@ -2532,11 +6372,11 @@ export const ONI_DATASET = {
           "heat": 2.0
         },
         {
-          "id": "polluted_water_full",
-          "name": "Polluted Water (10 kg/s)",
+          "id": "biodiesel",
+          "name": "Biodiesel (10 kg/s)",
           "inputs": [
             {
-              "resource": "Polluted Water",
+              "resource": "Biodiesel",
               "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
@@ -2545,7 +6385,7 @@ export const ONI_DATASET = {
           ],
           "outputs": [
             {
-              "resource": "Polluted Water",
+              "resource": "Biodiesel",
               "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
@@ -2556,7 +6396,55 @@ export const ONI_DATASET = {
           "heat": 2.0
         },
         {
-          "id": "crude_oil_full",
+          "id": "brackene",
+          "name": "Brackene (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Brackene",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brackene",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "brine",
+          "name": "Brine (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Brine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "crude_oil",
           "name": "Crude Oil (10 kg/s)",
           "inputs": [
             {
@@ -2580,7 +6468,919 @@ export const ONI_DATASET = {
           "heat": 2.0
         },
         {
-          "id": "petroleum_full",
+          "id": "crude_oil_full",
+          "name": "Crude Oil (Max Capacity 10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Crude Oil",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Crude Oil",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "ethanol",
+          "name": "Ethanol (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Ethanol",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Ethanol",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "gunk",
+          "name": "Gunk (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Gunk",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Gunk",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "latex",
+          "name": "Latex (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Latex",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Latex",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_carbon",
+          "name": "Liquid Carbon (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Carbon",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Carbon",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_carbon_dioxide",
+          "name": "Liquid Carbon Dioxide (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Carbon Dioxide",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Carbon Dioxide",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_chlorine",
+          "name": "Liquid Chlorine (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Chlorine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Chlorine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_helium",
+          "name": "Liquid Helium (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Helium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Helium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_hydrogen",
+          "name": "Liquid Hydrogen (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Hydrogen",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Hydrogen",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_methane",
+          "name": "Liquid Methane (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Methane",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Methane",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_naphtha",
+          "name": "Liquid Naphtha (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Naphtha",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Naphtha",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_nuclear_waste",
+          "name": "Liquid Nuclear Waste (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Nuclear Waste",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Nuclear Waste",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_oxygen",
+          "name": "Liquid Oxygen (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Oxygen",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Oxygen",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_phosphorus",
+          "name": "Liquid Phosphorus (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Phosphorus",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Phosphorus",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_propane",
+          "name": "Liquid Propane (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Propane",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Propane",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_sucrose",
+          "name": "Liquid Sucrose (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Sucrose",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Sucrose",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_sulfur",
+          "name": "Liquid Sulfur (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Sulfur",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Sulfur",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "liquid_uranium",
+          "name": "Liquid Uranium (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Uranium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Uranium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "magma",
+          "name": "Magma (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Magma",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Magma",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "mercury",
+          "name": "Mercury (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Mercury",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mercury",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_aluminum",
+          "name": "Molten Aluminum (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Aluminum",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Aluminum",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_cobalt",
+          "name": "Molten Cobalt (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Cobalt",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Cobalt",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_copper",
+          "name": "Molten Copper (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Copper",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Copper",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_glass",
+          "name": "Molten Glass (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Glass",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Glass",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_gold",
+          "name": "Molten Gold (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Gold",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Gold",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_iridium",
+          "name": "Molten Iridium (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Iridium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Iridium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_iron",
+          "name": "Molten Iron (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Iron",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Iron",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_lead",
+          "name": "Molten Lead (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Lead",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Lead",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_nickel",
+          "name": "Molten Nickel (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Nickel",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Nickel",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_niobium",
+          "name": "Molten Niobium (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Niobium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Niobium",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_salt",
+          "name": "Molten Salt (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Salt",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Salt",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_steel",
+          "name": "Molten Steel (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Steel",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Steel",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_syngas",
+          "name": "Molten Syngas (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Syngas",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Syngas",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_tungsten",
+          "name": "Molten Tungsten (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Tungsten",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Tungsten",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "molten_zinc",
+          "name": "Molten Zinc (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Molten Zinc",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Zinc",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "mucin",
+          "name": "Mucin (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Mucin",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mucin",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "nectar",
+          "name": "Nectar (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Nectar",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Nectar",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "ovolene",
+          "name": "Ovolene (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Ovolene",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Ovolene",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "petroleum",
           "name": "Petroleum (10 kg/s)",
           "inputs": [
             {
@@ -2594,6 +7394,270 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Petroleum",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "petroleum_full",
+          "name": "Petroleum (Max Capacity 10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Petroleum",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Petroleum",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "phyto_oil",
+          "name": "Phyto Oil (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Phyto Oil",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Phyto Oil",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "polluted_brine",
+          "name": "Polluted Brine (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Polluted Brine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Brine",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "polluted_water",
+          "name": "Polluted Water (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "polluted_water_full",
+          "name": "Polluted Water (Max Capacity 10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "resin",
+          "name": "Resin (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Resin",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Resin",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "salt_water",
+          "name": "Salt Water (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Salt Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Salt Water",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "sap",
+          "name": "Sap (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Sap",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sap",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "squid_ink",
+          "name": "Squid Ink (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Squid Ink",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Squid Ink",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "super_coolant",
+          "name": "Super Coolant (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Super Coolant",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Super Coolant",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 2.0
+        },
+        {
+          "id": "visco_gel_fluid",
+          "name": "Visco-Gel Fluid (10 kg/s)",
+          "inputs": [
+            {
+              "resource": "Visco-Gel Fluid",
+              "rate": 10000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Visco-Gel Fluid",
               "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
@@ -6885,50 +11949,113 @@ export const ONI_DATASET = {
   ],
   "geysers": [
     {
+      "id": "geyser_water_geyser",
+      "name": "Water Geyser",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Water_Geyser.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Water",
+          "rate": 3000.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 95 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (1800 kg/cycle = 3000 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Water",
+              "rate": 3000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 95 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (3000 kg/cycle = 5000 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Water",
+              "rate": 5000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 95 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water_Geyser.png/32px-Water_Geyser.png?883210"
+    },
+    {
       "id": "geyser_water",
-      "name": "Water",
+      "name": "Water Geyser",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Water.png",
+      "icon": "images/icons/Water_Geyser.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "95 \u00b0C / 203 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Water",
+          "rate": 3000.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ 95 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (1800 kg/cycle = 3000 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "95 \u00b0C / 203 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (1800 kg/cycle = 3000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "95 \u00b0C / 203 \u00b0F",
+              "resource": "Water",
               "rate": 3000.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 95 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (3000 kg/cycle = 5000 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Water",
+              "rate": 5000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 95 \u00b0C"
             }
           ]
         }
@@ -6945,53 +12072,53 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water_Geyser.png/32px-Water_Geyser.png?883210"
     },
     {
-      "id": "geyser_polluted_water",
-      "name": "Polluted Water",
+      "id": "geyser_cool_slush_geyser",
+      "name": "Cool Slush Geyser",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Polluted_Water.png",
+      "icon": "images/icons/Cool_Slush_Geyser.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "-10 \u00b0C / 14 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Polluted Water",
+          "rate": 1500.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ -10 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (900 kg/cycle = 1500 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "-10 \u00b0C / 14 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (900 kg/cycle = 1500 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "-10 \u00b0C / 14 \u00b0F",
+              "resource": "Polluted Water",
               "rate": 1500.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ -10 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (1500 kg/cycle = 2500 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ -10 \u00b0C"
             }
           ]
         }
@@ -7008,53 +12135,53 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cool_Slush_Geyser.png/32px-Cool_Slush_Geyser.png?408297"
     },
     {
-      "id": "geyser_steam",
-      "name": "Steam",
+      "id": "geyser_cool_steam_vent",
+      "name": "Cool Steam Vent",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Steam.png",
+      "icon": "images/icons/Cool_Steam_Vent.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "110 \u00b0C / 230 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Steam",
+          "rate": 1500.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ 110 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (900 kg/cycle = 1500 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "110 \u00b0C / 230 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (900 kg/cycle = 1500 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "110 \u00b0C / 230 \u00b0F",
+              "resource": "Steam",
               "rate": 1500.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 110 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (1500 kg/cycle = 2500 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Steam",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 110 \u00b0C"
             }
           ]
         }
@@ -7071,53 +12198,53 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cool_Steam_Vent.png/32px-Cool_Steam_Vent.png?b9dbd8"
     },
     {
-      "id": "geyser_salt_water",
-      "name": "Salt Water",
+      "id": "geyser_salt_water_geyser",
+      "name": "Salt Water Geyser",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Salt_Water.png",
+      "icon": "images/icons/Salt_Water_Geyser.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "95 \u00b0C / 203 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Salt Water",
+          "rate": 3000.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ 95 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (1800 kg/cycle = 3000 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "95 \u00b0C / 203 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (1800 kg/cycle = 3000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "95 \u00b0C / 203 \u00b0F",
+              "resource": "Salt Water",
               "rate": 3000.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 95 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (3000 kg/cycle = 5000 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Salt Water",
+              "rate": 5000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 95 \u00b0C"
             }
           ]
         }
@@ -7134,53 +12261,53 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt_Water.png/24px-Salt_Water.png?8067b5"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt_Water_Geyser.png/32px-Salt_Water_Geyser.png?48e9eb"
     },
     {
-      "id": "geyser_steam",
-      "name": "Steam",
+      "id": "geyser_steam_vent",
+      "name": "Steam Vent",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Steam.png",
+      "icon": "images/icons/Steam_Vent.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "500 \u00b0C / 932 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Steam",
+          "rate": 750.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ 500 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (450 kg/cycle = 750 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "500 \u00b0C / 932 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (450 kg/cycle = 750 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "500 \u00b0C / 932 \u00b0F",
+              "resource": "Steam",
               "rate": 750.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 500 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (750 kg/cycle = 1250 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Steam",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 500 \u00b0C"
             }
           ]
         }
@@ -7197,53 +12324,53 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam_Vent.png/32px-Steam_Vent.png?a3f4f2"
     },
     {
-      "id": "geyser_polluted_water_with_food_poisoning",
-      "name": "Polluted Water with Food Poisoning",
+      "id": "geyser_polluted_water_vent",
+      "name": "Polluted Water Vent",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Polluted_Water.png",
+      "icon": "images/icons/Polluted_Water_Vent.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "30 \u00b0C / 86 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Polluted Water",
+          "rate": 3000.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ 30 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (1800 kg/cycle = 3000 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "30 \u00b0C / 86 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (1800 kg/cycle = 3000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "30 \u00b0C / 86 \u00b0F",
+              "resource": "Polluted Water",
               "rate": 3000.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 30 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (3000 kg/cycle = 5000 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 5000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 30 \u00b0C"
             }
           ]
         }
@@ -7260,53 +12387,53 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water_Vent.png/32px-Polluted_Water_Vent.png?bc11e4"
     },
     {
-      "id": "geyser_brine",
-      "name": "Brine",
+      "id": "geyser_cool_salt_slush_geyser",
+      "name": "Cool Salt Slush Geyser",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Brine.png",
+      "icon": "images/icons/Cool_Salt_Slush_Geyser.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "-10 \u00b0C / 14 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Brine",
+          "rate": 1500.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ -10 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (900 kg/cycle = 1500 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "-10 \u00b0C / 14 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (900 kg/cycle = 1500 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "-10 \u00b0C / 14 \u00b0F",
+              "resource": "Brine",
               "rate": 1500.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ -10 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (1500 kg/cycle = 2500 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Brine",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ -10 \u00b0C"
             }
           ]
         }
@@ -7323,935 +12450,53 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine.png/24px-Brine.png?925651"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cool_Salt_Slush_Geyser.png/32px-Cool_Salt_Slush_Geyser.png?134765"
     },
     {
-      "id": "geyser_molten_copper",
-      "name": "Molten Copper",
+      "id": "geyser_copper_volcano",
+      "name": "Copper Volcano",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Molten_Copper.png",
+      "icon": "images/icons/Copper_Volcano.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
-          "rate": 1300.0,
+          "resource": "Molten Copper",
+          "rate": 300.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ 2226.85 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
+          "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
-              "rate": 1300.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (180 kg/cycle = 300 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
+              "resource": "Molten Copper",
               "rate": 300.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Copper.png/24px-Molten_Copper.png?3c18f0"
-    },
-    {
-      "id": "geyser_molten_iron",
-      "name": "Molten Iron",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Molten_Iron.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "2526.85 \u00b0C / 4580.33 \u00b0F",
-          "rate": 1300.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "2526.85 \u00b0C / 4580.33 \u00b0F",
-              "rate": 1300.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
+              "temp": "@ 2226.85 \u00b0C"
             }
           ]
         },
         {
           "id": "active_avg",
-          "name": "Average Active Period (180 kg/cycle = 300 g/s)",
+          "name": "Average Active Period (300 kg/cycle = 500 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "2526.85 \u00b0C / 4580.33 \u00b0F",
-              "rate": 300.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
-    },
-    {
-      "id": "geyser_molten_gold",
-      "name": "Molten Gold",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Molten_Gold.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "2626.85 \u00b0C / 4760.33 \u00b0F",
-          "rate": 1300.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "2626.85 \u00b0C / 4760.33 \u00b0F",
-              "rate": 1300.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (180 kg/cycle = 300 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "2626.85 \u00b0C / 4760.33 \u00b0F",
-              "rate": 300.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Gold.png/24px-Molten_Gold.png?658b8f"
-    },
-    {
-      "id": "geyser_molten_aluminum",
-      "name": "Molten Aluminum",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Molten_Aluminum.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-          "rate": 1300.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-              "rate": 1300.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (180 kg/cycle = 300 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-              "rate": 300.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Aluminum.png/24px-Molten_Aluminum.png?5b6c67"
-    },
-    {
-      "id": "geyser_molten_tungsten",
-      "name": "Molten Tungsten",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Molten_Tungsten.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "3726.85 \u00b0C / 6740.33 \u00b0F",
-          "rate": 1300.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "3726.85 \u00b0C / 6740.33 \u00b0F",
-              "rate": 1300.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (180 kg/cycle = 300 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "3726.85 \u00b0C / 6740.33 \u00b0F",
-              "rate": 300.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
-    },
-    {
-      "id": "geyser_molten_cobalt",
-      "name": "Molten Cobalt",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Molten_Cobalt.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
-          "rate": 1300.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (780 kg/cycle = 1300 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
-              "rate": 1300.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (180 kg/cycle = 300 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "2226.85 \u00b0C / 4040.33 \u00b0F",
-              "rate": 300.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
-    },
-    {
-      "id": "geyser_molten_niobium",
-      "name": "Molten Niobium",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Molten_Niobium.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "3226.85 \u00b0C / 5840.33 \u00b0F",
-          "rate": 15000.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (9000 kg/cycle = 15000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "3226.85 \u00b0C / 5840.33 \u00b0F",
-              "rate": 15000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (720 kg/cycle = 1200 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "3226.85 \u00b0C / 5840.33 \u00b0F",
-              "rate": 1200.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Niobium.png/24px-Molten_Niobium.png?bd76f8"
-    },
-    {
-      "id": "geyser_magma",
-      "name": "Magma",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Magma.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-          "rate": 15000.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (9000 kg/cycle = 15000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-              "rate": 15000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (720 kg/cycle = 1200 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-              "rate": 1200.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
-    },
-    {
-      "id": "geyser_magma",
-      "name": "Magma",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Magma.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-          "rate": 15000.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (9000 kg/cycle = 15000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-              "rate": 15000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (360 kg/cycle = 600 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "1726.85 \u00b0C / 3140.33 \u00b0F",
-              "rate": 600.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
-    },
-    {
-      "id": "geyser_polluted_oxygen",
-      "name": "Polluted Oxygen",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Polluted_Oxygen.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "500 \u00b0C / 932 \u00b0F",
-          "rate": 1000.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "500 \u00b0C / 932 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (63 kg/cycle = 105 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "500 \u00b0C / 932 \u00b0F",
-              "rate": 105.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Oxygen.png/24px-Polluted_Oxygen.png?69c186"
-    },
-    {
-      "id": "geyser_polluted_brine",
-      "name": "Polluted Brine",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Polluted_Brine.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "95 \u00b0C / 203 \u00b0F",
-          "rate": 1000.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "95 \u00b0C / 203 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (1800 kg/cycle = 3000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "95 \u00b0C / 203 \u00b0F",
-              "rate": 3000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Brine.png/24px-Polluted_Brine.png?15187b"
-    },
-    {
-      "id": "geyser_liquid_sulfur",
-      "name": "Liquid Sulfur",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Liquid_Sulfur.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "165.2 \u00b0C / 329.36 \u00b0F",
-          "rate": 1000.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "165.2 \u00b0C / 329.36 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (900 kg/cycle = 1500 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "165.2 \u00b0C / 329.36 \u00b0F",
-              "rate": 1500.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur.png/24px-Liquid_Sulfur.png?dccb21"
-    },
-    {
-      "id": "geyser_hydrogen_gas",
-      "name": "Hydrogen Gas",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Hydrogen_Gas.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "500 \u00b0C / 932 \u00b0F",
-          "rate": 1000.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "500 \u00b0C / 932 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (63 kg/cycle = 105 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "500 \u00b0C / 932 \u00b0F",
-              "rate": 105.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Hydrogen_Gas.png/24px-Hydrogen_Gas.png?b5ff3e"
-    },
-    {
-      "id": "geyser_natural_gas",
-      "name": "Natural Gas",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Natural_Gas.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "150 \u00b0C / 302 \u00b0F",
-          "rate": 1000.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "150 \u00b0C / 302 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (63 kg/cycle = 105 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "150 \u00b0C / 302 \u00b0F",
-              "rate": 105.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        }
-      ],
-      "modifiers": [
-        {
-          "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-          "output_multiplier": 1.2
-        },
-        {
-          "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-          "output_multiplier": 2.0
-        }
-      ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Natural_Gas.png/24px-Natural_Gas.png?17cb55"
-    },
-    {
-      "id": "geyser_crude_oil",
-      "name": "Crude Oil",
-      "category": "Geyser",
-      "subcategory": "Vent / Volcano",
-      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Crude_Oil.png",
-      "power": 0.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [
-        {
-          "resource": "326.85 \u00b0C / 620.33 \u00b0F",
-          "rate": 500.0,
-          "unit": "g/s",
-          "state": "free",
-          "temp": null
-        }
-      ],
-      "recipes": [
-        {
-          "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (300 kg/cycle = 500 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "326.85 \u00b0C / 620.33 \u00b0F",
+              "resource": "Molten Copper",
               "rate": 500.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (75 kg/cycle = 125 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "326.85 \u00b0C / 620.33 \u00b0F",
-              "rate": 125.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
+              "temp": "@ 2226.85 \u00b0C"
             }
           ]
         }
@@ -8268,53 +12513,557 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Crude_Oil.png/24px-Crude_Oil.png?d7ab3a"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper_Volcano.png/32px-Copper_Volcano.png?c14244"
     },
     {
-      "id": "geyser_polluted_oxygen_with_slimelung",
-      "name": "Polluted Oxygen with Slimelung",
+      "id": "geyser_iron_volcano",
+      "name": "Iron Volcano",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Polluted_Oxygen.png",
+      "icon": "images/icons/Iron_Volcano.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "60 \u00b0C / 140 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Molten Iron",
+          "rate": 300.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ 2526.85 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "60 \u00b0C / 140 \u00b0F",
-              "rate": 1000.0,
+              "resource": "Molten Iron",
+              "rate": 300.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 2526.85 \u00b0C"
             }
           ]
         },
         {
           "id": "active_avg",
-          "name": "Average Active Period (63 kg/cycle = 105 g/s)",
+          "name": "Average Active Period (300 kg/cycle = 500 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "60 \u00b0C / 140 \u00b0F",
+              "resource": "Molten Iron",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 2526.85 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron_Volcano.png/32px-Iron_Volcano.png?a7790a"
+    },
+    {
+      "id": "geyser_gold_volcano",
+      "name": "Gold Volcano",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Gold_Volcano.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Molten Gold",
+          "rate": 300.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 2626.85 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Molten Gold",
+              "rate": 300.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 2626.85 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (300 kg/cycle = 500 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Molten Gold",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 2626.85 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gold_Volcano.png/32px-Gold_Volcano.png?32d0cb"
+    },
+    {
+      "id": "geyser_aluminum_volcano",
+      "name": "Aluminum Volcano",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Aluminum_Volcano.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Molten Aluminum",
+          "rate": 300.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 1726.85 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Molten Aluminum",
+              "rate": 300.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 1726.85 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (300 kg/cycle = 500 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Molten Aluminum",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 1726.85 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum_Volcano.png/32px-Aluminum_Volcano.png?3b8e73"
+    },
+    {
+      "id": "geyser_tungsten_volcano",
+      "name": "Tungsten Volcano",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Tungsten_Volcano.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Molten Tungsten",
+          "rate": 300.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 3726.85 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Molten Tungsten",
+              "rate": 300.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 3726.85 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (300 kg/cycle = 500 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Molten Tungsten",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 3726.85 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tungsten_Volcano.png/32px-Tungsten_Volcano.png?ea8ee8"
+    },
+    {
+      "id": "geyser_cobalt_volcano",
+      "name": "Cobalt Volcano",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Cobalt_Volcano.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Molten Cobalt",
+          "rate": 300.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 2226.85 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (180 kg/cycle = 300 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Molten Cobalt",
+              "rate": 300.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 2226.85 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (300 kg/cycle = 500 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Molten Cobalt",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 2226.85 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cobalt_Volcano.png/32px-Cobalt_Volcano.png?8359e0"
+    },
+    {
+      "id": "geyser_niobium_volcano",
+      "name": "Niobium Volcano",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Niobium_Volcano.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Molten Niobium",
+          "rate": 1200.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 3226.85 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (720 kg/cycle = 1200 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Molten Niobium",
+              "rate": 1200.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 3226.85 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (1200 kg/cycle = 2000 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Molten Niobium",
+              "rate": 2000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 3226.85 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Niobium_Volcano.png/32px-Niobium_Volcano.png?efcc58"
+    },
+    {
+      "id": "geyser_volcano",
+      "name": "Volcano",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Volcano.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Magma",
+          "rate": 1200.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 1726.85 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (720 kg/cycle = 1200 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Magma",
+              "rate": 1200.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 1726.85 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (1200 kg/cycle = 2000 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Magma",
+              "rate": 2000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 1726.85 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Volcano.png/32px-Volcano.png?5655f1"
+    },
+    {
+      "id": "geyser_minor_volcano",
+      "name": "Minor Volcano",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Minor_Volcano.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Magma",
+          "rate": 600.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 1726.85 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (360 kg/cycle = 600 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Magma",
+              "rate": 600.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 1726.85 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (600 kg/cycle = 1000 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Magma",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 1726.85 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Minor_Volcano.png/32px-Minor_Volcano.png?20abfb"
+    },
+    {
+      "id": "geyser_hot_polluted_oxygen_vent",
+      "name": "Hot Polluted Oxygen Vent",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Hot_Polluted_Oxygen_Vent.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Polluted Oxygen",
+          "rate": 105.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 500 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Polluted Oxygen",
               "rate": 105.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 500 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Polluted Oxygen",
+              "rate": 175.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 500 \u00b0C"
             }
           ]
         }
@@ -8331,53 +13080,179 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Oxygen.png/24px-Polluted_Oxygen.png?69c186"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Hot_Polluted_Oxygen_Vent.png/32px-Hot_Polluted_Oxygen_Vent.png?838ba4"
     },
     {
-      "id": "geyser_chlorine_gas",
-      "name": "Chlorine Gas",
+      "id": "geyser_polluted_brine_vent",
+      "name": "Polluted Brine Vent",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Chlorine_Gas.png",
+      "icon": "images/icons/Polluted_Brine_Vent.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "60 \u00b0C / 140 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Polluted Brine",
+          "rate": 3000.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ 95 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (1800 kg/cycle = 3000 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "60 \u00b0C / 140 \u00b0F",
-              "rate": 1000.0,
+              "resource": "Polluted Brine",
+              "rate": 3000.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 95 \u00b0C"
             }
           ]
         },
         {
           "id": "active_avg",
-          "name": "Average Active Period (63 kg/cycle = 105 g/s)",
+          "name": "Average Active Period (3000 kg/cycle = 5000 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "60 \u00b0C / 140 \u00b0F",
+              "resource": "Polluted Brine",
+              "rate": 5000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 95 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Brine_Vent.png/32px-Polluted_Brine_Vent.png?7c81fb"
+    },
+    {
+      "id": "geyser_liquid_sulfur_geyser",
+      "name": "Liquid Sulfur Geyser",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Liquid_Sulfur_Geyser.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Liquid Sulfur",
+          "rate": 1500.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 165.2 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (900 kg/cycle = 1500 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Liquid Sulfur",
+              "rate": 1500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 165.2 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (1500 kg/cycle = 2500 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Liquid Sulfur",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 165.2 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur_Geyser.png/32px-Liquid_Sulfur_Geyser.png?b99c76"
+    },
+    {
+      "id": "geyser_hydrogen_vent",
+      "name": "Hydrogen Vent",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Hydrogen_Vent.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Hydrogen",
+          "rate": 105.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 500 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Hydrogen",
               "rate": 105.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 500 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Hydrogen",
+              "rate": 175.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 500 \u00b0C"
             }
           ]
         }
@@ -8394,53 +13269,53 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Chlorine_Gas.png/24px-Chlorine_Gas.png?3cc9d7"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Hydrogen_Vent.png/32px-Hydrogen_Vent.png?2cec87"
     },
     {
-      "id": "geyser_chlorine_gas",
-      "name": "Chlorine Gas",
+      "id": "geyser_natural_gas_geyser",
+      "name": "Natural Gas Geyser",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Chlorine_Gas.png",
+      "icon": "images/icons/Natural_Gas_Geyser.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "5 \u00b0C / 41 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Natural Gas",
+          "rate": 105.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ 150 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "5 \u00b0C / 41 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (63 kg/cycle = 105 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "5 \u00b0C / 41 \u00b0F",
+              "resource": "Natural Gas",
               "rate": 105.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 150 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Natural Gas",
+              "rate": 175.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 150 \u00b0C"
             }
           ]
         }
@@ -8457,53 +13332,53 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Chlorine_Gas.png/24px-Chlorine_Gas.png?3cc9d7"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Natural_Gas_Geyser.png/32px-Natural_Gas_Geyser.png?12a9ab"
     },
     {
-      "id": "geyser_carbon_dioxide",
-      "name": "Carbon Dioxide",
+      "id": "geyser_natural_gas",
+      "name": "Natural Gas Geyser",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Carbon_Dioxide.png",
+      "icon": "images/icons/Natural_Gas_Geyser.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "500 \u00b0C / 932 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Natural Gas",
+          "rate": 105.0,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ 150 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "500 \u00b0C / 932 \u00b0F",
-              "rate": 1000.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
-        },
-        {
-          "id": "active_avg",
-          "name": "Average Active Period (63 kg/cycle = 105 g/s)",
-          "inputs": [],
-          "outputs": [
-            {
-              "resource": "500 \u00b0C / 932 \u00b0F",
+              "resource": "Natural Gas",
               "rate": 105.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 150 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Natural Gas",
+              "rate": 175.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 150 \u00b0C"
             }
           ]
         }
@@ -8520,53 +13395,368 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Natural_Gas_Geyser.png/32px-Natural_Gas_Geyser.png?12a9ab"
     },
     {
-      "id": "geyser_liquid_carbon_dioxide",
-      "name": "Liquid Carbon Dioxide",
+      "id": "geyser_leaky_oil_fissure",
+      "name": "Leaky Oil Fissure",
       "category": "Geyser",
       "subcategory": "Vent / Volcano",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-      "icon": "images/icons/Liquid_Carbon_Dioxide.png",
+      "icon": "images/icons/Leaky_Oil_Fissure.png",
       "power": 0.0,
       "heat": 0.0,
       "inputs": [],
       "outputs": [
         {
-          "resource": "-55.15 \u00b0C / -67.27 \u00b0F",
-          "rate": 1000.0,
+          "resource": "Crude Oil",
+          "rate": 125.5,
           "unit": "g/s",
           "state": "free",
-          "temp": null
+          "temp": "@ 326.85 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "lifetime_avg",
-          "name": "Average Lifetime Yield (600 kg/cycle = 1000 g/s)",
+          "name": "Average Lifetime Yield (75.3 kg/cycle = 125.5 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "-55.15 \u00b0C / -67.27 \u00b0F",
-              "rate": 1000.0,
+              "resource": "Crude Oil",
+              "rate": 125.5,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ 326.85 \u00b0C"
             }
           ]
         },
         {
           "id": "active_avg",
-          "name": "Average Active Period (90 kg/cycle = 150 g/s)",
+          "name": "Average Active Period (125.5 kg/cycle = 209.17 g/s)",
           "inputs": [],
           "outputs": [
             {
-              "resource": "-55.15 \u00b0C / -67.27 \u00b0F",
+              "resource": "Crude Oil",
+              "rate": 209.17,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 326.85 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Leaky_Oil_Fissure.png/32px-Leaky_Oil_Fissure.png?e23bf6"
+    },
+    {
+      "id": "geyser_infectious_polluted_oxygen_vent",
+      "name": "Infectious Polluted Oxygen Vent",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Infectious_Polluted_Oxygen_Vent.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Polluted Oxygen",
+          "rate": 105.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 60 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Polluted Oxygen",
+              "rate": 105.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 60 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Polluted Oxygen",
+              "rate": 175.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 60 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Infectious_Polluted_Oxygen_Vent.png/32px-Infectious_Polluted_Oxygen_Vent.png?368154"
+    },
+    {
+      "id": "geyser_chlorine_gas_vent",
+      "name": "Chlorine Gas Vent",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Chlorine_Gas_Vent.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Chlorine",
+          "rate": 105.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 60 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Chlorine",
+              "rate": 105.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 60 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Chlorine",
+              "rate": 175.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 60 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Chlorine_Gas_Vent.png/32px-Chlorine_Gas_Vent.png?bc8db6"
+    },
+    {
+      "id": "geyser_cool_chlorine_gas_vent",
+      "name": "Cool Chlorine Gas Vent",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Chlorine_Gas_Vent.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Chlorine",
+          "rate": 105.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 5 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Chlorine",
+              "rate": 105.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 5 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Chlorine",
+              "rate": 175.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 5 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Chlorine_Gas_Vent.png/32px-Chlorine_Gas_Vent.png?bc8db6"
+    },
+    {
+      "id": "geyser_carbon_dioxide_vent",
+      "name": "Carbon Dioxide Vent",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Carbon_Dioxide_Vent.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Carbon Dioxide",
+          "rate": 105.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 500 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 105.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 500 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (105 kg/cycle = 175 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 175.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 500 \u00b0C"
+            }
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "id": "geotuned_1",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
+          "output_multiplier": 1.2
+        },
+        {
+          "id": "geotuned_5",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
+          "output_multiplier": 2.0
+        }
+      ],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide_Vent.png/32px-Carbon_Dioxide_Vent.png?408c14"
+    },
+    {
+      "id": "geyser_carbon_dioxide_geyser",
+      "name": "Carbon Dioxide Geyser",
+      "category": "Geyser",
+      "subcategory": "Vent / Volcano",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
+      "icon": "images/icons/Carbon_Dioxide_Geyser.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [
+        {
+          "resource": "Liquid Carbon Dioxide",
+          "rate": 150.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ -55.15 \u00b0C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "lifetime_avg",
+          "name": "Average Lifetime Yield (90 kg/cycle = 150 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Liquid Carbon Dioxide",
               "rate": 150.0,
               "unit": "g/s",
               "state": "free",
-              "temp": null
+              "temp": "@ -55.15 \u00b0C"
+            }
+          ]
+        },
+        {
+          "id": "active_avg",
+          "name": "Average Active Period (150 kg/cycle = 250 g/s)",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Liquid Carbon Dioxide",
+              "rate": 250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ -55.15 \u00b0C"
             }
           ]
         }
@@ -8583,1170 +13773,2497 @@ export const ONI_DATASET = {
           "output_multiplier": 2.0
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon_Dioxide.png/24px-Liquid_Carbon_Dioxide.png?254ea5"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide_Geyser.png/32px-Carbon_Dioxide_Geyser.png?32a521"
     }
   ],
   "elements": {
-    "Oxygen": {
-      "name": "Oxygen",
-      "icon": "images/icons/Oxygen.png",
-      "shc": 1.005,
-      "thermal_conductivity": 0.024,
+    "Aluminum Gas": {
+      "name": "Aluminum Gas",
+      "element_id": "AluminumGas",
+      "state": "Gas",
+      "shc": 0.91,
+      "thermal_conductivity": 2.5,
+      "low_temp": 2470.0,
       "high_temp": null,
-      "low_temp": 90.19,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Oxygen.png/24px-Oxygen.png?4db039"
+      "default_temp": 2926.85,
+      "icon": "images/icons/Molten_Aluminum.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Aluminum.png/24px-Molten_Aluminum.png?5b6c67"
     },
     "Carbon Dioxide": {
       "name": "Carbon Dioxide",
-      "icon": "images/icons/Carbon_Dioxide.png",
+      "element_id": "CarbonDioxide",
+      "state": "Gas",
       "shc": 0.846,
       "thermal_conductivity": 0.0146,
+      "low_temp": -48.15,
       "high_temp": null,
-      "low_temp": 225.0,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+      "default_temp": 20.0,
+      "icon": "images/icons/Liquid_Carbon_Dioxide.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon_Dioxide.png/24px-Liquid_Carbon_Dioxide.png?254ea5"
     },
-    "Water": {
-      "name": "Water",
-      "icon": "images/icons/Water.png",
-      "shc": 4.179,
-      "thermal_conductivity": 0.609,
-      "high_temp": 372.5,
-      "low_temp": 272.5,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
+    "Carbon Gas": {
+      "name": "Carbon Gas",
+      "element_id": "CarbonGas",
+      "state": "Gas",
+      "shc": 0.71,
+      "thermal_conductivity": 1.7,
+      "low_temp": 4826.85,
+      "high_temp": null,
+      "default_temp": 5426.85,
+      "icon": "images/icons/Liquid_Carbon.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon.png/24px-Liquid_Carbon.png?b4ff39"
     },
-    "Algae": {
-      "name": "Algae",
-      "icon": "images/icons/Algae.png",
-      "shc": 0.2,
-      "thermal_conductivity": 2.0,
-      "high_temp": 398.15,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Algae.png/24px-Algae.png?b63024"
-    },
-    "Polluted Water": {
-      "name": "Polluted Water",
-      "icon": "images/icons/Polluted_Water.png",
-      "shc": 4.179,
-      "thermal_conductivity": 0.58,
-      "high_temp": 392.5,
-      "low_temp": 252.5,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
+    "Chlorine": {
+      "name": "Chlorine",
+      "element_id": "ChlorineGas",
+      "state": "Gas",
+      "shc": 0.48,
+      "thermal_conductivity": 0.0081,
+      "low_temp": -34.6,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Liquid_Chlorine.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Chlorine.png/24px-Liquid_Chlorine.png?fec2b9"
     },
     "Polluted Oxygen": {
       "name": "Polluted Oxygen",
-      "icon": "images/icons/Polluted_Oxygen.png",
+      "element_id": "ContaminatedOxygen",
+      "state": "Gas",
       "shc": 1.01,
       "thermal_conductivity": 0.024,
+      "low_temp": -182.96,
       "high_temp": null,
-      "low_temp": 90.19,
+      "default_temp": 20.0,
+      "icon": "images/icons/Polluted_Oxygen.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Oxygen.png/24px-Polluted_Oxygen.png?69c186"
     },
-    "Polluted Dirt": {
-      "name": "Polluted Dirt",
-      "icon": "images/icons/Polluted_Dirt.png",
-      "shc": 0.83,
-      "thermal_conductivity": 2.0,
-      "high_temp": 1986.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Dirt.png/24px-Polluted_Dirt.png?9aeb5b"
+    "Copper Gas": {
+      "name": "Copper Gas",
+      "element_id": "CopperGas",
+      "state": "Gas",
+      "shc": 0.386,
+      "thermal_conductivity": 1.0,
+      "low_temp": 2560.85,
+      "high_temp": null,
+      "default_temp": 2926.85,
+      "icon": "images/icons/Molten_Copper.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Copper.png/24px-Molten_Copper.png?3c18f0"
     },
-    "Oxylite": {
-      "name": "Oxylite",
-      "icon": "images/icons/Oxylite.png",
-      "shc": 1.0,
-      "thermal_conductivity": 4.0,
-      "high_temp": 1683.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Oxylite.png/24px-Oxylite.png?9b618a"
+    "Gold Gas": {
+      "name": "Gold Gas",
+      "element_id": "GoldGas",
+      "state": "Gas",
+      "shc": 0.1291,
+      "thermal_conductivity": 1.0,
+      "low_temp": 2855.85,
+      "high_temp": null,
+      "default_temp": 3226.85,
+      "icon": "images/icons/Molten_Gold.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Gold.png/24px-Molten_Gold.png?658b8f"
     },
-    "Gold": {
-      "name": "Gold",
-      "icon": "images/icons/Gold.png",
-      "shc": 0.129,
-      "thermal_conductivity": 60.0,
-      "high_temp": 1337.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gold.png/24px-Gold.png?131fa9"
+    "Helium": {
+      "name": "Helium",
+      "element_id": "Helium",
+      "state": "Gas",
+      "shc": 0.14,
+      "thermal_conductivity": 0.236,
+      "low_temp": -268.93,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": null
     },
-    "Liquid Oxygen": {
-      "name": "Liquid Oxygen",
-      "icon": "images/icons/Liquid_Oxygen.png",
-      "shc": 1.01,
-      "thermal_conductivity": 2.0,
-      "high_temp": 90.19,
-      "low_temp": 54.36,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Oxygen.png/24px-Liquid_Oxygen.png?17b4c3"
+    "Hydrogen": {
+      "name": "Hydrogen",
+      "element_id": "Hydrogen",
+      "state": "Gas",
+      "shc": 2.4,
+      "thermal_conductivity": 0.168,
+      "low_temp": -252.15,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Liquid_Hydrogen.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Hydrogen.png/24px-Liquid_Hydrogen.png?d70401"
     },
-    "Super Coolant": {
-      "name": "Super Coolant",
-      "icon": "images/icons/Super_Coolant.png",
-      "shc": 8.44,
-      "thermal_conductivity": 9.46,
-      "high_temp": 710.0,
-      "low_temp": 2.0,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Super_Coolant.png/24px-Super_Coolant.png?767a6a"
+    "Iron Gas": {
+      "name": "Iron Gas",
+      "element_id": "IronGas",
+      "state": "Gas",
+      "shc": 0.449,
+      "thermal_conductivity": 1.0,
+      "low_temp": 2749.85,
+      "high_temp": null,
+      "default_temp": 3726.85,
+      "icon": "images/icons/Molten_Iron.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
     },
-    "Ethanol": {
-      "name": "Ethanol",
-      "icon": "images/icons/Ethanol.png",
-      "shc": 2.46,
-      "thermal_conductivity": 0.171,
-      "high_temp": 351.5,
-      "low_temp": 159.1,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ethanol.png/24px-Ethanol.png?4051f1"
+    "Cobalt Gas": {
+      "name": "Cobalt Gas",
+      "element_id": "CobaltGas",
+      "state": "Gas",
+      "shc": 0.42,
+      "thermal_conductivity": 1.0,
+      "low_temp": 2926.85,
+      "high_temp": null,
+      "default_temp": 3726.85,
+      "icon": "images/icons/Molten_Cobalt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
+    },
+    "Lead Gas": {
+      "name": "Lead Gas",
+      "element_id": "LeadGas",
+      "state": "Gas",
+      "shc": 0.128,
+      "thermal_conductivity": 3.5,
+      "low_temp": 1749.0,
+      "high_temp": null,
+      "default_temp": 3226.85,
+      "icon": "images/icons/Molten_Lead.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
+    },
+    "Mercury Gas": {
+      "name": "Mercury Gas",
+      "element_id": "MercuryGas",
+      "state": "Gas",
+      "shc": 0.14,
+      "thermal_conductivity": 8.3,
+      "low_temp": 356.75,
+      "high_temp": null,
+      "default_temp": 576.85,
+      "icon": "images/icons/Liquid_Mercury.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Mercury.png/24px-Liquid_Mercury.png?bfbddd"
     },
     "Natural Gas": {
       "name": "Natural Gas",
-      "icon": "images/icons/Natural_Gas.png",
+      "element_id": "Methane",
+      "state": "Gas",
       "shc": 2.191,
       "thermal_conductivity": 0.035,
+      "low_temp": -161.5,
       "high_temp": null,
-      "low_temp": 111.65,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Natural_Gas.png/24px-Natural_Gas.png?17cb55"
+      "default_temp": 20.0,
+      "icon": "images/icons/Liquid_Methane.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
     },
-    "Crude Oil": {
-      "name": "Crude Oil",
-      "icon": "images/icons/Crude_Oil.png",
-      "shc": 1.69,
-      "thermal_conductivity": 2.0,
-      "high_temp": 673.0,
-      "low_temp": 233.0,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Crude_Oil.png/24px-Crude_Oil.png?d7ab3a"
+    "Niobium Gas": {
+      "name": "Niobium Gas",
+      "element_id": "NiobiumGas",
+      "state": "Gas",
+      "shc": 0.265,
+      "thermal_conductivity": 1.0,
+      "low_temp": 4743.85,
+      "high_temp": null,
+      "default_temp": 5226.85,
+      "icon": "images/icons/Molten_Niobium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Niobium.png/24px-Molten_Niobium.png?bd76f8"
     },
-    "Petroleum": {
-      "name": "Petroleum",
-      "icon": "images/icons/Petroleum.png",
-      "shc": 1.76,
-      "thermal_conductivity": 2.0,
-      "high_temp": 812.0,
-      "low_temp": 216.0,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Petroleum.png/24px-Petroleum.png?a8a630"
+    "Nuclear Fallout": {
+      "name": "Nuclear Fallout",
+      "element_id": "Fallout",
+      "state": "Gas",
+      "shc": 0.265,
+      "thermal_conductivity": 1.0,
+      "low_temp": 66.85,
+      "high_temp": null,
+      "default_temp": 226.85,
+      "icon": "images/icons/Liquid_Nuclear_Waste.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Nuclear_Waste.png/24px-Liquid_Nuclear_Waste.png?1be0fb"
+    },
+    "Oxygen": {
+      "name": "Oxygen",
+      "element_id": "Oxygen",
+      "state": "Gas",
+      "shc": 1.005,
+      "thermal_conductivity": 0.024,
+      "low_temp": -182.96,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Oxygen.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Oxygen.png/24px-Oxygen.png?4db039"
+    },
+    "Phosphorus Gas": {
+      "name": "Phosphorus Gas",
+      "element_id": "PhosphorusGas",
+      "state": "Gas",
+      "shc": 0.7697,
+      "thermal_conductivity": 0.236,
+      "low_temp": 280.45,
+      "high_temp": null,
+      "default_temp": 426.85,
+      "icon": "images/icons/Liquid_Phosphorus.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Phosphorus.png/24px-Liquid_Phosphorus.png?267c27"
+    },
+    "Propane": {
+      "name": "Propane",
+      "element_id": "Propane",
+      "state": "Gas",
+      "shc": 2.4,
+      "thermal_conductivity": 0.015,
+      "low_temp": -42.15,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": null
+    },
+    "Rock Gas": {
+      "name": "Rock Gas",
+      "element_id": "RockGas",
+      "state": "Gas",
+      "shc": 1.0,
+      "thermal_conductivity": 0.1,
+      "low_temp": 2356.85,
+      "high_temp": null,
+      "default_temp": 2726.85,
+      "icon": "images/icons/Magma.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Salt Gas": {
+      "name": "Salt Gas",
+      "element_id": "SaltGas",
+      "state": "Gas",
+      "shc": 0.88,
+      "thermal_conductivity": 0.444,
+      "low_temp": 1464.85,
+      "high_temp": null,
+      "default_temp": 2726.85,
+      "icon": "images/icons/Molten_Salt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Salt.png/24px-Molten_Salt.png?fd6bf8"
     },
     "Sour Gas": {
       "name": "Sour Gas",
-      "icon": "images/icons/Sour_Gas.png",
+      "element_id": "SourGas",
+      "state": "Gas",
       "shc": 1.898,
       "thermal_conductivity": 0.018,
+      "low_temp": -161.5,
       "high_temp": null,
-      "low_temp": 111.65,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sour_Gas.png/24px-Sour_Gas.png?681999"
-    },
-    "Dirt": {
-      "name": "Dirt",
-      "icon": "images/icons/Resource_Dirt.png",
-      "shc": 1.48,
-      "thermal_conductivity": 2.0,
-      "high_temp": 600.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png?1569e7"
+      "default_temp": 20.0,
+      "icon": "images/icons/Liquid_Methane.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
     },
     "Steam": {
       "name": "Steam",
-      "icon": "images/icons/Steam.png",
+      "element_id": "Steam",
+      "state": "Gas",
       "shc": 4.179,
       "thermal_conductivity": 0.184,
+      "low_temp": 99.35,
       "high_temp": null,
-      "low_temp": 372.5,
+      "default_temp": 126.85,
+      "icon": "images/icons/Steam.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
     },
-    "Vacuum": {
-      "name": "Vacuum",
-      "icon": "images/icons/Vacuum.png",
-      "shc": 0.0,
-      "thermal_conductivity": 0.0,
-      "high_temp": 0.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Vacuum.png/24px-Vacuum.png?e10cb8"
-    },
-    "Gold Amalgam": {
-      "name": "Gold Amalgam",
-      "icon": "images/icons/Gold_Amalgam.png",
-      "shc": 0.15,
-      "thermal_conductivity": 2.0,
-      "high_temp": 1337.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gold_Amalgam.png/24px-Gold_Amalgam.png?215d21"
-    },
-    "Steel": {
-      "name": "Steel",
-      "icon": "images/icons/Steel.png",
+    "Steel Gas": {
+      "name": "Steel Gas",
+      "element_id": "SteelGas",
+      "state": "Gas",
       "shc": 0.49,
-      "thermal_conductivity": 54.0,
-      "high_temp": 2700.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steel.png/24px-Steel.png?c944c4"
+      "thermal_conductivity": 1.0,
+      "low_temp": 3826.85,
+      "high_temp": null,
+      "default_temp": 4226.85,
+      "icon": "images/icons/Molten_Steel.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Steel.png/24px-Molten_Steel.png?ca95f8"
     },
-    "Liquid Naphtha": {
-      "name": "Liquid Naphtha",
-      "icon": "images/icons/Liquid_Naphtha.png",
-      "shc": 2.191,
+    "Sulfur Gas": {
+      "name": "Sulfur Gas",
+      "element_id": "SulfurGas",
+      "state": "Gas",
+      "shc": 0.7,
       "thermal_conductivity": 0.2,
-      "high_temp": 812.0,
-      "low_temp": 223.0,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Naphtha.png/24px-Liquid_Naphtha.png?9eb334"
+      "low_temp": 337.0,
+      "high_temp": null,
+      "default_temp": 426.85,
+      "icon": "images/icons/Liquid_Sulfur.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur.png/24px-Liquid_Sulfur.png?dccb21"
     },
-    "Plastium": {
-      "name": "Plastium",
-      "icon": "images/icons/Plastium.png",
-      "shc": 1.5,
-      "thermal_conductivity": 0.25,
-      "high_temp": 2100.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plastium.png/24px-Plastium.png?763962"
+    "Super Coolant Gas": {
+      "name": "Super Coolant Gas",
+      "element_id": "SuperCoolantGas",
+      "state": "Gas",
+      "shc": 8.44,
+      "thermal_conductivity": 1.2,
+      "low_temp": 436.85,
+      "high_temp": null,
+      "default_temp": 576.85,
+      "icon": "images/icons/Super_Coolant.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Super_Coolant.png/24px-Super_Coolant.png?767a6a"
     },
-    "Salt Water": {
-      "name": "Salt Water",
-      "icon": "images/icons/Salt_Water.png",
-      "shc": 4.1,
-      "thermal_conductivity": 0.609,
-      "high_temp": 372.84,
-      "low_temp": 265.65,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt_Water.png/24px-Salt_Water.png?8067b5"
+    "Tungsten Gas": {
+      "name": "Tungsten Gas",
+      "element_id": "TungstenGas",
+      "state": "Gas",
+      "shc": 0.134,
+      "thermal_conductivity": 1.0,
+      "low_temp": 5929.85,
+      "high_temp": null,
+      "default_temp": 6226.85,
+      "icon": "images/icons/Molten_Tungsten.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
+    },
+    "Ethanol Gas": {
+      "name": "Ethanol Gas",
+      "element_id": "EthanolGas",
+      "state": "Gas",
+      "shc": 2.148,
+      "thermal_conductivity": 0.167,
+      "low_temp": 78.35,
+      "high_temp": null,
+      "default_temp": 116.85,
+      "icon": "images/icons/Ethanol.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ethanol.png/24px-Ethanol.png?4051f1"
+    },
+    "Syngas": {
+      "name": "Syngas",
+      "element_id": "Syngas",
+      "state": "Gas",
+      "shc": 2.4,
+      "thermal_conductivity": 0.168,
+      "low_temp": -252.15,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": null
+    },
+    "Nickel Gas": {
+      "name": "Nickel Gas",
+      "element_id": "NickelGas",
+      "state": "Gas",
+      "shc": 0.44,
+      "thermal_conductivity": 1.0,
+      "low_temp": 2729.85,
+      "high_temp": null,
+      "default_temp": 2926.85,
+      "icon": "images/icons/Molten_Nickel.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Nickel.png/24px-Molten_Nickel.png?cc293d"
+    },
+    "Iridium Gas": {
+      "name": "Iridium Gas",
+      "element_id": "IridiumGas",
+      "state": "Gas",
+      "shc": 0.131,
+      "thermal_conductivity": 1.0,
+      "low_temp": 4129.85,
+      "high_temp": null,
+      "default_temp": 4226.85,
+      "icon": "images/icons/Molten_Iridium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iridium.png/24px-Molten_Iridium.png?767b1b"
+    },
+    "Zinc Gas": {
+      "name": "Zinc Gas",
+      "element_id": "ZincGas",
+      "state": "Gas",
+      "shc": 0.388,
+      "thermal_conductivity": 1.0,
+      "low_temp": 906.85,
+      "high_temp": null,
+      "default_temp": 2926.85,
+      "icon": "images/icons/Molten_Zinc.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Zinc.png/24px-Molten_Zinc.png?732868"
     },
     "Brine": {
       "name": "Brine",
-      "icon": "images/icons/Brine.png",
+      "element_id": "Brine",
+      "state": "Liquid",
       "shc": 3.4,
       "thermal_conductivity": 0.609,
-      "high_temp": 375.9,
-      "low_temp": 250.65,
+      "low_temp": -22.5,
+      "high_temp": 102.75,
+      "default_temp": 20.0,
+      "icon": "images/icons/Brine.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine.png/24px-Brine.png?925651"
-    },
-    "Salt": {
-      "name": "Salt",
-      "icon": "images/icons/Salt.png",
-      "shc": 0.7,
-      "thermal_conductivity": 0.444,
-      "high_temp": 1073.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt.png/24px-Salt.png?731ebc"
     },
     "Polluted Brine": {
       "name": "Polluted Brine",
-      "icon": "images/icons/Polluted_Brine.png",
+      "element_id": "MurkyBrine",
+      "state": "Liquid",
       "shc": 3.6,
       "thermal_conductivity": 0.409,
-      "high_temp": 379.9,
-      "low_temp": 247.65,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Brine.png/24px-Polluted_Brine.png?15187b"
-    },
-    "Wood": {
-      "name": "Wood",
-      "icon": "images/icons/Lumber.png",
-      "shc": 2.3,
-      "thermal_conductivity": 0.22,
-      "high_temp": 873.15,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Lumber.png/24px-Lumber.png?3cce86"
-    },
-    "Slime": {
-      "name": "Slime",
-      "icon": "images/icons/Slime.png",
-      "shc": 0.2,
-      "thermal_conductivity": 2.0,
-      "high_temp": 398.15,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Slime.png/24px-Slime.png?3e7fd1"
-    },
-    "Phosphorite": {
-      "name": "Phosphorite",
-      "icon": "images/icons/Phosphorite.png",
-      "shc": 0.15,
-      "thermal_conductivity": 2.0,
-      "high_temp": 517.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Phosphorite.png/24px-Phosphorite.png?801df1"
-    },
-    "Galena": {
-      "name": "Galena",
-      "icon": "images/icons/Galena.png",
-      "shc": 0.21,
-      "thermal_conductivity": 2.3,
-      "high_temp": 1387.15,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Galena.png/24px-Galena.png?202ae3"
-    },
-    "Lead": {
-      "name": "Lead",
-      "icon": "images/icons/Lead.png",
-      "shc": 0.128,
-      "thermal_conductivity": 35.0,
-      "high_temp": 600.65,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Lead.png/24px-Lead.png?5cc72b"
-    },
-    "Sulfur": {
-      "name": "Sulfur",
-      "icon": "images/icons/Sulfur.png",
-      "shc": 0.7,
-      "thermal_conductivity": 0.2,
-      "high_temp": 388.35,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sulfur.png/24px-Sulfur.png?9f057b"
-    },
-    "Zinc Ore": {
-      "name": "Zinc Ore",
-      "icon": "images/icons/Zinc_Ore.png",
-      "shc": 0.388,
-      "thermal_conductivity": 4.0,
-      "high_temp": 692.65,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Zinc_Ore.png/24px-Zinc_Ore.png?345327"
-    },
-    "Zinc": {
-      "name": "Zinc",
-      "icon": "images/icons/Zinc.png",
-      "shc": 0.388,
-      "thermal_conductivity": 120.0,
-      "high_temp": 692.65,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Zinc.png/24px-Zinc.png?df8b94"
-    },
-    "Cinnabar Ore": {
-      "name": "Cinnabar Ore",
-      "icon": "images/icons/Cinnabar_Ore.png",
-      "shc": 0.386,
-      "thermal_conductivity": 4.5,
-      "high_temp": 856.65,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cinnabar_Ore.png/24px-Cinnabar_Ore.png?576d57"
-    },
-    "Mercury": {
-      "name": "Mercury",
-      "icon": "images/icons/Liquid_Mercury.png",
-      "shc": 0.14,
-      "thermal_conductivity": 8.3,
-      "high_temp": 629.9,
-      "low_temp": 234.3,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Mercury.png/24px-Liquid_Mercury.png?bfbddd"
-    },
-    "Copper Ore": {
-      "name": "Copper Ore",
-      "icon": "images/icons/Copper_Ore.png",
-      "shc": 0.386,
-      "thermal_conductivity": 4.5,
-      "high_temp": 1357.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper_Ore.png/24px-Copper_Ore.png?4cb760"
-    },
-    "Copper": {
-      "name": "Copper",
-      "icon": "images/icons/Copper.png",
-      "shc": 0.385,
-      "thermal_conductivity": 60.0,
-      "high_temp": 1357.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper.png/24px-Copper.png?13f1d4"
-    },
-    "Wolframite": {
-      "name": "Wolframite",
-      "icon": "images/icons/Wolframite.png",
-      "shc": 0.134,
-      "thermal_conductivity": 15.0,
-      "high_temp": 3200.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Wolframite.png/24px-Wolframite.png?69d9d9"
-    },
-    "Tungsten": {
-      "name": "Tungsten",
-      "icon": "images/icons/Tungsten.png",
-      "shc": 0.134,
-      "thermal_conductivity": 60.0,
-      "high_temp": 3695.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tungsten.png/24px-Tungsten.png?5d89ee"
-    },
-    "Aluminum Ore": {
-      "name": "Aluminum Ore",
-      "icon": "images/icons/Aluminum_Ore.png",
-      "shc": 0.91,
-      "thermal_conductivity": 20.5,
-      "high_temp": 1357.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum_Ore.png/24px-Aluminum_Ore.png?1e9490"
-    },
-    "Aluminum": {
-      "name": "Aluminum",
-      "icon": "images/icons/Aluminum.png",
-      "shc": 0.91,
-      "thermal_conductivity": 205.0,
-      "high_temp": 933.45,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum.png/24px-Aluminum.png?7ed80e"
-    },
-    "Cobalt Ore": {
-      "name": "Cobalt Ore",
-      "icon": "images/icons/Cobalt_Ore_(Spaced_Out).png",
-      "shc": 0.42,
-      "thermal_conductivity": 4.0,
-      "high_temp": 1768.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cobalt_Ore_%28Spaced_Out%29.png/24px-Cobalt_Ore_%28Spaced_Out%29.png?a94501"
-    },
-    "Cobalt": {
-      "name": "Cobalt",
-      "icon": "images/icons/Cobalt_(Spaced_Out).png",
-      "shc": 0.42,
-      "thermal_conductivity": 100.0,
-      "high_temp": 1768.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cobalt_%28Spaced_Out%29.png/24px-Cobalt_%28Spaced_Out%29.png?e48f1e"
-    },
-    "Nickel Ore": {
-      "name": "Nickel Ore",
-      "icon": "images/icons/Nickel_Ore.png",
-      "shc": 0.45,
-      "thermal_conductivity": 3.0,
-      "high_temp": 1728.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nickel_Ore.png/24px-Nickel_Ore.png?c4d2a2"
-    },
-    "Nickel": {
-      "name": "Nickel",
-      "icon": "images/icons/Nickel.png",
-      "shc": 0.44,
-      "thermal_conductivity": 91.0,
-      "high_temp": 1728.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nickel.png/24px-Nickel.png?c6ff23"
-    },
-    "Thermium": {
-      "name": "Thermium",
-      "icon": "images/icons/Thermium.png",
-      "shc": 0.622,
-      "thermal_conductivity": 220.0,
-      "high_temp": 2950.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Thermium.png/24px-Thermium.png?f0bdfe"
-    },
-    "Niobium": {
-      "name": "Niobium",
-      "icon": "images/icons/Niobium.png",
-      "shc": 0.265,
-      "thermal_conductivity": 54.0,
-      "high_temp": 2750.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Niobium.png/24px-Niobium.png?7c3764"
-    },
-    "Pyrite": {
-      "name": "Pyrite",
-      "icon": "images/icons/Pyrite.png",
-      "shc": 0.386,
-      "thermal_conductivity": 4.5,
-      "high_temp": 1357.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Pyrite.png/24px-Pyrite.png?2fadc9"
-    },
-    "Iron": {
-      "name": "Iron",
-      "icon": "images/icons/Iron.png",
-      "shc": 0.449,
-      "thermal_conductivity": 55.0,
-      "high_temp": 1808.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron.png/24px-Iron.png?89103b"
-    },
-    "Iron Ore": {
-      "name": "Iron Ore",
-      "icon": "images/icons/Iron_Ore.png",
-      "shc": 0.449,
-      "thermal_conductivity": 4.0,
-      "high_temp": 1808.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron_Ore.png/24px-Iron_Ore.png?9814a5"
-    },
-    "Refined Carbon": {
-      "name": "Refined Carbon",
-      "icon": "images/icons/Refined_Carbon.png",
-      "shc": 1.74,
-      "thermal_conductivity": 3.1,
-      "high_temp": 4600.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Refined_Carbon.png/24px-Refined_Carbon.png?7beae2"
-    },
-    "Lime": {
-      "name": "Lime",
-      "icon": "images/icons/Lime.png",
-      "shc": 0.834,
-      "thermal_conductivity": 2.0,
-      "high_temp": 1330.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Lime.png/24px-Lime.png?d20410"
+      "low_temp": -25.5,
+      "high_temp": 106.75,
+      "default_temp": 20.0,
+      "icon": "images/icons/Polluted_Water.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
     },
     "Liquid Chlorine": {
       "name": "Liquid Chlorine",
-      "icon": "images/icons/Liquid_Chlorine.png",
+      "element_id": "Chlorine",
+      "state": "Liquid",
       "shc": 0.48,
       "thermal_conductivity": 0.0081,
-      "high_temp": 238.55,
-      "low_temp": 172.17,
+      "low_temp": -100.98,
+      "high_temp": -34.6,
+      "default_temp": -73.15,
+      "icon": "images/icons/Liquid_Chlorine.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Chlorine.png/24px-Liquid_Chlorine.png?fec2b9"
+    },
+    "Crude Oil": {
+      "name": "Crude Oil",
+      "element_id": "CrudeOil",
+      "state": "Liquid",
+      "shc": 1.69,
+      "thermal_conductivity": 2.0,
+      "low_temp": -40.15,
+      "high_temp": 399.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Crude_Oil.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Crude_Oil.png/24px-Crude_Oil.png?d7ab3a"
+    },
+    "Polluted Water": {
+      "name": "Polluted Water",
+      "element_id": "DirtyWater",
+      "state": "Liquid",
+      "shc": 4.179,
+      "thermal_conductivity": 0.58,
+      "low_temp": -20.65,
+      "high_temp": 119.35,
+      "default_temp": 20.0,
+      "icon": "images/icons/Polluted_Water.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
     },
     "Liquid Carbon Dioxide": {
       "name": "Liquid Carbon Dioxide",
-      "icon": "images/icons/Liquid_Carbon_Dioxide.png",
+      "element_id": "LiquidCarbonDioxide",
+      "state": "Liquid",
       "shc": 0.846,
       "thermal_conductivity": 1.46,
-      "high_temp": 225.0,
-      "low_temp": 216.6,
+      "low_temp": -56.55,
+      "high_temp": -48.15,
+      "default_temp": -53.15,
+      "icon": "images/icons/Liquid_Carbon_Dioxide.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon_Dioxide.png/24px-Liquid_Carbon_Dioxide.png?254ea5"
     },
     "Gunk": {
       "name": "Gunk",
-      "icon": "images/icons/Gunk.png",
+      "element_id": "LiquidGunk",
+      "state": "Liquid",
       "shc": 1.2,
       "thermal_conductivity": 1.5,
-      "high_temp": 721.0,
-      "low_temp": 265.0,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gunk.png/24px-Gunk.png?6e8ae0"
+      "low_temp": -8.15,
+      "high_temp": 447.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Petroleum.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Petroleum.png/24px-Petroleum.png?a8a630"
+    },
+    "Liquid Helium": {
+      "name": "Liquid Helium",
+      "element_id": "LiquidHelium",
+      "state": "Liquid",
+      "shc": 0.2,
+      "thermal_conductivity": 0.236,
+      "low_temp": -273.15,
+      "high_temp": -268.93,
+      "default_temp": -272.15,
+      "icon": null
     },
     "Liquid Hydrogen": {
       "name": "Liquid Hydrogen",
-      "icon": "images/icons/Liquid_Hydrogen.png",
+      "element_id": "LiquidHydrogen",
+      "state": "Liquid",
       "shc": 2.4,
       "thermal_conductivity": 0.1,
-      "high_temp": 21.0,
-      "low_temp": 14.0,
+      "low_temp": -259.15,
+      "high_temp": -252.15,
+      "default_temp": -255.15,
+      "icon": "images/icons/Liquid_Hydrogen.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Hydrogen.png/24px-Liquid_Hydrogen.png?d70401"
     },
     "Liquid Methane": {
       "name": "Liquid Methane",
-      "icon": "images/icons/Liquid_Methane.png",
+      "element_id": "LiquidMethane",
+      "state": "Liquid",
       "shc": 2.191,
       "thermal_conductivity": 0.03,
-      "high_temp": 111.65,
-      "low_temp": 90.55,
+      "low_temp": -182.6,
+      "high_temp": -161.5,
+      "default_temp": -173.15,
+      "icon": "images/icons/Liquid_Methane.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
+    },
+    "Liquid Oxygen": {
+      "name": "Liquid Oxygen",
+      "element_id": "LiquidOxygen",
+      "state": "Liquid",
+      "shc": 1.01,
+      "thermal_conductivity": 2.0,
+      "low_temp": -218.79,
+      "high_temp": -182.96,
+      "default_temp": -198.79,
+      "icon": "images/icons/Liquid_Oxygen.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Oxygen.png/24px-Liquid_Oxygen.png?17b4c3"
     },
     "Liquid Phosphorus": {
       "name": "Liquid Phosphorus",
-      "icon": "images/icons/Liquid_Phosphorus.png",
+      "element_id": "LiquidPhosphorus",
+      "state": "Liquid",
       "shc": 0.7697,
       "thermal_conductivity": 0.236,
-      "high_temp": 553.6,
-      "low_temp": 317.3,
+      "low_temp": 44.15,
+      "high_temp": 280.45,
+      "default_temp": 226.85,
+      "icon": "images/icons/Liquid_Phosphorus.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Phosphorus.png/24px-Liquid_Phosphorus.png?267c27"
+    },
+    "Liquid Propane": {
+      "name": "Liquid Propane",
+      "element_id": "LiquidPropane",
+      "state": "Liquid",
+      "shc": 2.4,
+      "thermal_conductivity": 0.1,
+      "low_temp": -188.15,
+      "high_temp": -42.15,
+      "default_temp": -73.15,
+      "icon": null
     },
     "Liquid Sulfur": {
       "name": "Liquid Sulfur",
-      "icon": "images/icons/Liquid_Sulfur.png",
+      "element_id": "LiquidSulfur",
+      "state": "Liquid",
       "shc": 0.7,
       "thermal_conductivity": 0.2,
-      "high_temp": 610.15,
-      "low_temp": 388.35,
+      "low_temp": 115.2,
+      "high_temp": 337.0,
+      "default_temp": 176.85,
+      "icon": "images/icons/Liquid_Sulfur.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur.png/24px-Liquid_Sulfur.png?dccb21"
     },
     "Brackene": {
       "name": "Brackene",
-      "icon": "images/icons/Brackene.png",
+      "element_id": "Milk",
+      "state": "Liquid",
       "shc": 4.1,
       "thermal_conductivity": 0.609,
-      "high_temp": 353.15,
-      "low_temp": 256.65,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brackene.png/24px-Brackene.png?6affd2"
+      "low_temp": -16.5,
+      "high_temp": 80.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Brine.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine.png/24px-Brine.png?925651"
     },
     "Ovolene": {
       "name": "Ovolene",
-      "icon": "images/icons/Ovolene.png",
+      "element_id": "FishMilk",
+      "state": "Liquid",
       "shc": 4.1,
       "thermal_conductivity": 0.609,
-      "high_temp": 353.15,
-      "low_temp": 256.65,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ovolene.png/24px-Ovolene.png?5248e9"
+      "low_temp": -16.5,
+      "high_temp": 80.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Steam.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
     },
     "Magma": {
       "name": "Magma",
-      "icon": "images/icons/Magma.png",
+      "element_id": "Magma",
+      "state": "Liquid",
       "shc": 1.0,
       "thermal_conductivity": 1.0,
-      "high_temp": 2630.0,
-      "low_temp": 1683.0,
+      "low_temp": 1409.85,
+      "high_temp": 2356.85,
+      "default_temp": 1726.85,
+      "icon": "images/icons/Magma.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Mercury": {
+      "name": "Mercury",
+      "element_id": "Mercury",
+      "state": "Liquid",
+      "shc": 0.14,
+      "thermal_conductivity": 8.3,
+      "low_temp": -38.85,
+      "high_temp": 356.75,
+      "default_temp": 20.0,
+      "icon": "images/icons/Liquid_Mercury.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Mercury.png/24px-Liquid_Mercury.png?bfbddd"
     },
     "Molten Aluminum": {
       "name": "Molten Aluminum",
-      "icon": "images/icons/Molten_Aluminum.png",
+      "element_id": "MoltenAluminum",
+      "state": "Liquid",
       "shc": 0.91,
       "thermal_conductivity": 20.5,
-      "high_temp": 2743.15,
-      "low_temp": 933.45,
+      "low_temp": 660.3,
+      "high_temp": 2470.0,
+      "default_temp": 1726.85,
+      "icon": "images/icons/Molten_Aluminum.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Aluminum.png/24px-Molten_Aluminum.png?5b6c67"
     },
     "Liquid Carbon": {
       "name": "Liquid Carbon",
-      "icon": "images/icons/Liquid_Carbon.png",
+      "element_id": "MoltenCarbon",
+      "state": "Liquid",
       "shc": 0.71,
       "thermal_conductivity": 2.0,
-      "high_temp": 5100.0,
-      "low_temp": 3825.0,
+      "low_temp": 3551.85,
+      "high_temp": 4826.85,
+      "default_temp": 4326.85,
+      "icon": "images/icons/Liquid_Carbon.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon.png/24px-Liquid_Carbon.png?b4ff39"
     },
     "Molten Copper": {
       "name": "Molten Copper",
-      "icon": "images/icons/Molten_Copper.png",
+      "element_id": "MoltenCopper",
+      "state": "Liquid",
       "shc": 0.386,
       "thermal_conductivity": 12.0,
-      "high_temp": 2834.0,
-      "low_temp": 1357.0,
+      "low_temp": 1083.85,
+      "high_temp": 2560.85,
+      "default_temp": 1526.85,
+      "icon": "images/icons/Molten_Copper.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Copper.png/24px-Molten_Copper.png?3c18f0"
     },
     "Molten Glass": {
       "name": "Molten Glass",
-      "icon": "images/icons/Molten_Glass.png",
+      "element_id": "MoltenGlass",
+      "state": "Liquid",
       "shc": 0.2,
       "thermal_conductivity": 1.0,
-      "high_temp": 2630.0,
-      "low_temp": 1400.0,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Glass.png/24px-Molten_Glass.png?d6f734"
+      "low_temp": 1126.85,
+      "high_temp": 2356.85,
+      "default_temp": 1941.85,
+      "icon": "images/icons/Rock_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Rock_Gas.png/24px-Rock_Gas.png?b50149"
     },
     "Molten Gold": {
       "name": "Molten Gold",
-      "icon": "images/icons/Molten_Gold.png",
+      "element_id": "MoltenGold",
+      "state": "Liquid",
       "shc": 0.1291,
       "thermal_conductivity": 6.0,
-      "high_temp": 3129.0,
-      "low_temp": 1337.0,
+      "low_temp": 1063.85,
+      "high_temp": 2855.85,
+      "default_temp": 1726.85,
+      "icon": "images/icons/Molten_Gold.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Gold.png/24px-Molten_Gold.png?658b8f"
     },
     "Molten Iron": {
       "name": "Molten Iron",
-      "icon": "images/icons/Molten_Iron.png",
+      "element_id": "MoltenIron",
+      "state": "Liquid",
       "shc": 0.449,
       "thermal_conductivity": 4.0,
-      "high_temp": 3023.0,
-      "low_temp": 1808.0,
+      "low_temp": 1534.85,
+      "high_temp": 2749.85,
+      "default_temp": 2226.85,
+      "icon": "images/icons/Molten_Iron.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
     },
     "Molten Cobalt": {
       "name": "Molten Cobalt",
-      "icon": "images/icons/Molten_Cobalt.png",
+      "element_id": "MoltenCobalt",
+      "state": "Liquid",
       "shc": 0.42,
       "thermal_conductivity": 4.0,
-      "high_temp": 3200.0,
-      "low_temp": 1768.0,
+      "low_temp": 1494.85,
+      "high_temp": 2926.85,
+      "default_temp": 2226.85,
+      "icon": "images/icons/Molten_Cobalt.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
     },
     "Molten Lead": {
       "name": "Molten Lead",
-      "icon": "images/icons/Molten_Lead.png",
+      "element_id": "MoltenLead",
+      "state": "Liquid",
       "shc": 0.128,
       "thermal_conductivity": 11.0,
-      "high_temp": 2022.15,
-      "low_temp": 600.65,
+      "low_temp": 327.5,
+      "high_temp": 1749.0,
+      "default_temp": 1726.85,
+      "icon": "images/icons/Molten_Lead.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
     },
     "Molten Niobium": {
       "name": "Molten Niobium",
-      "icon": "images/icons/Molten_Niobium.png",
+      "element_id": "MoltenNiobium",
+      "state": "Liquid",
       "shc": 0.265,
       "thermal_conductivity": 54.0,
-      "high_temp": 5017.0,
-      "low_temp": 2750.0,
+      "low_temp": 2476.85,
+      "high_temp": 4743.85,
+      "default_temp": 2726.85,
+      "icon": "images/icons/Molten_Niobium.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Niobium.png/24px-Molten_Niobium.png?bd76f8"
     },
     "Molten Salt": {
       "name": "Molten Salt",
-      "icon": "images/icons/Molten_Salt.png",
+      "element_id": "MoltenSalt",
+      "state": "Liquid",
       "shc": 0.7,
       "thermal_conductivity": 0.444,
-      "high_temp": 1738.0,
-      "low_temp": 1073.0,
+      "low_temp": 799.85,
+      "high_temp": 1464.85,
+      "default_temp": 1132.35,
+      "icon": "images/icons/Molten_Salt.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Salt.png/24px-Molten_Salt.png?fd6bf8"
     },
     "Molten Steel": {
       "name": "Molten Steel",
-      "icon": "images/icons/Molten_Steel.png",
+      "element_id": "MoltenSteel",
+      "state": "Liquid",
       "shc": 0.386,
       "thermal_conductivity": 80.0,
-      "high_temp": 4100.0,
-      "low_temp": 1357.0,
+      "low_temp": 1083.85,
+      "high_temp": 3826.85,
+      "default_temp": 1726.85,
+      "icon": "images/icons/Molten_Steel.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Steel.png/24px-Molten_Steel.png?ca95f8"
     },
     "Molten Tungsten": {
       "name": "Molten Tungsten",
-      "icon": "images/icons/Molten_Tungsten.png",
+      "element_id": "MoltenTungsten",
+      "state": "Liquid",
       "shc": 0.134,
       "thermal_conductivity": 4.0,
-      "high_temp": 6203.0,
-      "low_temp": 3695.0,
+      "low_temp": 3421.85,
+      "high_temp": 5929.85,
+      "default_temp": 3726.85,
+      "icon": "images/icons/Molten_Tungsten.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
     },
     "Liquid Uranium": {
       "name": "Liquid Uranium",
-      "icon": "images/icons/Liquid_Uranium.png",
+      "element_id": "MoltenUranium",
+      "state": "Liquid",
       "shc": 1.69,
       "thermal_conductivity": 2.0,
-      "high_temp": 4405.0,
-      "low_temp": 406.0,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Uranium.png/24px-Liquid_Uranium.png?f88c40"
+      "low_temp": 132.85,
+      "high_temp": 4131.85,
+      "default_temp": 186.85,
+      "icon": "images/icons/Rock_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Rock_Gas.png/24px-Rock_Gas.png?b50149"
+    },
+    "Liquid Naphtha": {
+      "name": "Liquid Naphtha",
+      "element_id": "Naphtha",
+      "state": "Liquid",
+      "shc": 2.191,
+      "thermal_conductivity": 0.2,
+      "low_temp": -50.15,
+      "high_temp": 538.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Sour_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sour_Gas.png/24px-Sour_Gas.png?681999"
     },
     "Liquid Nuclear Waste": {
       "name": "Liquid Nuclear Waste",
-      "icon": "images/icons/Liquid_Nuclear_Waste.png",
+      "element_id": "NuclearWaste",
+      "state": "Liquid",
       "shc": 7.44,
       "thermal_conductivity": 6.0,
-      "high_temp": 800.0,
-      "low_temp": 300.0,
+      "low_temp": 26.85,
+      "high_temp": 526.85,
+      "default_temp": 126.85,
+      "icon": "images/icons/Liquid_Nuclear_Waste.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Nuclear_Waste.png/24px-Liquid_Nuclear_Waste.png?1be0fb"
+    },
+    "Petroleum": {
+      "name": "Petroleum",
+      "element_id": "Petroleum",
+      "state": "Liquid",
+      "shc": 1.76,
+      "thermal_conductivity": 2.0,
+      "low_temp": -57.15,
+      "high_temp": 538.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Petroleum.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Petroleum.png/24px-Petroleum.png?a8a630"
     },
     "Resin": {
       "name": "Resin",
-      "icon": "images/icons/Resin.png",
+      "element_id": "NaturalResin",
+      "state": "Liquid",
       "shc": 1.11,
       "thermal_conductivity": 0.15,
-      "high_temp": 398.15,
-      "low_temp": 293.15,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resin.png/24px-Resin.png?a211c1"
+      "low_temp": 20.0,
+      "high_temp": 125.0,
+      "default_temp": 26.85,
+      "icon": "images/icons/Steam.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
     },
     "Sap": {
       "name": "Sap",
-      "icon": "images/icons/Sap.png",
+      "element_id": "Resin",
+      "state": "Liquid",
       "shc": 1.11,
       "thermal_conductivity": 0.15,
-      "high_temp": 398.15,
-      "low_temp": 293.15,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sap.png/24px-Sap.png?a211c1"
+      "low_temp": 20.0,
+      "high_temp": 125.0,
+      "default_temp": 26.85,
+      "icon": "images/icons/Steam.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+    },
+    "Salt Water": {
+      "name": "Salt Water",
+      "element_id": "SaltWater",
+      "state": "Liquid",
+      "shc": 4.1,
+      "thermal_conductivity": 0.609,
+      "low_temp": -7.5,
+      "high_temp": 99.69,
+      "default_temp": 20.0,
+      "icon": "images/icons/Salt_Water.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt_Water.png/24px-Salt_Water.png?8067b5"
     },
     "Nectar": {
       "name": "Nectar",
-      "icon": "images/icons/Nectar.png",
+      "element_id": "SugarWater",
+      "state": "Liquid",
       "shc": 4.1,
       "thermal_conductivity": 0.609,
-      "high_temp": 433.15,
-      "low_temp": 190.65,
+      "low_temp": -82.5,
+      "high_temp": 160.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Nectar.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nectar.png/24px-Nectar.png?bb9575"
+    },
+    "Super Coolant": {
+      "name": "Super Coolant",
+      "element_id": "SuperCoolant",
+      "state": "Liquid",
+      "shc": 8.44,
+      "thermal_conductivity": 9.46,
+      "low_temp": -271.15,
+      "high_temp": 436.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Super_Coolant.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Super_Coolant.png/24px-Super_Coolant.png?767a6a"
     },
     "Visco-Gel Fluid": {
       "name": "Visco-Gel Fluid",
-      "icon": "images/icons/Visco-Gel_Fluid.png",
+      "element_id": "ViscoGel",
+      "state": "Liquid",
       "shc": 1.55,
       "thermal_conductivity": 0.45,
-      "high_temp": 753.0,
-      "low_temp": 242.5,
+      "low_temp": -30.65,
+      "high_temp": 479.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Visco-Gel_Fluid.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Visco-Gel_Fluid.png/24px-Visco-Gel_Fluid.png?2f36d1"
+    },
+    "Water": {
+      "name": "Water",
+      "element_id": "Water",
+      "state": "Liquid",
+      "shc": 4.179,
+      "thermal_conductivity": 0.609,
+      "low_temp": -0.65,
+      "high_temp": 99.35,
+      "default_temp": 20.0,
+      "icon": "images/icons/Water.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
     },
     "Squid Ink": {
       "name": "Squid Ink",
-      "icon": "images/icons/Squid_Ink.png",
+      "element_id": "Ink",
+      "state": "Liquid",
       "shc": 2.0,
       "thermal_conductivity": 0.5,
-      "high_temp": 353.15,
-      "low_temp": 252.5,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Squid_Ink.png/24px-Squid_Ink.png?5ee7be"
+      "low_temp": -20.65,
+      "high_temp": 80.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Mucin.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mucin.png/24px-Mucin.png?1e3722"
+    },
+    "Ethanol": {
+      "name": "Ethanol",
+      "element_id": "Ethanol",
+      "state": "Liquid",
+      "shc": 2.46,
+      "thermal_conductivity": 0.171,
+      "low_temp": -114.05,
+      "high_temp": 78.35,
+      "default_temp": 20.0,
+      "icon": "images/icons/Ethanol.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ethanol.png/24px-Ethanol.png?4051f1"
+    },
+    "Molten Syngas": {
+      "name": "Molten Syngas",
+      "element_id": "MoltenSyngas",
+      "state": "Liquid",
+      "shc": 2.4,
+      "thermal_conductivity": 0.1,
+      "low_temp": -259.15,
+      "high_temp": -252.15,
+      "default_temp": -255.15,
+      "icon": null
     },
     "Phyto Oil": {
       "name": "Phyto Oil",
-      "icon": "images/icons/Phyto_Oil.png",
+      "element_id": "PhytoOil",
+      "state": "Liquid",
       "shc": 0.9,
       "thermal_conductivity": 2.0,
-      "high_temp": 348.15,
-      "low_temp": 240.0,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Phyto_Oil.png/24px-Phyto_Oil.png?2ab44c"
+      "low_temp": -33.15,
+      "high_temp": 75.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Carbon_Dioxide.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
     "Biodiesel": {
       "name": "Biodiesel",
-      "icon": "images/icons/Biodiesel.png",
+      "element_id": "RefinedLipid",
+      "state": "Liquid",
       "shc": 2.19,
       "thermal_conductivity": 2.0,
-      "high_temp": 453.15,
-      "low_temp": 263.15,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Biodiesel.png/24px-Biodiesel.png?1df547"
+      "low_temp": -10.0,
+      "high_temp": 180.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Carbon_Dioxide.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
     "Liquid Sucrose": {
       "name": "Liquid Sucrose",
-      "icon": "images/icons/Liquid_Sucrose.png",
+      "element_id": "MoltenSucrose",
+      "state": "Liquid",
       "shc": 1.255,
       "thermal_conductivity": 0.15,
-      "high_temp": 503.15,
-      "low_temp": 459.0,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sucrose.png/24px-Liquid_Sucrose.png?17a730"
+      "low_temp": 185.85,
+      "high_temp": 230.0,
+      "default_temp": 226.85,
+      "icon": "images/icons/Carbon_Dioxide.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
     "Molten Nickel": {
       "name": "Molten Nickel",
-      "icon": "images/icons/Molten_Nickel.png",
+      "element_id": "MoltenNickel",
+      "state": "Liquid",
       "shc": 0.44,
       "thermal_conductivity": 30.0,
-      "high_temp": 3003.0,
-      "low_temp": 1728.0,
+      "low_temp": 1454.85,
+      "high_temp": 2729.85,
+      "default_temp": 1526.85,
+      "icon": "images/icons/Molten_Nickel.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Nickel.png/24px-Molten_Nickel.png?cc293d"
     },
     "Molten Iridium": {
       "name": "Molten Iridium",
-      "icon": "images/icons/Molten_Iridium.png",
+      "element_id": "MoltenIridium",
+      "state": "Liquid",
       "shc": 0.131,
       "thermal_conductivity": 170.0,
-      "high_temp": 4403.0,
-      "low_temp": 2719.0,
+      "low_temp": 2445.85,
+      "high_temp": 4129.85,
+      "default_temp": 3226.85,
+      "icon": "images/icons/Molten_Iridium.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iridium.png/24px-Molten_Iridium.png?767b1b"
     },
     "Latex": {
       "name": "Latex",
-      "icon": "images/icons/Latex.png",
+      "element_id": "Latex",
+      "state": "Liquid",
       "shc": 2.01,
       "thermal_conductivity": 0.065,
-      "high_temp": 372.5,
-      "low_temp": 272.5,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Latex.png/24px-Latex.png?71428c"
+      "low_temp": -0.65,
+      "high_temp": 99.35,
+      "default_temp": 20.0,
+      "icon": "images/icons/Carbon_Dioxide.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
     "Mucin": {
       "name": "Mucin",
-      "icon": "images/icons/Mucin.png",
+      "element_id": "Mucus",
+      "state": "Liquid",
       "shc": 3.0,
       "thermal_conductivity": 0.45,
-      "high_temp": 363.15,
-      "low_temp": 263.15,
+      "low_temp": -10.0,
+      "high_temp": 90.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Mucin.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mucin.png/24px-Mucin.png?1e3722"
     },
     "Molten Zinc": {
       "name": "Molten Zinc",
-      "icon": "images/icons/Molten_Zinc.png",
+      "element_id": "MoltenZinc",
+      "state": "Liquid",
       "shc": 0.388,
       "thermal_conductivity": 12.0,
-      "high_temp": 1180.0,
-      "low_temp": 692.88,
+      "low_temp": 419.73,
+      "high_temp": 906.85,
+      "default_temp": 626.85,
+      "icon": "images/icons/Molten_Zinc.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Zinc.png/24px-Molten_Zinc.png?732868"
     },
-    "Plastic": {
-      "name": "Plastic",
-      "icon": "images/icons/Plastic.png",
-      "shc": 1.92,
-      "thermal_conductivity": 0.15,
-      "high_temp": 433.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plastic.png/24px-Plastic.png?6dabe6"
-    },
-    "Uranium Ore": {
-      "name": "Uranium Ore",
-      "icon": "images/icons/Uranium_Ore.png",
+    "Aerogel": {
+      "name": "Aerogel",
+      "element_id": "Aerogel",
+      "state": "Solid",
       "shc": 1.0,
-      "thermal_conductivity": 20.0,
-      "high_temp": 406.0,
+      "thermal_conductivity": 0.003,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Uranium_Ore.png/24px-Uranium_Ore.png?510845"
+      "high_temp": 9726.85,
+      "default_temp": 20.0,
+      "icon": null
     },
-    "Sand": {
-      "name": "Sand",
-      "icon": "images/icons/Sand.png",
-      "shc": 0.83,
+    "Algae": {
+      "name": "Algae",
+      "element_id": "Algae",
+      "state": "Solid",
+      "shc": 0.2,
       "thermal_conductivity": 2.0,
-      "high_temp": 1986.0,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sand.png/24px-Sand.png?c5f250"
+      "high_temp": 125.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Algae.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Algae.png/24px-Algae.png?b63024"
+    },
+    "Pearl": {
+      "name": "Pearl",
+      "element_id": "Pearl",
+      "state": "Solid",
+      "shc": 0.45,
+      "thermal_conductivity": 0.9,
+      "low_temp": null,
+      "high_temp": 824.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Carbon_Dioxide.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+    },
+    "Aluminum": {
+      "name": "Aluminum",
+      "element_id": "Aluminum",
+      "state": "Solid",
+      "shc": 0.91,
+      "thermal_conductivity": 205.0,
+      "low_temp": null,
+      "high_temp": 660.3,
+      "default_temp": 20.0,
+      "icon": "images/icons/Aluminum.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum.png/24px-Aluminum.png?7ed80e"
+    },
+    "Aluminum Ore": {
+      "name": "Aluminum Ore",
+      "element_id": "AluminumOre",
+      "state": "Solid",
+      "shc": 0.91,
+      "thermal_conductivity": 20.5,
+      "low_temp": null,
+      "high_temp": 1083.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Aluminum_Ore.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum_Ore.png/24px-Aluminum_Ore.png?1e9490"
+    },
+    "Bitumen": {
+      "name": "Bitumen",
+      "element_id": "Bitumen",
+      "state": "Solid",
+      "shc": 1.76,
+      "thermal_conductivity": 0.17,
+      "low_temp": null,
+      "high_temp": 538.85,
+      "default_temp": 20.0,
+      "icon": null
     },
     "Bleach Stone": {
       "name": "Bleach Stone",
-      "icon": "images/icons/Bleach_Stone.png",
+      "element_id": "BleachStone",
+      "state": "Solid",
       "shc": 0.5,
       "thermal_conductivity": 4.0,
-      "high_temp": 942.0,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Bleach_Stone.png/24px-Bleach_Stone.png?2566c8"
+      "high_temp": 668.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Liquid_Chlorine.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Chlorine.png/24px-Liquid_Chlorine.png?fec2b9"
     },
-    "Chlorine Gas": {
-      "name": "Chlorine Gas",
-      "icon": "images/icons/Chlorine_Gas.png",
-      "shc": 0.48,
-      "thermal_conductivity": 0.0081,
-      "high_temp": null,
-      "low_temp": 238.55,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Chlorine_Gas.png/24px-Chlorine_Gas.png?3cc9d7"
-    },
-    "Brackwax": {
-      "name": "Brackwax",
-      "icon": "images/icons/Brackwax.png",
-      "shc": 1.92,
-      "thermal_conductivity": 0.15,
-      "high_temp": 433.0,
+    "Brick": {
+      "name": "Brick",
+      "element_id": "Brick",
+      "state": "Solid",
+      "shc": 0.84,
+      "thermal_conductivity": 0.62,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brackwax.png/24px-Brackwax.png?c7e172"
+      "high_temp": 1409.85,
+      "default_temp": 20.0,
+      "icon": null
     },
-    "Iridium": {
-      "name": "Iridium",
-      "icon": "images/icons/Iridium.png",
-      "shc": 0.131,
-      "thermal_conductivity": 170.0,
-      "high_temp": 2719.0,
+    "Brine Ice": {
+      "name": "Brine Ice",
+      "element_id": "BrineIce",
+      "state": "Solid",
+      "shc": 3.4,
+      "thermal_conductivity": 2.18,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iridium.png/24px-Iridium.png?a998d5"
+      "high_temp": -16.5,
+      "default_temp": -41.0,
+      "icon": "images/icons/Brine_Ice.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine_Ice.png/24px-Brine_Ice.png?bca819"
     },
-    "Sucrose": {
-      "name": "Sucrose",
-      "icon": "images/icons/Sucrose_(Spaced_Out).png",
-      "shc": 1.255,
-      "thermal_conductivity": 0.15,
-      "high_temp": 459.0,
+    "Polluted Brine Ice": {
+      "name": "Polluted Brine Ice",
+      "element_id": "MurkyBrineIce",
+      "state": "Solid",
+      "shc": 3.6,
+      "thermal_conductivity": 2.18,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sucrose_%28Spaced_Out%29.png/24px-Sucrose_%28Spaced_Out%29.png?ecab3e"
+      "high_temp": -25.5,
+      "default_temp": -50.0,
+      "icon": "images/icons/Polluted_Ice.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Ice.png/24px-Polluted_Ice.png?d57167"
     },
-    "Amber": {
-      "name": "Amber",
-      "icon": "images/icons/Amber.png",
-      "shc": 1.3,
-      "thermal_conductivity": 0.17,
-      "high_temp": 368.15,
+    "Frozen Brackene": {
+      "name": "Frozen Brackene",
+      "element_id": "MilkIce",
+      "state": "Solid",
+      "shc": 3.4,
+      "thermal_conductivity": 2.18,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Amber.png/24px-Amber.png?cb4200"
+      "high_temp": -16.5,
+      "default_temp": -41.0,
+      "icon": "images/icons/Frozen_Brackene.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Brackene.png/24px-Frozen_Brackene.png?1d5da7"
     },
-    "Fossil": {
-      "name": "Fossil",
-      "icon": "images/icons/Fossil.png",
-      "shc": 0.91,
-      "thermal_conductivity": 2.0,
-      "high_temp": 1612.0,
+    "Frozen Ovolene": {
+      "name": "Frozen Ovolene",
+      "element_id": "FishMilkIce",
+      "state": "Solid",
+      "shc": 3.4,
+      "thermal_conductivity": 2.18,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Fossil.png/24px-Fossil.png?dceeef"
-    },
-    "Gum Wood": {
-      "name": "Gum Wood",
-      "icon": "images/icons/Gum_Wood.png",
-      "shc": 2.3,
-      "thermal_conductivity": 0.22,
-      "high_temp": 873.15,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gum_Wood.png/24px-Gum_Wood.png?cce12e"
-    },
-    "Rubber": {
-      "name": "Rubber",
-      "icon": "images/icons/Rubber.png",
-      "shc": 1.8,
-      "thermal_conductivity": 0.15,
-      "high_temp": 493.15,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Rubber.png/24px-Rubber.png?4247d3"
+      "high_temp": -16.5,
+      "default_temp": -41.0,
+      "icon": "images/icons/Frozen_Brackene.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Brackene.png/24px-Frozen_Brackene.png?1d5da7"
     },
     "Coal": {
       "name": "Coal",
-      "icon": "images/icons/Coal.png",
+      "element_id": "Carbon",
+      "state": "Solid",
       "shc": 0.71,
       "thermal_conductivity": 1.25,
-      "high_temp": 550.0,
       "low_temp": null,
+      "high_temp": 276.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Coal.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Coal.png/24px-Coal.png?7beae2"
+    },
+    "Peat": {
+      "name": "Peat",
+      "element_id": "Peat",
+      "state": "Solid",
+      "shc": 0.71,
+      "thermal_conductivity": 0.6,
+      "low_temp": null,
+      "high_temp": 226.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Coal.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Coal.png/24px-Coal.png?7beae2"
+    },
+    "Carbon Fibre": {
+      "name": "Carbon Fibre",
+      "element_id": "CarbonFibre",
+      "state": "Solid",
+      "shc": 0.52,
+      "thermal_conductivity": 0.0,
+      "low_temp": null,
+      "high_temp": 4726.85,
+      "default_temp": 20.0,
+      "icon": null
+    },
+    "Cement": {
+      "name": "Cement",
+      "element_id": "Cement",
+      "state": "Solid",
+      "shc": 1.55,
+      "thermal_conductivity": 8.0,
+      "low_temp": null,
+      "high_temp": 1409.85,
+      "default_temp": 20.0,
+      "icon": null
+    },
+    "Cement Mix": {
+      "name": "Cement Mix",
+      "element_id": "CementMix",
+      "state": "Solid",
+      "shc": 0.52,
+      "thermal_conductivity": 8.0,
+      "low_temp": null,
+      "high_temp": 1409.85,
+      "default_temp": 20.0,
+      "icon": null
+    },
+    "Ceramic": {
+      "name": "Ceramic",
+      "element_id": "Ceramic",
+      "state": "Solid",
+      "shc": 0.84,
+      "thermal_conductivity": 0.62,
+      "low_temp": null,
+      "high_temp": 1849.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Ceramic.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ceramic.png/24px-Ceramic.png?86c3a0"
+    },
+    "Clay": {
+      "name": "Clay",
+      "element_id": "Clay",
+      "state": "Solid",
+      "shc": 0.92,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 926.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Clay.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Clay.png/24px-Clay.png?e3f0c1"
+    },
+    "Copper": {
+      "name": "Copper",
+      "element_id": "Copper",
+      "state": "Solid",
+      "shc": 0.385,
+      "thermal_conductivity": 60.0,
+      "low_temp": null,
+      "high_temp": 1083.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Copper.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper.png/24px-Copper.png?13f1d4"
+    },
+    "Genetic Ooze": {
+      "name": "Genetic Ooze",
+      "element_id": "Creature",
+      "state": "Solid",
+      "shc": 3.47,
+      "thermal_conductivity": 0.6,
+      "low_temp": null,
+      "high_temp": 9726.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Genetic_Ooze.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Genetic_Ooze.png/24px-Genetic_Ooze.png?b63024"
+    },
+    "Crushed Ice": {
+      "name": "Crushed Ice",
+      "element_id": "CrushedIce",
+      "state": "Solid",
+      "shc": 2.05,
+      "thermal_conductivity": 2.18,
+      "low_temp": null,
+      "high_temp": -0.65,
+      "default_temp": -31.0,
+      "icon": "images/icons/Water.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
     },
     "Crushed Rock": {
       "name": "Crushed Rock",
-      "icon": "images/icons/Crushed_Rock.png",
+      "element_id": "CrushedRock",
+      "state": "Solid",
       "shc": 0.2,
       "thermal_conductivity": 2.0,
-      "high_temp": 1683.0,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Crushed_Rock.png/24px-Crushed_Rock.png?ede35e"
+      "high_temp": 1409.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Magma.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Copper Ore": {
+      "name": "Copper Ore",
+      "element_id": "Cuprite",
+      "state": "Solid",
+      "shc": 0.386,
+      "thermal_conductivity": 4.5,
+      "low_temp": null,
+      "high_temp": 1083.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Copper_Ore.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper_Ore.png/24px-Copper_Ore.png?4cb760"
+    },
+    "Depleted Uranium": {
+      "name": "Depleted Uranium",
+      "element_id": "DepletedUranium",
+      "state": "Solid",
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
+      "low_temp": null,
+      "high_temp": 132.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Depleted_Uranium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Depleted_Uranium.png/24px-Depleted_Uranium.png?b67c7b"
+    },
+    "Diamond": {
+      "name": "Diamond",
+      "element_id": "Diamond",
+      "state": "Solid",
+      "shc": 0.516,
+      "thermal_conductivity": 80.0,
+      "low_temp": null,
+      "high_temp": 3926.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Diamond.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Diamond.png/24px-Diamond.png?af7b37"
+    },
+    "Dirt": {
+      "name": "Dirt",
+      "element_id": "Dirt",
+      "state": "Solid",
+      "shc": 1.48,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 326.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Resource_Dirt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png?1569e7"
+    },
+    "Polluted Ice": {
+      "name": "Polluted Ice",
+      "element_id": "DirtyIce",
+      "state": "Solid",
+      "shc": 3.05,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": -20.65,
+      "default_temp": -43.15,
+      "icon": "images/icons/Polluted_Ice.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Ice.png/24px-Polluted_Ice.png?d57167"
+    },
+    "Electrum": {
+      "name": "Electrum",
+      "element_id": "Electrum",
+      "state": "Solid",
+      "shc": 0.15,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 1063.85,
+      "default_temp": 20.0,
+      "icon": null
+    },
+    "Enriched Uranium": {
+      "name": "Enriched Uranium",
+      "element_id": "EnrichedUranium",
+      "state": "Solid",
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
+      "low_temp": null,
+      "high_temp": 858.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Liquid_Uranium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Uranium.png/24px-Liquid_Uranium.png?f88c40"
+    },
+    "Fertilizer": {
+      "name": "Fertilizer",
+      "element_id": "Fertilizer",
+      "state": "Solid",
+      "shc": 0.83,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 125.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Resource_Dirt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png?1569e7"
+    },
+    "Pyrite": {
+      "name": "Pyrite",
+      "element_id": "FoolsGold",
+      "state": "Solid",
+      "shc": 0.386,
+      "thermal_conductivity": 4.5,
+      "low_temp": null,
+      "high_temp": 1083.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Molten_Iron.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
+    },
+    "Fossil": {
+      "name": "Fossil",
+      "element_id": "Fossil",
+      "state": "Solid",
+      "shc": 0.91,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 1338.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Fossil.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Fossil.png/24px-Fossil.png?dceeef"
+    },
+    "Frozen Phyto Oil": {
+      "name": "Frozen Phyto Oil",
+      "element_id": "FrozenPhytoOil",
+      "state": "Solid",
+      "shc": 0.9,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": -33.15,
+      "default_temp": -53.15,
+      "icon": "images/icons/Frozen_Phyto_Oil.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Phyto_Oil.png/24px-Frozen_Phyto_Oil.png?cfa065"
+    },
+    "Fullerene": {
+      "name": "Fullerene",
+      "element_id": "Fullerene",
+      "state": "Solid",
+      "shc": 0.95,
+      "thermal_conductivity": 50.0,
+      "low_temp": null,
+      "high_temp": 3926.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Liquid_Carbon.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon.png/24px-Liquid_Carbon.png?b4ff39"
+    },
+    "Glass": {
+      "name": "Glass",
+      "element_id": "Glass",
+      "state": "Solid",
+      "shc": 0.84,
+      "thermal_conductivity": 1.11,
+      "low_temp": null,
+      "high_temp": 1426.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Resource_Glass.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Glass.png/24px-Resource_Glass.png?cabe05"
+    },
+    "Gold": {
+      "name": "Gold",
+      "element_id": "Gold",
+      "state": "Solid",
+      "shc": 0.129,
+      "thermal_conductivity": 60.0,
+      "low_temp": null,
+      "high_temp": 1063.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Gold.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gold.png/24px-Gold.png?131fa9"
+    },
+    "Gold Amalgam": {
+      "name": "Gold Amalgam",
+      "element_id": "GoldAmalgam",
+      "state": "Solid",
+      "shc": 0.15,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 1063.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Gold_Amalgam.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gold_Amalgam.png/24px-Gold_Amalgam.png?215d21"
+    },
+    "Granite": {
+      "name": "Granite",
+      "element_id": "Granite",
+      "state": "Solid",
+      "shc": 0.79,
+      "thermal_conductivity": 3.39,
+      "low_temp": null,
+      "high_temp": 668.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Granite.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Granite.png/24px-Granite.png?e0ce7e"
+    },
+    "Ice": {
+      "name": "Ice",
+      "element_id": "Ice",
+      "state": "Solid",
+      "shc": 2.05,
+      "thermal_conductivity": 2.18,
+      "low_temp": null,
+      "high_temp": -0.65,
+      "default_temp": -41.0,
+      "icon": "images/icons/Ice.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ice.png/24px-Ice.png?8bef06"
+    },
+    "Frozen Squid Ink": {
+      "name": "Frozen Squid Ink",
+      "element_id": "FrozenInk",
+      "state": "Solid",
+      "shc": 2.0,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": -20.65,
+      "default_temp": -41.0,
+      "icon": "images/icons/Frozen_Squid_Ink.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Squid_Ink.png/24px-Frozen_Squid_Ink.png?49a98b"
+    },
+    "Igneous Rock": {
+      "name": "Igneous Rock",
+      "element_id": "IgneousRock",
+      "state": "Solid",
+      "shc": 1.0,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 1409.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Igneous_Rock.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Igneous_Rock.png/24px-Igneous_Rock.png?c2bb8e"
+    },
+    "Iron": {
+      "name": "Iron",
+      "element_id": "Iron",
+      "state": "Solid",
+      "shc": 0.449,
+      "thermal_conductivity": 55.0,
+      "low_temp": null,
+      "high_temp": 1534.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Iron.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron.png/24px-Iron.png?89103b"
+    },
+    "Iron Ore": {
+      "name": "Iron Ore",
+      "element_id": "IronOre",
+      "state": "Solid",
+      "shc": 0.449,
+      "thermal_conductivity": 4.0,
+      "low_temp": null,
+      "high_temp": 1534.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Iron_Ore.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron_Ore.png/24px-Iron_Ore.png?9814a5"
+    },
+    "Cobalt": {
+      "name": "Cobalt",
+      "element_id": "Cobalt",
+      "state": "Solid",
+      "shc": 0.42,
+      "thermal_conductivity": 100.0,
+      "low_temp": null,
+      "high_temp": 1494.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Cobalt_(Spaced_Out).png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cobalt_%28Spaced_Out%29.png/24px-Cobalt_%28Spaced_Out%29.png?e48f1e"
+    },
+    "Cobalt Ore": {
+      "name": "Cobalt Ore",
+      "element_id": "Cobaltite",
+      "state": "Solid",
+      "shc": 0.42,
+      "thermal_conductivity": 4.0,
+      "low_temp": null,
+      "high_temp": 1494.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Molten_Cobalt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
+    },
+    "Isosap": {
+      "name": "Isosap",
+      "element_id": "Isoresin",
+      "state": "Solid",
+      "shc": 1.3,
+      "thermal_conductivity": 0.17,
+      "low_temp": null,
+      "high_temp": 200.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Isoresin.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Isoresin.png/24px-Isoresin.png?4b6900"
+    },
+    "Abyssalite": {
+      "name": "Abyssalite",
+      "element_id": "Katairite",
+      "state": "Solid",
+      "shc": 4.0,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": 3421.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Molten_Tungsten.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
+    },
+    "Lead": {
+      "name": "Lead",
+      "element_id": "Lead",
+      "state": "Solid",
+      "shc": 0.128,
+      "thermal_conductivity": 35.0,
+      "low_temp": null,
+      "high_temp": 327.5,
+      "default_temp": 20.0,
+      "icon": "images/icons/Isoresin.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Isoresin.png/24px-Isoresin.png?4b6900"
+    },
+    "Lime": {
+      "name": "Lime",
+      "element_id": "Lime",
+      "state": "Solid",
+      "shc": 0.834,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 1056.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Magma.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Brackwax": {
+      "name": "Brackwax",
+      "element_id": "MilkFat",
+      "state": "Solid",
+      "shc": 1.92,
+      "thermal_conductivity": 0.15,
+      "low_temp": null,
+      "high_temp": 159.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Brackwax.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brackwax.png/24px-Brackwax.png?c7e172"
+    },
+    "Mafic Rock": {
+      "name": "Mafic Rock",
+      "element_id": "MaficRock",
+      "state": "Solid",
+      "shc": 0.2,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": 1409.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Mafic_Rock.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mafic_Rock.png/24px-Mafic_Rock.png?28d1c8"
+    },
+    "Niobium": {
+      "name": "Niobium",
+      "element_id": "Niobium",
+      "state": "Solid",
+      "shc": 0.265,
+      "thermal_conductivity": 54.0,
+      "low_temp": null,
+      "high_temp": 2476.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Niobium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Niobium.png/24px-Niobium.png?7c3764"
+    },
+    "Corium": {
+      "name": "Corium",
+      "element_id": "Corium",
+      "state": "Solid",
+      "shc": 7.44,
+      "thermal_conductivity": 6.0,
+      "low_temp": null,
+      "high_temp": 626.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Nuclear_Fallout.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nuclear_Fallout.png/24px-Nuclear_Fallout.png?966807"
+    },
+    "Obsidian": {
+      "name": "Obsidian",
+      "element_id": "Obsidian",
+      "state": "Solid",
+      "shc": 0.2,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 2726.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Obsidian.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Obsidian.png/24px-Obsidian.png?854afa"
+    },
+    "Oxylite": {
+      "name": "Oxylite",
+      "element_id": "OxyRock",
+      "state": "Solid",
+      "shc": 1.0,
+      "thermal_conductivity": 4.0,
+      "low_temp": null,
+      "high_temp": 1409.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Magma.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Phosphate Nodules": {
+      "name": "Phosphate Nodules",
+      "element_id": "PhosphateNodules",
+      "state": "Solid",
+      "shc": 0.15,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 426.85,
+      "default_temp": 20.0,
+      "icon": null
+    },
+    "Phosphorite": {
+      "name": "Phosphorite",
+      "element_id": "Phosphorite",
+      "state": "Solid",
+      "shc": 0.15,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 243.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Liquid_Phosphorus.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Phosphorus.png/24px-Liquid_Phosphorus.png?267c27"
+    },
+    "Refined Phosphorus": {
+      "name": "Refined Phosphorus",
+      "element_id": "Phosphorus",
+      "state": "Solid",
+      "shc": 0.7697,
+      "thermal_conductivity": 0.236,
+      "low_temp": null,
+      "high_temp": 44.15,
+      "default_temp": 20.0,
+      "icon": "images/icons/Refined_Phosphorus.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Refined_Phosphorus.png/24px-Refined_Phosphorus.png?35cd71"
+    },
+    "Plastium": {
+      "name": "Plastium",
+      "element_id": "HardPolypropylene",
+      "state": "Solid",
+      "shc": 1.5,
+      "thermal_conductivity": 0.25,
+      "low_temp": null,
+      "high_temp": 1826.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Sour_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sour_Gas.png/24px-Sour_Gas.png?681999"
+    },
+    "Plastic": {
+      "name": "Plastic",
+      "element_id": "Polypropylene",
+      "state": "Solid",
+      "shc": 1.92,
+      "thermal_conductivity": 0.15,
+      "low_temp": null,
+      "high_temp": 159.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Plastic.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plastic.png/24px-Plastic.png?6dabe6"
+    },
+    "Radium": {
+      "name": "Radium",
+      "element_id": "Radium",
+      "state": "Solid",
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
+      "low_temp": null,
+      "high_temp": 959.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Magma.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Refined Carbon": {
+      "name": "Refined Carbon",
+      "element_id": "RefinedCarbon",
+      "state": "Solid",
+      "shc": 1.74,
+      "thermal_conductivity": 3.1,
+      "low_temp": null,
+      "high_temp": 4326.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Refined_Carbon.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Refined_Carbon.png/24px-Refined_Carbon.png?7beae2"
+    },
+    "Regolith": {
+      "name": "Regolith",
+      "element_id": "Regolith",
+      "state": "Solid",
+      "shc": 0.2,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": 1409.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Magma.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Rust": {
+      "name": "Rust",
+      "element_id": "Rust",
+      "state": "Solid",
+      "shc": 0.449,
+      "thermal_conductivity": 4.0,
+      "low_temp": null,
+      "high_temp": 1534.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Molten_Iron.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
+    },
+    "Rubber": {
+      "name": "Rubber",
+      "element_id": "Rubber",
+      "state": "Solid",
+      "shc": 1.8,
+      "thermal_conductivity": 0.15,
+      "low_temp": null,
+      "high_temp": 220.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Carbon_Dioxide.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+    },
+    "Salt": {
+      "name": "Salt",
+      "element_id": "Salt",
+      "state": "Solid",
+      "shc": 0.7,
+      "thermal_conductivity": 0.444,
+      "low_temp": null,
+      "high_temp": 799.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Salt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt.png/24px-Salt.png?731ebc"
+    },
+    "Sand": {
+      "name": "Sand",
+      "element_id": "Sand",
+      "state": "Solid",
+      "shc": 0.83,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 1712.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Sand.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sand.png/24px-Sand.png?c5f250"
+    },
+    "Sand Cement": {
+      "name": "Sand Cement",
+      "element_id": "SandCement",
+      "state": "Solid",
+      "shc": 1.5,
+      "thermal_conductivity": 8.0,
+      "low_temp": null,
+      "high_temp": 1409.85,
+      "default_temp": 20.0,
+      "icon": null
     },
     "Sandstone": {
       "name": "Sandstone",
-      "icon": "images/icons/Sandstone.png",
+      "element_id": "SandStone",
+      "state": "Solid",
       "shc": 0.8,
       "thermal_conductivity": 2.9,
-      "high_temp": 1200.0,
       "low_temp": null,
+      "high_temp": 926.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Sandstone.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sandstone.png/24px-Sandstone.png?fd380d"
     },
     "Sedimentary Rock": {
       "name": "Sedimentary Rock",
-      "icon": "images/icons/Sedimentary_Rock.png",
+      "element_id": "SedimentaryRock",
+      "state": "Solid",
       "shc": 0.2,
       "thermal_conductivity": 2.0,
-      "high_temp": 1200.0,
       "low_temp": null,
+      "high_temp": 926.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Sedimentary_Rock.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sedimentary_Rock.png/24px-Sedimentary_Rock.png?66ab87"
     },
     "Shale": {
       "name": "Shale",
-      "icon": "images/icons/Shale.png",
+      "element_id": "Shale",
+      "state": "Solid",
       "shc": 0.25,
       "thermal_conductivity": 1.8,
-      "high_temp": 1100.0,
       "low_temp": null,
+      "high_temp": 826.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Shale.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Shale.png/24px-Shale.png?52fc62"
     },
-    "Clay": {
-      "name": "Clay",
-      "icon": "images/icons/Clay.png",
-      "shc": 0.92,
-      "thermal_conductivity": 2.0,
-      "high_temp": 1200.0,
+    "Slabs": {
+      "name": "Slabs",
+      "element_id": "Slabs",
+      "state": "Solid",
+      "shc": 0.52,
+      "thermal_conductivity": 8.0,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Clay.png/24px-Clay.png?e3f0c1"
+      "high_temp": 1409.85,
+      "default_temp": 20.0,
+      "icon": null
     },
-    "Fertilizer": {
-      "name": "Fertilizer",
-      "icon": "images/icons/Fertilizer.png",
-      "shc": 0.83,
-      "thermal_conductivity": 2.0,
-      "high_temp": 398.15,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Fertilizer.png/24px-Fertilizer.png?cb8d18"
-    },
-    "Corallium": {
-      "name": "Corallium",
-      "icon": "images/icons/Corallium.png",
+    "Slime": {
+      "name": "Slime",
+      "element_id": "SlimeMold",
+      "state": "Solid",
       "shc": 0.2,
       "thermal_conductivity": 2.0,
-      "high_temp": 398.15,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Corallium.png/24px-Corallium.png?326960"
+      "high_temp": 125.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Slime.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Slime.png/24px-Slime.png?3e7fd1"
     },
-    "Siltstone": {
-      "name": "Siltstone",
-      "icon": "images/icons/Siltstone.png",
-      "shc": 0.9,
-      "thermal_conductivity": 2.0,
-      "high_temp": 1200.0,
+    "Snow": {
+      "name": "Snow",
+      "element_id": "Snow",
+      "state": "Solid",
+      "shc": 2.05,
+      "thermal_conductivity": 0.545,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Siltstone.png/24px-Siltstone.png?d31dec"
+      "high_temp": -0.65,
+      "default_temp": -31.0,
+      "icon": "images/icons/Water.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
     },
-    "Coquina": {
-      "name": "Coquina",
-      "icon": "images/icons/Coquina.png",
-      "shc": 0.8,
-      "thermal_conductivity": 1.5,
-      "high_temp": 1200.0,
+    "Stable Snow": {
+      "name": "Stable Snow",
+      "element_id": "StableSnow",
+      "state": "Solid",
+      "shc": 2.05,
+      "thermal_conductivity": 0.545,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Coquina.png/24px-Coquina.png?f00d10"
+      "high_temp": -0.65,
+      "default_temp": -31.0,
+      "icon": null
     },
-    "Igneous Rock": {
-      "name": "Igneous Rock",
-      "icon": "images/icons/Igneous_Rock.png",
-      "shc": 1.0,
-      "thermal_conductivity": 2.0,
-      "high_temp": 1683.0,
+    "Solid Carbon Dioxide": {
+      "name": "Solid Carbon Dioxide",
+      "element_id": "SolidCarbonDioxide",
+      "state": "Solid",
+      "shc": 0.846,
+      "thermal_conductivity": 1.46,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Igneous_Rock.png/24px-Igneous_Rock.png?c2bb8e"
-    },
-    "Obsidian": {
-      "name": "Obsidian",
-      "icon": "images/icons/Obsidian.png",
-      "shc": 0.2,
-      "thermal_conductivity": 2.0,
-      "high_temp": 3000.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Obsidian.png/24px-Obsidian.png?854afa"
-    },
-    "Granite": {
-      "name": "Granite",
-      "icon": "images/icons/Granite.png",
-      "shc": 0.79,
-      "thermal_conductivity": 3.39,
-      "high_temp": 942.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Granite.png/24px-Granite.png?e0ce7e"
-    },
-    "Basalt": {
-      "name": "Basalt",
-      "icon": "images/icons/Basalt.png",
-      "shc": 0.25,
-      "thermal_conductivity": 2.5,
-      "high_temp": 1530.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Basalt.png/24px-Basalt.png?f83aaf"
-    },
-    "Polluted Mud": {
-      "name": "Polluted Mud",
-      "icon": "images/icons/Polluted_Mud_(Spaced_Out).png",
-      "shc": 0.83,
-      "thermal_conductivity": 2.0,
-      "high_temp": 372.84,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Mud_%28Spaced_Out%29.png/24px-Polluted_Mud_%28Spaced_Out%29.png?6f770d"
-    },
-    "Solid Mercury": {
-      "name": "Solid Mercury",
-      "icon": "images/icons/Solid_Mercury.png",
-      "shc": 0.14,
-      "thermal_conductivity": 8.3,
-      "high_temp": 234.3,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Mercury.png/24px-Solid_Mercury.png?e15da2"
-    },
-    "Hydrogen Gas": {
-      "name": "Hydrogen Gas",
-      "icon": "images/icons/Hydrogen_Gas.png",
-      "shc": 2.4,
-      "thermal_conductivity": 0.168,
-      "high_temp": null,
-      "low_temp": 21.0,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Hydrogen_Gas.png/24px-Hydrogen_Gas.png?b5ff3e"
-    },
-    "Regolith": {
-      "name": "Regolith",
-      "icon": "images/icons/Regolith.png",
-      "shc": 0.2,
-      "thermal_conductivity": 1.0,
-      "high_temp": 1683.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Regolith.png/24px-Regolith.png?c5f250"
-    },
-    "Refined Phosphorus": {
-      "name": "Refined Phosphorus",
-      "icon": "images/icons/Refined_Phosphorus.png",
-      "shc": 0.7697,
-      "thermal_conductivity": 0.236,
-      "high_temp": 317.3,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Refined_Phosphorus.png/24px-Refined_Phosphorus.png?35cd71"
-    },
-    "Abyssalite": {
-      "name": "Abyssalite",
-      "icon": "images/icons/Abyssalite.png",
-      "shc": 4.0,
-      "thermal_conductivity": 1e-05,
-      "high_temp": 3695.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Abyssalite.png/24px-Abyssalite.png?9a533a"
-    },
-    "Diamond": {
-      "name": "Diamond",
-      "icon": "images/icons/Diamond.png",
-      "shc": 0.516,
-      "thermal_conductivity": 80.0,
-      "high_temp": 4200.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Diamond.png/24px-Diamond.png?af7b37"
-    },
-    "Mud": {
-      "name": "Mud",
-      "icon": "images/icons/Mud_(Spaced_Out).png",
-      "shc": 0.83,
-      "thermal_conductivity": 2.0,
-      "high_temp": 372.84,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mud_%28Spaced_Out%29.png/24px-Mud_%28Spaced_Out%29.png?593cf9"
-    },
-    "Depleted Uranium": {
-      "name": "Depleted Uranium",
-      "icon": "images/icons/Depleted_Uranium.png",
-      "shc": 1.0,
-      "thermal_conductivity": 20.0,
-      "high_temp": 406.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Depleted_Uranium.png/24px-Depleted_Uranium.png?b67c7b"
-    },
-    "Glass": {
-      "name": "Glass",
-      "icon": "images/icons/Resource_Glass.png",
-      "shc": 0.84,
-      "thermal_conductivity": 1.11,
-      "high_temp": 1700.0,
-      "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Glass.png/24px-Resource_Glass.png?cabe05"
+      "high_temp": -56.55,
+      "default_temp": -81.0,
+      "icon": "images/icons/Solid_Carbon_Dioxide.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Carbon_Dioxide.png/24px-Solid_Carbon_Dioxide.png?a7c61c"
     },
     "Solid Chlorine": {
       "name": "Solid Chlorine",
-      "icon": "images/icons/Solid_Chlorine.png",
+      "element_id": "SolidChlorine",
+      "state": "Solid",
       "shc": 0.48,
       "thermal_conductivity": 0.75,
-      "high_temp": 172.17,
       "low_temp": null,
+      "high_temp": -100.98,
+      "default_temp": -123.15,
+      "icon": "images/icons/Solid_Chlorine.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Chlorine.png/24px-Solid_Chlorine.png?930eda"
     },
-    "Genetic Ooze": {
-      "name": "Genetic Ooze",
-      "icon": "images/icons/Genetic_Ooze.png",
-      "shc": 3.47,
-      "thermal_conductivity": 0.6,
-      "high_temp": 10000.0,
+    "Solid Crude Oil": {
+      "name": "Solid Crude Oil",
+      "element_id": "SolidCrudeOil",
+      "state": "Solid",
+      "shc": 1.69,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Genetic_Ooze.png/24px-Genetic_Ooze.png?b63024"
+      "high_temp": -40.15,
+      "default_temp": -73.15,
+      "icon": "images/icons/Solid_Crude_Oil.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Crude_Oil.png/24px-Solid_Crude_Oil.png?f1c9bc"
+    },
+    "Solid Hydrogen": {
+      "name": "Solid Hydrogen",
+      "element_id": "SolidHydrogen",
+      "state": "Solid",
+      "shc": 2.4,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": -259.15,
+      "default_temp": -268.15,
+      "icon": "images/icons/Solid_Hydrogen.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Hydrogen.png/24px-Solid_Hydrogen.png?8e3248"
+    },
+    "Solid Mercury": {
+      "name": "Solid Mercury",
+      "element_id": "SolidMercury",
+      "state": "Solid",
+      "shc": 0.14,
+      "thermal_conductivity": 8.3,
+      "low_temp": null,
+      "high_temp": -38.85,
+      "default_temp": -73.15,
+      "icon": "images/icons/Solid_Mercury.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Mercury.png/24px-Solid_Mercury.png?e15da2"
+    },
+    "Solid Methane": {
+      "name": "Solid Methane",
+      "element_id": "SolidMethane",
+      "state": "Solid",
+      "shc": 2.191,
+      "thermal_conductivity": 0.03,
+      "low_temp": null,
+      "high_temp": -182.6,
+      "default_temp": -223.15,
+      "icon": "images/icons/Solid_Methane.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Methane.png/24px-Solid_Methane.png?4b983d"
+    },
+    "Solid Naphtha": {
+      "name": "Solid Naphtha",
+      "element_id": "SolidNaphtha",
+      "state": "Solid",
+      "shc": 2.191,
+      "thermal_conductivity": 0.2,
+      "low_temp": null,
+      "high_temp": -50.15,
+      "default_temp": -73.15,
+      "icon": "images/icons/Solid_Naphtha.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Naphtha.png/24px-Solid_Naphtha.png?69d9d9"
+    },
+    "Solid Oxygen": {
+      "name": "Solid Oxygen",
+      "element_id": "SolidOxygen",
+      "state": "Solid",
+      "shc": 1.01,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": -218.79,
+      "default_temp": -243.15,
+      "icon": "images/icons/Solid_Oxygen.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Oxygen.png/24px-Solid_Oxygen.png?4a5ddb"
+    },
+    "Solid Petroleum": {
+      "name": "Solid Petroleum",
+      "element_id": "SolidPetroleum",
+      "state": "Solid",
+      "shc": 1.76,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": -57.15,
+      "default_temp": -73.15,
+      "icon": "images/icons/Solid_Petroleum.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Petroleum.png/24px-Solid_Petroleum.png?69d9d9"
+    },
+    "Solid Propane": {
+      "name": "Solid Propane",
+      "element_id": "SolidPropane",
+      "state": "Solid",
+      "shc": 2.4,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": -188.15,
+      "default_temp": -213.15,
+      "icon": null
+    },
+    "Solid Sap": {
+      "name": "Solid Sap",
+      "element_id": "SolidResin",
+      "state": "Solid",
+      "shc": 1.3,
+      "thermal_conductivity": 0.17,
+      "low_temp": null,
+      "high_temp": 20.0,
+      "default_temp": -31.0,
+      "icon": "images/icons/Solid_Sap.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Sap.png/24px-Solid_Sap.png?7e98e4"
+    },
+    "Solid Resin": {
+      "name": "Solid Resin",
+      "element_id": "NaturalSolidResin",
+      "state": "Solid",
+      "shc": 1.3,
+      "thermal_conductivity": 0.17,
+      "low_temp": null,
+      "high_temp": 20.0,
+      "default_temp": -31.0,
+      "icon": "images/icons/Solid_Resin.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Resin.png/24px-Solid_Resin.png?7e98e4"
+    },
+    "Amber": {
+      "name": "Amber",
+      "element_id": "Amber",
+      "state": "Solid",
+      "shc": 1.3,
+      "thermal_conductivity": 0.17,
+      "low_temp": null,
+      "high_temp": 95.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Resin.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resin.png/24px-Resin.png?a211c1"
+    },
+    "Solid Super Coolant": {
+      "name": "Solid Super Coolant",
+      "element_id": "SolidSuperCoolant",
+      "state": "Solid",
+      "shc": 8.44,
+      "thermal_conductivity": 9.46,
+      "low_temp": null,
+      "high_temp": -271.15,
+      "default_temp": -286.15,
+      "icon": "images/icons/Solid_Super_Coolant.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Super_Coolant.png/24px-Solid_Super_Coolant.png?204b38"
+    },
+    "Solid Visco-Gel": {
+      "name": "Solid Visco-Gel",
+      "element_id": "SolidViscoGel",
+      "state": "Solid",
+      "shc": 1.55,
+      "thermal_conductivity": 0.45,
+      "low_temp": null,
+      "high_temp": -30.65,
+      "default_temp": -123.15,
+      "icon": "images/icons/Solid_Visco-Gel.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Visco-Gel.png/24px-Solid_Visco-Gel.png?d9cfb7"
+    },
+    "Steel": {
+      "name": "Steel",
+      "element_id": "Steel",
+      "state": "Solid",
+      "shc": 0.49,
+      "thermal_conductivity": 54.0,
+      "low_temp": null,
+      "high_temp": 2426.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Steel.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steel.png/24px-Steel.png?c944c4"
+    },
+    "Sulfur": {
+      "name": "Sulfur",
+      "element_id": "Sulfur",
+      "state": "Solid",
+      "shc": 0.7,
+      "thermal_conductivity": 0.2,
+      "low_temp": null,
+      "high_temp": 115.2,
+      "default_temp": 20.0,
+      "icon": "images/icons/Sulfur.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sulfur.png/24px-Sulfur.png?9f057b"
+    },
+    "Insulite": {
+      "name": "Insulite",
+      "element_id": "SuperInsulator",
+      "state": "Solid",
+      "shc": 5.57,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": 3621.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Insulite.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Insulite.png/24px-Insulite.png?e04a6f"
+    },
+    "Thermium": {
+      "name": "Thermium",
+      "element_id": "TempConductorSolid",
+      "state": "Solid",
+      "shc": 0.622,
+      "thermal_conductivity": 220.0,
+      "low_temp": null,
+      "high_temp": 2676.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Thermium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Thermium.png/24px-Thermium.png?f0bdfe"
+    },
+    "Polluted Dirt": {
+      "name": "Polluted Dirt",
+      "element_id": "ToxicSand",
+      "state": "Solid",
+      "shc": 0.83,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 1712.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Molten_Glass.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Glass.png/24px-Molten_Glass.png?d6f734"
+    },
+    "Tungsten": {
+      "name": "Tungsten",
+      "element_id": "Tungsten",
+      "state": "Solid",
+      "shc": 0.134,
+      "thermal_conductivity": 60.0,
+      "low_temp": null,
+      "high_temp": 3421.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Tungsten.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tungsten.png/24px-Tungsten.png?5d89ee"
+    },
+    "Neutronium": {
+      "name": "Neutronium",
+      "element_id": "Unobtanium",
+      "state": "Solid",
+      "shc": 0.0,
+      "thermal_conductivity": 0.0,
+      "low_temp": null,
+      "high_temp": 9726.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Neutronium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Neutronium.png/24px-Neutronium.png?3f25b8"
+    },
+    "Uranium Ore": {
+      "name": "Uranium Ore",
+      "element_id": "UraniumOre",
+      "state": "Solid",
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
+      "low_temp": null,
+      "high_temp": 132.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Uranium_Ore.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Uranium_Ore.png/24px-Uranium_Ore.png?510845"
+    },
+    "Wolframite": {
+      "name": "Wolframite",
+      "element_id": "Wolframite",
+      "state": "Solid",
+      "shc": 0.134,
+      "thermal_conductivity": 15.0,
+      "low_temp": null,
+      "high_temp": 2926.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Wolframite.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Wolframite.png/24px-Wolframite.png?69d9d9"
+    },
+    "Yellowcake": {
+      "name": "Yellowcake",
+      "element_id": "Yellowcake",
+      "state": "Solid",
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
+      "low_temp": null,
+      "high_temp": 858.85,
+      "default_temp": 20.0,
+      "icon": null
+    },
+    "Solid Ethanol": {
+      "name": "Solid Ethanol",
+      "element_id": "SolidEthanol",
+      "state": "Solid",
+      "shc": 2.46,
+      "thermal_conductivity": 20.0,
+      "low_temp": null,
+      "high_temp": -114.05,
+      "default_temp": -123.15,
+      "icon": "images/icons/Solid_Ethanol.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Ethanol.png/24px-Solid_Ethanol.png?30411c"
+    },
+    "Solid Syngas": {
+      "name": "Solid Syngas",
+      "element_id": "SolidSyngas",
+      "state": "Solid",
+      "shc": 2.4,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": -259.15,
+      "default_temp": -268.15,
+      "icon": null
+    },
+    "Polluted Mud": {
+      "name": "Polluted Mud",
+      "element_id": "ToxicMud",
+      "state": "Solid",
+      "shc": 0.83,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 99.69,
+      "default_temp": 20.0,
+      "icon": "images/icons/Steam.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+    },
+    "Mud": {
+      "name": "Mud",
+      "element_id": "Mud",
+      "state": "Solid",
+      "shc": 0.83,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 99.69,
+      "default_temp": 20.0,
+      "icon": "images/icons/Steam.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+    },
+    "Sucrose": {
+      "name": "Sucrose",
+      "element_id": "Sucrose",
+      "state": "Solid",
+      "shc": 1.255,
+      "thermal_conductivity": 0.15,
+      "low_temp": null,
+      "high_temp": 185.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Sucrose_(Spaced_Out).png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sucrose_%28Spaced_Out%29.png/24px-Sucrose_%28Spaced_Out%29.png?ecab3e"
+    },
+    "Graphite": {
+      "name": "Graphite",
+      "element_id": "Graphite",
+      "state": "Solid",
+      "shc": 0.71,
+      "thermal_conductivity": 8.0,
+      "low_temp": null,
+      "high_temp": 276.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Graphite.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Graphite.png/24px-Graphite.png?58a17d"
+    },
+    "Solid Nuclear Waste": {
+      "name": "Solid Nuclear Waste",
+      "element_id": "SolidNuclearWaste",
+      "state": "Solid",
+      "shc": 7.44,
+      "thermal_conductivity": 6.0,
+      "low_temp": null,
+      "high_temp": 26.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Uranium_Ore.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Uranium_Ore.png/24px-Uranium_Ore.png?510845"
+    },
+    "Cinnabar Ore": {
+      "name": "Cinnabar Ore",
+      "element_id": "Cinnabar",
+      "state": "Solid",
+      "shc": 0.386,
+      "thermal_conductivity": 4.5,
+      "low_temp": null,
+      "high_temp": 583.5,
+      "default_temp": 20.0,
+      "icon": "images/icons/Mercury_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mercury_Gas.png/24px-Mercury_Gas.png?b623d6"
+    },
+    "Wood": {
+      "name": "Wood",
+      "element_id": "WoodLog",
+      "state": "Solid",
+      "shc": 2.3,
+      "thermal_conductivity": 0.22,
+      "low_temp": null,
+      "high_temp": 600.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Lumber.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Lumber.png/24px-Lumber.png?3cce86"
+    },
+    "Plywood": {
+      "name": "Plywood",
+      "element_id": "FabricatedWood",
+      "state": "Solid",
+      "shc": 2.3,
+      "thermal_conductivity": 0.35,
+      "low_temp": null,
+      "high_temp": 550.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Plywood.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plywood.png/24px-Plywood.png?70560f"
+    },
+    "Tallow": {
+      "name": "Tallow",
+      "element_id": "Tallow",
+      "state": "Solid",
+      "shc": 2.19,
+      "thermal_conductivity": 10.0,
+      "low_temp": null,
+      "high_temp": 80.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Tallow.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tallow.png/24px-Tallow.png?57ed23"
+    },
+    "Solid Gunk": {
+      "name": "Solid Gunk",
+      "element_id": "Gunk",
+      "state": "Solid",
+      "shc": 1.2,
+      "thermal_conductivity": 1.5,
+      "low_temp": null,
+      "high_temp": -8.15,
+      "default_temp": -23.15,
+      "icon": "images/icons/Solid_Gunk.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Gunk.png/24px-Solid_Gunk.png?2a2c46"
+    },
+    "Nickel Ore": {
+      "name": "Nickel Ore",
+      "element_id": "NickelOre",
+      "state": "Solid",
+      "shc": 0.45,
+      "thermal_conductivity": 3.0,
+      "low_temp": null,
+      "high_temp": 1454.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Molten_Nickel.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Nickel.png/24px-Molten_Nickel.png?cc293d"
+    },
+    "Nickel": {
+      "name": "Nickel",
+      "element_id": "Nickel",
+      "state": "Solid",
+      "shc": 0.44,
+      "thermal_conductivity": 91.0,
+      "low_temp": null,
+      "high_temp": 1454.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Nickel.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nickel.png/24px-Nickel.png?c6ff23"
+    },
+    "Iridium": {
+      "name": "Iridium",
+      "element_id": "Iridium",
+      "state": "Solid",
+      "shc": 0.131,
+      "thermal_conductivity": 170.0,
+      "low_temp": null,
+      "high_temp": 2445.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Iridium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iridium.png/24px-Iridium.png?a998d5"
+    },
+    "Siltstone": {
+      "name": "Siltstone",
+      "element_id": "SiltStone",
+      "state": "Solid",
+      "shc": 0.9,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 926.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Magma.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Frozen Mucin": {
+      "name": "Frozen Mucin",
+      "element_id": "SolidMucus",
+      "state": "Solid",
+      "shc": 3.05,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": -10.0,
+      "default_temp": -25.0,
+      "icon": "images/icons/Frozen_Mucin.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Mucin.png/24px-Frozen_Mucin.png?c2f594"
+    },
+    "Zinc Ore": {
+      "name": "Zinc Ore",
+      "element_id": "ZincOre",
+      "state": "Solid",
+      "shc": 0.388,
+      "thermal_conductivity": 4.0,
+      "low_temp": null,
+      "high_temp": 419.5,
+      "default_temp": 20.0,
+      "icon": "images/icons/Molten_Zinc.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Zinc.png/24px-Molten_Zinc.png?732868"
+    },
+    "Zinc": {
+      "name": "Zinc",
+      "element_id": "Zinc",
+      "state": "Solid",
+      "shc": 0.388,
+      "thermal_conductivity": 120.0,
+      "low_temp": null,
+      "high_temp": 419.5,
+      "default_temp": 20.0,
+      "icon": "images/icons/Zinc.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Zinc.png/24px-Zinc.png?df8b94"
+    },
+    "Corallium": {
+      "name": "Corallium",
+      "element_id": "Corallium",
+      "state": "Solid",
+      "shc": 0.2,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 125.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Sand.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sand.png/24px-Sand.png?c5f250"
+    },
+    "Coquina": {
+      "name": "Coquina",
+      "element_id": "Coquina",
+      "state": "Solid",
+      "shc": 0.8,
+      "thermal_conductivity": 1.5,
+      "low_temp": null,
+      "high_temp": 926.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Magma.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Basalt": {
+      "name": "Basalt",
+      "element_id": "Basalt",
+      "state": "Solid",
+      "shc": 0.25,
+      "thermal_conductivity": 2.5,
+      "low_temp": null,
+      "high_temp": 1256.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Magma.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Gum Wood": {
+      "name": "Gum Wood",
+      "element_id": "PalmWood",
+      "state": "Solid",
+      "shc": 2.3,
+      "thermal_conductivity": 0.22,
+      "low_temp": null,
+      "high_temp": 600.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Carbon_Dioxide.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+    },
+    "Galena": {
+      "name": "Galena",
+      "element_id": "Galena",
+      "state": "Solid",
+      "shc": 0.21,
+      "thermal_conductivity": 2.3,
+      "low_temp": null,
+      "high_temp": 1114.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Molten_Lead.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
     }
   }
 };

@@ -175,12 +175,17 @@ def extract_piped_elements(rows: dict) -> tuple[set[str], set[str]]:
 
 def apply_curated_overrides(buildings_by_id: dict[str, dict]) -> None:
     """Enrich scraped buildings with multi-recipe options and pump/special configurations verified from wiki.gg."""
-    # 1. Water Pump / Liquid Pump (with recipe options for Water and other liquids, matching PDF '1x Water Pump')
+    from scraper.parse_elements import scrape_all_elements
+    all_elements, _ = scrape_all_elements()
+    liquids = [e for e in all_elements if e.get("state") == "Liquid"]
+    gases = [e for e in all_elements if e.get("state") == "Gas"]
+
+    # 1. Water Pump / Liquid Pump (pass-through, 10 kg/s / 240 W for every Liquid)
     if "liquid_pump" in buildings_by_id:
         lp = buildings_by_id["liquid_pump"]
         lp["aliases"] = ["Water Pump", "Liquid Pump"]
         lp["name"] = "Water Pump (Liquid Pump)"
-        lp["recipes"] = [
+        lp_recipes = [
             {
                 "id": "water",
                 "name": "Water (10 kg/s)",
@@ -197,113 +202,132 @@ def apply_curated_overrides(buildings_by_id: dict[str, dict]) -> None:
                 "power": -240.0,
                 "heat": 2.0,
             },
-            {
-                "id": "polluted_water_full",
-                "name": "Polluted Water (10 kg/s)",
-                "inputs": [{"resource": "Polluted Water", "rate": 10000.0, "unit": "g/s", "state": "free", "temp": None}],
-                "outputs": [{"resource": "Polluted Water", "rate": 10000.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
-                "power": -240.0,
-                "heat": 2.0,
-            },
-            {
-                "id": "crude_oil_full",
-                "name": "Crude Oil (10 kg/s)",
-                "inputs": [{"resource": "Crude Oil", "rate": 10000.0, "unit": "g/s", "state": "free", "temp": None}],
-                "outputs": [{"resource": "Crude Oil", "rate": 10000.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
-                "power": -240.0,
-                "heat": 2.0,
-            },
-            {
-                "id": "petroleum_full",
-                "name": "Petroleum (10 kg/s)",
-                "inputs": [{"resource": "Petroleum", "rate": 10000.0, "unit": "g/s", "state": "free", "temp": None}],
-                "outputs": [{"resource": "Petroleum", "rate": 10000.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
-                "power": -240.0,
-                "heat": 2.0,
-            },
         ]
-        # Default inputs/outputs match recipe 0
+        seen_liquid_ids = {"water", "water_full"}
+        for l in sorted(liquids, key=lambda x: x["name"]):
+            lname = l["name"]
+            if lname == "Water":
+                continue
+            r_id = lname.lower().replace(" ", "_").replace("-", "_")
+            if r_id not in seen_liquid_ids:
+                seen_liquid_ids.add(r_id)
+                lp_recipes.append({
+                    "id": r_id,
+                    "name": f"{lname} (10 kg/s)",
+                    "inputs": [{"resource": lname, "rate": 10000.0, "unit": "g/s", "state": "free", "temp": None}],
+                    "outputs": [{"resource": lname, "rate": 10000.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
+                    "power": -240.0,
+                    "heat": 2.0,
+                })
+            # Preserve existing legacy _full recipe IDs
+            if r_id in ("polluted_water", "crude_oil", "petroleum"):
+                full_id = f"{r_id}_full"
+                if full_id not in seen_liquid_ids:
+                    seen_liquid_ids.add(full_id)
+                    lp_recipes.append({
+                        "id": full_id,
+                        "name": f"{lname} (Max Capacity 10 kg/s)",
+                        "inputs": [{"resource": lname, "rate": 10000.0, "unit": "g/s", "state": "free", "temp": None}],
+                        "outputs": [{"resource": lname, "rate": 10000.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
+                        "power": -240.0,
+                        "heat": 2.0,
+                    })
+
+        lp["recipes"] = lp_recipes
         lp["inputs"] = lp["recipes"][0]["inputs"]
         lp["outputs"] = lp["recipes"][0]["outputs"]
         lp["power"] = lp["recipes"][0]["power"]
         lp["heat"] = lp["recipes"][0]["heat"]
 
-    # Also add a dedicated 'water_pump' entry so typing 'Water Pump' matches immediately at top
+    # Dedicated 'water_pump' entry cloned from liquid_pump
     if "liquid_pump" in buildings_by_id:
         wp = json.loads(json.dumps(buildings_by_id["liquid_pump"]))
         wp["id"] = "water_pump"
         wp["name"] = "Water Pump"
         buildings_by_id["water_pump"] = wp
 
-    # 2. Gas Pump
+    # 2. Gas Pump (pass-through, 500 g/s / 240 W for every Gas)
     if "gas_pump" in buildings_by_id:
         gp = buildings_by_id["gas_pump"]
-        gp["recipes"] = [
-            {
-                "id": "hydrogen",
-                "name": "Hydrogen (500 g/s)",
-                "inputs": [{"resource": "Hydrogen", "rate": 500.0, "unit": "g/s", "state": "free", "temp": None}],
-                "outputs": [{"resource": "Hydrogen", "rate": 500.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
+        # Keep existing recipe IDs at front
+        priority_gas_names = ["Hydrogen", "Oxygen", "Natural Gas", "Carbon Dioxide"]
+        gp_recipes = []
+        seen_gas_ids = set()
+
+        for gname in priority_gas_names:
+            r_id = gname.lower().replace(" ", "_").replace("-", "_")
+            seen_gas_ids.add(r_id)
+            gp_recipes.append({
+                "id": r_id,
+                "name": f"{gname} (500 g/s)",
+                "inputs": [{"resource": gname, "rate": 500.0, "unit": "g/s", "state": "free", "temp": None}],
+                "outputs": [{"resource": gname, "rate": 500.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
                 "power": -240.0,
                 "heat": 2.0,
-            },
-            {
-                "id": "oxygen",
-                "name": "Oxygen (500 g/s)",
-                "inputs": [{"resource": "Oxygen", "rate": 500.0, "unit": "g/s", "state": "free", "temp": None}],
-                "outputs": [{"resource": "Oxygen", "rate": 500.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
-                "power": -240.0,
-                "heat": 2.0,
-            },
-            {
-                "id": "natural_gas",
-                "name": "Natural Gas (500 g/s)",
-                "inputs": [{"resource": "Natural Gas", "rate": 500.0, "unit": "g/s", "state": "free", "temp": None}],
-                "outputs": [{"resource": "Natural Gas", "rate": 500.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
-                "power": -240.0,
-                "heat": 2.0,
-            },
-            {
-                "id": "carbon_dioxide",
-                "name": "Carbon Dioxide (500 g/s)",
-                "inputs": [{"resource": "Carbon Dioxide", "rate": 500.0, "unit": "g/s", "state": "free", "temp": None}],
-                "outputs": [{"resource": "Carbon Dioxide", "rate": 500.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
-                "power": -240.0,
-                "heat": 2.0,
-            },
-        ]
+            })
+
+        for g in sorted(gases, key=lambda x: x["name"]):
+            gname = g["name"]
+            r_id = gname.lower().replace(" ", "_").replace("-", "_")
+            if r_id not in seen_gas_ids:
+                seen_gas_ids.add(r_id)
+                gp_recipes.append({
+                    "id": r_id,
+                    "name": f"{gname} (500 g/s)",
+                    "inputs": [{"resource": gname, "rate": 500.0, "unit": "g/s", "state": "free", "temp": None}],
+                    "outputs": [{"resource": gname, "rate": 500.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
+                    "power": -240.0,
+                    "heat": 2.0,
+                })
+
+        gp["recipes"] = gp_recipes
         gp["inputs"] = gp["recipes"][0]["inputs"]
         gp["outputs"] = gp["recipes"][0]["outputs"]
         gp["power"] = gp["recipes"][0]["power"]
         gp["heat"] = gp["recipes"][0]["heat"]
 
-    # 3. Mini Gas Pump & Mini Liquid Pump
+    # 3. Mini Gas Pump (pass-through, 50 g/s / 60 W for every Gas) & Mini Liquid Pump (pass-through, 1 kg/s / 60 W for every Liquid)
     if "mini_gas_pump" in buildings_by_id:
         mgp = buildings_by_id["mini_gas_pump"]
-        mgp["recipes"] = [
-            {
-                "id": "oxygen",
-                "name": "Oxygen (50 g/s)",
-                "inputs": [{"resource": "Oxygen", "rate": 50.0, "unit": "g/s", "state": "free", "temp": None}],
-                "outputs": [{"resource": "Oxygen", "rate": 50.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
+        priority_mini_gases = ["Oxygen", "Hydrogen"]
+        mgp_recipes = []
+        seen_mini_gases = set()
+
+        for gname in priority_mini_gases:
+            r_id = gname.lower().replace(" ", "_").replace("-", "_")
+            seen_mini_gases.add(r_id)
+            mgp_recipes.append({
+                "id": r_id,
+                "name": f"{gname} (50 g/s)",
+                "inputs": [{"resource": gname, "rate": 50.0, "unit": "g/s", "state": "free", "temp": None}],
+                "outputs": [{"resource": gname, "rate": 50.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
                 "power": -60.0,
                 "heat": 0.0,
-            },
-            {
-                "id": "hydrogen",
-                "name": "Hydrogen (50 g/s)",
-                "inputs": [{"resource": "Hydrogen", "rate": 50.0, "unit": "g/s", "state": "free", "temp": None}],
-                "outputs": [{"resource": "Hydrogen", "rate": 50.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
-                "power": -60.0,
-                "heat": 0.0,
-            },
-        ]
+            })
+
+        for g in sorted(gases, key=lambda x: x["name"]):
+            gname = g["name"]
+            r_id = gname.lower().replace(" ", "_").replace("-", "_")
+            if r_id not in seen_mini_gases:
+                seen_mini_gases.add(r_id)
+                mgp_recipes.append({
+                    "id": r_id,
+                    "name": f"{gname} (50 g/s)",
+                    "inputs": [{"resource": gname, "rate": 50.0, "unit": "g/s", "state": "free", "temp": None}],
+                    "outputs": [{"resource": gname, "rate": 50.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
+                    "power": -60.0,
+                    "heat": 0.0,
+                })
+
+        mgp["recipes"] = mgp_recipes
         mgp["inputs"] = mgp["recipes"][0]["inputs"]
         mgp["outputs"] = mgp["recipes"][0]["outputs"]
+        mgp["power"] = -60.0
+        mgp["heat"] = 0.0
 
     if "mini_liquid_pump" in buildings_by_id:
         mlp = buildings_by_id["mini_liquid_pump"]
-        mlp["recipes"] = [
+        mlp_recipes = [
             {
                 "id": "water",
                 "name": "Water (1000 g/s)",
@@ -313,8 +337,28 @@ def apply_curated_overrides(buildings_by_id: dict[str, dict]) -> None:
                 "heat": 0.0,
             },
         ]
+        seen_mlp_ids = {"water"}
+        for l in sorted(liquids, key=lambda x: x["name"]):
+            lname = l["name"]
+            if lname == "Water":
+                continue
+            r_id = lname.lower().replace(" ", "_").replace("-", "_")
+            if r_id not in seen_mlp_ids:
+                seen_mlp_ids.add(r_id)
+                mlp_recipes.append({
+                    "id": r_id,
+                    "name": f"{lname} (1 kg/s)",
+                    "inputs": [{"resource": lname, "rate": 1000.0, "unit": "g/s", "state": "free", "temp": None}],
+                    "outputs": [{"resource": lname, "rate": 1000.0, "unit": "g/s", "state": "in a pipe", "temp": None}],
+                    "power": -60.0,
+                    "heat": 0.0,
+                })
+
+        mlp["recipes"] = mlp_recipes
         mlp["inputs"] = mlp["recipes"][0]["inputs"]
         mlp["outputs"] = mlp["recipes"][0]["outputs"]
+        mlp["power"] = -60.0
+        mlp["heat"] = 0.0
 
     # 4. Multi-recipe buildings: Desalinator, Water Sieve, Kiln, Rock Crusher, Polymer Press, Oil Refinery, Oil Well, Fertilizer Synthesizer, Algae Terrarium, Steam Turbine, Petroleum Generator, Natural Gas Generator
     if "desalinator" in buildings_by_id:

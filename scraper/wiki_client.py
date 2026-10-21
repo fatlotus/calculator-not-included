@@ -31,7 +31,7 @@ def fetch_wiki_page(page_path: str, delay: float = 0.25, use_cache: bool = True)
         "Accept": "text/html,application/xhtml+xml",
         "Accept-Language": "en-US,en;q=0.5",
     }
-    for attempt in range(3):
+    for attempt in range(5):
         try:
             time.sleep(delay * (attempt + 1))
             req = urllib.request.Request(url, headers=headers)
@@ -42,8 +42,9 @@ def fetch_wiki_page(page_path: str, delay: float = 0.25, use_cache: bool = True)
                 if use_cache:
                     cache_file.write_text(data, encoding="utf-8")
                 return data
-        except urllib.error.HTTPError as err:
-            if err.code == 429 and attempt < 2:
+        except (urllib.error.HTTPError, RuntimeError) as err:
+            code = getattr(err, "code", None)
+            if (code in (429, 502) or isinstance(err, RuntimeError)) and attempt < 4:
                 time.sleep(1.5 * (attempt + 1))
                 continue
             raise

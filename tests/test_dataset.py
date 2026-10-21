@@ -280,6 +280,52 @@ class TestWikiEntityStats(unittest.TestCase):
         self.assertAlmostEqual(out_in["rate"], 21.6667, places=2)
         self.assertAlmostEqual(out_out["rate"], 32.8333, places=2)
 
+    def test_water_geyser_stats(self):
+        """Verify Water Geyser outputs canonical element Water / free at 95 °C."""
+        wg = self.entity_map.get("geyser_water_geyser") or self.entity_map.get("geyser_water")
+        self.assertIsNotNone(wg, "Water Geyser not found in entity_map")
+        self.assertEqual(wg.get("name"), "Water Geyser")
+        self.assertEqual(wg.get("category"), "Geyser")
+
+        outputs = wg.get("outputs", [])
+        self.assertTrue(len(outputs) > 0, "Water Geyser has no outputs")
+        out0 = outputs[0]
+        self.assertEqual(out0.get("resource"), "Water")
+        self.assertEqual(out0.get("state"), "free")
+        self.assertEqual(out0.get("unit"), "g/s")
+        self.assertGreater(out0.get("rate", 0), 0)
+        self.assertIn("95 °C", str(out0.get("temp", "")))
+
+    def test_complete_element_catalog(self):
+        """Verify element catalog contains gases, liquids, and solids with in-phase default_temp."""
+        elem_list = self.dataset.get("elements", [])
+        if isinstance(elem_list, dict):
+            elem_list = list(elem_list.values())
+
+        self.assertGreaterEqual(len(elem_list), 200, f"Expected >=200 elements, got {len(elem_list)}")
+
+        states = set()
+        for e in elem_list:
+            states.add(e.get("state"))
+            self.assertIn("name", e)
+            self.assertIn("element_id", e)
+            self.assertIn("state", e)
+            self.assertIn(e.get("state"), ["Gas", "Liquid", "Solid"])
+            self.assertIn("default_temp", e)
+            def_t = e.get("default_temp")
+            self.assertIsNotNone(def_t)
+
+            low = e.get("low_temp")
+            high = e.get("high_temp")
+            if low is not None:
+                self.assertGreaterEqual(def_t, low - 0.01)
+            if high is not None:
+                self.assertLessEqual(def_t, high + 0.01)
+
+        self.assertIn("Gas", states)
+        self.assertIn("Liquid", states)
+        self.assertIn("Solid", states)
+
 
 class TestIconAndUrlIntegrity(unittest.TestCase):
     """Verifies local icon paths, file existence on disk, and absence of fandom.com links."""

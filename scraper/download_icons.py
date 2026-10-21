@@ -215,8 +215,12 @@ def update_data_files() -> None:
 
                 if source_url:
                     clean_name = clean_icon_filename(source_url)
+                    dest_file = ICONS_DIR / clean_name
                     item["original_icon_url"] = source_url
-                    item["icon"] = f"images/icons/{clean_name}"
+                    if dest_file.exists() and dest_file.stat().st_size > 0:
+                        item["icon"] = f"images/icons/{clean_name}"
+                    else:
+                        item["icon"] = None
 
                 for v in item.values():
                     localize_item(v)

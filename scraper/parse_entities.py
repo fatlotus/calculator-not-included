@@ -774,39 +774,67 @@ def scrape_geysers() -> tuple[list[dict], dict[str, dict]]:
         raw_html,
         re.DOTALL,
     )
+    canonical_geyser_elems = {
+        "Hydrogen Gas": "Hydrogen",
+        "Chlorine Gas": "Chlorine",
+        "Polluted Water with Food Poisoning": "Polluted Water",
+        "Polluted Oxygen with Slimelung": "Polluted Oxygen",
+    }
+
     if table_m:
         tbody = table_m.group(1)
         rows = re.findall(r"<tr[^>]*>(.*?)</tr>", tbody, re.DOTALL)
-        for row_html in rows:
+        for row_html in rows[1:]:
+            th_m = re.search(r"<th[^>]*>(.*?)</th>", row_html, re.DOTALL)
             cells = re.findall(r"<td[^>]*>(.*?)</td>", row_html, re.DOTALL)
-            if len(cells) < 6:
+            if not th_m or len(cells) < 5:
                 continue
-            name_text = clean_html_text(cells[0]).replace("\n", " ")
-            elem_text = clean_html_text(cells[1]).replace("\n", " ")
-            temp_text = clean_html_text(cells[2]).replace("\n", " ")
-            active_yield_text = clean_html_text(cells[4]).replace("\n", " ")
-            lifetime_yield_text = clean_html_text(cells[5]).replace("\n", " ")
 
-            img_m = re.search(r'<img[^>]*src="([^"]+)"', cells[0])
+            th_html = th_m.group(1)
+            name_text = clean_html_text(th_html).replace("\n", " ").strip()
+            name_text = re.sub(r"\s*\*\s*$", "", name_text)
+
+            img_m = re.search(r'<img[^>]*src="([^"]+)"', th_html)
             icon = normalize_icon_url(img_m.group(1)) if img_m else None
 
-            # Parse average lifetime yield in kg/cycle (e.g. '1800 (±1200)')
-            life_m = re.search(r"(\d+(?:\.\d+)?)", lifetime_yield_text.replace(",", ""))
-            active_m = re.search(r"(\d+(?:\.\d+)?)", active_yield_text.replace(",", ""))
-            if not life_m or not elem_text:
-                continue
+            # Produced element
+            elem_cell = cells[0]
+            elem_m = re.search(r'data-elementname="([^"]+)"', elem_cell)
+            if elem_m:
+                elem_text = html_lib.unescape(elem_m.group(1)).strip()
+            else:
+                elem_text = clean_html_text(elem_cell).replace("\n", " ").strip()
+            elem_text = canonical_geyser_elems.get(elem_text, elem_text)
 
-            life_kg_cycle = float(life_m.group(1))
-            active_kg_cycle = float(active_m.group(1)) if active_m else life_kg_cycle
+            # Temperature
+            temp_cell = cells[1]
+            temp_text = clean_html_text(temp_cell)
+            temp_c_m = re.search(r"(-?\d+(?:\.\d+)?)\s*°C", temp_text)
+            temp_note = f"@ {temp_c_m.group(1)} °C" if temp_c_m else None
+
+            # Rates from Average Active Yield (cells[3]) and Average Lifetime Yield (cells[4])
+            act_rate_m = re.search(r'data-rateaverage="([^"]+)"', cells[3])
+            if act_rate_m:
+                active_kg_cycle = float(act_rate_m.group(1))
+            else:
+                m = re.search(r"(\d+(?:\.\d+)?)", clean_html_text(cells[3]).replace(",", ""))
+                active_kg_cycle = float(m.group(1)) if m else 0.0
+
+            life_rate_m = re.search(r'data-rateaverage="([^"]+)"', cells[4])
+            if life_rate_m:
+                life_kg_cycle = float(life_rate_m.group(1))
+            else:
+                m = re.search(r"(\d+(?:\.\d+)?)", clean_html_text(cells[4]).replace(",", ""))
+                life_kg_cycle = float(m.group(1)) if m else active_kg_cycle
+
+            if not elem_text or life_kg_cycle <= 0:
+                continue
 
             life_g_s = round((life_kg_cycle * 1000.0) / 600.0, 2)
             active_g_s = round((active_kg_cycle * 1000.0) / 600.0, 2)
 
-            temp_c_m = re.search(r"(-?\d+(?:\.\d+)?)\s*°C", temp_text)
-            temp_note = f"@ {temp_c_m.group(1)} °C" if temp_c_m else None
-
             g_id = f"geyser_{name_text.lower().replace(' ', '_').replace('-', '_')}"
-            geysers.append({
+            entry = {
                 "id": g_id,
                 "name": name_text,
                 "category": "Geyser",
@@ -855,6 +883,19 @@ def scrape_geysers() -> tuple[list[dict], dict[str, dict]]:
                         "output_multiplier": 2.0,
                     },
                 ],
-            })
+            }
+            geysers.append(entry)
+
+            # Compatibility aliases for presets and URL bookmarks
+            if g_id == "geyser_natural_gas_geyser":
+                nat_alias = dict(entry)
+                nat_alias["id"] = "geyser_natural_gas"
+                geysers.append(nat_alias)
+            elif g_id == "geyser_water_geyser":
+                water_alias = dict(entry)
+                water_alias["id"] = "geyser_water"
+                geysers.append(water_alias)
+
+    return geysers, discovered_elements
 
     return geysers, discovered_elements

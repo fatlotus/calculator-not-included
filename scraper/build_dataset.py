@@ -1,4 +1,4 @@
-"""Orchestrate ONI wiki scraping and generate JSON datasets under data/ and src/data.js."""
+"""Orchestrate ONI wiki scraping and generate JSON datasets under data/ and src/dataset.js."""
 
 import json
 from pathlib import Path
@@ -8,7 +8,9 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
+from scraper.download_icons import download_all_icons, update_data_files
 from scraper.parse_buildings import scrape_buildings
+from scraper.parse_elements import scrape_all_elements
 from scraper.parse_entities import (
     scrape_critters,
     scrape_duplicants,
@@ -23,25 +25,39 @@ def build_all() -> dict:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     elements: dict[str, dict] = {}
 
-    print("1/5 Scraping Buildings...")
+    print("1/6 Scraping Elements (Gas, Liquid, Solid)...")
+    all_elements, elem_map = scrape_all_elements()
+    elements.update(elem_map)
+
+    print("2/6 Scraping Buildings...")
     buildings, b_elems = scrape_buildings()
-    elements.update(b_elems)
+    for k, v in b_elems.items():
+        if k not in elements:
+            elements[k] = v
 
-    print("2/5 Scraping Plants...")
+    print("3/6 Scraping Plants...")
     plants, p_elems = scrape_plants()
-    elements.update(p_elems)
+    for k, v in p_elems.items():
+        if k not in elements:
+            elements[k] = v
 
-    print("3/5 Scraping Critters...")
+    print("4/6 Scraping Critters...")
     critters, c_elems = scrape_critters()
-    elements.update(c_elems)
+    for k, v in c_elems.items():
+        if k not in elements:
+            elements[k] = v
 
-    print("4/5 Scraping Duplicants...")
+    print("5/6 Scraping Duplicants...")
     duplicants, d_elems = scrape_duplicants()
-    elements.update(d_elems)
+    for k, v in d_elems.items():
+        if k not in elements:
+            elements[k] = v
 
-    print("5/5 Scraping Geysers...")
+    print("6/6 Scraping Geysers...")
     geysers, g_elems = scrape_geysers()
-    elements.update(g_elems)
+    for k, v in g_elems.items():
+        if k not in elements:
+            elements[k] = v
 
     # Save individual JSON files in data/
     (DATA_DIR / "buildings.json").write_text(json.dumps(buildings, indent=2), encoding="utf-8")
@@ -50,7 +66,7 @@ def build_all() -> dict:
     (DATA_DIR / "duplicants.json").write_text(json.dumps(duplicants, indent=2), encoding="utf-8")
     (DATA_DIR / "geysers.json").write_text(json.dumps(geysers, indent=2), encoding="utf-8")
     (DATA_DIR / "elements.json").write_text(
-        json.dumps(list(elements.values()), indent=2), encoding="utf-8"
+        json.dumps(all_elements, indent=2), encoding="utf-8"
     )
 
     combined = {
@@ -63,18 +79,13 @@ def build_all() -> dict:
     }
     (DATA_DIR / "dataset.json").write_text(json.dumps(combined, indent=2), encoding="utf-8")
 
-    # Also emit an ES module src/dataset.js so index.html works both over HTTP and file://
-    js_path = ROOT_DIR / "src" / "dataset.js"
-    js_path.write_text(
-        "// Auto-generated from oxygennotincluded.wiki.gg scraper\n"
-        f"export const ONI_DATASET = {json.dumps(combined, indent=2)};\n",
-        encoding="utf-8",
-    )
+    # Localize icon paths and regenerate src/dataset.js
+    update_data_files()
 
     print(
         f"Done! Scraped {len(buildings)} buildings, {len(plants)} plants, "
         f"{len(critters)} critters, {len(duplicants)} duplicants, "
-        f"{len(geysers)} geysers, and {len(elements)} elements."
+        f"{len(geysers)} geysers, and {len(all_elements)} elements."
     )
     return combined
 
