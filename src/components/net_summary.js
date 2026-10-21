@@ -66,14 +66,10 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
   // NET Outputs list
   const outputLines = [];
   if (Math.abs(net.netHeat) > 1e-4) {
-    let heatAnnotation = "";
-    if (net.netShcHeat && Math.abs(net.netShcHeat) > 1e-4) {
-      heatAnnotation = `<span class="stream-subtext" title="Building: ${formatNumber(net.netBuildingHeat)} kDTU/s, SHC: ${formatNumber(net.netShcHeat)} kDTU/s">(${formatNumber(net.netBuildingHeat)} bld ${net.netShcHeat > 0 ? "+" : ""}${formatNumber(net.netShcHeat)} shc)</span>`;
-    }
     outputLines.push(`
       <div class="stream-line net-stream net-heat">
         ${renderIcon(heatIcon, "Heat", "stream-icon")}
-        <span class="stream-text">Heat: ${net.netHeat > 0 ? "+" : ""}${formatNumber(net.netHeat)} kDTU/s ${heatAnnotation}</span>
+        <span class="stream-text">Heat: ${net.netHeat > 0 ? "+" : ""}${formatNumber(net.netHeat)} kDTU/s</span>
       </div>
     `);
   }

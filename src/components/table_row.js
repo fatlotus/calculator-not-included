@@ -145,16 +145,11 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
 
   // Outputs Column HTML
   const outputLines = [];
-  const dispHeat = evaluated.totalHeat !== undefined ? evaluated.totalHeat : evaluated.heat;
-  if (Math.abs(dispHeat) > 1e-4) {
-    let heatAnnotation = "";
-    if (evaluated.shcHeat && Math.abs(evaluated.shcHeat) > 1e-4) {
-      heatAnnotation = `<span class="stream-subtext" title="Building: ${formatNumber(evaluated.buildingHeat)} kDTU/s, SHC: ${formatNumber(evaluated.shcHeat)} kDTU/s">(${formatNumber(evaluated.buildingHeat)} bld ${evaluated.shcHeat > 0 ? "+" : ""}${formatNumber(evaluated.shcHeat)} shc)</span>`;
-    }
+  if (Math.abs(evaluated.heat) > 1e-4) {
     outputLines.push(`
       <div class="stream-line">
         ${renderIcon(heatIcon, "Heat", "stream-icon")}
-        <span class="stream-text">Heat: ${dispHeat > 0 ? "+" : ""}${formatNumber(dispHeat)} kDTU/s ${heatAnnotation}</span>
+        <span class="stream-text">Heat: ${evaluated.heat > 0 ? "+" : ""}${formatNumber(evaluated.heat)} kDTU/s</span>
       </div>
     `);
   }

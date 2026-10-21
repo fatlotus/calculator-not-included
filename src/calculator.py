@@ -370,17 +370,6 @@ def evaluate_row(
     scaled_power = power * qty
     scaled_heat = heat * qty
 
-    in_enth = sum(
-        (inp["rate"] * get_element_shc(inp["resource"], element_map) * float(inp.get("tempC", default_input_temp))) / 1000.0
-        for inp in scaled_inputs
-    )
-    out_enth = sum(
-        (out["rate"] * get_element_shc(out["resource"], element_map) * float(out.get("tempC", default_input_temp))) / 1000.0
-        for out in scaled_outputs
-    )
-    shc_heat = round(out_enth - in_enth, 2)
-    total_heat = round(scaled_heat + shc_heat, 2)
-
     is_state_transfer_for = set()
     for inp in scaled_inputs:
         for out in scaled_outputs:
@@ -395,8 +384,6 @@ def evaluate_row(
         "power": scaled_power,
         "heat": scaled_heat,
         "buildingHeat": scaled_heat,
-        "shcHeat": shc_heat,
-        "totalHeat": total_heat,
         "inputTemp": rep_input_temp,
         "inputs": scaled_inputs,
         "outputs": scaled_outputs,
@@ -599,15 +586,13 @@ def calculate_system_net(
         element_map = None
 
     net_power = 0.0
-    net_building_heat = 0.0
-    net_shc_heat = 0.0
+    net_heat = 0.0
     state_transfer_resources: Set[str] = set()
     buckets: Dict[str, Dict[str, Any]] = {}
 
     for row in evaluated_rows:
         net_power += float(row.get("power", 0.0))
-        net_building_heat += float(row.get("buildingHeat", row.get("heat", 0.0)))
-        net_shc_heat += float(row.get("shcHeat", 0.0))
+        net_heat += float(row.get("heat", 0.0))
 
         for res in row.get("is_state_transfer_for", set()):
             state_transfer_resources.add(res)
@@ -715,19 +700,15 @@ def calculate_system_net(
                 "tempC": b.get("tempC"),
             })
 
-    total_net_heat = round(net_building_heat + net_shc_heat, 2)
-
     return {
         "net_power": round(net_power, 2),
-        "net_heat": total_net_heat,
-        "net_building_heat": round(net_building_heat, 2),
-        "net_shc_heat": round(net_shc_heat, 2),
+        "net_heat": round(net_heat, 2),
+        "net_building_heat": round(net_heat, 2),
         "net_inputs": net_inputs,
         "net_outputs": net_outputs,
         "netPower": round(net_power, 2),
-        "netHeat": total_net_heat,
-        "netBuildingHeat": round(net_building_heat, 2),
-        "netShcHeat": round(net_shc_heat, 2),
+        "netHeat": round(net_heat, 2),
+        "netBuildingHeat": round(net_heat, 2),
         "netInputs": net_inputs,
         "netOutputs": net_outputs,
     }

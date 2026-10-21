@@ -353,22 +353,6 @@ export function evaluateRow(
   const scaledPower = power * qty;
   const scaledHeat = heat * qty;
 
-  // Compute thermal enthalpy flow: Q = (m * c * T) / 1000 kDTU/s
-  let inEnthalpy = 0;
-  for (const inp of scaledInputs) {
-    const c = getElementShc(inp.resource, elementMap);
-    const t = inp.tempC !== undefined ? inp.tempC : defaultInputTemp;
-    inEnthalpy += (inp.rate * c * t) / 1000;
-  }
-  let outEnthalpy = 0;
-  for (const out of scaledOutputs) {
-    const c = getElementShc(out.resource, elementMap);
-    const t = out.tempC !== undefined ? out.tempC : defaultInputTemp;
-    outEnthalpy += (out.rate * c * t) / 1000;
-  }
-  const shcHeat = Math.round((outEnthalpy - inEnthalpy) * 100) / 100;
-  const totalHeat = Math.round((scaledHeat + shcHeat) * 100) / 100;
-
   const isStateTransferFor = new Set();
   for (const inp of scaledInputs) {
     for (const out of scaledOutputs) {
@@ -387,8 +371,6 @@ export function evaluateRow(
     power: scaledPower,
     heat: scaledHeat,
     buildingHeat: scaledHeat,
-    shcHeat,
-    totalHeat,
     inputTemp: repInputTemp,
     inputs: scaledInputs,
     outputs: scaledOutputs,
@@ -599,15 +581,13 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
   const elementMap = options.elementMap || null;
 
   let netPower = 0;
-  let netBuildingHeat = 0;
-  let netShcHeat = 0;
+  let netHeat = 0;
   const stateTransferResources = new Set();
   const buckets = new Map();
 
   for (const row of evaluatedRows) {
     netPower += row.power;
-    netBuildingHeat += row.buildingHeat !== undefined ? row.buildingHeat : row.heat;
-    netShcHeat += row.shcHeat || 0;
+    netHeat += row.heat !== undefined ? row.heat : 0;
 
     for (const res of row.isStateTransferFor) {
       stateTransferResources.add(res);
@@ -730,9 +710,8 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
 
   return {
     netPower: Math.round(netPower * 100) / 100,
-    netHeat: Math.round((netBuildingHeat + netShcHeat) * 100) / 100,
-    netBuildingHeat: Math.round(netBuildingHeat * 100) / 100,
-    netShcHeat: Math.round(netShcHeat * 100) / 100,
+    netHeat: Math.round(netHeat * 100) / 100,
+    netBuildingHeat: Math.round(netHeat * 100) / 100,
     netInputs,
     netOutputs,
   };
