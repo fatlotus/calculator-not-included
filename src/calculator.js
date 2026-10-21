@@ -1,7 +1,9 @@
 /**
  * Pure accounting and resource balance calculation engine for ONI Math.
  * Supports per-second (/s) and per-cycle (/cycle = 600s) rates,
- * recipe selection, entity modifiers, SHC & thermal tracking, and two-stage NET cancellation.
+ * recipe selection, entity modifiers, SHC & thermal tracking,
+ * iterative temperature resolution from average output streams,
+ * and two-stage NET cancellation.
  */
 
 export const SECONDS_PER_CYCLE = 600;
@@ -31,8 +33,11 @@ export const ELEMENT_SHC = {
 };
 
 export function getElementShc(resource, elementMap) {
-  if (elementMap?.has(resource) && elementMap.get(resource).shc) {
-    return Number(elementMap.get(resource).shc);
+  if (elementMap) {
+    const elem = elementMap instanceof Map ? elementMap.get(resource) : elementMap[resource];
+    if (elem && elem.shc) {
+      return Number(elem.shc);
+    }
   }
   return ELEMENT_SHC[resource] || 1.0;
 }
@@ -77,9 +82,141 @@ export function formatStreamLine(stream, isOutput, rateMode = "s") {
 }
 
 /**
+ * Helper to determine a reasonable default temperature for an element in °C.
+ * Uses elem.default_temp if present;
+ * else 20 °C if it is within (low_temp, high_temp);
+ * else a value safely inside the phase range;
+ * else 20 °C.
+ */
+export function getDefaultElementTemp(resource, elementMap) {
+  if (elementMap) {
+    const elem = elementMap instanceof Map ? elementMap.get(resource) : elementMap[resource];
+    if (elem && typeof elem === "object") {
+      if (elem.default_temp !== undefined && elem.default_temp !== null && !isNaN(Number(elem.default_temp))) {
+        return Number(elem.default_temp);
+      }
+
+      const lowRaw = elem.low_temp;
+      const highRaw = elem.high_temp;
+
+      let isKelvin = false;
+      const hasLow = lowRaw !== undefined && lowRaw !== null && !isNaN(Number(lowRaw));
+      const hasHigh = highRaw !== undefined && highRaw !== null && !isNaN(Number(highRaw));
+
+      if (hasLow || hasHigh) {
+        const hasNegative = (hasLow && Number(lowRaw) < 0) || (hasHigh && Number(highRaw) < 0);
+        if (!hasNegative) {
+          if ((hasLow && Number(lowRaw) > 50) || (hasHigh && Number(highRaw) > 100)) {
+            isKelvin = true;
+          }
+        }
+      }
+
+      const lowC = hasLow ? (isKelvin ? Number(lowRaw) - 273.15 : Number(lowRaw)) : null;
+      const highC = hasHigh ? (isKelvin ? Number(highRaw) - 273.15 : Number(highRaw)) : null;
+
+      let inRange = true;
+      if (lowC !== null && 20.0 <= lowC) inRange = false;
+      if (highC !== null && 20.0 >= highC) inRange = false;
+
+      if (inRange) return 20.0;
+
+      if (lowC !== null && highC !== null) {
+        return Math.round(((lowC + highC) / 2.0) * 10) / 10;
+      } else if (lowC !== null) {
+        return Math.round((lowC + 20.0) * 10) / 10;
+      } else if (highC !== null) {
+        return Math.round((highC - 20.0) * 10) / 10;
+      }
+    }
+  }
+  return 20.0;
+}
+
+/**
+ * Standardize resource key for lookup.
+ */
+export function getResourceKey(resource, state, strictPipeMatching = true) {
+  return strictPipeMatching ? `${resource}||${state || "free"}` : resource;
+}
+
+/**
+ * Lookup net input temperature from state.netInputTemps with fallbacks.
+ */
+export function getNetInputTemp(resource, state, netInputTemps, defaultTemp = 20.0, strictPipeMatching = true) {
+  if (!netInputTemps || typeof netInputTemps !== "object") return defaultTemp;
+  const keyStrict = `${resource}||${state || "free"}`;
+  const keySinglePipe = `${resource}|${state || "free"}`;
+  const keyResource = resource;
+
+  if (strictPipeMatching) {
+    if (netInputTemps[keyStrict] !== undefined && !isNaN(Number(netInputTemps[keyStrict]))) {
+      return Number(netInputTemps[keyStrict]);
+    }
+    if (netInputTemps[keySinglePipe] !== undefined && !isNaN(Number(netInputTemps[keySinglePipe]))) {
+      return Number(netInputTemps[keySinglePipe]);
+    }
+    if (netInputTemps[keyResource] !== undefined && !isNaN(Number(netInputTemps[keyResource]))) {
+      return Number(netInputTemps[keyResource]);
+    }
+  } else {
+    if (netInputTemps[keyResource] !== undefined && !isNaN(Number(netInputTemps[keyResource]))) {
+      return Number(netInputTemps[keyResource]);
+    }
+    if (netInputTemps[keyStrict] !== undefined && !isNaN(Number(netInputTemps[keyStrict]))) {
+      return Number(netInputTemps[keyStrict]);
+    }
+    if (netInputTemps[keySinglePipe] !== undefined && !isNaN(Number(netInputTemps[keySinglePipe]))) {
+      return Number(netInputTemps[keySinglePipe]);
+    }
+  }
+  return defaultTemp;
+}
+
+/**
+ * Determine the inlet temperature that feeds a specific machine output stream.
+ */
+function getOutputInletTemp(outputStream, evaluatedInputs, defaultTemp = 20.0) {
+  // 1. If machine has an input with the exact same resource name (e.g. Water in Water Pump / Aquatuner)
+  const exact = evaluatedInputs.find((inp) => inp.resource === outputStream.resource);
+  if (exact && exact.tempC !== undefined) return exact.tempC;
+
+  // 2. Liquid purification: Water from Polluted Water / Salt Water / Brine (Water Sieve, Desalinator)
+  if (outputStream.resource === "Water") {
+    const fluidIn = evaluatedInputs.find(
+      (inp) => inp.resource.includes("Water") || inp.resource === "Brine"
+    );
+    if (fluidIn && fluidIn.tempC !== undefined) return fluidIn.tempC;
+  }
+
+  // 3. Mass-weighted average across all machine inputs
+  let totalMass = 0;
+  let totalEnthalpy = 0;
+  for (const inp of evaluatedInputs) {
+    const rate = Math.abs(inp.rate || 0);
+    const t = inp.tempC !== undefined ? inp.tempC : defaultTemp;
+    totalMass += rate;
+    totalEnthalpy += rate * t;
+  }
+  if (totalMass > 1e-6) {
+    return totalEnthalpy / totalMass;
+  }
+
+  // 4. Fallback for machines without inputs (geysers, etc.)
+  return defaultTemp;
+}
+
+/**
  * Evaluate a single calculator table row into resolved inputs, outputs, power, and thermal delta.
  */
-export function evaluateRow(row, entityMap, elementMap = null, defaultInputTemp = 20.0) {
+export function evaluateRow(
+  row,
+  entityMap,
+  elementMap = null,
+  defaultInputTemp = 20.0,
+  inputTemps = null,
+  strictPipeMatching = true
+) {
   const entity = entityMap.get(row.entityId);
   if (!entity) {
     return {
@@ -99,9 +236,6 @@ export function evaluateRow(row, entityMap, elementMap = null, defaultInputTemp 
 
   const qty = Math.max(0, Number(row.qty) || 0);
   const activeModIds = new Set(row.modifiers || []);
-  const inputTemp = row.inputTemp !== undefined && row.inputTemp !== null
-    ? Number(row.inputTemp)
-    : defaultInputTemp;
 
   let baseInputs = entity.inputs || [];
   let baseOutputs = entity.outputs || [];
@@ -117,21 +251,47 @@ export function evaluateRow(row, entityMap, elementMap = null, defaultInputTemp 
     if (selectedRecipe.heat !== undefined) baseHeat = Number(selectedRecipe.heat);
   }
 
-  const inputs = baseInputs.map((s) => ({ ...s, tempC: inputTemp }));
+  // Resolve temperature for each input stream
+  const inputs = baseInputs.map((s) => {
+    let inpTemp = defaultInputTemp;
+    if (inputTemps && typeof inputTemps === "object") {
+      const k = strictPipeMatching ? `${s.resource}||${s.state || "free"}` : s.resource;
+      const kSingle = `${s.resource}|${s.state || "free"}`;
+      if (inputTemps[k] !== undefined) inpTemp = Number(inputTemps[k]);
+      else if (inputTemps[kSingle] !== undefined) inpTemp = Number(inputTemps[kSingle]);
+      else if (inputTemps[s.resource] !== undefined) inpTemp = Number(inputTemps[s.resource]);
+    } else if (row.inputTemp !== undefined && row.inputTemp !== null && !isNaN(Number(row.inputTemp))) {
+      inpTemp = Number(row.inputTemp);
+    }
+    return { ...s, tempC: inpTemp };
+  });
+
+  // Resolve temperature for each output stream based on thermal mode
   const outputs = baseOutputs.map((s) => {
-    let outTemp = inputTemp;
+    const inTemp = getOutputInletTemp(s, inputs, defaultInputTemp);
+    let outTemp = inTemp;
     let tempStr = s.temp || null;
 
-    if (s.temp && s.temp.includes("+")) {
+    if (s.temp && s.temp.includes("+") && s.temp.includes("@")) {
+      // Clamped minimum: @ X °C+ -> max(T_in, min)
       const match = s.temp.match(/([0-9]+(?:\.[0-9]+)?)/);
       const minTemp = match ? parseFloat(match[1]) : 70.0;
-      outTemp = Math.max(inputTemp, minTemp);
-      tempStr = inputTemp > minTemp ? `@ ${formatNumber(outTemp)} °C` : `@ ${minTemp} °C+`;
+      outTemp = Math.max(inTemp, minTemp);
+      tempStr = `@ ${formatNumber(outTemp)} °C`;
+    } else if (s.temp && !s.temp.includes("@") && (s.temp.includes("+") || s.temp.includes("-"))) {
+      // Temperature shift: e.g. -14 °C -> T_in + delta
+      const match = s.temp.match(/([+-]\s*[0-9]+(?:\.[0-9]+)?)/);
+      const delta = match ? parseFloat(match[1].replace(/\s+/g, "")) : 0.0;
+      outTemp = inTemp + delta;
+      tempStr = `@ ${formatNumber(outTemp)} °C`;
     } else if (s.temp && s.temp.includes("@")) {
+      // Fixed temp: e.g. @ 95 °C -> fixed
       const match = s.temp.match(/([0-9]+(?:\.[0-9]+)?)/);
-      if (match) outTemp = parseFloat(match[1]);
+      outTemp = match ? parseFloat(match[1]) : inTemp;
+      tempStr = `@ ${formatNumber(outTemp)} °C`;
     } else {
-      outTemp = inputTemp;
+      // Pass-through: T_in
+      outTemp = inTemp;
       tempStr = `@ ${formatNumber(outTemp)} °C`;
     }
 
@@ -155,15 +315,30 @@ export function evaluateRow(row, entityMap, elementMap = null, defaultInputTemp 
     if (mod.extra_inputs) {
       for (const extra of mod.extra_inputs) {
         const existing = inputs.find((s) => s.resource === extra.resource && s.state === extra.state);
-        if (existing) existing.rate += extra.rate;
-        else inputs.push({ ...extra, tempC: inputTemp });
+        if (existing) {
+          existing.rate += extra.rate;
+        } else {
+          let inpTemp = defaultInputTemp;
+          if (inputTemps && typeof inputTemps === "object") {
+            const k = strictPipeMatching ? `${extra.resource}||${extra.state || "free"}` : extra.resource;
+            const kSingle = `${extra.resource}|${extra.state || "free"}`;
+            if (inputTemps[k] !== undefined) inpTemp = Number(inputTemps[k]);
+            else if (inputTemps[kSingle] !== undefined) inpTemp = Number(inputTemps[kSingle]);
+            else if (inputTemps[extra.resource] !== undefined) inpTemp = Number(inputTemps[extra.resource]);
+          }
+          inputs.push({ ...extra, tempC: inpTemp });
+        }
       }
     }
     if (mod.extra_outputs) {
       for (const extra of mod.extra_outputs) {
         const existing = outputs.find((s) => s.resource === extra.resource && s.state === extra.state);
-        if (existing) existing.rate += extra.rate;
-        else outputs.push({ ...extra, tempC: inputTemp, temp: `@ ${formatNumber(inputTemp)} °C` });
+        if (existing) {
+          existing.rate += extra.rate;
+        } else {
+          const inTemp = getOutputInletTemp(extra, inputs, defaultInputTemp);
+          outputs.push({ ...extra, tempC: inTemp, temp: `@ ${formatNumber(inTemp)} °C` });
+        }
       }
     }
   }
@@ -182,12 +357,14 @@ export function evaluateRow(row, entityMap, elementMap = null, defaultInputTemp 
   let inEnthalpy = 0;
   for (const inp of scaledInputs) {
     const c = getElementShc(inp.resource, elementMap);
-    inEnthalpy += (inp.rate * c * inputTemp) / 1000;
+    const t = inp.tempC !== undefined ? inp.tempC : defaultInputTemp;
+    inEnthalpy += (inp.rate * c * t) / 1000;
   }
   let outEnthalpy = 0;
   for (const out of scaledOutputs) {
     const c = getElementShc(out.resource, elementMap);
-    outEnthalpy += (out.rate * c * (out.tempC !== undefined ? out.tempC : inputTemp)) / 1000;
+    const t = out.tempC !== undefined ? out.tempC : defaultInputTemp;
+    outEnthalpy += (out.rate * c * t) / 1000;
   }
   const shcHeat = Math.round((outEnthalpy - inEnthalpy) * 100) / 100;
   const totalHeat = Math.round((scaledHeat + shcHeat) * 100) / 100;
@@ -201,6 +378,9 @@ export function evaluateRow(row, entityMap, elementMap = null, defaultInputTemp 
     }
   }
 
+  // Representative input temperature for UI
+  const repInputTemp = scaledInputs.length > 0 ? scaledInputs[0].tempC : defaultInputTemp;
+
   return {
     entity,
     qty,
@@ -209,12 +389,144 @@ export function evaluateRow(row, entityMap, elementMap = null, defaultInputTemp 
     buildingHeat: scaledHeat,
     shcHeat,
     totalHeat,
-    inputTemp,
+    inputTemp: repInputTemp,
     inputs: scaledInputs,
     outputs: scaledOutputs,
     isStateTransferFor,
   };
 }
+
+/**
+ * Iteratively resolve system-wide element temperatures across the table rows.
+ * For each resource key (resource||state if strictPipeMatching else resource):
+ * - temperature seen by consumers is the rate-weighted average of all output streams of that key.
+ * - if key has a net deficit (appears in NET inputs), blend in deficit mass at NET input temperature.
+ * - if key has no outputs at all, use NET input temperature.
+ * Output streams follow their machine thermal mode.
+ * Iterates until convergence (capped at maxPasses, default 10).
+ */
+export function resolveTableTemperatures(rows, entityMap, elementMap = null, options = {}) {
+  const strictPipeMatching = typeof options === "boolean"
+    ? options
+    : (options.strictPipeMatching !== undefined ? Boolean(options.strictPipeMatching) : true);
+  const netInputTemps = (typeof options === "object" && options.netInputTemps) || {};
+  const maxPasses = (typeof options === "object" && options.maxPasses) || 10;
+
+  if (!rows || rows.length === 0) return [];
+
+  const getKey = (res, st) => strictPipeMatching ? `${res}||${st || "free"}` : res;
+
+  const getDefNetTemp = (res, st) => {
+    const def = getDefaultElementTemp(res, elementMap);
+    return getNetInputTemp(res, st, netInputTemps, def, strictPipeMatching);
+  };
+
+  const currentTemps = {};
+
+  // Pre-seed keys from table rows
+  for (const row of rows) {
+    const entity = entityMap.get(row.entityId);
+    if (!entity) continue;
+    let baseInps = entity.inputs || [];
+    let baseOuts = entity.outputs || [];
+    if (entity.recipes && entity.recipes.length > 0) {
+      const rec = entity.recipes.find((r) => r.id === row.recipeId) || entity.recipes[0];
+      baseInps = rec.inputs || [];
+      baseOuts = rec.outputs || [];
+    }
+    for (const inp of baseInps) {
+      const k = getKey(inp.resource, inp.state);
+      if (currentTemps[k] === undefined) {
+        currentTemps[k] = getDefNetTemp(inp.resource, inp.state);
+      }
+    }
+    for (const out of baseOuts) {
+      const k = getKey(out.resource, out.state);
+      if (currentTemps[k] === undefined) {
+        currentTemps[k] = getDefNetTemp(out.resource, out.state);
+      }
+    }
+  }
+
+  let evaluatedRows = [];
+
+  for (let pass = 0; pass < maxPasses; pass++) {
+    // 1. Evaluate rows with current temperatures
+    evaluatedRows = rows.map((row) =>
+      evaluateRow(row, entityMap, elementMap, 20.0, currentTemps, strictPipeMatching)
+    );
+
+    // 2. Aggregate production and consumption by key
+    const prodMass = {};
+    const prodEnthalpy = {};
+    const consMass = {};
+
+    for (const r of evaluatedRows) {
+      for (const inp of r.inputs) {
+        const k = getKey(inp.resource, inp.state);
+        consMass[k] = (consMass[k] || 0) + inp.rate;
+      }
+      for (const out of r.outputs) {
+        const k = getKey(out.resource, out.state);
+        prodMass[k] = (prodMass[k] || 0) + out.rate;
+        const outT = out.tempC !== undefined ? out.tempC : 20.0;
+        prodEnthalpy[k] = (prodEnthalpy[k] || 0) + out.rate * outT;
+      }
+    }
+
+    // 3. Compute new blended temperature for each key
+    const allKeys = new Set([
+      ...Object.keys(currentTemps),
+      ...Object.keys(prodMass),
+      ...Object.keys(consMass),
+    ]);
+    let maxDiff = 0;
+
+    for (const k of allKeys) {
+      const pM = prodMass[k] || 0;
+      const pH = prodEnthalpy[k] || 0;
+      const cM = consMass[k] || 0;
+
+      let res = k;
+      let st = "free";
+      if (strictPipeMatching && k.includes("||")) {
+        const parts = k.split("||");
+        res = parts[0];
+        st = parts[1] || "free";
+      }
+
+      const tNet = getDefNetTemp(res, st);
+      const deficit = Math.max(0, cM - pM);
+
+      let newT = tNet;
+      if (pM + deficit > 1e-6) {
+        newT = (pH + deficit * tNet) / (pM + deficit);
+      } else if (pM > 1e-6) {
+        newT = pH / pM;
+      } else {
+        newT = tNet;
+      }
+
+      const prevT = currentTemps[k] !== undefined ? currentTemps[k] : tNet;
+      const diff = Math.abs(newT - prevT);
+      if (diff > maxDiff) maxDiff = diff;
+      currentTemps[k] = newT;
+    }
+
+    if (maxDiff < 1e-4) {
+      break;
+    }
+  }
+
+  // Final evaluation pass with converged temperatures
+  evaluatedRows = rows.map((row) =>
+    evaluateRow(row, entityMap, elementMap, 20.0, currentTemps, strictPipeMatching)
+  );
+
+  return evaluatedRows;
+}
+
+export const evaluateTableRows = resolveTableTemperatures;
 
 /**
  * Calculate target quantity for each input/output stream of targetRow to exactly cancel system net.
@@ -283,6 +595,8 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap) {
  */
 export function calculateSystemNet(evaluatedRows, options = {}) {
   const strictPipeMatching = options.strictPipeMatching !== undefined ? Boolean(options.strictPipeMatching) : true;
+  const netInputTemps = options.netInputTemps || {};
+  const elementMap = options.elementMap || null;
 
   let netPower = 0;
   let netBuildingHeat = 0;
@@ -302,7 +616,15 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
     for (const inp of row.inputs) {
       const key = `${inp.resource}||${inp.state || "free"}`;
       if (!buckets.has(key)) {
-        buckets.set(key, { resource: inp.resource, state: inp.state || "free", unit: inp.unit || "g/s", netRate: 0, temp: null });
+        buckets.set(key, {
+          resource: inp.resource,
+          state: inp.state || "free",
+          unit: inp.unit || "g/s",
+          netRate: 0,
+          temp: null,
+          tempEnthalpy: 0,
+          totalOutRate: 0,
+        });
       }
       buckets.get(key).netRate -= inp.rate;
     }
@@ -310,11 +632,30 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
     for (const out of row.outputs) {
       const key = `${out.resource}||${out.state || "free"}`;
       if (!buckets.has(key)) {
-        buckets.set(key, { resource: out.resource, state: out.state || "free", unit: out.unit || "g/s", netRate: 0, temp: out.temp || null });
+        buckets.set(key, {
+          resource: out.resource,
+          state: out.state || "free",
+          unit: out.unit || "g/s",
+          netRate: 0,
+          temp: null,
+          tempEnthalpy: 0,
+          totalOutRate: 0,
+        });
       }
       const b = buckets.get(key);
       b.netRate += out.rate;
+      const t = out.tempC !== undefined ? out.tempC : 20.0;
+      b.tempEnthalpy += out.rate * t;
+      b.totalOutRate += out.rate;
       if (out.temp && !b.temp) b.temp = out.temp;
+    }
+  }
+
+  for (const b of buckets.values()) {
+    if (b.totalOutRate > 0) {
+      const avgT = b.tempEnthalpy / b.totalOutRate;
+      b.tempC = avgT;
+      b.temp = `@ ${formatNumber(avgT)} °C`;
     }
   }
 
@@ -334,10 +675,18 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
       let combinedRate = 0;
       let dominantBucket = resBuckets[0];
       let outputTemp = null;
+      let tempEnth = 0;
+      let totalOut = 0;
       for (const b of resBuckets) {
         combinedRate += b.netRate;
         if (Math.abs(b.netRate) > Math.abs(dominantBucket.netRate)) dominantBucket = b;
-        if (b.netRate > 0 && b.temp) outputTemp = b.temp;
+        if (b.totalOutRate > 0) {
+          tempEnth += b.tempEnthalpy;
+          totalOut += b.totalOutRate;
+        }
+      }
+      if (totalOut > 0) {
+        outputTemp = `@ ${formatNumber(tempEnth / totalOut)} °C`;
       }
       if (Math.abs(combinedRate) >= 1e-5) {
         finalBuckets.push({
@@ -346,6 +695,7 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
           unit: dominantBucket.unit,
           netRate: combinedRate,
           temp: combinedRate > 0 ? outputTemp : null,
+          tempC: totalOut > 0 ? tempEnth / totalOut : undefined,
         });
       }
     }
@@ -356,9 +706,25 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
 
   for (const b of finalBuckets) {
     if (b.netRate < -1e-5) {
-      netInputs.push({ resource: b.resource, rate: Math.abs(b.netRate), unit: b.unit, state: b.state, temp: null });
+      const defT = getDefaultElementTemp(b.resource, elementMap);
+      const tempC = getNetInputTemp(b.resource, b.state, netInputTemps, defT, strictPipeMatching);
+      netInputs.push({
+        resource: b.resource,
+        rate: Math.abs(b.netRate),
+        unit: b.unit,
+        state: b.state,
+        tempC,
+        temp: `@ ${formatNumber(tempC)} °C`,
+      });
     } else if (b.netRate > 1e-5) {
-      netOutputs.push({ resource: b.resource, rate: b.netRate, unit: b.unit, state: b.state, temp: b.temp });
+      netOutputs.push({
+        resource: b.resource,
+        rate: b.netRate,
+        unit: b.unit,
+        state: b.state,
+        temp: b.temp,
+        tempC: b.tempC,
+      });
     }
   }
 

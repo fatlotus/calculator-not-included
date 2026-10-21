@@ -8,10 +8,13 @@ import unittest
 from pathlib import Path
 from src.calculator import (
     evaluate_row,
+    resolve_table_temperatures,
     calculate_system_net,
     calculate_row_match_targets,
     format_number,
     format_stream_line,
+    get_default_element_temp,
+    get_net_input_temp,
     SECONDS_PER_CYCLE,
 )
 
@@ -167,6 +170,143 @@ class TestCalculatorEngine(unittest.TestCase):
         self.assertEqual(len(h_out), 1)
         self.assertEqual(h_out[0]["rate"], 112.0)
         self.assertEqual(h_out[0]["state"], "free")
+
+    def test_hydra_spom_default_temps_propagate(self):
+        rows = [
+            {"entityId": "electrolyzer", "qty": 1, "recipeId": None, "modifiers": []},
+            {"entityId": "water_pump", "qty": 0.1, "recipeId": "water", "modifiers": []},
+            {"entityId": "gas_pump", "qty": 0.224, "recipeId": "hydrogen", "modifiers": []},
+            {"entityId": "hydrogen_generator", "qty": 1.12, "recipeId": None, "modifiers": []},
+            {"entityId": "duplicant", "qty": 8, "recipeId": None, "modifiers": []},
+        ]
+        evaluated = resolve_table_temperatures(rows, self.entity_map, self.dataset.get("elements", {}))
+
+        # 1. Water Pump: input Water free @ 20 °C, output Water in pipe @ 20 °C
+        wp = evaluated[1]
+        self.assertAlmostEqual(wp["inputs"][0]["tempC"], 20.0, places=1)
+        self.assertAlmostEqual(wp["outputs"][0]["tempC"], 20.0, places=1)
+        self.assertEqual(wp["outputs"][0]["temp"], "@ 20 °C")
+
+        # 2. Electrolyzer: input Water in pipe @ 20 °C, outputs Oxygen & Hydrogen @ 70 °C
+        el = evaluated[0]
+        self.assertAlmostEqual(el["inputs"][0]["tempC"], 20.0, places=1)
+        o2_out = next(o for o in el["outputs"] if o["resource"] == "Oxygen")
+        h2_out = next(o for o in el["outputs"] if o["resource"] == "Hydrogen")
+        self.assertAlmostEqual(o2_out["tempC"], 70.0, places=1)
+        self.assertAlmostEqual(h2_out["tempC"], 70.0, places=1)
+        self.assertEqual(o2_out["temp"], "@ 70 °C")
+        self.assertEqual(h2_out["temp"], "@ 70 °C")
+
+        # 3. Gas Pump: input Hydrogen free @ 70 °C, output Hydrogen in pipe @ 70 °C
+        gp = evaluated[2]
+        self.assertAlmostEqual(gp["inputs"][0]["tempC"], 70.0, places=1)
+        self.assertAlmostEqual(gp["outputs"][0]["tempC"], 70.0, places=1)
+        self.assertEqual(gp["outputs"][0]["temp"], "@ 70 °C")
+
+        # 4. Hydrogen Generator: input Hydrogen in pipe @ 70 °C
+        hg = evaluated[3]
+        self.assertAlmostEqual(hg["inputs"][0]["tempC"], 70.0, places=1)
+
+        # 5. Duplicant: input Oxygen free @ 70 °C
+        dup = evaluated[4]
+        self.assertAlmostEqual(dup["inputs"][0]["tempC"], 70.0, places=1)
+
+    def test_hydra_spom_95c_water_propagation(self):
+        rows = [
+            {"entityId": "electrolyzer", "qty": 1, "recipeId": None, "modifiers": []},
+            {"entityId": "water_pump", "qty": 0.1, "recipeId": "water", "modifiers": []},
+            {"entityId": "gas_pump", "qty": 0.224, "recipeId": "hydrogen", "modifiers": []},
+            {"entityId": "hydrogen_generator", "qty": 1.12, "recipeId": None, "modifiers": []},
+            {"entityId": "duplicant", "qty": 8, "recipeId": None, "modifiers": []},
+        ]
+        # NET input Water set to 95 °C
+        evaluated = resolve_table_temperatures(
+            rows,
+            self.entity_map,
+            self.dataset.get("elements", {}),
+            options={"netInputTemps": {"Water||free": 95.0}, "strictPipeMatching": True},
+        )
+
+        # Water Pump takes Water free @ 95 °C and outputs Water in pipe @ 95 °C
+        wp = evaluated[1]
+        self.assertAlmostEqual(wp["inputs"][0]["tempC"], 95.0, places=1)
+        self.assertAlmostEqual(wp["outputs"][0]["tempC"], 95.0, places=1)
+        self.assertEqual(wp["outputs"][0]["temp"], "@ 95 °C")
+
+        # Electrolyzer takes Water in pipe @ 95 °C and outputs @ max(95, 70) = 95 °C
+        el = evaluated[0]
+        self.assertAlmostEqual(el["inputs"][0]["tempC"], 95.0, places=1)
+        o2_out = next(o for o in el["outputs"] if o["resource"] == "Oxygen")
+        h2_out = next(o for o in el["outputs"] if o["resource"] == "Hydrogen")
+        self.assertAlmostEqual(o2_out["tempC"], 95.0, places=1)
+        self.assertAlmostEqual(h2_out["tempC"], 95.0, places=1)
+        self.assertEqual(o2_out["temp"], "@ 95 °C")
+        self.assertEqual(h2_out["temp"], "@ 95 °C")
+
+        # Gas Pump takes Hydrogen @ 95 °C and outputs @ 95 °C
+        gp = evaluated[2]
+        self.assertAlmostEqual(gp["inputs"][0]["tempC"], 95.0, places=1)
+        self.assertAlmostEqual(gp["outputs"][0]["tempC"], 95.0, places=1)
+        self.assertEqual(gp["outputs"][0]["temp"], "@ 95 °C")
+
+    def test_two_producers_different_temperatures_averaging(self):
+        custom_entity_map = {
+            "prod1": {
+                "id": "prod1", "name": "Producer 1", "category": "machine",
+                "inputs": [], "outputs": [{"resource": "Water", "rate": 100.0, "unit": "g/s", "state": "in a pipe", "temp": "@ 20 °C"}],
+            },
+            "prod2": {
+                "id": "prod2", "name": "Producer 2", "category": "machine",
+                "inputs": [], "outputs": [{"resource": "Water", "rate": 300.0, "unit": "g/s", "state": "in a pipe", "temp": "@ 60 °C"}],
+            },
+            "cons": {
+                "id": "cons", "name": "Consumer", "category": "machine",
+                "inputs": [{"resource": "Water", "rate": 400.0, "unit": "g/s", "state": "in a pipe"}], "outputs": [],
+            },
+        }
+        rows = [
+            {"entityId": "prod1", "qty": 1},
+            {"entityId": "prod2", "qty": 1},
+            {"entityId": "cons", "qty": 1},
+        ]
+        evaluated = resolve_table_temperatures(rows, custom_entity_map)
+        cons_ev = evaluated[2]
+        # Weighted average: (100*20 + 300*60) / 400 = 50 °C
+        self.assertAlmostEqual(cons_ev["inputs"][0]["tempC"], 50.0, places=2)
+
+        # Deficit test: consumer needs 500 g/s, deficit 100 g/s at NET temp 100 °C
+        rows_deficit = [
+            {"entityId": "prod1", "qty": 1},
+            {"entityId": "prod2", "qty": 1},
+            {"entityId": "cons", "qty": 1.25},  # 500 g/s
+        ]
+        evaluated_def = resolve_table_temperatures(
+            rows_deficit,
+            custom_entity_map,
+            options={"netInputTemps": {"Water||in a pipe": 100.0}},
+        )
+        # Blended: (100*20 + 300*60 + 100*100) / 500 = 60 °C
+        self.assertAlmostEqual(evaluated_def[2]["inputs"][0]["tempC"], 60.0, places=2)
+
+    def test_get_default_element_temp(self):
+        element_map = {
+            "Water": {"name": "Water", "low_temp": 272.5, "high_temp": 372.5},
+            "Steam": {"name": "Steam", "low_temp": 372.5, "high_temp": None},
+            "Ice": {"name": "Ice", "low_temp": None, "high_temp": 272.5},
+            "HotIron": {"name": "HotIron", "default_temp": 80.0},
+        }
+        # Water is in phase at 20 °C
+        self.assertEqual(get_default_element_temp("Water", element_map), 20.0)
+        # Steam is too cold at 20 °C, so safely above low_temp (99.35 °C)
+        steam_t = get_default_element_temp("Steam", element_map)
+        self.assertGreater(steam_t, 99.35)
+        # Ice is too hot at 20 °C, so safely below high_temp (-0.65 °C)
+        ice_t = get_default_element_temp("Ice", element_map)
+        self.assertLess(ice_t, -0.65)
+        # Explicit default_temp
+        self.assertEqual(get_default_element_temp("HotIron", element_map), 80.0)
+        # Missing element defaults to 20
+        self.assertEqual(get_default_element_temp("Unknown", element_map), 20.0)
 
 
 if __name__ == "__main__":

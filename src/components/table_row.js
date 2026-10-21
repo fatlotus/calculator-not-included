@@ -52,40 +52,22 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
           </a>
           <span class="cat-pill cat-${(entity.category || 'machine').toLowerCase()}">${entity.category}</span>
         </div>
-        <div class="row-subcontrols">
   `;
 
   // Recipe selector
   if (entity.recipes && entity.recipes.length > 0) {
     machineHtml += `
-      <div class="recipe-wrapper">
-        <label class="field-label" for="recipe-${rowIndex}">Mode:</label>
-        <select id="recipe-${rowIndex}" class="recipe-select" data-row-index="${rowIndex}">
+      <div class="row-subcontrols">
+        <div class="recipe-wrapper">
+          <label class="field-label" for="recipe-${rowIndex}">Mode:</label>
+          <select id="recipe-${rowIndex}" class="recipe-select" data-row-index="${rowIndex}">
     `;
     for (const r of entity.recipes) {
       const isSelected = (row.recipeId === r.id) || (!row.recipeId && r === entity.recipes[0]);
       machineHtml += `<option value="${r.id}" ${isSelected ? "selected" : ""}>${r.name}</option>`;
     }
-    machineHtml += `</select></div>`;
+    machineHtml += `</select></div></div>`;
   }
-
-  // Feed temperature control for thermal modeling
-  const currentTemp = row.inputTemp !== undefined && row.inputTemp !== null ? row.inputTemp : evaluated.inputTemp;
-  machineHtml += `
-      <div class="temp-wrapper" title="Input resource feed temperature in °C">
-        <label class="field-label" for="temp-${rowIndex}">Feed:</label>
-        <input
-          type="number"
-          id="temp-${rowIndex}"
-          class="input-temp-field"
-          data-row-index="${rowIndex}"
-          value="${currentTemp}"
-          step="any"
-        />
-        <span class="temp-unit">°C</span>
-      </div>
-    </div>
-  `;
 
   // Modifiers list
   if (entity.modifiers && entity.modifiers.length > 0) {

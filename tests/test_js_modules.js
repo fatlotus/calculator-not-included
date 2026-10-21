@@ -7,8 +7,11 @@ import assert from "node:assert";
 import { ONI_DATASET } from "../src/dataset.js";
 import {
   evaluateRow,
+  resolveTableTemperatures,
   calculateSystemNet,
   calculateRowMatchTargets,
+  getDefaultElementTemp,
+  getNetInputTemp,
   formatNumber,
   formatStreamLine,
 } from "../src/calculator.js";
@@ -97,26 +100,84 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(matches["in:Hydrogen||free"].targetQty, 0.224);
   assert.strictEqual(matches["out:Hydrogen||in a pipe"].isMatched, true);
 
+  // --- Thermal Propagation Tests ---
+  // A. Hydra SPOM at default 20 °C gives Electrolyzer outputs @ 70 °C
+  const resolvedDefault = resolveTableTemperatures(hydra.rows, entityMap, elementMap);
+  const elResolved = resolvedDefault[0];
+  const o2Out = elResolved.outputs.find((o) => o.resource === "Oxygen");
+  const h2Out = elResolved.outputs.find((o) => o.resource === "Hydrogen");
+  assert.strictEqual(o2Out.tempC, 70);
+  assert.strictEqual(h2Out.tempC, 70);
+  assert.strictEqual(o2Out.temp, "@ 70 °C");
+  assert.strictEqual(h2Out.temp, "@ 70 °C");
+  // Gas Pump output @ 70 °C
+  const gpResolved = resolvedDefault[2];
+  assert.strictEqual(gpResolved.outputs[0].tempC, 70);
+  assert.strictEqual(gpResolved.outputs[0].temp, "@ 70 °C");
+
+  // B. NET input Water set to 95 °C propagates through Water Pump to Electrolyzer -> outputs @ 95 °C
+  const resolved95 = resolveTableTemperatures(hydra.rows, entityMap, elementMap, {
+    netInputTemps: { "Water||free": 95 },
+    strictPipeMatching: true,
+  });
+  const wpResolved95 = resolved95[1];
+  assert.strictEqual(wpResolved95.outputs[0].tempC, 95);
+  assert.strictEqual(wpResolved95.outputs[0].temp, "@ 95 °C");
+  const elResolved95 = resolved95[0];
+  const o2Out95 = elResolved95.outputs.find((o) => o.resource === "Oxygen");
+  const h2Out95 = elResolved95.outputs.find((o) => o.resource === "Hydrogen");
+  assert.strictEqual(o2Out95.tempC, 95);
+  assert.strictEqual(h2Out95.tempC, 95);
+  assert.strictEqual(o2Out95.temp, "@ 95 °C");
+  assert.strictEqual(h2Out95.temp, "@ 95 °C");
+
+  // C. Two producers at different temperatures average correctly
+  const customEntityMap = new Map([
+    ["p1", { id: "p1", name: "P1", inputs: [], outputs: [{ resource: "Water", rate: 100, unit: "g/s", state: "in a pipe", temp: "@ 20 °C" }] }],
+    ["p2", { id: "p2", name: "P2", inputs: [], outputs: [{ resource: "Water", rate: 300, unit: "g/s", state: "in a pipe", temp: "@ 60 °C" }] }],
+    ["c1", { id: "c1", name: "C1", inputs: [{ resource: "Water", rate: 400, unit: "g/s", state: "in a pipe" }], outputs: [] }],
+  ]);
+  const twoProdsRows = [{ entityId: "p1", qty: 1 }, { entityId: "p2", qty: 1 }, { entityId: "c1", qty: 1 }];
+  const resolvedTwoProds = resolveTableTemperatures(twoProdsRows, customEntityMap);
+  // (100*20 + 300*60) / 400 = 50 °C
+  assert.strictEqual(resolvedTwoProds[2].inputs[0].tempC, 50);
+
+  // D. Helper getDefaultElementTemp tests
+  assert.strictEqual(getDefaultElementTemp("Water", elementMap), 20);
+  const customElements = new Map([
+    ["Steam", { low_temp: 372.5, high_temp: null }],
+    ["Ice", { low_temp: null, high_temp: 272.5 }],
+    ["MoltenGold", { default_temp: 1100 }],
+  ]);
+  assert.ok(getDefaultElementTemp("Steam", customElements) > 99.35);
+  assert.ok(getDefaultElementTemp("Ice", customElements) < -0.65);
+  assert.strictEqual(getDefaultElementTemp("MoltenGold", customElements), 1100);
+
   console.log("✓ Calculator & Math Engine tests passed");
 }
 
 // 3. URL State Serialization
 {
+  // Row without feed temp
   const rowStr = encodeRow({
     entityId: "petroleum_generator",
     recipeId: "ethanol",
     qty: 2,
     modifiers: ["mod_a", "mod_b"],
-    inputTemp: 25,
   });
-  assert.strictEqual(rowStr, "petroleum_generator:ethanol*2@25+mod_a,mod_b");
+  assert.strictEqual(rowStr, "petroleum_generator:ethanol*2+mod_a,mod_b");
 
-  const decodedRow = decodeRow(rowStr);
+  // Backward compatibility: decode legacy @inputTemp token
+  const legacyToken = "petroleum_generator:ethanol*2@25+mod_a,mod_b";
+  const decodedRow = decodeRow(legacyToken);
   assert.strictEqual(decodedRow.entityId, "petroleum_generator");
   assert.strictEqual(decodedRow.recipeId, "ethanol");
   assert.strictEqual(decodedRow.qty, 2);
   assert.strictEqual(decodedRow.inputTemp, 25);
   assert.deepStrictEqual(decodedRow.modifiers, ["mod_a", "mod_b"]);
+
+  // Re-encoding must not output @25
+  assert.strictEqual(encodeRow(decodedRow), "petroleum_generator:ethanol*2+mod_a,mod_b");
 
   const state = {
     rateMode: "s",
@@ -128,12 +189,13 @@ console.log("=== Running JavaScript Module Tests ===");
       { entityId: "hydrogen_generator", qty: 1.12, recipeId: null, modifiers: [] },
       { entityId: "duplicant", qty: 8, recipeId: null, modifiers: ["divers_lungs"] },
     ],
+    netInputTemps: { "Water||free": 95 },
   };
 
   const param = encodeStateToParam(state);
   assert.strictEqual(
     param,
-    "u:s_r:electrolyzer~water_pump:water*0.1~gas_pump:hydrogen*0.224~hydrogen_generator*1.12~duplicant*8+divers_lungs"
+    "u:s_r:electrolyzer~water_pump:water*0.1~gas_pump:hydrogen*0.224~hydrogen_generator*1.12~duplicant*8+divers_lungs_t:Water|free=95"
   );
 
   const decodedState = decodeStateFromParam(param);
@@ -142,11 +204,23 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(decodedState.rows.length, 5);
   assert.strictEqual(decodedState.rows[2].qty, 0.224);
   assert.deepStrictEqual(decodedState.rows[4].modifiers, ["divers_lungs"]);
+  assert.strictEqual(decodedState.netInputTemps["Water||free"], 95);
+  assert.strictEqual(decodedState.netInputTemps["Water|free"], 95);
 
   // Decoding with explicit p:0
   const decodedP0 = decodeStateFromParam("u:s_p:0_r:electrolyzer~duplicant*8");
   assert.strictEqual(decodedP0.strictPipeMatching, false);
   assert.strictEqual(decodedP0.rows.length, 2);
+
+  // Default temperature 20 for Water is omitted from URL
+  const stateDefault = {
+    rateMode: "s",
+    strictPipeMatching: true,
+    rows: [{ entityId: "electrolyzer", qty: 1 }],
+    netInputTemps: { "Water||free": 20 },
+  };
+  const paramDefault = encodeStateToParam(stateDefault);
+  assert.strictEqual(paramDefault.includes("t:"), false);
 
   console.log("✓ URL State Serialization tests passed");
 }
@@ -178,11 +252,17 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(rowHtml.includes("Hydrogen: +112 g/s"), "Row HTML should include Hydrogen output stream");
   assert.ok(rowHtml.includes("Water: -1000 g/s"), "Row HTML should include Water input stream");
   assert.ok(rowHtml.includes("Power: -120 W"), "Row HTML should include Power input stream");
+  // Ensure Feed Temp input was removed
+  assert.ok(!rowHtml.includes("input-temp-field"), "Row HTML should NOT contain per-row feed temp input");
+  assert.ok(!rowHtml.includes("Feed:"), "Row HTML should NOT contain Feed: label");
 
   const net = calculateSystemNet([evaluated], { strictPipeMatching: true });
-  const netHtml = renderNetSummaryRowHtml(net, elementMap, "s");
+  const netHtml = renderNetSummaryRowHtml(net, elementMap, "s", { "Water||in a pipe": 20 }, true);
   assert.ok(netHtml.includes("NET"), "NET row HTML should include NET badge");
   assert.ok(netHtml.includes("Oxygen: +888 g/s"), "NET row HTML should include Oxygen stream");
+  // Ensure NET input temperature control is rendered
+  assert.ok(netHtml.includes("net-temp-input"), "NET summary should include net-temp-input");
+  assert.ok(netHtml.includes('data-key="Water||in a pipe"'), "NET summary input should have data-key");
 
   console.log("✓ Component HTML Rendering tests passed");
 }

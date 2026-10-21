@@ -729,6 +729,44 @@ body {
   font-weight: 600;
 }
 
+.net-temp-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 6px;
+  font-weight: normal;
+  font-size: 12px;
+  color: var(--fg-muted);
+}
+
+.net-temp-at {
+  font-size: 11px;
+  color: var(--fg-muted);
+}
+
+.net-temp-input {
+  width: 48px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-size: 11px;
+  color: var(--fg-default);
+  text-align: right;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+.net-temp-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.net-temp-unit {
+  font-size: 11px;
+  color: var(--fg-muted);
+}
+
 .net-empty-state {
   color: var(--fg-muted);
   font-style: italic;

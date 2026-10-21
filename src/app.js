@@ -4,7 +4,12 @@
  */
 
 import { buildEntityCatalog } from "./data_loader.js";
-import { evaluateRow, calculateSystemNet, calculateRowMatchTargets } from "./calculator.js";
+import {
+  evaluateRow,
+  resolveTableTemperatures,
+  calculateSystemNet,
+  calculateRowMatchTargets,
+} from "./calculator.js";
 import { PRESETS, getPresetById } from "./presets.js";
 import { syncStateToUrl, loadStateFromUrl } from "./url_state.js";
 import { renderTableRowHtml } from "./components/table_row.js";
@@ -14,7 +19,12 @@ import { AutocompleteComponent } from "./components/autocomplete.js";
 class OniApp {
   constructor() {
     this.catalog = buildEntityCatalog();
-    this.state = { rateMode: "s", strictPipeMatching: true, rows: [] };
+    this.state = {
+      rateMode: "s",
+      strictPipeMatching: true,
+      rows: [],
+      netInputTemps: {},
+    };
     this.autocomplete = null;
     this.theme = localStorage.getItem("onimath_theme") || "auto";
   }
@@ -56,6 +66,7 @@ class OniApp {
         rateMode: urlState.rateMode || "s",
         strictPipeMatching: urlState.strictPipeMatching !== false,
         rows: urlState.rows,
+        netInputTemps: urlState.netInputTemps || {},
       };
     } else {
       const def = PRESETS[0];
@@ -63,6 +74,7 @@ class OniApp {
         rateMode: def.rateMode || "s",
         strictPipeMatching: def.strictPipeMatching !== false,
         rows: JSON.parse(JSON.stringify(def.rows)),
+        netInputTemps: def.netInputTemps ? JSON.parse(JSON.stringify(def.netInputTemps)) : {},
       };
     }
   }
@@ -73,7 +85,7 @@ class OniApp {
       elementMap: this.catalog.elementMap,
       onSelect: (entity) => {
         const recipeId = entity.recipes && entity.recipes.length > 0 ? entity.recipes[0].id : null;
-        this.state.rows.push({ entityId: entity.id, qty: 1, recipeId, modifiers: [], inputTemp: 20 });
+        this.state.rows.push({ entityId: entity.id, qty: 1, recipeId, modifiers: [] });
         this.onStateChange();
       },
     });
@@ -90,6 +102,7 @@ class OniApp {
           this.state.rateMode = preset.rateMode || "s";
           this.state.strictPipeMatching = preset.strictPipeMatching !== false;
           this.state.rows = JSON.parse(JSON.stringify(preset.rows));
+          this.state.netInputTemps = preset.netInputTemps ? JSON.parse(JSON.stringify(preset.netInputTemps)) : {};
           this.onStateChange();
           presetSelect.value = "";
         }
@@ -119,7 +132,7 @@ class OniApp {
   }
 
   async copyShareLink(btn) {
-    syncStateToUrl(this.state);
+    syncStateToUrl(this.state, this.catalog.elementMap);
     const url = window.location.href;
     try {
       if (navigator.clipboard?.writeText) {
@@ -160,90 +173,114 @@ class OniApp {
 
   bindTableEvents() {
     const tbody = document.getElementById("calc-table-body");
-    if (!tbody) return;
+    const tfoot = document.getElementById("calc-table-foot");
 
-    tbody.addEventListener("input", (e) => {
-      if (e.target.classList.contains("qty-input")) {
+    if (tbody) {
+      tbody.addEventListener("input", (e) => {
+        if (e.target.classList.contains("qty-input")) {
+          const idx = parseInt(e.target.dataset.rowIndex, 10);
+          const val = parseFloat(e.target.value);
+          if (!isNaN(val) && this.state.rows[idx]) {
+            this.state.rows[idx].qty = Math.max(0, val);
+            this.onStateChange(false);
+          }
+        }
+      });
+
+      tbody.addEventListener("change", (e) => {
         const idx = parseInt(e.target.dataset.rowIndex, 10);
-        const val = parseFloat(e.target.value);
-        if (!isNaN(val) && this.state.rows[idx]) {
-          this.state.rows[idx].qty = Math.max(0, val);
-          this.onStateChange(false);
-        }
-      } else if (e.target.classList.contains("input-temp-field")) {
-        const idx = parseInt(e.target.dataset.rowIndex, 10);
-        const val = parseFloat(e.target.value);
-        if (!isNaN(val) && this.state.rows[idx]) {
-          this.state.rows[idx].inputTemp = val;
-          this.onStateChange(false);
-        }
-      }
-    });
+        const row = this.state.rows[idx];
+        if (!row) return;
 
-    tbody.addEventListener("change", (e) => {
-      const idx = parseInt(e.target.dataset.rowIndex, 10);
-      const row = this.state.rows[idx];
-      if (!row) return;
-
-      if (e.target.classList.contains("qty-input")) {
-        const val = parseFloat(e.target.value);
-        row.qty = isNaN(val) ? 1 : Math.max(0, val);
-        this.onStateChange(true);
-      } else if (e.target.classList.contains("recipe-select")) {
-        row.recipeId = e.target.value;
-        this.onStateChange();
-      } else if (e.target.classList.contains("mod-checkbox")) {
-        const mods = new Set(row.modifiers || []);
-        if (e.target.checked) mods.add(e.target.dataset.modId);
-        else mods.delete(e.target.dataset.modId);
-        row.modifiers = Array.from(mods);
-        this.onStateChange();
-      }
-    });
-
-    tbody.addEventListener("click", (e) => {
-      const matchBtn = e.target.closest(".btn-match-stream");
-      if (matchBtn) {
-        const idx = parseInt(matchBtn.dataset.rowIndex, 10);
-        const targetQty = parseFloat(matchBtn.dataset.targetQty);
-        if (!isNaN(idx) && !isNaN(targetQty) && this.state.rows[idx]) {
-          this.state.rows[idx].qty = targetQty;
+        if (e.target.classList.contains("qty-input")) {
+          const val = parseFloat(e.target.value);
+          row.qty = isNaN(val) ? 1 : Math.max(0, val);
+          this.onStateChange(true);
+        } else if (e.target.classList.contains("recipe-select")) {
+          row.recipeId = e.target.value;
+          this.onStateChange();
+        } else if (e.target.classList.contains("mod-checkbox")) {
+          const mods = new Set(row.modifiers || []);
+          if (e.target.checked) mods.add(e.target.dataset.modId);
+          else mods.delete(e.target.dataset.modId);
+          row.modifiers = Array.from(mods);
           this.onStateChange();
         }
-        return;
-      }
+      });
 
-      const delBtn = e.target.closest(".btn-delete-row");
-      if (delBtn) {
-        const idx = parseInt(delBtn.dataset.rowIndex, 10);
-        if (!isNaN(idx) && idx >= 0 && idx < this.state.rows.length) {
-          this.state.rows.splice(idx, 1);
-          this.onStateChange();
+      tbody.addEventListener("click", (e) => {
+        const matchBtn = e.target.closest(".btn-match-stream");
+        if (matchBtn) {
+          const idx = parseInt(matchBtn.dataset.rowIndex, 10);
+          const targetQty = parseFloat(matchBtn.dataset.targetQty);
+          if (!isNaN(idx) && !isNaN(targetQty) && this.state.rows[idx]) {
+            this.state.rows[idx].qty = targetQty;
+            this.onStateChange();
+          }
+          return;
         }
-        return;
-      }
 
-      const dupBtn = e.target.closest(".btn-duplicate-row");
-      if (dupBtn) {
-        const idx = parseInt(dupBtn.dataset.rowIndex, 10);
-        if (!isNaN(idx) && idx >= 0 && idx < this.state.rows.length) {
-          const rowToClone = this.state.rows[idx];
-          const cloned = {
-            entityId: rowToClone.entityId,
-            qty: rowToClone.qty,
-            recipeId: rowToClone.recipeId,
-            inputTemp: rowToClone.inputTemp,
-            modifiers: [...(rowToClone.modifiers || [])],
-          };
-          this.state.rows.splice(idx + 1, 0, cloned);
-          this.onStateChange();
+        const delBtn = e.target.closest(".btn-delete-row");
+        if (delBtn) {
+          const idx = parseInt(delBtn.dataset.rowIndex, 10);
+          if (!isNaN(idx) && idx >= 0 && idx < this.state.rows.length) {
+            this.state.rows.splice(idx, 1);
+            this.onStateChange();
+          }
+          return;
         }
-      }
-    });
+
+        const dupBtn = e.target.closest(".btn-duplicate-row");
+        if (dupBtn) {
+          const idx = parseInt(dupBtn.dataset.rowIndex, 10);
+          if (!isNaN(idx) && idx >= 0 && idx < this.state.rows.length) {
+            const rowToClone = this.state.rows[idx];
+            const cloned = {
+              entityId: rowToClone.entityId,
+              qty: rowToClone.qty,
+              recipeId: rowToClone.recipeId,
+              modifiers: [...(rowToClone.modifiers || [])],
+            };
+            this.state.rows.splice(idx + 1, 0, cloned);
+            this.onStateChange();
+          }
+        }
+      });
+    }
+
+    if (tfoot) {
+      tfoot.addEventListener("input", (e) => {
+        if (e.target.classList.contains("net-temp-input")) {
+          const key = e.target.dataset.key;
+          const val = parseFloat(e.target.value);
+          if (!isNaN(val) && key) {
+            if (!this.state.netInputTemps) this.state.netInputTemps = {};
+            this.state.netInputTemps[key] = val;
+            this.onStateChange(false);
+          }
+        }
+      });
+
+      tfoot.addEventListener("change", (e) => {
+        if (e.target.classList.contains("net-temp-input")) {
+          const key = e.target.dataset.key;
+          const val = parseFloat(e.target.value);
+          if (key) {
+            if (!this.state.netInputTemps) this.state.netInputTemps = {};
+            if (isNaN(val)) {
+              delete this.state.netInputTemps[key];
+            } else {
+              this.state.netInputTemps[key] = val;
+            }
+            this.onStateChange(true);
+          }
+        }
+      });
+    }
   }
 
   onStateChange(fullReRender = true) {
-    syncStateToUrl(this.state);
+    syncStateToUrl(this.state, this.catalog.elementMap);
     if (fullReRender) this.render();
     else this.renderQuickUpdate();
   }
@@ -259,11 +296,20 @@ class OniApp {
     const tbody = document.getElementById("calc-table-body");
     if (!tbody) return;
 
-    const evaluatedRows = this.state.rows.map((r) =>
-      evaluateRow(r, this.catalog.entityMap, this.catalog.elementMap)
+    const evaluatedRows = resolveTableTemperatures(
+      this.state.rows,
+      this.catalog.entityMap,
+      this.catalog.elementMap,
+      {
+        strictPipeMatching: this.state.strictPipeMatching,
+        netInputTemps: this.state.netInputTemps,
+      }
     );
+
     const net = calculateSystemNet(evaluatedRows, {
       strictPipeMatching: this.state.strictPipeMatching,
+      elementMap: this.catalog.elementMap,
+      netInputTemps: this.state.netInputTemps,
     });
 
     tbody.innerHTML = evaluatedRows
@@ -277,16 +323,31 @@ class OniApp {
 
     const tfoot = document.getElementById("calc-table-foot");
     if (tfoot) {
-      tfoot.innerHTML = renderNetSummaryRowHtml(net, this.catalog.elementMap, this.state.rateMode);
+      tfoot.innerHTML = renderNetSummaryRowHtml(
+        net,
+        this.catalog.elementMap,
+        this.state.rateMode,
+        this.state.netInputTemps,
+        this.state.strictPipeMatching
+      );
     }
   }
 
   renderQuickUpdate() {
-    const evaluatedRows = this.state.rows.map((r) =>
-      evaluateRow(r, this.catalog.entityMap, this.catalog.elementMap)
+    const evaluatedRows = resolveTableTemperatures(
+      this.state.rows,
+      this.catalog.entityMap,
+      this.catalog.elementMap,
+      {
+        strictPipeMatching: this.state.strictPipeMatching,
+        netInputTemps: this.state.netInputTemps,
+      }
     );
+
     const net = calculateSystemNet(evaluatedRows, {
       strictPipeMatching: this.state.strictPipeMatching,
+      elementMap: this.catalog.elementMap,
+      netInputTemps: this.state.netInputTemps,
     });
 
     const rows = document.querySelectorAll(".calc-row");
@@ -305,7 +366,27 @@ class OniApp {
 
     const tfoot = document.getElementById("calc-table-foot");
     if (tfoot) {
-      tfoot.innerHTML = renderNetSummaryRowHtml(net, this.catalog.elementMap, this.state.rateMode);
+      const activeEl = document.activeElement;
+      const isNetInput = activeEl?.classList?.contains("net-temp-input");
+      const focusedKey = isNetInput ? activeEl.dataset.key : null;
+      const selStart = isNetInput ? activeEl.selectionStart : null;
+      const selEnd = isNetInput ? activeEl.selectionEnd : null;
+
+      tfoot.innerHTML = renderNetSummaryRowHtml(
+        net,
+        this.catalog.elementMap,
+        this.state.rateMode,
+        this.state.netInputTemps,
+        this.state.strictPipeMatching
+      );
+
+      if (focusedKey) {
+        const el = tfoot.querySelector(`.net-temp-input[data-key="${CSS.escape(focusedKey)}"]`);
+        if (el) {
+          el.focus();
+          if (selStart !== null && selEnd !== null) el.setSelectionRange(selStart, selEnd);
+        }
+      }
     }
   }
 }

@@ -9,18 +9,18 @@ import json
 import re
 import urllib.parse
 from typing import Dict, Any, List, Optional
+from src.calculator import get_default_element_temp, format_number
 
 
 def encode_row(row: Dict[str, Any]) -> str:
     """
     Encode a single table row into a compact string token.
-    Format: entityId[:recipeId][*qty][@inputTemp][+mod1,mod2]
+    Format: entityId[:recipeId][*qty][+mod1,mod2]
     """
     entity_id = row.get("entityId") or row.get("entity_id") or ""
     qty = row.get("qty", 1)
     recipe_id = row.get("recipeId") or row.get("recipe_id")
     modifiers = row.get("modifiers") or []
-    input_temp = row.get("inputTemp") or row.get("input_temp")
 
     token = entity_id
     if recipe_id:
@@ -36,13 +36,6 @@ def encode_row(row: Dict[str, Any]) -> str:
     except (ValueError, TypeError):
         pass
 
-    if input_temp is not None:
-        try:
-            t = float(input_temp)
-            token += f"@{int(t) if t == int(t) else t}"
-        except (ValueError, TypeError):
-            pass
-
     if modifiers:
         token += f"+{','.join(modifiers)}"
 
@@ -50,7 +43,10 @@ def encode_row(row: Dict[str, Any]) -> str:
 
 
 def decode_row(token: str) -> Optional[Dict[str, Any]]:
-    """Decode a compact string token into a table row dict."""
+    """
+    Decode a compact string token into a table row dict.
+    Maintains backward compatibility with legacy @inputTemp tokens.
+    """
     if not token:
         return None
 
@@ -67,7 +63,7 @@ def decode_row(token: str) -> Optional[Dict[str, Any]]:
         modifiers = [m for m in mod_str.split(",") if m]
         s = s[:plus_idx]
 
-    # Extract @inputTemp
+    # Extract legacy @inputTemp for backward compatibility
     at_match = re.search(r"@(-?[0-9]+(?:\.[0-9]+)?)", s)
     if at_match:
         try:
@@ -108,7 +104,7 @@ def decode_row(token: str) -> Optional[Dict[str, Any]]:
     return res
 
 
-def encode_state_to_param(state: Dict[str, Any]) -> str:
+def encode_state_to_param(state: Dict[str, Any], element_map: Optional[Dict[str, Any]] = None) -> str:
     """Serialize state object to compact string parameter."""
     if not state:
         return ""
@@ -128,13 +124,41 @@ def encode_state_to_param(state: Dict[str, Any]) -> str:
     if rows:
         parts.append(f"r:{'~'.join(rows)}")
 
+    net_temps = state.get("netInputTemps") or state.get("net_input_temps")
+    if net_temps and isinstance(net_temps, dict):
+        temp_tokens = []
+        seen_keys = set()
+        for raw_key, val in net_temps.items():
+            if val is None:
+                continue
+            try:
+                num_val = float(val)
+            except (ValueError, TypeError):
+                continue
+
+            res = raw_key
+            if "||" in raw_key:
+                res = raw_key.split("||")[0]
+            elif "|" in raw_key:
+                res = raw_key.split("|")[0]
+
+            def_temp = get_default_element_temp(res, element_map)
+            if abs(num_val - def_temp) > 1e-4:
+                url_key = raw_key.replace("||", "|")
+                if url_key not in seen_keys:
+                    seen_keys.add(url_key)
+                    temp_tokens.append(f"{url_key}={format_number(num_val)}")
+
+        if temp_tokens:
+            parts.append(f"t:{'~'.join(temp_tokens)}")
+
     return "_".join(parts)
 
 
 def decode_state_from_param(param_str: str) -> Dict[str, Any]:
     """Deserialize compact string parameter into state object."""
     if not param_str:
-        return {"rateMode": "s", "unit": "s", "strictPipeMatching": True, "rows": []}
+        return {"rateMode": "s", "unit": "s", "strictPipeMatching": True, "rows": [], "netInputTemps": {}}
 
     clean_str = urllib.parse.unquote(param_str.strip())
     if clean_str.startswith("?s="):
@@ -152,20 +176,23 @@ def decode_state_from_param(param_str: str) -> Dict[str, Any]:
             json_str = base64.b64decode(b64_data).decode("utf-8")
             parsed = json.loads(json_str)
             rm = "c" if (parsed.get("rateMode") or parsed.get("unit")) == "c" else "s"
+            net_temps = parsed.get("netInputTemps", parsed.get("net_input_temps", {}))
             return {
                 "rateMode": rm,
                 "unit": rm,
                 "strictPipeMatching": parsed.get("strictPipeMatching") is not False,
                 "rows": parsed.get("rows", []) if isinstance(parsed.get("rows"), list) else [],
+                "netInputTemps": net_temps if isinstance(net_temps, dict) else {},
             }
         except Exception:
-            return {"rateMode": "s", "unit": "s", "strictPipeMatching": True, "rows": []}
+            return {"rateMode": "s", "unit": "s", "strictPipeMatching": True, "rows": [], "netInputTemps": {}}
 
     rate_mode = "s"
     strict_pipe = True
     rows: List[Dict[str, Any]] = []
+    net_input_temps: Dict[str, float] = {}
 
-    sections = re.split(r"_(?=[upr]:)", clean_str)
+    sections = re.split(r"_(?=[uprt]:)", clean_str)
     for sec in sections:
         if sec.startswith("u:"):
             rate_mode = "c" if sec[2:] == "c" else "s"
@@ -177,19 +204,34 @@ def decode_state_from_param(param_str: str) -> Dict[str, Any]:
                 decoded = decode_row(rt)
                 if decoded:
                     rows.append(decoded)
+        elif sec.startswith("t:"):
+            tokens = [t for t in re.split(r"[~,]", sec[2:]) if t]
+            for tok in tokens:
+                if "=" in tok:
+                    k, v_str = tok.split("=", 1)
+                    try:
+                        v = float(v_str)
+                        net_input_temps[k] = v
+                        if "|" in k and "||" not in k:
+                            net_input_temps[k.replace("|", "||")] = v
+                    except ValueError:
+                        pass
 
     return {
         "rateMode": rate_mode,
         "unit": rate_mode,
         "strictPipeMatching": strict_pipe,
         "rows": rows,
+        "netInputTemps": net_input_temps,
     }
 
 
 # Backwards compatibility aliases
 serialize_state = encode_state_to_param
 deserialize_state = decode_state_from_param
-encode_state_to_url_param = lambda state: f"?s={urllib.parse.quote(encode_state_to_param(state))}" if encode_state_to_param(state) else ""
+encode_state_to_url_param = lambda state, element_map=None: (
+    f"?s={urllib.parse.quote(encode_state_to_param(state, element_map))}" if encode_state_to_param(state, element_map) else ""
+)
 def decode_state_from_url(url: str) -> Optional[Dict[str, Any]]:
     if not url:
         return None

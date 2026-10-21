@@ -2,7 +2,7 @@
  * Component for rendering the bottom NET resource summary row.
  */
 
-import { formatNumber, formatStreamLine } from "../calculator.js";
+import { formatNumber, formatStreamLine, getDefaultElementTemp, getNetInputTemp } from "../calculator.js";
 import { renderIcon } from "./table_row.js";
 
 /**
@@ -11,9 +11,11 @@ import { renderIcon } from "./table_row.js";
  * @param {Object} net - Net calculation result { netPower, netHeat, netBuildingHeat, netShcHeat, netInputs, netOutputs }
  * @param {Map<string, Object>} elementMap - Map of elements and synthetic resources
  * @param {string} rateMode - "s" or "c"
+ * @param {Object} netInputTemps - User configured net input temperatures
+ * @param {boolean} strictPipeMatching - Whether strict pipe state matching is active
  * @returns {string} HTML string for <tr class="net-summary-row">
  */
-export function renderNetSummaryRowHtml(net, elementMap, rateMode) {
+export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps = {}, strictPipeMatching = true) {
   const powerIcon = elementMap?.get("Power")?.icon;
   const heatIcon = elementMap?.get("Heat")?.icon;
 
@@ -29,10 +31,30 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode) {
   }
   for (const stream of net.netInputs) {
     const elem = elementMap?.get(stream.resource);
+    const key = strictPipeMatching ? `${stream.resource}||${stream.state || "free"}` : stream.resource;
+    const defaultT = getDefaultElementTemp(stream.resource, elementMap);
+    const currentTemp = stream.tempC !== undefined
+      ? stream.tempC
+      : getNetInputTemp(stream.resource, stream.state, netInputTemps, defaultT, strictPipeMatching);
+
     inputLines.push(`
       <div class="stream-line net-stream">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
         <span class="stream-text">${formatStreamLine(stream, false, rateMode)}</span>
+        <span class="net-temp-wrapper">
+          <span class="net-temp-at">@</span>
+          <input
+            type="number"
+            class="net-temp-input"
+            data-resource="${stream.resource}"
+            data-state="${stream.state || 'free'}"
+            data-key="${key}"
+            value="${formatNumber(currentTemp)}"
+            step="any"
+            aria-label="Input temperature for ${stream.resource}"
+          />
+          <span class="net-temp-unit">°C</span>
+        </span>
       </div>
     `);
   }

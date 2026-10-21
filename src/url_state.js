@@ -10,15 +10,17 @@
  *     entityId: string,
  *     qty: number,
  *     recipeId?: string | null,
- *     modifiers?: string[],
- *     inputTemp?: number | null
- *   }>
+ *     modifiers?: string[]
+ *   }>,
+ *   netInputTemps?: { [key: string]: number }
  * }
  */
 
+import { formatNumber, getDefaultElementTemp } from "./calculator.js";
+
 /**
  * Encode a single table row into a compact string token.
- * Format: entityId[:recipeId][*qty][@inputTemp][+mod1,mod2]
+ * Format: entityId[:recipeId][*qty][+mod1,mod2]
  */
 export function encodeRow(row) {
   if (!row || !row.entityId) return "";
@@ -33,10 +35,6 @@ export function encodeRow(row) {
     token += `*${qty}`;
   }
 
-  if (row.inputTemp !== undefined && row.inputTemp !== null && !isNaN(Number(row.inputTemp))) {
-    token += `@${Number(row.inputTemp)}`;
-  }
-
   if (Array.isArray(row.modifiers) && row.modifiers.length > 0) {
     token += `+${row.modifiers.join(",")}`;
   }
@@ -48,6 +46,7 @@ export function encodeRow(row) {
  * Decode a compact string token into a table row object.
  * Robustly parses tokens in any order:
  * e.g. "electrolyzer", "water_pump:water", "duplicant*8+divers_lungs", "gas_pump:hydrogen*0.224"
+ * Maintains backward compatibility with legacy @inputTemp tokens.
  */
 export function decodeRow(token) {
   if (!token) return null;
@@ -66,7 +65,7 @@ export function decodeRow(token) {
     str = str.slice(0, plusIdx);
   }
 
-  // Extract @inputTemp
+  // Extract legacy @inputTemp for backward compatibility
   const atMatch = str.match(/@(-?[0-9]+(?:\.[0-9]+)?)/);
   if (atMatch) {
     inputTemp = parseFloat(atMatch[1]);
@@ -90,23 +89,27 @@ export function decodeRow(token) {
   const entityId = str.trim();
   if (!entityId) return null;
 
-  return {
+  const result = {
     entityId,
     qty,
     recipeId: recipeId || null,
     modifiers,
-    inputTemp,
   };
+  if (inputTemp !== null) {
+    result.inputTemp = inputTemp;
+  }
+  return result;
 }
 
 /**
  * Encode state into a compact parameter string:
- * e.g. "u:s_r:electrolyzer~gas_pump:hydrogen*0.224~water_pump:water*0.1"
+ * e.g. "u:s_r:electrolyzer~gas_pump:hydrogen*0.224~water_pump:water*0.1_t:Water|free=95"
  *
  * @param {Object} state
+ * @param {Map<string, Object>|Object|null} elementMap
  * @returns {string}
  */
-export function encodeStateToParam(state) {
+export function encodeStateToParam(state, elementMap = null) {
   if (!state) return "";
   const rateMode = (state.rateMode || state.unit) === "c" ? "c" : "s";
   const rows = (state.rows || []).map(encodeRow).filter(Boolean);
@@ -122,6 +125,34 @@ export function encodeStateToParam(state) {
     parts.push(`r:${rows.join("~")}`);
   }
 
+  if (state.netInputTemps && typeof state.netInputTemps === "object") {
+    const tempTokens = [];
+    const seenKeys = new Set();
+    for (const [rawKey, val] of Object.entries(state.netInputTemps)) {
+      if (val === null || val === undefined || isNaN(Number(val))) continue;
+      const numVal = Number(val);
+
+      let res = rawKey;
+      if (rawKey.includes("||")) {
+        res = rawKey.split("||")[0];
+      } else if (rawKey.includes("|")) {
+        res = rawKey.split("|")[0];
+      }
+
+      const defTemp = getDefaultElementTemp(res, elementMap);
+      if (Math.abs(numVal - defTemp) > 1e-4) {
+        const urlKey = rawKey.replace("||", "|");
+        if (!seenKeys.has(urlKey)) {
+          seenKeys.add(urlKey);
+          tempTokens.push(`${urlKey}=${formatNumber(numVal)}`);
+        }
+      }
+    }
+    if (tempTokens.length > 0) {
+      parts.push(`t:${tempTokens.join("~")}`);
+    }
+  }
+
   return parts.join("_");
 }
 
@@ -135,7 +166,7 @@ export function encodeStateToParam(state) {
  */
 export function decodeStateFromParam(paramStr) {
   if (!paramStr || typeof paramStr !== "string") {
-    return { rateMode: "s", strictPipeMatching: true, rows: [] };
+    return { rateMode: "s", strictPipeMatching: true, rows: [], netInputTemps: {} };
   }
 
   let cleanStr = decodeURIComponent(paramStr.trim());
@@ -154,17 +185,19 @@ export function decodeStateFromParam(paramStr) {
         rateMode: (parsed.rateMode || parsed.unit) === "c" ? "c" : "s",
         strictPipeMatching: parsed.strictPipeMatching !== false,
         rows: Array.isArray(parsed.rows) ? parsed.rows : [],
+        netInputTemps: parsed.netInputTemps && typeof parsed.netInputTemps === "object" ? parsed.netInputTemps : {},
       };
     } catch {
-      return { rateMode: "s", strictPipeMatching: true, rows: [] };
+      return { rateMode: "s", strictPipeMatching: true, rows: [], netInputTemps: {} };
     }
   }
 
   let rateMode = "s";
   let strictPipeMatching = true;
   let rows = [];
+  let netInputTemps = {};
 
-  const sections = cleanStr.split(/_(?=[upr]:)/);
+  const sections = cleanStr.split(/_(?=[uprt]:)/);
   for (const sec of sections) {
     if (sec.startsWith("u:")) {
       rateMode = sec.slice(2) === "c" ? "c" : "s";
@@ -173,6 +206,21 @@ export function decodeStateFromParam(paramStr) {
     } else if (sec.startsWith("r:")) {
       const rowTokens = sec.slice(2).split("~").filter(Boolean);
       rows = rowTokens.map(decodeRow).filter(Boolean);
+    } else if (sec.startsWith("t:")) {
+      const tokens = sec.slice(2).split(/[~,]/).filter(Boolean);
+      for (const tok of tokens) {
+        const eqIdx = tok.indexOf("=");
+        if (eqIdx !== -1) {
+          const k = tok.slice(0, eqIdx);
+          const v = parseFloat(tok.slice(eqIdx + 1));
+          if (!isNaN(v)) {
+            netInputTemps[k] = v;
+            if (k.includes("|") && !k.includes("||")) {
+              netInputTemps[k.replace("|", "||")] = v;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -181,6 +229,7 @@ export function decodeStateFromParam(paramStr) {
     unit: rateMode,
     strictPipeMatching,
     rows,
+    netInputTemps,
   };
 }
 
@@ -188,10 +237,11 @@ export function decodeStateFromParam(paramStr) {
  * Synchronize state to the browser address bar with window.history.replaceState.
  *
  * @param {Object} state
+ * @param {Map<string, Object>|Object|null} elementMap
  */
-export function syncStateToUrl(state) {
+export function syncStateToUrl(state, elementMap = null) {
   if (typeof window === "undefined" || !window.history || !window.location) return;
-  const param = encodeStateToParam(state);
+  const param = encodeStateToParam(state, elementMap);
   const newUrl = param
     ? `${window.location.pathname}?s=${encodeURIComponent(param)}`
     : window.location.pathname;
@@ -214,8 +264,8 @@ export function loadStateFromUrl() {
 // Aliases for backwards compatibility
 export const serializeState = encodeStateToParam;
 export const deserializeState = decodeStateFromParam;
-export const encodeStateToUrlParam = (state) => {
-  const p = encodeStateToParam(state);
+export const encodeStateToUrlParam = (state, elementMap = null) => {
+  const p = encodeStateToParam(state, elementMap);
   return p ? `?s=${encodeURIComponent(p)}` : "";
 };
 export const decodeStateFromUrl = (searchStr) => {

@@ -119,6 +119,48 @@ class TestUrlStateSerialization(unittest.TestCase):
         decoded = decode_state_from_param("")
         self.assertEqual(decoded["rows"], [])
 
+    def test_url_net_input_temps_roundtrip(self):
+        state = {
+            "rateMode": "s",
+            "strictPipeMatching": True,
+            "rows": [{"entityId": "electrolyzer", "qty": 1}],
+            "netInputTemps": {"Water||free": 95.0, "Oxygen||free": 30.0},
+        }
+        param = encode_state_to_param(state)
+        self.assertIn("t:", param)
+        self.assertIn("Water|free=95", param)
+        self.assertIn("Oxygen|free=30", param)
+
+        decoded = decode_state_from_param(param)
+        self.assertIn("Water||free", decoded["netInputTemps"])
+        self.assertEqual(decoded["netInputTemps"]["Water||free"], 95.0)
+        self.assertEqual(decoded["netInputTemps"]["Oxygen||free"], 30.0)
+
+    def test_url_net_input_temps_default_skipped(self):
+        # 20 °C is default for Water, so should not be serialized
+        state = {
+            "rateMode": "s",
+            "strictPipeMatching": True,
+            "rows": [{"entityId": "electrolyzer", "qty": 1}],
+            "netInputTemps": {"Water||free": 20.0},
+        }
+        param = encode_state_to_param(state)
+        self.assertNotIn("t:", param)
+
+    def test_url_legacy_feed_temp_backward_compat(self):
+        token = "petroleum_generator:ethanol*2@25+mod_a,mod_b"
+        decoded = decode_row(token)
+        self.assertEqual(decoded["entityId"], "petroleum_generator")
+        self.assertEqual(decoded["recipeId"], "ethanol")
+        self.assertEqual(decoded["qty"], 2)
+        self.assertEqual(decoded["inputTemp"], 25.0)
+        self.assertEqual(decoded["modifiers"], ["mod_a", "mod_b"])
+
+        # Re-encoding must NOT include @25
+        re_encoded = encode_row(decoded)
+        self.assertEqual(re_encoded, "petroleum_generator:ethanol*2+mod_a,mod_b")
+        self.assertNotIn("@", re_encoded)
+
 
 if __name__ == "__main__":
     unittest.main()
