@@ -1,0 +1,170 @@
+/**
+ * Data loader and entity catalog index for ONI Resource Calculator.
+ * Merges buildings, plants, critters, duplicants, and geysers into a unified catalog
+ * and provides fast typeahead autocomplete search with category filtering.
+ */
+
+import { ONI_DATASET } from "./dataset.js";
+
+/**
+ * Standard fallback icons for non-element resources (Heat, Power, Food).
+ */
+export const SYNTHETIC_ELEMENTS = {
+  Power: {
+    name: "Power",
+    icon: "images/icons/Power.png",
+    state: "Power",
+  },
+  Heat: {
+    name: "Heat",
+    icon: "images/icons/Heat.png",
+    state: "Thermal Energy",
+  },
+  Calories: {
+    name: "Calories",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+};
+
+/**
+ * Build a unified entity catalog and lookup maps.
+ *
+ * @param {Object} dataset - The raw ONI_DATASET object
+ * @returns {{ entities: Array, entityMap: Map<string, Object>, elementMap: Map<string, Object> }}
+ */
+export function buildEntityCatalog(dataset = ONI_DATASET) {
+  const entities = [];
+  const entityMap = new Map();
+  const elementMap = new Map();
+
+  // Populate synthetic elements first
+  for (const [name, info] of Object.entries(SYNTHETIC_ELEMENTS)) {
+    elementMap.set(name, info);
+  }
+
+  // Populate elements from dataset
+  if (dataset.elements) {
+    if (Array.isArray(dataset.elements)) {
+      for (const elem of dataset.elements) {
+        if (elem && elem.name) {
+          elementMap.set(elem.name, elem);
+        }
+      }
+    } else if (typeof dataset.elements === "object") {
+      for (const [name, elem] of Object.entries(dataset.elements)) {
+        if (elem) {
+          elementMap.set(name, elem);
+        }
+      }
+    }
+  }
+
+  // Merge all entity collections
+  const categories = ["buildings", "plants", "critters", "duplicants", "geysers"];
+  for (const catKey of categories) {
+    const list = dataset[catKey];
+    if (Array.isArray(list)) {
+      for (const item of list) {
+        if (!item || !item.id) continue;
+        entities.push(item);
+        entityMap.set(item.id, item);
+      }
+    }
+  }
+
+  return {
+    entities,
+    entityMap,
+    elementMap,
+  };
+}
+
+/**
+ * Fast typeahead search with scoring and category filter.
+ *
+ * @param {Array} entities - Unified entity list
+ * @param {string} query - Search string
+ * @param {string} categoryFilter - "All" or a specific category ("Machine", "Plant", "Critter", "Duplicant", "Geyser")
+ * @returns {Array} Filtered and ranked entities
+ */
+export function searchEntities(entities, query = "", categoryFilter = "All") {
+  if (!Array.isArray(entities)) return [];
+
+  // Filter by category
+  let pool = entities;
+  if (categoryFilter && categoryFilter.toLowerCase() !== "all") {
+    const filterLower = categoryFilter.toLowerCase();
+    pool = pool.filter(
+      (e) => e.category && e.category.toLowerCase() === filterLower
+    );
+  }
+
+  const q = (query || "").trim().toLowerCase();
+  if (!q) {
+    // Return all in current category
+    return pool;
+  }
+
+  const scored = [];
+
+  for (const entity of pool) {
+    const name = (entity.name || "").toLowerCase();
+    const id = (entity.id || "").toLowerCase();
+    const sub = (entity.subcategory || "").toLowerCase();
+
+    let score = 0;
+
+    if (name === q) {
+      score = 100;
+    } else if (name.startsWith(q)) {
+      score = 80;
+    } else if (name.includes(q)) {
+      score = 60;
+    } else if (id.startsWith(q)) {
+      score = 50;
+    } else if (id.includes(q)) {
+      score = 40;
+    } else if (sub.includes(q)) {
+      score = 30;
+    }
+
+    // Match input / output resource names
+    if (score === 0) {
+      const inputs = entity.inputs || [];
+      const outputs = entity.outputs || [];
+      const recipes = entity.recipes || [];
+
+      for (const inp of inputs) {
+        if ((inp.resource || "").toLowerCase().includes(q)) {
+          score = Math.max(score, 25);
+          break;
+        }
+      }
+      for (const out of outputs) {
+        if ((out.resource || "").toLowerCase().includes(q)) {
+          score = Math.max(score, 25);
+          break;
+        }
+      }
+      for (const r of recipes) {
+        if ((r.name || "").toLowerCase().includes(q) || (r.id || "").toLowerCase().includes(q)) {
+          score = Math.max(score, 20);
+          break;
+        }
+      }
+    }
+
+    if (score > 0) {
+      scored.push({ entity, score });
+    }
+  }
+
+  // Sort by score descending, then alphabetically by name
+  scored.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return a.entity.name.localeCompare(b.entity.name);
+  });
+
+  return scored.map((s) => s.entity);
+}
