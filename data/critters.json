@@ -1,0 +1,1509 @@
+[
+  {
+    "id": "critter_hatch",
+    "name": "Hatch",
+    "category": "Critter",
+    "subcategory": "Hatch",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Hatch",
+    "icon": "images/icons/Hatch.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Sandstone",
+        "rate": 233.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Coal",
+        "rate": 116.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.8889,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "sandstone",
+        "name": "Sandstone (140 kg/cycle -> 70 kg/cycle Coal)",
+        "inputs": [
+          {
+            "resource": "Sandstone",
+            "rate": 233.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Coal",
+            "rate": 116.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Calories",
+            "rate": 0.8889,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      },
+      {
+        "id": "sedimentary_rock",
+        "name": "Sedimentary Rock (140 kg/cycle -> 70 kg/cycle Coal)",
+        "inputs": [
+          {
+            "resource": "Sedimentary Rock",
+            "rate": 233.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Coal",
+            "rate": 116.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Calories",
+            "rate": 0.8889,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      },
+      {
+        "id": "sand",
+        "name": "Sand (140 kg/cycle -> 70 kg/cycle Coal)",
+        "inputs": [
+          {
+            "resource": "Sand",
+            "rate": 233.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Coal",
+            "rate": 116.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Calories",
+            "rate": 0.8889,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Hatch.png?e0fab3"
+  },
+  {
+    "id": "critter_stone_hatch",
+    "name": "Stone Hatch",
+    "category": "Critter",
+    "subcategory": "Hatch",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Hatch",
+    "icon": "images/icons/Stone_Hatch.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Igneous Rock",
+        "rate": 233.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Coal",
+        "rate": 116.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.8889,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "igneous_rock",
+        "name": "Igneous Rock (140 kg/cycle -> 70 kg/cycle Coal)",
+        "inputs": [
+          {
+            "resource": "Igneous Rock",
+            "rate": 233.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Coal",
+            "rate": 116.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Calories",
+            "rate": 0.8889,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      },
+      {
+        "id": "granite",
+        "name": "Granite (140 kg/cycle -> 70 kg/cycle Coal)",
+        "inputs": [
+          {
+            "resource": "Granite",
+            "rate": 233.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Coal",
+            "rate": 116.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Calories",
+            "rate": 0.8889,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Stone_Hatch.png?a56bcf"
+  },
+  {
+    "id": "critter_sage_hatch",
+    "name": "Sage Hatch",
+    "category": "Critter",
+    "subcategory": "Hatch",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Hatch",
+    "icon": "images/icons/Sage_Hatch.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Dirt",
+        "rate": 233.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Coal",
+        "rate": 233.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.8889,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "dirt",
+        "name": "Dirt (140 kg/cycle -> 140 kg/cycle Coal)",
+        "inputs": [
+          {
+            "resource": "Dirt",
+            "rate": 233.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Coal",
+            "rate": 233.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Calories",
+            "rate": 0.8889,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      },
+      {
+        "id": "polluted_dirt",
+        "name": "Polluted Dirt (140 kg/cycle -> 140 kg/cycle Coal)",
+        "inputs": [
+          {
+            "resource": "Polluted Dirt",
+            "rate": 233.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Coal",
+            "rate": 233.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Calories",
+            "rate": 0.8889,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Sage_Hatch.png?783040"
+  },
+  {
+    "id": "critter_smooth_hatch",
+    "name": "Smooth Hatch",
+    "category": "Critter",
+    "subcategory": "Hatch",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Hatch",
+    "icon": "images/icons/Smooth_Hatch.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Iron Ore",
+        "rate": 166.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Iron",
+        "rate": 125.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.8889,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "iron_ore",
+        "name": "Iron Ore (100 kg/cycle -> 75 kg/cycle Iron)",
+        "inputs": [
+          {
+            "resource": "Iron Ore",
+            "rate": 166.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Iron",
+            "rate": 125.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Calories",
+            "rate": 0.8889,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      },
+      {
+        "id": "copper_ore",
+        "name": "Copper Ore (100 kg/cycle -> 75 kg/cycle Copper)",
+        "inputs": [
+          {
+            "resource": "Copper Ore",
+            "rate": 166.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Copper",
+            "rate": 125.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Calories",
+            "rate": 0.8889,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Smooth_Hatch.png?9336fa"
+  },
+  {
+    "id": "critter_drecko",
+    "name": "Drecko",
+    "category": "Critter",
+    "subcategory": "Drecko",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Drecko",
+    "icon": "images/icons/Drecko.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Phosphorite",
+        "rate": 16.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Reed Fiber",
+        "rate": 0.4167,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "balm_lily",
+        "name": "Balm Lily (0.25 plant -> 10 kg/cycle Phosphorite + Reed Fiber)",
+        "inputs": [],
+        "outputs": [
+          {
+            "resource": "Phosphorite",
+            "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Reed Fiber",
+            "rate": 0.4167,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      },
+      {
+        "id": "mealwood",
+        "name": "Mealwood (0.75 plant -> 10 kg/cycle Phosphorite + Reed Fiber)",
+        "inputs": [
+          {
+            "resource": "Dirt",
+            "rate": 12.5,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Phosphorite",
+            "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Reed Fiber",
+            "rate": 0.4167,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Drecko.png?27d44c"
+  },
+  {
+    "id": "critter_glossy_drecko",
+    "name": "Glossy Drecko",
+    "category": "Critter",
+    "subcategory": "Drecko",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Drecko",
+    "icon": "images/icons/Glossy_Drecko.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Dirt",
+        "rate": 16.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Phosphorite",
+        "rate": 15.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Plastic",
+        "rate": 83.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "mealwood_plastic",
+        "name": "Mealwood -> 9 kg/cycle Phosphorite + 50 kg/cycle Plastic (in H2)",
+        "inputs": [
+          {
+            "resource": "Dirt",
+            "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Phosphorite",
+            "rate": 15.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Plastic",
+            "rate": 83.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Glossy_Drecko.png?43a5ce"
+  },
+  {
+    "id": "critter_pacu",
+    "name": "Pacu",
+    "category": "Critter",
+    "subcategory": "Pacu",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Pacu",
+    "icon": "images/icons/Pacu.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Seeds",
+        "rate": 1.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Polluted Dirt",
+        "rate": 0.8333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.4444,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "seeds",
+        "name": "Seeds (1 kg/cycle -> 0.5 kg/cycle Polluted Dirt)",
+        "inputs": [
+          {
+            "resource": "Seeds",
+            "rate": 1.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Polluted Dirt",
+            "rate": 0.8333,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Calories",
+            "rate": 0.4444,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      },
+      {
+        "id": "algae",
+        "name": "Algae (7.5 kg/cycle -> 3.75 kg/cycle Polluted Dirt)",
+        "inputs": [
+          {
+            "resource": "Algae",
+            "rate": 12.5,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Polluted Dirt",
+            "rate": 6.25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Calories",
+            "rate": 0.4444,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Pacu.png?ef88d7"
+  },
+  {
+    "id": "critter_slickster",
+    "name": "Slickster",
+    "category": "Critter",
+    "subcategory": "Slickster",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Slickster",
+    "icon": "images/icons/Slickster.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Carbon Dioxide",
+        "rate": 33.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Crude Oil",
+        "rate": 16.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "co2_oil",
+        "name": "Carbon Dioxide (20 kg/cycle -> 10 kg/cycle Crude Oil)",
+        "inputs": [
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 33.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Crude Oil",
+            "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Slickster.png?380851"
+  },
+  {
+    "id": "critter_molten_slickster",
+    "name": "Molten Slickster",
+    "category": "Critter",
+    "subcategory": "Slickster",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Slickster",
+    "icon": "images/icons/Molten_Slickster.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Carbon Dioxide",
+        "rate": 33.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Petroleum",
+        "rate": 16.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "co2_petroleum",
+        "name": "Carbon Dioxide (20 kg/cycle -> 10 kg/cycle Petroleum)",
+        "inputs": [
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 33.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Petroleum",
+            "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Molten_Slickster.png?ddd5a5"
+  },
+  {
+    "id": "critter_puft",
+    "name": "Puft",
+    "category": "Critter",
+    "subcategory": "Puft",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Puft",
+    "icon": "images/icons/Puft.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Polluted Oxygen",
+        "rate": 83.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Slime",
+        "rate": 79.17,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "po2_slime",
+        "name": "Polluted Oxygen (50 kg/cycle -> 47.5 kg/cycle Slime)",
+        "inputs": [
+          {
+            "resource": "Polluted Oxygen",
+            "rate": 83.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Slime",
+            "rate": 79.17,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Puft.png?933d49"
+  },
+  {
+    "id": "critter_dense_puft",
+    "name": "Dense Puft",
+    "category": "Critter",
+    "subcategory": "Puft",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Puft",
+    "icon": "images/icons/Dense_Puft.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Oxygen",
+        "rate": 83.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Oxylite",
+        "rate": 79.17,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "o2_oxylite",
+        "name": "Oxygen (50 kg/cycle -> 47.5 kg/cycle Oxylite)",
+        "inputs": [
+          {
+            "resource": "Oxygen",
+            "rate": 83.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Oxylite",
+            "rate": 79.17,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Dense_Puft.png?8b5c84"
+  },
+  {
+    "id": "critter_squeaky_puft",
+    "name": "Squeaky Puft",
+    "category": "Critter",
+    "subcategory": "Puft",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Puft",
+    "icon": "images/icons/Squeaky_Puft.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Chlorine",
+        "rate": 50.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Bleach Stone",
+        "rate": 47.5,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "chlorine_bleachstone",
+        "name": "Chlorine (30 kg/cycle -> 28.5 kg/cycle Bleach Stone)",
+        "inputs": [
+          {
+            "resource": "Chlorine",
+            "rate": 50.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Bleach Stone",
+            "rate": 47.5,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Squeaky_Puft.png?ad14bf"
+  },
+  {
+    "id": "critter_pip",
+    "name": "Pip",
+    "category": "Critter",
+    "subcategory": "Pip",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Pip",
+    "icon": "images/icons/Pip.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Wood",
+        "rate": 58.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Dirt",
+        "rate": 33.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "arbor_tree",
+        "name": "Arbor Tree Branch -> 20 kg/cycle Dirt",
+        "inputs": [
+          {
+            "resource": "Wood",
+            "rate": 58.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 33.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Pip.png?89e01f"
+  },
+  {
+    "id": "critter_pokeshell",
+    "name": "Pokeshell",
+    "category": "Critter",
+    "subcategory": "Pokeshell",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Pokeshell",
+    "icon": "images/icons/Pokeshell.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Polluted Dirt",
+        "rate": 116.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Sand",
+        "rate": 58.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Lime",
+        "rate": 2.78,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "polluted_dirt_sand",
+        "name": "Polluted Dirt (70 kg/cycle -> 35 kg/cycle Sand)",
+        "inputs": [
+          {
+            "resource": "Polluted Dirt",
+            "rate": 116.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Sand",
+            "rate": 58.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Lime",
+            "rate": 2.78,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Pokeshell.png?399981"
+  },
+  {
+    "id": "critter_shove_vole",
+    "name": "Shove Vole",
+    "category": "Critter",
+    "subcategory": "Shove Vole",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Shove_Vole",
+    "icon": "images/icons/Shove_Vole.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Regolith",
+        "rate": 8000.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Calories",
+        "rate": 4.4444,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "regolith",
+        "name": "Regolith (4800 kg/cycle -> 2400 kg/cycle Regolith + Meat)",
+        "inputs": [
+          {
+            "resource": "Regolith",
+            "rate": 8000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Calories",
+            "rate": 4.4444,
+            "unit": "kcal/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Shove_Vole.png?dfe9ca"
+  },
+  {
+    "id": "critter_sweetle",
+    "name": "Sweetle",
+    "category": "Critter",
+    "subcategory": "Sweetle",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sweetle",
+    "icon": "images/icons/Sweetle.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Sulfur",
+        "rate": 33.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Sucrose",
+        "rate": 16.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "sulfur_sucrose",
+        "name": "Sulfur (20 kg/cycle -> 10 kg/cycle Sucrose)",
+        "inputs": [
+          {
+            "resource": "Sulfur",
+            "rate": 33.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Sucrose",
+            "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Sweetle.png?f65e9d"
+  },
+  {
+    "id": "critter_grubgrub",
+    "name": "Grubgrub",
+    "category": "Critter",
+    "subcategory": "Grubgrub",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Grubgrub",
+    "icon": "images/icons/Grubgrub.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Sulfur",
+        "rate": 83.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Mud",
+        "rate": 83.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "sulfur_mud",
+        "name": "Sulfur (50 kg/cycle -> 50 kg/cycle Mud)",
+        "inputs": [
+          {
+            "resource": "Sulfur",
+            "rate": 83.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Mud",
+            "rate": 83.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Grubgrub.png?5d9426"
+  },
+  {
+    "id": "critter_plug_slug",
+    "name": "Plug Slug",
+    "category": "Critter",
+    "subcategory": "Plug Slug",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Plug_Slug",
+    "icon": "images/icons/Plug_Slug.png",
+    "power": 200.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Iron Ore",
+        "rate": 100.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Hydrogen",
+        "rate": 5.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "metal_ore_hydrogen",
+        "name": "Metal Ore (60 kg/cycle -> 3 kg/cycle Hydrogen + 200 W avg Power)",
+        "inputs": [
+          {
+            "resource": "Iron Ore",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Hydrogen",
+            "rate": 5.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 200.0,
+        "heat": 0.0
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild (25% Metabolism & Reproduction)",
+        "input_multiplier": 0.25,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "glum",
+        "name": "Glum (-80% Metabolism)",
+        "input_multiplier": 0.2,
+        "output_multiplier": 0.2
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Plug_Slug.png?c4b260"
+  }
+]

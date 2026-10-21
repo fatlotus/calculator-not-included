@@ -1,0 +1,1163 @@
+[
+  {
+    "name": "Oxygen",
+    "icon": "images/icons/Oxygen.png",
+    "shc": 1.005,
+    "thermal_conductivity": 0.024,
+    "high_temp": null,
+    "low_temp": 90.19,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Oxygen.png/24px-Oxygen.png?4db039"
+  },
+  {
+    "name": "Carbon Dioxide",
+    "icon": "images/icons/Carbon_Dioxide.png",
+    "shc": 0.846,
+    "thermal_conductivity": 0.0146,
+    "high_temp": null,
+    "low_temp": 225.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+  },
+  {
+    "name": "Water",
+    "icon": "images/icons/Water.png",
+    "shc": 4.179,
+    "thermal_conductivity": 0.609,
+    "high_temp": 372.5,
+    "low_temp": 272.5,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
+  },
+  {
+    "name": "Algae",
+    "icon": "images/icons/Algae.png",
+    "shc": 0.2,
+    "thermal_conductivity": 2.0,
+    "high_temp": 398.15,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Algae.png/24px-Algae.png?b63024"
+  },
+  {
+    "name": "Polluted Water",
+    "icon": "images/icons/Polluted_Water.png",
+    "shc": 4.179,
+    "thermal_conductivity": 0.58,
+    "high_temp": 392.5,
+    "low_temp": 252.5,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
+  },
+  {
+    "name": "Polluted Oxygen",
+    "icon": "images/icons/Polluted_Oxygen.png",
+    "shc": 1.01,
+    "thermal_conductivity": 0.024,
+    "high_temp": null,
+    "low_temp": 90.19,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Oxygen.png/24px-Polluted_Oxygen.png?69c186"
+  },
+  {
+    "name": "Polluted Dirt",
+    "icon": "images/icons/Polluted_Dirt.png",
+    "shc": 0.83,
+    "thermal_conductivity": 2.0,
+    "high_temp": 1986.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Dirt.png/24px-Polluted_Dirt.png?9aeb5b"
+  },
+  {
+    "name": "Oxylite",
+    "icon": "images/icons/Oxylite.png",
+    "shc": 1.0,
+    "thermal_conductivity": 4.0,
+    "high_temp": 1683.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Oxylite.png/24px-Oxylite.png?9b618a"
+  },
+  {
+    "name": "Gold",
+    "icon": "images/icons/Gold.png",
+    "shc": 0.129,
+    "thermal_conductivity": 60.0,
+    "high_temp": 1337.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gold.png/24px-Gold.png?131fa9"
+  },
+  {
+    "name": "Liquid Oxygen",
+    "icon": "images/icons/Liquid_Oxygen.png",
+    "shc": 1.01,
+    "thermal_conductivity": 2.0,
+    "high_temp": 90.19,
+    "low_temp": 54.36,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Oxygen.png/24px-Liquid_Oxygen.png?17b4c3"
+  },
+  {
+    "name": "Super Coolant",
+    "icon": "images/icons/Super_Coolant.png",
+    "shc": 8.44,
+    "thermal_conductivity": 9.46,
+    "high_temp": 710.0,
+    "low_temp": 2.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Super_Coolant.png/24px-Super_Coolant.png?767a6a"
+  },
+  {
+    "name": "Ethanol",
+    "icon": "images/icons/Ethanol.png",
+    "shc": 2.46,
+    "thermal_conductivity": 0.171,
+    "high_temp": 351.5,
+    "low_temp": 159.1,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ethanol.png/24px-Ethanol.png?4051f1"
+  },
+  {
+    "name": "Natural Gas",
+    "icon": "images/icons/Natural_Gas.png",
+    "shc": 2.191,
+    "thermal_conductivity": 0.035,
+    "high_temp": null,
+    "low_temp": 111.65,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Natural_Gas.png/24px-Natural_Gas.png?17cb55"
+  },
+  {
+    "name": "Crude Oil",
+    "icon": "images/icons/Crude_Oil.png",
+    "shc": 1.69,
+    "thermal_conductivity": 2.0,
+    "high_temp": 673.0,
+    "low_temp": 233.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Crude_Oil.png/24px-Crude_Oil.png?d7ab3a"
+  },
+  {
+    "name": "Petroleum",
+    "icon": "images/icons/Petroleum.png",
+    "shc": 1.76,
+    "thermal_conductivity": 2.0,
+    "high_temp": 812.0,
+    "low_temp": 216.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Petroleum.png/24px-Petroleum.png?a8a630"
+  },
+  {
+    "name": "Sour Gas",
+    "icon": "images/icons/Sour_Gas.png",
+    "shc": 1.898,
+    "thermal_conductivity": 0.018,
+    "high_temp": null,
+    "low_temp": 111.65,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sour_Gas.png/24px-Sour_Gas.png?681999"
+  },
+  {
+    "name": "Dirt",
+    "icon": "images/icons/Resource_Dirt.png",
+    "shc": 1.48,
+    "thermal_conductivity": 2.0,
+    "high_temp": 600.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png?1569e7"
+  },
+  {
+    "name": "Steam",
+    "icon": "images/icons/Steam.png",
+    "shc": 4.179,
+    "thermal_conductivity": 0.184,
+    "high_temp": null,
+    "low_temp": 372.5,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+  },
+  {
+    "name": "Vacuum",
+    "icon": "images/icons/Vacuum.png",
+    "shc": 0.0,
+    "thermal_conductivity": 0.0,
+    "high_temp": 0.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Vacuum.png/24px-Vacuum.png?e10cb8"
+  },
+  {
+    "name": "Gold Amalgam",
+    "icon": "images/icons/Gold_Amalgam.png",
+    "shc": 0.15,
+    "thermal_conductivity": 2.0,
+    "high_temp": 1337.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gold_Amalgam.png/24px-Gold_Amalgam.png?215d21"
+  },
+  {
+    "name": "Steel",
+    "icon": "images/icons/Steel.png",
+    "shc": 0.49,
+    "thermal_conductivity": 54.0,
+    "high_temp": 2700.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steel.png/24px-Steel.png?c944c4"
+  },
+  {
+    "name": "Liquid Naphtha",
+    "icon": "images/icons/Liquid_Naphtha.png",
+    "shc": 2.191,
+    "thermal_conductivity": 0.2,
+    "high_temp": 812.0,
+    "low_temp": 223.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Naphtha.png/24px-Liquid_Naphtha.png?9eb334"
+  },
+  {
+    "name": "Plastium",
+    "icon": "images/icons/Plastium.png",
+    "shc": 1.5,
+    "thermal_conductivity": 0.25,
+    "high_temp": 2100.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plastium.png/24px-Plastium.png?763962"
+  },
+  {
+    "name": "Salt Water",
+    "icon": "images/icons/Salt_Water.png",
+    "shc": 4.1,
+    "thermal_conductivity": 0.609,
+    "high_temp": 372.84,
+    "low_temp": 265.65,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt_Water.png/24px-Salt_Water.png?8067b5"
+  },
+  {
+    "name": "Brine",
+    "icon": "images/icons/Brine.png",
+    "shc": 3.4,
+    "thermal_conductivity": 0.609,
+    "high_temp": 375.9,
+    "low_temp": 250.65,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine.png/24px-Brine.png?925651"
+  },
+  {
+    "name": "Salt",
+    "icon": "images/icons/Salt.png",
+    "shc": 0.7,
+    "thermal_conductivity": 0.444,
+    "high_temp": 1073.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt.png/24px-Salt.png?731ebc"
+  },
+  {
+    "name": "Polluted Brine",
+    "icon": "images/icons/Polluted_Brine.png",
+    "shc": 3.6,
+    "thermal_conductivity": 0.409,
+    "high_temp": 379.9,
+    "low_temp": 247.65,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Brine.png/24px-Polluted_Brine.png?15187b"
+  },
+  {
+    "name": "Wood",
+    "icon": "images/icons/Lumber.png",
+    "shc": 2.3,
+    "thermal_conductivity": 0.22,
+    "high_temp": 873.15,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Lumber.png/24px-Lumber.png?3cce86"
+  },
+  {
+    "name": "Slime",
+    "icon": "images/icons/Slime.png",
+    "shc": 0.2,
+    "thermal_conductivity": 2.0,
+    "high_temp": 398.15,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Slime.png/24px-Slime.png?3e7fd1"
+  },
+  {
+    "name": "Phosphorite",
+    "icon": "images/icons/Phosphorite.png",
+    "shc": 0.15,
+    "thermal_conductivity": 2.0,
+    "high_temp": 517.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Phosphorite.png/24px-Phosphorite.png?801df1"
+  },
+  {
+    "name": "Galena",
+    "icon": "images/icons/Galena.png",
+    "shc": 0.21,
+    "thermal_conductivity": 2.3,
+    "high_temp": 1387.15,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Galena.png/24px-Galena.png?202ae3"
+  },
+  {
+    "name": "Lead",
+    "icon": "images/icons/Lead.png",
+    "shc": 0.128,
+    "thermal_conductivity": 35.0,
+    "high_temp": 600.65,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Lead.png/24px-Lead.png?5cc72b"
+  },
+  {
+    "name": "Sulfur",
+    "icon": "images/icons/Sulfur.png",
+    "shc": 0.7,
+    "thermal_conductivity": 0.2,
+    "high_temp": 388.35,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sulfur.png/24px-Sulfur.png?9f057b"
+  },
+  {
+    "name": "Zinc Ore",
+    "icon": "images/icons/Zinc_Ore.png",
+    "shc": 0.388,
+    "thermal_conductivity": 4.0,
+    "high_temp": 692.65,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Zinc_Ore.png/24px-Zinc_Ore.png?345327"
+  },
+  {
+    "name": "Zinc",
+    "icon": "images/icons/Zinc.png",
+    "shc": 0.388,
+    "thermal_conductivity": 120.0,
+    "high_temp": 692.65,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Zinc.png/24px-Zinc.png?df8b94"
+  },
+  {
+    "name": "Cinnabar Ore",
+    "icon": "images/icons/Cinnabar_Ore.png",
+    "shc": 0.386,
+    "thermal_conductivity": 4.5,
+    "high_temp": 856.65,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cinnabar_Ore.png/24px-Cinnabar_Ore.png?576d57"
+  },
+  {
+    "name": "Mercury",
+    "icon": "images/icons/Liquid_Mercury.png",
+    "shc": 0.14,
+    "thermal_conductivity": 8.3,
+    "high_temp": 629.9,
+    "low_temp": 234.3,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Mercury.png/24px-Liquid_Mercury.png?bfbddd"
+  },
+  {
+    "name": "Copper Ore",
+    "icon": "images/icons/Copper_Ore.png",
+    "shc": 0.386,
+    "thermal_conductivity": 4.5,
+    "high_temp": 1357.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper_Ore.png/24px-Copper_Ore.png?4cb760"
+  },
+  {
+    "name": "Copper",
+    "icon": "images/icons/Copper.png",
+    "shc": 0.385,
+    "thermal_conductivity": 60.0,
+    "high_temp": 1357.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper.png/24px-Copper.png?13f1d4"
+  },
+  {
+    "name": "Wolframite",
+    "icon": "images/icons/Wolframite.png",
+    "shc": 0.134,
+    "thermal_conductivity": 15.0,
+    "high_temp": 3200.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Wolframite.png/24px-Wolframite.png?69d9d9"
+  },
+  {
+    "name": "Tungsten",
+    "icon": "images/icons/Tungsten.png",
+    "shc": 0.134,
+    "thermal_conductivity": 60.0,
+    "high_temp": 3695.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tungsten.png/24px-Tungsten.png?5d89ee"
+  },
+  {
+    "name": "Aluminum Ore",
+    "icon": "images/icons/Aluminum_Ore.png",
+    "shc": 0.91,
+    "thermal_conductivity": 20.5,
+    "high_temp": 1357.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum_Ore.png/24px-Aluminum_Ore.png?1e9490"
+  },
+  {
+    "name": "Aluminum",
+    "icon": "images/icons/Aluminum.png",
+    "shc": 0.91,
+    "thermal_conductivity": 205.0,
+    "high_temp": 933.45,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum.png/24px-Aluminum.png?7ed80e"
+  },
+  {
+    "name": "Cobalt Ore",
+    "icon": "images/icons/Cobalt_Ore_(Spaced_Out).png",
+    "shc": 0.42,
+    "thermal_conductivity": 4.0,
+    "high_temp": 1768.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cobalt_Ore_%28Spaced_Out%29.png/24px-Cobalt_Ore_%28Spaced_Out%29.png?a94501"
+  },
+  {
+    "name": "Cobalt",
+    "icon": "images/icons/Cobalt_(Spaced_Out).png",
+    "shc": 0.42,
+    "thermal_conductivity": 100.0,
+    "high_temp": 1768.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cobalt_%28Spaced_Out%29.png/24px-Cobalt_%28Spaced_Out%29.png?e48f1e"
+  },
+  {
+    "name": "Nickel Ore",
+    "icon": "images/icons/Nickel_Ore.png",
+    "shc": 0.45,
+    "thermal_conductivity": 3.0,
+    "high_temp": 1728.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nickel_Ore.png/24px-Nickel_Ore.png?c4d2a2"
+  },
+  {
+    "name": "Nickel",
+    "icon": "images/icons/Nickel.png",
+    "shc": 0.44,
+    "thermal_conductivity": 91.0,
+    "high_temp": 1728.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nickel.png/24px-Nickel.png?c6ff23"
+  },
+  {
+    "name": "Thermium",
+    "icon": "images/icons/Thermium.png",
+    "shc": 0.622,
+    "thermal_conductivity": 220.0,
+    "high_temp": 2950.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Thermium.png/24px-Thermium.png?f0bdfe"
+  },
+  {
+    "name": "Niobium",
+    "icon": "images/icons/Niobium.png",
+    "shc": 0.265,
+    "thermal_conductivity": 54.0,
+    "high_temp": 2750.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Niobium.png/24px-Niobium.png?7c3764"
+  },
+  {
+    "name": "Pyrite",
+    "icon": "images/icons/Pyrite.png",
+    "shc": 0.386,
+    "thermal_conductivity": 4.5,
+    "high_temp": 1357.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Pyrite.png/24px-Pyrite.png?2fadc9"
+  },
+  {
+    "name": "Iron",
+    "icon": "images/icons/Iron.png",
+    "shc": 0.449,
+    "thermal_conductivity": 55.0,
+    "high_temp": 1808.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron.png/24px-Iron.png?89103b"
+  },
+  {
+    "name": "Iron Ore",
+    "icon": "images/icons/Iron_Ore.png",
+    "shc": 0.449,
+    "thermal_conductivity": 4.0,
+    "high_temp": 1808.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron_Ore.png/24px-Iron_Ore.png?9814a5"
+  },
+  {
+    "name": "Refined Carbon",
+    "icon": "images/icons/Refined_Carbon.png",
+    "shc": 1.74,
+    "thermal_conductivity": 3.1,
+    "high_temp": 4600.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Refined_Carbon.png/24px-Refined_Carbon.png?7beae2"
+  },
+  {
+    "name": "Lime",
+    "icon": "images/icons/Lime.png",
+    "shc": 0.834,
+    "thermal_conductivity": 2.0,
+    "high_temp": 1330.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Lime.png/24px-Lime.png?d20410"
+  },
+  {
+    "name": "Liquid Chlorine",
+    "icon": "images/icons/Liquid_Chlorine.png",
+    "shc": 0.48,
+    "thermal_conductivity": 0.0081,
+    "high_temp": 238.55,
+    "low_temp": 172.17,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Chlorine.png/24px-Liquid_Chlorine.png?fec2b9"
+  },
+  {
+    "name": "Liquid Carbon Dioxide",
+    "icon": "images/icons/Liquid_Carbon_Dioxide.png",
+    "shc": 0.846,
+    "thermal_conductivity": 1.46,
+    "high_temp": 225.0,
+    "low_temp": 216.6,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon_Dioxide.png/24px-Liquid_Carbon_Dioxide.png?254ea5"
+  },
+  {
+    "name": "Gunk",
+    "icon": "images/icons/Gunk.png",
+    "shc": 1.2,
+    "thermal_conductivity": 1.5,
+    "high_temp": 721.0,
+    "low_temp": 265.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gunk.png/24px-Gunk.png?6e8ae0"
+  },
+  {
+    "name": "Liquid Hydrogen",
+    "icon": "images/icons/Liquid_Hydrogen.png",
+    "shc": 2.4,
+    "thermal_conductivity": 0.1,
+    "high_temp": 21.0,
+    "low_temp": 14.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Hydrogen.png/24px-Liquid_Hydrogen.png?d70401"
+  },
+  {
+    "name": "Liquid Methane",
+    "icon": "images/icons/Liquid_Methane.png",
+    "shc": 2.191,
+    "thermal_conductivity": 0.03,
+    "high_temp": 111.65,
+    "low_temp": 90.55,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
+  },
+  {
+    "name": "Liquid Phosphorus",
+    "icon": "images/icons/Liquid_Phosphorus.png",
+    "shc": 0.7697,
+    "thermal_conductivity": 0.236,
+    "high_temp": 553.6,
+    "low_temp": 317.3,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Phosphorus.png/24px-Liquid_Phosphorus.png?267c27"
+  },
+  {
+    "name": "Liquid Sulfur",
+    "icon": "images/icons/Liquid_Sulfur.png",
+    "shc": 0.7,
+    "thermal_conductivity": 0.2,
+    "high_temp": 610.15,
+    "low_temp": 388.35,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur.png/24px-Liquid_Sulfur.png?dccb21"
+  },
+  {
+    "name": "Brackene",
+    "icon": "images/icons/Brackene.png",
+    "shc": 4.1,
+    "thermal_conductivity": 0.609,
+    "high_temp": 353.15,
+    "low_temp": 256.65,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brackene.png/24px-Brackene.png?6affd2"
+  },
+  {
+    "name": "Ovolene",
+    "icon": "images/icons/Ovolene.png",
+    "shc": 4.1,
+    "thermal_conductivity": 0.609,
+    "high_temp": 353.15,
+    "low_temp": 256.65,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ovolene.png/24px-Ovolene.png?5248e9"
+  },
+  {
+    "name": "Magma",
+    "icon": "images/icons/Magma.png",
+    "shc": 1.0,
+    "thermal_conductivity": 1.0,
+    "high_temp": 2630.0,
+    "low_temp": 1683.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+  },
+  {
+    "name": "Molten Aluminum",
+    "icon": "images/icons/Molten_Aluminum.png",
+    "shc": 0.91,
+    "thermal_conductivity": 20.5,
+    "high_temp": 2743.15,
+    "low_temp": 933.45,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Aluminum.png/24px-Molten_Aluminum.png?5b6c67"
+  },
+  {
+    "name": "Liquid Carbon",
+    "icon": "images/icons/Liquid_Carbon.png",
+    "shc": 0.71,
+    "thermal_conductivity": 2.0,
+    "high_temp": 5100.0,
+    "low_temp": 3825.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon.png/24px-Liquid_Carbon.png?b4ff39"
+  },
+  {
+    "name": "Molten Copper",
+    "icon": "images/icons/Molten_Copper.png",
+    "shc": 0.386,
+    "thermal_conductivity": 12.0,
+    "high_temp": 2834.0,
+    "low_temp": 1357.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Copper.png/24px-Molten_Copper.png?3c18f0"
+  },
+  {
+    "name": "Molten Glass",
+    "icon": "images/icons/Molten_Glass.png",
+    "shc": 0.2,
+    "thermal_conductivity": 1.0,
+    "high_temp": 2630.0,
+    "low_temp": 1400.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Glass.png/24px-Molten_Glass.png?d6f734"
+  },
+  {
+    "name": "Molten Gold",
+    "icon": "images/icons/Molten_Gold.png",
+    "shc": 0.1291,
+    "thermal_conductivity": 6.0,
+    "high_temp": 3129.0,
+    "low_temp": 1337.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Gold.png/24px-Molten_Gold.png?658b8f"
+  },
+  {
+    "name": "Molten Iron",
+    "icon": "images/icons/Molten_Iron.png",
+    "shc": 0.449,
+    "thermal_conductivity": 4.0,
+    "high_temp": 3023.0,
+    "low_temp": 1808.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
+  },
+  {
+    "name": "Molten Cobalt",
+    "icon": "images/icons/Molten_Cobalt.png",
+    "shc": 0.42,
+    "thermal_conductivity": 4.0,
+    "high_temp": 3200.0,
+    "low_temp": 1768.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
+  },
+  {
+    "name": "Molten Lead",
+    "icon": "images/icons/Molten_Lead.png",
+    "shc": 0.128,
+    "thermal_conductivity": 11.0,
+    "high_temp": 2022.15,
+    "low_temp": 600.65,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
+  },
+  {
+    "name": "Molten Niobium",
+    "icon": "images/icons/Molten_Niobium.png",
+    "shc": 0.265,
+    "thermal_conductivity": 54.0,
+    "high_temp": 5017.0,
+    "low_temp": 2750.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Niobium.png/24px-Molten_Niobium.png?bd76f8"
+  },
+  {
+    "name": "Molten Salt",
+    "icon": "images/icons/Molten_Salt.png",
+    "shc": 0.7,
+    "thermal_conductivity": 0.444,
+    "high_temp": 1738.0,
+    "low_temp": 1073.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Salt.png/24px-Molten_Salt.png?fd6bf8"
+  },
+  {
+    "name": "Molten Steel",
+    "icon": "images/icons/Molten_Steel.png",
+    "shc": 0.386,
+    "thermal_conductivity": 80.0,
+    "high_temp": 4100.0,
+    "low_temp": 1357.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Steel.png/24px-Molten_Steel.png?ca95f8"
+  },
+  {
+    "name": "Molten Tungsten",
+    "icon": "images/icons/Molten_Tungsten.png",
+    "shc": 0.134,
+    "thermal_conductivity": 4.0,
+    "high_temp": 6203.0,
+    "low_temp": 3695.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
+  },
+  {
+    "name": "Liquid Uranium",
+    "icon": "images/icons/Liquid_Uranium.png",
+    "shc": 1.69,
+    "thermal_conductivity": 2.0,
+    "high_temp": 4405.0,
+    "low_temp": 406.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Uranium.png/24px-Liquid_Uranium.png?f88c40"
+  },
+  {
+    "name": "Liquid Nuclear Waste",
+    "icon": "images/icons/Liquid_Nuclear_Waste.png",
+    "shc": 7.44,
+    "thermal_conductivity": 6.0,
+    "high_temp": 800.0,
+    "low_temp": 300.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Nuclear_Waste.png/24px-Liquid_Nuclear_Waste.png?1be0fb"
+  },
+  {
+    "name": "Resin",
+    "icon": "images/icons/Resin.png",
+    "shc": 1.11,
+    "thermal_conductivity": 0.15,
+    "high_temp": 398.15,
+    "low_temp": 293.15,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resin.png/24px-Resin.png?a211c1"
+  },
+  {
+    "name": "Sap",
+    "icon": "images/icons/Sap.png",
+    "shc": 1.11,
+    "thermal_conductivity": 0.15,
+    "high_temp": 398.15,
+    "low_temp": 293.15,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sap.png/24px-Sap.png?a211c1"
+  },
+  {
+    "name": "Nectar",
+    "icon": "images/icons/Nectar.png",
+    "shc": 4.1,
+    "thermal_conductivity": 0.609,
+    "high_temp": 433.15,
+    "low_temp": 190.65,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nectar.png/24px-Nectar.png?bb9575"
+  },
+  {
+    "name": "Visco-Gel Fluid",
+    "icon": "images/icons/Visco-Gel_Fluid.png",
+    "shc": 1.55,
+    "thermal_conductivity": 0.45,
+    "high_temp": 753.0,
+    "low_temp": 242.5,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Visco-Gel_Fluid.png/24px-Visco-Gel_Fluid.png?2f36d1"
+  },
+  {
+    "name": "Squid Ink",
+    "icon": "images/icons/Squid_Ink.png",
+    "shc": 2.0,
+    "thermal_conductivity": 0.5,
+    "high_temp": 353.15,
+    "low_temp": 252.5,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Squid_Ink.png/24px-Squid_Ink.png?5ee7be"
+  },
+  {
+    "name": "Phyto Oil",
+    "icon": "images/icons/Phyto_Oil.png",
+    "shc": 0.9,
+    "thermal_conductivity": 2.0,
+    "high_temp": 348.15,
+    "low_temp": 240.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Phyto_Oil.png/24px-Phyto_Oil.png?2ab44c"
+  },
+  {
+    "name": "Biodiesel",
+    "icon": "images/icons/Biodiesel.png",
+    "shc": 2.19,
+    "thermal_conductivity": 2.0,
+    "high_temp": 453.15,
+    "low_temp": 263.15,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Biodiesel.png/24px-Biodiesel.png?1df547"
+  },
+  {
+    "name": "Liquid Sucrose",
+    "icon": "images/icons/Liquid_Sucrose.png",
+    "shc": 1.255,
+    "thermal_conductivity": 0.15,
+    "high_temp": 503.15,
+    "low_temp": 459.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sucrose.png/24px-Liquid_Sucrose.png?17a730"
+  },
+  {
+    "name": "Molten Nickel",
+    "icon": "images/icons/Molten_Nickel.png",
+    "shc": 0.44,
+    "thermal_conductivity": 30.0,
+    "high_temp": 3003.0,
+    "low_temp": 1728.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Nickel.png/24px-Molten_Nickel.png?cc293d"
+  },
+  {
+    "name": "Molten Iridium",
+    "icon": "images/icons/Molten_Iridium.png",
+    "shc": 0.131,
+    "thermal_conductivity": 170.0,
+    "high_temp": 4403.0,
+    "low_temp": 2719.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iridium.png/24px-Molten_Iridium.png?767b1b"
+  },
+  {
+    "name": "Latex",
+    "icon": "images/icons/Latex.png",
+    "shc": 2.01,
+    "thermal_conductivity": 0.065,
+    "high_temp": 372.5,
+    "low_temp": 272.5,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Latex.png/24px-Latex.png?71428c"
+  },
+  {
+    "name": "Mucin",
+    "icon": "images/icons/Mucin.png",
+    "shc": 3.0,
+    "thermal_conductivity": 0.45,
+    "high_temp": 363.15,
+    "low_temp": 263.15,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mucin.png/24px-Mucin.png?1e3722"
+  },
+  {
+    "name": "Molten Zinc",
+    "icon": "images/icons/Molten_Zinc.png",
+    "shc": 0.388,
+    "thermal_conductivity": 12.0,
+    "high_temp": 1180.0,
+    "low_temp": 692.88,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Zinc.png/24px-Molten_Zinc.png?732868"
+  },
+  {
+    "name": "Plastic",
+    "icon": "images/icons/Plastic.png",
+    "shc": 1.92,
+    "thermal_conductivity": 0.15,
+    "high_temp": 433.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plastic.png/24px-Plastic.png?6dabe6"
+  },
+  {
+    "name": "Uranium Ore",
+    "icon": "images/icons/Uranium_Ore.png",
+    "shc": 1.0,
+    "thermal_conductivity": 20.0,
+    "high_temp": 406.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Uranium_Ore.png/24px-Uranium_Ore.png?510845"
+  },
+  {
+    "name": "Sand",
+    "icon": "images/icons/Sand.png",
+    "shc": 0.83,
+    "thermal_conductivity": 2.0,
+    "high_temp": 1986.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sand.png/24px-Sand.png?c5f250"
+  },
+  {
+    "name": "Bleach Stone",
+    "icon": "images/icons/Bleach_Stone.png",
+    "shc": 0.5,
+    "thermal_conductivity": 4.0,
+    "high_temp": 942.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Bleach_Stone.png/24px-Bleach_Stone.png?2566c8"
+  },
+  {
+    "name": "Chlorine Gas",
+    "icon": "images/icons/Chlorine_Gas.png",
+    "shc": 0.48,
+    "thermal_conductivity": 0.0081,
+    "high_temp": null,
+    "low_temp": 238.55,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Chlorine_Gas.png/24px-Chlorine_Gas.png?3cc9d7"
+  },
+  {
+    "name": "Brackwax",
+    "icon": "images/icons/Brackwax.png",
+    "shc": 1.92,
+    "thermal_conductivity": 0.15,
+    "high_temp": 433.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brackwax.png/24px-Brackwax.png?c7e172"
+  },
+  {
+    "name": "Iridium",
+    "icon": "images/icons/Iridium.png",
+    "shc": 0.131,
+    "thermal_conductivity": 170.0,
+    "high_temp": 2719.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iridium.png/24px-Iridium.png?a998d5"
+  },
+  {
+    "name": "Sucrose",
+    "icon": "images/icons/Sucrose_(Spaced_Out).png",
+    "shc": 1.255,
+    "thermal_conductivity": 0.15,
+    "high_temp": 459.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sucrose_%28Spaced_Out%29.png/24px-Sucrose_%28Spaced_Out%29.png?ecab3e"
+  },
+  {
+    "name": "Amber",
+    "icon": "images/icons/Amber.png",
+    "shc": 1.3,
+    "thermal_conductivity": 0.17,
+    "high_temp": 368.15,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Amber.png/24px-Amber.png?cb4200"
+  },
+  {
+    "name": "Fossil",
+    "icon": "images/icons/Fossil.png",
+    "shc": 0.91,
+    "thermal_conductivity": 2.0,
+    "high_temp": 1612.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Fossil.png/24px-Fossil.png?dceeef"
+  },
+  {
+    "name": "Gum Wood",
+    "icon": "images/icons/Gum_Wood.png",
+    "shc": 2.3,
+    "thermal_conductivity": 0.22,
+    "high_temp": 873.15,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gum_Wood.png/24px-Gum_Wood.png?cce12e"
+  },
+  {
+    "name": "Rubber",
+    "icon": "images/icons/Rubber.png",
+    "shc": 1.8,
+    "thermal_conductivity": 0.15,
+    "high_temp": 493.15,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Rubber.png/24px-Rubber.png?4247d3"
+  },
+  {
+    "name": "Coal",
+    "icon": "images/icons/Coal.png",
+    "shc": 0.71,
+    "thermal_conductivity": 1.25,
+    "high_temp": 550.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Coal.png/24px-Coal.png?7beae2"
+  },
+  {
+    "name": "Crushed Rock",
+    "icon": "images/icons/Crushed_Rock.png",
+    "shc": 0.2,
+    "thermal_conductivity": 2.0,
+    "high_temp": 1683.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Crushed_Rock.png/24px-Crushed_Rock.png?ede35e"
+  },
+  {
+    "name": "Sandstone",
+    "icon": "images/icons/Sandstone.png",
+    "shc": 0.8,
+    "thermal_conductivity": 2.9,
+    "high_temp": 1200.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sandstone.png/24px-Sandstone.png?fd380d"
+  },
+  {
+    "name": "Sedimentary Rock",
+    "icon": "images/icons/Sedimentary_Rock.png",
+    "shc": 0.2,
+    "thermal_conductivity": 2.0,
+    "high_temp": 1200.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sedimentary_Rock.png/24px-Sedimentary_Rock.png?66ab87"
+  },
+  {
+    "name": "Shale",
+    "icon": "images/icons/Shale.png",
+    "shc": 0.25,
+    "thermal_conductivity": 1.8,
+    "high_temp": 1100.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Shale.png/24px-Shale.png?52fc62"
+  },
+  {
+    "name": "Clay",
+    "icon": "images/icons/Clay.png",
+    "shc": 0.92,
+    "thermal_conductivity": 2.0,
+    "high_temp": 1200.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Clay.png/24px-Clay.png?e3f0c1"
+  },
+  {
+    "name": "Fertilizer",
+    "icon": "images/icons/Fertilizer.png",
+    "shc": 0.83,
+    "thermal_conductivity": 2.0,
+    "high_temp": 398.15,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Fertilizer.png/24px-Fertilizer.png?cb8d18"
+  },
+  {
+    "name": "Corallium",
+    "icon": "images/icons/Corallium.png",
+    "shc": 0.2,
+    "thermal_conductivity": 2.0,
+    "high_temp": 398.15,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Corallium.png/24px-Corallium.png?326960"
+  },
+  {
+    "name": "Siltstone",
+    "icon": "images/icons/Siltstone.png",
+    "shc": 0.9,
+    "thermal_conductivity": 2.0,
+    "high_temp": 1200.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Siltstone.png/24px-Siltstone.png?d31dec"
+  },
+  {
+    "name": "Coquina",
+    "icon": "images/icons/Coquina.png",
+    "shc": 0.8,
+    "thermal_conductivity": 1.5,
+    "high_temp": 1200.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Coquina.png/24px-Coquina.png?f00d10"
+  },
+  {
+    "name": "Igneous Rock",
+    "icon": "images/icons/Igneous_Rock.png",
+    "shc": 1.0,
+    "thermal_conductivity": 2.0,
+    "high_temp": 1683.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Igneous_Rock.png/24px-Igneous_Rock.png?c2bb8e"
+  },
+  {
+    "name": "Obsidian",
+    "icon": "images/icons/Obsidian.png",
+    "shc": 0.2,
+    "thermal_conductivity": 2.0,
+    "high_temp": 3000.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Obsidian.png/24px-Obsidian.png?854afa"
+  },
+  {
+    "name": "Granite",
+    "icon": "images/icons/Granite.png",
+    "shc": 0.79,
+    "thermal_conductivity": 3.39,
+    "high_temp": 942.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Granite.png/24px-Granite.png?e0ce7e"
+  },
+  {
+    "name": "Basalt",
+    "icon": "images/icons/Basalt.png",
+    "shc": 0.25,
+    "thermal_conductivity": 2.5,
+    "high_temp": 1530.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Basalt.png/24px-Basalt.png?f83aaf"
+  },
+  {
+    "name": "Polluted Mud",
+    "icon": "images/icons/Polluted_Mud_(Spaced_Out).png",
+    "shc": 0.83,
+    "thermal_conductivity": 2.0,
+    "high_temp": 372.84,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Mud_%28Spaced_Out%29.png/24px-Polluted_Mud_%28Spaced_Out%29.png?6f770d"
+  },
+  {
+    "name": "Solid Mercury",
+    "icon": "images/icons/Solid_Mercury.png",
+    "shc": 0.14,
+    "thermal_conductivity": 8.3,
+    "high_temp": 234.3,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Mercury.png/24px-Solid_Mercury.png?e15da2"
+  },
+  {
+    "name": "Hydrogen Gas",
+    "icon": "images/icons/Hydrogen_Gas.png",
+    "shc": 2.4,
+    "thermal_conductivity": 0.168,
+    "high_temp": null,
+    "low_temp": 21.0,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Hydrogen_Gas.png/24px-Hydrogen_Gas.png?b5ff3e"
+  },
+  {
+    "name": "Regolith",
+    "icon": "images/icons/Regolith.png",
+    "shc": 0.2,
+    "thermal_conductivity": 1.0,
+    "high_temp": 1683.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Regolith.png/24px-Regolith.png?c5f250"
+  },
+  {
+    "name": "Refined Phosphorus",
+    "icon": "images/icons/Refined_Phosphorus.png",
+    "shc": 0.7697,
+    "thermal_conductivity": 0.236,
+    "high_temp": 317.3,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Refined_Phosphorus.png/24px-Refined_Phosphorus.png?35cd71"
+  },
+  {
+    "name": "Abyssalite",
+    "icon": "images/icons/Abyssalite.png",
+    "shc": 4.0,
+    "thermal_conductivity": 1e-05,
+    "high_temp": 3695.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Abyssalite.png/24px-Abyssalite.png?9a533a"
+  },
+  {
+    "name": "Diamond",
+    "icon": "images/icons/Diamond.png",
+    "shc": 0.516,
+    "thermal_conductivity": 80.0,
+    "high_temp": 4200.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Diamond.png/24px-Diamond.png?af7b37"
+  },
+  {
+    "name": "Mud",
+    "icon": "images/icons/Mud_(Spaced_Out).png",
+    "shc": 0.83,
+    "thermal_conductivity": 2.0,
+    "high_temp": 372.84,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mud_%28Spaced_Out%29.png/24px-Mud_%28Spaced_Out%29.png?593cf9"
+  },
+  {
+    "name": "Depleted Uranium",
+    "icon": "images/icons/Depleted_Uranium.png",
+    "shc": 1.0,
+    "thermal_conductivity": 20.0,
+    "high_temp": 406.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Depleted_Uranium.png/24px-Depleted_Uranium.png?b67c7b"
+  },
+  {
+    "name": "Glass",
+    "icon": "images/icons/Resource_Glass.png",
+    "shc": 0.84,
+    "thermal_conductivity": 1.11,
+    "high_temp": 1700.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Glass.png/24px-Resource_Glass.png?cabe05"
+  },
+  {
+    "name": "Solid Chlorine",
+    "icon": "images/icons/Solid_Chlorine.png",
+    "shc": 0.48,
+    "thermal_conductivity": 0.75,
+    "high_temp": 172.17,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Chlorine.png/24px-Solid_Chlorine.png?930eda"
+  },
+  {
+    "name": "Genetic Ooze",
+    "icon": "images/icons/Genetic_Ooze.png",
+    "shc": 3.47,
+    "thermal_conductivity": 0.6,
+    "high_temp": 10000.0,
+    "low_temp": null,
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Genetic_Ooze.png/24px-Genetic_Ooze.png?b63024"
+  }
+]

@@ -1,0 +1,2564 @@
+[
+  {
+    "id": "plant_mealwood",
+    "name": "Mealwood",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Mealwood",
+    "icon": "images/icons/Mealwood.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Dirt",
+        "rate": 16.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Meal Lice",
+        "rate": 0.5556,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.3333,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mealwood.png/36px-Mealwood.png?53fede"
+  },
+  {
+    "id": "plant_sweatcorn_stalk",
+    "name": "Sweatcorn Stalk",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sweatcorn_Stalk",
+    "icon": "images/icons/Sweatcorn_Stalk.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Peat",
+        "rate": 16.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Sweatcorn",
+        "rate": 0.5556,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.4433,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sweatcorn_Stalk.png/40px-Sweatcorn_Stalk.png?573460"
+  },
+  {
+    "id": "plant_sodicane",
+    "name": "Sodicane",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sodicane",
+    "icon": "images/icons/Sodicane.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Salt",
+        "rate": 16.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Salty Sticks",
+        "rate": 0.4167,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.25,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sodicane.png/42px-Sodicane.png?e1d0eb"
+  },
+  {
+    "id": "plant_dusk_cap",
+    "name": "Dusk Cap",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Dusk_Cap",
+    "icon": "images/icons/Dusk_Cap.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Slime",
+        "rate": 6.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Mushroom",
+        "rate": 0.2222,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.5333,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Dusk_Cap.png/49px-Dusk_Cap.png?31ce0a"
+  },
+  {
+    "id": "plant_bristle_blossom",
+    "name": "Bristle Blossom",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Bristle_Blossom",
+    "icon": "images/icons/Bristle_Blossom.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Water",
+        "rate": 33.3333,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Bristle Berry",
+        "rate": 0.2778,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.4445,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Bristle_Blossom.png/32px-Bristle_Blossom.png?d3d7a2"
+  },
+  {
+    "id": "plant_sleet_wheat",
+    "name": "Sleet Wheat",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sleet_Wheat",
+    "icon": "images/icons/Sleet_Wheat.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Water",
+        "rate": 33.3333,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      },
+      {
+        "resource": "Dirt",
+        "rate": 8.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Sleet Wheat Grain",
+        "rate": 1.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.6667,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sleet_Wheat.png/39px-Sleet_Wheat.png?36c6f3"
+  },
+  {
+    "id": "plant_waterweed",
+    "name": "Waterweed",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Waterweed",
+    "icon": "images/icons/Waterweed.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Salt Water",
+        "rate": 33.3333,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Lettuce",
+        "rate": 1.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.6667,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Waterweed.png/53px-Waterweed.png?2ca813"
+  },
+  {
+    "id": "plant_nosh_sprout",
+    "name": "Nosh Sprout",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Nosh_Sprout",
+    "icon": "images/icons/Nosh_Sprout.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Ethanol",
+        "rate": 33.3333,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      },
+      {
+        "resource": "Dirt",
+        "rate": 8.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Nosh Bean",
+        "rate": 0.9524,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 1.0,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nosh_Sprout.png/41px-Nosh_Sprout.png?350bfc"
+  },
+  {
+    "id": "plant_megafrond",
+    "name": "Megafrond",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Megafrond",
+    "icon": "images/icons/Megafrond.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Megafrond Grain",
+        "rate": 6.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 2.6667,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Megafrond.png/54px-Megafrond.png?67f2ab"
+  },
+  {
+    "id": "plant_pincha_pepper",
+    "name": "Pincha Pepper",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Pincha_Pepper",
+    "icon": "images/icons/Pincha_Pepperplant.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Polluted Water",
+        "rate": 58.3333,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      },
+      {
+        "resource": "Phosphorite",
+        "rate": 1.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Pincha Peppernut",
+        "rate": 0.8333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Pincha_Pepperplant.png/50px-Pincha_Pepperplant.png?fa66ff"
+  },
+  {
+    "id": "plant_bog_bucket",
+    "name": "Bog Bucket",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Bog_Bucket",
+    "icon": "images/icons/Bog_Bucket_(Spaced_Out).png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Polluted Water",
+        "rate": 66.6667,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Bog Jelly",
+        "rate": 0.2525,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.4647,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Bog_Bucket_%28Spaced_Out%29.png/60px-Bog_Bucket_%28Spaced_Out%29.png?e0c82c"
+  },
+  {
+    "id": "plant_grubfruit_plant",
+    "name": "Grubfruit Plant",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Grubfruit_Plant",
+    "icon": "images/icons/Grubfruit_Plant.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Sulfur",
+        "rate": 16.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Grubfruit",
+        "rate": 1.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.4167,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Grubfruit_Plant.png/36px-Grubfruit_Plant.png?8e4c88"
+  },
+  {
+    "id": "plant_spindly_grubfruit_plant",
+    "name": "Spindly Grubfruit Plant",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Spindly_Grubfruit_Plant",
+    "icon": "images/icons/Spindly_Grubfruit_Plant.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Sulfur",
+        "rate": 16.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Spindly Grubfruit",
+        "rate": 0.4167,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.3333,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Spindly_Grubfruit_Plant.png/61px-Spindly_Grubfruit_Plant.png?92f156"
+  },
+  {
+    "id": "plant_ovagro_node",
+    "name": "Ovagro Node",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Ovagro_Node",
+    "icon": "images/icons/Ovagro_Node.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Water",
+        "rate": 150.0,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Calories",
+        "rate": 0.18,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ovagro_Node.png/50px-Ovagro_Node.png?bbe7c6"
+  },
+  {
+    "id": "plant_mimika_bud",
+    "name": "Mimika Bud",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Mimika_Bud",
+    "icon": "images/icons/Mimika_Bud.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Dirt",
+        "rate": 16.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Mimika",
+        "rate": 0.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.5,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mimika_Bud.png/33px-Mimika_Bud.png?b80f0d"
+  },
+  {
+    "id": "plant_plume_squash_plant",
+    "name": "Plume Squash Plant",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Plume_Squash_Plant",
+    "icon": "images/icons/Plume_Squash_Plant.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Ethanol",
+        "rate": 25.0,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Plume Squash",
+        "rate": 0.1852,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.7407,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plume_Squash_Plant.png/48px-Plume_Squash_Plant.png?8e4ff8"
+  },
+  {
+    "id": "plant_pikeapple_bush",
+    "name": "Pikeapple Bush",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Pikeapple_Bush",
+    "icon": "images/icons/Pikeapple_Bush.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Phosphorite",
+        "rate": 8.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Pikeapple",
+        "rate": 0.5556,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.4445,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Pikeapple_Bush.png/47px-Pikeapple_Bush.png?4413d9"
+  },
+  {
+    "id": "plant_balm_lily",
+    "name": "Balm Lily",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Balm_Lily",
+    "icon": "images/icons/Balm_Lily.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Balm Lily Flower",
+        "rate": 0.2778,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Balm_Lily.png/44px-Balm_Lily.png?fea971"
+  },
+  {
+    "id": "plant_thimble_reed",
+    "name": "Thimble Reed",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Thimble_Reed",
+    "icon": "images/icons/Thimble_Reed.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Polluted Water",
+        "rate": 266.6667,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Reed Fiber",
+        "rate": 0.8333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Thimble_Reed.png/36px-Thimble_Reed.png?90e041"
+  },
+  {
+    "id": "plant_dasha_saltvine",
+    "name": "Dasha Saltvine",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Dasha_Saltvine",
+    "icon": "images/icons/Dasha_Saltvine.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Sand",
+        "rate": 11.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Chlorine",
+        "rate": 6.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Salt",
+        "rate": 18.06,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Dasha_Saltvine.png/52px-Dasha_Saltvine.png?11fa73"
+  },
+  {
+    "id": "plant_gas_grass",
+    "name": "Gas Grass",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Gas_Grass",
+    "icon": "images/icons/Gas_Grass.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Liquid Chlorine",
+        "rate": 0.8333,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Plant Husk",
+        "rate": 166.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gas_Grass.png/46px-Gas_Grass.png?d8fbf2"
+  },
+  {
+    "id": "plant_arbor_tree",
+    "name": "Arbor Tree",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Arbor_Tree",
+    "icon": "images/icons/Arbor_Tree.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Polluted Water",
+        "rate": 116.67,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null
+      },
+      {
+        "resource": "Dirt",
+        "rate": 16.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Wood",
+        "rate": 555.56,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Arbor_Tree.png/63px-Arbor_Tree.png?5177dc"
+  },
+  {
+    "id": "plant_bonbon_tree",
+    "name": "Bonbon Tree",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Bonbon_Tree",
+    "icon": "images/icons/Bonbon_Tree.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Snow",
+        "rate": 166.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Wood (per branch) Nectar",
+        "rate": 27.7778,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Bonbon_Tree.png/56px-Bonbon_Tree.png?9d316b"
+  },
+  {
+    "id": "plant_gum_palm",
+    "name": "Gum Palm",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Gum_Palm",
+    "icon": "images/icons/Gum_Palm.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Sulfur",
+        "rate": 33.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Gum Wood",
+        "rate": 116.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gum_Palm.png/52px-Gum_Palm.png?b099d0"
+  },
+  {
+    "id": "plant_lura_plant",
+    "name": "Lura Plant",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Lura_Plant",
+    "icon": "images/icons/Lura_Plant.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [
+      {
+        "resource": "Amber",
+        "rate": 36.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Lura_Plant.png/34px-Lura_Plant.png?d65cf6"
+  },
+  {
+    "id": "plant_seakomb",
+    "name": "Seakomb",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Seakomb",
+    "icon": "images/icons/Seakomb.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Polluted Dirt",
+        "rate": 16.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Seakomb Leaf",
+        "rate": 16.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Seakomb.png/63px-Seakomb.png?81e18b"
+  },
+  {
+    "id": "plant_dew_dripper",
+    "name": "Dew Dripper",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Dew_Dripper",
+    "icon": "images/icons/Dew_Dripper.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Brine Ice",
+        "rate": 16.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Dewdrip",
+        "rate": 0.8333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Dew_Dripper.png/52px-Dew_Dripper.png?5a3f9e"
+  },
+  {
+    "id": "plant_starnacle",
+    "name": "Starnacle",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Starnacle",
+    "icon": "images/icons/Starnacle.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Coquina",
+        "rate": 33.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Phosphorite",
+        "rate": 33.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Starnacle.png/59px-Starnacle.png?740b93"
+  },
+  {
+    "id": "plant_clampum",
+    "name": "Clampum",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Clampum",
+    "icon": "images/icons/Clampum.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Sand",
+        "rate": 58.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Pearl",
+        "rate": 10.4167,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Clampum.png/57px-Clampum.png?2bf1ed"
+  },
+  {
+    "id": "plant_tublia",
+    "name": "Tublia",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Tublia",
+    "icon": "images/icons/Tublia.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Polluted Brine",
+        "rate": 50.0,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      },
+      {
+        "resource": "Sulfur",
+        "rate": 33.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Plastic",
+        "rate": 41.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tublia.png/54px-Tublia.png?ec147b"
+  },
+  {
+    "id": "plant_pinpoket",
+    "name": "Pinpoket",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Pinpoket",
+    "icon": "images/icons/Pinpoket.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Refined Carbon",
+        "rate": 8.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Pinpoki",
+        "rate": 0.1042,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Pinpoket.png/58px-Pinpoket.png?719efa"
+  },
+  {
+    "id": "plant_alveo_vera",
+    "name": "Alveo Vera",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Alveo_Vera",
+    "icon": "images/icons/Alveo_Vera.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Ice",
+        "rate": 33.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Oxylite",
+        "rate": 30.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Alveo_Vera.png/42px-Alveo_Vera.png?e85a30"
+  },
+  {
+    "id": "plant_oxyfern",
+    "name": "Oxyfern",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Oxyfern",
+    "icon": "images/icons/Oxyfern.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Water",
+        "rate": 31.67,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null
+      },
+      {
+        "resource": "Dirt",
+        "rate": 6.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Carbon Dioxide",
+        "rate": 0.625,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Oxygen",
+        "rate": 31.25,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Oxyfern.png/49px-Oxyfern.png?74fac1"
+  },
+  {
+    "id": "plant_flue_coral",
+    "name": "Flue Coral",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Flue_Coral",
+    "icon": "images/icons/Flue_Coral.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Salt Water",
+        "rate": 33.3333,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      },
+      {
+        "resource": "Lime",
+        "rate": 8.3333,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Flue_Coral.png/88px-Flue_Coral.png?2a9713"
+  },
+  {
+    "id": "plant_wheezewort",
+    "name": "Wheezewort",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Wheezewort",
+    "icon": "images/icons/Wheezewort.png",
+    "power": 0.0,
+    "heat": -12.0,
+    "inputs": [
+      {
+        "resource": "Phosphorite",
+        "rate": 6.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Wheezewort.png/38px-Wheezewort.png?45549a"
+  },
+  {
+    "id": "plant_saturn_critter_trap",
+    "name": "Saturn Critter Trap",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Saturn_Critter_Trap",
+    "icon": "images/icons/Saturn_Critter_Trap.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Polluted Water",
+        "rate": 16.6667,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Plant Meat 900.1 g Hydrogen",
+        "rate": 0.5556,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Calories",
+        "rate": 0.0667,
+        "unit": "kcal/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Saturn_Critter_Trap.png/81px-Saturn_Critter_Trap.png?fbde3e"
+  },
+  {
+    "id": "plant_tower_kelp",
+    "name": "Tower Kelp",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Tower_Kelp",
+    "icon": "images/icons/Tower_Kelp.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [
+      {
+        "resource": "Polluted Water",
+        "rate": 50.0,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null,
+        "category": "irrigation"
+      },
+      {
+        "resource": "Polluted Dirt",
+        "rate": 66.6667,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null,
+        "category": "fertilizer"
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Kelpole (Per \"Branch\")",
+        "rate": 0.5556,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tower_Kelp.png/58px-Tower_Kelp.png?6baca9"
+  },
+  {
+    "id": "plant_bluff_briar",
+    "name": "Bluff Briar",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Bluff_Briar",
+    "icon": "images/icons/Bluff_Briar.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Bluff_Briar.png/61px-Bluff_Briar.png?22f291"
+  },
+  {
+    "id": "plant_buddy_bud",
+    "name": "Buddy Bud",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Buddy_Bud",
+    "icon": "images/icons/Buddy_Bud.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Buddy_Bud.png/53px-Buddy_Bud.png?c5f2ec"
+  },
+  {
+    "id": "plant_mirth_leaf",
+    "name": "Mirth Leaf",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Mirth_Leaf",
+    "icon": "images/icons/Mirth_Leaf.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mirth_Leaf.png/58px-Mirth_Leaf.png?8426d9"
+  },
+  {
+    "id": "plant_jumping_joya",
+    "name": "Jumping Joya",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Jumping_Joya",
+    "icon": "images/icons/Jumping_Joya.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Jumping_Joya.png/57px-Jumping_Joya.png?8d2194"
+  },
+  {
+    "id": "plant_sporechid",
+    "name": "Sporechid",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sporechid",
+    "icon": "images/icons/Sporechid.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sporechid.png/50px-Sporechid.png?e602d0"
+  },
+  {
+    "id": "plant_bliss_burst",
+    "name": "Bliss Burst",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Bliss_Burst",
+    "icon": "images/icons/Bliss_Burst_(Spaced_Out).png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Bliss_Burst_%28Spaced_Out%29.png/62px-Bliss_Burst_%28Spaced_Out%29.png?c31c9a"
+  },
+  {
+    "id": "plant_mellow_mallow",
+    "name": "Mellow Mallow",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Mellow_Mallow",
+    "icon": "images/icons/Mellow_Mallow.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mellow_Mallow.png/61px-Mellow_Mallow.png?a3bbcc"
+  },
+  {
+    "id": "plant_tranquil_toes",
+    "name": "Tranquil Toes",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Tranquil_Toes",
+    "icon": "images/icons/Tranquil_Toes.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tranquil_Toes.png/59px-Tranquil_Toes.png?9936f6"
+  },
+  {
+    "id": "plant_idylla_flower",
+    "name": "Idylla Flower",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Idylla_Flower",
+    "icon": "images/icons/Idylla_Flower.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Idylla_Flower.png/60px-Idylla_Flower.png?aa8238"
+  },
+  {
+    "id": "plant_ring_rosebush",
+    "name": "Ring Rosebush",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Ring_Rosebush",
+    "icon": "images/icons/Ring_Rosebush.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ring_Rosebush.png/56px-Ring_Rosebush.png?a60506"
+  },
+  {
+    "id": "plant_petta_pouf",
+    "name": "Petta Pouf",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Petta_Pouf",
+    "icon": "images/icons/Petta_Pouf.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Petta_Pouf.png/66px-Petta_Pouf.png?72bafb"
+  },
+  {
+    "id": "plant_husha_cups",
+    "name": "Husha Cups",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Husha_Cups",
+    "icon": "images/icons/Husha_Cups.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Husha_Cups.png/61px-Husha_Cups.png?337d4a"
+  },
+  {
+    "id": "plant_bulbloom",
+    "name": "Bulbloom",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Bulbloom",
+    "icon": "images/icons/Bulbloom.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Bulbloom.png/43px-Bulbloom.png?f36461"
+  },
+  {
+    "id": "plant_buried_muckroot",
+    "name": "Buried Muckroot",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Buried_Muckroot",
+    "icon": "images/icons/Buried_Muckroot.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Buried_Muckroot.png/52px-Buried_Muckroot.png?ae3cef"
+  },
+  {
+    "id": "plant_hexalent",
+    "name": "Hexalent",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Hexalent",
+    "icon": "images/icons/Hexalent.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Hexalent.png/47px-Hexalent.png?b05452"
+  },
+  {
+    "id": "plant_swamp_chard",
+    "name": "Swamp Chard",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Swamp_Chard",
+    "icon": "images/icons/Swamp_Chard.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Swamp_Chard.png/50px-Swamp_Chard.png?511f63"
+  },
+  {
+    "id": "plant_sherberry_plant",
+    "name": "Sherberry Plant",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sherberry_Plant",
+    "icon": "images/icons/Sherberry_Plant.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sherberry_Plant.png/54px-Sherberry_Plant.png?f572ce"
+  },
+  {
+    "id": "plant_snactus",
+    "name": "Snactus",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Snactus",
+    "icon": "images/icons/Snactus.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Snactus.png/44px-Snactus.png?e1cbd0"
+  },
+  {
+    "id": "plant_mussel_sprout",
+    "name": "Mussel Sprout",
+    "category": "Plant",
+    "subcategory": "Crop",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Mussel_Sprout",
+    "icon": "images/icons/Mussel_Sprout.png",
+    "power": 0.0,
+    "heat": 0.0,
+    "inputs": [],
+    "outputs": [],
+    "recipes": [],
+    "modifiers": [
+      {
+        "id": "wild",
+        "name": "Wild Grown (0 Input, 25% Yield)",
+        "input_multiplier": 0.0,
+        "output_multiplier": 0.25
+      },
+      {
+        "id": "farmers_touch",
+        "name": "Farmer's Touch (+100% Growth Speed)",
+        "output_multiplier": 2.0
+      },
+      {
+        "id": "grubgrub_rub",
+        "name": "Grubgrub Rub (+50% Growth Speed)",
+        "output_multiplier": 1.5
+      }
+    ],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mussel_Sprout.png/60px-Mussel_Sprout.png?5f82c7"
+  }
+]
