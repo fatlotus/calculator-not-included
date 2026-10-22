@@ -130,12 +130,14 @@ class TestCalculatorEngine(unittest.TestCase):
         self.assertEqual(net["netInputs"][0]["rate"], 1000.0)
         self.assertEqual(net["netInputs"][0]["state"], "free")
 
-        # Net Outputs: Oxygen 88 g/s free
-        self.assertEqual(len(net["netOutputs"]), 1)
-        oxygen = net["netOutputs"][0]
+        # Net Outputs: Oxygen 88 g/s free and Duplicant Labor 6 s/s
+        self.assertEqual(len(net["netOutputs"]), 2)
+        oxygen = next(o for o in net["netOutputs"] if o["resource"] == "Oxygen")
         self.assertEqual(oxygen["resource"], "Oxygen")
         self.assertEqual(oxygen["rate"], 88.0)
         self.assertEqual(oxygen["state"], "free")
+        labor = next(o for o in net["netOutputs"] if o["resource"] == "Duplicant Labor")
+        self.assertEqual(labor["rate"], 6.0)
 
         # Test match link calculations for Gas Pump (index 2)
         matches = calculate_row_match_targets(2, rows, self.entity_map)
@@ -362,6 +364,48 @@ class TestCalculatorEngine(unittest.TestCase):
             format_stream_line({"resource": "Duplicant Labor", "rate": 1.0, "unit": "s/s", "state": "labor"}, False, "c"),
             "Duplicant Labor: -600 s/cycle (labor)",
         )
+
+    def test_duplicant_labor_model_and_manual_generator(self):
+        # 1. Manual Generator requires 1.0 s/s Duplicant Labor and outputs 400 W
+        mg_row = evaluate_row({"entityId": "manual_generator", "qty": 1}, self.entity_map)
+        self.assertEqual(mg_row["power"], 400.0)
+        self.assertEqual(len(mg_row["inputs"]), 1)
+        self.assertEqual(mg_row["inputs"][0]["resource"], "Duplicant Labor")
+        self.assertEqual(mg_row["inputs"][0]["rate"], 1.0)
+        self.assertEqual(mg_row["inputs"][0]["unit"], "s/s")
+
+        # 2. Standard Duplicant schedule outputs 0.75 s/s (450 s/cycle)
+        dup_default = evaluate_row({"entityId": "duplicant", "qty": 1}, self.entity_map)
+        labor_out = next(o for o in dup_default["outputs"] if o["resource"] == "Duplicant Labor")
+        self.assertEqual(labor_out["rate"], 0.75)
+
+        # 3. Schedule variations (recipes)
+        # Optimized (4 rest blocks): 500 s/cycle = 0.8333 s/s
+        dup_opt = evaluate_row({"entityId": "duplicant", "qty": 1, "recipeId": "schedule_4rest"}, self.entity_map)
+        opt_out = next(o for o in dup_opt["outputs"] if o["resource"] == "Duplicant Labor")
+        self.assertAlmostEqual(opt_out["rate"], 0.8333, places=3)
+
+        # Continuous (0 rest blocks): 600 s/cycle = 1.0 s/s
+        dup_cont = evaluate_row({"entityId": "duplicant", "qty": 1, "recipeId": "schedule_0rest"}, self.entity_map)
+        cont_out = next(o for o in dup_cont["outputs"] if o["resource"] == "Duplicant Labor")
+        self.assertEqual(cont_out["rate"], 1.0)
+
+        # 4. Balancing 1 Manual Generator with Duplicants on standard schedule
+        # Requires 1.0 / 0.75 = 1.3333 duplicants
+        rows = [
+            {"entityId": "manual_generator", "qty": 1, "recipeId": None, "modifiers": []},
+            {"entityId": "duplicant", "qty": 4.0 / 3.0, "recipeId": "schedule_default", "modifiers": []},
+        ]
+        evaluated = [evaluate_row(r, self.entity_map) for r in rows]
+        net = calculate_system_net(evaluated, {"strictPipeMatching": True})
+        # Net Duplicant Labor should balance to 0
+        labor_net = [s for s in net["netInputs"] + net["netOutputs"] if s["resource"] == "Duplicant Labor"]
+        self.assertEqual(len(labor_net), 0)
+        self.assertEqual(net["netPower"], 400.0)
+
+        # 5. Row match target check
+        matches = calculate_row_match_targets(1, rows, self.entity_map)
+        self.assertIn("out:Duplicant Labor||labor", matches)
 
 
 if __name__ == "__main__":

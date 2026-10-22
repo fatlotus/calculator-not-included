@@ -89,10 +89,12 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(net.netInputs[0].rate, 1000);
   assert.strictEqual(net.netInputs[0].state, "free");
 
-  assert.strictEqual(net.netOutputs.length, 1);
+  assert.strictEqual(net.netOutputs.length, 2);
   const oxygenOut = net.netOutputs.find((o) => o.resource === "Oxygen");
   assert.strictEqual(oxygenOut.rate, 88);
   assert.strictEqual(oxygenOut.state, "free");
+  const laborOut = net.netOutputs.find((o) => o.resource === "Duplicant Labor");
+  assert.strictEqual(laborOut.rate, 6);
 
   // Check match targets for Gas Pump (index 2)
   const matches = calculateRowMatchTargets(2, hydra.rows, entityMap);
@@ -294,6 +296,14 @@ console.log("=== Running JavaScript Module Tests ===");
   // Ensure NET input temperature control is rendered
   assert.ok(netHtml.includes("net-temp-input"), "NET summary should include net-temp-input");
   assert.ok(netHtml.includes('data-key="Water||in a pipe"'), "NET summary input should have data-key");
+
+  // Duplicant Labor non-thermal test: Duplicant Labor should NOT render net-temp-input
+  const mgRow = { entityId: "manual_generator", qty: 1, recipeId: null, modifiers: [] };
+  const mgEval = evaluateRow(mgRow, entityMap, elementMap);
+  const mgNet = calculateSystemNet([mgEval], { strictPipeMatching: true });
+  const mgNetHtml = renderNetSummaryRowHtml(mgNet, elementMap, "s", {}, true);
+  assert.ok(mgNetHtml.includes("Duplicant Labor: -1 s/s (labor)"), "NET should list Duplicant Labor");
+  assert.ok(!mgNetHtml.includes('data-resource="Duplicant Labor"'), "Duplicant Labor must not have a net-temp-input field");
 
   console.log("✓ Component HTML Rendering tests passed");
 }

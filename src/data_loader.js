@@ -25,6 +25,11 @@ export const SYNTHETIC_ELEMENTS = {
     icon: "images/icons/Food.png",
     state: "Food",
   },
+  "Duplicant Labor": {
+    name: "Duplicant Labor",
+    icon: "images/icons/Duplicants_preview.png",
+    state: "Labor",
+  },
 };
 
 /**

@@ -15,6 +15,9 @@ import { renderIcon } from "./table_row.js";
  * @param {boolean} strictPipeMatching - Whether strict pipe state matching is active
  * @returns {string} HTML string for <tr class="net-summary-row">
  */
+const NON_THERMAL_RESOURCES = new Set(["Duplicant Labor", "Microchip", "Power", "Heat", "Calories"]);
+const NON_THERMAL_UNITS = new Set(["chips/s", "chips/cycle", "s/s", "s/cycle", "kcal/s", "kcal/cycle"]);
+
 export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps = {}, strictPipeMatching = true) {
   const powerIcon = elementMap?.get("Power")?.icon;
   const heatIcon = elementMap?.get("Heat")?.icon;
@@ -36,11 +39,13 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
     const currentTemp = stream.tempC !== undefined
       ? stream.tempC
       : getNetInputTemp(stream.resource, stream.state, netInputTemps, defaultT, strictPipeMatching);
+    const isThermal = !NON_THERMAL_RESOURCES.has(stream.resource) && !NON_THERMAL_UNITS.has(stream.unit);
 
     inputLines.push(`
       <div class="stream-line net-stream">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
         <span class="stream-text">${formatStreamLine(stream, false, rateMode)}</span>
+        ${isThermal ? `
         <span class="net-temp-wrapper">
           <span class="net-temp-at">@</span>
           <input
@@ -54,7 +59,7 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
             aria-label="Input temperature for ${stream.resource}"
           />
           <span class="net-temp-unit">°C</span>
-        </span>
+        </span>` : ""}
       </div>
     `);
   }

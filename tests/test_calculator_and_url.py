@@ -76,14 +76,16 @@ class TestCalculatorAccountingEngine(unittest.TestCase):
         self.assertEqual(water_in["unit"], "g/s")
         self.assertEqual(water_in["state"], "free")
 
-        # 4. NET Outputs (Oxygen: +88 g/s @ 70 °C+ free)
-        self.assertEqual(len(net["net_outputs"]), 1)
-        o2 = net["net_outputs"][0]
+        # 4. NET Outputs (Oxygen: +88 g/s @ 70 °C+ free, Duplicant Labor: +6 s/s)
+        self.assertEqual(len(net["net_outputs"]), 2)
+        o2 = next(o for o in net["net_outputs"] if o["resource"] == "Oxygen")
         self.assertEqual(o2["resource"], "Oxygen")
         self.assertAlmostEqual(o2["rate"], 88.0, places=2)
         self.assertEqual(o2["unit"], "g/s")
         self.assertEqual(o2["state"], "free")
         self.assertIn("70 °C", o2.get("temp", ""))
+        labor = next(o for o in net["net_outputs"] if o["resource"] == "Duplicant Labor")
+        self.assertEqual(labor["rate"], 6.0)
 
     def test_hydra_spom_with_divers_lungs_on_8_duplicants(self):
         """

@@ -678,7 +678,15 @@ export const ONI_DATASET = {
       "icon": "images/icons/Manual_Generator.png",
       "power": 400.0,
       "heat": 1.0,
-      "inputs": [],
+      "inputs": [
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1.0,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
+        }
+      ],
       "outputs": [],
       "recipes": [],
       "modifiers": [
@@ -11768,8 +11776,171 @@ export const ONI_DATASET = {
           "temp": null
         }
       ],
-      "outputs": [],
-      "recipes": [],
+      "outputs": [
+        {
+          "resource": "Duplicant Labor",
+          "rate": 0.75,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
+        }
+      ],
+      "recipes": [
+        {
+          "id": "schedule_default",
+          "name": "Standard Schedule (6 rest blocks / 75% work = 450s/cycle)",
+          "inputs": [
+            {
+              "resource": "Oxygen",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.75,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "schedule_5rest",
+          "name": "5 Rest Blocks (79.2% work = 475s/cycle)",
+          "inputs": [
+            {
+              "resource": "Oxygen",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.7917,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "schedule_4rest",
+          "name": "Optimized Schedule (4 rest blocks / 83.3% work = 500s/cycle)",
+          "inputs": [
+            {
+              "resource": "Oxygen",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.8333,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "schedule_3rest",
+          "name": "3 Rest Blocks (87.5% work = 525s/cycle)",
+          "inputs": [
+            {
+              "resource": "Oxygen",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.875,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "schedule_2rest",
+          "name": "Hardcore Schedule (2 rest blocks / 91.7% work = 550s/cycle)",
+          "inputs": [
+            {
+              "resource": "Oxygen",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.9167,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "schedule_0rest",
+          "name": "Continuous 24/7 (0 rest blocks / 100% work = 600s/cycle)",
+          "inputs": [
+            {
+              "resource": "Oxygen",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "schedule_8rest",
+          "name": "Morale Schedule (8 rest blocks / 66.7% work = 400s/cycle)",
+          "inputs": [
+            {
+              "resource": "Oxygen",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.6667,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ]
+        }
+      ],
       "modifiers": [
         {
           "id": "divers_lungs",
@@ -11926,6 +12097,13 @@ export const ONI_DATASET = {
         }
       ],
       "outputs": [
+        {
+          "resource": "Duplicant Labor",
+          "rate": 0.9167,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
+        },
         {
           "resource": "Gunk",
           "rate": 33.33,

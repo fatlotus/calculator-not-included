@@ -676,7 +676,15 @@
     "icon": "images/icons/Manual_Generator.png",
     "power": 400.0,
     "heat": 1.0,
-    "inputs": [],
+    "inputs": [
+      {
+        "resource": "Duplicant Labor",
+        "rate": 1.0,
+        "unit": "s/s",
+        "state": "labor",
+        "temp": null
+      }
+    ],
     "outputs": [],
     "recipes": [],
     "modifiers": [
