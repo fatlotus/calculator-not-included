@@ -407,6 +407,39 @@ class TestCalculatorEngine(unittest.TestCase):
         matches = calculate_row_match_targets(1, rows, self.entity_map)
         self.assertIn("out:Duplicant Labor||labor", matches)
 
+    def test_generator_tuneups_and_microchip_consumption(self):
+        # 1. Manual Generator with Engie's Tune-Up
+        tuned_mg = evaluate_row(
+            {"entityId": "manual_generator", "qty": 1, "modifiers": ["engie_tuneup"]},
+            self.entity_map,
+        )
+        self.assertEqual(tuned_mg["power"], 600.0)  # 400 * 1.5
+        mc_in = next(i for i in tuned_mg["inputs"] if i["resource"] == "Microchip")
+        self.assertAlmostEqual(mc_in["rate"], 0.0005555556, places=7)
+        self.assertEqual(mc_in["unit"], "chips/s")
+        self.assertEqual(mc_in["state"], "solid")
+
+        # 2. Coal Generator with Engie's Tune-Up
+        tuned_cg = evaluate_row(
+            {"entityId": "coal_generator", "qty": 1, "modifiers": ["engie_tuneup"]},
+            self.entity_map,
+        )
+        self.assertEqual(tuned_cg["power"], 900.0)  # 600 * 1.5
+        mc_in_cg = next(i for i in tuned_cg["inputs"] if i["resource"] == "Microchip")
+        self.assertAlmostEqual(mc_in_cg["rate"], 0.0005555556, places=7)
+
+        # 3. Power Control Station balances 1 tuned-up generator
+        rows = [
+            {"entityId": "coal_generator", "qty": 1, "modifiers": ["engie_tuneup"]},
+            {"entityId": "power_control_station", "qty": 1, "recipeId": "lead"},
+        ]
+        evaluated = [evaluate_row(r, self.entity_map) for r in rows]
+        net = calculate_system_net(evaluated, {"strictPipeMatching": True})
+        # Microchip should completely cancel out
+        mc_net = [s for s in net["netInputs"] + net["netOutputs"] if s["resource"] == "Microchip"]
+        self.assertEqual(len(mc_net), 0)
+        self.assertEqual(net["netPower"], 900.0)
+
 
 if __name__ == "__main__":
     unittest.main()

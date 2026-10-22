@@ -30,6 +30,11 @@ export const SYNTHETIC_ELEMENTS = {
     icon: "images/icons/Duplicants_preview.png",
     state: "Labor",
   },
+  Microchip: {
+    name: "Microchip",
+    icon: "images/icons/Power.png",
+    state: "Solid",
+  },
 };
 
 /**

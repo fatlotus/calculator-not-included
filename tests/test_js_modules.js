@@ -305,6 +305,20 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(mgNetHtml.includes("Duplicant Labor: -1 s/s (labor)"), "NET should list Duplicant Labor");
   assert.ok(!mgNetHtml.includes('data-resource="Duplicant Labor"'), "Duplicant Labor must not have a net-temp-input field");
 
+  // Tune-up with Microchip tests
+  const tunedMg = evaluateRow({ entityId: "manual_generator", qty: 1, modifiers: ["engie_tuneup"] }, entityMap, elementMap);
+  assert.strictEqual(tunedMg.power, 600);
+  const mgChip = tunedMg.inputs.find((i) => i.resource === "Microchip");
+  assert.ok(mgChip, "Tuned manual generator must consume Microchips");
+  assert.strictEqual(mgChip.unit, "chips/s");
+
+  const tunedCg = evaluateRow({ entityId: "coal_generator", qty: 1, modifiers: ["engie_tuneup"] }, entityMap, elementMap);
+  assert.strictEqual(tunedCg.power, 900);
+  const cgNet = calculateSystemNet([tunedCg], { strictPipeMatching: true });
+  const cgNetHtml = renderNetSummaryRowHtml(cgNet, elementMap, "s", {}, true);
+  assert.ok(cgNetHtml.includes("Microchip: -0.0006 chips/s (solid)"), "NET summary should display Microchip input");
+  assert.ok(!cgNetHtml.includes('data-resource="Microchip"'), "Microchip must not have a net-temp-input field");
+
   console.log("✓ Component HTML Rendering tests passed");
 }
 

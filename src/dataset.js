@@ -357,8 +357,17 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "engie_tuneup",
-          "name": "Engie's Tune-Up (+50% Power)",
-          "power_multiplier": 1.5
+          "name": "Engie's Tune-Up (+50% Power, -1 Microchip / 3 cycles)",
+          "power_multiplier": 1.5,
+          "extra_inputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
         }
       ],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Hydrogen_Generator.png?f75a92"
@@ -394,8 +403,17 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "engie_tuneup",
-          "name": "Engie's Tune-Up (+50% Power)",
-          "power_multiplier": 1.5
+          "name": "Engie's Tune-Up (+50% Power, -1 Microchip / 3 cycles)",
+          "power_multiplier": 1.5,
+          "extra_inputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
         }
       ],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Coal_Generator.png?13244a"
@@ -431,8 +449,17 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "engie_tuneup",
-          "name": "Engie's Tune-Up (+50% Power)",
-          "power_multiplier": 1.5
+          "name": "Engie's Tune-Up (+50% Power, -1 Microchip / 3 cycles)",
+          "power_multiplier": 1.5,
+          "extra_inputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
         }
       ],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Wood_Burner.png?158747"
@@ -460,8 +487,17 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "engie_tuneup",
-          "name": "Engie's Tune-Up (+50% Power)",
-          "power_multiplier": 1.5
+          "name": "Engie's Tune-Up (+50% Power, -1 Microchip / 3 cycles)",
+          "power_multiplier": 1.5,
+          "extra_inputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
         }
       ],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/PP_icon.png/42px-PP_icon.png?bc0815"
@@ -504,8 +540,17 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "engie_tuneup",
-          "name": "Engie's Tune-Up (+50% Power)",
-          "power_multiplier": 1.5
+          "name": "Engie's Tune-Up (+50% Power, -1 Microchip / 3 cycles)",
+          "power_multiplier": 1.5,
+          "extra_inputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
         }
       ],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Natural_Gas_Generator.png?41eb1f"
@@ -611,8 +656,17 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "engie_tuneup",
-          "name": "Engie's Tune-Up (+50% Power)",
-          "power_multiplier": 1.5
+          "name": "Engie's Tune-Up (+50% Power, -1 Microchip / 3 cycles)",
+          "power_multiplier": 1.5,
+          "extra_inputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
         }
       ],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Petroleum_Generator.png?9465e6"
@@ -645,7 +699,22 @@ export const ONI_DATASET = {
         }
       ],
       "recipes": [],
-      "modifiers": [],
+      "modifiers": [
+        {
+          "id": "engie_tuneup",
+          "name": "Engie's Tune-Up (+50% Power, -1 Microchip / 3 cycles)",
+          "power_multiplier": 1.5,
+          "extra_inputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
+        }
+      ],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Steam_Turbine.png?a14b0d"
     },
     {
@@ -660,13 +729,7 @@ export const ONI_DATASET = {
       "inputs": [],
       "outputs": [],
       "recipes": [],
-      "modifiers": [
-        {
-          "id": "engie_tuneup",
-          "name": "Engie's Tune-Up (+50% Power)",
-          "power_multiplier": 1.5
-        }
-      ],
+      "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Solar_Panel.png?1a20f1"
     },
     {
@@ -692,8 +755,17 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "engie_tuneup",
-          "name": "Engie's Tune-Up (+50% Power)",
-          "power_multiplier": 1.5
+          "name": "Engie's Tune-Up (+50% Power, -1 Microchip / 3 cycles)",
+          "power_multiplier": 1.5,
+          "extra_inputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
         }
       ],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Manual_Generator.png?cba303"
@@ -7682,6 +7754,196 @@ export const ONI_DATASET = {
         "Liquid Pump"
       ],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Liquid_Pump.png?791c27"
+    },
+    {
+      "id": "power_control_station",
+      "name": "Power Control Station",
+      "category": "Machine",
+      "subcategory": "Power",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Power_Control_Station",
+      "icon": "images/icons/Metal_Refinery.png",
+      "power": 0.0,
+      "heat": 0.0,
+      "inputs": [],
+      "outputs": [],
+      "recipes": [
+        {
+          "id": "microchip_lead",
+          "name": "Microchip (Lead: 5 kg -> 1 chip)",
+          "inputs": [
+            {
+              "resource": "Lead",
+              "rate": 2.7778,
+              "unit": "g/s",
+              "state": "solid",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.25,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "microchip_copper",
+          "name": "Microchip (Copper: 5 kg -> 1 chip)",
+          "inputs": [
+            {
+              "resource": "Copper",
+              "rate": 2.7778,
+              "unit": "g/s",
+              "state": "solid",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.25,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "microchip_iron",
+          "name": "Microchip (Iron: 5 kg -> 1 chip)",
+          "inputs": [
+            {
+              "resource": "Iron",
+              "rate": 2.7778,
+              "unit": "g/s",
+              "state": "solid",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.25,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "microchip_aluminum",
+          "name": "Microchip (Aluminum: 5 kg -> 1 chip)",
+          "inputs": [
+            {
+              "resource": "Aluminum",
+              "rate": 2.7778,
+              "unit": "g/s",
+              "state": "solid",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.25,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "microchip_gold",
+          "name": "Microchip (Gold: 5 kg -> 1 chip)",
+          "inputs": [
+            {
+              "resource": "Gold",
+              "rate": 2.7778,
+              "unit": "g/s",
+              "state": "solid",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.25,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "microchip_steel",
+          "name": "Microchip (Steel: 5 kg -> 1 chip)",
+          "inputs": [
+            {
+              "resource": "Steel",
+              "rate": 2.7778,
+              "unit": "g/s",
+              "state": "solid",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 0.25,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Microchip",
+              "rate": 0.0005555556,
+              "unit": "chips/s",
+              "state": "solid",
+              "temp": null
+            }
+          ]
+        }
+      ],
+      "modifiers": [],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Power_Control_Station.png"
     }
   ],
   "plants": [
