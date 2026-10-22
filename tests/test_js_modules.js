@@ -461,11 +461,12 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(tallowIn.rate, 0.0004167);
   assert.strictEqual(tallowIn.unit, "balm/s");
 
-  // Defragmentation option producing Microchips
+  // Defragmentation option producing Microchips (0.33 microchips/cycle = 0.00055 chips/s)
   const defragEval = evaluateRow({ entityId: "bionic_duplicant", qty: 1, modifiers: ["defragment"] }, entityMap, elementMap);
   const chipOut = defragEval.outputs.find((o) => o.resource === "Microchip");
   assert.ok(chipOut, "Defragment modifier should produce Microchips");
-  assert.ok(chipOut.rate > 0, "Defragment output rate should be positive");
+  assert.strictEqual(chipOut.rate, 0.00055, "Defragment rate should be 0.00055 chips/s (0.33 chips/cycle)");
+  assert.strictEqual(formatStreamLine(chipOut, true, "c"), "Microchip: +0.33 chips/cycle @ 20 °C (solid)", "Cycle display should be +0.33 chips/cycle");
 
   // Diver's lungs modifier (-25% Oxygen)
   const dlEval = evaluateRow({ entityId: "bionic_duplicant", qty: 1, modifiers: ["divers_lungs"] }, entityMap, elementMap);

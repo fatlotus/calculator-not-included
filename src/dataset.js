@@ -11112,11 +11112,11 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "defragment",
-          "name": "Defragment (+0.37 microchips/cycle)",
+          "name": "Defragment (+0.33 microchips/cycle)",
           "extra_outputs": [
             {
               "resource": "Microchip",
-              "rate": 0.0006166667,
+              "rate": 0.00055,
               "unit": "chips/s",
               "state": "solid",
               "temp": null
