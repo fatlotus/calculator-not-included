@@ -5502,6 +5502,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
+        },
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1.0,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
         }
       ],
       "outputs": [

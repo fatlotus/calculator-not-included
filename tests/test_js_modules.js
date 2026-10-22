@@ -260,6 +260,7 @@ console.log("=== Running JavaScript Module Tests ===");
 
 // 4. Presets
 {
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
   assert.ok(PRESETS.length >= 5, "Should have at least 5 presets defined");
   const hydra = getPresetById("hydra_spom");
   assert.strictEqual(hydra.name, "Hydra SPOM (PDF Example)");
@@ -269,6 +270,14 @@ console.log("=== Running JavaScript Module Tests ===");
   for (const preset of PRESETS) {
     assert.strictEqual(preset.strictPipeMatching, true, `${preset.name} should have strictPipeMatching: true`);
   }
+
+  // Oil refinery preset test
+  const oilPreset = getPresetById("oil_refinery_petroleum_loop");
+  assert.ok(oilPreset, "Oil refinery preset should exist");
+  assert.strictEqual(oilPreset.rows.length, 6);
+  const evaluatedOil = oilPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const oilNet = calculateSystemNet(evaluatedOil, { strictPipeMatching: true });
+  assert.ok(oilNet.netPower > 5000, "Oil refinery power plant should produce > 5000 W net");
 
   console.log("✓ Presets tests passed");
 }

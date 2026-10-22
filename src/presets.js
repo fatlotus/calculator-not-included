@@ -68,6 +68,21 @@ export const PRESETS = [
       { entityId: "natural_gas_generator", qty: 1, recipeId: null, modifiers: [] },
     ],
   },
+  {
+    id: "oil_refinery_petroleum_loop",
+    name: "Oil Refinery + Petroleum Power Plant",
+    description: "Refines 10 kg/s Crude Oil into Petroleum and Natural Gas, supporting 5 kW continuous power generation.",
+    rateMode: "s",
+    strictPipeMatching: true,
+    rows: [
+      { entityId: "oil_refinery", qty: 1, recipeId: null, modifiers: [] },
+      { entityId: "liquid_pump", qty: 1, recipeId: "crude_oil", modifiers: [] },
+      { entityId: "gas_pump", qty: 0.18, recipeId: "natural_gas", modifiers: [] },
+      { entityId: "natural_gas_generator", qty: 1, recipeId: null, modifiers: [] },
+      { entityId: "petroleum_generator", qty: 2.5, recipeId: "petroleum", modifiers: [] },
+      { entityId: "duplicant", qty: 1.3333, recipeId: "schedule_default", modifiers: [] },
+    ],
+  },
 ];
 
 /**

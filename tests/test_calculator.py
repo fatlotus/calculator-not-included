@@ -440,6 +440,34 @@ class TestCalculatorEngine(unittest.TestCase):
         self.assertEqual(len(mc_net), 0)
         self.assertEqual(net["netPower"], 900.0)
 
+    def test_oil_refinery_petroleum_loop_preset(self):
+        rows = [
+            {"entityId": "oil_refinery", "qty": 1, "recipeId": None, "modifiers": []},
+            {"entityId": "liquid_pump", "qty": 1, "recipeId": "crude_oil", "modifiers": []},
+            {"entityId": "gas_pump", "qty": 0.18, "recipeId": "natural_gas", "modifiers": []},
+            {"entityId": "natural_gas_generator", "qty": 1, "recipeId": None, "modifiers": []},
+            {"entityId": "petroleum_generator", "qty": 2.5, "recipeId": "petroleum", "modifiers": []},
+            {"entityId": "duplicant", "qty": 1.3333333, "recipeId": "schedule_default", "modifiers": []},
+        ]
+        evaluated = [evaluate_row(r, self.entity_map) for r in rows]
+        net = calculate_system_net(evaluated, {"strictPipeMatching": True})
+
+        # Net power: +5000 + 800 - 480 - 240 - (240 * 0.18) = +5036.8 W
+        self.assertAlmostEqual(net["netPower"], 5036.8, places=1)
+        # Crude oil net input is 10 kg/s free (pumped into pipe)
+        co_in = next(s for s in net["netInputs"] if s["resource"] == "Crude Oil")
+        self.assertEqual(co_in["rate"], 10000.0)
+        self.assertEqual(co_in["state"], "free")
+        # Petroleum cancels out completely in pipe
+        pet_net = [s for s in net["netInputs"] + net["netOutputs"] if s["resource"] == "Petroleum"]
+        self.assertEqual(len(pet_net), 0)
+        # Natural gas cancels out completely
+        ng_net = [s for s in net["netInputs"] + net["netOutputs"] if s["resource"] == "Natural Gas"]
+        self.assertEqual(len(ng_net), 0)
+        # Duplicant labor cancels out completely
+        labor_net = [s for s in net["netInputs"] + net["netOutputs"] if s["resource"] == "Duplicant Labor"]
+        self.assertEqual(len(labor_net), 0)
+
 
 if __name__ == "__main__":
     unittest.main()
