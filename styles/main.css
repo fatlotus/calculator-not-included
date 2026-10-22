@@ -113,6 +113,18 @@ body {
   gap: 10px;
 }
 
+.brand-link-clean {
+  display: contents;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brand-link-clean:hover code {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
 .brand-title {
   font-size: 18px;
   font-weight: 600;
