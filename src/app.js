@@ -457,7 +457,13 @@ class OniApp {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function startApp() {
   const app = new OniApp();
   app.init();
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startApp);
+} else {
+  startApp();
+}

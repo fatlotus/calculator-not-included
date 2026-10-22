@@ -478,7 +478,7 @@ export function evaluateRow(
 
 /**
  * Iteratively resolve system-wide element temperatures across the table rows.
- * For each resource key (resource||state if strictPipeMatching else resource):
+ * For each resource key (resource||state with strict pipe matching):
  * - temperature seen by consumers is the rate-weighted average of all output streams of that key.
  * - if key has a net deficit (appears in NET inputs), blend in deficit mass at NET input temperature.
  * - if key has no outputs at all, use NET input temperature.

@@ -469,7 +469,7 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(!rowHtml.includes("input-temp-field"), "Row HTML should NOT contain per-row feed temp input");
   assert.ok(!rowHtml.includes("Feed:"), "Row HTML should NOT contain Feed: label");
 
-  const net = calculateSystemNet([evaluated], { strictPipeMatching: true });
+  const net = calculateSystemNet([evaluated]);
   const netHtml = renderNetSummaryRowHtml(net, elementMap, "s", { "Water||in a pipe": 20 }, true);
   assert.ok(netHtml.includes("NET"), "NET row HTML should include NET badge");
   assert.ok(netHtml.includes("Oxygen: +888 g/s"), "NET row HTML should include Oxygen stream");
@@ -480,7 +480,7 @@ console.log("=== Running JavaScript Module Tests ===");
   // Duplicant Labor non-thermal test: Duplicant Labor should NOT render net-temp-input
   const mgRow = { entityId: "manual_generator", qty: 1, recipeId: null, modifiers: [] };
   const mgEval = evaluateRow(mgRow, entityMap, elementMap);
-  const mgNet = calculateSystemNet([mgEval], { strictPipeMatching: true });
+  const mgNet = calculateSystemNet([mgEval]);
   const mgNetHtml = renderNetSummaryRowHtml(mgNet, elementMap, "s", {}, true);
   assert.ok(mgNetHtml.includes("Duplicant Labor: -1 s/s (labor)"), "NET should list Duplicant Labor");
   assert.ok(!mgNetHtml.includes('data-resource="Duplicant Labor"'), "Duplicant Labor must not have a net-temp-input field");
@@ -494,7 +494,7 @@ console.log("=== Running JavaScript Module Tests ===");
 
   const tunedCg = evaluateRow({ entityId: "coal_generator", qty: 1, modifiers: ["engie_tuneup"] }, entityMap, elementMap);
   assert.strictEqual(tunedCg.power, 900);
-  const cgNet = calculateSystemNet([tunedCg], { strictPipeMatching: true });
+  const cgNet = calculateSystemNet([tunedCg]);
   const cgNetHtml = renderNetSummaryRowHtml(cgNet, elementMap, "s", {}, true);
   assert.ok(cgNetHtml.includes("Microchip: -0.0006 chips/s (solid)"), "NET summary should display Microchip input");
   assert.ok(!cgNetHtml.includes('data-resource="Microchip"'), "Microchip must not have a net-temp-input field");
