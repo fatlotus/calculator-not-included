@@ -540,6 +540,30 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
         }
       }
     }
+    if (row.modifiers && Array.isArray(row.modifiers)) {
+      for (const modId of row.modifiers) {
+        const mod = (entity.modifiers || []).find((m) => m.id === modId);
+        if (!mod) continue;
+        if (mod.extra_inputs) {
+          for (const inp of mod.extra_inputs) {
+            if (isNonThermalResource(inp.resource, inp.unit)) continue;
+            const k = getKey(inp.resource, inp.state);
+            if (currentTemps[k] === undefined) {
+              currentTemps[k] = getDefNetTemp(inp.resource, inp.state);
+            }
+          }
+        }
+        if (mod.extra_outputs) {
+          for (const out of mod.extra_outputs) {
+            if (isNonThermalResource(out.resource, out.unit)) continue;
+            const k = getKey(out.resource, out.state);
+            if (currentTemps[k] === undefined) {
+              currentTemps[k] = getDefNetTemp(out.resource, out.state);
+            }
+          }
+        }
+      }
+    }
   }
 
   let evaluatedRows = [];

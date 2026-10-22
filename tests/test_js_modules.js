@@ -608,4 +608,60 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Non-Thermal Resources (Duplicant Labor, Calories) tests passed");
 }
 
+// 9. Geotuner Connected Inputs by Geyser Type
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+
+  // 1x Geotuned Water Geyser -> Bleach Stone (25 g/s)
+  const water1 = evaluateRow({ entityId: "geyser_water_geyser", qty: 1, modifiers: ["geotuned_1"] }, entityMap, elementMap);
+  const bsIn1 = water1.inputs.find((i) => i.resource === "Bleach Stone");
+  assert.ok(bsIn1, "1x Geotuned Water Geyser requires Bleach Stone");
+  assert.strictEqual(bsIn1.rate, 25.0, "1x Geotuned Water Geyser consumes 25 g/s Bleach Stone");
+  const waterOut1 = water1.outputs.find((o) => o.resource === "Water");
+  assert.strictEqual(waterOut1.rate, 3600.0, "1x Geotuner gives +20% output (3000 * 1.2 = 3600 g/s)");
+
+  // 5x Geotuned Water Geyser -> Bleach Stone (125 g/s)
+  const water5 = evaluateRow({ entityId: "geyser_water_geyser", qty: 1, modifiers: ["geotuned_5"] }, entityMap, elementMap);
+  const bsIn5 = water5.inputs.find((i) => i.resource === "Bleach Stone");
+  assert.ok(bsIn5, "5x Geotuned Water Geyser requires Bleach Stone");
+  assert.strictEqual(bsIn5.rate, 125.0, "5x Geotuned Water Geyser consumes 125 g/s Bleach Stone");
+  const waterOut5 = water5.outputs.find((o) => o.resource === "Water");
+  assert.strictEqual(waterOut5.rate, 6000.0, "5x Geotuner gives +100% output (3000 * 2 = 6000 g/s)");
+
+  // Metal Volcano (Iron Volcano) -> Refined Phosphorus (25 g/s)
+  const ironGeotuned = evaluateRow({ entityId: "geyser_iron_volcano", qty: 1, modifiers: ["geotuned_1"] }, entityMap, elementMap);
+  const phosIn = ironGeotuned.inputs.find((i) => i.resource === "Refined Phosphorus");
+  assert.ok(phosIn, "Geotuned Iron Volcano requires Refined Phosphorus");
+  assert.strictEqual(phosIn.rate, 25.0, "1x Geotuner consumes 25 g/s Refined Phosphorus");
+
+  // Gas Vent (Chlorine Gas Vent) -> Salt (25 g/s)
+  const chlorineGeotuned = evaluateRow({ entityId: "geyser_chlorine_gas_vent", qty: 1, modifiers: ["geotuned_1"] }, entityMap, elementMap);
+  const saltIn = chlorineGeotuned.inputs.find((i) => i.resource === "Salt");
+  assert.ok(saltIn, "Geotuned Chlorine Vent requires Salt");
+  assert.strictEqual(saltIn.rate, 25.0, "1x Geotuner consumes 25 g/s Salt");
+
+  // Extreme / Magma (Hydrogen Vent & Volcano) -> Abyssalite (25 g/s)
+  const h2Geotuned = evaluateRow({ entityId: "geyser_hydrogen_vent", qty: 1, modifiers: ["geotuned_1"] }, entityMap, elementMap);
+  const abyssaliteIn = h2Geotuned.inputs.find((i) => i.resource === "Abyssalite");
+  assert.ok(abyssaliteIn, "Geotuned Hydrogen Vent requires Abyssalite");
+  assert.strictEqual(abyssaliteIn.rate, 25.0, "1x Geotuner consumes 25 g/s Abyssalite");
+
+  const volcanoGeotuned = evaluateRow({ entityId: "geyser_volcano", qty: 1, modifiers: ["geotuned_5"] }, entityMap, elementMap);
+  const abyssaliteIn5 = volcanoGeotuned.inputs.find((i) => i.resource === "Abyssalite");
+  assert.ok(abyssaliteIn5, "5x Geotuned Volcano requires Abyssalite");
+  assert.strictEqual(abyssaliteIn5.rate, 125.0, "5x Geotuner consumes 125 g/s Abyssalite");
+
+  // calculateSystemNet
+  const net = calculateSystemNet([water1, ironGeotuned]);
+  const netBs = net.netInputs.find((i) => i.resource === "Bleach Stone");
+  assert.ok(netBs, "Net inputs must include Bleach Stone for geotuned water geyser");
+  assert.strictEqual(netBs.rate, 25.0);
+
+  const netPhos = net.netInputs.find((i) => i.resource === "Refined Phosphorus");
+  assert.ok(netPhos, "Net inputs must include Refined Phosphorus for geotuned metal volcano");
+  assert.strictEqual(netPhos.rate, 25.0);
+
+  console.log("✓ Geotuner Connected Inputs by Geyser Type tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
