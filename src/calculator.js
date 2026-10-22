@@ -148,32 +148,20 @@ export function getDefaultElementTemp(resource, elementMap) {
 /**
  * Lookup net input temperature from state.netInputTemps with fallbacks.
  */
-export function getNetInputTemp(resource, state, netInputTemps, defaultTemp = 20.0, strictPipeMatching = true) {
+export function getNetInputTemp(resource, state, netInputTemps, defaultTemp = 20.0) {
   if (!netInputTemps || typeof netInputTemps !== "object") return defaultTemp;
   const keyStrict = `${resource}||${state || "free"}`;
   const keySinglePipe = `${resource}|${state || "free"}`;
   const keyResource = resource;
 
-  if (strictPipeMatching) {
-    if (netInputTemps[keyStrict] !== undefined && !isNaN(Number(netInputTemps[keyStrict]))) {
-      return Number(netInputTemps[keyStrict]);
-    }
-    if (netInputTemps[keySinglePipe] !== undefined && !isNaN(Number(netInputTemps[keySinglePipe]))) {
-      return Number(netInputTemps[keySinglePipe]);
-    }
-    if (netInputTemps[keyResource] !== undefined && !isNaN(Number(netInputTemps[keyResource]))) {
-      return Number(netInputTemps[keyResource]);
-    }
-  } else {
-    if (netInputTemps[keyResource] !== undefined && !isNaN(Number(netInputTemps[keyResource]))) {
-      return Number(netInputTemps[keyResource]);
-    }
-    if (netInputTemps[keyStrict] !== undefined && !isNaN(Number(netInputTemps[keyStrict]))) {
-      return Number(netInputTemps[keyStrict]);
-    }
-    if (netInputTemps[keySinglePipe] !== undefined && !isNaN(Number(netInputTemps[keySinglePipe]))) {
-      return Number(netInputTemps[keySinglePipe]);
-    }
+  if (netInputTemps[keyStrict] !== undefined && !isNaN(Number(netInputTemps[keyStrict]))) {
+    return Number(netInputTemps[keyStrict]);
+  }
+  if (netInputTemps[keySinglePipe] !== undefined && !isNaN(Number(netInputTemps[keySinglePipe]))) {
+    return Number(netInputTemps[keySinglePipe]);
+  }
+  if (netInputTemps[keyResource] !== undefined && !isNaN(Number(netInputTemps[keyResource]))) {
+    return Number(netInputTemps[keyResource]);
   }
   return defaultTemp;
 }
@@ -225,8 +213,7 @@ export function evaluateRow(
   entityMap,
   elementMap = null,
   defaultInputTemp = 20.0,
-  inputTemps = null,
-  strictPipeMatching = true
+  inputTemps = null
 ) {
   let entity = entityMap ? entityMap.get(row.entityId) : null;
   if (!entity && entityMap && ENTITY_ALIASES[row.entityId]) {
@@ -267,7 +254,7 @@ export function evaluateRow(
   const inputs = baseInputs.map((s) => {
     let inpTemp = defaultInputTemp;
     if (inputTemps && typeof inputTemps === "object") {
-      const k = strictPipeMatching ? `${s.resource}||${s.state || "free"}` : s.resource;
+      const k = `${s.resource}||${s.state || "free"}`;
       const kSingle = `${s.resource}|${s.state || "free"}`;
       if (inputTemps[k] !== undefined) inpTemp = Number(inputTemps[k]);
       else if (inputTemps[kSingle] !== undefined) inpTemp = Number(inputTemps[kSingle]);
@@ -332,7 +319,7 @@ export function evaluateRow(
         } else {
           let inpTemp = defaultInputTemp;
           if (inputTemps && typeof inputTemps === "object") {
-            const k = strictPipeMatching ? `${extra.resource}||${extra.state || "free"}` : extra.resource;
+            const k = `${extra.resource}||${extra.state || "free"}`;
             const kSingle = `${extra.resource}|${extra.state || "free"}`;
             if (inputTemps[k] !== undefined) inpTemp = Number(inputTemps[k]);
             else if (inputTemps[kSingle] !== undefined) inpTemp = Number(inputTemps[kSingle]);
@@ -400,19 +387,16 @@ export function evaluateRow(
  * Iterates until convergence (capped at maxPasses, default 10).
  */
 export function resolveTableTemperatures(rows, entityMap, elementMap = null, options = {}) {
-  const strictPipeMatching = typeof options === "boolean"
-    ? options
-    : (options.strictPipeMatching !== undefined ? Boolean(options.strictPipeMatching) : true);
   const netInputTemps = (typeof options === "object" && options.netInputTemps) || {};
   const maxPasses = (typeof options === "object" && options.maxPasses) || 10;
 
   if (!rows || rows.length === 0) return [];
 
-  const getKey = (res, st) => strictPipeMatching ? `${res}||${st || "free"}` : res;
+  const getKey = (res, st) => `${res}||${st || "free"}`;
 
   const getDefNetTemp = (res, st) => {
     const def = getDefaultElementTemp(res, elementMap);
-    return getNetInputTemp(res, st, netInputTemps, def, strictPipeMatching);
+    return getNetInputTemp(res, st, netInputTemps, def);
   };
 
   const currentTemps = {};
@@ -447,7 +431,7 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
   for (let pass = 0; pass < maxPasses; pass++) {
     // 1. Evaluate rows with current temperatures
     evaluatedRows = rows.map((row) =>
-      evaluateRow(row, entityMap, elementMap, 20.0, currentTemps, strictPipeMatching)
+      evaluateRow(row, entityMap, elementMap, 20.0, currentTemps)
     );
 
     // 2. Aggregate production and consumption by key
@@ -483,7 +467,7 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
 
       let res = k;
       let st = "free";
-      if (strictPipeMatching && k.includes("||")) {
+      if (k.includes("||")) {
         const parts = k.split("||");
         res = parts[0];
         st = parts[1] || "free";
@@ -514,7 +498,7 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
 
   // Final evaluation pass with converged temperatures
   evaluatedRows = rows.map((row) =>
-    evaluateRow(row, entityMap, elementMap, 20.0, currentTemps, strictPipeMatching)
+    evaluateRow(row, entityMap, elementMap, 20.0, currentTemps)
   );
 
   return evaluatedRows;
@@ -586,22 +570,16 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap) {
  * Compute system-wide NET balance across evaluated rows.
  */
 export function calculateSystemNet(evaluatedRows, options = {}) {
-  const strictPipeMatching = options.strictPipeMatching !== undefined ? Boolean(options.strictPipeMatching) : true;
   const netInputTemps = options.netInputTemps || {};
   const elementMap = options.elementMap || null;
 
   let netPower = 0;
   let netHeat = 0;
-  const stateTransferResources = new Set();
   const buckets = new Map();
 
   for (const row of evaluatedRows) {
     netPower += row.power;
     netHeat += row.heat !== undefined ? row.heat : 0;
-
-    for (const res of row.isStateTransferFor) {
-      stateTransferResources.add(res);
-    }
 
     for (const inp of row.inputs) {
       const key = `${inp.resource}||${inp.state || "free"}`;
@@ -650,44 +628,9 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
   }
 
   const finalBuckets = [];
-  const byResource = new Map();
-
   for (const b of buckets.values()) {
-    if (Math.abs(b.netRate) < 1e-5) continue;
-    if (!byResource.has(b.resource)) byResource.set(b.resource, []);
-    byResource.get(b.resource).push(b);
-  }
-
-  for (const [resource, resBuckets] of byResource.entries()) {
-    if (strictPipeMatching || stateTransferResources.has(resource) || resBuckets.length === 1) {
-      finalBuckets.push(...resBuckets);
-    } else {
-      let combinedRate = 0;
-      let dominantBucket = resBuckets[0];
-      let outputTemp = null;
-      let tempEnth = 0;
-      let totalOut = 0;
-      for (const b of resBuckets) {
-        combinedRate += b.netRate;
-        if (Math.abs(b.netRate) > Math.abs(dominantBucket.netRate)) dominantBucket = b;
-        if (b.totalOutRate > 0) {
-          tempEnth += b.tempEnthalpy;
-          totalOut += b.totalOutRate;
-        }
-      }
-      if (totalOut > 0) {
-        outputTemp = `@ ${formatNumber(tempEnth / totalOut)} °C`;
-      }
-      if (Math.abs(combinedRate) >= 1e-5) {
-        finalBuckets.push({
-          resource,
-          state: dominantBucket.state,
-          unit: dominantBucket.unit,
-          netRate: combinedRate,
-          temp: combinedRate > 0 ? outputTemp : null,
-          tempC: totalOut > 0 ? tempEnth / totalOut : undefined,
-        });
-      }
+    if (Math.abs(b.netRate) >= 1e-5) {
+      finalBuckets.push(b);
     }
   }
 
@@ -697,7 +640,7 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
   for (const b of finalBuckets) {
     if (b.netRate < -1e-5) {
       const defT = getDefaultElementTemp(b.resource, elementMap);
-      const tempC = getNetInputTemp(b.resource, b.state, netInputTemps, defT, strictPipeMatching);
+      const tempC = getNetInputTemp(b.resource, b.state, netInputTemps, defT);
       netInputs.push({
         resource: b.resource,
         rate: Math.abs(b.netRate),

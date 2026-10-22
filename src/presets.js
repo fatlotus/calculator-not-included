@@ -1,7 +1,6 @@
 /**
  * Built-in system presets for ONI Resource Calculator.
- * Features fractional machine utilization (e.g. 0.1x Water Pump, 0.224x Gas Pump)
- * and strict pipe state matching enabled by default.
+ * Features fractional machine utilization (e.g. 0.1x Water Pump, 0.224x Gas Pump).
  */
 
 export const PRESETS = [
@@ -10,7 +9,6 @@ export const PRESETS = [
     name: "Hydra SPOM (PDF Example)",
     description: "Self-Powered Oxygen Machine supporting 8 duplicants with net surplus hydrogen and power.",
     rateMode: "s",
-    strictPipeMatching: true,
     rows: [
       { entityId: "electrolyzer", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "liquid_pump", qty: 0.1, recipeId: "water", modifiers: [] },
@@ -24,7 +22,6 @@ export const PRESETS = [
     name: "Coal Generator + Carbon Skimmer Loop",
     description: "Continuous 600 W power generation with closed-loop CO2 scrubbing and water filtration.",
     rateMode: "s",
-    strictPipeMatching: true,
     rows: [
       { entityId: "coal_generator", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "carbon_skimmer", qty: 1, recipeId: null, modifiers: [] },
@@ -36,7 +33,6 @@ export const PRESETS = [
     name: "Stone Hatch Ranch (8x) + Coal Power",
     description: "Sustainable ranch of 8 stone hatches consuming igneous rock to feed a coal generator and 8 duplicants.",
     rateMode: "s",
-    strictPipeMatching: true,
     rows: [
       { entityId: "critter_stone_hatch", qty: 8, recipeId: "igneous_rock", modifiers: [] },
       { entityId: "coal_generator", qty: 1, recipeId: null, modifiers: [] },
@@ -48,7 +44,6 @@ export const PRESETS = [
     name: "Arbor Tree Ethanol Power Loop",
     description: "Closed-loop wood and ethanol cycle producing massive net power, polluted water, and dirt.",
     rateMode: "s",
-    strictPipeMatching: true,
     rows: [
       { entityId: "plant_arbor_tree", qty: 8, recipeId: null, modifiers: [] },
       { entityId: "ethanol_distiller", qty: 4, recipeId: null, modifiers: [] },
@@ -61,7 +56,6 @@ export const PRESETS = [
     name: "Natural Gas Geyser Power Plant",
     description: "Harvesting a natural gas geyser to fuel clean power generation with water and CO2 byproduct.",
     rateMode: "s",
-    strictPipeMatching: true,
     rows: [
       { entityId: "geyser_natural_gas_geyser", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "gas_pump", qty: 1, recipeId: "natural_gas", modifiers: [] },
@@ -73,7 +67,6 @@ export const PRESETS = [
     name: "Oil Refinery + Petroleum Power Plant",
     description: "Refines 10 kg/s Crude Oil into Petroleum and Natural Gas, supporting 5 kW continuous power generation.",
     rateMode: "s",
-    strictPipeMatching: true,
     rows: [
       { entityId: "oil_refinery", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "liquid_pump", qty: 1, recipeId: "crude_oil", modifiers: [] },

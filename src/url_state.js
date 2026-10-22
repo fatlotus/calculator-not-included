@@ -115,9 +115,6 @@ export function encodeStateToParam(state, elementMap = null) {
   const rows = (state.rows || []).map(encodeRow).filter(Boolean);
 
   const parts = [`u:${rateMode}`];
-  if (state.strictPipeMatching === false) {
-    parts.push("p:0");
-  }
 
   if (rows.length > 0) {
     parts.push(`r:${rows.join("~")}`);
@@ -181,7 +178,7 @@ export function decodeStateFromParam(paramStr) {
       const parsed = JSON.parse(jsonStr);
       return {
         rateMode: (parsed.rateMode || parsed.unit) === "c" ? "c" : "s",
-        strictPipeMatching: parsed.strictPipeMatching !== false,
+        strictPipeMatching: true,
         rows: Array.isArray(parsed.rows) ? parsed.rows : [],
         netInputTemps: parsed.netInputTemps && typeof parsed.netInputTemps === "object" ? parsed.netInputTemps : {},
       };
@@ -199,8 +196,6 @@ export function decodeStateFromParam(paramStr) {
   for (const sec of sections) {
     if (sec.startsWith("u:")) {
       rateMode = sec.slice(2) === "c" ? "c" : "s";
-    } else if (sec.startsWith("p:")) {
-      strictPipeMatching = sec.slice(2) !== "0";
     } else if (sec.startsWith("r:")) {
       const rowTokens = sec.slice(2).split("~").filter(Boolean);
       rows = rowTokens.map(decodeRow).filter(Boolean);

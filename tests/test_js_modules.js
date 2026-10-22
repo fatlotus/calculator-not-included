@@ -314,9 +314,9 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(decodedState.netInputTemps["Water||free"], 95);
   assert.strictEqual(decodedState.netInputTemps["Water|free"], 95);
 
-  // Decoding with explicit p:0
+  // Decoding with legacy p:0 flag still enforces strict pipe matching
   const decodedP0 = decodeStateFromParam("u:s_p:0_r:electrolyzer~duplicant*8");
-  assert.strictEqual(decodedP0.strictPipeMatching, false);
+  assert.strictEqual(decodedP0.strictPipeMatching, true);
   assert.strictEqual(decodedP0.rows.length, 2);
 
   // Default temperature 20 for Water is omitted from URL
@@ -332,28 +332,52 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ URL State Serialization tests passed");
 }
 
-// 4. Presets
+// 4. Presets & Strict Pipe Matching
 {
   const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
   assert.ok(PRESETS.length >= 5, "Should have at least 5 presets defined");
   const hydra = getPresetById("hydra_spom");
   assert.strictEqual(hydra.name, "Hydra SPOM (PDF Example)");
   assert.strictEqual(hydra.rows.length, 5);
-  assert.strictEqual(hydra.strictPipeMatching, true);
-
-  for (const preset of PRESETS) {
-    assert.strictEqual(preset.strictPipeMatching, true, `${preset.name} should have strictPipeMatching: true`);
-  }
 
   // Oil refinery preset test
   const oilPreset = getPresetById("oil_refinery_petroleum_loop");
   assert.ok(oilPreset, "Oil refinery preset should exist");
   assert.strictEqual(oilPreset.rows.length, 6);
   const evaluatedOil = oilPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-  const oilNet = calculateSystemNet(evaluatedOil, { strictPipeMatching: true });
+  const oilNet = calculateSystemNet(evaluatedOil);
   assert.ok(oilNet.netPower > 5000, "Oil refinery power plant should produce > 5000 W net");
 
-  console.log("✓ Presets tests passed");
+  // Strict pipe state matching verification:
+  // Water Geyser produces free water; Electrolyzer consumes in-pipe water.
+  // Without a pump, they do NOT cancel each other out.
+  const testRows = [
+    { entityId: "geyser_water_geyser", qty: 1, recipeId: null, modifiers: [] },
+    { entityId: "electrolyzer", qty: 1, recipeId: null, modifiers: [] },
+  ];
+  const evalTestRows = testRows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const testNet = calculateSystemNet(evalTestRows);
+  const pipeWaterInput = testNet.netInputs.find((s) => s.resource === "Water" && s.state === "in a pipe");
+  const freeWaterOutput = testNet.netOutputs.find((s) => s.resource === "Water" && s.state === "free");
+  assert.ok(pipeWaterInput, "In-pipe water must be required as an input");
+  assert.strictEqual(pipeWaterInput.rate, 1000);
+  assert.ok(freeWaterOutput, "Free water must be produced as an output");
+  assert.strictEqual(freeWaterOutput.rate, 3000);
+
+  // When a liquid pump is added, it converts free water to in-pipe water to satisfy the electrolyzer
+  const pumpRows = [
+    { entityId: "geyser_water_geyser", qty: 1, recipeId: null, modifiers: [] },
+    { entityId: "electrolyzer", qty: 1, recipeId: null, modifiers: [] },
+    { entityId: "liquid_pump", qty: 0.1, recipeId: "water", modifiers: [] }, // 1000 g/s pump
+  ];
+  const evalPumpRows = pumpRows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const pumpNet = calculateSystemNet(evalPumpRows);
+  const matchedPipeInput = pumpNet.netInputs.find((s) => s.resource === "Water" && s.state === "in a pipe");
+  const remainingFreeOutput = pumpNet.netOutputs.find((s) => s.resource === "Water" && s.state === "free");
+  assert.strictEqual(matchedPipeInput, undefined, "In-pipe water input is completely satisfied by pump");
+  assert.strictEqual(remainingFreeOutput.rate, 2000, "Surplus free water is 3000 - 1000 = 2000 g/s");
+
+  console.log("✓ Presets and Strict Pipe Matching tests passed");
 }
 
 // 5. Component HTML Rendering

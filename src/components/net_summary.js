@@ -18,7 +18,7 @@ import { renderIcon } from "./table_row.js";
 const NON_THERMAL_RESOURCES = new Set(["Duplicant Labor", "Microchip", "Power", "Heat", "Calories", "Gear Balm", "Tallow Gear Balm"]);
 const NON_THERMAL_UNITS = new Set(["chips/s", "chips/cycle", "s/s", "s/cycle", "kcal/s", "kcal/cycle", "balm/s", "balm/cycle"]);
 
-export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps = {}, strictPipeMatching = true) {
+export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps = {}) {
   const powerIcon = elementMap?.get("Power")?.icon;
   const heatIcon = elementMap?.get("Heat")?.icon;
 
@@ -34,11 +34,11 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
   }
   for (const stream of net.netInputs) {
     const elem = elementMap?.get(stream.resource);
-    const key = strictPipeMatching ? `${stream.resource}||${stream.state || "free"}` : stream.resource;
+    const key = `${stream.resource}||${stream.state || "free"}`;
     const defaultT = getDefaultElementTemp(stream.resource, elementMap);
     const currentTemp = stream.tempC !== undefined
       ? stream.tempC
-      : getNetInputTemp(stream.resource, stream.state, netInputTemps, defaultT, strictPipeMatching);
+      : getNetInputTemp(stream.resource, stream.state, netInputTemps, defaultT);
     const isThermal = !NON_THERMAL_RESOURCES.has(stream.resource) && !NON_THERMAL_UNITS.has(stream.unit);
 
     inputLines.push(`

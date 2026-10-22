@@ -63,7 +63,6 @@ class OniApp {
     if (urlState && urlState.rows && urlState.rows.length > 0) {
       this.state = {
         rateMode: urlState.rateMode || "s",
-        strictPipeMatching: urlState.strictPipeMatching !== false,
         rows: urlState.rows,
         netInputTemps: urlState.netInputTemps || {},
       };
@@ -71,7 +70,6 @@ class OniApp {
       const def = PRESETS[0];
       this.state = {
         rateMode: def.rateMode || "s",
-        strictPipeMatching: def.strictPipeMatching !== false,
         rows: JSON.parse(JSON.stringify(def.rows)),
         netInputTemps: def.netInputTemps ? JSON.parse(JSON.stringify(def.netInputTemps)) : {},
       };
@@ -99,7 +97,6 @@ class OniApp {
         const preset = getPresetById(e.target.value);
         if (preset) {
           this.state.rateMode = preset.rateMode || "s";
-          this.state.strictPipeMatching = preset.strictPipeMatching !== false;
           this.state.rows = JSON.parse(JSON.stringify(preset.rows));
           this.state.netInputTemps = preset.netInputTemps ? JSON.parse(JSON.stringify(preset.netInputTemps)) : {};
           this.onStateChange();
@@ -113,12 +110,6 @@ class OniApp {
         this.state.rateMode = btn.dataset.mode;
         this.onStateChange();
       });
-    });
-
-    const strictCheckbox = document.getElementById("strict-pipe-toggle");
-    strictCheckbox?.addEventListener("change", (e) => {
-      this.state.strictPipeMatching = e.target.checked;
-      this.onStateChange();
     });
 
     document.getElementById("copy-share-btn")?.addEventListener("click", (e) => {
@@ -272,9 +263,6 @@ class OniApp {
       btn.classList.toggle("active", btn.dataset.mode === this.state.rateMode);
     });
 
-    const strictToggle = document.getElementById("strict-pipe-toggle");
-    if (strictToggle) strictToggle.checked = this.state.strictPipeMatching;
-
     const tbody = document.getElementById("calc-table-body");
     if (!tbody) return;
 
@@ -283,13 +271,11 @@ class OniApp {
       this.catalog.entityMap,
       this.catalog.elementMap,
       {
-        strictPipeMatching: this.state.strictPipeMatching,
         netInputTemps: this.state.netInputTemps,
       }
     );
 
     const net = calculateSystemNet(evaluatedRows, {
-      strictPipeMatching: this.state.strictPipeMatching,
       elementMap: this.catalog.elementMap,
       netInputTemps: this.state.netInputTemps,
     });
@@ -309,8 +295,7 @@ class OniApp {
         net,
         this.catalog.elementMap,
         this.state.rateMode,
-        this.state.netInputTemps,
-        this.state.strictPipeMatching
+        this.state.netInputTemps
       );
     }
   }
@@ -321,13 +306,11 @@ class OniApp {
       this.catalog.entityMap,
       this.catalog.elementMap,
       {
-        strictPipeMatching: this.state.strictPipeMatching,
         netInputTemps: this.state.netInputTemps,
       }
     );
 
     const net = calculateSystemNet(evaluatedRows, {
-      strictPipeMatching: this.state.strictPipeMatching,
       elementMap: this.catalog.elementMap,
       netInputTemps: this.state.netInputTemps,
     });
@@ -358,8 +341,7 @@ class OniApp {
         net,
         this.catalog.elementMap,
         this.state.rateMode,
-        this.state.netInputTemps,
-        this.state.strictPipeMatching
+        this.state.netInputTemps
       );
 
       if (focusedKey) {
