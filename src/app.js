@@ -206,6 +206,30 @@ class OniApp {
       });
 
       tbody.addEventListener("click", (e) => {
+        const upBtn = e.target.closest(".btn-move-up");
+        if (upBtn) {
+          const idx = parseInt(upBtn.dataset.rowIndex, 10);
+          if (!isNaN(idx) && idx > 0 && idx < this.state.rows.length) {
+            const temp = this.state.rows[idx];
+            this.state.rows[idx] = this.state.rows[idx - 1];
+            this.state.rows[idx - 1] = temp;
+            this.onStateChange(true);
+          }
+          return;
+        }
+
+        const downBtn = e.target.closest(".btn-move-down");
+        if (downBtn) {
+          const idx = parseInt(downBtn.dataset.rowIndex, 10);
+          if (!isNaN(idx) && idx >= 0 && idx < this.state.rows.length - 1) {
+            const temp = this.state.rows[idx];
+            this.state.rows[idx] = this.state.rows[idx + 1];
+            this.state.rows[idx + 1] = temp;
+            this.onStateChange(true);
+          }
+          return;
+        }
+
         const matchBtn = e.target.closest(".btn-match-stream");
         if (matchBtn) {
           const idx = parseInt(matchBtn.dataset.rowIndex, 10);
@@ -225,6 +249,69 @@ class OniApp {
             this.onStateChange();
           }
         }
+      });
+
+      // Drag and drop reordering
+      let dragSrcIdx = null;
+
+      tbody.addEventListener("dragstart", (e) => {
+        const handle = e.target.closest(".row-drag-handle");
+        if (!handle) return;
+        const row = handle.closest(".calc-row");
+        if (!row) return;
+        dragSrcIdx = parseInt(row.dataset.rowIndex, 10);
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/plain", dragSrcIdx.toString());
+        setTimeout(() => row.classList.add("dragging"), 0);
+      });
+
+      tbody.addEventListener("dragover", (e) => {
+        const targetRow = e.target.closest(".calc-row");
+        if (!targetRow || dragSrcIdx === null) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+
+        const rect = targetRow.getBoundingClientRect();
+        const midY = rect.top + rect.height / 2;
+        if (e.clientY < midY) {
+          targetRow.classList.add("drag-over-above");
+          targetRow.classList.remove("drag-over-below");
+        } else {
+          targetRow.classList.add("drag-over-below");
+          targetRow.classList.remove("drag-over-above");
+        }
+      });
+
+      tbody.addEventListener("dragleave", (e) => {
+        const targetRow = e.target.closest(".calc-row");
+        if (targetRow && (!e.relatedTarget || !targetRow.contains(e.relatedTarget))) {
+          targetRow.classList.remove("drag-over-above", "drag-over-below");
+        }
+      });
+
+      tbody.addEventListener("drop", (e) => {
+        const targetRow = e.target.closest(".calc-row");
+        if (!targetRow || dragSrcIdx === null) return;
+        e.preventDefault();
+        const targetIdx = parseInt(targetRow.dataset.rowIndex, 10);
+
+        const rect = targetRow.getBoundingClientRect();
+        const midY = rect.top + rect.height / 2;
+        let insertIdx = e.clientY < midY ? targetIdx : targetIdx + 1;
+        if (dragSrcIdx < insertIdx) insertIdx--;
+
+        if (insertIdx !== dragSrcIdx && insertIdx >= 0 && insertIdx <= this.state.rows.length) {
+          const [moved] = this.state.rows.splice(dragSrcIdx, 1);
+          this.state.rows.splice(insertIdx, 0, moved);
+          this.onStateChange(true);
+        }
+      });
+
+      tbody.addEventListener("dragend", () => {
+        dragSrcIdx = null;
+        tbody.querySelectorAll(".calc-row").forEach((r) => {
+          r.classList.remove("dragging", "drag-over-above", "drag-over-below");
+        });
       });
     }
 
@@ -290,7 +377,7 @@ class OniApp {
     tbody.innerHTML = evaluatedRows
       .map((ev, i) => {
         const matches = calculateRowMatchTargets(i, this.state.rows, this.catalog.entityMap);
-        return renderTableRowHtml(this.state.rows[i], ev, this.catalog.elementMap, this.state.rateMode, i, matches);
+        return renderTableRowHtml(this.state.rows[i], ev, this.catalog.elementMap, this.state.rateMode, i, matches, evaluatedRows.length);
       })
       .join("");
 
@@ -328,7 +415,7 @@ class OniApp {
       if (!ev) return;
       const matches = calculateRowMatchTargets(i, this.state.rows, this.catalog.entityMap);
       const dummy = document.createElement("tbody");
-      dummy.innerHTML = renderTableRowHtml(this.state.rows[i], ev, this.catalog.elementMap, this.state.rateMode, i, matches);
+      dummy.innerHTML = renderTableRowHtml(this.state.rows[i], ev, this.catalog.elementMap, this.state.rateMode, i, matches, evaluatedRows.length);
       const newTr = dummy.firstElementChild;
       if (newTr) {
         tr.querySelector(".col-inputs").innerHTML = newTr.querySelector(".col-inputs").innerHTML;

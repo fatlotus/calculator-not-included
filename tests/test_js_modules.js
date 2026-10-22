@@ -396,12 +396,23 @@ console.log("=== Running JavaScript Module Tests ===");
   const row = { entityId: "electrolyzer", qty: 1, recipeId: null, modifiers: [] };
   const evaluated = evaluateRow(row, entityMap, elementMap);
 
-  const rowHtml = renderTableRowHtml(row, evaluated, elementMap, "s", 0, {});
+  const rowHtml = renderTableRowHtml(row, evaluated, elementMap, "s", 0, {}, 2);
   assert.ok(rowHtml.includes("Electrolyzer"), "Row HTML should include entity name");
   assert.ok(rowHtml.includes("Oxygen: +888 g/s"), "Row HTML should include Oxygen output stream");
   assert.ok(rowHtml.includes("Hydrogen: +112 g/s"), "Row HTML should include Hydrogen output stream");
   assert.ok(rowHtml.includes("Water: -1 Kg/s"), "Row HTML should include Water input stream");
   assert.ok(rowHtml.includes("Power: -120 W"), "Row HTML should include Power input stream");
+  // Row drag tab and reorder arrow buttons
+  assert.ok(rowHtml.includes('class="row-reorder-tab"'), "Row HTML must include row-reorder-tab");
+  assert.ok(rowHtml.includes('class="row-drag-handle" draggable="true"'), "Row HTML must include draggable drag-handle");
+  assert.ok(rowHtml.includes('class="btn-reorder btn-move-up"'), "Row HTML must include up arrow button");
+  assert.ok(rowHtml.includes('class="btn-reorder btn-move-down"'), "Row HTML must include down arrow button");
+  assert.ok(rowHtml.includes('btn-move-up" data-row-index="0" title="Move row up" aria-label="Move row up" disabled'), "Top row up arrow should be disabled");
+
+  // Second row in 2-row table should have down arrow disabled
+  const rowHtml2 = renderTableRowHtml(row, evaluated, elementMap, "s", 1, {}, 2);
+  assert.ok(rowHtml2.includes('btn-move-down" data-row-index="1" title="Move row down" aria-label="Move row down" disabled'), "Bottom row down arrow should be disabled");
+
   // Ensure Feed Temp input was removed
   assert.ok(!rowHtml.includes("input-temp-field"), "Row HTML should NOT contain per-row feed temp input");
   assert.ok(!rowHtml.includes("Feed:"), "Row HTML should NOT contain Feed: label");

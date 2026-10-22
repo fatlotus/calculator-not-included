@@ -301,11 +301,86 @@ body {
   background: var(--bg-surface);
 }
 
+.calc-row.dragging {
+  opacity: 0.35;
+}
+
+.calc-row.drag-over-above {
+  border-top: 2px solid var(--accent-primary) !important;
+}
+
+.calc-row.drag-over-below {
+  border-bottom: 2px solid var(--accent-primary) !important;
+}
+
 /* Machine Column Elements */
 .machine-col-content {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
+}
+
+.row-reorder-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  user-select: none;
+  padding-top: 4px;
+}
+
+.row-drag-handle {
+  cursor: grab;
+  color: var(--fg-muted);
+  font-size: 13px;
+  letter-spacing: -1px;
+  padding: 2px 3px;
+  border-radius: 3px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.row-drag-handle:hover {
+  color: var(--fg-default);
+  background: var(--bg-hover);
+}
+
+.row-drag-handle:active {
+  cursor: grabbing;
+}
+
+.row-reorder-buttons {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.btn-reorder {
+  background: transparent;
+  border: none;
+  color: var(--fg-muted);
+  font-size: 8px;
+  line-height: 8px;
+  padding: 2px;
+  cursor: pointer;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.btn-reorder:hover:not(:disabled) {
+  color: var(--fg-default);
+  background: var(--bg-hover);
+}
+
+.btn-reorder:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
 }
 
 .row-qty-wrapper {

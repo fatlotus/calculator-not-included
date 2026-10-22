@@ -19,7 +19,7 @@ export function renderIcon(iconUrl, alt = "", className = "stream-icon") {
 /**
  * Render a single row of the resource calculator.
  */
-export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowIndex, matches = {}) {
+export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowIndex, matches = {}, totalRows = 0) {
   const entity = evaluated.entity;
   if (!entity) return "";
 
@@ -30,6 +30,13 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
   // Machine Column HTML
   let machineHtml = `
     <div class="machine-col-content">
+      <div class="row-reorder-tab">
+        <span class="row-drag-handle" draggable="true" data-row-index="${rowIndex}" title="Drag to reorder row" aria-label="Drag to reorder row">⋮⋮</span>
+        <div class="row-reorder-buttons">
+          <button type="button" class="btn-reorder btn-move-up" data-row-index="${rowIndex}" title="Move row up" aria-label="Move row up" ${rowIndex === 0 ? "disabled" : ""}>▲</button>
+          <button type="button" class="btn-reorder btn-move-down" data-row-index="${rowIndex}" title="Move row down" aria-label="Move row down" ${totalRows > 0 && rowIndex >= totalRows - 1 ? "disabled" : ""}>▼</button>
+        </div>
+      </div>
       <div class="row-qty-wrapper">
         <input
           type="number"
