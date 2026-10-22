@@ -33,6 +33,43 @@ import { renderNetSummaryRowHtml } from "../src/components/net_summary.js";
 
 console.log("=== Running JavaScript Module Tests ===");
 
+// 0. Dataset Integrity & JSON Files
+{
+  const expectedFiles = [
+    "buildings.json",
+    "plants.json",
+    "critters.json",
+    "duplicants.json",
+    "geysers.json",
+    "elements.json",
+    "dataset.json",
+  ];
+  const dataDir = path.resolve(__dirname, "../data");
+
+  for (const filename of expectedFiles) {
+    const filepath = path.join(dataDir, filename);
+    assert.ok(fs.existsSync(filepath), `Expected data file does not exist: ${filepath}`);
+    const stat = fs.statSync(filepath);
+    assert.ok(stat.size > 0, `Data file is empty (0 bytes): ${filepath}`);
+
+    const raw = fs.readFileSync(filepath, "utf8");
+    const parsed = JSON.parse(raw);
+    assert.ok(typeof parsed === "object" && parsed !== null, `${filename} root must be list or object`);
+  }
+
+  const datasetPath = path.join(dataDir, "dataset.json");
+  const dataset = JSON.parse(fs.readFileSync(datasetPath, "utf8"));
+  const expectedCategories = ["buildings", "plants", "critters", "duplicants", "geysers", "elements"];
+  for (const cat of expectedCategories) {
+    assert.ok(dataset[cat], `Missing category '${cat}' in dataset.json`);
+    assert.ok(
+      Array.isArray(dataset[cat]) ? dataset[cat].length > 0 : Object.keys(dataset[cat]).length > 0,
+      `Category '${cat}' is empty in dataset.json`
+    );
+  }
+  console.log("✓ Dataset Integrity tests passed");
+}
+
 // 1. Data Loader & Catalog
 {
   const { entities, entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
