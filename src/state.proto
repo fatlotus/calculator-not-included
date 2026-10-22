@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package onimath;
+
+// Rate display mode for production calculations
+enum RateMode {
+  RATE_MODE_PER_SECOND = 0;
+  RATE_MODE_PER_CYCLE = 1;
+}
+
+// State for an individual machine or producer/consumer row
+message RowState {
+  string entity_id = 1;
+  double qty = 2;
+  string recipe_id = 3;
+  repeated string modifiers = 4;
+  string bathroom = 5;
+  optional double input_temp = 6;
+}
+
+// Complete resource calculator system state
+message CalculatorState {
+  RateMode rate_mode = 1;
+  optional bool strict_pipe_matching = 2;
+  repeated RowState rows = 3;
+  map<string, double> net_input_temps = 4;
+}

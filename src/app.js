@@ -59,17 +59,20 @@ class OniApp {
   }
 
   initState() {
+    const hasUrlParam = typeof window !== "undefined" && window.location && new URLSearchParams(window.location.search).has("s");
     const urlState = loadStateFromUrl();
-    if (urlState && urlState.rows && urlState.rows.length > 0) {
+    if (urlState && (urlState.rows?.length > 0 || hasUrlParam)) {
       this.state = {
         rateMode: urlState.rateMode || "s",
-        rows: urlState.rows,
+        strictPipeMatching: urlState.strictPipeMatching !== false,
+        rows: urlState.rows || [],
         netInputTemps: urlState.netInputTemps || {},
       };
     } else {
       const def = PRESETS[0];
       this.state = {
         rateMode: def.rateMode || "s",
+        strictPipeMatching: true,
         rows: JSON.parse(JSON.stringify(def.rows)),
         netInputTemps: def.netInputTemps ? JSON.parse(JSON.stringify(def.netInputTemps)) : {},
       };
@@ -128,16 +131,24 @@ class OniApp {
   async copyShareLink(btn) {
     syncStateToUrl(this.state, this.catalog.elementMap);
     const url = window.location.href;
+    const fallbackCopy = () => {
+      const temp = document.createElement("input");
+      temp.value = url;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      document.body.removeChild(temp);
+    };
+
     try {
       if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(url);
+        try {
+          await navigator.clipboard.writeText(url);
+        } catch {
+          fallbackCopy();
+        }
       } else {
-        const temp = document.createElement("input");
-        temp.value = url;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand("copy");
-        document.body.removeChild(temp);
+        fallbackCopy();
       }
       this.showToast("Share link copied to clipboard!");
       btn.classList.add("btn-copied");

@@ -310,19 +310,30 @@ console.log("=== Running JavaScript Module Tests ===");
   };
 
   const param = encodeStateToParam(state);
-  assert.strictEqual(
-    param,
-    "u:s_r:electrolyzer~water_pump:water*0.1~gas_pump:hydrogen*0.224~hydrogen_generator*1.12~duplicant*8+divers_lungs_t:Water|free=95"
-  );
+  // Verify it encodes to a compact URL-safe Base64 protobuf string (no +, /, or = padding)
+  assert.ok(typeof param === "string" && param.length > 0);
+  assert.strictEqual(/^[A-Za-z0-9_-]+$/.test(param), true, "Encoded param must be URL-safe Base64");
 
   const decodedState = decodeStateFromParam(param);
   assert.strictEqual(decodedState.rateMode, "s");
   assert.strictEqual(decodedState.strictPipeMatching, true);
   assert.strictEqual(decodedState.rows.length, 5);
+  assert.strictEqual(decodedState.rows[0].entityId, "electrolyzer");
+  assert.strictEqual(decodedState.rows[1].qty, 0.1);
+  assert.strictEqual(decodedState.rows[1].recipeId, "water");
   assert.strictEqual(decodedState.rows[2].qty, 0.224);
+  assert.strictEqual(decodedState.rows[2].recipeId, "hydrogen");
   assert.deepStrictEqual(decodedState.rows[4].modifiers, ["divers_lungs"]);
   assert.strictEqual(decodedState.netInputTemps["Water||free"], 95);
   assert.strictEqual(decodedState.netInputTemps["Water|free"], 95);
+
+  // Backward compatibility: decode legacy human-readable URL format
+  const legacyParam = "u:s_r:electrolyzer~water_pump:water*0.1~gas_pump:hydrogen*0.224~hydrogen_generator*1.12~duplicant*8+divers_lungs_t:Water|free=95";
+  const decodedLegacy = decodeStateFromParam(legacyParam);
+  assert.strictEqual(decodedLegacy.rateMode, "s");
+  assert.strictEqual(decodedLegacy.rows.length, 5);
+  assert.strictEqual(decodedLegacy.rows[2].qty, 0.224);
+  assert.strictEqual(decodedLegacy.netInputTemps["Water||free"], 95);
 
   // Decoding with legacy p:0 flag still enforces strict pipe matching
   const decodedP0 = decodeStateFromParam("u:s_p:0_r:electrolyzer~duplicant*8");
@@ -337,7 +348,9 @@ console.log("=== Running JavaScript Module Tests ===");
     netInputTemps: { "Water||free": 20 },
   };
   const paramDefault = encodeStateToParam(stateDefault);
-  assert.strictEqual(paramDefault.includes("t:"), false);
+  const decodedDefault = decodeStateFromParam(paramDefault);
+  assert.strictEqual(decodedDefault.rows.length, 1);
+  assert.strictEqual(Object.keys(decodedDefault.netInputTemps).length, 0);
 
   console.log("✓ URL State Serialization tests passed");
 }
