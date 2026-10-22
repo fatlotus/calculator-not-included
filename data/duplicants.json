@@ -24,6 +24,13 @@
         "unit": "s/s",
         "state": "labor",
         "temp": null
+      },
+      {
+        "resource": "Carbon Dioxide",
+        "rate": 2.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 37 °C"
       }
     ],
     "recipes": [
@@ -46,6 +53,13 @@
             "unit": "s/s",
             "state": "labor",
             "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 2.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 37 °C"
           }
         ]
       },
@@ -68,6 +82,13 @@
             "unit": "s/s",
             "state": "labor",
             "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 2.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 37 °C"
           }
         ]
       },
@@ -90,6 +111,13 @@
             "unit": "s/s",
             "state": "labor",
             "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 2.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 37 °C"
           }
         ]
       },
@@ -112,6 +140,13 @@
             "unit": "s/s",
             "state": "labor",
             "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 2.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 37 °C"
           }
         ]
       },
@@ -134,6 +169,13 @@
             "unit": "s/s",
             "state": "labor",
             "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 2.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 37 °C"
           }
         ]
       },
@@ -156,6 +198,13 @@
             "unit": "s/s",
             "state": "labor",
             "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 2.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 37 °C"
           }
         ]
       },
@@ -178,6 +227,13 @@
             "unit": "s/s",
             "state": "labor",
             "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 2.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 37 °C"
           }
         ]
       }
@@ -214,19 +270,6 @@
         }
       },
       {
-        "id": "exhale_co2",
-        "name": "Include Exhaled CO2 (+2 g/s)",
-        "extra_outputs": [
-          {
-            "resource": "Carbon Dioxide",
-            "rate": 2.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": "@ 37 \u00b0C"
-          }
-        ]
-      },
-      {
         "id": "calories",
         "name": "Include Food (-1000 kcal/cycle)",
         "extra_inputs": [
@@ -249,50 +292,6 @@
             "unit": "kcal/s",
             "state": "free",
             "temp": null
-          }
-        ]
-      },
-      {
-        "id": "lavatory",
-        "name": "Lavatory Use (1x/cycle: -5 kg Water -> +11.7 kg Polluted Water)",
-        "extra_inputs": [
-          {
-            "resource": "Water",
-            "rate": 8.3333,
-            "unit": "g/s",
-            "state": "in a pipe",
-            "temp": null
-          }
-        ],
-        "extra_outputs": [
-          {
-            "resource": "Polluted Water",
-            "rate": 19.5,
-            "unit": "g/s",
-            "state": "in a pipe",
-            "temp": "@ 37 \u00b0C"
-          }
-        ]
-      },
-      {
-        "id": "outhouse",
-        "name": "Outhouse Use (1x/cycle: -13 kg Dirt -> +19.7 kg Polluted Dirt)",
-        "extra_inputs": [
-          {
-            "resource": "Dirt",
-            "rate": 21.6667,
-            "unit": "g/s",
-            "state": "free",
-            "temp": null
-          }
-        ],
-        "extra_outputs": [
-          {
-            "resource": "Polluted Dirt",
-            "rate": 32.8333,
-            "unit": "g/s",
-            "state": "free",
-            "temp": "@ 37 \u00b0C"
           }
         ]
       },

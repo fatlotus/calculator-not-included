@@ -208,6 +208,37 @@ export const ENTITY_ALIASES = {
   geyser_natural_gas: "geyser_natural_gas_geyser",
 };
 
+export const DUPLICANT_BATHROOMS = {
+  plumbed: {
+    id: "plumbed",
+    name: "Plumbed",
+    inputs: [
+      { resource: "Water", rate: 8.3333, unit: "g/s", state: "in a pipe", temp: null },
+    ],
+    outputs: [
+      { resource: "Polluted Water", rate: 19.5, unit: "g/s", state: "in a pipe", temp: "@ 37 °C" },
+    ],
+  },
+  outhouse: {
+    id: "outhouse",
+    name: "Outhouse",
+    inputs: [
+      { resource: "Dirt", rate: 21.6667, unit: "g/s", state: "free", temp: null },
+    ],
+    outputs: [
+      { resource: "Polluted Dirt", rate: 32.8333, unit: "g/s", state: "free", temp: "@ 37 °C" },
+    ],
+  },
+  floor: {
+    id: "floor",
+    name: "Peeing on the floor",
+    inputs: [],
+    outputs: [
+      { resource: "Polluted Water", rate: 11.1667, unit: "g/s", state: "free", temp: "@ 37 °C" },
+    ],
+  },
+};
+
 export function evaluateRow(
   row,
   entityMap,
@@ -342,6 +373,28 @@ export function evaluateRow(
     }
   }
 
+  // Handle regular duplicant bathroom inputs and outputs
+  if (row.entityId === "duplicant" || entity.id === "duplicant") {
+    const bType = row.bathroom || "plumbed";
+    const bathroom = DUPLICANT_BATHROOMS[bType] || DUPLICANT_BATHROOMS.plumbed;
+    if (bathroom) {
+      for (const inp of bathroom.inputs) {
+        let inpTemp = defaultInputTemp;
+        if (inputTemps && typeof inputTemps === "object") {
+          const k = `${inp.resource}||${inp.state || "free"}`;
+          const kSingle = `${inp.resource}|${inp.state || "free"}`;
+          if (inputTemps[k] !== undefined) inpTemp = Number(inputTemps[k]);
+          else if (inputTemps[kSingle] !== undefined) inpTemp = Number(inputTemps[kSingle]);
+          else if (inputTemps[inp.resource] !== undefined) inpTemp = Number(inputTemps[inp.resource]);
+        }
+        inputs.push({ ...inp, tempC: inpTemp });
+      }
+      for (const out of bathroom.outputs) {
+        outputs.push({ ...out, tempC: 37.0, temp: "@ 37 °C" });
+      }
+    }
+  }
+
   const scaledInputs = inputs
     .map((s) => ({ ...s, rate: s.rate * qty }))
     .filter((s) => Math.abs(s.rate) > 1e-6);
@@ -422,6 +475,24 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
       const k = getKey(out.resource, out.state);
       if (currentTemps[k] === undefined) {
         currentTemps[k] = getDefNetTemp(out.resource, out.state);
+      }
+    }
+    if (row.entityId === "duplicant") {
+      const bType = row.bathroom || "plumbed";
+      const bObj = DUPLICANT_BATHROOMS[bType] || DUPLICANT_BATHROOMS.plumbed;
+      if (bObj) {
+        for (const inp of bObj.inputs) {
+          const k = getKey(inp.resource, inp.state);
+          if (currentTemps[k] === undefined) {
+            currentTemps[k] = getDefNetTemp(inp.resource, inp.state);
+          }
+        }
+        for (const out of bObj.outputs) {
+          const k = getKey(out.resource, out.state);
+          if (currentTemps[k] === undefined) {
+            currentTemps[k] = getDefNetTemp(out.resource, out.state);
+          }
+        }
       }
     }
   }

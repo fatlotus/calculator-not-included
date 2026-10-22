@@ -150,25 +150,36 @@ console.log("=== Running JavaScript Module Tests ===");
   const dupMod = evaluateRow({ entityId: "duplicant", qty: 1, modifiers: ["divers_lungs"] }, entityMap, elementMap);
   assert.strictEqual(dupBase.inputs[0].rate, 100);
   assert.strictEqual(dupMod.inputs[0].rate, 75);
+  // Exhaled CO2 is always included
+  const co2Base = dupBase.outputs.find((o) => o.resource === "Carbon Dioxide");
+  const co2Mod = dupMod.outputs.find((o) => o.resource === "Carbon Dioxide");
+  assert.ok(co2Base, "Duplicant must always output Carbon Dioxide");
+  assert.strictEqual(co2Base.rate, 2.0);
+  assert.strictEqual(co2Mod.rate, 1.5, "Diver's Lungs scales CO2 output to 1.5 g/s");
 
   // Fractional Hydra SPOM Net Calculation
   const hydra = getPresetById("hydra_spom");
   const evaluatedHydra = hydra.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-  const net = calculateSystemNet(evaluatedHydra, { strictPipeMatching: true });
+  const net = calculateSystemNet(evaluatedHydra);
 
   assert.strictEqual(net.netPower, 698.24);
   assert.strictEqual(net.netBuildingHeat, 6.38);
-  assert.strictEqual(net.netInputs.length, 1);
-  assert.strictEqual(net.netInputs[0].resource, "Water");
-  assert.strictEqual(net.netInputs[0].rate, 1000);
-  assert.strictEqual(net.netInputs[0].state, "free");
+  assert.strictEqual(net.netInputs.length, 2);
+  const freeWaterIn = net.netInputs.find((i) => i.resource === "Water" && i.state === "free");
+  const pipeWaterIn = net.netInputs.find((i) => i.resource === "Water" && i.state === "in a pipe");
+  assert.strictEqual(freeWaterIn.rate, 1000);
+  assert.strictEqual(Math.round(pipeWaterIn.rate * 100) / 100, 66.67);
 
-  assert.strictEqual(net.netOutputs.length, 2);
+  assert.strictEqual(net.netOutputs.length, 4);
   const oxygenOut = net.netOutputs.find((o) => o.resource === "Oxygen");
   assert.strictEqual(oxygenOut.rate, 88);
   assert.strictEqual(oxygenOut.state, "free");
   const laborOut = net.netOutputs.find((o) => o.resource === "Duplicant Labor");
   assert.strictEqual(laborOut.rate, 6);
+  const co2Out = net.netOutputs.find((o) => o.resource === "Carbon Dioxide");
+  assert.strictEqual(co2Out.rate, 16);
+  const pWaterOut = net.netOutputs.find((o) => o.resource === "Polluted Water");
+  assert.strictEqual(pWaterOut.rate, 156);
 
   // Check match targets for Gas Pump (index 2)
   const matches = calculateRowMatchTargets(2, hydra.rows, entityMap);
@@ -193,8 +204,7 @@ console.log("=== Running JavaScript Module Tests ===");
 
   // B. NET input Water set to 95 °C propagates through Water Pump to Electrolyzer -> outputs @ 95 °C
   const resolved95 = resolveTableTemperatures(hydra.rows, entityMap, elementMap, {
-    netInputTemps: { "Water||free": 95 },
-    strictPipeMatching: true,
+    netInputTemps: { "Water||free": 95, "Water||in a pipe": 95 },
   });
   const wpResolved95 = resolved95[1];
   assert.strictEqual(wpResolved95.outputs[0].tempC, 95);
@@ -474,6 +484,55 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(o2In.rate, 75.0, "Diver's Lungs should reduce Oxygen to 75 g/s");
 
   console.log("✓ Bionic Duplicants Augmentations tests passed");
+}
+
+// 7. Regular Duplicants: Bathroom Options and Exhaled CO2
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+
+  // Default / Plumbed bathroom
+  const plumbedRow = evaluateRow({ entityId: "duplicant", qty: 1, bathroom: "plumbed" }, entityMap, elementMap);
+  const pWaterIn = plumbedRow.inputs.find((i) => i.resource === "Water" && i.state === "in a pipe");
+  const pPollutedWaterOut = plumbedRow.outputs.find((o) => o.resource === "Polluted Water" && o.state === "in a pipe");
+  const pCo2Out = plumbedRow.outputs.find((o) => o.resource === "Carbon Dioxide");
+  assert.ok(pWaterIn, "Plumbed duplicant must consume pipe water");
+  assert.strictEqual(pWaterIn.rate, 8.3333);
+  assert.ok(pPollutedWaterOut, "Plumbed duplicant must produce pipe polluted water");
+  assert.strictEqual(pPollutedWaterOut.rate, 19.5);
+  assert.ok(pCo2Out, "Duplicant must always exhale Carbon Dioxide");
+  assert.strictEqual(pCo2Out.rate, 2.0);
+
+  // Outhouse bathroom
+  const outhouseRow = evaluateRow({ entityId: "duplicant", qty: 1, bathroom: "outhouse" }, entityMap, elementMap);
+  const oDirtIn = outhouseRow.inputs.find((i) => i.resource === "Dirt" && i.state === "free");
+  const oPollutedDirtOut = outhouseRow.outputs.find((o) => o.resource === "Polluted Dirt" && o.state === "free");
+  assert.ok(oDirtIn, "Outhouse duplicant must consume free dirt");
+  assert.strictEqual(oDirtIn.rate, 21.6667);
+  assert.ok(oPollutedDirtOut, "Outhouse duplicant must produce free polluted dirt");
+  assert.strictEqual(oPollutedDirtOut.rate, 32.8333);
+
+  // Peeing on the floor
+  const floorRow = evaluateRow({ entityId: "duplicant", qty: 1, bathroom: "floor" }, entityMap, elementMap);
+  const fPollutedWaterOut = floorRow.outputs.find((o) => o.resource === "Polluted Water" && o.state === "free");
+  assert.strictEqual(floorRow.inputs.some((i) => i.resource === "Water" || i.resource === "Dirt"), false, "Floor peeing requires no water/dirt inputs");
+  assert.ok(fPollutedWaterOut, "Floor peeing must produce free polluted water");
+  assert.strictEqual(fPollutedWaterOut.rate, 11.1667);
+
+  // URL State encoding/decoding of bathroom options
+  const rowFloor = { entityId: "duplicant", qty: 2, recipeId: null, modifiers: [], bathroom: "floor" };
+  const encodedFloor = encodeRow(rowFloor);
+  assert.strictEqual(encodedFloor, "duplicant*2!floor");
+  const decodedFloor = decodeRow(encodedFloor);
+  assert.strictEqual(decodedFloor.entityId, "duplicant");
+  assert.strictEqual(decodedFloor.qty, 2);
+  assert.strictEqual(decodedFloor.bathroom, "floor");
+
+  // HTML rendering contains bathroom selector for duplicants
+  const html = renderTableRowHtml(rowFloor, floorRow, elementMap, "s", 0, {});
+  assert.ok(html.includes('class="bathroom-select"'), "HTML must render bathroom-select");
+  assert.ok(html.includes('value="floor" selected'), "HTML must select floor option");
+
+  console.log("✓ Duplicant Bathroom Options and Exhaled CO2 tests passed");
 }
 
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

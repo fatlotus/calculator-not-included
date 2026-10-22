@@ -54,19 +54,39 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
         </div>
   `;
 
-  // Recipe selector
-  if (entity.recipes && entity.recipes.length > 0) {
-    machineHtml += `
-      <div class="row-subcontrols">
+  // Recipe & Bathroom subcontrols
+  const hasRecipes = entity.recipes && entity.recipes.length > 0;
+  const isDuplicant = row.entityId === "duplicant";
+
+  if (hasRecipes || isDuplicant) {
+    machineHtml += `<div class="row-subcontrols">`;
+    if (hasRecipes) {
+      machineHtml += `
         <div class="recipe-wrapper">
           <label class="field-label" for="recipe-${rowIndex}">Mode:</label>
           <select id="recipe-${rowIndex}" class="recipe-select" data-row-index="${rowIndex}">
-    `;
-    for (const r of entity.recipes) {
-      const isSelected = (row.recipeId === r.id) || (!row.recipeId && r === entity.recipes[0]);
-      machineHtml += `<option value="${r.id}" ${isSelected ? "selected" : ""}>${r.name}</option>`;
+      `;
+      for (const r of entity.recipes) {
+        const isSelected = (row.recipeId === r.id) || (!row.recipeId && r === entity.recipes[0]);
+        machineHtml += `<option value="${r.id}" ${isSelected ? "selected" : ""}>${r.name}</option>`;
+      }
+      machineHtml += `</select></div>`;
     }
-    machineHtml += `</select></div></div>`;
+
+    if (isDuplicant) {
+      const selectedBathroom = row.bathroom || "plumbed";
+      machineHtml += `
+        <div class="bathroom-wrapper">
+          <label class="field-label" for="bathroom-${rowIndex}">Bathroom:</label>
+          <select id="bathroom-${rowIndex}" class="bathroom-select" data-row-index="${rowIndex}">
+            <option value="plumbed" ${selectedBathroom === "plumbed" ? "selected" : ""}>Plumbed</option>
+            <option value="outhouse" ${selectedBathroom === "outhouse" ? "selected" : ""}>Outhouse</option>
+            <option value="floor" ${selectedBathroom === "floor" ? "selected" : ""}>Peeing on the floor</option>
+          </select>
+        </div>
+      `;
+    }
+    machineHtml += `</div>`;
   }
 
   // Modifiers list

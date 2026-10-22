@@ -39,6 +39,10 @@ export function encodeRow(row) {
     token += `+${row.modifiers.join(",")}`;
   }
 
+  if (row.bathroom && row.bathroom !== "plumbed") {
+    token += `!${row.bathroom}`;
+  }
+
   return token;
 }
 
@@ -56,6 +60,14 @@ export function decodeRow(token) {
   let recipeId = null;
   let qty = 1;
   let inputTemp = null;
+  let bathroom = null;
+
+  // Extract bathroom (!plumbed, !outhouse, !floor)
+  const exclIdx = str.indexOf("!");
+  if (exclIdx !== -1) {
+    bathroom = str.slice(exclIdx + 1);
+    str = str.slice(0, exclIdx);
+  }
 
   // Extract modifiers (+mod1,mod2)
   const plusIdx = str.indexOf("+");
@@ -89,12 +101,27 @@ export function decodeRow(token) {
   const entityId = str.trim();
   if (!entityId) return null;
 
+  // Handle legacy bathroom modifiers
+  if (!bathroom) {
+    if (modifiers.includes("lavatory")) {
+      bathroom = "plumbed";
+    } else if (modifiers.includes("outhouse")) {
+      bathroom = "outhouse";
+    }
+  }
+  modifiers = modifiers.filter((m) => m !== "lavatory" && m !== "outhouse" && m !== "exhale_co2");
+
   const result = {
     entityId,
     qty,
     recipeId: recipeId || null,
     modifiers,
   };
+  if (entityId === "duplicant") {
+    result.bathroom = bathroom || "plumbed";
+  } else if (bathroom) {
+    result.bathroom = bathroom;
+  }
   if (inputTemp !== null) {
     result.inputTemp = inputTemp;
   }

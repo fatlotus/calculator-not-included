@@ -10652,12 +10652,12 @@
       "subcategory": "Standard",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Duplicant",
       "icon": "images/icons/Duplicants_preview.png",
-      "power": 0.0,
-      "heat": 0.0,
+      "power": 0,
+      "heat": 0,
       "inputs": [
         {
           "resource": "Oxygen",
-          "rate": 100.0,
+          "rate": 100,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -10670,6 +10670,13 @@
           "unit": "s/s",
           "state": "labor",
           "temp": null
+        },
+        {
+          "resource": "Carbon Dioxide",
+          "rate": 2,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 37 °C"
         }
       ],
       "recipes": [
@@ -10679,7 +10686,7 @@
           "inputs": [
             {
               "resource": "Oxygen",
-              "rate": 100.0,
+              "rate": 100,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10692,6 +10699,13 @@
               "unit": "s/s",
               "state": "labor",
               "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 2,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 37 °C"
             }
           ]
         },
@@ -10701,7 +10715,7 @@
           "inputs": [
             {
               "resource": "Oxygen",
-              "rate": 100.0,
+              "rate": 100,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10714,6 +10728,13 @@
               "unit": "s/s",
               "state": "labor",
               "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 2,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 37 °C"
             }
           ]
         },
@@ -10723,7 +10744,7 @@
           "inputs": [
             {
               "resource": "Oxygen",
-              "rate": 100.0,
+              "rate": 100,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10736,6 +10757,13 @@
               "unit": "s/s",
               "state": "labor",
               "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 2,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 37 °C"
             }
           ]
         },
@@ -10745,7 +10773,7 @@
           "inputs": [
             {
               "resource": "Oxygen",
-              "rate": 100.0,
+              "rate": 100,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10758,6 +10786,13 @@
               "unit": "s/s",
               "state": "labor",
               "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 2,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 37 °C"
             }
           ]
         },
@@ -10767,7 +10802,7 @@
           "inputs": [
             {
               "resource": "Oxygen",
-              "rate": 100.0,
+              "rate": 100,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10780,6 +10815,13 @@
               "unit": "s/s",
               "state": "labor",
               "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 2,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 37 °C"
             }
           ]
         },
@@ -10789,7 +10831,7 @@
           "inputs": [
             {
               "resource": "Oxygen",
-              "rate": 100.0,
+              "rate": 100,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10798,10 +10840,17 @@
           "outputs": [
             {
               "resource": "Duplicant Labor",
-              "rate": 1.0,
+              "rate": 1,
               "unit": "s/s",
               "state": "labor",
               "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 2,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 37 °C"
             }
           ]
         },
@@ -10811,7 +10860,7 @@
           "inputs": [
             {
               "resource": "Oxygen",
-              "rate": 100.0,
+              "rate": 100,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10824,6 +10873,13 @@
               "unit": "s/s",
               "state": "labor",
               "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 2,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 37 °C"
             }
           ]
         }
@@ -10853,24 +10909,11 @@
           "id": "mouth_breather",
           "name": "Mouth Breather (+100% Oxygen)",
           "input_multipliers": {
-            "Oxygen": 2.0
+            "Oxygen": 2
           },
           "output_multipliers": {
-            "Carbon Dioxide": 2.0
+            "Carbon Dioxide": 2
           }
-        },
-        {
-          "id": "exhale_co2",
-          "name": "Include Exhaled CO2 (+2 g/s)",
-          "extra_outputs": [
-            {
-              "resource": "Carbon Dioxide",
-              "rate": 2.0,
-              "unit": "g/s",
-              "state": "free",
-              "temp": "@ 37 \u00b0C"
-            }
-          ]
         },
         {
           "id": "calories",
@@ -10899,59 +10942,15 @@
           ]
         },
         {
-          "id": "lavatory",
-          "name": "Lavatory Use (1x/cycle: -5 kg Water -> +11.7 kg Polluted Water)",
-          "extra_inputs": [
-            {
-              "resource": "Water",
-              "rate": 8.3333,
-              "unit": "g/s",
-              "state": "in a pipe",
-              "temp": null
-            }
-          ],
-          "extra_outputs": [
-            {
-              "resource": "Polluted Water",
-              "rate": 19.5,
-              "unit": "g/s",
-              "state": "in a pipe",
-              "temp": "@ 37 \u00b0C"
-            }
-          ]
-        },
-        {
-          "id": "outhouse",
-          "name": "Outhouse Use (1x/cycle: -13 kg Dirt -> +19.7 kg Polluted Dirt)",
-          "extra_inputs": [
-            {
-              "resource": "Dirt",
-              "rate": 21.6667,
-              "unit": "g/s",
-              "state": "free",
-              "temp": null
-            }
-          ],
-          "extra_outputs": [
-            {
-              "resource": "Polluted Dirt",
-              "rate": 32.8333,
-              "unit": "g/s",
-              "state": "free",
-              "temp": "@ 37 \u00b0C"
-            }
-          ]
-        },
-        {
           "id": "flatulent",
           "name": "Flatulent (+5 g/s Natural Gas avg)",
           "extra_outputs": [
             {
               "resource": "Natural Gas",
-              "rate": 5.0,
+              "rate": 5,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 37 \u00b0C"
+              "temp": "@ 37 °C"
             }
           ]
         }
