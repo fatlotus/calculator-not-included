@@ -76,6 +76,16 @@ export const PRESETS = [
       { entityId: "duplicant", qty: 1.3333, recipeId: "schedule_default", modifiers: [], bathroom: "plumbed" },
     ],
   },
+  {
+    id: "glossy_drecko_plastic",
+    name: "Glossy Drecko Plastic via Mealwood",
+    description: "Renewable plastic ranch utilizing Glossy Dreckos fed by live Mealwood plants to produce plastic and phosphorite.",
+    rateMode: "s",
+    rows: [
+      { entityId: "critter_glossy_drecko", qty: 3, recipeId: "mealwood_plastic", modifiers: [] },
+      { entityId: "plant_mealwood", qty: 3, recipeId: null, modifiers: [] },
+    ],
+  },
 ];
 
 /**

@@ -358,6 +358,16 @@ console.log("=== Running JavaScript Module Tests ===");
   const oilNet = calculateSystemNet(evaluatedOil);
   assert.ok(oilNet.netPower > 5000, "Oil refinery power plant should produce > 5000 W net");
 
+  // Drecko plastic preset test
+  const dreckoPreset = getPresetById("glossy_drecko_plastic");
+  assert.ok(dreckoPreset, "Drecko plastic preset should exist");
+  assert.strictEqual(dreckoPreset.rows.length, 2);
+  const evalDrecko = dreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const dreckoNet = calculateSystemNet(evalDrecko);
+  const plasticOut = dreckoNet.netOutputs.find((o) => o.resource === "Plastic");
+  assert.ok(plasticOut, "Drecko preset must output Plastic");
+  assert.ok(plasticOut.rate > 200, "Plastic output should be > 200 g/s");
+
   // Strict pipe state matching verification:
   // Water Geyser produces free water; Electrolyzer consumes in-pipe water.
   // Without a pump, they do NOT cancel each other out.
