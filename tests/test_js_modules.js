@@ -411,4 +411,44 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Component HTML Rendering tests passed");
 }
 
+// 6. Bionic Duplicants Augmentations
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const bionic = entityMap.get("bionic_duplicant");
+  assert.ok(bionic, "bionic_duplicant entity should exist");
+
+  // Crude Oil recipe (default)
+  const crudeEval = evaluateRow({ entityId: "bionic_duplicant", qty: 1, recipeId: "crude_oil" }, entityMap, elementMap);
+  const crudeIn = crudeEval.inputs.find((i) => i.resource === "Crude Oil");
+  assert.ok(crudeIn, "Default Bionic should consume Crude Oil");
+  assert.strictEqual(crudeIn.rate, 33.33);
+
+  // Gear Balm recipe
+  const balmEval = evaluateRow({ entityId: "bionic_duplicant", qty: 1, recipeId: "gear_balm" }, entityMap, elementMap);
+  const balmIn = balmEval.inputs.find((i) => i.resource === "Gear Balm");
+  assert.ok(balmIn, "Bionic with gear_balm recipe should consume Gear Balm");
+  assert.strictEqual(balmIn.rate, 0.0004167);
+  assert.strictEqual(balmIn.unit, "balm/s");
+
+  // Tallow Gear Balm recipe
+  const tallowEval = evaluateRow({ entityId: "bionic_duplicant", qty: 1, recipeId: "tallow_gear_balm" }, entityMap, elementMap);
+  const tallowIn = tallowEval.inputs.find((i) => i.resource === "Tallow Gear Balm");
+  assert.ok(tallowIn, "Bionic with tallow_gear_balm recipe should consume Tallow Gear Balm");
+  assert.strictEqual(tallowIn.rate, 0.0004167);
+  assert.strictEqual(tallowIn.unit, "balm/s");
+
+  // Defragmentation option producing Microchips
+  const defragEval = evaluateRow({ entityId: "bionic_duplicant", qty: 1, modifiers: ["defragment"] }, entityMap, elementMap);
+  const chipOut = defragEval.outputs.find((o) => o.resource === "Microchip");
+  assert.ok(chipOut, "Defragment modifier should produce Microchips");
+  assert.ok(chipOut.rate > 0, "Defragment output rate should be positive");
+
+  // Diver's lungs modifier (-25% Oxygen)
+  const dlEval = evaluateRow({ entityId: "bionic_duplicant", qty: 1, modifiers: ["divers_lungs"] }, entityMap, elementMap);
+  const o2In = dlEval.inputs.find((i) => i.resource === "Oxygen");
+  assert.strictEqual(o2In.rate, 75.0, "Diver's Lungs should reduce Oxygen to 75 g/s");
+
+  console.log("✓ Bionic Duplicants Augmentations tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

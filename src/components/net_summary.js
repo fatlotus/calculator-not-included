@@ -15,8 +15,8 @@ import { renderIcon } from "./table_row.js";
  * @param {boolean} strictPipeMatching - Whether strict pipe state matching is active
  * @returns {string} HTML string for <tr class="net-summary-row">
  */
-const NON_THERMAL_RESOURCES = new Set(["Duplicant Labor", "Microchip", "Power", "Heat", "Calories"]);
-const NON_THERMAL_UNITS = new Set(["chips/s", "chips/cycle", "s/s", "s/cycle", "kcal/s", "kcal/cycle"]);
+const NON_THERMAL_RESOURCES = new Set(["Duplicant Labor", "Microchip", "Power", "Heat", "Calories", "Gear Balm", "Tallow Gear Balm"]);
+const NON_THERMAL_UNITS = new Set(["chips/s", "chips/cycle", "s/s", "s/cycle", "kcal/s", "kcal/cycle", "balm/s", "balm/cycle"]);
 
 export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps = {}, strictPipeMatching = true) {
   const powerIcon = elementMap?.get("Power")?.icon;

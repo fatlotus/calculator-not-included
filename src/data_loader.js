@@ -35,6 +35,16 @@ export const SYNTHETIC_ELEMENTS = {
     icon: "images/icons/Power.png",
     state: "Solid",
   },
+  "Gear Balm": {
+    name: "Gear Balm",
+    icon: "images/icons/FP_icon.png",
+    state: "Solid",
+  },
+  "Tallow Gear Balm": {
+    name: "Tallow Gear Balm",
+    icon: "images/icons/Tallow.png",
+    state: "Solid",
+  },
 };
 
 /**

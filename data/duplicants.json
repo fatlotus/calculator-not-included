@@ -350,17 +350,182 @@
         "rate": 33.33,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 37 \u00b0C"
+        "temp": "@ 37 °C"
       }
     ],
-    "recipes": [],
+    "recipes": [
+      {
+        "id": "crude_oil",
+        "name": "Crude Oil Lubrication (20 kg/cycle = 33.33 g/s)",
+        "inputs": [
+          {
+            "resource": "Oxygen",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Crude Oil",
+            "rate": 33.33,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Duplicant Labor",
+            "rate": 0.9167,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          },
+          {
+            "resource": "Gunk",
+            "rate": 33.33,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": "@ 37 °C"
+          }
+        ]
+      },
+      {
+        "id": "gear_balm",
+        "name": "Gear Balm Lubrication (0.25 balm/cycle)",
+        "inputs": [
+          {
+            "resource": "Oxygen",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Gear Balm",
+            "rate": 0.0004167,
+            "unit": "balm/s",
+            "state": "solid",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Duplicant Labor",
+            "rate": 0.9167,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          },
+          {
+            "resource": "Gunk",
+            "rate": 33.33,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": "@ 37 °C"
+          }
+        ]
+      },
+      {
+        "id": "tallow_gear_balm",
+        "name": "Tallow Gear Balm Lubrication (0.25 balm/cycle)",
+        "inputs": [
+          {
+            "resource": "Oxygen",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Tallow Gear Balm",
+            "rate": 0.0004167,
+            "unit": "balm/s",
+            "state": "solid",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Duplicant Labor",
+            "rate": 0.9167,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          },
+          {
+            "resource": "Gunk",
+            "rate": 33.33,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": "@ 37 °C"
+          }
+        ]
+      }
+    ],
     "modifiers": [
+      {
+        "id": "defragment",
+        "name": "Defragment (+0.37 microchips/cycle)",
+        "extra_outputs": [
+          {
+            "resource": "Microchip",
+            "rate": 0.0006166667,
+            "unit": "chips/s",
+            "state": "solid",
+            "temp": null
+          }
+        ]
+      },
+      {
+        "id": "divers_lungs",
+        "name": "Diver's Lungs (-25% Oxygen)",
+        "input_multipliers": {
+          "Oxygen": 0.75
+        },
+        "output_multipliers": {
+          "Carbon Dioxide": 0.75
+        }
+      },
+      {
+        "id": "deep_divers_lungs",
+        "name": "Deep Diver's Lungs (-50% Oxygen)",
+        "input_multipliers": {
+          "Oxygen": 0.5
+        },
+        "output_multipliers": {
+          "Carbon Dioxide": 0.5
+        }
+      },
+      {
+        "id": "mouth_breather",
+        "name": "Mouth Breather (+100% Oxygen)",
+        "input_multipliers": {
+          "Oxygen": 2.0
+        },
+        "output_multipliers": {
+          "Carbon Dioxide": 2.0
+        }
+      },
       {
         "id": "yucky_lungs",
         "name": "Yucky Lungs (+30% Oxygen)",
         "input_multipliers": {
           "Oxygen": 1.3
         }
+      },
+      {
+        "id": "flatulent",
+        "name": "Flatulent (+5 g/s Natural Gas avg)",
+        "extra_outputs": [
+          {
+            "resource": "Natural Gas",
+            "rate": 5.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 37 °C"
+          }
+        ]
       }
     ],
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Duplicants_preview.png?7e5c0b"
