@@ -42,7 +42,8 @@ class TestCalculatorEngine(unittest.TestCase):
     def test_format_stream_line_per_second(self):
         stream = {"resource": "Water", "rate": 1000.0, "unit": "g/s", "state": "in a pipe"}
         line = format_stream_line(stream, is_output=False, rate_mode="s")
-        self.assertEqual(line, "Water: -1000 g/s (in a pipe)")
+        # 1000 g/s auto-scales to 1 Kg/s
+        self.assertEqual(line, "Water: -1 Kg/s (in a pipe)")
 
         out_stream = {
             "resource": "Oxygen",
@@ -57,8 +58,8 @@ class TestCalculatorEngine(unittest.TestCase):
     def test_format_stream_line_per_cycle(self):
         stream = {"resource": "Water", "rate": 1000.0, "unit": "g/s", "state": "in a pipe"}
         line = format_stream_line(stream, is_output=False, rate_mode="c")
-        # 1000 g/s * 600s / 1000 = 600 kg/cycle
-        self.assertEqual(line, "Water: -600 kg/cycle (in a pipe)")
+        # 1000 g/s * 600s = 600,000 g/cycle -> 600 Kg/cycle
+        self.assertEqual(line, "Water: -600 Kg/cycle (in a pipe)")
 
     def test_evaluate_single_electrolyzer(self):
         row = {"entityId": "electrolyzer", "qty": 1, "recipeId": None, "modifiers": []}
@@ -307,6 +308,60 @@ class TestCalculatorEngine(unittest.TestCase):
         self.assertEqual(get_default_element_temp("HotIron", element_map), 80.0)
         # Missing element defaults to 20
         self.assertEqual(get_default_element_temp("Unknown", element_map), 20.0)
+
+    def test_automatic_unit_scaling(self):
+        # In /s mode
+        # < 1000 g/s -> g/s
+        self.assertEqual(
+            format_stream_line({"resource": "Natural Gas", "rate": 90.0, "unit": "g/s", "state": "free"}, True, "s"),
+            "Natural Gas: +90 g/s (free)",
+        )
+        self.assertEqual(
+            format_stream_line({"resource": "Hydrogen", "rate": 112.0, "unit": "g/s", "state": "free"}, True, "s"),
+            "Hydrogen: +112 g/s (free)",
+        )
+        # 1000 g/s -> 1 Kg/s
+        self.assertEqual(
+            format_stream_line({"resource": "Coal", "rate": 1000.0, "unit": "g/s", "state": "free"}, False, "s"),
+            "Coal: -1 Kg/s (free)",
+        )
+        # 10000 g/s -> 10 Kg/s
+        self.assertEqual(
+            format_stream_line({"resource": "Crude Oil", "rate": 10000.0, "unit": "g/s", "state": "in a pipe"}, False, "s"),
+            "Crude Oil: -10 Kg/s (in a pipe)",
+        )
+        # 1,000,000 g/s -> 1 T/s
+        self.assertEqual(
+            format_stream_line({"resource": "Water", "rate": 1000000.0, "unit": "g/s", "state": "in a pipe"}, False, "s"),
+            "Water: -1 T/s (in a pipe)",
+        )
+
+        # In /cycle mode
+        # 90 g/s * 600 = 54,000 g/cycle -> 54 Kg/cycle
+        self.assertEqual(
+            format_stream_line({"resource": "Natural Gas", "rate": 90.0, "unit": "g/s", "state": "free"}, True, "c"),
+            "Natural Gas: +54 Kg/cycle (free)",
+        )
+        # 10,000 g/s * 600 = 6,000,000 g/cycle -> 6 T/cycle
+        self.assertEqual(
+            format_stream_line({"resource": "Crude Oil", "rate": 10000.0, "unit": "g/s", "state": "in a pipe"}, False, "c"),
+            "Crude Oil: -6 T/cycle (in a pipe)",
+        )
+        # 1 g/s * 600 = 600 g/cycle -> 600 g/cycle
+        self.assertEqual(
+            format_stream_line({"resource": "Gold", "rate": 1.0, "unit": "g/s", "state": "free"}, False, "c"),
+            "Gold: -600 g/cycle (free)",
+        )
+
+        # Non-mass units
+        self.assertEqual(
+            format_stream_line({"resource": "Duplicant Labor", "rate": 1.0, "unit": "s/s", "state": "labor"}, False, "s"),
+            "Duplicant Labor: -1 s/s (labor)",
+        )
+        self.assertEqual(
+            format_stream_line({"resource": "Duplicant Labor", "rate": 1.0, "unit": "s/s", "state": "labor"}, False, "c"),
+            "Duplicant Labor: -600 s/cycle (labor)",
+        )
 
 
 if __name__ == "__main__":

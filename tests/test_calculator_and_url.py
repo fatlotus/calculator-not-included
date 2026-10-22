@@ -279,15 +279,15 @@ class TestRateConversionsAndFormatting(unittest.TestCase):
 
     def test_format_stream_line_per_second_and_per_cycle(self):
         """Verify format_stream_line produces clean human-readable strings."""
-        # Water Input
+        # Water Input (1000 g/s auto-scales to 1 Kg/s and 600 Kg/cycle)
         water_stream = {"resource": "Water", "rate": 1000.0, "unit": "g/s", "state": "free"}
         self.assertEqual(
             format_stream_line(water_stream, is_output=False, rate_mode="s"),
-            "Water: -1000 g/s (free)",
+            "Water: -1 Kg/s (free)",
         )
         self.assertEqual(
             format_stream_line(water_stream, is_output=False, rate_mode="c"),
-            "Water: -600 kg/cycle (free)",
+            "Water: -600 Kg/cycle (free)",
         )
 
         # Oxygen Output with Temperature
@@ -298,7 +298,7 @@ class TestRateConversionsAndFormatting(unittest.TestCase):
         )
         self.assertEqual(
             format_stream_line(o2_stream, is_output=True, rate_mode="c"),
-            "Oxygen: +52.8 kg/cycle @ 70 °C+ (free)",
+            "Oxygen: +52.8 Kg/cycle @ 70 °C+ (free)",
         )
 
 

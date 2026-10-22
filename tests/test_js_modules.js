@@ -153,6 +153,37 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(getDefaultElementTemp("Ice", customElements) < -0.65);
   assert.strictEqual(getDefaultElementTemp("MoltenGold", customElements), 1100);
 
+  // E. Automatic Unit Scaling tests
+  assert.strictEqual(
+    formatStreamLine({ resource: "Natural Gas", rate: 90, unit: "g/s", state: "free" }, true, "s"),
+    "Natural Gas: +90 g/s (free)"
+  );
+  assert.strictEqual(
+    formatStreamLine({ resource: "Coal", rate: 1000, unit: "g/s", state: "free" }, false, "s"),
+    "Coal: -1 Kg/s (free)"
+  );
+  assert.strictEqual(
+    formatStreamLine({ resource: "Crude Oil", rate: 10000, unit: "g/s", state: "in a pipe" }, false, "s"),
+    "Crude Oil: -10 Kg/s (in a pipe)"
+  );
+  assert.strictEqual(
+    formatStreamLine({ resource: "Water", rate: 1000000, unit: "g/s", state: "in a pipe" }, false, "s"),
+    "Water: -1 T/s (in a pipe)"
+  );
+  // Cycle mode
+  assert.strictEqual(
+    formatStreamLine({ resource: "Natural Gas", rate: 90, unit: "g/s", state: "free" }, true, "c"),
+    "Natural Gas: +54 Kg/cycle (free)"
+  );
+  assert.strictEqual(
+    formatStreamLine({ resource: "Crude Oil", rate: 10000, unit: "g/s", state: "in a pipe" }, false, "c"),
+    "Crude Oil: -6 T/cycle (in a pipe)"
+  );
+  assert.strictEqual(
+    formatStreamLine({ resource: "Gold", rate: 1, unit: "g/s", state: "free" }, false, "c"),
+    "Gold: -600 g/cycle (free)"
+  );
+
   console.log("✓ Calculator & Math Engine tests passed");
 }
 
@@ -250,7 +281,7 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(rowHtml.includes("Electrolyzer"), "Row HTML should include entity name");
   assert.ok(rowHtml.includes("Oxygen: +888 g/s"), "Row HTML should include Oxygen output stream");
   assert.ok(rowHtml.includes("Hydrogen: +112 g/s"), "Row HTML should include Hydrogen output stream");
-  assert.ok(rowHtml.includes("Water: -1000 g/s"), "Row HTML should include Water input stream");
+  assert.ok(rowHtml.includes("Water: -1 Kg/s"), "Row HTML should include Water input stream");
   assert.ok(rowHtml.includes("Power: -120 W"), "Row HTML should include Power input stream");
   // Ensure Feed Temp input was removed
   assert.ok(!rowHtml.includes("input-temp-field"), "Row HTML should NOT contain per-row feed temp input");

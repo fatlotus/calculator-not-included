@@ -43,6 +43,19 @@ export function getElementShc(resource, elementMap) {
 }
 
 /**
+ * Standard mass unit multipliers (in grams).
+ */
+export const MASS_UNITS = {
+  g: 1.0,
+  kg: 1000.0,
+  Kg: 1000.0,
+  t: 1000000.0,
+  T: 1000000.0,
+  tonne: 1000000.0,
+  tonnes: 1000000.0,
+};
+
+/**
  * Format a numeric value cleanly with up to maxDecimals (default 4) stripping trailing zeros.
  */
 export function formatNumber(val, maxDecimals = 4) {
@@ -54,20 +67,53 @@ export function formatNumber(val, maxDecimals = 4) {
 }
 
 /**
- * Format a resource stream line.
+ * Format a resource stream line with automatic unit scaling (g, Kg, T).
  */
 export function formatStreamLine(stream, isOutput, rateMode = "s") {
   const sign = isOutput ? "+" : "-";
-  let displayRate = Math.abs(stream.rate);
-  let displayUnit = stream.unit || "g/s";
+  const rawRate = Math.abs(stream.rate || 0);
+  const rawUnit = stream.unit || "g/s";
 
-  if (rateMode === "c") {
-    if (displayUnit === "g/s") {
-      displayRate = (displayRate * SECONDS_PER_CYCLE) / 1000;
-      displayUnit = "kg/cycle";
-    } else if (displayUnit === "kcal/s") {
-      displayRate = displayRate * SECONDS_PER_CYCLE;
-      displayUnit = "kcal/cycle";
+  const baseUnitMatch = rawUnit.replace(/\/(s|cycle)$/, "");
+  const isMassUnit = MASS_UNITS[baseUnitMatch] !== undefined;
+
+  let displayRate = rawRate;
+  let displayUnit = rawUnit;
+
+  if (isMassUnit) {
+    // 1. Convert to grams per second
+    let gPerSec = rawRate * MASS_UNITS[baseUnitMatch];
+    if (rawUnit.endsWith("/cycle")) {
+      gPerSec /= SECONDS_PER_CYCLE;
+    }
+
+    // 2. Compute grams for active rateMode
+    const totalG = rateMode === "c" ? gPerSec * SECONDS_PER_CYCLE : gPerSec;
+    const timeSuffix = rateMode === "c" ? "/cycle" : "/s";
+    const absG = Math.abs(totalG);
+
+    if (absG >= 1000000.0) {
+      displayRate = totalG / 1000000.0;
+      displayUnit = `T${timeSuffix}`;
+    } else if (absG >= 1000.0) {
+      displayRate = totalG / 1000.0;
+      displayUnit = `Kg${timeSuffix}`;
+    } else {
+      displayRate = totalG;
+      displayUnit = `g${timeSuffix}`;
+    }
+  } else {
+    // Non-mass units (s/s, kcal/s, chips/s, etc.)
+    if (rateMode === "c") {
+      if (displayUnit.endsWith("/s")) {
+        displayRate *= SECONDS_PER_CYCLE;
+        displayUnit = displayUnit.replace(/\/s$/, "/cycle");
+      }
+    } else {
+      if (displayUnit.endsWith("/cycle")) {
+        displayRate /= SECONDS_PER_CYCLE;
+        displayUnit = displayUnit.replace(/\/cycle$/, "/s");
+      }
     }
   }
 

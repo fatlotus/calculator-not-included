@@ -56,20 +56,58 @@ def format_number(val: Any, max_decimals: int = 4) -> str:
         return "0"
 
 
+MASS_UNITS: Dict[str, float] = {
+    "g": 1.0,
+    "kg": 1000.0,
+    "Kg": 1000.0,
+    "t": 1000000.0,
+    "T": 1000000.0,
+    "tonne": 1000000.0,
+    "tonnes": 1000000.0,
+}
+
+
 def format_stream_line(stream: Dict[str, Any], is_output: bool, rate_mode: str = "s") -> str:
     sign = "+" if is_output else "-"
-    rate = abs(float(stream.get("rate", 0.0)))
-    unit = stream.get("unit") or "g/s"
+    raw_rate = abs(float(stream.get("rate", 0.0)))
+    raw_unit = stream.get("unit") or "g/s"
 
-    if rate_mode == "c":
-        if unit == "g/s":
-            rate = (rate * SECONDS_PER_CYCLE) / 1000.0
-            unit = "kg/cycle"
-        elif unit == "kcal/s":
-            rate = rate * SECONDS_PER_CYCLE
-            unit = "kcal/cycle"
+    base_unit_match = re.sub(r"/(s|cycle)$", "", raw_unit)
+    is_mass_unit = base_unit_match in MASS_UNITS
 
-    text = f"{stream.get('resource')}: {sign}{format_number(rate)} {unit}"
+    display_rate = raw_rate
+    display_unit = raw_unit
+
+    if is_mass_unit:
+        factor = MASS_UNITS[base_unit_match]
+        g_per_sec = raw_rate * factor
+        if raw_unit.endswith("/cycle"):
+            g_per_sec /= SECONDS_PER_CYCLE
+
+        total_g = g_per_sec * SECONDS_PER_CYCLE if rate_mode == "c" else g_per_sec
+        time_suffix = "/cycle" if rate_mode == "c" else "/s"
+        abs_g = abs(total_g)
+
+        if abs_g >= 1000000.0:
+            display_rate = total_g / 1000000.0
+            display_unit = f"T{time_suffix}"
+        elif abs_g >= 1000.0:
+            display_rate = total_g / 1000.0
+            display_unit = f"Kg{time_suffix}"
+        else:
+            display_rate = total_g
+            display_unit = f"g{time_suffix}"
+    else:
+        if rate_mode == "c":
+            if display_unit.endswith("/s"):
+                display_rate *= SECONDS_PER_CYCLE
+                display_unit = re.sub(r"/s$", "/cycle", display_unit)
+        else:
+            if display_unit.endswith("/cycle"):
+                display_rate /= SECONDS_PER_CYCLE
+                display_unit = re.sub(r"/cycle$", "/s", display_unit)
+
+    text = f"{stream.get('resource')}: {sign}{format_number(display_rate)} {display_unit}"
     if is_output and stream.get("temp"):
         text += f" {stream['temp']}"
     if stream.get("state"):
