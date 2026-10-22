@@ -86,6 +86,16 @@ export const PRESETS = [
       { entityId: "plant_bristle_blossom", qty: 3, recipeId: "growth", modifiers: [] },
     ],
   },
+  {
+    id: "drecko_reed_fiber_balm_lily",
+    name: "Drecko Ranch (Reed Fiber) via Balm Lily",
+    description: "Zero-resource sustainable ranch utilizing regular Dreckos fed by live Balm Lily plants to produce Reed Fiber and Phosphorite in a Chlorine atmosphere.",
+    rateMode: "s",
+    rows: [
+      { entityId: "critter_drecko", qty: 3, recipeId: "balm_lily", modifiers: [] },
+      { entityId: "plant_balm_lily", qty: 3, recipeId: "growth", modifiers: [] },
+    ],
+  },
 ];
 
 /**

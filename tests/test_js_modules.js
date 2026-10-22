@@ -365,6 +365,28 @@ console.log("=== Running JavaScript Module Tests ===");
   const netPhosphoriteOut = dreckoNet.netOutputs.find((o) => o.resource === "Phosphorite");
   assert.ok(netPhosphoriteOut, "Drecko preset outputs Phosphorite");
 
+  // Regular Drecko with Balm Lily preset test (Zero-Resource Reed Fiber)
+  const regularDreckoPreset = getPresetById("drecko_reed_fiber_balm_lily");
+  assert.ok(regularDreckoPreset, "Regular Drecko Balm Lily preset should exist");
+  assert.strictEqual(regularDreckoPreset.rows.length, 2);
+  const regularDreckoRow = regularDreckoPreset.rows.find((r) => r.entityId === "critter_drecko");
+  assert.ok(regularDreckoRow, "Preset should contain critter_drecko");
+  assert.strictEqual(regularDreckoRow.recipeId, "balm_lily");
+  const balmLilyRow = regularDreckoPreset.rows.find((r) => r.entityId === "plant_balm_lily");
+  assert.ok(balmLilyRow, "Preset should contain plant_balm_lily");
+  assert.strictEqual(balmLilyRow.recipeId, "growth");
+
+  const evalRegularDrecko = regularDreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const regularDreckoNet = calculateSystemNet(evalRegularDrecko);
+  const reedFiberOut = regularDreckoNet.netOutputs.find((o) => o.resource === "Reed Fiber");
+  assert.ok(reedFiberOut, "Drecko preset must output Reed Fiber");
+  assert.ok(reedFiberOut.rate > 1, "Reed Fiber output should be > 1 g/s");
+  const regularPhosphoriteOut = regularDreckoNet.netOutputs.find((o) => o.resource === "Phosphorite");
+  assert.ok(regularPhosphoriteOut, "Drecko preset must output Phosphorite");
+
+  // Zero net inputs: Balm Lily requires 0 inputs, Growth cancels out completely
+  assert.strictEqual(regularDreckoNet.netInputs.length, 0, "Balm Lily Drecko ranch requires zero net inputs");
+
   // Natural Gas Geyser Power preset test (Fractional Generator and Pump)
   const ngPreset = getPresetById("natural_gas_geyser_power");
   assert.ok(ngPreset, "Natural gas geyser preset should exist");
