@@ -180,11 +180,11 @@ def apply_curated_overrides(buildings_by_id: dict[str, dict]) -> None:
     liquids = [e for e in all_elements if e.get("state") == "Liquid"]
     gases = [e for e in all_elements if e.get("state") == "Gas"]
 
-    # 1. Water Pump / Liquid Pump (pass-through, 10 kg/s / 240 W for every Liquid)
+    # 1. Liquid Pump (pass-through, 10 kg/s / 240 W for every Liquid)
     if "liquid_pump" in buildings_by_id:
         lp = buildings_by_id["liquid_pump"]
-        lp["aliases"] = ["Water Pump", "Liquid Pump"]
-        lp["name"] = "Water Pump (Liquid Pump)"
+        lp["aliases"] = ["Water Pump"]
+        lp["name"] = "Liquid Pump"
         lp_recipes = [
             {
                 "id": "water",
@@ -238,13 +238,6 @@ def apply_curated_overrides(buildings_by_id: dict[str, dict]) -> None:
         lp["outputs"] = lp["recipes"][0]["outputs"]
         lp["power"] = lp["recipes"][0]["power"]
         lp["heat"] = lp["recipes"][0]["heat"]
-
-    # Dedicated 'water_pump' entry cloned from liquid_pump
-    if "liquid_pump" in buildings_by_id:
-        wp = json.loads(json.dumps(buildings_by_id["liquid_pump"]))
-        wp["id"] = "water_pump"
-        wp["name"] = "Water Pump"
-        buildings_by_id["water_pump"] = wp
 
     # 2. Gas Pump (pass-through, 500 g/s / 240 W for every Gas)
     if "gas_pump" in buildings_by_id:

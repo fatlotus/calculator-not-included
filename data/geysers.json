@@ -63,69 +63,6 @@
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water_Geyser.png/32px-Water_Geyser.png?883210"
   },
   {
-    "id": "geyser_water",
-    "name": "Water Geyser",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Water_Geyser.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "Water",
-        "rate": 3000.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": "@ 95 \u00b0C"
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (1800 kg/cycle = 3000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "Water",
-            "rate": 3000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": "@ 95 \u00b0C"
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (3000 kg/cycle = 5000 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "Water",
-            "rate": 5000.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": "@ 95 \u00b0C"
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water_Geyser.png/32px-Water_Geyser.png?883210"
-  },
-  {
     "id": "geyser_cool_slush_geyser",
     "name": "Cool Slush Geyser",
     "category": "Geyser",
@@ -1324,69 +1261,6 @@
   },
   {
     "id": "geyser_natural_gas_geyser",
-    "name": "Natural Gas Geyser",
-    "category": "Geyser",
-    "subcategory": "Vent / Volcano",
-    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Geyser",
-    "icon": "images/icons/Natural_Gas_Geyser.png",
-    "power": 0.0,
-    "heat": 0.0,
-    "inputs": [],
-    "outputs": [
-      {
-        "resource": "Natural Gas",
-        "rate": 105.0,
-        "unit": "g/s",
-        "state": "free",
-        "temp": "@ 150 \u00b0C"
-      }
-    ],
-    "recipes": [
-      {
-        "id": "lifetime_avg",
-        "name": "Average Lifetime Yield (63 kg/cycle = 105 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "Natural Gas",
-            "rate": 105.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": "@ 150 \u00b0C"
-          }
-        ]
-      },
-      {
-        "id": "active_avg",
-        "name": "Average Active Period (105 kg/cycle = 175 g/s)",
-        "inputs": [],
-        "outputs": [
-          {
-            "resource": "Natural Gas",
-            "rate": 175.0,
-            "unit": "g/s",
-            "state": "free",
-            "temp": "@ 150 \u00b0C"
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "geotuned_1",
-        "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
-        "output_multiplier": 1.2
-      },
-      {
-        "id": "geotuned_5",
-        "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
-        "output_multiplier": 2.0
-      }
-    ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Natural_Gas_Geyser.png/32px-Natural_Gas_Geyser.png?12a9ab"
-  },
-  {
-    "id": "geyser_natural_gas",
     "name": "Natural Gas Geyser",
     "category": "Geyser",
     "subcategory": "Vent / Volcano",

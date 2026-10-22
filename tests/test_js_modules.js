@@ -55,6 +55,38 @@ console.log("=== Running JavaScript Module Tests ===");
 
   const critterResults = searchEntities(entities, "hatch", "Critter");
   assert.ok(critterResults.length >= 3, "Should match regular, stone, sage hatch");
+
+  // No duplicate entities in catalog
+  const entityIds = entities.map((e) => e.id);
+  const uniqueIds = new Set(entityIds);
+  assert.strictEqual(entityIds.length, uniqueIds.size, "Catalog entities list must contain no duplicate IDs");
+  assert.ok(!entityIds.includes("water_pump"), "water_pump clone must not be in entities array");
+  assert.ok(!entityIds.includes("geyser_water"), "geyser_water clone must not be in entities array");
+  assert.ok(!entityIds.includes("geyser_natural_gas"), "geyser_natural_gas clone must not be in entities array");
+
+  // Canonical names and aliases
+  const liquidPump = entityMap.get("liquid_pump");
+  assert.ok(liquidPump, "liquid_pump must exist");
+  assert.strictEqual(liquidPump.name, "Liquid Pump", "Canonical name must be 'Liquid Pump'");
+  assert.ok(liquidPump.aliases && liquidPump.aliases.includes("Water Pump"), "Must have 'Water Pump' alias");
+
+  // Backward compatibility alias lookups via entityMap
+  assert.strictEqual(entityMap.get("water_pump"), liquidPump, "entityMap.get('water_pump') must resolve to liquid_pump");
+  assert.strictEqual(entityMap.get("geyser_water"), entityMap.get("geyser_water_geyser"), "entityMap.get('geyser_water') must resolve to geyser_water_geyser");
+  assert.strictEqual(entityMap.get("geyser_natural_gas"), entityMap.get("geyser_natural_gas_geyser"), "entityMap.get('geyser_natural_gas') must resolve to geyser_natural_gas_geyser");
+
+  // Search by alias and single result for geysers
+  const waterPumpSearch = searchEntities(entities, "Water Pump");
+  assert.ok(waterPumpSearch.length > 0 && waterPumpSearch[0].id === "liquid_pump", "Searching 'Water Pump' must return Liquid Pump");
+
+  const waterGeyserSearch = searchEntities(entities, "Water Geyser");
+  const exactWaterGeysers = waterGeyserSearch.filter((g) => g.name === "Water Geyser");
+  assert.strictEqual(exactWaterGeysers.length, 1, "Searching 'Water Geyser' must return exactly 1 Water Geyser");
+
+  const natGasGeyserSearch = searchEntities(entities, "Natural Gas Geyser");
+  const exactNatGasGeysers = natGasGeyserSearch.filter((g) => g.name === "Natural Gas Geyser");
+  assert.strictEqual(exactNatGasGeysers.length, 1, "Searching 'Natural Gas Geyser' must return exactly 1 Natural Gas Geyser");
+
   console.log("✓ Data Loader & Catalog tests passed");
 }
 

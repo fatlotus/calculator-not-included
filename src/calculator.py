@@ -266,6 +266,13 @@ def _get_output_inlet_temp(output_stream: Dict[str, Any], evaluated_inputs: List
     return default_temp
 
 
+ENTITY_ALIASES: Dict[str, str] = {
+    "water_pump": "liquid_pump",
+    "geyser_water": "geyser_water_geyser",
+    "geyser_natural_gas": "geyser_natural_gas_geyser",
+}
+
+
 def evaluate_row(
     row: Dict[str, Any],
     entity_map: Dict[str, Any],
@@ -275,7 +282,11 @@ def evaluate_row(
     strict_pipe_matching: bool = True,
 ) -> Dict[str, Any]:
     entity_id = row.get("entityId") or row.get("entity_id")
-    entity = entity_map.get(entity_id) if entity_id else None
+    entity = None
+    if entity_id:
+        entity = entity_map.get(entity_id)
+        if not entity and entity_id in ENTITY_ALIASES:
+            entity = entity_map.get(ENTITY_ALIASES[entity_id])
     if not entity:
         return {
             "entity": None,

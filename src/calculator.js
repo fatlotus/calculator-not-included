@@ -255,6 +255,12 @@ function getOutputInletTemp(outputStream, evaluatedInputs, defaultTemp = 20.0) {
 /**
  * Evaluate a single calculator table row into resolved inputs, outputs, power, and thermal delta.
  */
+export const ENTITY_ALIASES = {
+  water_pump: "liquid_pump",
+  geyser_water: "geyser_water_geyser",
+  geyser_natural_gas: "geyser_natural_gas_geyser",
+};
+
 export function evaluateRow(
   row,
   entityMap,
@@ -263,7 +269,10 @@ export function evaluateRow(
   inputTemps = null,
   strictPipeMatching = true
 ) {
-  const entity = entityMap.get(row.entityId);
+  let entity = entityMap ? entityMap.get(row.entityId) : null;
+  if (!entity && entityMap && ENTITY_ALIASES[row.entityId]) {
+    entity = entityMap.get(ENTITY_ALIASES[row.entityId]);
+  }
   if (!entity) {
     return {
       entity: null,

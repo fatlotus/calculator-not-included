@@ -886,16 +886,4 @@ def scrape_geysers() -> tuple[list[dict], dict[str, dict]]:
             }
             geysers.append(entry)
 
-            # Compatibility aliases for presets and URL bookmarks
-            if g_id == "geyser_natural_gas_geyser":
-                nat_alias = dict(entry)
-                nat_alias["id"] = "geyser_natural_gas"
-                geysers.append(nat_alias)
-            elif g_id == "geyser_water_geyser":
-                water_alias = dict(entry)
-                water_alias["id"] = "geyser_water"
-                geysers.append(water_alias)
-
-    return geysers, discovered_elements
-
     return geysers, discovered_elements

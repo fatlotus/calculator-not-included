@@ -160,17 +160,19 @@ class TestWikiEntityStats(unittest.TestCase):
         self.assertEqual(h2_in.get("unit"), "g/s")
         self.assertEqual(h2_in.get("state"), "in a pipe")
 
-    def test_water_pump_stats(self):
+    def test_liquid_pump_stats(self):
         """
-        Verify water_pump:
+        Verify liquid_pump (in-game name 'Liquid Pump'):
         Power -240 W,
         Input: Water 10000 g/s (free),
         Output: Water 10000 g/s (in a pipe).
+        Aliases: ['Water Pump'].
         """
-        self.assertIn("water_pump", self.entity_map)
-        pump = self.entity_map["water_pump"]
+        self.assertIn("liquid_pump", self.entity_map)
+        pump = self.entity_map["liquid_pump"]
 
-        self.assertEqual(pump.get("name"), "Water Pump")
+        self.assertEqual(pump.get("name"), "Liquid Pump")
+        self.assertIn("Water Pump", pump.get("aliases", []))
         self.assertAlmostEqual(pump.get("power"), -240.0, places=2)
 
         # Check Inputs
@@ -190,6 +192,24 @@ class TestWikiEntityStats(unittest.TestCase):
         self.assertAlmostEqual(water_out.get("rate"), 10000.0, places=2)
         self.assertEqual(water_out.get("unit"), "g/s")
         self.assertEqual(water_out.get("state"), "in a pipe")
+
+    def test_no_duplicate_entities_or_names(self):
+        """Verify there are no duplicate entity IDs or names in the dataset."""
+        for cat in ["buildings", "plants", "critters", "duplicants", "geysers"]:
+            items = self.dataset.get(cat, [])
+            ids = [x["id"] for x in items]
+            names = [x["name"] for x in items]
+            self.assertEqual(len(ids), len(set(ids)), f"Duplicate IDs found in {cat}")
+            self.assertEqual(len(names), len(set(names)), f"Duplicate names found in {cat}")
+
+        # Ensure legacy clone IDs are removed from raw dataset
+        self.assertNotIn("water_pump", self.entity_map)
+        self.assertNotIn("geyser_water", self.entity_map)
+        self.assertNotIn("geyser_natural_gas", self.entity_map)
+        # Ensure canonical IDs are present
+        self.assertIn("liquid_pump", self.entity_map)
+        self.assertIn("geyser_water_geyser", self.entity_map)
+        self.assertIn("geyser_natural_gas_geyser", self.entity_map)
 
     def test_gas_pump_stats(self):
         """

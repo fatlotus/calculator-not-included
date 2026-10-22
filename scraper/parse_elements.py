@@ -184,12 +184,8 @@ def scrape_all_elements() -> tuple[list[dict], dict[str, dict]]:
 
     # Alias canonical gas names if needed so lookups for "Hydrogen Gas" or "Chlorine Gas" work
     if "Hydrogen" in elements_by_name and "Hydrogen Gas" not in elements_by_name:
-        h_copy = dict(elements_by_name["Hydrogen"])
-        h_copy["name"] = "Hydrogen Gas"
-        elements_by_name["Hydrogen Gas"] = h_copy
+        elements_by_name["Hydrogen Gas"] = elements_by_name["Hydrogen"]
     if "Chlorine" in elements_by_name and "Chlorine Gas" not in elements_by_name:
-        c_copy = dict(elements_by_name["Chlorine"])
-        c_copy["name"] = "Chlorine Gas"
-        elements_by_name["Chlorine Gas"] = c_copy
+        elements_by_name["Chlorine Gas"] = elements_by_name["Chlorine"]
 
     return all_elements, elements_by_name

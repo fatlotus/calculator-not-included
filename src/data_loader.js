@@ -38,6 +38,15 @@ export const SYNTHETIC_ELEMENTS = {
 };
 
 /**
+ * Compatibility alias map for legacy entity IDs (used in bookmark URLs and presets).
+ */
+export const ENTITY_ALIASES = {
+  water_pump: "liquid_pump",
+  geyser_water: "geyser_water_geyser",
+  geyser_natural_gas: "geyser_natural_gas_geyser",
+};
+
+/**
  * Build a unified entity catalog and lookup maps.
  *
  * @param {Object} dataset - The raw ONI_DATASET object
@@ -80,6 +89,13 @@ export function buildEntityCatalog(dataset = ONI_DATASET) {
         entities.push(item);
         entityMap.set(item.id, item);
       }
+    }
+  }
+
+  // Register backward-compatibility aliases in entityMap only (without duplicating items in entities)
+  for (const [aliasId, canonicalId] of Object.entries(ENTITY_ALIASES)) {
+    if (!entityMap.has(aliasId) && entityMap.has(canonicalId)) {
+      entityMap.set(aliasId, entityMap.get(canonicalId));
     }
   }
 
@@ -137,6 +153,16 @@ export function searchEntities(entities, query = "", categoryFilter = "All") {
       score = 40;
     } else if (sub.includes(q)) {
       score = 30;
+    }
+
+    // Match aliases (e.g. "Water Pump" -> Liquid Pump)
+    if (Array.isArray(entity.aliases)) {
+      for (const alias of entity.aliases) {
+        const a = alias.toLowerCase();
+        if (a === q) score = Math.max(score, 95);
+        else if (a.startsWith(q)) score = Math.max(score, 75);
+        else if (a.includes(q)) score = Math.max(score, 55);
+      }
     }
 
     // Match input / output resource names

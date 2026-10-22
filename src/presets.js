@@ -13,7 +13,7 @@ export const PRESETS = [
     strictPipeMatching: true,
     rows: [
       { entityId: "electrolyzer", qty: 1, recipeId: null, modifiers: [] },
-      { entityId: "water_pump", qty: 0.1, recipeId: "water", modifiers: [] },
+      { entityId: "liquid_pump", qty: 0.1, recipeId: "water", modifiers: [] },
       { entityId: "gas_pump", qty: 0.224, recipeId: "hydrogen", modifiers: [] },
       { entityId: "hydrogen_generator", qty: 1.12, recipeId: null, modifiers: [] },
       { entityId: "duplicant", qty: 8, recipeId: null, modifiers: [] },
@@ -63,7 +63,7 @@ export const PRESETS = [
     rateMode: "s",
     strictPipeMatching: true,
     rows: [
-      { entityId: "geyser_natural_gas", qty: 1, recipeId: null, modifiers: [] },
+      { entityId: "geyser_natural_gas_geyser", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "gas_pump", qty: 1, recipeId: "natural_gas", modifiers: [] },
       { entityId: "natural_gas_generator", qty: 1, recipeId: null, modifiers: [] },
     ],
