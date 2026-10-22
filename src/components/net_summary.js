@@ -2,7 +2,7 @@
  * Component for rendering the bottom NET resource summary row.
  */
 
-import { formatNumber, formatStreamLine, getDefaultElementTemp, getNetInputTemp } from "../calculator.js";
+import { formatNumber, formatStreamLine, getDefaultElementTemp, getNetInputTemp, isNonThermalResource } from "../calculator.js";
 import { renderIcon } from "./table_row.js";
 
 /**
@@ -12,12 +12,8 @@ import { renderIcon } from "./table_row.js";
  * @param {Map<string, Object>} elementMap - Map of elements and synthetic resources
  * @param {string} rateMode - "s" or "c"
  * @param {Object} netInputTemps - User configured net input temperatures
- * @param {boolean} strictPipeMatching - Whether strict pipe state matching is active
  * @returns {string} HTML string for <tr class="net-summary-row">
  */
-const NON_THERMAL_RESOURCES = new Set(["Duplicant Labor", "Microchip", "Power", "Heat", "Calories", "Gear Balm", "Tallow Gear Balm"]);
-const NON_THERMAL_UNITS = new Set(["chips/s", "chips/cycle", "s/s", "s/cycle", "kcal/s", "kcal/cycle", "balm/s", "balm/cycle"]);
-
 export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps = {}) {
   const powerIcon = elementMap?.get("Power")?.icon;
   const heatIcon = elementMap?.get("Heat")?.icon;
@@ -39,7 +35,7 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
     const currentTemp = stream.tempC !== undefined
       ? stream.tempC
       : getNetInputTemp(stream.resource, stream.state, netInputTemps, defaultT);
-    const isThermal = !NON_THERMAL_RESOURCES.has(stream.resource) && !NON_THERMAL_UNITS.has(stream.unit);
+    const isThermal = !isNonThermalResource(stream.resource, stream.unit);
 
     inputLines.push(`
       <div class="stream-line net-stream">

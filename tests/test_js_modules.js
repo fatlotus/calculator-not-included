@@ -497,7 +497,7 @@ console.log("=== Running JavaScript Module Tests ===");
   const chipOut = defragEval.outputs.find((o) => o.resource === "Microchip");
   assert.ok(chipOut, "Defragment modifier should produce Microchips");
   assert.strictEqual(chipOut.rate, 0.00055, "Defragment rate should be 0.00055 chips/s (0.33 chips/cycle)");
-  assert.strictEqual(formatStreamLine(chipOut, true, "c"), "Microchip: +0.33 chips/cycle @ 20 °C (solid)", "Cycle display should be +0.33 chips/cycle");
+  assert.strictEqual(formatStreamLine(chipOut, true, "c"), "Microchip: +0.33 chips/cycle (solid)", "Cycle display should be +0.33 chips/cycle");
 
   // Diver's lungs modifier (-25% Oxygen)
   const dlEval = evaluateRow({ entityId: "bionic_duplicant", qty: 1, modifiers: ["divers_lungs"] }, entityMap, elementMap);
@@ -554,6 +554,58 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(html.includes('value="floor" selected'), "HTML must select floor option");
 
   console.log("✓ Duplicant Bathroom Options and Exhaled CO2 tests passed");
+}
+
+// 8. Non-Thermal Resources: Duplicant Labor and Calories have no temperature
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const evaluatedDupe = evaluateRow({ entityId: "duplicant", qty: 1, modifiers: ["calories"] }, entityMap, elementMap);
+
+  const calIn = evaluatedDupe.inputs.find((i) => i.resource === "Calories");
+  assert.ok(calIn, "Duplicant with calories modifier must have Calories input");
+  assert.strictEqual(calIn.tempC, undefined, "Calories input must not have tempC");
+  assert.strictEqual(calIn.temp, null, "Calories input must have null temp");
+  const calText = formatStreamLine(calIn, false, "c");
+  assert.strictEqual(calText.includes("°C"), false, "Calories stream line must not include temperature");
+  assert.strictEqual(calText, "Calories: -1000.02 kcal/cycle (free)");
+
+  const laborOut = evaluatedDupe.outputs.find((o) => o.resource === "Duplicant Labor");
+  assert.ok(laborOut, "Duplicant must have Duplicant Labor output");
+  assert.strictEqual(laborOut.tempC, undefined, "Duplicant Labor output must not have tempC");
+  assert.strictEqual(laborOut.temp, null, "Duplicant Labor output must have null temp");
+  const laborText = formatStreamLine(laborOut, true, "s");
+  assert.strictEqual(laborText.includes("°C"), false, "Duplicant Labor stream line must not include temperature");
+  assert.strictEqual(laborText, "Duplicant Labor: +0.75 s/s (labor)");
+
+  // Plant Mealwood producing Calories
+  const evaluatedMealwood = evaluateRow({ entityId: "plant_mealwood", qty: 1 }, entityMap, elementMap);
+  const calOut = evaluatedMealwood.outputs.find((o) => o.resource === "Calories");
+  assert.ok(calOut, "Mealwood produces Calories");
+  assert.strictEqual(calOut.tempC, undefined, "Mealwood Calories output must not have tempC");
+  assert.strictEqual(calOut.temp, null, "Mealwood Calories output must have null temp");
+  const calOutText = formatStreamLine(calOut, true, "c");
+  assert.strictEqual(calOutText.includes("°C"), false, "Mealwood Calories output must not include temperature");
+  assert.strictEqual(calOutText, "Calories: +199.98 kcal/cycle (free)");
+
+  // calculateSystemNet
+  const net = calculateSystemNet([evaluatedDupe, evaluatedMealwood]);
+  const netLabor = net.netOutputs.find((o) => o.resource === "Duplicant Labor");
+  assert.ok(netLabor, "System net outputs should contain Duplicant Labor");
+  assert.strictEqual(netLabor.tempC, undefined, "Net Duplicant Labor output must not have tempC");
+  assert.strictEqual(netLabor.temp, null, "Net Duplicant Labor output must have null temp");
+
+  const netCal = net.netInputs.find((i) => i.resource === "Calories");
+  assert.ok(netCal, "System net inputs should contain Calories (1000 - 200 = 800 kcal/cycle deficit)");
+  assert.strictEqual(netCal.tempC, undefined, "Net Calories input must not have tempC");
+  assert.strictEqual(netCal.temp, null, "Net Calories input must have null temp");
+
+  // HTML rendering: non-thermal inputs in NET summary row should not have temperature input field
+  const netHtml = renderNetSummaryRowHtml(net, elementMap, "s");
+  assert.ok(netHtml.includes("Duplicant Labor"), "Net HTML renders Duplicant Labor");
+  assert.ok(netHtml.includes("Calories"), "Net HTML renders Calories");
+  assert.strictEqual(netHtml.includes('data-resource="Calories"'), false, "Net HTML must not render temperature input for Calories");
+
+  console.log("✓ Non-Thermal Resources (Duplicant Labor, Calories) tests passed");
 }
 
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

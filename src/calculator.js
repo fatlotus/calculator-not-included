@@ -21,6 +21,31 @@ export const MASS_UNITS = {
   tonnes: 1000000.0,
 };
 
+export const NON_THERMAL_RESOURCES = new Set([
+  "Duplicant Labor",
+  "Calories",
+  "Power",
+  "Heat",
+  "Microchip",
+  "Gear Balm",
+  "Tallow Gear Balm",
+]);
+
+export const NON_THERMAL_UNITS = new Set([
+  "chips/s",
+  "chips/cycle",
+  "s/s",
+  "s/cycle",
+  "kcal/s",
+  "kcal/cycle",
+  "balm/s",
+  "balm/cycle",
+]);
+
+export function isNonThermalResource(resource, unit = "") {
+  return NON_THERMAL_RESOURCES.has(resource) || NON_THERMAL_UNITS.has(unit);
+}
+
 /**
  * Format a numeric value cleanly with up to maxDecimals (default 4) stripping trailing zeros.
  */
@@ -84,7 +109,7 @@ export function formatStreamLine(stream, isOutput, rateMode = "s") {
   }
 
   let text = `${stream.resource}: ${sign}${formatNumber(displayRate)} ${displayUnit}`;
-  if (isOutput && stream.temp) {
+  if (isOutput && stream.temp && !isNonThermalResource(stream.resource, stream.unit)) {
     text += ` ${stream.temp}`;
   }
   if (stream.state) {
@@ -171,21 +196,22 @@ export function getNetInputTemp(resource, state, netInputTemps, defaultTemp = 20
  */
 function getOutputInletTemp(outputStream, evaluatedInputs, defaultTemp = 20.0) {
   // 1. If machine has an input with the exact same resource name (e.g. Water in Water Pump / Aquatuner)
-  const exact = evaluatedInputs.find((inp) => inp.resource === outputStream.resource);
+  const exact = evaluatedInputs.find((inp) => inp.resource === outputStream.resource && !isNonThermalResource(inp.resource, inp.unit));
   if (exact && exact.tempC !== undefined) return exact.tempC;
 
   // 2. Liquid purification: Water from Polluted Water / Salt Water / Brine (Water Sieve, Desalinator)
   if (outputStream.resource === "Water") {
     const fluidIn = evaluatedInputs.find(
-      (inp) => inp.resource.includes("Water") || inp.resource === "Brine"
+      (inp) => (inp.resource.includes("Water") || inp.resource === "Brine") && !isNonThermalResource(inp.resource, inp.unit)
     );
     if (fluidIn && fluidIn.tempC !== undefined) return fluidIn.tempC;
   }
 
-  // 3. Mass-weighted average across all machine inputs
+  // 3. Mass-weighted average across all machine thermal inputs
   let totalMass = 0;
   let totalEnthalpy = 0;
   for (const inp of evaluatedInputs) {
+    if (isNonThermalResource(inp.resource, inp.unit)) continue;
     const rate = Math.abs(inp.rate || 0);
     const t = inp.tempC !== undefined ? inp.tempC : defaultTemp;
     totalMass += rate;
@@ -283,6 +309,9 @@ export function evaluateRow(
 
   // Resolve temperature for each input stream
   const inputs = baseInputs.map((s) => {
+    if (isNonThermalResource(s.resource, s.unit)) {
+      return { ...s, tempC: undefined, temp: null };
+    }
     let inpTemp = defaultInputTemp;
     if (inputTemps && typeof inputTemps === "object") {
       const k = `${s.resource}||${s.state || "free"}`;
@@ -298,6 +327,9 @@ export function evaluateRow(
 
   // Resolve temperature for each output stream based on thermal mode
   const outputs = baseOutputs.map((s) => {
+    if (isNonThermalResource(s.resource, s.unit)) {
+      return { ...s, temp: null, tempC: undefined };
+    }
     const inTemp = getOutputInletTemp(s, inputs, defaultInputTemp);
     let outTemp = inTemp;
     let tempStr = s.temp || null;
@@ -348,15 +380,19 @@ export function evaluateRow(
         if (existing) {
           existing.rate += extra.rate;
         } else {
-          let inpTemp = defaultInputTemp;
-          if (inputTemps && typeof inputTemps === "object") {
-            const k = `${extra.resource}||${extra.state || "free"}`;
-            const kSingle = `${extra.resource}|${extra.state || "free"}`;
-            if (inputTemps[k] !== undefined) inpTemp = Number(inputTemps[k]);
-            else if (inputTemps[kSingle] !== undefined) inpTemp = Number(inputTemps[kSingle]);
-            else if (inputTemps[extra.resource] !== undefined) inpTemp = Number(inputTemps[extra.resource]);
+          if (isNonThermalResource(extra.resource, extra.unit)) {
+            inputs.push({ ...extra, tempC: undefined, temp: null });
+          } else {
+            let inpTemp = defaultInputTemp;
+            if (inputTemps && typeof inputTemps === "object") {
+              const k = `${extra.resource}||${extra.state || "free"}`;
+              const kSingle = `${extra.resource}|${extra.state || "free"}`;
+              if (inputTemps[k] !== undefined) inpTemp = Number(inputTemps[k]);
+              else if (inputTemps[kSingle] !== undefined) inpTemp = Number(inputTemps[kSingle]);
+              else if (inputTemps[extra.resource] !== undefined) inpTemp = Number(inputTemps[extra.resource]);
+            }
+            inputs.push({ ...extra, tempC: inpTemp });
           }
-          inputs.push({ ...extra, tempC: inpTemp });
         }
       }
     }
@@ -366,8 +402,12 @@ export function evaluateRow(
         if (existing) {
           existing.rate += extra.rate;
         } else {
-          const inTemp = getOutputInletTemp(extra, inputs, defaultInputTemp);
-          outputs.push({ ...extra, tempC: inTemp, temp: `@ ${formatNumber(inTemp)} °C` });
+          if (isNonThermalResource(extra.resource, extra.unit)) {
+            outputs.push({ ...extra, tempC: undefined, temp: null });
+          } else {
+            const inTemp = getOutputInletTemp(extra, inputs, defaultInputTemp);
+            outputs.push({ ...extra, tempC: inTemp, temp: `@ ${formatNumber(inTemp)} °C` });
+          }
         }
       }
     }
@@ -415,7 +455,8 @@ export function evaluateRow(
   }
 
   // Representative input temperature for UI
-  const repInputTemp = scaledInputs.length > 0 ? scaledInputs[0].tempC : defaultInputTemp;
+  const thermalInp = scaledInputs.find((s) => s.tempC !== undefined && !isNonThermalResource(s.resource, s.unit));
+  const repInputTemp = thermalInp ? thermalInp.tempC : defaultInputTemp;
 
   return {
     entity,
@@ -466,12 +507,14 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
       baseOuts = rec.outputs || [];
     }
     for (const inp of baseInps) {
+      if (isNonThermalResource(inp.resource, inp.unit)) continue;
       const k = getKey(inp.resource, inp.state);
       if (currentTemps[k] === undefined) {
         currentTemps[k] = getDefNetTemp(inp.resource, inp.state);
       }
     }
     for (const out of baseOuts) {
+      if (isNonThermalResource(out.resource, out.unit)) continue;
       const k = getKey(out.resource, out.state);
       if (currentTemps[k] === undefined) {
         currentTemps[k] = getDefNetTemp(out.resource, out.state);
@@ -482,12 +525,14 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
       const bObj = DUPLICANT_BATHROOMS[bType] || DUPLICANT_BATHROOMS.plumbed;
       if (bObj) {
         for (const inp of bObj.inputs) {
+          if (isNonThermalResource(inp.resource, inp.unit)) continue;
           const k = getKey(inp.resource, inp.state);
           if (currentTemps[k] === undefined) {
             currentTemps[k] = getDefNetTemp(inp.resource, inp.state);
           }
         }
         for (const out of bObj.outputs) {
+          if (isNonThermalResource(out.resource, out.unit)) continue;
           const k = getKey(out.resource, out.state);
           if (currentTemps[k] === undefined) {
             currentTemps[k] = getDefNetTemp(out.resource, out.state);
@@ -512,10 +557,12 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
 
     for (const r of evaluatedRows) {
       for (const inp of r.inputs) {
+        if (isNonThermalResource(inp.resource, inp.unit)) continue;
         const k = getKey(inp.resource, inp.state);
         consMass[k] = (consMass[k] || 0) + inp.rate;
       }
       for (const out of r.outputs) {
+        if (isNonThermalResource(out.resource, out.unit)) continue;
         const k = getKey(out.resource, out.state);
         prodMass[k] = (prodMass[k] || 0) + out.rate;
         const outT = out.tempC !== undefined ? out.tempC : 20.0;
@@ -683,15 +730,20 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
       }
       const b = buckets.get(key);
       b.netRate += out.rate;
-      const t = out.tempC !== undefined ? out.tempC : 20.0;
-      b.tempEnthalpy += out.rate * t;
-      b.totalOutRate += out.rate;
-      if (out.temp && !b.temp) b.temp = out.temp;
+      if (!isNonThermalResource(out.resource, out.unit)) {
+        const t = out.tempC !== undefined ? out.tempC : 20.0;
+        b.tempEnthalpy += out.rate * t;
+        b.totalOutRate += out.rate;
+        if (out.temp && !b.temp) b.temp = out.temp;
+      }
     }
   }
 
   for (const b of buckets.values()) {
-    if (b.totalOutRate > 0) {
+    if (isNonThermalResource(b.resource, b.unit)) {
+      b.tempC = undefined;
+      b.temp = null;
+    } else if (b.totalOutRate > 0) {
       const avgT = b.tempEnthalpy / b.totalOutRate;
       b.tempC = avgT;
       b.temp = `@ ${formatNumber(avgT)} °C`;
@@ -709,16 +761,22 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
   const netOutputs = [];
 
   for (const b of finalBuckets) {
+    const isNonThermal = isNonThermalResource(b.resource, b.unit);
     if (b.netRate < -1e-5) {
-      const defT = getDefaultElementTemp(b.resource, elementMap);
-      const tempC = getNetInputTemp(b.resource, b.state, netInputTemps, defT);
+      let tempC;
+      let temp = null;
+      if (!isNonThermal) {
+        const defT = getDefaultElementTemp(b.resource, elementMap);
+        tempC = getNetInputTemp(b.resource, b.state, netInputTemps, defT);
+        temp = `@ ${formatNumber(tempC)} °C`;
+      }
       netInputs.push({
         resource: b.resource,
         rate: Math.abs(b.netRate),
         unit: b.unit,
         state: b.state,
         tempC,
-        temp: `@ ${formatNumber(tempC)} °C`,
+        temp,
       });
     } else if (b.netRate > 1e-5) {
       netOutputs.push({
@@ -726,8 +784,8 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
         rate: b.netRate,
         unit: b.unit,
         state: b.state,
-        temp: b.temp,
-        tempC: b.tempC,
+        temp: isNonThermal ? null : b.temp,
+        tempC: isNonThermal ? undefined : b.tempC,
       });
     }
   }
