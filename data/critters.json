@@ -477,7 +477,15 @@
     "icon": "images/icons/Drecko.png",
     "power": 0.0,
     "heat": 0.0,
-    "inputs": [],
+    "inputs": [
+      {
+        "resource": "Growth",
+        "rate": 1.0,
+        "unit": "growth/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
     "outputs": [
       {
         "resource": "Phosphorite",
@@ -497,8 +505,16 @@
     "recipes": [
       {
         "id": "balm_lily",
-        "name": "Balm Lily (0.25 plant -> 10 kg/cycle Phosphorite + Reed Fiber)",
-        "inputs": [],
+        "name": "Balm Lily -> 10 kg/cycle Phosphorite + Reed Fiber",
+        "inputs": [
+          {
+            "resource": "Growth",
+            "rate": 1.0,
+            "unit": "growth/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
         "outputs": [
           {
             "resource": "Phosphorite",
@@ -518,12 +534,41 @@
       },
       {
         "id": "mealwood",
-        "name": "Mealwood (0.75 plant -> 10 kg/cycle Phosphorite + Reed Fiber)",
+        "name": "Mealwood -> 10 kg/cycle Phosphorite + Reed Fiber",
         "inputs": [
           {
-            "resource": "Dirt",
-            "rate": 12.5,
+            "resource": "Growth",
+            "rate": 1.0,
+            "unit": "growth/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Phosphorite",
+            "rate": 16.67,
             "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Reed Fiber",
+            "rate": 0.4167,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      },
+      {
+        "id": "pincha_pepper",
+        "name": "Pincha Pepper -> 10 kg/cycle Phosphorite + Reed Fiber",
+        "inputs": [
+          {
+            "resource": "Growth",
+            "rate": 1.0,
+            "unit": "growth/s",
             "state": "free",
             "temp": null
           }
@@ -573,9 +618,9 @@
     "heat": 0.0,
     "inputs": [
       {
-        "resource": "Dirt",
-        "rate": 16.67,
-        "unit": "g/s",
+        "resource": "Growth",
+        "rate": 1.0,
+        "unit": "growth/s",
         "state": "free",
         "temp": null
       }
@@ -602,9 +647,67 @@
         "name": "Mealwood -> 9 kg/cycle Phosphorite + 50 kg/cycle Plastic (in H2)",
         "inputs": [
           {
-            "resource": "Dirt",
-            "rate": 16.67,
+            "resource": "Growth",
+            "rate": 1.0,
+            "unit": "growth/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Phosphorite",
+            "rate": 15.0,
             "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Plastic",
+            "rate": 83.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      },
+      {
+        "id": "bristle_blossom_plastic",
+        "name": "Bristle Blossom -> 9 kg/cycle Phosphorite + 50 kg/cycle Plastic (in H2)",
+        "inputs": [
+          {
+            "resource": "Growth",
+            "rate": 1.0,
+            "unit": "growth/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Phosphorite",
+            "rate": 15.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Plastic",
+            "rate": 83.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ]
+      },
+      {
+        "id": "bristle_berry_plastic",
+        "name": "Bristle Berry -> 9 kg/cycle Phosphorite + 50 kg/cycle Plastic (in H2)",
+        "inputs": [
+          {
+            "resource": "Growth",
+            "rate": 1.0,
+            "unit": "growth/s",
             "state": "free",
             "temp": null
           }

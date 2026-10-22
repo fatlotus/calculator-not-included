@@ -6607,7 +6607,61 @@ export const ONI_DATASET = {
           "temp": null
         }
       ],
-      "recipes": [],
+      "recipes": [
+        {
+          "id": "harvest",
+          "name": "Harvest Meal Lice",
+          "inputs": [
+            {
+              "resource": "Dirt",
+              "rate": 16.6667,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null,
+              "category": "fertilizer"
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Meal Lice",
+              "rate": 0.5556,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Calories",
+              "rate": 0.3333,
+              "unit": "kcal/s",
+              "state": "free",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "growth",
+          "name": "Drecko Grazing / Growth",
+          "inputs": [
+            {
+              "resource": "Dirt",
+              "rate": 16.6667,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null,
+              "category": "fertilizer"
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Growth",
+              "rate": 1,
+              "unit": "growth/s",
+              "state": "free",
+              "temp": null
+            }
+          ]
+        }
+      ],
       "modifiers": [
         {
           "id": "wild",
@@ -6831,7 +6885,61 @@ export const ONI_DATASET = {
           "temp": null
         }
       ],
-      "recipes": [],
+      "recipes": [
+        {
+          "id": "harvest",
+          "name": "Harvest Bristle Berry",
+          "inputs": [
+            {
+              "resource": "Water",
+              "rate": 33.3333,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null,
+              "category": "irrigation"
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Bristle Berry",
+              "rate": 0.2778,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Calories",
+              "rate": 0.4445,
+              "unit": "kcal/s",
+              "state": "free",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "growth",
+          "name": "Drecko Grazing / Growth",
+          "inputs": [
+            {
+              "resource": "Water",
+              "rate": 33.3333,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null,
+              "category": "irrigation"
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Growth",
+              "rate": 1,
+              "unit": "growth/s",
+              "state": "free",
+              "temp": null
+            }
+          ]
+        }
+      ],
       "modifiers": [
         {
           "id": "wild",
@@ -7119,7 +7227,70 @@ export const ONI_DATASET = {
           "temp": null
         }
       ],
-      "recipes": [],
+      "recipes": [
+        {
+          "id": "harvest",
+          "name": "Harvest Pincha Peppernut",
+          "inputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 58.3333,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null,
+              "category": "irrigation"
+            },
+            {
+              "resource": "Phosphorite",
+              "rate": 1.6667,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null,
+              "category": "fertilizer"
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Pincha Peppernut",
+              "rate": 0.8333,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "growth",
+          "name": "Drecko Grazing / Growth",
+          "inputs": [
+            {
+              "resource": "Polluted Water",
+              "rate": 58.3333,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null,
+              "category": "irrigation"
+            },
+            {
+              "resource": "Phosphorite",
+              "rate": 1.6667,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null,
+              "category": "fertilizer"
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Growth",
+              "rate": 1,
+              "unit": "growth/s",
+              "state": "free",
+              "temp": null
+            }
+          ]
+        }
+      ],
       "modifiers": [
         {
           "id": "wild",
@@ -7544,7 +7715,36 @@ export const ONI_DATASET = {
           "temp": null
         }
       ],
-      "recipes": [],
+      "recipes": [
+        {
+          "id": "harvest",
+          "name": "Harvest Balm Lily Flower",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Balm Lily Flower",
+              "rate": 0.2778,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "growth",
+          "name": "Drecko Grazing / Growth",
+          "inputs": [],
+          "outputs": [
+            {
+              "resource": "Growth",
+              "rate": 1,
+              "unit": "growth/s",
+              "state": "free",
+              "temp": null
+            }
+          ]
+        }
+      ],
       "modifiers": [
         {
           "id": "wild",
@@ -9614,7 +9814,15 @@ export const ONI_DATASET = {
       "icon": "images/icons/Drecko.png",
       "power": 0,
       "heat": 0,
-      "inputs": [],
+      "inputs": [
+        {
+          "resource": "Growth",
+          "rate": 1,
+          "unit": "growth/s",
+          "state": "free",
+          "temp": null
+        }
+      ],
       "outputs": [
         {
           "resource": "Phosphorite",
@@ -9634,8 +9842,16 @@ export const ONI_DATASET = {
       "recipes": [
         {
           "id": "balm_lily",
-          "name": "Balm Lily (0.25 plant -> 10 kg/cycle Phosphorite + Reed Fiber)",
-          "inputs": [],
+          "name": "Balm Lily -> 10 kg/cycle Phosphorite + Reed Fiber",
+          "inputs": [
+            {
+              "resource": "Growth",
+              "rate": 1,
+              "unit": "growth/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
           "outputs": [
             {
               "resource": "Phosphorite",
@@ -9655,12 +9871,41 @@ export const ONI_DATASET = {
         },
         {
           "id": "mealwood",
-          "name": "Mealwood (0.75 plant -> 10 kg/cycle Phosphorite + Reed Fiber)",
+          "name": "Mealwood -> 10 kg/cycle Phosphorite + Reed Fiber",
           "inputs": [
             {
-              "resource": "Dirt",
-              "rate": 12.5,
+              "resource": "Growth",
+              "rate": 1,
+              "unit": "growth/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Phosphorite",
+              "rate": 16.67,
               "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Reed Fiber",
+              "rate": 0.4167,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "pincha_pepper",
+          "name": "Pincha Pepper -> 10 kg/cycle Phosphorite + Reed Fiber",
+          "inputs": [
+            {
+              "resource": "Growth",
+              "rate": 1,
+              "unit": "growth/s",
               "state": "free",
               "temp": null
             }
@@ -9710,9 +9955,9 @@ export const ONI_DATASET = {
       "heat": 0,
       "inputs": [
         {
-          "resource": "Dirt",
-          "rate": 16.67,
-          "unit": "g/s",
+          "resource": "Growth",
+          "rate": 1,
+          "unit": "growth/s",
           "state": "free",
           "temp": null
         }
@@ -9739,9 +9984,67 @@ export const ONI_DATASET = {
           "name": "Mealwood -> 9 kg/cycle Phosphorite + 50 kg/cycle Plastic (in H2)",
           "inputs": [
             {
-              "resource": "Dirt",
-              "rate": 16.67,
+              "resource": "Growth",
+              "rate": 1,
+              "unit": "growth/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Phosphorite",
+              "rate": 15,
               "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Plastic",
+              "rate": 83.33,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "bristle_blossom_plastic",
+          "name": "Bristle Blossom -> 9 kg/cycle Phosphorite + 50 kg/cycle Plastic (in H2)",
+          "inputs": [
+            {
+              "resource": "Growth",
+              "rate": 1,
+              "unit": "growth/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Phosphorite",
+              "rate": 15,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Plastic",
+              "rate": 83.33,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ]
+        },
+        {
+          "id": "bristle_berry_plastic",
+          "name": "Bristle Berry -> 9 kg/cycle Phosphorite + 50 kg/cycle Plastic (in H2)",
+          "inputs": [
+            {
+              "resource": "Growth",
+              "rate": 1,
+              "unit": "growth/s",
               "state": "free",
               "temp": null
             }

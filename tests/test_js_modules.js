@@ -358,15 +358,60 @@ console.log("=== Running JavaScript Module Tests ===");
   const oilNet = calculateSystemNet(evaluatedOil);
   assert.ok(oilNet.netPower > 5000, "Oil refinery power plant should produce > 5000 W net");
 
-  // Drecko plastic preset test
+  // Drecko plastic preset test (Bristle Berry / Bristle Blossom)
   const dreckoPreset = getPresetById("glossy_drecko_plastic");
   assert.ok(dreckoPreset, "Drecko plastic preset should exist");
   assert.strictEqual(dreckoPreset.rows.length, 2);
+  const dreckoCritterRow = dreckoPreset.rows.find((r) => r.entityId === "critter_glossy_drecko");
+  assert.ok(dreckoCritterRow, "Preset should contain critter_glossy_drecko");
+  assert.ok(
+    dreckoCritterRow.recipeId === "bristle_blossom_plastic" || dreckoCritterRow.recipeId === "bristle_berry_plastic",
+    "Drecko should use Bristle Blossom/Berry recipe"
+  );
+  const dreckoPlantRow = dreckoPreset.rows.find((r) => r.entityId === "plant_bristle_blossom");
+  assert.ok(dreckoPlantRow, "Preset should contain plant_bristle_blossom");
+  assert.strictEqual(dreckoPlantRow.recipeId, "growth", "Bristle Blossom should use growth recipe");
+
   const evalDrecko = dreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
   const dreckoNet = calculateSystemNet(evalDrecko);
   const plasticOut = dreckoNet.netOutputs.find((o) => o.resource === "Plastic");
   assert.ok(plasticOut, "Drecko preset must output Plastic");
   assert.ok(plasticOut.rate > 200, "Plastic output should be > 200 g/s");
+
+  // Growth cancels out completely to 0
+  const netGrowthIn = dreckoNet.netInputs.find((i) => i.resource === "Growth");
+  const netGrowthOut = dreckoNet.netOutputs.find((o) => o.resource === "Growth");
+  assert.strictEqual(netGrowthIn, undefined, "Net Growth input should be 0 (cancelled out)");
+  assert.strictEqual(netGrowthOut, undefined, "Net Growth output should be 0 (cancelled out)");
+
+  // Leaves Water as input and Plastic + Phosphorite as outputs
+  const netWaterIn = dreckoNet.netInputs.find((i) => i.resource === "Water" && i.state === "in a pipe");
+  assert.ok(netWaterIn, "Drecko preset requires in-pipe Water");
+  const netPhosphoriteOut = dreckoNet.netOutputs.find((o) => o.resource === "Phosphorite");
+  assert.ok(netPhosphoriteOut, "Drecko preset outputs Phosphorite");
+
+  // Natural Gas Geyser Power preset test (Fractional Generator and Pump)
+  const ngPreset = getPresetById("natural_gas_geyser_power");
+  assert.ok(ngPreset, "Natural gas geyser preset should exist");
+  assert.strictEqual(ngPreset.rows.length, 3);
+  const ngGenRow = ngPreset.rows.find((r) => r.entityId === "natural_gas_generator");
+  assert.ok(ngGenRow, "NG preset should contain natural_gas_generator");
+  assert.strictEqual(ngGenRow.qty, 1.1667, "Natural gas generator should use fractional 1.1667 qty");
+  const ngPumpRow = ngPreset.rows.find((r) => r.entityId === "gas_pump");
+  assert.ok(ngPumpRow, "NG preset should contain gas_pump");
+  assert.strictEqual(ngPumpRow.qty, 0.21, "Gas pump should use fractional 0.21 qty");
+
+  const evalNG = ngPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const ngNet = calculateSystemNet(evalNG);
+  assert.ok(ngNet.netPower > 850, "Natural gas geyser preset should produce > 850 W net power");
+
+  const ngFreeGasOut = ngNet.netOutputs.find((o) => o.resource === "Natural Gas" && o.state === "free");
+  assert.strictEqual(ngFreeGasOut, undefined, "Net free Natural Gas output must be 0");
+  const ngPipeGasOut = ngNet.netOutputs.find((o) => o.resource === "Natural Gas" && o.state === "in a pipe");
+  assert.strictEqual(ngPipeGasOut, undefined, "Net pipe Natural Gas output must be 0");
+  const ngGasIn = ngNet.netInputs.find((i) => i.resource === "Natural Gas");
+  const ngGasInRate = ngGasIn ? ngGasIn.rate : 0;
+  assert.ok(ngGasInRate < 0.01, `Net Natural Gas input should be effectively 0 (was ${ngGasInRate} g/s)`);
 
   // Strict pipe state matching verification:
   // Water Geyser produces free water; Electrolyzer consumes in-pipe water.
@@ -605,7 +650,42 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(netHtml.includes("Calories"), "Net HTML renders Calories");
   assert.strictEqual(netHtml.includes('data-resource="Calories"'), false, "Net HTML must not render temperature input for Calories");
 
-  console.log("✓ Non-Thermal Resources (Duplicant Labor, Calories) tests passed");
+  // Plant Growth non-thermal resource test
+  const evaluatedMealwoodGrowth = evaluateRow({ entityId: "plant_mealwood", qty: 1, recipeId: "growth" }, entityMap, elementMap);
+  const growthOut = evaluatedMealwoodGrowth.outputs.find((o) => o.resource === "Growth");
+  assert.ok(growthOut, "Mealwood in growth recipe must output Growth");
+  assert.strictEqual(growthOut.rate, 1.0, "Mealwood growth output rate must be 1.0 growth/s");
+  assert.strictEqual(growthOut.tempC, undefined, "Growth output must not have tempC");
+  assert.strictEqual(growthOut.temp, null, "Growth output must have null temp");
+  const growthTextS = formatStreamLine(growthOut, true, "s");
+  assert.strictEqual(growthTextS, "Growth: +1 growth/s (free)");
+  assert.strictEqual(growthTextS.includes("°C"), false, "Growth stream line in /s must not include temperature");
+  const growthTextC = formatStreamLine(growthOut, true, "c");
+  assert.strictEqual(growthTextC, "Growth: +600 growth/cycle (free)");
+  assert.strictEqual(growthTextC.includes("°C"), false, "Growth stream line in /cycle must not include temperature");
+
+  // All 4 Drecko-harvestable plants have harvest and growth recipes
+  for (const plantId of ["plant_mealwood", "plant_bristle_blossom", "plant_balm_lily", "plant_pincha_pepper"]) {
+    const plant = entityMap.get(plantId);
+    assert.ok(plant, `Plant ${plantId} must exist`);
+    assert.ok(plant.recipes && plant.recipes.length >= 2, `${plantId} must have at least 2 recipes (harvest & growth)`);
+    assert.ok(plant.recipes.some((r) => r.id === "harvest"), `${plantId} must have harvest recipe`);
+    const gRec = plant.recipes.find((r) => r.id === "growth");
+    assert.ok(gRec, `${plantId} must have growth recipe`);
+    assert.ok(gRec.outputs.some((o) => o.resource === "Growth" && o.rate === 1.0), `${plantId} growth recipe must output 1.0 Growth`);
+  }
+
+  // Both Drecko critters consume Growth
+  for (const critterId of ["critter_drecko", "critter_glossy_drecko"]) {
+    const critter = entityMap.get(critterId);
+    assert.ok(critter, `Critter ${critterId} must exist`);
+    assert.ok(critter.recipes && critter.recipes.length > 0, `${critterId} must have recipes`);
+    for (const r of critter.recipes) {
+      assert.ok(r.inputs.some((i) => i.resource === "Growth" && i.rate === 1.0), `${critterId} recipe ${r.id} must consume 1.0 Growth`);
+    }
+  }
+
+  console.log("✓ Non-Thermal Resources (Duplicant Labor, Calories, Growth) tests passed");
 }
 
 // 9. Geotuner Connected Inputs by Geyser Type

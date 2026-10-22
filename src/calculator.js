@@ -29,6 +29,7 @@ export const NON_THERMAL_RESOURCES = new Set([
   "Microchip",
   "Gear Balm",
   "Tallow Gear Balm",
+  "Growth",
 ]);
 
 export const NON_THERMAL_UNITS = new Set([
@@ -40,6 +41,10 @@ export const NON_THERMAL_UNITS = new Set([
   "kcal/cycle",
   "balm/s",
   "balm/cycle",
+  "growth/s",
+  "growth/cycle",
+  "%/s",
+  "%/cycle",
 ]);
 
 export function isNonThermalResource(resource, unit = "") {

@@ -54,12 +54,12 @@ export const PRESETS = [
   {
     id: "natural_gas_geyser_power",
     name: "Natural Gas Geyser Power Plant",
-    description: "Harvesting a natural gas geyser to fuel clean power generation with water and CO2 byproduct.",
+    description: "Harvesting a natural gas geyser (105 g/s) with fractional gas pump (0.21x) and generator (1.1667x) for 100% fuel efficiency and clean power generation.",
     rateMode: "s",
     rows: [
       { entityId: "geyser_natural_gas_geyser", qty: 1, recipeId: null, modifiers: [] },
-      { entityId: "gas_pump", qty: 1, recipeId: "natural_gas", modifiers: [] },
-      { entityId: "natural_gas_generator", qty: 1, recipeId: null, modifiers: [] },
+      { entityId: "gas_pump", qty: 0.21, recipeId: "natural_gas", modifiers: [] },
+      { entityId: "natural_gas_generator", qty: 1.1667, recipeId: null, modifiers: [] },
     ],
   },
   {
@@ -78,12 +78,12 @@ export const PRESETS = [
   },
   {
     id: "glossy_drecko_plastic",
-    name: "Glossy Drecko Plastic via Mealwood",
-    description: "Renewable plastic ranch utilizing Glossy Dreckos fed by live Mealwood plants to produce plastic and phosphorite.",
+    name: "Glossy Drecko Plastic via Bristle Berry",
+    description: "Renewable plastic ranch utilizing Glossy Dreckos fed by live Bristle Blossom plants to produce plastic and phosphorite.",
     rateMode: "s",
     rows: [
-      { entityId: "critter_glossy_drecko", qty: 3, recipeId: "mealwood_plastic", modifiers: [] },
-      { entityId: "plant_mealwood", qty: 3, recipeId: null, modifiers: [] },
+      { entityId: "critter_glossy_drecko", qty: 3, recipeId: "bristle_blossom_plastic", modifiers: [] },
+      { entityId: "plant_bristle_blossom", qty: 3, recipeId: "growth", modifiers: [] },
     ],
   },
 ];

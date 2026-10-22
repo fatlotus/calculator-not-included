@@ -45,6 +45,11 @@ export const SYNTHETIC_ELEMENTS = {
     icon: "images/icons/Tallow.png",
     state: "Solid",
   },
+  Growth: {
+    name: "Growth",
+    icon: "images/icons/Mealwood.png",
+    state: "free",
+  },
 };
 
 /**
