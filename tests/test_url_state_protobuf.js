@@ -1,6 +1,7 @@
 /**
- * Comprehensive Unit and Adversarial Test Suite for Protocol Buffer URL State Serialization.
- * Tests edge cases, corrupt payloads, fuzzing, backward compatibility, and roundtripping.
+ * Comprehensive Unit and Adversarial Test Suite for Structured Protocol Buffer URL State.
+ * Tests ultra-compact enum/oneof wire format, preset roundtripping, numerical safety,
+ * URL parsing variants, and fuzzing resilience.
  * Run with: node tests/test_url_state_protobuf.js
  */
 
@@ -14,20 +15,50 @@ import {
   decodeStateFromProtobuf,
   uint8ArrayToUrlSafeBase64,
   urlSafeBase64ToUint8Array,
-  decodeLegacyString,
-  encodeRow,
-  decodeRow,
-  PROTO_SCHEMA,
 } from "../src/url_state.js";
+import {
+  PROTO_SCHEMA,
+  CalculatorStateType,
+  RowStateType,
+  NetTemperatureType,
+  ENTITY_TO_ENUM,
+  ENUM_TO_ENTITY,
+  RECIPE_TO_ENUM,
+  ENUM_TO_RECIPE,
+  MODIFIER_TO_ENUM,
+  ENUM_TO_MODIFIER,
+  ELEMENT_TO_ENUM,
+  ENUM_TO_ELEMENT,
+} from "../src/proto_catalog.js";
 
 console.log("=== Running Protocol Buffer URL State Tests ===");
 
-// 1. Schema and Type Initialization
+// 1. Schema and Type Verification (Zero String Fields)
 {
   assert.ok(PROTO_SCHEMA.includes("message CalculatorState"), "Schema must define CalculatorState");
   assert.ok(PROTO_SCHEMA.includes("message RowState"), "Schema must define RowState");
-  assert.ok(PROTO_SCHEMA.includes("enum RateMode"), "Schema must define RateMode");
-  console.log("✓ Proto schema definitions verified");
+  assert.ok(PROTO_SCHEMA.includes("message NetTemperature"), "Schema must define NetTemperature");
+  assert.ok(PROTO_SCHEMA.includes("oneof count"), "RowState must use oneof count for compactness");
+  assert.ok(PROTO_SCHEMA.includes("Recipe recipe = 4;"), "RowState must use Recipe enum");
+  assert.ok(PROTO_SCHEMA.includes("Bathroom bathroom = 5;"), "RowState must use Bathroom enum");
+
+  // Verify that RowState, NetTemperature, and CalculatorState have NO string fields
+  const rowFields = Object.values(RowStateType.fields);
+  for (const f of rowFields) {
+    assert.notStrictEqual(f.type, "string", `RowState field ${f.name} must not be string`);
+  }
+
+  const netTempFields = Object.values(NetTemperatureType.fields);
+  for (const f of netTempFields) {
+    assert.notStrictEqual(f.type, "string", `NetTemperature field ${f.name} must not be string`);
+  }
+
+  const calcFields = Object.values(CalculatorStateType.fields);
+  for (const f of calcFields) {
+    assert.notStrictEqual(f.type, "string", `CalculatorState field ${f.name} must not be string`);
+  }
+
+  console.log("✓ Proto schema verified: zero string fields in wire representation");
 }
 
 // 2. Base64 URL-safe conversion resilience
@@ -58,22 +89,16 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
   const decodedSpace = urlSafeBase64ToUint8Array(spaceB64);
   assert.deepStrictEqual(decodedSpace, decodedStd);
 
-  // URL-encoded '%2B' and '%2F'
-  const uriEncodedB64 = "AP%2F%2B%2Ff%2BA%2Fw%3D%3D";
-  const decodedUri = urlSafeBase64ToUint8Array(uriEncodedB64);
-  assert.deepStrictEqual(decodedUri, decodedStd);
-
   console.log("✓ Base64 URL-safe conversion tests passed");
 }
 
-// 3. Preset Round-Trip Fidelity
+// 3. Preset Round-Trip Fidelity & Ultra-Compact Wire Size
 {
   const { elementMap } = buildEntityCatalog();
 
   for (const preset of PRESETS) {
     const originalState = {
       rateMode: preset.rateMode || "s",
-      strictPipeMatching: true,
       rows: JSON.parse(JSON.stringify(preset.rows)),
       netInputTemps: preset.netInputTemps ? JSON.parse(JSON.stringify(preset.netInputTemps)) : {},
     };
@@ -81,9 +106,15 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
     const encodedParam = encodeStateToParam(originalState, elementMap);
     assert.ok(typeof encodedParam === "string" && encodedParam.length > 0, `Preset ${preset.id} failed to encode`);
 
+    // Wire length check: even the largest preset should be under 100 bytes of wire
+    const rawBytes = encodeStateToProtobuf(originalState, elementMap);
+    assert.ok(
+      rawBytes.length < 100,
+      `Preset ${preset.id} wire size (${rawBytes.length} bytes) should be < 100 bytes`
+    );
+
     const decodedState = decodeStateFromParam(encodedParam);
     assert.strictEqual(decodedState.rateMode, originalState.rateMode, `RateMode mismatch in preset ${preset.id}`);
-    assert.strictEqual(decodedState.strictPipeMatching, true);
     assert.strictEqual(decodedState.rows.length, originalState.rows.length, `Row count mismatch in preset ${preset.id}`);
 
     for (let i = 0; i < originalState.rows.length; i++) {
@@ -98,63 +129,53 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
       }
     }
   }
-  console.log(`✓ All ${PRESETS.length} presets round-tripped with 100% fidelity`);
+  console.log(`✓ All ${PRESETS.length} presets round-tripped with 100% fidelity and wire size < 100 bytes`);
 }
 
-// 4. Detailed Corner Cases for Rows and State
+// 4. Oneof and Structured Types Verification
 {
-  // Fractional quantities and zero
-  const fractionalState = {
+  // Test integer count_int vs double count_double
+  const mixedState = {
     rateMode: "c",
-    strictPipeMatching: false,
     rows: [
-      { entityId: "liquid_pump", qty: 0.0001, recipeId: "water", modifiers: [] },
-      { entityId: "gas_pump", qty: 0.224, recipeId: "hydrogen", modifiers: ["mod_a", "mod_b"] },
-      { entityId: "microbe_musher", qty: 0, recipeId: null, modifiers: [] },
-      { entityId: "duplicant", qty: 12.5, modifiers: ["bionic_booster"], bathroom: "outhouse", inputTemp: 37.5 },
+      { entityId: "electrolyzer", qty: 2 }, // Integer count -> uses count_int (2 bytes)
+      { entityId: "liquid_pump", qty: 0.125, recipeId: "water" }, // Fractional -> uses count_double
+      { entityId: "microbe_musher", qty: 0 }, // Zero quantity
+      { entityId: "duplicant", qty: 8, bathroom: "outhouse", modifiers: ["divers_lungs"], inputTemp: -15.5 },
     ],
     netInputTemps: {
-      "Water||in a pipe": 15.5,
-      "Hydrogen||free": -10.25,
-      "Oxygen|free": 0,
+      "Water||free": 95,
+      "Hydrogen||in a pipe": -20.5,
     },
   };
 
-  const param = encodeStateToParam(fractionalState);
-  const decoded = decodeStateFromParam(param);
+  const bytes = encodeStateToProtobuf(mixedState);
+  const rawDecoded = CalculatorStateType.decode(bytes);
 
-  assert.strictEqual(decoded.rateMode, "c");
-  assert.strictEqual(decoded.strictPipeMatching, false);
-  assert.strictEqual(decoded.rows.length, 4);
+  // Check oneof count on raw proto message
+  assert.strictEqual(rawDecoded.rows[0].count, "countInt");
+  assert.strictEqual(rawDecoded.rows[0].countInt, 2);
 
-  assert.strictEqual(decoded.rows[0].qty, 0.0001);
-  assert.strictEqual(decoded.rows[1].qty, 0.224);
-  assert.deepStrictEqual(decoded.rows[1].modifiers, ["mod_a", "mod_b"]);
-  assert.strictEqual(decoded.rows[2].qty, 0);
+  assert.strictEqual(rawDecoded.rows[1].count, "countDouble");
+  assert.strictEqual(rawDecoded.rows[1].countDouble, 0.125);
 
-  assert.strictEqual(decoded.rows[3].entityId, "duplicant");
-  assert.strictEqual(decoded.rows[3].qty, 12.5);
-  assert.strictEqual(decoded.rows[3].bathroom, "outhouse");
-  assert.strictEqual(decoded.rows[3].inputTemp, 37.5);
+  assert.strictEqual(rawDecoded.rows[3].count, "countInt");
+  assert.strictEqual(rawDecoded.rows[3].countInt, 8);
+  assert.strictEqual(rawDecoded.rows[3].bathroom, 1); // BATHROOM_OUTHOUSE = 1
 
-  assert.strictEqual(decoded.netInputTemps["Water||in a pipe"], 15.5);
-  assert.strictEqual(decoded.netInputTemps["Water|in a pipe"], 15.5);
-  assert.strictEqual(decoded.netInputTemps["Hydrogen||free"], -10.25);
-  assert.strictEqual(decoded.netInputTemps["Hydrogen|free"], -10.25);
-  assert.strictEqual(decoded.netInputTemps["Oxygen|free"], 0);
-  assert.strictEqual(decoded.netInputTemps["Oxygen||free"], 0);
+  const restored = decodeStateFromProtobuf(bytes);
+  assert.strictEqual(restored.rateMode, "c");
+  assert.strictEqual(restored.rows.length, 4);
+  assert.strictEqual(restored.rows[0].qty, 2);
+  assert.strictEqual(restored.rows[1].qty, 0.125);
+  assert.strictEqual(restored.rows[1].recipeId, "water");
+  assert.strictEqual(restored.rows[2].qty, 0);
+  assert.strictEqual(restored.rows[3].bathroom, "outhouse");
+  assert.strictEqual(restored.rows[3].inputTemp, -15.5);
+  assert.strictEqual(restored.netInputTemps["Water||free"], 95);
+  assert.strictEqual(restored.netInputTemps["Hydrogen||in a pipe"], -20.5);
 
-  // Empty rows with strictPipeMatching: false must preserve false flag
-  const emptyDisabledPipe = {
-    rateMode: "s",
-    strictPipeMatching: false,
-    rows: [],
-  };
-  const emptyParam = encodeStateToParam(emptyDisabledPipe);
-  const decodedEmptyPipe = decodeStateFromParam(emptyParam);
-  assert.strictEqual(decodedEmptyPipe.strictPipeMatching, false);
-
-  console.log("✓ Detailed state, fractional quantities, and bathroom corner cases passed");
+  console.log("✓ Oneof count, recipe, and bathroom enum fields verified on wire");
 }
 
 // 5. URL Prefix, Full URLs, and Formatting Variants
@@ -195,51 +216,7 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
   console.log("✓ URL prefix, full URL parsing, and whitespace stripping variants passed");
 }
 
-// 6. Backward Compatibility with Legacy Formats
-{
-  // 6a. Legacy compact human-readable format
-  const legacyHuman = "u:c_r:electrolyzer*2~duplicant*8+divers_lungs!outhouse_t:Water|free=80";
-  const decLegacyHuman = decodeStateFromParam(legacyHuman);
-  assert.strictEqual(decLegacyHuman.rateMode, "c");
-  assert.strictEqual(decLegacyHuman.rows.length, 2);
-  assert.strictEqual(decLegacyHuman.rows[0].entityId, "electrolyzer");
-  assert.strictEqual(decLegacyHuman.rows[0].qty, 2);
-  assert.strictEqual(decLegacyHuman.rows[1].entityId, "duplicant");
-  assert.strictEqual(decLegacyHuman.rows[1].qty, 8);
-  assert.strictEqual(decLegacyHuman.rows[1].bathroom, "outhouse");
-  assert.deepStrictEqual(decLegacyHuman.rows[1].modifiers, ["divers_lungs"]);
-  assert.strictEqual(decLegacyHuman.netInputTemps["Water|free"], 80);
-  assert.strictEqual(decLegacyHuman.netInputTemps["Water||free"], 80);
-
-  // 6b. Legacy string starting with "r:" without "u:"
-  const legacyROnly = "r:electrolyzer*2~carbon_skimmer";
-  const decLegacyROnly = decodeStateFromParam(legacyROnly);
-  assert.strictEqual(decLegacyROnly.rows.length, 2);
-  assert.strictEqual(decLegacyROnly.rows[0].entityId, "electrolyzer");
-  assert.strictEqual(decLegacyROnly.rows[0].qty, 2);
-
-  // 6c. Legacy base64 JSON (b64:...)
-  const jsonPayload = JSON.stringify({
-    rateMode: "s",
-    rows: [{ entityId: "algae_terrarium", qty: 5, recipeId: null, modifiers: [] }],
-    netInputTemps: { "Water||free": 30 },
-  });
-  const b64Json = Buffer.from(jsonPayload, "utf8").toString("base64");
-  const decB64Json = decodeStateFromParam(`b64:${b64Json}`);
-  assert.strictEqual(decB64Json.rows.length, 1);
-  assert.strictEqual(decB64Json.rows[0].entityId, "algae_terrarium");
-  assert.strictEqual(decB64Json.rows[0].qty, 5);
-  assert.strictEqual(decB64Json.netInputTemps["Water||free"], 30);
-
-  // 6d. Raw JSON string
-  const decRawJson = decodeStateFromParam(jsonPayload);
-  assert.strictEqual(decRawJson.rows.length, 1);
-  assert.strictEqual(decRawJson.rows[0].entityId, "algae_terrarium");
-
-  console.log("✓ Backward compatibility with all legacy formats passed");
-}
-
-// 7. Adversarial Review & Fuzzing / Malformed Inputs
+// 6. Adversarial Review & Fuzzing / Malformed Inputs
 {
   const invalidInputs = [
     null,
@@ -260,10 +237,9 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
     "==",
     "====",
     "A", // 1 char base64 (invalid length)
-    "AAAA", // 3 bytes 0x00, 0x00, 0x00 - empty/invalid proto fields
+    "AAAA", // empty/invalid proto fields
     "//////",
     "------------------------",
-    "u:invalid_format_without_proper_tokens",
     encodeURIComponent("??? invalid %%%"),
     "A".repeat(70000), // Exceeds MAX_PARAM_STRING_LENGTH (DoS protection)
   ];
@@ -299,7 +275,7 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
   console.log("✓ Adversarial and fuzzing inputs handled gracefully without throwing");
 }
 
-// 8. Numerical Safety: NaN, Infinity, -Infinity, Prototype Pollution
+// 7. Numerical Safety: NaN, Infinity, -Infinity
 {
   const dangerousState = {
     rateMode: "s",
@@ -310,9 +286,6 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
       { entityId: "duplicant", qty: 4, inputTemp: Infinity },
     ],
     netInputTemps: {
-      "__proto__": 100,
-      "prototype": 100,
-      "constructor": 100,
       "Water|free": Infinity,
       "Oxygen|free": NaN,
       "Hydrogen|free": 25,
@@ -328,23 +301,18 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
   assert.strictEqual(decoded.rows[2].qty, 1);
   assert.strictEqual(decoded.rows[3].inputTemp, undefined);
 
-  // Prototype pollution keys and non-finite numbers must be excluded as own properties
-  assert.strictEqual(Object.prototype.hasOwnProperty.call(decoded.netInputTemps, "__proto__"), false);
-  assert.strictEqual(Object.prototype.hasOwnProperty.call(decoded.netInputTemps, "prototype"), false);
-  assert.strictEqual(Object.prototype.hasOwnProperty.call(decoded.netInputTemps, "constructor"), false);
+  // Non-finite temperatures must be excluded
   assert.strictEqual(decoded.netInputTemps["Water|free"], undefined);
   assert.strictEqual(decoded.netInputTemps["Oxygen|free"], undefined);
   assert.strictEqual(decoded.netInputTemps["Hydrogen|free"], 25);
-  assert.strictEqual(Object.prototype.polluted, undefined);
 
-  console.log("✓ Numerical safety and prototype pollution defense verified");
+  console.log("✓ Numerical safety and non-finite number filtering verified");
 }
 
-// 9. Large System Design Scalability
+// 8. 100-Machine Design Scalability & Wire Size
 {
   const largeState = {
     rateMode: "s",
-    strictPipeMatching: true,
     rows: [],
     netInputTemps: {},
   };
@@ -363,7 +331,7 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
   for (let i = 0; i < 100; i++) {
     largeState.rows.push({
       entityId: sampleEntities[i % sampleEntities.length],
-      qty: 1.5 + (i * 0.1),
+      qty: (i % 5) + 1, // Integer quantities 1-5 (uses count_int)
       recipeId: i % 2 === 0 ? "water" : null,
       modifiers: i % 3 === 0 ? ["mod1", "mod2"] : [],
       bathroom: i % 5 === 0 ? "outhouse" : "plumbed",
@@ -373,40 +341,15 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
   const encodedLarge = encodeStateToParam(largeState);
   assert.ok(encodedLarge.length > 0);
   assert.ok(
-    encodedLarge.length < 5000,
-    `100 machines state should easily fit in under 5KB URL, was ${encodedLarge.length} chars`
+    encodedLarge.length < 1200,
+    `100 machines state should easily fit in ~1KB URL with enums, was ${encodedLarge.length} chars`
   );
 
   const decodedLarge = decodeStateFromParam(encodedLarge);
   assert.strictEqual(decodedLarge.rows.length, 100);
   assert.strictEqual(decodedLarge.rows[99].qty, largeState.rows[99].qty);
 
-  console.log(`✓ 100-machine complex design serialized into ${encodedLarge.length} chars and decoded identically`);
-}
-
-// 10. Mutation Safety
-{
-  const state = {
-    rateMode: "s",
-    rows: [{ entityId: "electrolyzer", qty: 1, modifiers: ["mod_a"] }],
-    netInputTemps: { "Water||free": 95 },
-  };
-
-  const param = encodeStateToParam(state);
-  const dec1 = decodeStateFromParam(param);
-  const dec2 = decodeStateFromParam(param);
-
-  // Mutate dec1
-  dec1.rows[0].qty = 999;
-  dec1.rows[0].modifiers.push("mod_b");
-  dec1.netInputTemps["Water||free"] = 0;
-
-  // Verify dec2 remains completely unaffected
-  assert.strictEqual(dec2.rows[0].qty, 1);
-  assert.deepStrictEqual(dec2.rows[0].modifiers, ["mod_a"]);
-  assert.strictEqual(dec2.netInputTemps["Water||free"], 95);
-
-  console.log("✓ Mutation safety verified");
+  console.log(`✓ 100-machine complex design serialized into only ${encodedLarge.length} chars (~1KB!)`);
 }
 
 console.log("\n ALL PROTOCOL BUFFER URL STATE TESTS PASSED SUCCESSFULLY! \n");

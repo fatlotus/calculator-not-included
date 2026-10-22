@@ -25,8 +25,6 @@ import { PRESETS, getPresetById } from "../src/presets.js";
 import {
   encodeStateToParam,
   decodeStateFromParam,
-  encodeRow,
-  decodeRow,
 } from "../src/url_state.js";
 import { renderTableRowHtml, renderIcon } from "../src/components/table_row.js";
 import { renderNetSummaryRowHtml } from "../src/components/net_summary.js";
@@ -273,35 +271,13 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Calculator & Math Engine tests passed");
 }
 
-// 3. URL State Serialization
+// 3. URL State Serialization (Structured Protocol Buffer)
 {
-  // Row without feed temp
-  const rowStr = encodeRow({
-    entityId: "petroleum_generator",
-    recipeId: "ethanol",
-    qty: 2,
-    modifiers: ["mod_a", "mod_b"],
-  });
-  assert.strictEqual(rowStr, "petroleum_generator:ethanol*2+mod_a,mod_b");
-
-  // Backward compatibility: decode legacy @inputTemp token
-  const legacyToken = "petroleum_generator:ethanol*2@25+mod_a,mod_b";
-  const decodedRow = decodeRow(legacyToken);
-  assert.strictEqual(decodedRow.entityId, "petroleum_generator");
-  assert.strictEqual(decodedRow.recipeId, "ethanol");
-  assert.strictEqual(decodedRow.qty, 2);
-  assert.strictEqual(decodedRow.inputTemp, 25);
-  assert.deepStrictEqual(decodedRow.modifiers, ["mod_a", "mod_b"]);
-
-  // Re-encoding must not output @25
-  assert.strictEqual(encodeRow(decodedRow), "petroleum_generator:ethanol*2+mod_a,mod_b");
-
   const state = {
     rateMode: "s",
-    strictPipeMatching: true,
     rows: [
       { entityId: "electrolyzer", qty: 1, recipeId: null, modifiers: [] },
-      { entityId: "water_pump", qty: 0.1, recipeId: "water", modifiers: [] },
+      { entityId: "liquid_pump", qty: 0.1, recipeId: "water", modifiers: [] },
       { entityId: "gas_pump", qty: 0.224, recipeId: "hydrogen", modifiers: [] },
       { entityId: "hydrogen_generator", qty: 1.12, recipeId: null, modifiers: [] },
       { entityId: "duplicant", qty: 8, recipeId: null, modifiers: ["divers_lungs"] },
@@ -316,9 +292,9 @@ console.log("=== Running JavaScript Module Tests ===");
 
   const decodedState = decodeStateFromParam(param);
   assert.strictEqual(decodedState.rateMode, "s");
-  assert.strictEqual(decodedState.strictPipeMatching, true);
   assert.strictEqual(decodedState.rows.length, 5);
   assert.strictEqual(decodedState.rows[0].entityId, "electrolyzer");
+  assert.strictEqual(decodedState.rows[0].qty, 1);
   assert.strictEqual(decodedState.rows[1].qty, 0.1);
   assert.strictEqual(decodedState.rows[1].recipeId, "water");
   assert.strictEqual(decodedState.rows[2].qty, 0.224);
@@ -327,23 +303,9 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(decodedState.netInputTemps["Water||free"], 95);
   assert.strictEqual(decodedState.netInputTemps["Water|free"], 95);
 
-  // Backward compatibility: decode legacy human-readable URL format
-  const legacyParam = "u:s_r:electrolyzer~water_pump:water*0.1~gas_pump:hydrogen*0.224~hydrogen_generator*1.12~duplicant*8+divers_lungs_t:Water|free=95";
-  const decodedLegacy = decodeStateFromParam(legacyParam);
-  assert.strictEqual(decodedLegacy.rateMode, "s");
-  assert.strictEqual(decodedLegacy.rows.length, 5);
-  assert.strictEqual(decodedLegacy.rows[2].qty, 0.224);
-  assert.strictEqual(decodedLegacy.netInputTemps["Water||free"], 95);
-
-  // Decoding with legacy p:0 flag still enforces strict pipe matching
-  const decodedP0 = decodeStateFromParam("u:s_p:0_r:electrolyzer~duplicant*8");
-  assert.strictEqual(decodedP0.strictPipeMatching, true);
-  assert.strictEqual(decodedP0.rows.length, 2);
-
   // Default temperature 20 for Water is omitted from URL
   const stateDefault = {
     rateMode: "s",
-    strictPipeMatching: true,
     rows: [{ entityId: "electrolyzer", qty: 1 }],
     netInputTemps: { "Water||free": 20 },
   };
@@ -599,12 +561,12 @@ console.log("=== Running JavaScript Module Tests ===");
 
   // URL State encoding/decoding of bathroom options
   const rowFloor = { entityId: "duplicant", qty: 2, recipeId: null, modifiers: [], bathroom: "floor" };
-  const encodedFloor = encodeRow(rowFloor);
-  assert.strictEqual(encodedFloor, "duplicant*2!floor");
-  const decodedFloor = decodeRow(encodedFloor);
-  assert.strictEqual(decodedFloor.entityId, "duplicant");
-  assert.strictEqual(decodedFloor.qty, 2);
-  assert.strictEqual(decodedFloor.bathroom, "floor");
+  const paramFloor = encodeStateToParam({ rateMode: "s", rows: [rowFloor] });
+  const decodedStateFloor = decodeStateFromParam(paramFloor);
+  assert.strictEqual(decodedStateFloor.rows.length, 1);
+  assert.strictEqual(decodedStateFloor.rows[0].entityId, "duplicant");
+  assert.strictEqual(decodedStateFloor.rows[0].qty, 2);
+  assert.strictEqual(decodedStateFloor.rows[0].bathroom, "floor");
 
   // HTML rendering contains bathroom selector for duplicants
   const html = renderTableRowHtml(rowFloor, floorRow, elementMap, "s", 0, {});

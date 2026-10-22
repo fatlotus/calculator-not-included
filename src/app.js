@@ -20,7 +20,6 @@ class OniApp {
     this.catalog = buildEntityCatalog();
     this.state = {
       rateMode: "s",
-      strictPipeMatching: true,
       rows: [],
       netInputTemps: {},
     };
@@ -64,7 +63,6 @@ class OniApp {
     if (urlState && (urlState.rows?.length > 0 || hasUrlParam)) {
       this.state = {
         rateMode: urlState.rateMode || "s",
-        strictPipeMatching: urlState.strictPipeMatching !== false,
         rows: urlState.rows || [],
         netInputTemps: urlState.netInputTemps || {},
       };
@@ -72,7 +70,6 @@ class OniApp {
       const def = PRESETS[0];
       this.state = {
         rateMode: def.rateMode || "s",
-        strictPipeMatching: true,
         rows: JSON.parse(JSON.stringify(def.rows)),
         netInputTemps: def.netInputTemps ? JSON.parse(JSON.stringify(def.netInputTemps)) : {},
       };
