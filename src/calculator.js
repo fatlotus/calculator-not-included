@@ -8,40 +8,6 @@
 
 export const SECONDS_PER_CYCLE = 600;
 
-export const ELEMENT_SHC = {
-  Water: 4.179,
-  "Polluted Water": 4.179,
-  "Salt Water": 4.100,
-  Brine: 3.400,
-  Oxygen: 1.005,
-  Hydrogen: 2.400,
-  "Carbon Dioxide": 0.846,
-  Steam: 4.179,
-  Petroleum: 1.760,
-  "Crude Oil": 1.690,
-  Ethanol: 2.460,
-  Dirt: 1.480,
-  "Polluted Dirt": 1.480,
-  Sand: 0.830,
-  Coal: 0.900,
-  "Natural Gas": 2.191,
-  Chlorine: 0.480,
-  "Chlorine Gas": 0.480,
-  Iron: 0.449,
-  Copper: 0.386,
-  Gold: 0.129,
-};
-
-export function getElementShc(resource, elementMap) {
-  if (elementMap) {
-    const elem = elementMap instanceof Map ? elementMap.get(resource) : elementMap[resource];
-    if (elem && elem.shc) {
-      return Number(elem.shc);
-    }
-  }
-  return ELEMENT_SHC[resource] || 1.0;
-}
-
 /**
  * Standard mass unit multipliers (in grams).
  */
@@ -180,13 +146,6 @@ export function getDefaultElementTemp(resource, elementMap) {
 }
 
 /**
- * Standardize resource key for lookup.
- */
-export function getResourceKey(resource, state, strictPipeMatching = true) {
-  return strictPipeMatching ? `${resource}||${state || "free"}` : resource;
-}
-
-/**
  * Lookup net input temperature from state.netInputTemps with fallbacks.
  */
 export function getNetInputTemp(resource, state, netInputTemps, defaultTemp = 20.0, strictPipeMatching = true) {
@@ -280,8 +239,6 @@ export function evaluateRow(
       power: 0,
       heat: 0,
       buildingHeat: 0,
-      shcHeat: 0,
-      totalHeat: 0,
       inputTemp: defaultInputTemp,
       inputs: [],
       outputs: [],
@@ -562,8 +519,6 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
 
   return evaluatedRows;
 }
-
-export const evaluateTableRows = resolveTableTemperatures;
 
 /**
  * Calculate target quantity for each input/output stream of targetRow to exactly cancel system net.

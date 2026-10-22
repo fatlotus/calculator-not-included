@@ -5,7 +5,6 @@
 
 import { buildEntityCatalog } from "./data_loader.js";
 import {
-  evaluateRow,
   resolveTableTemperatures,
   calculateSystemNet,
   calculateRowMatchTargets,
@@ -225,23 +224,6 @@ class OniApp {
           const idx = parseInt(delBtn.dataset.rowIndex, 10);
           if (!isNaN(idx) && idx >= 0 && idx < this.state.rows.length) {
             this.state.rows.splice(idx, 1);
-            this.onStateChange();
-          }
-          return;
-        }
-
-        const dupBtn = e.target.closest(".btn-duplicate-row");
-        if (dupBtn) {
-          const idx = parseInt(dupBtn.dataset.rowIndex, 10);
-          if (!isNaN(idx) && idx >= 0 && idx < this.state.rows.length) {
-            const rowToClone = this.state.rows[idx];
-            const cloned = {
-              entityId: rowToClone.entityId,
-              qty: rowToClone.qty,
-              recipeId: rowToClone.recipeId,
-              modifiers: [...(rowToClone.modifiers || [])],
-            };
-            this.state.rows.splice(idx + 1, 0, cloned);
             this.onStateChange();
           }
         }

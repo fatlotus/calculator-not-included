@@ -489,10 +489,6 @@ body {
   background: var(--bg-subtle);
 }
 
-.btn-duplicate-row:hover {
-  color: var(--accent-primary);
-}
-
 .btn-delete-row {
   font-size: 18px;
 }

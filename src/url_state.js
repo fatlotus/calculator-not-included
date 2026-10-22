@@ -117,8 +117,6 @@ export function encodeStateToParam(state, elementMap = null) {
   const parts = [`u:${rateMode}`];
   if (state.strictPipeMatching === false) {
     parts.push("p:0");
-  } else if (state.strictPipeMatching === true && state._includePipeFlag) {
-    parts.push("p:1");
   }
 
   if (rows.length > 0) {
@@ -260,16 +258,3 @@ export function loadStateFromUrl() {
   if (!s) return null;
   return decodeStateFromParam(s);
 }
-
-// Aliases for backwards compatibility
-export const serializeState = encodeStateToParam;
-export const deserializeState = decodeStateFromParam;
-export const encodeStateToUrlParam = (state, elementMap = null) => {
-  const p = encodeStateToParam(state, elementMap);
-  return p ? `?s=${encodeURIComponent(p)}` : "";
-};
-export const decodeStateFromUrl = (searchStr) => {
-  if (!searchStr) return null;
-  const match = searchStr.match(/[?&]s=([^&]+)/);
-  return match ? decodeStateFromParam(match[1]) : null;
-};
