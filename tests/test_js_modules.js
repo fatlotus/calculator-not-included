@@ -450,7 +450,7 @@ console.log("=== Running JavaScript Module Tests ===");
   // Branding verification
   const indexHtml = fs.readFileSync(path.resolve(__dirname, "../index.html"), "utf8");
   assert.ok(indexHtml.includes("Calculator Not Included"), "index.html must include Calculator Not Included branding");
-  assert.ok(indexHtml.includes("calculatornotincluded.com"), "index.html must include calculatornotincluded.com domain");
+  assert.ok(!indexHtml.includes("<code>calculatornotincluded.com</code>"), "Header brand title must not include calculatornotincluded.com code tag");
   assert.ok(!indexHtml.includes("mass-unit-btn"), "index.html must NOT have mass-unit-btn selector");
 
   console.log("✓ Component HTML Rendering tests passed");
