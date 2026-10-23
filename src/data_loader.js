@@ -50,6 +50,16 @@ export const SYNTHETIC_ELEMENTS = {
     icon: "images/icons/Mealwood.png",
     state: "free",
   },
+  "Rot Pile": {
+    name: "Rot Pile",
+    icon: "images/icons/Polluted_Dirt.png",
+    state: "Solid",
+  },
+  Seeds: {
+    name: "Seeds",
+    icon: "images/icons/Resource_Dirt.png",
+    state: "Solid",
+  },
 };
 
 /**

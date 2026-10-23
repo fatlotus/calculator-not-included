@@ -2486,5 +2486,17 @@
     "default_temp": 20.0,
     "icon": "images/icons/Molten_Lead.png",
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
+  },
+  {
+    "name": "Rot Pile",
+    "element_id": "Compost",
+    "state": "Solid",
+    "shc": 0.83,
+    "thermal_conductivity": 2.0,
+    "low_temp": null,
+    "high_temp": null,
+    "default_temp": 20.0,
+    "icon": "images/icons/Polluted_Dirt.png",
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png"
   }
 ]

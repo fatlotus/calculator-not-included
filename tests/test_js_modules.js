@@ -824,4 +824,101 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Sludge Press Recipes and Calculations tests passed");
 }
 
+// 11. Compost Recipes and Calculations
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const compost = entityMap.get("compost");
+  assert.ok(compost, "compost entity must exist");
+  assert.ok(compost.recipes.length >= 6, "Compost must have compostable recipes");
+
+  // Default evaluation (Polluted Dirt recipe)
+  const defaultEval = evaluateRow({ entityId: "compost", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(defaultEval.power, 0.0);
+  assert.strictEqual(defaultEval.heat, 1.125);
+  const pdirtIn = defaultEval.inputs.find((i) => i.resource === "Polluted Dirt");
+  const dirtOut = defaultEval.outputs.find((o) => o.resource === "Dirt");
+
+  assert.ok(pdirtIn, "Compost default must consume Polluted Dirt");
+  assert.strictEqual(pdirtIn.rate, 100.0);
+  assert.strictEqual(pdirtIn.state, "free");
+
+  assert.ok(dirtOut, "Compost default must output Dirt");
+  assert.strictEqual(dirtOut.rate, 100.0);
+  assert.strictEqual(dirtOut.state, "free");
+  // Clamped output temperature @ 75 °C minimum
+  assert.strictEqual(dirtOut.tempC, 75.0);
+
+  // Temperature clamping tests:
+  // Low inlet temp (20 °C) -> clamped to 75 °C
+  const lowInletEval = evaluateRow({ entityId: "compost", qty: 1, inputTemp: 20.0 }, entityMap, elementMap);
+  const lowDirtOut = lowInletEval.outputs.find((o) => o.resource === "Dirt");
+  assert.strictEqual(lowDirtOut.tempC, 75.0);
+
+  // High inlet temp (85 °C) -> passes through at 85 °C
+  const highInletEval = evaluateRow({ entityId: "compost", qty: 1, inputTemp: 85.0 }, entityMap, elementMap);
+  const highDirtOut = highInletEval.outputs.find((o) => o.resource === "Dirt");
+  assert.strictEqual(highDirtOut.tempC, 85.0);
+
+  // Explicit recipe: rot_pile
+  const rotEval = evaluateRow({ entityId: "compost", qty: 1, recipeId: "rot_pile" }, entityMap, elementMap);
+  assert.strictEqual(rotEval.power, 0.0);
+  assert.strictEqual(rotEval.heat, 1.125);
+  const rotIn = rotEval.inputs.find((i) => i.resource === "Rot Pile");
+  const rotDirtOut = rotEval.outputs.find((o) => o.resource === "Dirt");
+  assert.ok(rotIn, "Compost rot_pile recipe must consume Rot Pile");
+  assert.strictEqual(rotIn.rate, 100.0);
+  assert.ok(rotDirtOut, "Compost rot_pile recipe must output Dirt");
+  assert.strictEqual(rotDirtOut.rate, 100.0);
+
+  // Explicit recipe: meal_lice
+  const mealEval = evaluateRow({ entityId: "compost", qty: 1, recipeId: "meal_lice" }, entityMap, elementMap);
+  const mealIn = mealEval.inputs.find((i) => i.resource === "Meal Lice");
+  assert.ok(mealIn, "Compost meal_lice recipe must consume Meal Lice");
+  assert.strictEqual(mealIn.rate, 100.0);
+
+  // Explicit recipe: bristle_berry
+  const berryEval = evaluateRow({ entityId: "compost", qty: 1, recipeId: "bristle_berry" }, entityMap, elementMap);
+  const berryIn = berryEval.inputs.find((i) => i.resource === "Bristle Berry");
+  assert.ok(berryIn, "Compost bristle_berry recipe must consume Bristle Berry");
+  assert.strictEqual(berryIn.rate, 100.0);
+
+  // Explicit recipe: mushroom
+  const mushEval = evaluateRow({ entityId: "compost", qty: 1, recipeId: "mushroom" }, entityMap, elementMap);
+  const mushIn = mushEval.inputs.find((i) => i.resource === "Mushroom");
+  assert.ok(mushIn, "Compost mushroom recipe must consume Mushroom");
+  assert.strictEqual(mushIn.rate, 100.0);
+
+  // Explicit recipe: seeds
+  const seedsEval = evaluateRow({ entityId: "compost", qty: 1, recipeId: "seeds" }, entityMap, elementMap);
+  const seedsIn = seedsEval.inputs.find((i) => i.resource === "Seeds");
+  assert.ok(seedsIn, "Compost seeds recipe must consume Seeds");
+  assert.strictEqual(seedsIn.rate, 100.0);
+
+  // Scaling with quantity (qty: 3)
+  const multiEval = evaluateRow({ entityId: "compost", qty: 3, recipeId: "rot_pile" }, entityMap, elementMap);
+  assert.strictEqual(multiEval.power, 0.0);
+  assert.strictEqual(multiEval.heat, 3.375);
+  const multiIn = multiEval.inputs.find((i) => i.resource === "Rot Pile");
+  const multiOut = multiEval.outputs.find((o) => o.resource === "Dirt");
+  assert.strictEqual(multiIn.rate, 300.0);
+  assert.strictEqual(multiOut.rate, 300.0);
+
+  // URL state round-trip with compost and rot_pile recipe
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "compost", qty: 2, recipeId: "rot_pile", modifiers: [] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 1);
+  assert.strictEqual(decoded.rows[0].entityId, "compost");
+  assert.strictEqual(decoded.rows[0].qty, 2);
+  assert.strictEqual(decoded.rows[0].recipeId, "rot_pile");
+
+  console.log("✓ Compost Recipes and Calculations tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

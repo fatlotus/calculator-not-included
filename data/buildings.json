@@ -5481,15 +5481,384 @@
     "heat": 1.125,
     "inputs": [
       {
-        "resource": "Compostable",
+        "resource": "Polluted Dirt",
         "rate": 100.0,
         "unit": "g/s",
         "state": "free",
         "temp": null
       }
     ],
-    "outputs": [],
-    "recipes": [],
+    "outputs": [
+      {
+        "resource": "Dirt",
+        "rate": 100.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": "@ 75 °C+"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "polluted_dirt",
+        "name": "Polluted Dirt (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Polluted Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "rot_pile",
+        "name": "Rot Pile (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Rot Pile",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "meal_lice",
+        "name": "Meal Lice (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Meal Lice",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "bristle_berry",
+        "name": "Bristle Berry (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Bristle Berry",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "mushroom",
+        "name": "Mushroom (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Mushroom",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "lettuce",
+        "name": "Lettuce (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Lettuce",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "nosh_bean",
+        "name": "Nosh Bean (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Nosh Bean",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "pincha_peppernut",
+        "name": "Pincha Peppernut (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Pincha Peppernut",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "sleet_wheat_grain",
+        "name": "Sleet Wheat Grain (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Sleet Wheat Grain",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "bog_jelly",
+        "name": "Bog Jelly (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Bog Jelly",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "grubfruit",
+        "name": "Grubfruit (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Grubfruit",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "pikeapple",
+        "name": "Pikeapple (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Pikeapple",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "plume_squash",
+        "name": "Plume Squash (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Plume Squash",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "dewdrip",
+        "name": "Dewdrip (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Dewdrip",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      },
+      {
+        "id": "seeds",
+        "name": "Seeds (100 g/s -> 100 g/s Dirt)",
+        "inputs": [
+          {
+            "resource": "Seeds",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 °C+"
+          }
+        ],
+        "power": 0.0,
+        "heat": 1.125
+      }
+    ],
     "modifiers": [],
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Compost.png?915349"
   },

@@ -5482,15 +5482,384 @@ export const ONI_DATASET = {
       "heat": 1.125,
       "inputs": [
         {
-          "resource": "Compostable",
+          "resource": "Polluted Dirt",
           "rate": 100.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
         }
       ],
-      "outputs": [],
-      "recipes": [],
+      "outputs": [
+        {
+          "resource": "Dirt",
+          "rate": 100.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 75 °C+"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "polluted_dirt",
+          "name": "Polluted Dirt (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Polluted Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "rot_pile",
+          "name": "Rot Pile (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Rot Pile",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "meal_lice",
+          "name": "Meal Lice (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Meal Lice",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "bristle_berry",
+          "name": "Bristle Berry (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Bristle Berry",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "mushroom",
+          "name": "Mushroom (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Mushroom",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "lettuce",
+          "name": "Lettuce (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Lettuce",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "nosh_bean",
+          "name": "Nosh Bean (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Nosh Bean",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "pincha_peppernut",
+          "name": "Pincha Peppernut (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Pincha Peppernut",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "sleet_wheat_grain",
+          "name": "Sleet Wheat Grain (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Sleet Wheat Grain",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "bog_jelly",
+          "name": "Bog Jelly (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Bog Jelly",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "grubfruit",
+          "name": "Grubfruit (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Grubfruit",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "pikeapple",
+          "name": "Pikeapple (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Pikeapple",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "plume_squash",
+          "name": "Plume Squash (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Plume Squash",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "dewdrip",
+          "name": "Dewdrip (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Dewdrip",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        },
+        {
+          "id": "seeds",
+          "name": "Seeds (100 g/s -> 100 g/s Dirt)",
+          "inputs": [
+            {
+              "resource": "Seeds",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": 0.0,
+          "heat": 1.125
+        }
+      ],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Compost.png?915349"
     },
@@ -13782,7 +14151,7 @@ export const ONI_DATASET = {
       "state": "Gas",
       "shc": 0.91,
       "thermal_conductivity": 2.5,
-      "low_temp": 2470,
+      "low_temp": 2470.0,
       "high_temp": null,
       "default_temp": 2926.85,
       "icon": "images/icons/Molten_Aluminum.png",
@@ -13796,7 +14165,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.0146,
       "low_temp": -48.15,
       "high_temp": null,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Liquid_Carbon_Dioxide.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon_Dioxide.png/24px-Liquid_Carbon_Dioxide.png?254ea5"
     },
@@ -13820,7 +14189,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.0081,
       "low_temp": -34.6,
       "high_temp": null,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Liquid_Chlorine.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Chlorine.png/24px-Liquid_Chlorine.png?fec2b9"
     },
@@ -13832,7 +14201,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.024,
       "low_temp": -182.96,
       "high_temp": null,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Polluted_Oxygen.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Oxygen.png/24px-Polluted_Oxygen.png?69c186"
     },
@@ -13841,7 +14210,7 @@ export const ONI_DATASET = {
       "element_id": "CopperGas",
       "state": "Gas",
       "shc": 0.386,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 2560.85,
       "high_temp": null,
       "default_temp": 2926.85,
@@ -13853,7 +14222,7 @@ export const ONI_DATASET = {
       "element_id": "GoldGas",
       "state": "Gas",
       "shc": 0.1291,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 2855.85,
       "high_temp": null,
       "default_temp": 3226.85,
@@ -13868,7 +14237,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.236,
       "low_temp": -268.93,
       "high_temp": null,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Hydrogen": {
@@ -13879,7 +14248,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.168,
       "low_temp": -252.15,
       "high_temp": null,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Liquid_Hydrogen.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Hydrogen.png/24px-Liquid_Hydrogen.png?d70401"
     },
@@ -13888,7 +14257,7 @@ export const ONI_DATASET = {
       "element_id": "IronGas",
       "state": "Gas",
       "shc": 0.449,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 2749.85,
       "high_temp": null,
       "default_temp": 3726.85,
@@ -13900,7 +14269,7 @@ export const ONI_DATASET = {
       "element_id": "CobaltGas",
       "state": "Gas",
       "shc": 0.42,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 2926.85,
       "high_temp": null,
       "default_temp": 3726.85,
@@ -13913,7 +14282,7 @@ export const ONI_DATASET = {
       "state": "Gas",
       "shc": 0.128,
       "thermal_conductivity": 3.5,
-      "low_temp": 1749,
+      "low_temp": 1749.0,
       "high_temp": null,
       "default_temp": 3226.85,
       "icon": "images/icons/Molten_Lead.png",
@@ -13939,7 +14308,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.035,
       "low_temp": -161.5,
       "high_temp": null,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Liquid_Methane.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
     },
@@ -13948,7 +14317,7 @@ export const ONI_DATASET = {
       "element_id": "NiobiumGas",
       "state": "Gas",
       "shc": 0.265,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 4743.85,
       "high_temp": null,
       "default_temp": 5226.85,
@@ -13960,7 +14329,7 @@ export const ONI_DATASET = {
       "element_id": "Fallout",
       "state": "Gas",
       "shc": 0.265,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 66.85,
       "high_temp": null,
       "default_temp": 226.85,
@@ -13975,7 +14344,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.024,
       "low_temp": -182.96,
       "high_temp": null,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Oxygen.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Oxygen.png/24px-Oxygen.png?4db039"
     },
@@ -13999,14 +14368,14 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.015,
       "low_temp": -42.15,
       "high_temp": null,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Rock Gas": {
       "name": "Rock Gas",
       "element_id": "RockGas",
       "state": "Gas",
-      "shc": 1,
+      "shc": 1.0,
       "thermal_conductivity": 0.1,
       "low_temp": 2356.85,
       "high_temp": null,
@@ -14034,7 +14403,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.018,
       "low_temp": -161.5,
       "high_temp": null,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Liquid_Methane.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
     },
@@ -14055,7 +14424,7 @@ export const ONI_DATASET = {
       "element_id": "SteelGas",
       "state": "Gas",
       "shc": 0.49,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 3826.85,
       "high_temp": null,
       "default_temp": 4226.85,
@@ -14068,7 +14437,7 @@ export const ONI_DATASET = {
       "state": "Gas",
       "shc": 0.7,
       "thermal_conductivity": 0.2,
-      "low_temp": 337,
+      "low_temp": 337.0,
       "high_temp": null,
       "default_temp": 426.85,
       "icon": "images/icons/Liquid_Sulfur.png",
@@ -14091,7 +14460,7 @@ export const ONI_DATASET = {
       "element_id": "TungstenGas",
       "state": "Gas",
       "shc": 0.134,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 5929.85,
       "high_temp": null,
       "default_temp": 6226.85,
@@ -14118,7 +14487,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.168,
       "low_temp": -252.15,
       "high_temp": null,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Nickel Gas": {
@@ -14126,7 +14495,7 @@ export const ONI_DATASET = {
       "element_id": "NickelGas",
       "state": "Gas",
       "shc": 0.44,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 2729.85,
       "high_temp": null,
       "default_temp": 2926.85,
@@ -14138,7 +14507,7 @@ export const ONI_DATASET = {
       "element_id": "IridiumGas",
       "state": "Gas",
       "shc": 0.131,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 4129.85,
       "high_temp": null,
       "default_temp": 4226.85,
@@ -14150,7 +14519,7 @@ export const ONI_DATASET = {
       "element_id": "ZincGas",
       "state": "Gas",
       "shc": 0.388,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 906.85,
       "high_temp": null,
       "default_temp": 2926.85,
@@ -14165,7 +14534,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.609,
       "low_temp": -22.5,
       "high_temp": 102.75,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Brine.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine.png/24px-Brine.png?925651"
     },
@@ -14177,7 +14546,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.409,
       "low_temp": -25.5,
       "high_temp": 106.75,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Polluted_Water.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
     },
@@ -14198,10 +14567,10 @@ export const ONI_DATASET = {
       "element_id": "CrudeOil",
       "state": "Liquid",
       "shc": 1.69,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": -40.15,
       "high_temp": 399.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Crude_Oil.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Crude_Oil.png/24px-Crude_Oil.png?d7ab3a"
     },
@@ -14213,7 +14582,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.58,
       "low_temp": -20.65,
       "high_temp": 119.35,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Polluted_Water.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
     },
@@ -14237,7 +14606,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 1.5,
       "low_temp": -8.15,
       "high_temp": 447.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Petroleum.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Petroleum.png/24px-Petroleum.png?a8a630"
     },
@@ -14281,7 +14650,7 @@ export const ONI_DATASET = {
       "element_id": "LiquidOxygen",
       "state": "Liquid",
       "shc": 1.01,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": -218.79,
       "high_temp": -182.96,
       "default_temp": -198.79,
@@ -14318,7 +14687,7 @@ export const ONI_DATASET = {
       "shc": 0.7,
       "thermal_conductivity": 0.2,
       "low_temp": 115.2,
-      "high_temp": 337,
+      "high_temp": 337.0,
       "default_temp": 176.85,
       "icon": "images/icons/Liquid_Sulfur.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur.png/24px-Liquid_Sulfur.png?dccb21"
@@ -14330,8 +14699,8 @@ export const ONI_DATASET = {
       "shc": 4.1,
       "thermal_conductivity": 0.609,
       "low_temp": -16.5,
-      "high_temp": 80,
-      "default_temp": 20,
+      "high_temp": 80.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Brine.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine.png/24px-Brine.png?925651"
     },
@@ -14342,8 +14711,8 @@ export const ONI_DATASET = {
       "shc": 4.1,
       "thermal_conductivity": 0.609,
       "low_temp": -16.5,
-      "high_temp": 80,
-      "default_temp": 20,
+      "high_temp": 80.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Steam.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
     },
@@ -14351,8 +14720,8 @@ export const ONI_DATASET = {
       "name": "Magma",
       "element_id": "Magma",
       "state": "Liquid",
-      "shc": 1,
-      "thermal_conductivity": 1,
+      "shc": 1.0,
+      "thermal_conductivity": 1.0,
       "low_temp": 1409.85,
       "high_temp": 2356.85,
       "default_temp": 1726.85,
@@ -14367,7 +14736,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 8.3,
       "low_temp": -38.85,
       "high_temp": 356.75,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Liquid_Mercury.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Mercury.png/24px-Liquid_Mercury.png?bfbddd"
     },
@@ -14378,7 +14747,7 @@ export const ONI_DATASET = {
       "shc": 0.91,
       "thermal_conductivity": 20.5,
       "low_temp": 660.3,
-      "high_temp": 2470,
+      "high_temp": 2470.0,
       "default_temp": 1726.85,
       "icon": "images/icons/Molten_Aluminum.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Aluminum.png/24px-Molten_Aluminum.png?5b6c67"
@@ -14388,7 +14757,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenCarbon",
       "state": "Liquid",
       "shc": 0.71,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": 3551.85,
       "high_temp": 4826.85,
       "default_temp": 4326.85,
@@ -14400,7 +14769,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenCopper",
       "state": "Liquid",
       "shc": 0.386,
-      "thermal_conductivity": 12,
+      "thermal_conductivity": 12.0,
       "low_temp": 1083.85,
       "high_temp": 2560.85,
       "default_temp": 1526.85,
@@ -14412,7 +14781,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenGlass",
       "state": "Liquid",
       "shc": 0.2,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": 1126.85,
       "high_temp": 2356.85,
       "default_temp": 1941.85,
@@ -14424,7 +14793,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenGold",
       "state": "Liquid",
       "shc": 0.1291,
-      "thermal_conductivity": 6,
+      "thermal_conductivity": 6.0,
       "low_temp": 1063.85,
       "high_temp": 2855.85,
       "default_temp": 1726.85,
@@ -14436,7 +14805,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenIron",
       "state": "Liquid",
       "shc": 0.449,
-      "thermal_conductivity": 4,
+      "thermal_conductivity": 4.0,
       "low_temp": 1534.85,
       "high_temp": 2749.85,
       "default_temp": 2226.85,
@@ -14448,7 +14817,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenCobalt",
       "state": "Liquid",
       "shc": 0.42,
-      "thermal_conductivity": 4,
+      "thermal_conductivity": 4.0,
       "low_temp": 1494.85,
       "high_temp": 2926.85,
       "default_temp": 2226.85,
@@ -14460,9 +14829,9 @@ export const ONI_DATASET = {
       "element_id": "MoltenLead",
       "state": "Liquid",
       "shc": 0.128,
-      "thermal_conductivity": 11,
+      "thermal_conductivity": 11.0,
       "low_temp": 327.5,
-      "high_temp": 1749,
+      "high_temp": 1749.0,
       "default_temp": 1726.85,
       "icon": "images/icons/Molten_Lead.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
@@ -14472,7 +14841,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenNiobium",
       "state": "Liquid",
       "shc": 0.265,
-      "thermal_conductivity": 54,
+      "thermal_conductivity": 54.0,
       "low_temp": 2476.85,
       "high_temp": 4743.85,
       "default_temp": 2726.85,
@@ -14496,7 +14865,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenSteel",
       "state": "Liquid",
       "shc": 0.386,
-      "thermal_conductivity": 80,
+      "thermal_conductivity": 80.0,
       "low_temp": 1083.85,
       "high_temp": 3826.85,
       "default_temp": 1726.85,
@@ -14508,7 +14877,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenTungsten",
       "state": "Liquid",
       "shc": 0.134,
-      "thermal_conductivity": 4,
+      "thermal_conductivity": 4.0,
       "low_temp": 3421.85,
       "high_temp": 5929.85,
       "default_temp": 3726.85,
@@ -14520,7 +14889,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenUranium",
       "state": "Liquid",
       "shc": 1.69,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": 132.85,
       "high_temp": 4131.85,
       "default_temp": 186.85,
@@ -14535,7 +14904,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.2,
       "low_temp": -50.15,
       "high_temp": 538.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Sour_Gas.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sour_Gas.png/24px-Sour_Gas.png?681999"
     },
@@ -14544,7 +14913,7 @@ export const ONI_DATASET = {
       "element_id": "NuclearWaste",
       "state": "Liquid",
       "shc": 7.44,
-      "thermal_conductivity": 6,
+      "thermal_conductivity": 6.0,
       "low_temp": 26.85,
       "high_temp": 526.85,
       "default_temp": 126.85,
@@ -14556,10 +14925,10 @@ export const ONI_DATASET = {
       "element_id": "Petroleum",
       "state": "Liquid",
       "shc": 1.76,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": -57.15,
       "high_temp": 538.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Petroleum.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Petroleum.png/24px-Petroleum.png?a8a630"
     },
@@ -14569,8 +14938,8 @@ export const ONI_DATASET = {
       "state": "Liquid",
       "shc": 1.11,
       "thermal_conductivity": 0.15,
-      "low_temp": 20,
-      "high_temp": 125,
+      "low_temp": 20.0,
+      "high_temp": 125.0,
       "default_temp": 26.85,
       "icon": "images/icons/Steam.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
@@ -14581,8 +14950,8 @@ export const ONI_DATASET = {
       "state": "Liquid",
       "shc": 1.11,
       "thermal_conductivity": 0.15,
-      "low_temp": 20,
-      "high_temp": 125,
+      "low_temp": 20.0,
+      "high_temp": 125.0,
       "default_temp": 26.85,
       "icon": "images/icons/Steam.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
@@ -14595,7 +14964,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.609,
       "low_temp": -7.5,
       "high_temp": 99.69,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Salt_Water.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt_Water.png/24px-Salt_Water.png?8067b5"
     },
@@ -14606,8 +14975,8 @@ export const ONI_DATASET = {
       "shc": 4.1,
       "thermal_conductivity": 0.609,
       "low_temp": -82.5,
-      "high_temp": 160,
-      "default_temp": 20,
+      "high_temp": 160.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Nectar.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nectar.png/24px-Nectar.png?bb9575"
     },
@@ -14619,7 +14988,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 9.46,
       "low_temp": -271.15,
       "high_temp": 436.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Super_Coolant.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Super_Coolant.png/24px-Super_Coolant.png?767a6a"
     },
@@ -14631,7 +15000,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.45,
       "low_temp": -30.65,
       "high_temp": 479.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Visco-Gel_Fluid.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Visco-Gel_Fluid.png/24px-Visco-Gel_Fluid.png?2f36d1"
     },
@@ -14643,7 +15012,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.609,
       "low_temp": -0.65,
       "high_temp": 99.35,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Water.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
     },
@@ -14651,11 +15020,11 @@ export const ONI_DATASET = {
       "name": "Squid Ink",
       "element_id": "Ink",
       "state": "Liquid",
-      "shc": 2,
+      "shc": 2.0,
       "thermal_conductivity": 0.5,
       "low_temp": -20.65,
-      "high_temp": 80,
-      "default_temp": 20,
+      "high_temp": 80.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Mucin.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mucin.png/24px-Mucin.png?1e3722"
     },
@@ -14667,7 +15036,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.171,
       "low_temp": -114.05,
       "high_temp": 78.35,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Ethanol.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ethanol.png/24px-Ethanol.png?4051f1"
     },
@@ -14687,10 +15056,10 @@ export const ONI_DATASET = {
       "element_id": "PhytoOil",
       "state": "Liquid",
       "shc": 0.9,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": -33.15,
-      "high_temp": 75,
-      "default_temp": 20,
+      "high_temp": 75.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Carbon_Dioxide.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
@@ -14699,10 +15068,10 @@ export const ONI_DATASET = {
       "element_id": "RefinedLipid",
       "state": "Liquid",
       "shc": 2.19,
-      "thermal_conductivity": 2,
-      "low_temp": -10,
-      "high_temp": 180,
-      "default_temp": 20,
+      "thermal_conductivity": 2.0,
+      "low_temp": -10.0,
+      "high_temp": 180.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Carbon_Dioxide.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
@@ -14713,7 +15082,7 @@ export const ONI_DATASET = {
       "shc": 1.255,
       "thermal_conductivity": 0.15,
       "low_temp": 185.85,
-      "high_temp": 230,
+      "high_temp": 230.0,
       "default_temp": 226.85,
       "icon": "images/icons/Carbon_Dioxide.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
@@ -14723,7 +15092,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenNickel",
       "state": "Liquid",
       "shc": 0.44,
-      "thermal_conductivity": 30,
+      "thermal_conductivity": 30.0,
       "low_temp": 1454.85,
       "high_temp": 2729.85,
       "default_temp": 1526.85,
@@ -14735,7 +15104,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenIridium",
       "state": "Liquid",
       "shc": 0.131,
-      "thermal_conductivity": 170,
+      "thermal_conductivity": 170.0,
       "low_temp": 2445.85,
       "high_temp": 4129.85,
       "default_temp": 3226.85,
@@ -14750,7 +15119,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.065,
       "low_temp": -0.65,
       "high_temp": 99.35,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Carbon_Dioxide.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
@@ -14758,11 +15127,11 @@ export const ONI_DATASET = {
       "name": "Mucin",
       "element_id": "Mucus",
       "state": "Liquid",
-      "shc": 3,
+      "shc": 3.0,
       "thermal_conductivity": 0.45,
-      "low_temp": -10,
-      "high_temp": 90,
-      "default_temp": 20,
+      "low_temp": -10.0,
+      "high_temp": 90.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Mucin.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mucin.png/24px-Mucin.png?1e3722"
     },
@@ -14771,7 +15140,7 @@ export const ONI_DATASET = {
       "element_id": "MoltenZinc",
       "state": "Liquid",
       "shc": 0.388,
-      "thermal_conductivity": 12,
+      "thermal_conductivity": 12.0,
       "low_temp": 419.73,
       "high_temp": 906.85,
       "default_temp": 626.85,
@@ -14782,11 +15151,11 @@ export const ONI_DATASET = {
       "name": "Aerogel",
       "element_id": "Aerogel",
       "state": "Solid",
-      "shc": 1,
+      "shc": 1.0,
       "thermal_conductivity": 0.003,
       "low_temp": null,
       "high_temp": 9726.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Algae": {
@@ -14794,10 +15163,10 @@ export const ONI_DATASET = {
       "element_id": "Algae",
       "state": "Solid",
       "shc": 0.2,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
-      "high_temp": 125,
-      "default_temp": 20,
+      "high_temp": 125.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Algae.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Algae.png/24px-Algae.png?b63024"
     },
@@ -14809,7 +15178,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.9,
       "low_temp": null,
       "high_temp": 824.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Carbon_Dioxide.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
@@ -14818,10 +15187,10 @@ export const ONI_DATASET = {
       "element_id": "Aluminum",
       "state": "Solid",
       "shc": 0.91,
-      "thermal_conductivity": 205,
+      "thermal_conductivity": 205.0,
       "low_temp": null,
       "high_temp": 660.3,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Aluminum.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum.png/24px-Aluminum.png?7ed80e"
     },
@@ -14833,7 +15202,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 20.5,
       "low_temp": null,
       "high_temp": 1083.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Aluminum_Ore.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum_Ore.png/24px-Aluminum_Ore.png?1e9490"
     },
@@ -14845,7 +15214,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.17,
       "low_temp": null,
       "high_temp": 538.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Bleach Stone": {
@@ -14853,10 +15222,10 @@ export const ONI_DATASET = {
       "element_id": "BleachStone",
       "state": "Solid",
       "shc": 0.5,
-      "thermal_conductivity": 4,
+      "thermal_conductivity": 4.0,
       "low_temp": null,
       "high_temp": 668.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Liquid_Chlorine.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Chlorine.png/24px-Liquid_Chlorine.png?fec2b9"
     },
@@ -14868,7 +15237,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.62,
       "low_temp": null,
       "high_temp": 1409.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Brine Ice": {
@@ -14879,7 +15248,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 2.18,
       "low_temp": null,
       "high_temp": -16.5,
-      "default_temp": -41,
+      "default_temp": -41.0,
       "icon": "images/icons/Brine_Ice.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine_Ice.png/24px-Brine_Ice.png?bca819"
     },
@@ -14891,7 +15260,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 2.18,
       "low_temp": null,
       "high_temp": -25.5,
-      "default_temp": -50,
+      "default_temp": -50.0,
       "icon": "images/icons/Polluted_Ice.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Ice.png/24px-Polluted_Ice.png?d57167"
     },
@@ -14903,7 +15272,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 2.18,
       "low_temp": null,
       "high_temp": -16.5,
-      "default_temp": -41,
+      "default_temp": -41.0,
       "icon": "images/icons/Frozen_Brackene.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Brackene.png/24px-Frozen_Brackene.png?1d5da7"
     },
@@ -14915,7 +15284,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 2.18,
       "low_temp": null,
       "high_temp": -16.5,
-      "default_temp": -41,
+      "default_temp": -41.0,
       "icon": "images/icons/Frozen_Brackene.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Brackene.png/24px-Frozen_Brackene.png?1d5da7"
     },
@@ -14927,7 +15296,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 1.25,
       "low_temp": null,
       "high_temp": 276.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Coal.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Coal.png/24px-Coal.png?7beae2"
     },
@@ -14939,7 +15308,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.6,
       "low_temp": null,
       "high_temp": 226.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Coal.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Coal.png/24px-Coal.png?7beae2"
     },
@@ -14948,10 +15317,10 @@ export const ONI_DATASET = {
       "element_id": "CarbonFibre",
       "state": "Solid",
       "shc": 0.52,
-      "thermal_conductivity": 0,
+      "thermal_conductivity": 0.0,
       "low_temp": null,
       "high_temp": 4726.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Cement": {
@@ -14959,10 +15328,10 @@ export const ONI_DATASET = {
       "element_id": "Cement",
       "state": "Solid",
       "shc": 1.55,
-      "thermal_conductivity": 8,
+      "thermal_conductivity": 8.0,
       "low_temp": null,
       "high_temp": 1409.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Cement Mix": {
@@ -14970,10 +15339,10 @@ export const ONI_DATASET = {
       "element_id": "CementMix",
       "state": "Solid",
       "shc": 0.52,
-      "thermal_conductivity": 8,
+      "thermal_conductivity": 8.0,
       "low_temp": null,
       "high_temp": 1409.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Ceramic": {
@@ -14984,7 +15353,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.62,
       "low_temp": null,
       "high_temp": 1849.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Ceramic.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ceramic.png/24px-Ceramic.png?86c3a0"
     },
@@ -14993,10 +15362,10 @@ export const ONI_DATASET = {
       "element_id": "Clay",
       "state": "Solid",
       "shc": 0.92,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 926.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Clay.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Clay.png/24px-Clay.png?e3f0c1"
     },
@@ -15005,10 +15374,10 @@ export const ONI_DATASET = {
       "element_id": "Copper",
       "state": "Solid",
       "shc": 0.385,
-      "thermal_conductivity": 60,
+      "thermal_conductivity": 60.0,
       "low_temp": null,
       "high_temp": 1083.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Copper.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper.png/24px-Copper.png?13f1d4"
     },
@@ -15020,7 +15389,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.6,
       "low_temp": null,
       "high_temp": 9726.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Genetic_Ooze.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Genetic_Ooze.png/24px-Genetic_Ooze.png?b63024"
     },
@@ -15032,7 +15401,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 2.18,
       "low_temp": null,
       "high_temp": -0.65,
-      "default_temp": -31,
+      "default_temp": -31.0,
       "icon": "images/icons/Water.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
     },
@@ -15041,10 +15410,10 @@ export const ONI_DATASET = {
       "element_id": "CrushedRock",
       "state": "Solid",
       "shc": 0.2,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 1409.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Magma.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
     },
@@ -15056,7 +15425,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 4.5,
       "low_temp": null,
       "high_temp": 1083.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Copper_Ore.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper_Ore.png/24px-Copper_Ore.png?4cb760"
     },
@@ -15064,11 +15433,11 @@ export const ONI_DATASET = {
       "name": "Depleted Uranium",
       "element_id": "DepletedUranium",
       "state": "Solid",
-      "shc": 1,
-      "thermal_conductivity": 20,
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
       "low_temp": null,
       "high_temp": 132.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Depleted_Uranium.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Depleted_Uranium.png/24px-Depleted_Uranium.png?b67c7b"
     },
@@ -15077,10 +15446,10 @@ export const ONI_DATASET = {
       "element_id": "Diamond",
       "state": "Solid",
       "shc": 0.516,
-      "thermal_conductivity": 80,
+      "thermal_conductivity": 80.0,
       "low_temp": null,
       "high_temp": 3926.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Diamond.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Diamond.png/24px-Diamond.png?af7b37"
     },
@@ -15089,10 +15458,10 @@ export const ONI_DATASET = {
       "element_id": "Dirt",
       "state": "Solid",
       "shc": 1.48,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 326.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Resource_Dirt.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png?1569e7"
     },
@@ -15101,7 +15470,7 @@ export const ONI_DATASET = {
       "element_id": "DirtyIce",
       "state": "Solid",
       "shc": 3.05,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": null,
       "high_temp": -20.65,
       "default_temp": -43.15,
@@ -15113,21 +15482,21 @@ export const ONI_DATASET = {
       "element_id": "Electrum",
       "state": "Solid",
       "shc": 0.15,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 1063.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Enriched Uranium": {
       "name": "Enriched Uranium",
       "element_id": "EnrichedUranium",
       "state": "Solid",
-      "shc": 1,
-      "thermal_conductivity": 20,
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
       "low_temp": null,
       "high_temp": 858.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Liquid_Uranium.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Uranium.png/24px-Liquid_Uranium.png?f88c40"
     },
@@ -15136,10 +15505,10 @@ export const ONI_DATASET = {
       "element_id": "Fertilizer",
       "state": "Solid",
       "shc": 0.83,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
-      "high_temp": 125,
-      "default_temp": 20,
+      "high_temp": 125.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Resource_Dirt.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png?1569e7"
     },
@@ -15151,7 +15520,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 4.5,
       "low_temp": null,
       "high_temp": 1083.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Molten_Iron.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
     },
@@ -15160,10 +15529,10 @@ export const ONI_DATASET = {
       "element_id": "Fossil",
       "state": "Solid",
       "shc": 0.91,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 1338.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Fossil.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Fossil.png/24px-Fossil.png?dceeef"
     },
@@ -15172,7 +15541,7 @@ export const ONI_DATASET = {
       "element_id": "FrozenPhytoOil",
       "state": "Solid",
       "shc": 0.9,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": -33.15,
       "default_temp": -53.15,
@@ -15184,10 +15553,10 @@ export const ONI_DATASET = {
       "element_id": "Fullerene",
       "state": "Solid",
       "shc": 0.95,
-      "thermal_conductivity": 50,
+      "thermal_conductivity": 50.0,
       "low_temp": null,
       "high_temp": 3926.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Liquid_Carbon.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon.png/24px-Liquid_Carbon.png?b4ff39"
     },
@@ -15199,7 +15568,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 1.11,
       "low_temp": null,
       "high_temp": 1426.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Resource_Glass.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Glass.png/24px-Resource_Glass.png?cabe05"
     },
@@ -15208,10 +15577,10 @@ export const ONI_DATASET = {
       "element_id": "Gold",
       "state": "Solid",
       "shc": 0.129,
-      "thermal_conductivity": 60,
+      "thermal_conductivity": 60.0,
       "low_temp": null,
       "high_temp": 1063.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Gold.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gold.png/24px-Gold.png?131fa9"
     },
@@ -15220,10 +15589,10 @@ export const ONI_DATASET = {
       "element_id": "GoldAmalgam",
       "state": "Solid",
       "shc": 0.15,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 1063.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Gold_Amalgam.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gold_Amalgam.png/24px-Gold_Amalgam.png?215d21"
     },
@@ -15235,7 +15604,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 3.39,
       "low_temp": null,
       "high_temp": 668.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Granite.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Granite.png/24px-Granite.png?e0ce7e"
     },
@@ -15247,7 +15616,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 2.18,
       "low_temp": null,
       "high_temp": -0.65,
-      "default_temp": -41,
+      "default_temp": -41.0,
       "icon": "images/icons/Ice.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ice.png/24px-Ice.png?8bef06"
     },
@@ -15255,11 +15624,11 @@ export const ONI_DATASET = {
       "name": "Frozen Squid Ink",
       "element_id": "FrozenInk",
       "state": "Solid",
-      "shc": 2,
-      "thermal_conductivity": 2,
+      "shc": 2.0,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": -20.65,
-      "default_temp": -41,
+      "default_temp": -41.0,
       "icon": "images/icons/Frozen_Squid_Ink.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Squid_Ink.png/24px-Frozen_Squid_Ink.png?49a98b"
     },
@@ -15267,11 +15636,11 @@ export const ONI_DATASET = {
       "name": "Igneous Rock",
       "element_id": "IgneousRock",
       "state": "Solid",
-      "shc": 1,
-      "thermal_conductivity": 2,
+      "shc": 1.0,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 1409.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Igneous_Rock.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Igneous_Rock.png/24px-Igneous_Rock.png?c2bb8e"
     },
@@ -15280,10 +15649,10 @@ export const ONI_DATASET = {
       "element_id": "Iron",
       "state": "Solid",
       "shc": 0.449,
-      "thermal_conductivity": 55,
+      "thermal_conductivity": 55.0,
       "low_temp": null,
       "high_temp": 1534.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Iron.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron.png/24px-Iron.png?89103b"
     },
@@ -15292,10 +15661,10 @@ export const ONI_DATASET = {
       "element_id": "IronOre",
       "state": "Solid",
       "shc": 0.449,
-      "thermal_conductivity": 4,
+      "thermal_conductivity": 4.0,
       "low_temp": null,
       "high_temp": 1534.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Iron_Ore.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron_Ore.png/24px-Iron_Ore.png?9814a5"
     },
@@ -15304,10 +15673,10 @@ export const ONI_DATASET = {
       "element_id": "Cobalt",
       "state": "Solid",
       "shc": 0.42,
-      "thermal_conductivity": 100,
+      "thermal_conductivity": 100.0,
       "low_temp": null,
       "high_temp": 1494.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Cobalt_(Spaced_Out).png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cobalt_%28Spaced_Out%29.png/24px-Cobalt_%28Spaced_Out%29.png?e48f1e"
     },
@@ -15316,10 +15685,10 @@ export const ONI_DATASET = {
       "element_id": "Cobaltite",
       "state": "Solid",
       "shc": 0.42,
-      "thermal_conductivity": 4,
+      "thermal_conductivity": 4.0,
       "low_temp": null,
       "high_temp": 1494.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Molten_Cobalt.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
     },
@@ -15330,8 +15699,8 @@ export const ONI_DATASET = {
       "shc": 1.3,
       "thermal_conductivity": 0.17,
       "low_temp": null,
-      "high_temp": 200,
-      "default_temp": 20,
+      "high_temp": 200.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Isoresin.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Isoresin.png/24px-Isoresin.png?4b6900"
     },
@@ -15339,11 +15708,11 @@ export const ONI_DATASET = {
       "name": "Abyssalite",
       "element_id": "Katairite",
       "state": "Solid",
-      "shc": 4,
-      "thermal_conductivity": 1,
+      "shc": 4.0,
+      "thermal_conductivity": 1.0,
       "low_temp": null,
       "high_temp": 3421.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Molten_Tungsten.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
     },
@@ -15352,10 +15721,10 @@ export const ONI_DATASET = {
       "element_id": "Lead",
       "state": "Solid",
       "shc": 0.128,
-      "thermal_conductivity": 35,
+      "thermal_conductivity": 35.0,
       "low_temp": null,
       "high_temp": 327.5,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Isoresin.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Isoresin.png/24px-Isoresin.png?4b6900"
     },
@@ -15364,10 +15733,10 @@ export const ONI_DATASET = {
       "element_id": "Lime",
       "state": "Solid",
       "shc": 0.834,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 1056.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Magma.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
     },
@@ -15379,7 +15748,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.15,
       "low_temp": null,
       "high_temp": 159.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Brackwax.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brackwax.png/24px-Brackwax.png?c7e172"
     },
@@ -15388,10 +15757,10 @@ export const ONI_DATASET = {
       "element_id": "MaficRock",
       "state": "Solid",
       "shc": 0.2,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": null,
       "high_temp": 1409.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Mafic_Rock.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mafic_Rock.png/24px-Mafic_Rock.png?28d1c8"
     },
@@ -15400,10 +15769,10 @@ export const ONI_DATASET = {
       "element_id": "Niobium",
       "state": "Solid",
       "shc": 0.265,
-      "thermal_conductivity": 54,
+      "thermal_conductivity": 54.0,
       "low_temp": null,
       "high_temp": 2476.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Niobium.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Niobium.png/24px-Niobium.png?7c3764"
     },
@@ -15412,10 +15781,10 @@ export const ONI_DATASET = {
       "element_id": "Corium",
       "state": "Solid",
       "shc": 7.44,
-      "thermal_conductivity": 6,
+      "thermal_conductivity": 6.0,
       "low_temp": null,
       "high_temp": 626.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Nuclear_Fallout.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nuclear_Fallout.png/24px-Nuclear_Fallout.png?966807"
     },
@@ -15424,10 +15793,10 @@ export const ONI_DATASET = {
       "element_id": "Obsidian",
       "state": "Solid",
       "shc": 0.2,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 2726.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Obsidian.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Obsidian.png/24px-Obsidian.png?854afa"
     },
@@ -15435,11 +15804,11 @@ export const ONI_DATASET = {
       "name": "Oxylite",
       "element_id": "OxyRock",
       "state": "Solid",
-      "shc": 1,
-      "thermal_conductivity": 4,
+      "shc": 1.0,
+      "thermal_conductivity": 4.0,
       "low_temp": null,
       "high_temp": 1409.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Magma.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
     },
@@ -15448,10 +15817,10 @@ export const ONI_DATASET = {
       "element_id": "PhosphateNodules",
       "state": "Solid",
       "shc": 0.15,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 426.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Phosphorite": {
@@ -15459,10 +15828,10 @@ export const ONI_DATASET = {
       "element_id": "Phosphorite",
       "state": "Solid",
       "shc": 0.15,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 243.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Liquid_Phosphorus.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Phosphorus.png/24px-Liquid_Phosphorus.png?267c27"
     },
@@ -15474,7 +15843,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.236,
       "low_temp": null,
       "high_temp": 44.15,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Refined_Phosphorus.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Refined_Phosphorus.png/24px-Refined_Phosphorus.png?35cd71"
     },
@@ -15486,7 +15855,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.25,
       "low_temp": null,
       "high_temp": 1826.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Sour_Gas.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sour_Gas.png/24px-Sour_Gas.png?681999"
     },
@@ -15498,7 +15867,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.15,
       "low_temp": null,
       "high_temp": 159.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Plastic.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plastic.png/24px-Plastic.png?6dabe6"
     },
@@ -15506,11 +15875,11 @@ export const ONI_DATASET = {
       "name": "Radium",
       "element_id": "Radium",
       "state": "Solid",
-      "shc": 1,
-      "thermal_conductivity": 20,
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
       "low_temp": null,
       "high_temp": 959.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Magma.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
     },
@@ -15522,7 +15891,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 3.1,
       "low_temp": null,
       "high_temp": 4326.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Refined_Carbon.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Refined_Carbon.png/24px-Refined_Carbon.png?7beae2"
     },
@@ -15531,10 +15900,10 @@ export const ONI_DATASET = {
       "element_id": "Regolith",
       "state": "Solid",
       "shc": 0.2,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": null,
       "high_temp": 1409.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Magma.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
     },
@@ -15543,10 +15912,10 @@ export const ONI_DATASET = {
       "element_id": "Rust",
       "state": "Solid",
       "shc": 0.449,
-      "thermal_conductivity": 4,
+      "thermal_conductivity": 4.0,
       "low_temp": null,
       "high_temp": 1534.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Molten_Iron.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
     },
@@ -15557,8 +15926,8 @@ export const ONI_DATASET = {
       "shc": 1.8,
       "thermal_conductivity": 0.15,
       "low_temp": null,
-      "high_temp": 220,
-      "default_temp": 20,
+      "high_temp": 220.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Carbon_Dioxide.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
@@ -15570,7 +15939,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.444,
       "low_temp": null,
       "high_temp": 799.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Salt.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt.png/24px-Salt.png?731ebc"
     },
@@ -15579,10 +15948,10 @@ export const ONI_DATASET = {
       "element_id": "Sand",
       "state": "Solid",
       "shc": 0.83,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 1712.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Sand.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sand.png/24px-Sand.png?c5f250"
     },
@@ -15591,10 +15960,10 @@ export const ONI_DATASET = {
       "element_id": "SandCement",
       "state": "Solid",
       "shc": 1.5,
-      "thermal_conductivity": 8,
+      "thermal_conductivity": 8.0,
       "low_temp": null,
       "high_temp": 1409.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Sandstone": {
@@ -15605,7 +15974,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 2.9,
       "low_temp": null,
       "high_temp": 926.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Sandstone.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sandstone.png/24px-Sandstone.png?fd380d"
     },
@@ -15614,10 +15983,10 @@ export const ONI_DATASET = {
       "element_id": "SedimentaryRock",
       "state": "Solid",
       "shc": 0.2,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 926.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Sedimentary_Rock.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sedimentary_Rock.png/24px-Sedimentary_Rock.png?66ab87"
     },
@@ -15629,7 +15998,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 1.8,
       "low_temp": null,
       "high_temp": 826.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Shale.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Shale.png/24px-Shale.png?52fc62"
     },
@@ -15638,10 +16007,10 @@ export const ONI_DATASET = {
       "element_id": "Slabs",
       "state": "Solid",
       "shc": 0.52,
-      "thermal_conductivity": 8,
+      "thermal_conductivity": 8.0,
       "low_temp": null,
       "high_temp": 1409.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Slime": {
@@ -15649,10 +16018,10 @@ export const ONI_DATASET = {
       "element_id": "SlimeMold",
       "state": "Solid",
       "shc": 0.2,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
-      "high_temp": 125,
-      "default_temp": 20,
+      "high_temp": 125.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Slime.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Slime.png/24px-Slime.png?3e7fd1"
     },
@@ -15664,7 +16033,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.545,
       "low_temp": null,
       "high_temp": -0.65,
-      "default_temp": -31,
+      "default_temp": -31.0,
       "icon": "images/icons/Water.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
     },
@@ -15676,7 +16045,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.545,
       "low_temp": null,
       "high_temp": -0.65,
-      "default_temp": -31,
+      "default_temp": -31.0,
       "icon": null
     },
     "Solid Carbon Dioxide": {
@@ -15687,7 +16056,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 1.46,
       "low_temp": null,
       "high_temp": -56.55,
-      "default_temp": -81,
+      "default_temp": -81.0,
       "icon": "images/icons/Solid_Carbon_Dioxide.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Carbon_Dioxide.png/24px-Solid_Carbon_Dioxide.png?a7c61c"
     },
@@ -15708,7 +16077,7 @@ export const ONI_DATASET = {
       "element_id": "SolidCrudeOil",
       "state": "Solid",
       "shc": 1.69,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": -40.15,
       "default_temp": -73.15,
@@ -15720,7 +16089,7 @@ export const ONI_DATASET = {
       "element_id": "SolidHydrogen",
       "state": "Solid",
       "shc": 2.4,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": null,
       "high_temp": -259.15,
       "default_temp": -268.15,
@@ -15768,7 +16137,7 @@ export const ONI_DATASET = {
       "element_id": "SolidOxygen",
       "state": "Solid",
       "shc": 1.01,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": null,
       "high_temp": -218.79,
       "default_temp": -243.15,
@@ -15780,7 +16149,7 @@ export const ONI_DATASET = {
       "element_id": "SolidPetroleum",
       "state": "Solid",
       "shc": 1.76,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": -57.15,
       "default_temp": -73.15,
@@ -15792,7 +16161,7 @@ export const ONI_DATASET = {
       "element_id": "SolidPropane",
       "state": "Solid",
       "shc": 2.4,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": null,
       "high_temp": -188.15,
       "default_temp": -213.15,
@@ -15805,8 +16174,8 @@ export const ONI_DATASET = {
       "shc": 1.3,
       "thermal_conductivity": 0.17,
       "low_temp": null,
-      "high_temp": 20,
-      "default_temp": -31,
+      "high_temp": 20.0,
+      "default_temp": -31.0,
       "icon": "images/icons/Solid_Sap.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Sap.png/24px-Solid_Sap.png?7e98e4"
     },
@@ -15817,8 +16186,8 @@ export const ONI_DATASET = {
       "shc": 1.3,
       "thermal_conductivity": 0.17,
       "low_temp": null,
-      "high_temp": 20,
-      "default_temp": -31,
+      "high_temp": 20.0,
+      "default_temp": -31.0,
       "icon": "images/icons/Solid_Resin.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Resin.png/24px-Solid_Resin.png?7e98e4"
     },
@@ -15829,8 +16198,8 @@ export const ONI_DATASET = {
       "shc": 1.3,
       "thermal_conductivity": 0.17,
       "low_temp": null,
-      "high_temp": 95,
-      "default_temp": 20,
+      "high_temp": 95.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Resin.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resin.png/24px-Resin.png?a211c1"
     },
@@ -15863,10 +16232,10 @@ export const ONI_DATASET = {
       "element_id": "Steel",
       "state": "Solid",
       "shc": 0.49,
-      "thermal_conductivity": 54,
+      "thermal_conductivity": 54.0,
       "low_temp": null,
       "high_temp": 2426.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Steel.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steel.png/24px-Steel.png?c944c4"
     },
@@ -15878,7 +16247,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.2,
       "low_temp": null,
       "high_temp": 115.2,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Sulfur.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sulfur.png/24px-Sulfur.png?9f057b"
     },
@@ -15887,10 +16256,10 @@ export const ONI_DATASET = {
       "element_id": "SuperInsulator",
       "state": "Solid",
       "shc": 5.57,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": null,
       "high_temp": 3621.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Insulite.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Insulite.png/24px-Insulite.png?e04a6f"
     },
@@ -15899,10 +16268,10 @@ export const ONI_DATASET = {
       "element_id": "TempConductorSolid",
       "state": "Solid",
       "shc": 0.622,
-      "thermal_conductivity": 220,
+      "thermal_conductivity": 220.0,
       "low_temp": null,
       "high_temp": 2676.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Thermium.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Thermium.png/24px-Thermium.png?f0bdfe"
     },
@@ -15911,10 +16280,10 @@ export const ONI_DATASET = {
       "element_id": "ToxicSand",
       "state": "Solid",
       "shc": 0.83,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 1712.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Molten_Glass.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Glass.png/24px-Molten_Glass.png?d6f734"
     },
@@ -15923,10 +16292,10 @@ export const ONI_DATASET = {
       "element_id": "Tungsten",
       "state": "Solid",
       "shc": 0.134,
-      "thermal_conductivity": 60,
+      "thermal_conductivity": 60.0,
       "low_temp": null,
       "high_temp": 3421.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Tungsten.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tungsten.png/24px-Tungsten.png?5d89ee"
     },
@@ -15934,11 +16303,11 @@ export const ONI_DATASET = {
       "name": "Neutronium",
       "element_id": "Unobtanium",
       "state": "Solid",
-      "shc": 0,
-      "thermal_conductivity": 0,
+      "shc": 0.0,
+      "thermal_conductivity": 0.0,
       "low_temp": null,
       "high_temp": 9726.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Neutronium.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Neutronium.png/24px-Neutronium.png?3f25b8"
     },
@@ -15946,11 +16315,11 @@ export const ONI_DATASET = {
       "name": "Uranium Ore",
       "element_id": "UraniumOre",
       "state": "Solid",
-      "shc": 1,
-      "thermal_conductivity": 20,
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
       "low_temp": null,
       "high_temp": 132.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Uranium_Ore.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Uranium_Ore.png/24px-Uranium_Ore.png?510845"
     },
@@ -15959,10 +16328,10 @@ export const ONI_DATASET = {
       "element_id": "Wolframite",
       "state": "Solid",
       "shc": 0.134,
-      "thermal_conductivity": 15,
+      "thermal_conductivity": 15.0,
       "low_temp": null,
       "high_temp": 2926.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Wolframite.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Wolframite.png/24px-Wolframite.png?69d9d9"
     },
@@ -15970,11 +16339,11 @@ export const ONI_DATASET = {
       "name": "Yellowcake",
       "element_id": "Yellowcake",
       "state": "Solid",
-      "shc": 1,
-      "thermal_conductivity": 20,
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
       "low_temp": null,
       "high_temp": 858.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": null
     },
     "Solid Ethanol": {
@@ -15982,7 +16351,7 @@ export const ONI_DATASET = {
       "element_id": "SolidEthanol",
       "state": "Solid",
       "shc": 2.46,
-      "thermal_conductivity": 20,
+      "thermal_conductivity": 20.0,
       "low_temp": null,
       "high_temp": -114.05,
       "default_temp": -123.15,
@@ -15994,7 +16363,7 @@ export const ONI_DATASET = {
       "element_id": "SolidSyngas",
       "state": "Solid",
       "shc": 2.4,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": null,
       "high_temp": -259.15,
       "default_temp": -268.15,
@@ -16005,10 +16374,10 @@ export const ONI_DATASET = {
       "element_id": "ToxicMud",
       "state": "Solid",
       "shc": 0.83,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 99.69,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Steam.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
     },
@@ -16017,10 +16386,10 @@ export const ONI_DATASET = {
       "element_id": "Mud",
       "state": "Solid",
       "shc": 0.83,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 99.69,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Steam.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
     },
@@ -16032,7 +16401,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 0.15,
       "low_temp": null,
       "high_temp": 185.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Sucrose_(Spaced_Out).png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sucrose_%28Spaced_Out%29.png/24px-Sucrose_%28Spaced_Out%29.png?ecab3e"
     },
@@ -16041,10 +16410,10 @@ export const ONI_DATASET = {
       "element_id": "Graphite",
       "state": "Solid",
       "shc": 0.71,
-      "thermal_conductivity": 8,
+      "thermal_conductivity": 8.0,
       "low_temp": null,
       "high_temp": 276.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Graphite.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Graphite.png/24px-Graphite.png?58a17d"
     },
@@ -16053,10 +16422,10 @@ export const ONI_DATASET = {
       "element_id": "SolidNuclearWaste",
       "state": "Solid",
       "shc": 7.44,
-      "thermal_conductivity": 6,
+      "thermal_conductivity": 6.0,
       "low_temp": null,
       "high_temp": 26.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Uranium_Ore.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Uranium_Ore.png/24px-Uranium_Ore.png?510845"
     },
@@ -16068,7 +16437,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 4.5,
       "low_temp": null,
       "high_temp": 583.5,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Mercury_Gas.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mercury_Gas.png/24px-Mercury_Gas.png?b623d6"
     },
@@ -16079,8 +16448,8 @@ export const ONI_DATASET = {
       "shc": 2.3,
       "thermal_conductivity": 0.22,
       "low_temp": null,
-      "high_temp": 600,
-      "default_temp": 20,
+      "high_temp": 600.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Lumber.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Lumber.png/24px-Lumber.png?3cce86"
     },
@@ -16091,8 +16460,8 @@ export const ONI_DATASET = {
       "shc": 2.3,
       "thermal_conductivity": 0.35,
       "low_temp": null,
-      "high_temp": 550,
-      "default_temp": 20,
+      "high_temp": 550.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Plywood.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plywood.png/24px-Plywood.png?70560f"
     },
@@ -16101,10 +16470,10 @@ export const ONI_DATASET = {
       "element_id": "Tallow",
       "state": "Solid",
       "shc": 2.19,
-      "thermal_conductivity": 10,
+      "thermal_conductivity": 10.0,
       "low_temp": null,
-      "high_temp": 80,
-      "default_temp": 20,
+      "high_temp": 80.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Tallow.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tallow.png/24px-Tallow.png?57ed23"
     },
@@ -16125,10 +16494,10 @@ export const ONI_DATASET = {
       "element_id": "NickelOre",
       "state": "Solid",
       "shc": 0.45,
-      "thermal_conductivity": 3,
+      "thermal_conductivity": 3.0,
       "low_temp": null,
       "high_temp": 1454.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Molten_Nickel.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Nickel.png/24px-Molten_Nickel.png?cc293d"
     },
@@ -16137,10 +16506,10 @@ export const ONI_DATASET = {
       "element_id": "Nickel",
       "state": "Solid",
       "shc": 0.44,
-      "thermal_conductivity": 91,
+      "thermal_conductivity": 91.0,
       "low_temp": null,
       "high_temp": 1454.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Nickel.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nickel.png/24px-Nickel.png?c6ff23"
     },
@@ -16149,10 +16518,10 @@ export const ONI_DATASET = {
       "element_id": "Iridium",
       "state": "Solid",
       "shc": 0.131,
-      "thermal_conductivity": 170,
+      "thermal_conductivity": 170.0,
       "low_temp": null,
       "high_temp": 2445.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Iridium.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iridium.png/24px-Iridium.png?a998d5"
     },
@@ -16161,10 +16530,10 @@ export const ONI_DATASET = {
       "element_id": "SiltStone",
       "state": "Solid",
       "shc": 0.9,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
       "high_temp": 926.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Magma.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
     },
@@ -16173,10 +16542,10 @@ export const ONI_DATASET = {
       "element_id": "SolidMucus",
       "state": "Solid",
       "shc": 3.05,
-      "thermal_conductivity": 1,
+      "thermal_conductivity": 1.0,
       "low_temp": null,
-      "high_temp": -10,
-      "default_temp": -25,
+      "high_temp": -10.0,
+      "default_temp": -25.0,
       "icon": "images/icons/Frozen_Mucin.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Mucin.png/24px-Frozen_Mucin.png?c2f594"
     },
@@ -16185,10 +16554,10 @@ export const ONI_DATASET = {
       "element_id": "ZincOre",
       "state": "Solid",
       "shc": 0.388,
-      "thermal_conductivity": 4,
+      "thermal_conductivity": 4.0,
       "low_temp": null,
       "high_temp": 419.5,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Molten_Zinc.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Zinc.png/24px-Molten_Zinc.png?732868"
     },
@@ -16197,10 +16566,10 @@ export const ONI_DATASET = {
       "element_id": "Zinc",
       "state": "Solid",
       "shc": 0.388,
-      "thermal_conductivity": 120,
+      "thermal_conductivity": 120.0,
       "low_temp": null,
       "high_temp": 419.5,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Zinc.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Zinc.png/24px-Zinc.png?df8b94"
     },
@@ -16209,10 +16578,10 @@ export const ONI_DATASET = {
       "element_id": "Corallium",
       "state": "Solid",
       "shc": 0.2,
-      "thermal_conductivity": 2,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
-      "high_temp": 125,
-      "default_temp": 20,
+      "high_temp": 125.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Sand.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sand.png/24px-Sand.png?c5f250"
     },
@@ -16224,7 +16593,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 1.5,
       "low_temp": null,
       "high_temp": 926.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Magma.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
     },
@@ -16236,7 +16605,7 @@ export const ONI_DATASET = {
       "thermal_conductivity": 2.5,
       "low_temp": null,
       "high_temp": 1256.85,
-      "default_temp": 20,
+      "default_temp": 20.0,
       "icon": "images/icons/Magma.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
     },
@@ -16247,8 +16616,8 @@ export const ONI_DATASET = {
       "shc": 2.3,
       "thermal_conductivity": 0.22,
       "low_temp": null,
-      "high_temp": 600,
-      "default_temp": 20,
+      "high_temp": 600.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Carbon_Dioxide.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
@@ -16259,10 +16628,22 @@ export const ONI_DATASET = {
       "shc": 0.21,
       "thermal_conductivity": 2.3,
       "low_temp": null,
-      "high_temp": 1114,
-      "default_temp": 20,
+      "high_temp": 1114.0,
+      "default_temp": 20.0,
       "icon": "images/icons/Molten_Lead.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
+    },
+    "Rot Pile": {
+      "name": "Rot Pile",
+      "element_id": "Compost",
+      "state": "Solid",
+      "shc": 0.83,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Polluted_Dirt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png"
     }
   }
 };
