@@ -682,7 +682,7 @@ console.log("=== Running JavaScript Module Tests ===");
   const fastingRow = evaluateRow({ entityId: "duplicant", qty: 1, food: "none" }, entityMap, elementMap);
   assert.strictEqual(fastingRow.inputs.find((i) => i.resource === "Barbecue" || i.resource === "Calories"), undefined, "Fasting duplicant consumes no food");
 
-  const bottomlessBbq = evaluateRow({ entityId: "duplicant", qty: 1, food: "barbecue", modifiers: ["calories", "bottomless_stomach"] }, entityMap, elementMap);
+  const bottomlessBbq = evaluateRow({ entityId: "duplicant", qty: 1, food: "barbecue", modifiers: ["bottomless_stomach"] }, entityMap, elementMap);
   const bBbqIn = bottomlessBbq.inputs.find((i) => i.resource === "Barbecue");
   assert.ok(bBbqIn, "Bottomless Stomach duplicant eating Barbecue must consume Barbecue");
   assert.strictEqual(Math.round(bBbqIn.rate * 10000) / 10000, 0.6251, "Bottomless stomach increases food consumption by 1.5x (0.6251 g/s)");
@@ -708,25 +708,31 @@ console.log("=== Running JavaScript Module Tests ===");
 // 8. Non-Thermal Resources: Duplicant Labor and Calories have no temperature
 {
   const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
-  const evaluatedDupe = evaluateRow({ entityId: "duplicant", qty: 1, modifiers: ["calories"] }, entityMap, elementMap);
+  const dupeEntity = entityMap.get("duplicant");
+  assert.strictEqual(
+    dupeEntity.modifiers?.some((m) => m.id === "calories"),
+    false,
+    "Duplicant must not have Include Food (calories) modifier"
+  );
+
+  const evaluatedDupe = evaluateRow({ entityId: "duplicant", qty: 1 }, entityMap, elementMap);
 
   const calIn = evaluatedDupe.inputs.find((i) => i.resource === "Calories");
-  assert.ok(calIn, "Duplicant with calories modifier must have Calories input");
+  assert.ok(calIn, "Duplicant must have Calories input by default");
   assert.strictEqual(calIn.tempC, undefined, "Calories input must not have tempC");
   assert.strictEqual(calIn.temp, null, "Calories input must have null temp");
   const calText = formatStreamLine(calIn, false, "c");
   assert.strictEqual(calText.includes("°C"), false, "Calories stream line must not include temperature");
   assert.strictEqual(calText, "Calories: -1000.02 kcal/cycle (free)");
 
-  // Duplicant default calories enabled
-  const defaultDupe = evaluateRow({ entityId: "duplicant", qty: 1 }, entityMap, elementMap);
-  const defaultCalIn = defaultDupe.inputs.find((i) => i.resource === "Calories");
-  assert.ok(defaultCalIn, "Duplicant must have Calories input by default when modifiers not specified");
-  assert.strictEqual(defaultCalIn.rate, 1.6667);
+  // Duplicant with explicit empty modifiers still consumes calories by default
+  const emptyModsDupe = evaluateRow({ entityId: "duplicant", qty: 1, modifiers: [] }, entityMap, elementMap);
+  const emptyModsCalIn = emptyModsDupe.inputs.find((i) => i.resource === "Calories");
+  assert.ok(emptyModsCalIn, "Duplicant with empty modifiers still consumes Calories by default");
 
-  // Duplicant with explicit empty modifiers disables calories
-  const noCalDupe = evaluateRow({ entityId: "duplicant", qty: 1, modifiers: [] }, entityMap, elementMap);
-  assert.strictEqual(noCalDupe.inputs.find((i) => i.resource === "Calories"), undefined, "Duplicant with empty modifiers should not consume calories");
+  // Fasting duplicant (food: 'none') disables food/calorie consumption
+  const fastingDupe = evaluateRow({ entityId: "duplicant", qty: 1, food: "none" }, entityMap, elementMap);
+  assert.strictEqual(fastingDupe.inputs.find((i) => i.resource === "Calories"), undefined, "Fasting duplicant does not consume calories");
 
   // Bionic duplicant does not consume calories
   const bionicDupe = evaluateRow({ entityId: "bionic_duplicant", qty: 1 }, entityMap, elementMap);
