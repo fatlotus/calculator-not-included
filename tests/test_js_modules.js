@@ -19,6 +19,7 @@ import {
   getNetInputTemp,
   formatNumber,
   formatStreamLine,
+  isSolidResource,
   NET_RATE_EPSILON,
 } from "../src/calculator.js";
 import { buildEntityCatalog, searchEntities } from "../src/data_loader.js";
@@ -245,7 +246,7 @@ console.log("=== Running JavaScript Module Tests ===");
   );
   assert.strictEqual(
     formatStreamLine({ resource: "Coal", rate: 1000, unit: "g/s", state: "free" }, false, "s"),
-    "Coal: -1 Kg/s (free)"
+    "Coal: -1 Kg/s"
   );
   assert.strictEqual(
     formatStreamLine({ resource: "Crude Oil", rate: 10000, unit: "g/s", state: "in a pipe" }, false, "s"),
@@ -266,7 +267,25 @@ console.log("=== Running JavaScript Module Tests ===");
   );
   assert.strictEqual(
     formatStreamLine({ resource: "Gold", rate: 1, unit: "g/s", state: "free" }, false, "c"),
-    "Gold: -600 g/cycle (free)"
+    "Gold: -600 g/cycle"
+  );
+
+  // F. Elide (free) for solids tests
+  assert.strictEqual(
+    formatStreamLine({ resource: "Dirt", rate: 200, unit: "g/s", state: "free" }, false, "s"),
+    "Dirt: -200 g/s"
+  );
+  assert.strictEqual(
+    formatStreamLine({ resource: "Iron", rate: 500, unit: "g/s", state: "free" }, true, "s"),
+    "Iron: +500 g/s"
+  );
+  assert.strictEqual(
+    formatStreamLine({ resource: "Oxygen", rate: 888, unit: "g/s", state: "free" }, true, "s"),
+    "Oxygen: +888 g/s (free)"
+  );
+  assert.strictEqual(
+    formatStreamLine({ resource: "Water", rate: 1000, unit: "g/s", state: "free" }, false, "s"),
+    "Water: -1 Kg/s (free)"
   );
 
   console.log("✓ Calculator & Math Engine tests passed");
@@ -514,10 +533,16 @@ console.log("=== Running JavaScript Module Tests ===");
 
   const tunedCg = evaluateRow({ entityId: "coal_generator", qty: 1, modifiers: ["engie_tuneup"] }, entityMap, elementMap);
   assert.strictEqual(tunedCg.power, 900);
+  const cgRowHtml = renderTableRowHtml({ entityId: "coal_generator", qty: 1 }, tunedCg, elementMap, "s", 0, {});
+  assert.ok(cgRowHtml.includes("Coal: -1 Kg/s"), "Row HTML should display Coal without (free)");
+  assert.ok(!cgRowHtml.includes("Coal: -1 Kg/s (free)"), "Row HTML must NOT display (free) next to solid Coal");
+
   const cgNet = calculateSystemNet([tunedCg]);
   const cgNetHtml = renderNetSummaryRowHtml(cgNet, elementMap, "s", {}, true);
   assert.ok(cgNetHtml.includes("Microchip: -0.0006 chips/s (solid)"), "NET summary should display Microchip input");
   assert.ok(!cgNetHtml.includes('data-resource="Microchip"'), "Microchip must not have a net-temp-input field");
+  assert.ok(cgNetHtml.includes("Coal: -1 Kg/s"), "NET summary should display Coal input without (free)");
+  assert.ok(!cgNetHtml.includes("Coal: -1 Kg/s (free)"), "NET summary must NOT show (free) next to solid Coal");
 
   // Branding verification
   const indexHtml = fs.readFileSync(path.resolve(__dirname, "../index.html"), "utf8");
