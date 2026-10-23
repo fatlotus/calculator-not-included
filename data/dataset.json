@@ -7526,11 +7526,52 @@
       "subcategory": "Utilities",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Ice_Maker",
       "icon": "images/icons/Ice_Maker.png",
-      "power": -240.0,
+      "power": -60.0,
       "heat": 16.0,
-      "inputs": [],
-      "outputs": [],
-      "recipes": [],
+      "inputs": [
+        {
+          "resource": "Water",
+          "rate": 500.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Ice",
+          "rate": 500.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ -20 °C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "ice",
+          "name": "Water (30 kg) -> Ice (30 kg) @ -20 °C",
+          "inputs": [
+            {
+              "resource": "Water",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Ice",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ -20 °C"
+            }
+          ],
+          "power": -60.0,
+          "heat": 16.0
+        }
+      ],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Ice_Maker.png?17c0ae"
     },

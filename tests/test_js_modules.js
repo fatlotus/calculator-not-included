@@ -1797,4 +1797,77 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Metal Refinery Building and Recipes tests passed");
 }
 
+// Ice Maker: Water freezing recipe & negative output temperature
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const building = entityMap.get("ice_maker");
+  assert.ok(building, "ice_maker entity must exist in catalog");
+  assert.strictEqual(building.power, -60.0);
+  assert.strictEqual(building.heat, 16.0);
+  assert.strictEqual(building.recipes.length, 1, "Ice Maker should have 1 recipe");
+
+  // Default evaluation
+  const defaultEval = evaluateRow({ entityId: "ice_maker", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(defaultEval.power, -60.0);
+  assert.strictEqual(defaultEval.heat, 16.0);
+  assert.strictEqual(defaultEval.inputs.length, 1);
+  assert.strictEqual(defaultEval.outputs.length, 1);
+
+  const waterIn = defaultEval.inputs.find((i) => i.resource === "Water");
+  assert.ok(waterIn, "Default Ice Maker must consume Water");
+  assert.strictEqual(waterIn.rate, 500.0);
+  assert.strictEqual(waterIn.unit, "g/s");
+  assert.strictEqual(waterIn.state, "free");
+
+  const iceOut = defaultEval.outputs.find((o) => o.resource === "Ice");
+  assert.ok(iceOut, "Default Ice Maker must output Ice");
+  assert.strictEqual(iceOut.rate, 500.0);
+  assert.strictEqual(iceOut.unit, "g/s");
+  assert.strictEqual(iceOut.state, "free");
+  assert.strictEqual(iceOut.tempC, -20.0, "Ice output temperature must be -20 °C");
+  assert.strictEqual(iceOut.temp, "@ -20 °C");
+
+  // Explicit recipe evaluation with qty: 3 scaling
+  const scaledEval = evaluateRow(
+    { entityId: "ice_maker", qty: 3, recipeId: "ice" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(scaledEval.power, -180.0);
+  assert.strictEqual(scaledEval.heat, 48.0);
+  assert.strictEqual(scaledEval.inputs.length, 1);
+  assert.strictEqual(scaledEval.outputs.length, 1);
+
+  const scaledWaterIn = scaledEval.inputs.find((i) => i.resource === "Water");
+  assert.ok(scaledWaterIn);
+  assert.strictEqual(scaledWaterIn.rate, 1500.0);
+  assert.strictEqual(scaledWaterIn.unit, "g/s");
+  assert.strictEqual(scaledWaterIn.state, "free");
+
+  const scaledIceOut = scaledEval.outputs.find((o) => o.resource === "Ice");
+  assert.ok(scaledIceOut);
+  assert.strictEqual(scaledIceOut.rate, 1500.0);
+  assert.strictEqual(scaledIceOut.unit, "g/s");
+  assert.strictEqual(scaledIceOut.state, "free");
+  assert.strictEqual(scaledIceOut.tempC, -20.0);
+  assert.strictEqual(scaledIceOut.temp, "@ -20 °C");
+
+  // URL state round-trip with Ice Maker
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "ice_maker", qty: 3, recipeId: "ice", modifiers: [] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 1);
+  assert.strictEqual(decoded.rows[0].entityId, "ice_maker");
+  assert.strictEqual(decoded.rows[0].qty, 3);
+  assert.strictEqual(decoded.rows[0].recipeId, "ice");
+
+  console.log("✓ Ice Maker Building and Recipes tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

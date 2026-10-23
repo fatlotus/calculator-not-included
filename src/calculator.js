@@ -341,8 +341,8 @@ export function evaluateRow(
 
     if (s.temp && s.temp.includes("+") && s.temp.includes("@")) {
       // Clamped minimum: @ X °C+ -> max(T_in, min)
-      const match = s.temp.match(/([0-9]+(?:\.[0-9]+)?)/);
-      const minTemp = match ? parseFloat(match[1]) : 70.0;
+      const match = s.temp.match(/([+-]?\s*[0-9]+(?:\.[0-9]+)?)/);
+      const minTemp = match ? parseFloat(match[1].replace(/\s+/g, "")) : 70.0;
       outTemp = Math.max(inTemp, minTemp);
       tempStr = `@ ${formatNumber(outTemp)} °C`;
     } else if (s.temp && !s.temp.includes("@") && (s.temp.includes("+") || s.temp.includes("-"))) {
@@ -353,8 +353,8 @@ export function evaluateRow(
       tempStr = `@ ${formatNumber(outTemp)} °C`;
     } else if (s.temp && s.temp.includes("@")) {
       // Fixed temp: e.g. @ 95 °C -> fixed
-      const match = s.temp.match(/([0-9]+(?:\.[0-9]+)?)/);
-      outTemp = match ? parseFloat(match[1]) : inTemp;
+      const match = s.temp.match(/([+-]?\s*[0-9]+(?:\.[0-9]+)?)/);
+      outTemp = match ? parseFloat(match[1].replace(/\s+/g, "")) : inTemp;
       tempStr = `@ ${formatNumber(outTemp)} °C`;
     } else {
       // Pass-through: T_in
