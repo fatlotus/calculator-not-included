@@ -1472,4 +1472,111 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Plant Pulverizer Building and Recipes tests passed");
 }
 
+// Thermo Regulator: Gas Cooling Recipes & Temperature Reduction
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const building = entityMap.get("thermo_regulator");
+  assert.ok(building, "thermo_regulator entity must exist in catalog");
+  assert.strictEqual(building.recipes.length, 5, "Thermo Regulator should have 5 recipes");
+
+  // Default evaluation: Hydrogen recipe
+  const defaultEval = evaluateRow({ entityId: "thermo_regulator", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(defaultEval.power, -240.0);
+  assert.strictEqual(defaultEval.heat, 33.6);
+  assert.strictEqual(defaultEval.inputs.length, 1);
+  assert.strictEqual(defaultEval.outputs.length, 1);
+
+  const h2In = defaultEval.inputs.find((i) => i.resource === "Hydrogen");
+  assert.ok(h2In, "Default Thermo Regulator must consume Hydrogen");
+  assert.strictEqual(h2In.rate, 1000.0);
+  assert.strictEqual(h2In.unit, "g/s");
+  assert.strictEqual(h2In.state, "in a pipe");
+  assert.strictEqual(h2In.tempC, 20.0);
+
+  const h2Out = defaultEval.outputs.find((o) => o.resource === "Hydrogen");
+  assert.ok(h2Out, "Default Thermo Regulator must output Hydrogen");
+  assert.strictEqual(h2Out.rate, 1000.0);
+  assert.strictEqual(h2Out.unit, "g/s");
+  assert.strictEqual(h2Out.state, "in a pipe");
+  assert.strictEqual(h2Out.tempC, 6.0, "Output temp should be cooled by 14 °C (20 - 14 = 6 °C)");
+  assert.strictEqual(h2Out.temp, "@ 6 °C");
+
+  // Explicit recipe: oxygen
+  const oxygenEval = evaluateRow(
+    { entityId: "thermo_regulator", qty: 1, recipeId: "oxygen" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(oxygenEval.power, -240.0);
+  assert.strictEqual(oxygenEval.heat, 14.07);
+  const o2In = oxygenEval.inputs.find((i) => i.resource === "Oxygen");
+  const o2Out = oxygenEval.outputs.find((o) => o.resource === "Oxygen");
+  assert.strictEqual(o2In.rate, 1000.0);
+  assert.strictEqual(o2Out.rate, 1000.0);
+  assert.strictEqual(o2Out.tempC, 6.0);
+
+  // Explicit recipe: natural_gas
+  const natGasEval = evaluateRow(
+    { entityId: "thermo_regulator", qty: 1, recipeId: "natural_gas" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(natGasEval.power, -240.0);
+  assert.strictEqual(natGasEval.heat, 30.674);
+  const ngIn = natGasEval.inputs.find((i) => i.resource === "Natural Gas");
+  const ngOut = natGasEval.outputs.find((o) => o.resource === "Natural Gas");
+  assert.strictEqual(ngIn.rate, 1000.0);
+  assert.strictEqual(ngOut.rate, 1000.0);
+  assert.strictEqual(ngOut.tempC, 6.0);
+
+  // Explicit recipe: chlorine
+  const chlorineEval = evaluateRow(
+    { entityId: "thermo_regulator", qty: 1, recipeId: "chlorine" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(chlorineEval.power, -240.0);
+  assert.strictEqual(chlorineEval.heat, 6.72);
+  const clIn = chlorineEval.inputs.find((i) => i.resource === "Chlorine");
+  const clOut = chlorineEval.outputs.find((o) => o.resource === "Chlorine");
+  assert.strictEqual(clIn.rate, 1000.0);
+  assert.strictEqual(clOut.rate, 1000.0);
+  assert.strictEqual(clOut.tempC, 6.0);
+
+  // Explicit recipe: carbon_dioxide with qty: 2 and custom input temperature (30 °C -> 16 °C)
+  const co2Eval = evaluateRow(
+    { entityId: "thermo_regulator", qty: 2, recipeId: "carbon_dioxide" },
+    entityMap,
+    elementMap,
+    20.0,
+    { "Carbon Dioxide||in a pipe": 30.0 }
+  );
+  assert.strictEqual(co2Eval.power, -480.0);
+  assert.strictEqual(co2Eval.heat, 23.688);
+  const co2In = co2Eval.inputs.find((i) => i.resource === "Carbon Dioxide");
+  const co2Out = co2Eval.outputs.find((o) => o.resource === "Carbon Dioxide");
+  assert.strictEqual(co2In.rate, 2000.0);
+  assert.strictEqual(co2In.tempC, 30.0);
+  assert.strictEqual(co2Out.rate, 2000.0);
+  assert.strictEqual(co2Out.tempC, 16.0);
+  assert.strictEqual(co2Out.temp, "@ 16 °C");
+
+  // URL state round-trip with Thermo Regulator
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "thermo_regulator", qty: 2, recipeId: "hydrogen", modifiers: [] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 1);
+  assert.strictEqual(decoded.rows[0].entityId, "thermo_regulator");
+  assert.strictEqual(decoded.rows[0].qty, 2);
+  assert.strictEqual(decoded.rows[0].recipeId, "hydrogen");
+
+  console.log("✓ Thermo Regulator Building and Recipes tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

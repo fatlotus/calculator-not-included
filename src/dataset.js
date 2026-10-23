@@ -7098,10 +7098,147 @@ export const ONI_DATASET = {
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Thermo_Regulator",
       "icon": "images/icons/Thermo_Regulator.png",
       "power": -240.0,
-      "heat": 0.0,
-      "inputs": [],
-      "outputs": [],
-      "recipes": [],
+      "heat": 33.6,
+      "inputs": [
+        {
+          "resource": "Hydrogen",
+          "rate": 1000.0,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Hydrogen",
+          "rate": 1000.0,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": "-14 °C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "hydrogen",
+          "name": "Cool Hydrogen (-14 °C @ 1 kg/s -> +33.6 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Hydrogen",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Hydrogen",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -240.0,
+          "heat": 33.6
+        },
+        {
+          "id": "oxygen",
+          "name": "Cool Oxygen (-14 °C @ 1 kg/s -> +14.07 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Oxygen",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Oxygen",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -240.0,
+          "heat": 14.07
+        },
+        {
+          "id": "natural_gas",
+          "name": "Cool Natural Gas (-14 °C @ 1 kg/s -> +30.67 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Natural Gas",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Natural Gas",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -240.0,
+          "heat": 30.674
+        },
+        {
+          "id": "chlorine",
+          "name": "Cool Chlorine (-14 °C @ 1 kg/s -> +6.72 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Chlorine",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Chlorine",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -240.0,
+          "heat": 6.72
+        },
+        {
+          "id": "carbon_dioxide",
+          "name": "Cool Carbon Dioxide (-14 °C @ 1 kg/s -> +11.84 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -240.0,
+          "heat": 11.844
+        }
+      ],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Thermo_Regulator.png?a5f1aa"
     },
