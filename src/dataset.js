@@ -6494,9 +6494,251 @@ export const ONI_DATASET = {
       "icon": "images/icons/Molecular_Forge.png",
       "power": -1600.0,
       "heat": 16.0,
-      "inputs": [],
-      "outputs": [],
-      "recipes": [],
+      "inputs": [
+        {
+          "resource": "Tungsten",
+          "rate": 1187.5,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Niobium",
+          "rate": 62.5,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1.0,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Thermium",
+          "rate": 1250.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 40 °C+"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "thermium",
+          "name": "Thermium (95 kg Tungsten + 5 kg Niobium -> 100 kg Thermium) [80s]",
+          "inputs": [
+            {
+              "resource": "Tungsten",
+              "rate": 1187.5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Niobium",
+              "rate": 62.5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Thermium",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 40 °C+"
+            }
+          ],
+          "power": -1600.0,
+          "heat": 16.0
+        },
+        {
+          "id": "super_coolant",
+          "name": "Super Coolant (1 kg Fullerene + 49.5 kg Gold + 49.5 kg Petroleum -> 100 kg Super Coolant) [80s]",
+          "inputs": [
+            {
+              "resource": "Fullerene",
+              "rate": 12.5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Gold",
+              "rate": 618.75,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Petroleum",
+              "rate": 618.75,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Super Coolant",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 40 °C+"
+            }
+          ],
+          "power": -1600.0,
+          "heat": 16.0
+        },
+        {
+          "id": "visco_gel_fluid",
+          "name": "Visco-Gel (35 kg Isosap + 65 kg Petroleum -> 100 kg Visco-Gel) [80s]",
+          "inputs": [
+            {
+              "resource": "Isosap",
+              "rate": 437.5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Petroleum",
+              "rate": 812.5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Visco-Gel Fluid",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 40 °C+"
+            }
+          ],
+          "power": -1600.0,
+          "heat": 16.0
+        },
+        {
+          "id": "insulite",
+          "name": "Insulation (15 kg Isosap + 80 kg Abyssalite + 5 kg Reed Fiber -> 100 kg Insulation) [80s]",
+          "inputs": [
+            {
+              "resource": "Isosap",
+              "rate": 187.5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Abyssalite",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Reed Fiber",
+              "rate": 62.5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Insulite",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 40 °C+"
+            }
+          ],
+          "power": -1600.0,
+          "heat": 16.0
+        },
+        {
+          "id": "plastium",
+          "name": "Plastium (15 kg Thermium + 70 kg Plastic + 15 kg Brackwax -> 100 kg Plastium) [80s]",
+          "inputs": [
+            {
+              "resource": "Thermium",
+              "rate": 187.5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Plastic",
+              "rate": 875.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Brackwax",
+              "rate": 187.5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Plastium",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 40 °C+"
+            }
+          ],
+          "power": -1600.0,
+          "heat": 16.0
+        }
+      ],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Molecular_Forge.png?35cc63"
     },

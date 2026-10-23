@@ -1232,4 +1232,128 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Bleach Stone Hopper Building and Recipes tests passed");
 }
 
+// 16. Molecular Forge Building and Recipe Calculations
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const forge = entityMap.get("molecular_forge");
+  assert.ok(forge, "molecular_forge entity must exist");
+  assert.strictEqual(forge.name, "Molecular Forge");
+  assert.strictEqual(forge.category, "Machine");
+  assert.strictEqual(forge.subcategory, "Refinement");
+  assert.strictEqual(forge.recipes.length, 5);
+  assert.strictEqual(forge.recipes[0].id, "thermium");
+  assert.strictEqual(forge.recipes[1].id, "super_coolant");
+  assert.strictEqual(forge.recipes[2].id, "visco_gel_fluid");
+  assert.strictEqual(forge.recipes[3].id, "insulite");
+  assert.strictEqual(forge.recipes[4].id, "plastium");
+
+  assert.strictEqual(forge.outputs[0].temp, "@ 40 °C+");
+  assert.strictEqual(forge.recipes[0].outputs[0].temp, "@ 40 °C+");
+
+  // Default evaluation (thermium recipe)
+  const defaultEval = evaluateRow({ entityId: "molecular_forge", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(defaultEval.power, -1600.0);
+  assert.strictEqual(defaultEval.heat, 16.0);
+  assert.strictEqual(defaultEval.inputs.length, 3);
+  assert.strictEqual(defaultEval.outputs.length, 1);
+
+  const tungstenIn = defaultEval.inputs.find((i) => i.resource === "Tungsten");
+  assert.ok(tungstenIn, "Molecular Forge default must consume Tungsten");
+  assert.strictEqual(tungstenIn.rate, 1187.5);
+  assert.strictEqual(tungstenIn.unit, "g/s");
+  assert.strictEqual(tungstenIn.state, "free");
+
+  const niobiumIn = defaultEval.inputs.find((i) => i.resource === "Niobium");
+  assert.ok(niobiumIn, "Molecular Forge default must consume Niobium");
+  assert.strictEqual(niobiumIn.rate, 62.5);
+  assert.strictEqual(niobiumIn.unit, "g/s");
+  assert.strictEqual(niobiumIn.state, "free");
+
+  const laborIn = defaultEval.inputs.find((i) => i.resource === "Duplicant Labor");
+  assert.ok(laborIn, "Molecular Forge default must require Duplicant Labor");
+  assert.strictEqual(laborIn.rate, 1.0);
+  assert.strictEqual(laborIn.unit, "s/s");
+  assert.strictEqual(laborIn.state, "labor");
+
+  const thermiumOut = defaultEval.outputs.find((o) => o.resource === "Thermium");
+  assert.ok(thermiumOut, "Molecular Forge default must output Thermium");
+  assert.strictEqual(thermiumOut.rate, 1250.0);
+  assert.strictEqual(thermiumOut.unit, "g/s");
+  assert.strictEqual(thermiumOut.state, "free");
+  assert.strictEqual(thermiumOut.tempC, 40.0);
+  assert.strictEqual(thermiumOut.temp, "@ 40 °C");
+
+  // Explicit recipe: super_coolant
+  const superCoolantEval = evaluateRow(
+    { entityId: "molecular_forge", qty: 1, recipeId: "super_coolant" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(superCoolantEval.power, -1600.0);
+  assert.strictEqual(superCoolantEval.heat, 16.0);
+  assert.strictEqual(superCoolantEval.inputs.find((i) => i.resource === "Fullerene").rate, 12.5);
+  assert.strictEqual(superCoolantEval.inputs.find((i) => i.resource === "Gold").rate, 618.75);
+  assert.strictEqual(superCoolantEval.inputs.find((i) => i.resource === "Petroleum").rate, 618.75);
+  assert.strictEqual(superCoolantEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(superCoolantEval.outputs.find((o) => o.resource === "Super Coolant").rate, 1250.0);
+
+  // Explicit recipe: visco_gel_fluid
+  const viscoGelEval = evaluateRow(
+    { entityId: "molecular_forge", qty: 1, recipeId: "visco_gel_fluid" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(viscoGelEval.power, -1600.0);
+  assert.strictEqual(viscoGelEval.heat, 16.0);
+  assert.strictEqual(viscoGelEval.inputs.find((i) => i.resource === "Isosap").rate, 437.5);
+  assert.strictEqual(viscoGelEval.inputs.find((i) => i.resource === "Petroleum").rate, 812.5);
+  assert.strictEqual(viscoGelEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(viscoGelEval.outputs.find((o) => o.resource === "Visco-Gel Fluid").rate, 1250.0);
+
+  // Explicit recipe: insulite
+  const insuliteEval = evaluateRow(
+    { entityId: "molecular_forge", qty: 1, recipeId: "insulite" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(insuliteEval.power, -1600.0);
+  assert.strictEqual(insuliteEval.heat, 16.0);
+  assert.strictEqual(insuliteEval.inputs.find((i) => i.resource === "Isosap").rate, 187.5);
+  assert.strictEqual(insuliteEval.inputs.find((i) => i.resource === "Abyssalite").rate, 1000.0);
+  assert.strictEqual(insuliteEval.inputs.find((i) => i.resource === "Reed Fiber").rate, 62.5);
+  assert.strictEqual(insuliteEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(insuliteEval.outputs.find((o) => o.resource === "Insulite").rate, 1250.0);
+
+  // Explicit recipe: plastium with qty: 2
+  const plastiumEval = evaluateRow(
+    { entityId: "molecular_forge", qty: 2, recipeId: "plastium" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(plastiumEval.power, -3200.0);
+  assert.strictEqual(plastiumEval.heat, 32.0);
+  assert.strictEqual(plastiumEval.inputs.find((i) => i.resource === "Thermium").rate, 375.0);
+  assert.strictEqual(plastiumEval.inputs.find((i) => i.resource === "Plastic").rate, 1750.0);
+  assert.strictEqual(plastiumEval.inputs.find((i) => i.resource === "Brackwax").rate, 375.0);
+  assert.strictEqual(plastiumEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 2.0);
+  assert.strictEqual(plastiumEval.outputs.find((o) => o.resource === "Plastium").rate, 2500.0);
+
+  // URL state round-trip with Molecular Forge
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "molecular_forge", qty: 2, recipeId: "plastium", modifiers: [] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 1);
+  assert.strictEqual(decoded.rows[0].entityId, "molecular_forge");
+  assert.strictEqual(decoded.rows[0].qty, 2);
+  assert.strictEqual(decoded.rows[0].recipeId, "plastium");
+
+  console.log("✓ Molecular Forge Building and Recipes tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
