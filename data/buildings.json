@@ -186,7 +186,7 @@
     "category": "Machine",
     "subcategory": "Oxygen",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sublimation_Station",
-    "icon": "images/icons/SO_icon.png",
+    "icon": "images/icons/Sublimation_Station.png",
     "power": -60.0,
     "heat": 1.5,
     "inputs": [
@@ -209,7 +209,7 @@
     ],
     "recipes": [],
     "modifiers": [],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/SO_icon.png/42px-SO_icon.png?379082"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Sublimation_Station.png"
   },
   {
     "id": "deodorizer",
@@ -468,7 +468,7 @@
     "category": "Machine",
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Peat_Burner",
-    "icon": "images/icons/PP_icon.png",
+    "icon": "images/icons/Peat_Burner.png",
     "power": 480.0,
     "heat": 4.5,
     "inputs": [],
@@ -498,7 +498,7 @@
         ]
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/PP_icon.png/42px-PP_icon.png?bc0815"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Peat_Burner.png"
   },
   {
     "id": "natural_gas_generator",
@@ -5354,14 +5354,14 @@
     "category": "Machine",
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sludge_Press",
-    "icon": "images/icons/AP_icon.png",
+    "icon": "images/icons/Sludge_Press.png",
     "power": -120.0,
     "heat": 4.0,
     "inputs": [],
     "outputs": [],
     "recipes": [],
     "modifiers": [],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/AP_icon.png/42px-AP_icon.png?acd6ca"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Sludge_Press.png"
   },
   {
     "id": "compost",
@@ -6317,14 +6317,14 @@
     "category": "Machine",
     "subcategory": "Food",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Deep_Fryer",
-    "icon": "images/icons/FP_icon.png",
+    "icon": "images/icons/Deep_Fryer.png",
     "power": -480.0,
     "heat": 10.0,
     "inputs": [],
     "outputs": [],
     "recipes": [],
     "modifiers": [],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/FP_icon.png/42px-FP_icon.png?d6f229"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Deep_Fryer.png"
   },
   {
     "id": "smoker",
@@ -6332,7 +6332,7 @@
     "category": "Machine",
     "subcategory": "Food",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Smoker",
-    "icon": "images/icons/PP_icon.png",
+    "icon": "images/icons/Smoker.png",
     "power": 0.0,
     "heat": 9.0,
     "inputs": [],
@@ -6347,7 +6347,7 @@
     ],
     "recipes": [],
     "modifiers": [],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/PP_icon.png/42px-PP_icon.png?bc0815"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Smoker.png"
   },
   {
     "id": "incubator",
@@ -6385,7 +6385,7 @@
     "category": "Machine",
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Power_Control_Station",
-    "icon": "images/icons/Metal_Refinery.png",
+    "icon": "images/icons/Power_Control_Station.png",
     "power": 0.0,
     "heat": 0.0,
     "inputs": [],

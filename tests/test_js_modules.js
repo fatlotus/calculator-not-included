@@ -323,7 +323,7 @@ console.log("=== Running JavaScript Module Tests ===");
   const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
   assert.ok(PRESETS.length >= 5, "Should have at least 5 presets defined");
   const hydra = getPresetById("hydra_spom");
-  assert.strictEqual(hydra.name, "Hydra SPOM (PDF Example)");
+  assert.strictEqual(hydra.name, "Hydra SPOM");
   assert.strictEqual(hydra.rows.length, 5);
 
   // Oil refinery preset test
@@ -340,19 +340,21 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(dreckoPreset.rows.length, 2);
   const dreckoCritterRow = dreckoPreset.rows.find((r) => r.entityId === "critter_glossy_drecko");
   assert.ok(dreckoCritterRow, "Preset should contain critter_glossy_drecko");
+  assert.strictEqual(dreckoCritterRow.qty, 1);
   assert.ok(
     dreckoCritterRow.recipeId === "bristle_blossom_plastic" || dreckoCritterRow.recipeId === "bristle_berry_plastic",
     "Drecko should use Bristle Blossom/Berry recipe"
   );
   const dreckoPlantRow = dreckoPreset.rows.find((r) => r.entityId === "plant_bristle_blossom");
   assert.ok(dreckoPlantRow, "Preset should contain plant_bristle_blossom");
+  assert.strictEqual(dreckoPlantRow.qty, 1);
   assert.strictEqual(dreckoPlantRow.recipeId, "growth", "Bristle Blossom should use growth recipe");
 
   const evalDrecko = dreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
   const dreckoNet = calculateSystemNet(evalDrecko);
   const plasticOut = dreckoNet.netOutputs.find((o) => o.resource === "Plastic");
   assert.ok(plasticOut, "Drecko preset must output Plastic");
-  assert.ok(plasticOut.rate > 200, "Plastic output should be > 200 g/s");
+  assert.ok(plasticOut.rate > 80, "Plastic output should be > 80 g/s");
 
   // Growth cancels out completely to 0
   const netGrowthIn = dreckoNet.netInputs.find((i) => i.resource === "Growth");
@@ -372,21 +374,38 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(regularDreckoPreset.rows.length, 2);
   const regularDreckoRow = regularDreckoPreset.rows.find((r) => r.entityId === "critter_drecko");
   assert.ok(regularDreckoRow, "Preset should contain critter_drecko");
+  assert.strictEqual(regularDreckoRow.qty, 1);
   assert.strictEqual(regularDreckoRow.recipeId, "balm_lily");
   const balmLilyRow = regularDreckoPreset.rows.find((r) => r.entityId === "plant_balm_lily");
   assert.ok(balmLilyRow, "Preset should contain plant_balm_lily");
+  assert.strictEqual(balmLilyRow.qty, 1);
   assert.strictEqual(balmLilyRow.recipeId, "growth");
 
   const evalRegularDrecko = regularDreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
   const regularDreckoNet = calculateSystemNet(evalRegularDrecko);
   const reedFiberOut = regularDreckoNet.netOutputs.find((o) => o.resource === "Reed Fiber");
   assert.ok(reedFiberOut, "Drecko preset must output Reed Fiber");
-  assert.ok(reedFiberOut.rate > 1, "Reed Fiber output should be > 1 g/s");
+  assert.ok(reedFiberOut.rate > 0.4, "Reed Fiber output should be > 0.4 g/s");
   const regularPhosphoriteOut = regularDreckoNet.netOutputs.find((o) => o.resource === "Phosphorite");
   assert.ok(regularPhosphoriteOut, "Drecko preset must output Phosphorite");
 
   // Zero net inputs: Balm Lily requires 0 inputs, Growth cancels out completely
   assert.strictEqual(regularDreckoNet.netInputs.length, 0, "Balm Lily Drecko ranch requires zero net inputs");
+
+  // Carbon Skimmer Loops include Gas Pump
+  const coalPreset = getPresetById("coal_skimmer_loop");
+  assert.ok(coalPreset, "Coal skimmer loop preset should exist");
+  assert.strictEqual(coalPreset.rows.length, 4);
+  const coalPumpRow = coalPreset.rows.find((r) => r.entityId === "gas_pump");
+  assert.ok(coalPumpRow, "Coal skimmer loop must contain a gas pump");
+  assert.strictEqual(coalPumpRow.recipeId, "carbon_dioxide");
+
+  const arborPreset = getPresetById("arbor_ethanol_loop");
+  assert.ok(arborPreset, "Arbor ethanol loop preset should exist");
+  assert.strictEqual(arborPreset.rows.length, 5);
+  const arborPumpRow = arborPreset.rows.find((r) => r.entityId === "gas_pump");
+  assert.ok(arborPumpRow, "Arbor ethanol loop must contain a gas pump");
+  assert.strictEqual(arborPumpRow.recipeId, "carbon_dioxide");
 
   // Natural Gas Geyser Power preset test (Fractional Generator and Pump)
   const ngPreset = getPresetById("natural_gas_geyser_power");
@@ -821,6 +840,87 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(!oilNetHtmlCycle.includes("-0 /cycle"), "Cycle mode must never render -0 /cycle");
 
   console.log("✓ Small Net Resource Inputs & Outputs Elision (Roundoff Error Handling) tests passed");
+}
+
+// 11. Icon Integrity and Accuracy Tests
+{
+  const { entities, entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+
+  // Machine icons must be actual machine graphics, not expansion pack logos
+  const sublimation = entityMap.get("sublimation_station");
+  assert.ok(sublimation, "Sublimation Station must exist");
+  assert.strictEqual(sublimation.icon, "images/icons/Sublimation_Station.png", "Sublimation Station must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", sublimation.icon)), "Sublimation Station icon file must exist");
+
+  const peatBurner = entityMap.get("peat_burner");
+  assert.ok(peatBurner, "Peat Burner must exist");
+  assert.strictEqual(peatBurner.icon, "images/icons/Peat_Burner.png", "Peat Burner must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", peatBurner.icon)), "Peat Burner icon file must exist");
+
+  const sludgePress = entityMap.get("sludge_press");
+  assert.ok(sludgePress, "Sludge Press must exist");
+  assert.strictEqual(sludgePress.icon, "images/icons/Sludge_Press.png", "Sludge Press must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", sludgePress.icon)), "Sludge Press icon file must exist");
+
+  const deepFryer = entityMap.get("deep_fryer");
+  assert.ok(deepFryer, "Deep Fryer must exist");
+  assert.strictEqual(deepFryer.icon, "images/icons/Deep_Fryer.png", "Deep Fryer must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", deepFryer.icon)), "Deep Fryer icon file must exist");
+
+  const smoker = entityMap.get("smoker");
+  assert.ok(smoker, "Smoker must exist");
+  assert.strictEqual(smoker.icon, "images/icons/Smoker.png", "Smoker must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", smoker.icon)), "Smoker icon file must exist");
+
+  const powerControl = entityMap.get("power_control_station");
+  assert.ok(powerControl, "Power Control Station must exist");
+  assert.strictEqual(powerControl.icon, "images/icons/Power_Control_Station.png", "Power Control Station must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", powerControl.icon)), "Power Control Station icon file must exist");
+
+  // Element and resource icons verification
+  const reedFiber = elementMap.get("Reed Fiber");
+  assert.ok(reedFiber, "Reed Fiber must exist in elementMap");
+  assert.strictEqual(reedFiber.icon, "images/icons/Reed_Fiber.png", "Reed Fiber must have Reed_Fiber.png icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", reedFiber.icon)), "Reed Fiber icon file must exist");
+
+  const pollutedDirt = elementMap.get("Polluted Dirt");
+  assert.ok(pollutedDirt, "Polluted Dirt must exist in elementMap");
+  assert.strictEqual(pollutedDirt.icon, "images/icons/Polluted_Dirt.png", "Polluted Dirt must use Polluted_Dirt.png icon");
+
+  const microchip = elementMap.get("Microchip");
+  assert.ok(microchip, "Microchip must exist in elementMap");
+  assert.strictEqual(microchip.icon, "images/icons/Microchip.png", "Microchip must use Microchip.png icon");
+
+  const gearBalm = elementMap.get("Gear Balm");
+  assert.ok(gearBalm, "Gear Balm must exist in elementMap");
+  assert.strictEqual(gearBalm.icon, "images/icons/Gear_Balm.png", "Gear Balm must use Gear_Balm.png icon");
+
+  // Verify no entity or input/output stream uses an expansion pack icon
+  for (const ent of entities) {
+    assert.ok(!ent.icon.includes("_icon.png"), `Entity ${ent.name} must not use expansion pack icon (${ent.icon})`);
+
+    const checkStreams = (streams) => {
+      if (!streams) return;
+      for (const s of streams) {
+        const elem = elementMap.get(s.resource);
+        assert.ok(elem, `Resource ${s.resource} used in ${ent.name} must resolve in elementMap`);
+        assert.ok(elem.icon, `Resource ${s.resource} must have an icon`);
+        assert.ok(fs.existsSync(path.resolve(__dirname, "..", elem.icon)), `Icon file ${elem.icon} for resource ${s.resource} must exist`);
+        assert.ok(!elem.icon.includes("_icon.png"), `Resource ${s.resource} must not use expansion pack icon (${elem.icon})`);
+      }
+    };
+
+    checkStreams(ent.inputs);
+    checkStreams(ent.outputs);
+    if (ent.recipes) {
+      for (const r of ent.recipes) {
+        checkStreams(r.inputs);
+        checkStreams(r.outputs);
+      }
+    }
+  }
+
+  console.log("✓ Icon Integrity and Accuracy tests passed");
 }
 
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

@@ -89,7 +89,7 @@ Deputize `flash` subagents to research the `oxygennotincluded.wiki.gg` API struc
 - **Global Rate Toggle**:
   - `Per Second (/s)` vs. `Per Cycle (/cycle, 600s)` (or `Auto / Game Default` where gasses/liquids are `g/s` or `kg/s` and calories/fertilizer can be viewed in `/s` or `/cycle`).
 - **Built-in Example Presets**:
-  - **Hydra SPOM (PDF Example)**: 1x Electrolyzer, 1x Hydrogen Generator, 1x Water Pump, 1x Gas Pump, 8x Duplicant.
+  - **Hydra SPOM**: 1x Electrolyzer, 1x Hydrogen Generator, 1x Water Pump, 1x Gas Pump, 8x Duplicant.
   - **Coal Power Plant + Carbon Skimmer Loop**
   - **Hatch Ranch & Barbecue Sustainability Loop**
   - **Petroleum Boiler / Industrial Brick**
