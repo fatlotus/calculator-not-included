@@ -921,4 +921,68 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Compost Recipes and Calculations tests passed");
 }
 
+// 12. Peat Burner Building and Tune-Up Calculations
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const peatBurner = entityMap.get("peat_burner");
+  assert.ok(peatBurner, "peat_burner entity must exist");
+  assert.strictEqual(peatBurner.name, "Peat Burner");
+
+  // Default evaluation (qty: 1)
+  const defaultEval = evaluateRow({ entityId: "peat_burner", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(defaultEval.power, 480.0);
+  assert.strictEqual(defaultEval.heat, 4.5);
+
+  const peatIn = defaultEval.inputs.find((i) => i.resource === "Peat");
+  assert.ok(peatIn, "Peat Burner must consume Peat");
+  assert.strictEqual(peatIn.rate, 1000.0);
+  assert.strictEqual(peatIn.unit, "g/s");
+  assert.strictEqual(peatIn.state, "free");
+
+  const co2Out = defaultEval.outputs.find((o) => o.resource === "Carbon Dioxide");
+  assert.ok(co2Out, "Peat Burner must output Carbon Dioxide");
+  assert.strictEqual(co2Out.rate, 40.0);
+  assert.strictEqual(co2Out.unit, "g/s");
+  assert.strictEqual(co2Out.state, "free");
+  assert.strictEqual(co2Out.tempC, 110.0);
+
+  // Scaling with quantity (qty: 2)
+  const multiEval = evaluateRow({ entityId: "peat_burner", qty: 2 }, entityMap, elementMap);
+  assert.strictEqual(multiEval.power, 960.0);
+  assert.strictEqual(multiEval.heat, 9.0);
+  const multiPeatIn = multiEval.inputs.find((i) => i.resource === "Peat");
+  assert.strictEqual(multiPeatIn.rate, 2000.0);
+  const multiCo2Out = multiEval.outputs.find((o) => o.resource === "Carbon Dioxide");
+  assert.strictEqual(multiCo2Out.rate, 80.0);
+
+  // Engie's Tune-Up modifier (+50% power, Microchip extra input)
+  const tunedEval = evaluateRow({ entityId: "peat_burner", qty: 1, modifiers: ["engie_tuneup"] }, entityMap, elementMap);
+  assert.strictEqual(tunedEval.power, 720.0);
+  const tunedPeatIn = tunedEval.inputs.find((i) => i.resource === "Peat");
+  assert.ok(tunedPeatIn, "Tuned Peat Burner must consume Peat");
+  assert.strictEqual(tunedPeatIn.rate, 1000.0);
+  const chipIn = tunedEval.inputs.find((i) => i.resource === "Microchip");
+  assert.ok(chipIn, "Tuned Peat Burner must consume Microchips");
+  assert.strictEqual(chipIn.unit, "chips/s");
+  assert.strictEqual(chipIn.state, "solid");
+  assert.strictEqual(chipIn.rate, 0.0005555556);
+
+  // URL state round-trip with Peat Burner and Engie's Tune-Up
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "peat_burner", qty: 2, recipeId: null, modifiers: ["engie_tuneup"] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 1);
+  assert.strictEqual(decoded.rows[0].entityId, "peat_burner");
+  assert.strictEqual(decoded.rows[0].qty, 2);
+  assert.deepStrictEqual(decoded.rows[0].modifiers, ["engie_tuneup"]);
+
+  console.log("✓ Peat Burner Building and Tune-Up tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

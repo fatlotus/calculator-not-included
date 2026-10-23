@@ -472,7 +472,15 @@
       "icon": "images/icons/PP_icon.png",
       "power": 480.0,
       "heat": 4.5,
-      "inputs": [],
+      "inputs": [
+        {
+          "resource": "Peat",
+          "rate": 1000.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        }
+      ],
       "outputs": [
         {
           "resource": "Carbon Dioxide",
