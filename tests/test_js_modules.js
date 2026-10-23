@@ -1156,4 +1156,80 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Glass Forge Building and Recipe tests passed");
 }
 
+// 15. Bleach Stone Hopper Building and Recipe Calculations
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const hopper = entityMap.get("bleach_stone_hopper");
+  assert.ok(hopper, "bleach_stone_hopper entity must exist");
+  assert.strictEqual(hopper.name, "Bleach Stone Hopper");
+  assert.strictEqual(hopper.category, "Machine");
+  assert.strictEqual(hopper.subcategory, "Refinement");
+  assert.strictEqual(hopper.recipes.length, 2);
+  assert.strictEqual(hopper.recipes[0].id, "bleach_stone_gold");
+  assert.strictEqual(hopper.recipes[1].id, "bleach_stone_gold_amalgam");
+
+  // Default evaluation (Gold recipe)
+  const defaultEval = evaluateRow({ entityId: "bleach_stone_hopper", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(defaultEval.power, -480.0);
+  assert.strictEqual(defaultEval.heat, 3.0);
+  assert.strictEqual(defaultEval.inputs.length, 2);
+  assert.strictEqual(defaultEval.outputs.length, 2);
+
+  const saltIn = defaultEval.inputs.find((i) => i.resource === "Salt");
+  assert.ok(saltIn, "Bleach Stone Hopper default must consume Salt");
+  assert.strictEqual(saltIn.rate, 750.0);
+  assert.strictEqual(saltIn.unit, "g/s");
+  assert.strictEqual(saltIn.state, "free");
+
+  const goldIn = defaultEval.inputs.find((i) => i.resource === "Gold");
+  assert.ok(goldIn, "Bleach Stone Hopper default must consume Gold");
+  assert.strictEqual(goldIn.rate, 12.5);
+  assert.strictEqual(goldIn.unit, "g/s");
+  assert.strictEqual(goldIn.state, "free");
+
+  const bleachOut = defaultEval.outputs.find((o) => o.resource === "Bleach Stone");
+  assert.ok(bleachOut, "Bleach Stone Hopper default must output Bleach Stone");
+  assert.strictEqual(bleachOut.rate, 250.0);
+  assert.strictEqual(bleachOut.unit, "g/s");
+  assert.strictEqual(bleachOut.state, "free");
+
+  const sandOut = defaultEval.outputs.find((o) => o.resource === "Sand");
+  assert.ok(sandOut, "Bleach Stone Hopper default must output Sand");
+  assert.strictEqual(sandOut.rate, 500.0);
+  assert.strictEqual(sandOut.unit, "g/s");
+  assert.strictEqual(sandOut.state, "free");
+
+  // Explicit recipe: bleach_stone_gold_amalgam with qty: 2
+  const amalgamEval = evaluateRow(
+    { entityId: "bleach_stone_hopper", qty: 2, recipeId: "bleach_stone_gold_amalgam" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(amalgamEval.power, -960.0);
+  assert.strictEqual(amalgamEval.heat, 6.0);
+  assert.strictEqual(amalgamEval.inputs.find((i) => i.resource === "Salt").rate, 1500.0);
+  const goldAmalgamIn = amalgamEval.inputs.find((i) => i.resource === "Gold Amalgam");
+  assert.ok(goldAmalgamIn, "Bleach Stone Hopper amalgam recipe must consume Gold Amalgam");
+  assert.strictEqual(goldAmalgamIn.rate, 25.0);
+  assert.strictEqual(amalgamEval.outputs.find((o) => o.resource === "Bleach Stone").rate, 500.0);
+  assert.strictEqual(amalgamEval.outputs.find((o) => o.resource === "Sand").rate, 1000.0);
+
+  // URL state round-trip with Bleach Stone Hopper
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "bleach_stone_hopper", qty: 2, recipeId: "bleach_stone_gold_amalgam", modifiers: [] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 1);
+  assert.strictEqual(decoded.rows[0].entityId, "bleach_stone_hopper");
+  assert.strictEqual(decoded.rows[0].qty, 2);
+  assert.strictEqual(decoded.rows[0].recipeId, "bleach_stone_gold_amalgam");
+
+  console.log("✓ Bleach Stone Hopper Building and Recipes tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

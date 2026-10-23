@@ -6508,9 +6508,116 @@
     "icon": "images/icons/Bleach_Stone_Hopper.png",
     "power": -480.0,
     "heat": 3.0,
-    "inputs": [],
-    "outputs": [],
-    "recipes": [],
+    "inputs": [
+      {
+        "resource": "Salt",
+        "rate": 750.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Gold",
+        "rate": 12.5,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Bleach Stone",
+        "rate": 250.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Sand",
+        "rate": 500.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "bleach_stone_gold",
+        "name": "Salt (30 kg) + Gold (0.5 kg) -> Bleach Stone (10 kg) + Sand (20 kg) [40s]",
+        "inputs": [
+          {
+            "resource": "Salt",
+            "rate": 750.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Gold",
+            "rate": 12.5,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Bleach Stone",
+            "rate": 250.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Sand",
+            "rate": 500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -480.0,
+        "heat": 3.0
+      },
+      {
+        "id": "bleach_stone_gold_amalgam",
+        "name": "Salt (30 kg) + Gold Amalgam (0.5 kg) -> Bleach Stone (10 kg) + Sand (20 kg) [40s]",
+        "inputs": [
+          {
+            "resource": "Salt",
+            "rate": 750.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Gold Amalgam",
+            "rate": 12.5,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Bleach Stone",
+            "rate": 250.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Sand",
+            "rate": 500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -480.0,
+        "heat": 3.0
+      }
+    ],
     "modifiers": [],
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Bleach_Stone_Hopper.png?60637e"
   },
