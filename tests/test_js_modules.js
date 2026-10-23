@@ -792,6 +792,41 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(wildMeat, "Wild Hatch must output Meat");
   assert.strictEqual(Math.round(wildMeat.rate * 10000) / 10000, 0.1389);
 
+  // Food-Producing Machines: Microbe Musher, Electric Grill, Gas Range, Deep Fryer
+  const evalGrill = evaluateRow({ entityId: "electric_grill", qty: 1, recipeId: "barbecue" }, entityMap, elementMap);
+  const grillMeatIn = evalGrill.inputs.find((i) => i.resource === "Meat");
+  const grillLaborIn = evalGrill.inputs.find((i) => i.resource === "Duplicant Labor");
+  const grillBbqOut = evalGrill.outputs.find((o) => o.resource === "Barbecue");
+  assert.ok(grillMeatIn, "Electric Grill must consume Meat for Barbecue");
+  assert.strictEqual(grillMeatIn.rate, 40.0, "Grill consumes 40 g/s Meat (2 kg per 50s batch)");
+  assert.ok(grillLaborIn, "Electric Grill requires Duplicant Labor");
+  assert.strictEqual(grillLaborIn.rate, 1.0);
+  assert.ok(grillBbqOut, "Electric Grill outputs Barbecue");
+  assert.strictEqual(grillBbqOut.rate, 20.0, "Grill produces 20 g/s Barbecue (1 kg per 50s batch)");
+  assert.strictEqual(evalGrill.power, -60);
+  assert.strictEqual(evalGrill.heat, 4.5);
+
+  const evalGasRange = evaluateRow({ entityId: "gas_range", qty: 1, recipeId: "surf_and_turf" }, entityMap, elementMap);
+  const rangeBbqIn = evalGasRange.inputs.find((i) => i.resource === "Barbecue");
+  const rangeFishIn = evalGasRange.inputs.find((i) => i.resource === "Cooked Seafood");
+  const rangeGasIn = evalGasRange.inputs.find((i) => i.resource === "Natural Gas" && i.state === "in a pipe");
+  const rangeSurfOut = evalGasRange.outputs.find((o) => o.resource === "Surf'n'Turf");
+  const rangeCo2Out = evalGasRange.outputs.find((o) => o.resource === "Carbon Dioxide");
+  assert.ok(rangeBbqIn && rangeFishIn && rangeGasIn && rangeSurfOut && rangeCo2Out, "Gas Range Surf'n'Turf streams verified");
+  assert.strictEqual(rangeGasIn.rate, 100.0);
+  assert.strictEqual(rangeCo2Out.rate, 25.0);
+  assert.strictEqual(evalGasRange.power, -240);
+  assert.strictEqual(evalGasRange.heat, 9.0);
+
+  // System Net: Ranch to Grill meat matching
+  // 8 Hatches * 0.5556 g/s Meat = 4.4448 g/s Meat
+  // Grill takes 40 g/s Meat, so 4.4448 / 40 = 0.11112 Grills
+  const evalHatches = evaluateRow({ entityId: "critter_hatch", qty: 8 }, entityMap, elementMap);
+  const evalMatchedGrill = evaluateRow({ entityId: "electric_grill", qty: 0.11112, recipeId: "barbecue" }, entityMap, elementMap);
+  const netRanchGrill = calculateSystemNet([evalHatches, evalMatchedGrill]);
+  const netMeat = netRanchGrill.netInputs.find((i) => i.resource === "Meat") || netRanchGrill.netOutputs.find((o) => o.resource === "Meat");
+  assert.ok(!netMeat || Math.abs(netMeat.rate) < 0.001, "Meat cancels out between 8 ranched hatches and matched grill");
+
   console.log("✓ Non-Thermal Resources (Duplicant Labor, Calories, Growth) tests passed");
 }
 
