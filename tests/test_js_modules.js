@@ -760,4 +760,85 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Geotuner Connected Inputs by Geyser Type tests passed");
 }
 
+// 11. Icon Integrity and Accuracy Tests
+{
+  const { entities, entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+
+  // Machine icons must be actual machine graphics, not expansion pack logos
+  const sublimation = entityMap.get("sublimation_station");
+  assert.ok(sublimation, "Sublimation Station must exist");
+  assert.strictEqual(sublimation.icon, "images/icons/Sublimation_Station.png", "Sublimation Station must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", sublimation.icon)), "Sublimation Station icon file must exist");
+
+  const peatBurner = entityMap.get("peat_burner");
+  assert.ok(peatBurner, "Peat Burner must exist");
+  assert.strictEqual(peatBurner.icon, "images/icons/Peat_Burner.png", "Peat Burner must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", peatBurner.icon)), "Peat Burner icon file must exist");
+
+  const sludgePress = entityMap.get("sludge_press");
+  assert.ok(sludgePress, "Sludge Press must exist");
+  assert.strictEqual(sludgePress.icon, "images/icons/Sludge_Press.png", "Sludge Press must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", sludgePress.icon)), "Sludge Press icon file must exist");
+
+  const deepFryer = entityMap.get("deep_fryer");
+  assert.ok(deepFryer, "Deep Fryer must exist");
+  assert.strictEqual(deepFryer.icon, "images/icons/Deep_Fryer.png", "Deep Fryer must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", deepFryer.icon)), "Deep Fryer icon file must exist");
+
+  const smoker = entityMap.get("smoker");
+  assert.ok(smoker, "Smoker must exist");
+  assert.strictEqual(smoker.icon, "images/icons/Smoker.png", "Smoker must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", smoker.icon)), "Smoker icon file must exist");
+
+  const powerControl = entityMap.get("power_control_station");
+  assert.ok(powerControl, "Power Control Station must exist");
+  assert.strictEqual(powerControl.icon, "images/icons/Power_Control_Station.png", "Power Control Station must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", powerControl.icon)), "Power Control Station icon file must exist");
+
+  // Element and resource icons verification
+  const reedFiber = elementMap.get("Reed Fiber");
+  assert.ok(reedFiber, "Reed Fiber must exist in elementMap");
+  assert.strictEqual(reedFiber.icon, "images/icons/Reed_Fiber.png", "Reed Fiber must have Reed_Fiber.png icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", reedFiber.icon)), "Reed Fiber icon file must exist");
+
+  const pollutedDirt = elementMap.get("Polluted Dirt");
+  assert.ok(pollutedDirt, "Polluted Dirt must exist in elementMap");
+  assert.strictEqual(pollutedDirt.icon, "images/icons/Polluted_Dirt.png", "Polluted Dirt must use Polluted_Dirt.png icon");
+
+  const microchip = elementMap.get("Microchip");
+  assert.ok(microchip, "Microchip must exist in elementMap");
+  assert.strictEqual(microchip.icon, "images/icons/Microchip.png", "Microchip must use Microchip.png icon");
+
+  const gearBalm = elementMap.get("Gear Balm");
+  assert.ok(gearBalm, "Gear Balm must exist in elementMap");
+  assert.strictEqual(gearBalm.icon, "images/icons/Gear_Balm.png", "Gear Balm must use Gear_Balm.png icon");
+
+  // Verify no entity or input/output stream uses an expansion pack icon
+  for (const ent of entities) {
+    assert.ok(!ent.icon.includes("_icon.png"), `Entity ${ent.name} must not use expansion pack icon (${ent.icon})`);
+
+    const checkStreams = (streams) => {
+      if (!streams) return;
+      for (const s of streams) {
+        const elem = elementMap.get(s.resource);
+        assert.ok(elem, `Resource ${s.resource} used in ${ent.name} must resolve in elementMap`);
+        assert.ok(elem.icon, `Resource ${s.resource} must have an icon`);
+        assert.ok(fs.existsSync(path.resolve(__dirname, "..", elem.icon)), `Icon file ${elem.icon} for resource ${s.resource} must exist`);
+        assert.ok(!elem.icon.includes("_icon.png"), `Resource ${s.resource} must not use expansion pack icon (${elem.icon})`);
+      }
+    };
+
+    checkStreams(ent.inputs);
+    checkStreams(ent.outputs);
+    if (ent.recipes) {
+      for (const r of ent.recipes) {
+        checkStreams(r.inputs);
+        checkStreams(r.outputs);
+      }
+    }
+  }
+
+  console.log("✓ Icon Integrity and Accuracy tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

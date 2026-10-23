@@ -32,12 +32,12 @@ export const SYNTHETIC_ELEMENTS = {
   },
   Microchip: {
     name: "Microchip",
-    icon: "images/icons/Power.png",
+    icon: "images/icons/Microchip.png",
     state: "Solid",
   },
   "Gear Balm": {
     name: "Gear Balm",
-    icon: "images/icons/FP_icon.png",
+    icon: "images/icons/Gear_Balm.png",
     state: "Solid",
   },
   "Tallow Gear Balm": {
@@ -48,6 +48,156 @@ export const SYNTHETIC_ELEMENTS = {
   Growth: {
     name: "Growth",
     icon: "images/icons/Mealwood.png",
+    state: "free",
+  },
+  "Reed Fiber": {
+    name: "Reed Fiber",
+    icon: "images/icons/Reed_Fiber.png",
+    state: "Solid",
+  },
+  "Egg Shell": {
+    name: "Egg Shell",
+    icon: "images/icons/Egg_Shell.png",
+    state: "Solid",
+  },
+  "Meal Lice": {
+    name: "Meal Lice",
+    icon: "images/icons/Meal_Lice.png",
+    state: "Food",
+  },
+  "Bristle Berry": {
+    name: "Bristle Berry",
+    icon: "images/icons/Bristle_Berry.png",
+    state: "Food",
+  },
+  Mushroom: {
+    name: "Mushroom",
+    icon: "images/icons/Mushroom.png",
+    state: "Food",
+  },
+  "Sleet Wheat Grain": {
+    name: "Sleet Wheat Grain",
+    icon: "images/icons/Sleet_Wheat_Grain.png",
+    state: "Food",
+  },
+  Lettuce: {
+    name: "Lettuce",
+    icon: "images/icons/Lettuce.png",
+    state: "Food",
+  },
+  "Nosh Bean": {
+    name: "Nosh Bean",
+    icon: "images/icons/Nosh_Bean.png",
+    state: "Food",
+  },
+  "Pincha Peppernut": {
+    name: "Pincha Peppernut",
+    icon: "images/icons/Pincha_Peppernut.png",
+    state: "Food",
+  },
+  "Megafrond Grain": {
+    name: "Megafrond Grain",
+    icon: "images/icons/Megafrond.png",
+    state: "Food",
+  },
+  "Bog Jelly": {
+    name: "Bog Jelly",
+    icon: "images/icons/Bog_Jelly.png",
+    state: "Food",
+  },
+  Grubfruit: {
+    name: "Grubfruit",
+    icon: "images/icons/Grubfruit.png",
+    state: "Food",
+  },
+  "Spindly Grubfruit": {
+    name: "Spindly Grubfruit",
+    icon: "images/icons/Spindly_Grubfruit.png",
+    state: "Food",
+  },
+  "Balm Lily Flower": {
+    name: "Balm Lily Flower",
+    icon: "images/icons/Balm_Lily_Flower.png",
+    state: "Solid",
+  },
+  Seeds: {
+    name: "Seeds",
+    icon: "images/icons/Seeds.png",
+    state: "Solid",
+  },
+  Compostable: {
+    name: "Compostable",
+    icon: "images/icons/Polluted_Dirt.png",
+    state: "Solid",
+  },
+  Pikeapple: {
+    name: "Pikeapple",
+    icon: "images/icons/Pikeapple_Bush.png",
+    state: "Food",
+  },
+  "Plume Squash": {
+    name: "Plume Squash",
+    icon: "images/icons/Plume_Squash_Plant.png",
+    state: "Food",
+  },
+  Sweatcorn: {
+    name: "Sweatcorn",
+    icon: "images/icons/Sweatcorn_Stalk.png",
+    state: "Food",
+  },
+  Mimika: {
+    name: "Mimika",
+    icon: "images/icons/Mimika_Bud.png",
+    state: "Food",
+  },
+  "Salty Sticks": {
+    name: "Salty Sticks",
+    icon: "images/icons/Sodicane.png",
+    state: "Food",
+  },
+  "Plant Husk": {
+    name: "Plant Husk",
+    icon: "images/icons/Gas_Grass.png",
+    state: "Solid",
+  },
+  Dewdrip: {
+    name: "Dewdrip",
+    icon: "images/icons/Dew_Dripper.png",
+    state: "Liquid",
+  },
+  Pinpoki: {
+    name: "Pinpoki",
+    icon: "images/icons/Pinpoket.png",
+    state: "Food",
+  },
+  "Seakomb Leaf": {
+    name: "Seakomb Leaf",
+    icon: "images/icons/Seakomb.png",
+    state: "Food",
+  },
+  Caviar: {
+    name: "Caviar",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+  "Wood (per branch) Nectar": {
+    name: "Wood (per branch) Nectar",
+    icon: "images/icons/Bonbon_Tree.png",
+    state: "free",
+  },
+  "Plant Meat 900.1 g Hydrogen": {
+    name: "Plant Meat 900.1 g Hydrogen",
+    icon: "images/icons/Saturn_Critter_Trap.png",
+    state: "free",
+  },
+  "Kelpole (Per \"Branch\")": {
+    name: "Kelpole (Per \"Branch\")",
+    icon: "images/icons/Seakomb.png",
+    state: "free",
+  },
+  "or Ovolene": {
+    name: "or Ovolene",
+    icon: "images/icons/Ovolene.png",
     state: "free",
   },
 };
