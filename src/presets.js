@@ -20,13 +20,13 @@ export const PRESETS = [
   {
     id: "coal_skimmer_loop",
     name: "Coal Generator + Carbon Skimmer Loop",
-    description: "Continuous 600 W power generation with closed-loop CO2 scrubbing and water filtration.",
+    description: "Continuous 9 kW power generation with closed-loop CO2 scrubbing and water filtration.",
     rateMode: "s",
     rows: [
-      { entityId: "coal_generator", qty: 1, recipeId: null, modifiers: [] },
-      { entityId: "gas_pump", qty: 1, recipeId: "carbon_dioxide", modifiers: [] },
+      { entityId: "coal_generator", qty: 15, recipeId: null, modifiers: [] },
+      { entityId: "gas_pump", qty: 0.6, recipeId: "carbon_dioxide", modifiers: [] },
       { entityId: "carbon_skimmer", qty: 1, recipeId: null, modifiers: [] },
-      { entityId: "water_sieve", qty: 1, recipeId: "sand", modifiers: [] },
+      { entityId: "water_sieve", qty: 0.2, recipeId: "sand", modifiers: [] },
     ],
   },
   {
@@ -49,7 +49,7 @@ export const PRESETS = [
       { entityId: "plant_arbor_tree", qty: 8, recipeId: null, modifiers: [] },
       { entityId: "ethanol_distiller", qty: 4, recipeId: null, modifiers: [] },
       { entityId: "petroleum_generator", qty: 1, recipeId: "ethanol", modifiers: [] },
-      { entityId: "gas_pump", qty: 1, recipeId: "carbon_dioxide", modifiers: [] },
+      { entityId: "gas_pump", qty: 0.6, recipeId: "carbon_dioxide", modifiers: [] },
       { entityId: "carbon_skimmer", qty: 1, recipeId: null, modifiers: [] },
     ],
   },
