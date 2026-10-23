@@ -682,6 +682,20 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(calText.includes("°C"), false, "Calories stream line must not include temperature");
   assert.strictEqual(calText, "Calories: -1000.02 kcal/cycle (free)");
 
+  // Duplicant default calories enabled
+  const defaultDupe = evaluateRow({ entityId: "duplicant", qty: 1 }, entityMap, elementMap);
+  const defaultCalIn = defaultDupe.inputs.find((i) => i.resource === "Calories");
+  assert.ok(defaultCalIn, "Duplicant must have Calories input by default when modifiers not specified");
+  assert.strictEqual(defaultCalIn.rate, 1.6667);
+
+  // Duplicant with explicit empty modifiers disables calories
+  const noCalDupe = evaluateRow({ entityId: "duplicant", qty: 1, modifiers: [] }, entityMap, elementMap);
+  assert.strictEqual(noCalDupe.inputs.find((i) => i.resource === "Calories"), undefined, "Duplicant with empty modifiers should not consume calories");
+
+  // Bionic duplicant does not consume calories
+  const bionicDupe = evaluateRow({ entityId: "bionic_duplicant", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(bionicDupe.inputs.find((i) => i.resource === "Calories"), undefined, "Bionic duplicant must never consume calories");
+
   const laborOut = evaluatedDupe.outputs.find((o) => o.resource === "Duplicant Labor");
   assert.ok(laborOut, "Duplicant must have Duplicant Labor output");
   assert.strictEqual(laborOut.tempC, undefined, "Duplicant Labor output must not have tempC");

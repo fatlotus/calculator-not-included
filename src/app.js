@@ -82,7 +82,10 @@ class OniApp {
       elementMap: this.catalog.elementMap,
       onSelect: (entity) => {
         const recipeId = entity.recipes && entity.recipes.length > 0 ? entity.recipes[0].id : null;
-        const newRow = { entityId: entity.id, qty: 1, recipeId, modifiers: [] };
+        const defaultModifiers = entity.default_modifiers
+          ? [...entity.default_modifiers]
+          : (entity.id === "duplicant" ? ["calories"] : []);
+        const newRow = { entityId: entity.id, qty: 1, recipeId, modifiers: defaultModifiers };
         if (entity.id === "duplicant") {
           newRow.bathroom = "plumbed";
         }

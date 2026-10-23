@@ -10955,6 +10955,9 @@
       "subcategory": "Standard",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Duplicant",
       "icon": "images/icons/Duplicants_preview.png",
+      "default_modifiers": [
+        "calories"
+      ],
       "power": 0,
       "heat": 0,
       "inputs": [
@@ -16161,11 +16164,11 @@
       "name": "Reed Fiber",
       "element_id": "BasicFabric",
       "state": "Solid",
-      "shc": 1.0,
+      "shc": 1,
       "thermal_conductivity": 0.15,
       "low_temp": null,
-      "high_temp": 160.0,
-      "default_temp": 20.0,
+      "high_temp": 160,
+      "default_temp": 20,
       "icon": "images/icons/Reed_Fiber.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Resource_Reed_Fiber.png"
     }

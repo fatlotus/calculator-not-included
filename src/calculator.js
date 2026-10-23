@@ -330,7 +330,11 @@ export function evaluateRow(
   }
 
   const qty = Math.max(0, Number(row.qty) || 0);
-  const activeModIds = new Set(row.modifiers || []);
+  const activeModIds = new Set(
+    row.modifiers !== undefined && row.modifiers !== null
+      ? row.modifiers
+      : (entity.default_modifiers || (entity.id === "duplicant" ? ["calories"] : []))
+  );
 
   let baseInputs = entity.inputs || [];
   let baseOutputs = entity.outputs || [];

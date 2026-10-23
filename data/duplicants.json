@@ -6,6 +6,9 @@
     "subcategory": "Standard",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Duplicant",
     "icon": "images/icons/Duplicants_preview.png",
+    "default_modifiers": [
+      "calories"
+    ],
     "power": 0.0,
     "heat": 0.0,
     "inputs": [
