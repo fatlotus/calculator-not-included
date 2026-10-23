@@ -6476,13 +6476,6 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
-        },
-        {
-          "resource": "or Ovolene",
-          "rate": 1000.0,
-          "unit": "g/s",
-          "state": "in a pipe",
-          "temp": null
         }
       ],
       "outputs": [
@@ -6490,7 +6483,7 @@ export const ONI_DATASET = {
           "resource": "Brackwax",
           "rate": 90.0,
           "unit": "g/s",
-          "state": "in a pipe",
+          "state": "free",
           "temp": null
         },
         {
@@ -6504,32 +6497,88 @@ export const ONI_DATASET = {
           "resource": "Carbon Dioxide",
           "rate": 100.0,
           "unit": "g/s",
-          "state": "in a pipe",
-          "temp": "@ 75 °C+"
-        },
-        {
-          "resource": "Caviar",
-          "rate": 90.0,
-          "unit": "g/s",
-          "state": "in a pipe",
-          "temp": null
-        },
-        {
-          "resource": "Mucin",
-          "rate": 810.0,
-          "unit": "g/s",
-          "state": "in a pipe",
-          "temp": null
-        },
-        {
-          "resource": "Carbon Dioxide",
-          "rate": 100.0,
-          "unit": "g/s",
-          "state": "in a pipe",
+          "state": "free",
           "temp": "@ 75 °C+"
         }
       ],
-      "recipes": [],
+      "recipes": [
+        {
+          "id": "brackene",
+          "name": "Brackene -> Brackwax + Brine + Carbon Dioxide",
+          "inputs": [
+            {
+              "resource": "Brackene",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brackwax",
+              "rate": 90.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Brine",
+              "rate": 810.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": -480.0,
+          "heat": 8.0
+        },
+        {
+          "id": "ovolene",
+          "name": "Ovolene -> Caviar + Mucin + Carbon Dioxide",
+          "inputs": [
+            {
+              "resource": "Ovolene",
+              "rate": 1000.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Caviar",
+              "rate": 90.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Mucin",
+              "rate": 810.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 100.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 75 °C+"
+            }
+          ],
+          "power": -480.0,
+          "heat": 8.0
+        }
+      ],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Gleaner.png?be5662"
     },
@@ -16652,6 +16701,18 @@ export const ONI_DATASET = {
       "default_temp": 20.0,
       "icon": "images/icons/Polluted_Dirt.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png"
+    },
+    "Caviar": {
+      "name": "Caviar",
+      "element_id": "Caviar",
+      "state": "Solid",
+      "shc": 3.47,
+      "thermal_conductivity": 0.5,
+      "low_temp": null,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Food.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Food.png/24px-Food.png"
     }
   }
 };

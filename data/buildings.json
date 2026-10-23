@@ -6475,13 +6475,6 @@
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
-      },
-      {
-        "resource": "or Ovolene",
-        "rate": 1000.0,
-        "unit": "g/s",
-        "state": "in a pipe",
-        "temp": null
       }
     ],
     "outputs": [
@@ -6489,7 +6482,7 @@
         "resource": "Brackwax",
         "rate": 90.0,
         "unit": "g/s",
-        "state": "in a pipe",
+        "state": "free",
         "temp": null
       },
       {
@@ -6503,32 +6496,88 @@
         "resource": "Carbon Dioxide",
         "rate": 100.0,
         "unit": "g/s",
-        "state": "in a pipe",
-        "temp": "@ 75 \u00b0C+"
-      },
-      {
-        "resource": "Caviar",
-        "rate": 90.0,
-        "unit": "g/s",
-        "state": "in a pipe",
-        "temp": null
-      },
-      {
-        "resource": "Mucin",
-        "rate": 810.0,
-        "unit": "g/s",
-        "state": "in a pipe",
-        "temp": null
-      },
-      {
-        "resource": "Carbon Dioxide",
-        "rate": 100.0,
-        "unit": "g/s",
-        "state": "in a pipe",
+        "state": "free",
         "temp": "@ 75 \u00b0C+"
       }
     ],
-    "recipes": [],
+    "recipes": [
+      {
+        "id": "brackene",
+        "name": "Brackene -> Brackwax + Brine + Carbon Dioxide",
+        "inputs": [
+          {
+            "resource": "Brackene",
+            "rate": 1000.0,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Brackwax",
+            "rate": 90.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Brine",
+            "rate": 810.0,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 \u00b0C+"
+          }
+        ],
+        "power": -480.0,
+        "heat": 8.0
+      },
+      {
+        "id": "ovolene",
+        "name": "Ovolene -> Caviar + Mucin + Carbon Dioxide",
+        "inputs": [
+          {
+            "resource": "Ovolene",
+            "rate": 1000.0,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Caviar",
+            "rate": 90.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Mucin",
+            "rate": 810.0,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 100.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": "@ 75 \u00b0C+"
+          }
+        ],
+        "power": -480.0,
+        "heat": 8.0
+      }
+    ],
     "modifiers": [],
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Gleaner.png?be5662"
   },

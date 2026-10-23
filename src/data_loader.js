@@ -60,6 +60,11 @@ export const SYNTHETIC_ELEMENTS = {
     icon: "images/icons/Resource_Dirt.png",
     state: "Solid",
   },
+  Caviar: {
+    name: "Caviar",
+    icon: "images/icons/Food.png",
+    state: "Solid",
+  },
 };
 
 /**

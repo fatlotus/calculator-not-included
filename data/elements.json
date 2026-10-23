@@ -2498,5 +2498,17 @@
     "default_temp": 20.0,
     "icon": "images/icons/Polluted_Dirt.png",
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png"
+  },
+  {
+    "name": "Caviar",
+    "element_id": "Caviar",
+    "state": "Solid",
+    "shc": 3.47,
+    "thermal_conductivity": 0.5,
+    "low_temp": null,
+    "high_temp": null,
+    "default_temp": 20.0,
+    "icon": "images/icons/Food.png",
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Food.png/24px-Food.png"
   }
 ]

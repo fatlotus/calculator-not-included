@@ -985,4 +985,111 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Peat Burner Building and Tune-Up tests passed");
 }
 
+// 13. Gleaner Building and Recipes Calculations
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const gleaner = entityMap.get("brackwax_gleaner");
+  assert.ok(gleaner, "brackwax_gleaner entity must exist");
+  assert.strictEqual(gleaner.name, "Gleaner");
+  assert.strictEqual(gleaner.category, "Machine");
+  assert.strictEqual(gleaner.subcategory, "Refinement");
+  assert.strictEqual(gleaner.recipes.length, 2);
+
+  // Default evaluation (primary recipe: brackene)
+  const defaultEval = evaluateRow({ entityId: "brackwax_gleaner", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(defaultEval.power, -480.0);
+  assert.strictEqual(defaultEval.heat, 8.0);
+  assert.strictEqual(defaultEval.inputs.length, 1);
+  assert.strictEqual(defaultEval.outputs.length, 3);
+
+  const brackeneIn = defaultEval.inputs.find((i) => i.resource === "Brackene");
+  assert.ok(brackeneIn, "Default Gleaner must consume Brackene");
+  assert.strictEqual(brackeneIn.rate, 1000.0);
+  assert.strictEqual(brackeneIn.unit, "g/s");
+  assert.strictEqual(brackeneIn.state, "in a pipe");
+
+  const brackwaxOut = defaultEval.outputs.find((o) => o.resource === "Brackwax");
+  assert.ok(brackwaxOut, "Default Gleaner must output Brackwax");
+  assert.strictEqual(brackwaxOut.rate, 90.0);
+  assert.strictEqual(brackwaxOut.unit, "g/s");
+  assert.strictEqual(brackwaxOut.state, "free");
+
+  const brineOut = defaultEval.outputs.find((o) => o.resource === "Brine");
+  assert.ok(brineOut, "Default Gleaner must output Brine");
+  assert.strictEqual(brineOut.rate, 810.0);
+  assert.strictEqual(brineOut.unit, "g/s");
+  assert.strictEqual(brineOut.state, "in a pipe");
+
+  const co2Out = defaultEval.outputs.find((o) => o.resource === "Carbon Dioxide");
+  assert.ok(co2Out, "Default Gleaner must output Carbon Dioxide");
+  assert.strictEqual(co2Out.rate, 100.0);
+  assert.strictEqual(co2Out.unit, "g/s");
+  assert.strictEqual(co2Out.state, "free");
+  assert.strictEqual(co2Out.tempC, 75.0);
+
+  // Explicit recipe: brackene
+  const brackeneEval = evaluateRow({ entityId: "brackwax_gleaner", qty: 2, recipeId: "brackene" }, entityMap, elementMap);
+  assert.strictEqual(brackeneEval.power, -960.0);
+  assert.strictEqual(brackeneEval.heat, 16.0);
+  assert.strictEqual(brackeneEval.inputs[0].resource, "Brackene");
+  assert.strictEqual(brackeneEval.inputs[0].rate, 2000.0);
+  assert.strictEqual(brackeneEval.outputs.find((o) => o.resource === "Brackwax").rate, 180.0);
+  assert.strictEqual(brackeneEval.outputs.find((o) => o.resource === "Brine").rate, 1620.0);
+  assert.strictEqual(brackeneEval.outputs.find((o) => o.resource === "Carbon Dioxide").rate, 200.0);
+
+  // Explicit recipe: ovolene
+  const ovoleneEval = evaluateRow({ entityId: "brackwax_gleaner", qty: 1, recipeId: "ovolene" }, entityMap, elementMap);
+  assert.strictEqual(ovoleneEval.power, -480.0);
+  assert.strictEqual(ovoleneEval.heat, 8.0);
+  assert.strictEqual(ovoleneEval.inputs.length, 1);
+  assert.strictEqual(ovoleneEval.outputs.length, 3);
+
+  const ovoleneIn = ovoleneEval.inputs.find((i) => i.resource === "Ovolene");
+  assert.ok(ovoleneIn, "Ovolene recipe must consume Ovolene");
+  assert.strictEqual(ovoleneIn.rate, 1000.0);
+  assert.strictEqual(ovoleneIn.unit, "g/s");
+  assert.strictEqual(ovoleneIn.state, "in a pipe");
+
+  const caviarOut = ovoleneEval.outputs.find((o) => o.resource === "Caviar");
+  assert.ok(caviarOut, "Ovolene recipe must output Caviar");
+  assert.strictEqual(caviarOut.rate, 90.0);
+  assert.strictEqual(caviarOut.unit, "g/s");
+  assert.strictEqual(caviarOut.state, "free");
+
+  const mucinOut = ovoleneEval.outputs.find((o) => o.resource === "Mucin");
+  assert.ok(mucinOut, "Ovolene recipe must output Mucin");
+  assert.strictEqual(mucinOut.rate, 810.0);
+  assert.strictEqual(mucinOut.unit, "g/s");
+  assert.strictEqual(mucinOut.state, "in a pipe");
+
+  const ovoleneCo2Out = ovoleneEval.outputs.find((o) => o.resource === "Carbon Dioxide");
+  assert.ok(ovoleneCo2Out, "Ovolene recipe must output Carbon Dioxide");
+  assert.strictEqual(ovoleneCo2Out.rate, 100.0);
+  assert.strictEqual(ovoleneCo2Out.unit, "g/s");
+  assert.strictEqual(ovoleneCo2Out.state, "free");
+  assert.strictEqual(ovoleneCo2Out.tempC, 75.0);
+
+  // Caviar element metadata verification
+  assert.ok(elementMap.has("Caviar"), "elementMap must have Caviar metadata");
+  const caviarElem = elementMap.get("Caviar");
+  assert.strictEqual(caviarElem.state, "Solid");
+
+  // URL state round-trip with Gleaner and ovolene recipe
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "brackwax_gleaner", qty: 3, recipeId: "ovolene", modifiers: [] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 1);
+  assert.strictEqual(decoded.rows[0].entityId, "brackwax_gleaner");
+  assert.strictEqual(decoded.rows[0].qty, 3);
+  assert.strictEqual(decoded.rows[0].recipeId, "ovolene");
+
+  console.log("✓ Gleaner Building and Recipes tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
