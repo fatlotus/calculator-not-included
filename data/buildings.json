@@ -7235,6 +7235,13 @@
         "unit": "g/s",
         "state": "free",
         "temp": null
+      },
+      {
+        "resource": "Duplicant Labor",
+        "rate": 1,
+        "unit": "s/s",
+        "state": "labor",
+        "temp": null
       }
     ],
     "outputs": [
@@ -7263,6 +7270,13 @@
             "rate": 33.33,
             "unit": "g/s",
             "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
             "temp": null
           }
         ],
@@ -7294,6 +7308,13 @@
             "rate": 16.67,
             "unit": "g/s",
             "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
             "temp": null
           }
         ],
