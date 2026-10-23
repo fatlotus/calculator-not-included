@@ -88,6 +88,7 @@ class OniApp {
         const newRow = { entityId: entity.id, qty: 1, recipeId, modifiers: defaultModifiers };
         if (entity.id === "duplicant") {
           newRow.bathroom = "plumbed";
+          newRow.food = "barbecue";
         }
         this.state.rows.push(newRow);
         this.onStateChange();
@@ -206,6 +207,16 @@ class OniApp {
           this.onStateChange();
         } else if (e.target.classList.contains("bathroom-select")) {
           row.bathroom = e.target.value;
+          this.onStateChange();
+        } else if (e.target.classList.contains("food-select")) {
+          row.food = e.target.value;
+          if (row.food === "none") {
+            row.modifiers = (row.modifiers || []).filter((m) => m !== "calories");
+          } else {
+            if (!row.modifiers?.includes("calories")) {
+              row.modifiers = [...(row.modifiers || []), "calories"];
+            }
+          }
           this.onStateChange();
         } else if (e.target.classList.contains("mod-checkbox")) {
           const mods = new Set(row.modifiers || []);

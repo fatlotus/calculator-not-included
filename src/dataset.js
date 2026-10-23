@@ -11410,7 +11410,7 @@ export const ONI_DATASET = {
         },
         {
           "resource": "Meat",
-          "rate": 0.5556,
+          "rate": 0.3704,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -11439,7 +11439,7 @@ export const ONI_DATASET = {
             },
             {
               "resource": "Meat",
-              "rate": 0.5556,
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -11491,7 +11491,7 @@ export const ONI_DATASET = {
         },
         {
           "resource": "Meat",
-          "rate": 0.5556,
+          "rate": 0.3704,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -11520,7 +11520,7 @@ export const ONI_DATASET = {
             },
             {
               "resource": "Meat",
-              "rate": 0.5556,
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -11572,7 +11572,7 @@ export const ONI_DATASET = {
         },
         {
           "resource": "Meat",
-          "rate": 0.5556,
+          "rate": 0.3704,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -11601,7 +11601,7 @@ export const ONI_DATASET = {
             },
             {
               "resource": "Meat",
-              "rate": 0.5556,
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -11882,7 +11882,7 @@ export const ONI_DATASET = {
         },
         {
           "resource": "Meat",
-          "rate": 0.2778,
+          "rate": 0.3704,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -11911,7 +11911,7 @@ export const ONI_DATASET = {
             },
             {
               "resource": "Meat",
-              "rate": 0.2778,
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
