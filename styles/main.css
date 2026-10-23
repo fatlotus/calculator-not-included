@@ -468,7 +468,8 @@ body {
 }
 
 .recipe-wrapper,
-.bathroom-wrapper {
+.bathroom-wrapper,
+.food-wrapper {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -481,7 +482,8 @@ body {
 }
 
 .recipe-select,
-.bathroom-select {
+.bathroom-select,
+.food-select {
   background: var(--bg-surface);
   color: var(--fg-default);
   border: 1px solid var(--border-default);

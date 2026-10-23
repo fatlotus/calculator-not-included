@@ -665,6 +665,42 @@ console.log("=== Running JavaScript Module Tests ===");
   const html = renderTableRowHtml(rowFloor, floorRow, elementMap, "s", 0, {});
   assert.ok(html.includes('class="bathroom-select"'), "HTML must render bathroom-select");
   assert.ok(html.includes('value="floor" selected'), "HTML must select floor option");
+  assert.ok(html.includes('class="food-select"'), "HTML must render food-select");
+
+  // Duplicant Food / Diet Selection tests
+  const bbqRow = evaluateRow({ entityId: "duplicant", qty: 1, food: "barbecue" }, entityMap, elementMap);
+  const bbqIn = bbqRow.inputs.find((i) => i.resource === "Barbecue");
+  assert.ok(bbqIn, "Duplicant eating Barbecue must consume Barbecue");
+  assert.strictEqual(bbqIn.rate, 0.4167, "Duplicant consumes 0.4167 g/s Barbecue (250 g/cycle = 1000 kcal)");
+  assert.strictEqual(bbqRow.inputs.find((i) => i.resource === "Calories"), undefined, "Duplicant eating Barbecue does not consume generic Calories");
+
+  const seafoodRow = evaluateRow({ entityId: "duplicant", qty: 1, food: "cooked_seafood" }, entityMap, elementMap);
+  const seafoodIn = seafoodRow.inputs.find((i) => i.resource === "Cooked Seafood");
+  assert.ok(seafoodIn, "Duplicant eating Cooked Seafood must consume Cooked Seafood");
+  assert.strictEqual(seafoodIn.rate, 1.0417, "Duplicant consumes 1.0417 g/s Cooked Seafood (625 g/cycle = 1000 kcal)");
+
+  const fastingRow = evaluateRow({ entityId: "duplicant", qty: 1, food: "none" }, entityMap, elementMap);
+  assert.strictEqual(fastingRow.inputs.find((i) => i.resource === "Barbecue" || i.resource === "Calories"), undefined, "Fasting duplicant consumes no food");
+
+  const bottomlessBbq = evaluateRow({ entityId: "duplicant", qty: 1, food: "barbecue", modifiers: ["calories", "bottomless_stomach"] }, entityMap, elementMap);
+  const bBbqIn = bottomlessBbq.inputs.find((i) => i.resource === "Barbecue");
+  assert.ok(bBbqIn, "Bottomless Stomach duplicant eating Barbecue must consume Barbecue");
+  assert.strictEqual(Math.round(bBbqIn.rate * 10000) / 10000, 0.6251, "Bottomless stomach increases food consumption by 1.5x (0.6251 g/s)");
+
+  // End-to-End Ranch -> Grill -> Duplicant Diet Stream Cancellation
+  // 8 Duplicants eating Barbecue need 8 * 0.4167 = 3.3336 g/s Barbecue
+  // Electric Grill produces 20 g/s Barbecue & consumes 40 g/s Meat -> 3.3336 / 20 = 0.16668 Grills
+  // 0.16668 Grills consume 0.16668 * 40 = 6.6672 g/s Meat
+  // Stone Hatch produces 0.5556 g/s Meat -> 6.6672 / 0.5556 = 12 Stone Hatches
+  const evalHatches12 = evaluateRow({ entityId: "critter_stone_hatch", qty: 12, recipeId: "igneous_rock" }, entityMap, elementMap);
+  const evalGrillMatched = evaluateRow({ entityId: "electric_grill", qty: 0.16668, recipeId: "barbecue" }, entityMap, elementMap);
+  const evalDupes8 = evaluateRow({ entityId: "duplicant", qty: 8, food: "barbecue" }, entityMap, elementMap);
+
+  const foodNet = calculateSystemNet([evalHatches12, evalGrillMatched, evalDupes8]);
+  const netMeatRemain = foodNet.netInputs.find((i) => i.resource === "Meat") || foodNet.netOutputs.find((o) => o.resource === "Meat");
+  const netBbqRemain = foodNet.netInputs.find((i) => i.resource === "Barbecue") || foodNet.netOutputs.find((o) => o.resource === "Barbecue");
+  assert.ok(!netMeatRemain || Math.abs(netMeatRemain.rate) < 0.001, "Meat completely balances out in 12 Stone Hatches -> 0.1667 Grill -> 8 Duplicants chain");
+  assert.ok(!netBbqRemain || Math.abs(netBbqRemain.rate) < 0.001, "Barbecue completely balances out in 12 Stone Hatches -> 0.1667 Grill -> 8 Duplicants chain");
 
   console.log("✓ Duplicant Bathroom Options and Exhaled CO2 tests passed");
 }
@@ -681,6 +717,20 @@ console.log("=== Running JavaScript Module Tests ===");
   const calText = formatStreamLine(calIn, false, "c");
   assert.strictEqual(calText.includes("°C"), false, "Calories stream line must not include temperature");
   assert.strictEqual(calText, "Calories: -1000.02 kcal/cycle (free)");
+
+  // Duplicant default calories enabled
+  const defaultDupe = evaluateRow({ entityId: "duplicant", qty: 1 }, entityMap, elementMap);
+  const defaultCalIn = defaultDupe.inputs.find((i) => i.resource === "Calories");
+  assert.ok(defaultCalIn, "Duplicant must have Calories input by default when modifiers not specified");
+  assert.strictEqual(defaultCalIn.rate, 1.6667);
+
+  // Duplicant with explicit empty modifiers disables calories
+  const noCalDupe = evaluateRow({ entityId: "duplicant", qty: 1, modifiers: [] }, entityMap, elementMap);
+  assert.strictEqual(noCalDupe.inputs.find((i) => i.resource === "Calories"), undefined, "Duplicant with empty modifiers should not consume calories");
+
+  // Bionic duplicant does not consume calories
+  const bionicDupe = evaluateRow({ entityId: "bionic_duplicant", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(bionicDupe.inputs.find((i) => i.resource === "Calories"), undefined, "Bionic duplicant must never consume calories");
 
   const laborOut = evaluatedDupe.outputs.find((o) => o.resource === "Duplicant Labor");
   assert.ok(laborOut, "Duplicant must have Duplicant Labor output");
@@ -752,6 +802,66 @@ console.log("=== Running JavaScript Module Tests ===");
       assert.ok(r.inputs.some((i) => i.resource === "Growth" && i.rate === 1.0), `${critterId} recipe ${r.id} must consume 1.0 Growth`);
     }
   }
+
+  // Critter Meat & Pacu Fillet Production
+  const evalHatch = evaluateRow({ entityId: "critter_hatch", qty: 1 }, entityMap, elementMap);
+  const hatchMeat = evalHatch.outputs.find((o) => o.resource === "Meat");
+  assert.ok(hatchMeat, "Hatch must output Meat");
+  assert.strictEqual(hatchMeat.rate, 0.5556, "Hatch produces 0.5556 g/s Meat (2 kg per 6-cycle egg)");
+  assert.strictEqual(evalHatch.outputs.find((o) => o.resource === "Calories"), undefined, "Hatch must not produce Calories directly");
+
+  const evalPacu = evaluateRow({ entityId: "critter_pacu", qty: 1 }, entityMap, elementMap);
+  const pacuFillet = evalPacu.outputs.find((o) => o.resource === "Pacu Fillet");
+  assert.ok(pacuFillet, "Pacu must output Pacu Fillet");
+  assert.strictEqual(pacuFillet.rate, 1.1111, "Pacu produces 1.1111 g/s Pacu Fillet (1 kg per 1.5-cycle egg)");
+  assert.strictEqual(evalPacu.outputs.find((o) => o.resource === "Calories"), undefined, "Pacu must not produce Calories directly");
+
+  const evalVole = evaluateRow({ entityId: "critter_shove_vole", qty: 1 }, entityMap, elementMap);
+  const voleMeat = evalVole.outputs.find((o) => o.resource === "Meat");
+  assert.ok(voleMeat, "Shove Vole must output Meat");
+  assert.strictEqual(voleMeat.rate, 2.7778, "Shove Vole produces 2.7778 g/s Meat (10 kg per 6-cycle egg)");
+  assert.strictEqual(evalVole.outputs.find((o) => o.resource === "Calories"), undefined, "Shove Vole must not produce Calories directly");
+
+  // Wild hatch produces 25% meat (0.1389 g/s)
+  const evalWildHatch = evaluateRow({ entityId: "critter_hatch", qty: 1, modifiers: ["wild"] }, entityMap, elementMap);
+  const wildMeat = evalWildHatch.outputs.find((o) => o.resource === "Meat");
+  assert.ok(wildMeat, "Wild Hatch must output Meat");
+  assert.strictEqual(Math.round(wildMeat.rate * 10000) / 10000, 0.1389);
+
+  // Food-Producing Machines: Microbe Musher, Electric Grill, Gas Range, Deep Fryer
+  const evalGrill = evaluateRow({ entityId: "electric_grill", qty: 1, recipeId: "barbecue" }, entityMap, elementMap);
+  const grillMeatIn = evalGrill.inputs.find((i) => i.resource === "Meat");
+  const grillLaborIn = evalGrill.inputs.find((i) => i.resource === "Duplicant Labor");
+  const grillBbqOut = evalGrill.outputs.find((o) => o.resource === "Barbecue");
+  assert.ok(grillMeatIn, "Electric Grill must consume Meat for Barbecue");
+  assert.strictEqual(grillMeatIn.rate, 40.0, "Grill consumes 40 g/s Meat (2 kg per 50s batch)");
+  assert.ok(grillLaborIn, "Electric Grill requires Duplicant Labor");
+  assert.strictEqual(grillLaborIn.rate, 1.0);
+  assert.ok(grillBbqOut, "Electric Grill outputs Barbecue");
+  assert.strictEqual(grillBbqOut.rate, 20.0, "Grill produces 20 g/s Barbecue (1 kg per 50s batch)");
+  assert.strictEqual(evalGrill.power, -60);
+  assert.strictEqual(evalGrill.heat, 4.5);
+
+  const evalGasRange = evaluateRow({ entityId: "gas_range", qty: 1, recipeId: "surf_and_turf" }, entityMap, elementMap);
+  const rangeBbqIn = evalGasRange.inputs.find((i) => i.resource === "Barbecue");
+  const rangeFishIn = evalGasRange.inputs.find((i) => i.resource === "Cooked Seafood");
+  const rangeGasIn = evalGasRange.inputs.find((i) => i.resource === "Natural Gas" && i.state === "in a pipe");
+  const rangeSurfOut = evalGasRange.outputs.find((o) => o.resource === "Surf'n'Turf");
+  const rangeCo2Out = evalGasRange.outputs.find((o) => o.resource === "Carbon Dioxide");
+  assert.ok(rangeBbqIn && rangeFishIn && rangeGasIn && rangeSurfOut && rangeCo2Out, "Gas Range Surf'n'Turf streams verified");
+  assert.strictEqual(rangeGasIn.rate, 100.0);
+  assert.strictEqual(rangeCo2Out.rate, 25.0);
+  assert.strictEqual(evalGasRange.power, -240);
+  assert.strictEqual(evalGasRange.heat, 9.0);
+
+  // System Net: Ranch to Grill meat matching
+  // 8 Hatches * 0.5556 g/s Meat = 4.4448 g/s Meat
+  // Grill takes 40 g/s Meat, so 4.4448 / 40 = 0.11112 Grills
+  const evalHatches = evaluateRow({ entityId: "critter_hatch", qty: 8 }, entityMap, elementMap);
+  const evalMatchedGrill = evaluateRow({ entityId: "electric_grill", qty: 0.11112, recipeId: "barbecue" }, entityMap, elementMap);
+  const netRanchGrill = calculateSystemNet([evalHatches, evalMatchedGrill]);
+  const netMeat = netRanchGrill.netInputs.find((i) => i.resource === "Meat") || netRanchGrill.netOutputs.find((o) => o.resource === "Meat");
+  assert.ok(!netMeat || Math.abs(netMeat.rate) < 0.001, "Meat cancels out between 8 ranched hatches and matched grill");
 
   console.log("✓ Non-Thermal Resources (Duplicant Labor, Calories, Growth) tests passed");
 }

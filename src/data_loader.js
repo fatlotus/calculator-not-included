@@ -25,6 +25,111 @@ export const SYNTHETIC_ELEMENTS = {
     icon: "images/icons/Food.png",
     state: "Food",
   },
+  Meat: {
+    name: "Meat",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+  "Pacu Fillet": {
+    name: "Pacu Fillet",
+    icon: "images/icons/Pacu.png",
+    state: "Food",
+  },
+  Barbecue: {
+    name: "Barbecue",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+  "Cooked Seafood": {
+    name: "Cooked Seafood",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+  "Fried Mushroom": {
+    name: "Fried Mushroom",
+    icon: "images/icons/Mushroom.png",
+    state: "Food",
+  },
+  "Gristle Berry": {
+    name: "Gristle Berry",
+    icon: "images/icons/Bristle_Berry.png",
+    state: "Food",
+  },
+  "Frost Bun": {
+    name: "Frost Bun",
+    icon: "images/icons/Sleet_Wheat_Grain.png",
+    state: "Food",
+  },
+  "Pickled Meal": {
+    name: "Pickled Meal",
+    icon: "images/icons/Meal_Lice.png",
+    state: "Food",
+  },
+  "Mush Fry": {
+    name: "Mush Fry",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+  "Mush Bar": {
+    name: "Mush Bar",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+  Liceloaf: {
+    name: "Liceloaf",
+    icon: "images/icons/Meal_Lice.png",
+    state: "Food",
+  },
+  Tofu: {
+    name: "Tofu",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+  "Berry Sludge": {
+    name: "Berry Sludge",
+    icon: "images/icons/Bristle_Berry.png",
+    state: "Food",
+  },
+  "Surf'n'Turf": {
+    name: "Surf'n'Turf",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+  "Stuffed Berry": {
+    name: "Stuffed Berry",
+    icon: "images/icons/Bristle_Berry.png",
+    state: "Food",
+  },
+  "Mushroom Wrap": {
+    name: "Mushroom Wrap",
+    icon: "images/icons/Mushroom.png",
+    state: "Food",
+  },
+  "Pepper Bread": {
+    name: "Pepper Bread",
+    icon: "images/icons/Sleet_Wheat_Grain.png",
+    state: "Food",
+  },
+  "Spicy Tofu": {
+    name: "Spicy Tofu",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+  "Frost Burger": {
+    name: "Frost Burger",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+  "Fish Tacos": {
+    name: "Fish Tacos",
+    icon: "images/icons/Pacu.png",
+    state: "Food",
+  },
+  "Squash Fries": {
+    name: "Squash Fries",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
   "Duplicant Labor": {
     name: "Duplicant Labor",
     icon: "images/icons/Duplicants_preview.png",

@@ -141,7 +141,7 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
       { entityId: "electrolyzer", qty: 2 }, // Integer count -> uses count_int (2 bytes)
       { entityId: "liquid_pump", qty: 0.125, recipeId: "water" }, // Fractional -> uses count_double
       { entityId: "microbe_musher", qty: 0 }, // Zero quantity
-      { entityId: "duplicant", qty: 8, bathroom: "outhouse", modifiers: ["divers_lungs"], inputTemp: -15.5 },
+      { entityId: "duplicant", qty: 8, bathroom: "outhouse", food: "barbecue", modifiers: ["divers_lungs"], inputTemp: -15.5 },
     ],
     netInputTemps: {
       "Water||free": 95,
@@ -171,6 +171,7 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
   assert.strictEqual(restored.rows[1].recipeId, "water");
   assert.strictEqual(restored.rows[2].qty, 0);
   assert.strictEqual(restored.rows[3].bathroom, "outhouse");
+  assert.strictEqual(restored.rows[3].food, "barbecue");
   assert.strictEqual(restored.rows[3].inputTemp, -15.5);
   assert.strictEqual(restored.netInputTemps["Water||free"], 95);
   assert.strictEqual(restored.netInputTemps["Hydrogen||in a pipe"], -20.5);

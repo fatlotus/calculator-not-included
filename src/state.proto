@@ -12,6 +12,35 @@ enum Bathroom {
   BATHROOM_FLOOR = 2;
 }
 
+enum Food {
+  FOOD_CALORIES = 0;
+  FOOD_BARBECUE = 1;
+  FOOD_COOKED_SEAFOOD = 2;
+  FOOD_SURF_AND_TURF = 3;
+  FOOD_FROST_BURGER = 4;
+  FOOD_PEPPER_BREAD = 5;
+  FOOD_SPICY_TOFU = 6;
+  FOOD_STUFFED_BERRY = 7;
+  FOOD_MUSHROOM_WRAP = 8;
+  FOOD_FRIED_MUSHROOM = 9;
+  FOOD_GRISTLE_BERRY = 10;
+  FOOD_FROST_BUN = 11;
+  FOOD_PICKLED_MEAL = 12;
+  FOOD_MUSH_FRY = 13;
+  FOOD_MUSH_BAR = 14;
+  FOOD_LICELOAF = 15;
+  FOOD_TOFU = 16;
+  FOOD_BERRY_SLUDGE = 17;
+  FOOD_FISH_TACOS = 18;
+  FOOD_SQUASH_FRIES = 19;
+  FOOD_MEAL_LICE = 20;
+  FOOD_BRISTLE_BERRY = 21;
+  FOOD_MUSHROOM = 22;
+  FOOD_MEAT = 23;
+  FOOD_PACU_FILLET = 24;
+  FOOD_NONE = 25;
+}
+
 enum StreamState {
   STREAM_STATE_FREE = 0;
   STREAM_STATE_IN_A_PIPE = 1;
@@ -577,6 +606,7 @@ message RowState {
   Bathroom bathroom = 5;
   repeated Modifier modifiers = 6;
   optional double input_temp = 7;
+  Food food = 8;
 }
 
 message NetTemperature {

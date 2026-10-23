@@ -37,7 +37,7 @@ export const PRESETS = [
     rows: [
       { entityId: "critter_stone_hatch", qty: 8, recipeId: "igneous_rock", modifiers: [] },
       { entityId: "coal_generator", qty: 1, recipeId: null, modifiers: [] },
-      { entityId: "duplicant", qty: 8, recipeId: null, modifiers: [], bathroom: "plumbed" },
+      { entityId: "duplicant", qty: 8, recipeId: null, modifiers: ["calories"], bathroom: "plumbed", food: "barbecue" },
     ],
   },
   {
