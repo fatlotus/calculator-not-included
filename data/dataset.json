@@ -6424,9 +6424,64 @@
       "icon": "images/icons/Glass_Forge.png",
       "power": -1200.0,
       "heat": 16.0,
-      "inputs": [],
-      "outputs": [],
-      "recipes": [],
+      "inputs": [
+        {
+          "resource": "Sand",
+          "rate": 2500.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1.0,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Molten Glass",
+          "rate": 625.0,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": "@ 1750 °C"
+        }
+      ],
+      "recipes": [
+        {
+          "id": "molten_glass",
+          "name": "Sand (100 kg) -> Molten Glass (25 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Sand",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Glass",
+              "rate": 625.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "@ 1750 °C"
+            }
+          ],
+          "power": -1200.0,
+          "heat": 16.0
+        }
+      ],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Glass_Forge.png?a40d7a"
     },

@@ -1092,4 +1092,68 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Gleaner Building and Recipes tests passed");
 }
 
+// 14. Glass Forge Building and Recipe Calculations
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const glassForge = entityMap.get("glass_forge");
+  assert.ok(glassForge, "glass_forge entity must exist");
+  assert.strictEqual(glassForge.name, "Glass Forge");
+  assert.strictEqual(glassForge.category, "Machine");
+  assert.strictEqual(glassForge.subcategory, "Refinement");
+  assert.strictEqual(glassForge.recipes.length, 1);
+  assert.strictEqual(glassForge.recipes[0].id, "molten_glass");
+
+  // Default evaluation (Sand -> Molten Glass)
+  const defaultEval = evaluateRow({ entityId: "glass_forge", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(defaultEval.power, -1200.0);
+  assert.strictEqual(defaultEval.heat, 16.0);
+  assert.strictEqual(defaultEval.inputs.length, 2);
+  assert.strictEqual(defaultEval.outputs.length, 1);
+
+  const sandIn = defaultEval.inputs.find((i) => i.resource === "Sand");
+  assert.ok(sandIn, "Glass Forge default must consume Sand");
+  assert.strictEqual(sandIn.rate, 2500.0);
+  assert.strictEqual(sandIn.unit, "g/s");
+  assert.strictEqual(sandIn.state, "free");
+
+  const laborIn = defaultEval.inputs.find((i) => i.resource === "Duplicant Labor");
+  assert.ok(laborIn, "Glass Forge default must require Duplicant Labor");
+  assert.strictEqual(laborIn.rate, 1.0);
+  assert.strictEqual(laborIn.unit, "s/s");
+  assert.strictEqual(laborIn.state, "labor");
+
+  const moltenGlassOut = defaultEval.outputs.find((o) => o.resource === "Molten Glass");
+  assert.ok(moltenGlassOut, "Glass Forge default must output Molten Glass");
+  assert.strictEqual(moltenGlassOut.rate, 625.0);
+  assert.strictEqual(moltenGlassOut.unit, "g/s");
+  assert.strictEqual(moltenGlassOut.state, "in a pipe");
+  assert.strictEqual(moltenGlassOut.tempC, 1750.0);
+
+  // Explicit recipe: molten_glass with qty: 2
+  const explicitEval = evaluateRow({ entityId: "glass_forge", qty: 2, recipeId: "molten_glass" }, entityMap, elementMap);
+  assert.strictEqual(explicitEval.power, -2400.0);
+  assert.strictEqual(explicitEval.heat, 32.0);
+  assert.strictEqual(explicitEval.inputs.find((i) => i.resource === "Sand").rate, 5000.0);
+  assert.strictEqual(explicitEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 2.0);
+  assert.strictEqual(explicitEval.outputs.find((o) => o.resource === "Molten Glass").rate, 1250.0);
+  assert.strictEqual(explicitEval.outputs.find((o) => o.resource === "Molten Glass").tempC, 1750.0);
+
+  // URL state round-trip with Glass Forge
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "glass_forge", qty: 2, recipeId: "molten_glass", modifiers: [] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 1);
+  assert.strictEqual(decoded.rows[0].entityId, "glass_forge");
+  assert.strictEqual(decoded.rows[0].qty, 2);
+  assert.strictEqual(decoded.rows[0].recipeId, "molten_glass");
+
+  console.log("✓ Glass Forge Building and Recipe tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
