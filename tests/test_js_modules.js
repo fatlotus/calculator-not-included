@@ -741,4 +741,87 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Geotuner Connected Inputs by Geyser Type tests passed");
 }
 
+// 10. Sludge Press Recipes and Calculations
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const sludgePress = entityMap.get("sludge_press");
+  assert.ok(sludgePress, "sludge_press entity must exist");
+  assert.strictEqual(sludgePress.recipes.length, 2, "Sludge Press must have 2 recipes");
+
+  // Default evaluation (Mud recipe)
+  const defaultEval = evaluateRow({ entityId: "sludge_press", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(defaultEval.power, -120);
+  assert.strictEqual(defaultEval.heat, 4.0);
+  const mudIn = defaultEval.inputs.find((i) => i.resource === "Mud");
+  const laborIn = defaultEval.inputs.find((i) => i.resource === "Duplicant Labor");
+  const dirtOut = defaultEval.outputs.find((o) => o.resource === "Dirt");
+  const waterOut = defaultEval.outputs.find((o) => o.resource === "Water");
+
+  assert.ok(mudIn, "Sludge Press default must consume Mud");
+  assert.strictEqual(mudIn.rate, 7500.0);
+  assert.strictEqual(mudIn.state, "free");
+
+  assert.ok(laborIn, "Sludge Press default must require Duplicant Labor");
+  assert.strictEqual(laborIn.rate, 1.0);
+  assert.strictEqual(laborIn.unit, "s/s");
+  assert.strictEqual(laborIn.state, "labor");
+
+  assert.ok(dirtOut, "Sludge Press default must output Dirt");
+  assert.strictEqual(dirtOut.rate, 3000.0);
+  assert.strictEqual(dirtOut.state, "free");
+
+  assert.ok(waterOut, "Sludge Press default must output Water in a pipe");
+  assert.strictEqual(waterOut.rate, 4500.0);
+  assert.strictEqual(waterOut.state, "in a pipe");
+
+  // Explicit recipe: mud
+  const mudEval = evaluateRow({ entityId: "sludge_press", qty: 2, recipeId: "mud" }, entityMap, elementMap);
+  assert.strictEqual(mudEval.power, -240);
+  assert.strictEqual(mudEval.heat, 8.0);
+  const mudIn2 = mudEval.inputs.find((i) => i.resource === "Mud");
+  const waterOut2 = mudEval.outputs.find((o) => o.resource === "Water");
+  assert.strictEqual(mudIn2.rate, 15000.0);
+  assert.strictEqual(waterOut2.rate, 9000.0);
+
+  // Explicit recipe: polluted_mud
+  const pmudEval = evaluateRow({ entityId: "sludge_press", qty: 1, recipeId: "polluted_mud" }, entityMap, elementMap);
+  assert.strictEqual(pmudEval.power, -120);
+  assert.strictEqual(pmudEval.heat, 4.0);
+  const pmudIn = pmudEval.inputs.find((i) => i.resource === "Polluted Mud");
+  const pmudLabor = pmudEval.inputs.find((i) => i.resource === "Duplicant Labor");
+  const pdirtOut = pmudEval.outputs.find((o) => o.resource === "Polluted Dirt");
+  const pwaterOut = pmudEval.outputs.find((o) => o.resource === "Polluted Water");
+
+  assert.ok(pmudIn, "Sludge Press polluted_mud recipe must consume Polluted Mud");
+  assert.strictEqual(pmudIn.rate, 7500.0);
+  assert.strictEqual(pmudIn.state, "free");
+
+  assert.ok(pmudLabor, "Sludge Press polluted_mud recipe must require Duplicant Labor");
+  assert.strictEqual(pmudLabor.rate, 1.0);
+
+  assert.ok(pdirtOut, "Sludge Press polluted_mud recipe must output Polluted Dirt");
+  assert.strictEqual(pdirtOut.rate, 3000.0);
+  assert.strictEqual(pdirtOut.state, "free");
+
+  assert.ok(pwaterOut, "Sludge Press polluted_mud recipe must output Polluted Water in a pipe");
+  assert.strictEqual(pwaterOut.rate, 4500.0);
+  assert.strictEqual(pwaterOut.state, "in a pipe");
+
+  // URL state round-trip with sludge_press and polluted_mud recipe
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "sludge_press", qty: 1, recipeId: "polluted_mud", modifiers: [] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 1);
+  assert.strictEqual(decoded.rows[0].entityId, "sludge_press");
+  assert.strictEqual(decoded.rows[0].recipeId, "polluted_mud");
+
+  console.log("✓ Sludge Press Recipes and Calculations tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

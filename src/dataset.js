@@ -7,12 +7,12 @@ export const ONI_DATASET = {
       "subcategory": "Oxygen",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Electrolyzer",
       "icon": "images/icons/Electrolyzer.png",
-      "power": -120,
+      "power": -120.0,
       "heat": 1.25,
       "inputs": [
         {
           "resource": "Water",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -21,14 +21,14 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Oxygen",
-          "rate": 888,
+          "rate": 888.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 70 °C+"
         },
         {
           "resource": "Hydrogen",
-          "rate": 112,
+          "rate": 112.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 70 °C+"
@@ -45,12 +45,12 @@ export const ONI_DATASET = {
       "subcategory": "Oxygen",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Oxygen_Diffuser",
       "icon": "images/icons/Oxygen_Diffuser.png",
-      "power": -120,
+      "power": -120.0,
       "heat": 1.5,
       "inputs": [
         {
           "resource": "Algae",
-          "rate": 550,
+          "rate": 550.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -59,7 +59,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Oxygen",
-          "rate": 500,
+          "rate": 500.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 30 °C+"
@@ -76,19 +76,19 @@ export const ONI_DATASET = {
       "subcategory": "Oxygen",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Algae_Terrarium",
       "icon": "images/icons/Algae_Terrarium.png",
-      "power": 0,
-      "heat": 0,
+      "power": 0.0,
+      "heat": 0.0,
       "inputs": [
         {
           "resource": "Algae",
-          "rate": 30,
+          "rate": 30.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
         },
         {
           "resource": "Water",
-          "rate": 300,
+          "rate": 300.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -104,7 +104,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Oxygen",
-          "rate": 40,
+          "rate": 40.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 30 °C+"
@@ -136,19 +136,19 @@ export const ONI_DATASET = {
       "subcategory": "Oxygen",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Rust_Deoxidizer",
       "icon": "images/icons/Rust_Deoxidizer.png",
-      "power": -60,
+      "power": -60.0,
       "heat": 1.125,
       "inputs": [
         {
           "resource": "Rust",
-          "rate": 750,
+          "rate": 750.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
         },
         {
           "resource": "Salt",
-          "rate": 250,
+          "rate": 250.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -157,21 +157,21 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Oxygen",
-          "rate": 570,
+          "rate": 570.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 75 °C+"
         },
         {
           "resource": "Chlorine",
-          "rate": 30,
+          "rate": 30.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 75 °C+"
         },
         {
           "resource": "Iron Ore",
-          "rate": 400,
+          "rate": 400.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 75 °C+"
@@ -188,12 +188,12 @@ export const ONI_DATASET = {
       "subcategory": "Oxygen",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sublimation_Station",
       "icon": "images/icons/SO_icon.png",
-      "power": -60,
+      "power": -60.0,
       "heat": 1.5,
       "inputs": [
         {
           "resource": "Polluted Dirt",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -202,7 +202,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Polluted Oxygen",
-          "rate": 660,
+          "rate": 660.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 30 °C+"
@@ -219,12 +219,12 @@ export const ONI_DATASET = {
       "subcategory": "Oxygen",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Deodorizer",
       "icon": "images/icons/Deodorizer.png",
-      "power": -5,
+      "power": -5.0,
       "heat": 0.625,
       "inputs": [
         {
           "resource": "Polluted Oxygen",
-          "rate": 100,
+          "rate": 100.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -240,7 +240,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Oxygen",
-          "rate": 90,
+          "rate": 90.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -264,19 +264,19 @@ export const ONI_DATASET = {
       "subcategory": "Oxygen",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Carbon_Skimmer",
       "icon": "images/icons/Carbon_Skimmer.png",
-      "power": -120,
-      "heat": 1,
+      "power": -120.0,
+      "heat": 1.0,
       "inputs": [
         {
           "resource": "Water",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "Carbon Dioxide",
-          "rate": 300,
+          "rate": 300.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -285,7 +285,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Polluted Water",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -302,19 +302,19 @@ export const ONI_DATASET = {
       "subcategory": "Oxygen",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Oxylite_Refinery",
       "icon": "images/icons/Oxylite_Refinery.png",
-      "power": -1200,
-      "heat": 12,
+      "power": -1200.0,
+      "heat": 12.0,
       "inputs": [
         {
           "resource": "Oxygen",
-          "rate": 600,
+          "rate": 600.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "Gold",
-          "rate": 3,
+          "rate": 3.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -323,7 +323,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Oxylite",
-          "rate": 600,
+          "rate": 600.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 30 °C+"
@@ -340,12 +340,12 @@ export const ONI_DATASET = {
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Hydrogen_Generator",
       "icon": "images/icons/Hydrogen_Generator.png",
-      "power": 800,
-      "heat": 4,
+      "power": 800.0,
+      "heat": 4.0,
       "inputs": [
         {
           "resource": "Hydrogen",
-          "rate": 100,
+          "rate": 100.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -378,12 +378,12 @@ export const ONI_DATASET = {
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Coal_Generator",
       "icon": "images/icons/Coal_Generator.png",
-      "power": 600,
-      "heat": 9,
+      "power": 600.0,
+      "heat": 9.0,
       "inputs": [
         {
           "resource": "Coal",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -392,7 +392,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Carbon Dioxide",
-          "rate": 20,
+          "rate": 20.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 110 °C+"
@@ -424,12 +424,12 @@ export const ONI_DATASET = {
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Wood_Burner",
       "icon": "images/icons/Wood_Burner.png",
-      "power": 300,
-      "heat": 9,
+      "power": 300.0,
+      "heat": 9.0,
       "inputs": [
         {
           "resource": "Wood",
-          "rate": 1200,
+          "rate": 1200.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -438,7 +438,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Carbon Dioxide",
-          "rate": 170,
+          "rate": 170.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 110 °C+"
@@ -470,13 +470,13 @@ export const ONI_DATASET = {
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Peat_Burner",
       "icon": "images/icons/PP_icon.png",
-      "power": 480,
+      "power": 480.0,
       "heat": 4.5,
       "inputs": [],
       "outputs": [
         {
           "resource": "Carbon Dioxide",
-          "rate": 40,
+          "rate": 40.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 110 °C+"
@@ -508,12 +508,12 @@ export const ONI_DATASET = {
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Natural_Gas_Generator",
       "icon": "images/icons/Natural_Gas_Generator.png",
-      "power": 800,
-      "heat": 10,
+      "power": 800.0,
+      "heat": 10.0,
       "inputs": [
         {
           "resource": "Natural Gas",
-          "rate": 90,
+          "rate": 90.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -561,12 +561,12 @@ export const ONI_DATASET = {
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Petroleum_Generator",
       "icon": "images/icons/Petroleum_Generator.png",
-      "power": 2000,
-      "heat": 20,
+      "power": 2000.0,
+      "heat": 20.0,
       "inputs": [
         {
           "resource": "Petroleum",
-          "rate": 2000,
+          "rate": 2000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -575,14 +575,14 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Polluted Water",
-          "rate": 750,
+          "rate": 750.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 40 °C+"
         },
         {
           "resource": "Carbon Dioxide",
-          "rate": 500,
+          "rate": 500.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 110 °C+"
@@ -595,7 +595,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Petroleum",
-              "rate": 2000,
+              "rate": 2000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
@@ -604,21 +604,21 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Polluted Water",
-              "rate": 750,
+              "rate": 750.0,
               "unit": "g/s",
               "state": "free",
               "temp": "@ 40 °C+"
             },
             {
               "resource": "Carbon Dioxide",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": "@ 110 °C+"
             }
           ],
-          "power": 2000,
-          "heat": 20
+          "power": 2000.0,
+          "heat": 20.0
         },
         {
           "id": "ethanol",
@@ -626,7 +626,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Ethanol",
-              "rate": 2000,
+              "rate": 2000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
@@ -635,21 +635,21 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Polluted Water",
-              "rate": 750,
+              "rate": 750.0,
               "unit": "g/s",
               "state": "free",
               "temp": "@ 40 °C+"
             },
             {
               "resource": "Carbon Dioxide",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": "@ 110 °C+"
             }
           ],
-          "power": 2000,
-          "heat": 20
+          "power": 2000.0,
+          "heat": 20.0
         }
       ],
       "modifiers": [
@@ -677,12 +677,12 @@ export const ONI_DATASET = {
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Steam_Turbine",
       "icon": "images/icons/Steam_Turbine.png",
-      "power": 850,
-      "heat": 4,
+      "power": 850.0,
+      "heat": 4.0,
       "inputs": [
         {
           "resource": "Steam",
-          "rate": 2000,
+          "rate": 2000.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 125 °C+"
@@ -691,7 +691,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Water",
-          "rate": 2000,
+          "rate": 2000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": "@ 95 °C"
@@ -723,8 +723,8 @@ export const ONI_DATASET = {
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Solar_Panel",
       "icon": "images/icons/Solar_Panel.png",
-      "power": 380,
-      "heat": 0,
+      "power": 380.0,
+      "heat": 0.0,
       "inputs": [],
       "outputs": [],
       "recipes": [],
@@ -738,12 +738,12 @@ export const ONI_DATASET = {
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Manual_Generator",
       "icon": "images/icons/Manual_Generator.png",
-      "power": 400,
-      "heat": 1,
+      "power": 400.0,
+      "heat": 1.0,
       "inputs": [
         {
           "resource": "Duplicant Labor",
-          "rate": 1,
+          "rate": 1.0,
           "unit": "s/s",
           "state": "labor",
           "temp": null
@@ -776,12 +776,12 @@ export const ONI_DATASET = {
       "subcategory": "Plumbing",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Liquid_Pump",
       "icon": "images/icons/Liquid_Pump.png",
-      "power": -240,
-      "heat": 2,
+      "power": -240.0,
+      "heat": 2.0,
       "inputs": [
         {
           "resource": "Water",
-          "rate": 10000,
+          "rate": 10000.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -790,7 +790,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Water",
-          "rate": 10000,
+          "rate": 10000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -803,7 +803,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -812,14 +812,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "water_full",
@@ -827,7 +827,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -836,14 +836,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "biodiesel",
@@ -851,7 +851,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Biodiesel",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -860,14 +860,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Biodiesel",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "brackene",
@@ -875,7 +875,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Brackene",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -884,14 +884,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Brackene",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "brine",
@@ -899,7 +899,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Brine",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -908,14 +908,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Brine",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "crude_oil",
@@ -923,7 +923,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Crude Oil",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -932,14 +932,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Crude Oil",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "crude_oil_full",
@@ -947,7 +947,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Crude Oil",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -956,14 +956,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Crude Oil",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "ethanol",
@@ -971,7 +971,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Ethanol",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -980,14 +980,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Ethanol",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "gunk",
@@ -995,7 +995,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Gunk",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1004,14 +1004,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Gunk",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "latex",
@@ -1019,7 +1019,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Latex",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1028,14 +1028,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Latex",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_carbon",
@@ -1043,7 +1043,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Carbon",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1052,14 +1052,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Carbon",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_carbon_dioxide",
@@ -1067,7 +1067,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Carbon Dioxide",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1076,14 +1076,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Carbon Dioxide",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_chlorine",
@@ -1091,7 +1091,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Chlorine",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1100,14 +1100,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Chlorine",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_helium",
@@ -1115,7 +1115,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Helium",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1124,14 +1124,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Helium",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_hydrogen",
@@ -1139,7 +1139,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Hydrogen",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1148,14 +1148,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Hydrogen",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_methane",
@@ -1163,7 +1163,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Methane",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1172,14 +1172,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Methane",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_naphtha",
@@ -1187,7 +1187,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Naphtha",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1196,14 +1196,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Naphtha",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_nuclear_waste",
@@ -1211,7 +1211,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Nuclear Waste",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1220,14 +1220,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Nuclear Waste",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_oxygen",
@@ -1235,7 +1235,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Oxygen",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1244,14 +1244,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Oxygen",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_phosphorus",
@@ -1259,7 +1259,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Phosphorus",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1268,14 +1268,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Phosphorus",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_propane",
@@ -1283,7 +1283,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Propane",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1292,14 +1292,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Propane",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_sucrose",
@@ -1307,7 +1307,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Sucrose",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1316,14 +1316,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Sucrose",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_sulfur",
@@ -1331,7 +1331,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Sulfur",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1340,14 +1340,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Sulfur",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "liquid_uranium",
@@ -1355,7 +1355,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Uranium",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1364,14 +1364,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Uranium",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "magma",
@@ -1379,7 +1379,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Magma",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1388,14 +1388,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Magma",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "mercury",
@@ -1403,7 +1403,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Mercury",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1412,14 +1412,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Mercury",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_aluminum",
@@ -1427,7 +1427,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Aluminum",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1436,14 +1436,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Aluminum",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_cobalt",
@@ -1451,7 +1451,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Cobalt",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1460,14 +1460,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Cobalt",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_copper",
@@ -1475,7 +1475,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Copper",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1484,14 +1484,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Copper",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_glass",
@@ -1499,7 +1499,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Glass",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1508,14 +1508,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Glass",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_gold",
@@ -1523,7 +1523,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Gold",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1532,14 +1532,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Gold",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_iridium",
@@ -1547,7 +1547,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Iridium",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1556,14 +1556,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Iridium",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_iron",
@@ -1571,7 +1571,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Iron",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1580,14 +1580,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Iron",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_lead",
@@ -1595,7 +1595,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Lead",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1604,14 +1604,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Lead",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_nickel",
@@ -1619,7 +1619,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Nickel",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1628,14 +1628,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Nickel",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_niobium",
@@ -1643,7 +1643,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Niobium",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1652,14 +1652,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Niobium",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_salt",
@@ -1667,7 +1667,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Salt",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1676,14 +1676,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Salt",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_steel",
@@ -1691,7 +1691,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Steel",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1700,14 +1700,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Steel",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_syngas",
@@ -1715,7 +1715,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Syngas",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1724,14 +1724,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Syngas",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_tungsten",
@@ -1739,7 +1739,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Tungsten",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1748,14 +1748,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Tungsten",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "molten_zinc",
@@ -1763,7 +1763,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Zinc",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1772,14 +1772,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Zinc",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "mucin",
@@ -1787,7 +1787,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Mucin",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1796,14 +1796,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Mucin",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "nectar",
@@ -1811,7 +1811,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Nectar",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1820,14 +1820,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Nectar",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "ovolene",
@@ -1835,7 +1835,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Ovolene",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1844,14 +1844,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Ovolene",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "petroleum",
@@ -1859,7 +1859,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Petroleum",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1868,14 +1868,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Petroleum",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "petroleum_full",
@@ -1883,7 +1883,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Petroleum",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1892,14 +1892,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Petroleum",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "phyto_oil",
@@ -1907,7 +1907,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Phyto Oil",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1916,14 +1916,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Phyto Oil",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "polluted_brine",
@@ -1931,7 +1931,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Polluted Brine",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1940,14 +1940,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Polluted Brine",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "polluted_water",
@@ -1955,7 +1955,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Polluted Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1964,14 +1964,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Polluted Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "polluted_water_full",
@@ -1979,7 +1979,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Polluted Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -1988,14 +1988,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Polluted Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "resin",
@@ -2003,7 +2003,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Resin",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2012,14 +2012,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Resin",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "salt_water",
@@ -2027,7 +2027,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Salt Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2036,14 +2036,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Salt Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "sap",
@@ -2051,7 +2051,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Sap",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2060,14 +2060,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Sap",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "squid_ink",
@@ -2075,7 +2075,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Squid Ink",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2084,14 +2084,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Squid Ink",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "super_coolant",
@@ -2099,7 +2099,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Super Coolant",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2108,14 +2108,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Super Coolant",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "visco_gel_fluid",
@@ -2123,7 +2123,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Visco-Gel Fluid",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2132,14 +2132,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Visco-Gel Fluid",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         }
       ],
       "modifiers": [],
@@ -2155,12 +2155,12 @@ export const ONI_DATASET = {
       "subcategory": "Plumbing",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Mini_Liquid_Pump",
       "icon": "images/icons/Mini_Liquid_Pump.png",
-      "power": -60,
-      "heat": 0,
+      "power": -60.0,
+      "heat": 0.0,
       "inputs": [
         {
           "resource": "Water",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -2169,7 +2169,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Water",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -2182,7 +2182,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Water",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2191,14 +2191,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Water",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "biodiesel",
@@ -2206,7 +2206,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Biodiesel",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2215,14 +2215,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Biodiesel",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "brackene",
@@ -2230,7 +2230,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Brackene",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2239,14 +2239,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Brackene",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "brine",
@@ -2254,7 +2254,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Brine",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2263,14 +2263,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Brine",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "crude_oil",
@@ -2278,7 +2278,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Crude Oil",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2287,14 +2287,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Crude Oil",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "ethanol",
@@ -2302,7 +2302,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Ethanol",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2311,14 +2311,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Ethanol",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "gunk",
@@ -2326,7 +2326,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Gunk",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2335,14 +2335,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Gunk",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "latex",
@@ -2350,7 +2350,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Latex",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2359,14 +2359,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Latex",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_carbon",
@@ -2374,7 +2374,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Carbon",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2383,14 +2383,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Carbon",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_carbon_dioxide",
@@ -2398,7 +2398,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Carbon Dioxide",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2407,14 +2407,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Carbon Dioxide",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_chlorine",
@@ -2422,7 +2422,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Chlorine",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2431,14 +2431,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Chlorine",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_helium",
@@ -2446,7 +2446,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Helium",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2455,14 +2455,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Helium",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_hydrogen",
@@ -2470,7 +2470,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Hydrogen",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2479,14 +2479,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Hydrogen",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_methane",
@@ -2494,7 +2494,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Methane",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2503,14 +2503,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Methane",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_naphtha",
@@ -2518,7 +2518,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Naphtha",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2527,14 +2527,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Naphtha",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_nuclear_waste",
@@ -2542,7 +2542,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Nuclear Waste",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2551,14 +2551,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Nuclear Waste",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_oxygen",
@@ -2566,7 +2566,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Oxygen",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2575,14 +2575,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Oxygen",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_phosphorus",
@@ -2590,7 +2590,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Phosphorus",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2599,14 +2599,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Phosphorus",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_propane",
@@ -2614,7 +2614,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Propane",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2623,14 +2623,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Propane",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_sucrose",
@@ -2638,7 +2638,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Sucrose",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2647,14 +2647,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Sucrose",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_sulfur",
@@ -2662,7 +2662,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Sulfur",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2671,14 +2671,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Sulfur",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "liquid_uranium",
@@ -2686,7 +2686,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Liquid Uranium",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2695,14 +2695,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Liquid Uranium",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "magma",
@@ -2710,7 +2710,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Magma",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2719,14 +2719,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Magma",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "mercury",
@@ -2734,7 +2734,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Mercury",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2743,14 +2743,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Mercury",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_aluminum",
@@ -2758,7 +2758,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Aluminum",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2767,14 +2767,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Aluminum",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_cobalt",
@@ -2782,7 +2782,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Cobalt",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2791,14 +2791,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Cobalt",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_copper",
@@ -2806,7 +2806,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Copper",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2815,14 +2815,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Copper",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_glass",
@@ -2830,7 +2830,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Glass",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2839,14 +2839,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Glass",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_gold",
@@ -2854,7 +2854,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Gold",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2863,14 +2863,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Gold",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_iridium",
@@ -2878,7 +2878,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Iridium",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2887,14 +2887,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Iridium",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_iron",
@@ -2902,7 +2902,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Iron",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2911,14 +2911,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Iron",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_lead",
@@ -2926,7 +2926,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Lead",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2935,14 +2935,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Lead",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_nickel",
@@ -2950,7 +2950,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Nickel",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2959,14 +2959,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Nickel",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_niobium",
@@ -2974,7 +2974,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Niobium",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -2983,14 +2983,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Niobium",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_salt",
@@ -2998,7 +2998,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Salt",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3007,14 +3007,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Salt",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_steel",
@@ -3022,7 +3022,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Steel",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3031,14 +3031,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Steel",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_syngas",
@@ -3046,7 +3046,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Syngas",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3055,14 +3055,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Syngas",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_tungsten",
@@ -3070,7 +3070,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Tungsten",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3079,14 +3079,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Tungsten",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "molten_zinc",
@@ -3094,7 +3094,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Molten Zinc",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3103,14 +3103,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Molten Zinc",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "mucin",
@@ -3118,7 +3118,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Mucin",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3127,14 +3127,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Mucin",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "nectar",
@@ -3142,7 +3142,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Nectar",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3151,14 +3151,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Nectar",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "ovolene",
@@ -3166,7 +3166,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Ovolene",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3175,14 +3175,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Ovolene",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "petroleum",
@@ -3190,7 +3190,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Petroleum",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3199,14 +3199,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Petroleum",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "phyto_oil",
@@ -3214,7 +3214,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Phyto Oil",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3223,14 +3223,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Phyto Oil",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "polluted_brine",
@@ -3238,7 +3238,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Polluted Brine",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3247,14 +3247,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Polluted Brine",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "polluted_water",
@@ -3262,7 +3262,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Polluted Water",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3271,14 +3271,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Polluted Water",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "resin",
@@ -3286,7 +3286,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Resin",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3295,14 +3295,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Resin",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "salt_water",
@@ -3310,7 +3310,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Salt Water",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3319,14 +3319,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Salt Water",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "sap",
@@ -3334,7 +3334,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Sap",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3343,14 +3343,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Sap",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "squid_ink",
@@ -3358,7 +3358,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Squid Ink",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3367,14 +3367,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Squid Ink",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "super_coolant",
@@ -3382,7 +3382,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Super Coolant",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3391,14 +3391,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Super Coolant",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "visco_gel_fluid",
@@ -3406,7 +3406,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Visco-Gel Fluid",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3415,14 +3415,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Visco-Gel Fluid",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         }
       ],
       "modifiers": [],
@@ -3435,8 +3435,8 @@ export const ONI_DATASET = {
       "subcategory": "Plumbing",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Pitcher_Pump",
       "icon": "images/icons/Pitcher_Pump.png",
-      "power": 0,
-      "heat": 0,
+      "power": 0.0,
+      "heat": 0.0,
       "inputs": [],
       "outputs": [],
       "recipes": [],
@@ -3450,12 +3450,12 @@ export const ONI_DATASET = {
       "subcategory": "Ventilation",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Gas_Pump",
       "icon": "images/icons/Gas_Pump.png",
-      "power": -240,
-      "heat": 2,
+      "power": -240.0,
+      "heat": 2.0,
       "inputs": [
         {
           "resource": "Hydrogen",
-          "rate": 500,
+          "rate": 500.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -3464,7 +3464,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Hydrogen",
-          "rate": 500,
+          "rate": 500.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -3477,7 +3477,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Hydrogen",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3486,14 +3486,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Hydrogen",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "oxygen",
@@ -3501,7 +3501,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Oxygen",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3510,14 +3510,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Oxygen",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "natural_gas",
@@ -3525,7 +3525,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Natural Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3534,14 +3534,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Natural Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "carbon_dioxide",
@@ -3549,7 +3549,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Carbon Dioxide",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3558,14 +3558,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Carbon Dioxide",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "aluminum_gas",
@@ -3573,7 +3573,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Aluminum Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3582,14 +3582,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Aluminum Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "carbon_gas",
@@ -3597,7 +3597,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Carbon Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3606,14 +3606,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Carbon Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "chlorine",
@@ -3621,7 +3621,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Chlorine",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3630,14 +3630,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Chlorine",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "cobalt_gas",
@@ -3645,7 +3645,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Cobalt Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3654,14 +3654,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Cobalt Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "copper_gas",
@@ -3669,7 +3669,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Copper Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3678,14 +3678,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Copper Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "ethanol_gas",
@@ -3693,7 +3693,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Ethanol Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3702,14 +3702,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Ethanol Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "gold_gas",
@@ -3717,7 +3717,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Gold Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3726,14 +3726,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Gold Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "helium",
@@ -3741,7 +3741,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Helium",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3750,14 +3750,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Helium",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "iridium_gas",
@@ -3765,7 +3765,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Iridium Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3774,14 +3774,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Iridium Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "iron_gas",
@@ -3789,7 +3789,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Iron Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3798,14 +3798,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Iron Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "lead_gas",
@@ -3813,7 +3813,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Lead Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3822,14 +3822,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Lead Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "mercury_gas",
@@ -3837,7 +3837,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Mercury Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3846,14 +3846,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Mercury Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "nickel_gas",
@@ -3861,7 +3861,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Nickel Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3870,14 +3870,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Nickel Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "niobium_gas",
@@ -3885,7 +3885,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Niobium Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3894,14 +3894,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Niobium Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "nuclear_fallout",
@@ -3909,7 +3909,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Nuclear Fallout",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3918,14 +3918,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Nuclear Fallout",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "phosphorus_gas",
@@ -3933,7 +3933,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Phosphorus Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3942,14 +3942,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Phosphorus Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "polluted_oxygen",
@@ -3957,7 +3957,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Polluted Oxygen",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3966,14 +3966,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Polluted Oxygen",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "propane",
@@ -3981,7 +3981,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Propane",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -3990,14 +3990,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Propane",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "rock_gas",
@@ -4005,7 +4005,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Rock Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4014,14 +4014,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Rock Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "salt_gas",
@@ -4029,7 +4029,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Salt Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4038,14 +4038,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Salt Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "sour_gas",
@@ -4053,7 +4053,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Sour Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4062,14 +4062,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Sour Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "steam",
@@ -4077,7 +4077,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Steam",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4086,14 +4086,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Steam",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "steel_gas",
@@ -4101,7 +4101,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Steel Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4110,14 +4110,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Steel Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "sulfur_gas",
@@ -4125,7 +4125,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Sulfur Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4134,14 +4134,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Sulfur Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "super_coolant_gas",
@@ -4149,7 +4149,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Super Coolant Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4158,14 +4158,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Super Coolant Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "syngas",
@@ -4173,7 +4173,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Syngas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4182,14 +4182,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Syngas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "tungsten_gas",
@@ -4197,7 +4197,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Tungsten Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4206,14 +4206,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Tungsten Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         },
         {
           "id": "zinc_gas",
@@ -4221,7 +4221,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Zinc Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4230,14 +4230,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Zinc Gas",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 2
+          "power": -240.0,
+          "heat": 2.0
         }
       ],
       "modifiers": [],
@@ -4250,12 +4250,12 @@ export const ONI_DATASET = {
       "subcategory": "Ventilation",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Mini_Gas_Pump",
       "icon": "images/icons/Mini_Gas_Pump.png",
-      "power": -60,
-      "heat": 0,
+      "power": -60.0,
+      "heat": 0.0,
       "inputs": [
         {
           "resource": "Oxygen",
-          "rate": 50,
+          "rate": 50.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -4264,7 +4264,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Oxygen",
-          "rate": 50,
+          "rate": 50.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -4277,7 +4277,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Oxygen",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4286,14 +4286,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Oxygen",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "hydrogen",
@@ -4301,7 +4301,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Hydrogen",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4310,14 +4310,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Hydrogen",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "aluminum_gas",
@@ -4325,7 +4325,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Aluminum Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4334,14 +4334,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Aluminum Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "carbon_dioxide",
@@ -4349,7 +4349,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Carbon Dioxide",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4358,14 +4358,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Carbon Dioxide",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "carbon_gas",
@@ -4373,7 +4373,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Carbon Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4382,14 +4382,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Carbon Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "chlorine",
@@ -4397,7 +4397,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Chlorine",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4406,14 +4406,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Chlorine",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "cobalt_gas",
@@ -4421,7 +4421,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Cobalt Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4430,14 +4430,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Cobalt Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "copper_gas",
@@ -4445,7 +4445,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Copper Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4454,14 +4454,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Copper Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "ethanol_gas",
@@ -4469,7 +4469,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Ethanol Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4478,14 +4478,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Ethanol Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "gold_gas",
@@ -4493,7 +4493,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Gold Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4502,14 +4502,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Gold Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "helium",
@@ -4517,7 +4517,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Helium",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4526,14 +4526,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Helium",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "iridium_gas",
@@ -4541,7 +4541,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Iridium Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4550,14 +4550,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Iridium Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "iron_gas",
@@ -4565,7 +4565,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Iron Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4574,14 +4574,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Iron Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "lead_gas",
@@ -4589,7 +4589,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Lead Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4598,14 +4598,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Lead Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "mercury_gas",
@@ -4613,7 +4613,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Mercury Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4622,14 +4622,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Mercury Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "natural_gas",
@@ -4637,7 +4637,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Natural Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4646,14 +4646,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Natural Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "nickel_gas",
@@ -4661,7 +4661,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Nickel Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4670,14 +4670,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Nickel Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "niobium_gas",
@@ -4685,7 +4685,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Niobium Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4694,14 +4694,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Niobium Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "nuclear_fallout",
@@ -4709,7 +4709,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Nuclear Fallout",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4718,14 +4718,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Nuclear Fallout",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "phosphorus_gas",
@@ -4733,7 +4733,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Phosphorus Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4742,14 +4742,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Phosphorus Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "polluted_oxygen",
@@ -4757,7 +4757,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Polluted Oxygen",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4766,14 +4766,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Polluted Oxygen",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "propane",
@@ -4781,7 +4781,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Propane",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4790,14 +4790,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Propane",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "rock_gas",
@@ -4805,7 +4805,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Rock Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4814,14 +4814,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Rock Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "salt_gas",
@@ -4829,7 +4829,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Salt Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4838,14 +4838,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Salt Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "sour_gas",
@@ -4853,7 +4853,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Sour Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4862,14 +4862,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Sour Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "steam",
@@ -4877,7 +4877,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Steam",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4886,14 +4886,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Steam",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "steel_gas",
@@ -4901,7 +4901,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Steel Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4910,14 +4910,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Steel Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "sulfur_gas",
@@ -4925,7 +4925,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Sulfur Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4934,14 +4934,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Sulfur Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "super_coolant_gas",
@@ -4949,7 +4949,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Super Coolant Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4958,14 +4958,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Super Coolant Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "syngas",
@@ -4973,7 +4973,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Syngas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -4982,14 +4982,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Syngas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "tungsten_gas",
@@ -4997,7 +4997,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Tungsten Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5006,14 +5006,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Tungsten Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         },
         {
           "id": "zinc_gas",
@@ -5021,7 +5021,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Zinc Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5030,14 +5030,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Zinc Gas",
-              "rate": 50,
+              "rate": 50.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             }
           ],
-          "power": -60,
-          "heat": 0
+          "power": -60.0,
+          "heat": 0.0
         }
       ],
       "modifiers": [],
@@ -5050,19 +5050,19 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Water_Sieve",
       "icon": "images/icons/Water_Sieve.png",
-      "power": -120,
-      "heat": 4,
+      "power": -120.0,
+      "heat": 4.0,
       "inputs": [
         {
           "resource": "Polluted Water",
-          "rate": 5000,
+          "rate": 5000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "Sand",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -5071,14 +5071,14 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Water",
-          "rate": 5000,
+          "rate": 5000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "Polluted Dirt",
-          "rate": 200,
+          "rate": 200.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -5091,14 +5091,14 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Polluted Water",
-              "rate": 5000,
+              "rate": 5000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             },
             {
               "resource": "Sand",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5107,21 +5107,21 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Water",
-              "rate": 5000,
+              "rate": 5000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             },
             {
               "resource": "Polluted Dirt",
-              "rate": 200,
+              "rate": 200.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             }
           ],
-          "power": -120,
-          "heat": 4
+          "power": -120.0,
+          "heat": 4.0
         },
         {
           "id": "regolith",
@@ -5129,14 +5129,14 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Polluted Water",
-              "rate": 5000,
+              "rate": 5000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             },
             {
               "resource": "Regolith",
-              "rate": 1000,
+              "rate": 1000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5145,21 +5145,21 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Water",
-              "rate": 5000,
+              "rate": 5000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             },
             {
               "resource": "Polluted Dirt",
-              "rate": 200,
+              "rate": 200.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             }
           ],
-          "power": -120,
-          "heat": 4
+          "power": -120.0,
+          "heat": 4.0
         }
       ],
       "modifiers": [],
@@ -5172,12 +5172,12 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Desalinator",
       "icon": "images/icons/Desalinator.png",
-      "power": -480,
-      "heat": 8,
+      "power": -480.0,
+      "heat": 8.0,
       "inputs": [
         {
           "resource": "Salt Water",
-          "rate": 5000,
+          "rate": 5000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -5186,14 +5186,14 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Water",
-          "rate": 4650,
+          "rate": 4650.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "Salt",
-          "rate": 350,
+          "rate": 350.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -5206,7 +5206,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Salt Water",
-              "rate": 5000,
+              "rate": 5000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
@@ -5215,21 +5215,21 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Water",
-              "rate": 4650,
+              "rate": 4650.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             },
             {
               "resource": "Salt",
-              "rate": 350,
+              "rate": 350.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             }
           ],
-          "power": -480,
-          "heat": 8
+          "power": -480.0,
+          "heat": 8.0
         },
         {
           "id": "brine",
@@ -5237,7 +5237,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Brine",
-              "rate": 5000,
+              "rate": 5000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
@@ -5246,21 +5246,21 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Water",
-              "rate": 3500,
+              "rate": 3500.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
             },
             {
               "resource": "Salt",
-              "rate": 1500,
+              "rate": 1500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             }
           ],
-          "power": -480,
-          "heat": 8
+          "power": -480.0,
+          "heat": 8.0
         }
       ],
       "modifiers": [],
@@ -5273,12 +5273,12 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Ethanol_Distiller",
       "icon": "images/icons/Ethanol_Distiller.png",
-      "power": -240,
+      "power": -240.0,
       "heat": 4.5,
       "inputs": [
         {
           "resource": "Wood",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -5287,7 +5287,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Ethanol",
-          "rate": 500,
+          "rate": 500.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": "@ 73.4 °C+"
@@ -5318,12 +5318,12 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Algae_Distiller",
       "icon": "images/icons/Algae_Distiller.png",
-      "power": -120,
+      "power": -120.0,
       "heat": 1.5,
       "inputs": [
         {
           "resource": "Slime",
-          "rate": 600,
+          "rate": 600.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -5332,14 +5332,14 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Algae",
-          "rate": 200,
+          "rate": 200.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": "@ 30 °C+"
         },
         {
           "resource": "Polluted Water",
-          "rate": 400,
+          "rate": 400.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": "@ 30 °C+"
@@ -5356,11 +5356,118 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sludge_Press",
       "icon": "images/icons/AP_icon.png",
-      "power": -120,
-      "heat": 4,
-      "inputs": [],
-      "outputs": [],
-      "recipes": [],
+      "power": -120.0,
+      "heat": 4.0,
+      "inputs": [
+        {
+          "resource": "Mud",
+          "rate": 7500.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1.0,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Dirt",
+          "rate": 3000.0,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Water",
+          "rate": 4500.0,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": null
+        }
+      ],
+      "recipes": [
+        {
+          "id": "mud",
+          "name": "Mud -> Dirt + Water",
+          "inputs": [
+            {
+              "resource": "Mud",
+              "rate": 7500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Dirt",
+              "rate": 3000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Water",
+              "rate": 4500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -120.0,
+          "heat": 4.0
+        },
+        {
+          "id": "polluted_mud",
+          "name": "Polluted Mud -> Polluted Dirt + Polluted Water",
+          "inputs": [
+            {
+              "resource": "Polluted Mud",
+              "rate": 7500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Dirt",
+              "rate": 3000.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Polluted Water",
+              "rate": 4500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": -120.0,
+          "heat": 4.0
+        }
+      ],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/AP_icon.png/42px-AP_icon.png?acd6ca"
     },
@@ -5371,12 +5478,12 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Compost",
       "icon": "images/icons/Compost.png",
-      "power": 0,
+      "power": 0.0,
       "heat": 1.125,
       "inputs": [
         {
           "resource": "Compostable",
-          "rate": 100,
+          "rate": 100.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -5394,26 +5501,26 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Fertilizer_Synthesizer",
       "icon": "images/icons/Fertilizer_Synthesizer.png",
-      "power": -120,
-      "heat": 3,
+      "power": -120.0,
+      "heat": 3.0,
       "inputs": [
         {
           "resource": "Polluted Water",
-          "rate": 39,
+          "rate": 39.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "Dirt",
-          "rate": 65,
+          "rate": 65.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
         },
         {
           "resource": "Phosphorite",
-          "rate": 26,
+          "rate": 26.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -5422,14 +5529,14 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Fertilizer",
-          "rate": 120,
+          "rate": 120.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 50 °C+"
         },
         {
           "resource": "Natural Gas",
-          "rate": 10,
+          "rate": 10.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 76.85 °C+"
@@ -5446,7 +5553,7 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Polymer_Press",
       "icon": "images/icons/Polymer_Press.png",
-      "power": -240,
+      "power": -240.0,
       "heat": 32.5,
       "inputs": [
         {
@@ -5460,7 +5567,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Plastic",
-          "rate": 500,
+          "rate": 500.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 75 °C+"
@@ -5491,19 +5598,19 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Oil_Refinery",
       "icon": "images/icons/Oil_Refinery.png",
-      "power": -480,
-      "heat": 10,
+      "power": -480.0,
+      "heat": 10.0,
       "inputs": [
         {
           "resource": "Crude Oil",
-          "rate": 10000,
+          "rate": 10000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "Duplicant Labor",
-          "rate": 1,
+          "rate": 1.0,
           "unit": "s/s",
           "state": "labor",
           "temp": null
@@ -5512,14 +5619,14 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Petroleum",
-          "rate": 5000,
+          "rate": 5000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": "@ 75 °C+"
         },
         {
           "resource": "Natural Gas",
-          "rate": 90,
+          "rate": 90.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 75 °C+"
@@ -5536,19 +5643,19 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Kiln",
       "icon": "images/icons/Kiln.png",
-      "power": 0,
-      "heat": 20,
+      "power": 0.0,
+      "heat": 20.0,
       "inputs": [
         {
           "resource": "Clay",
-          "rate": 2500,
+          "rate": 2500.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
         },
         {
           "resource": "Coal",
-          "rate": 625,
+          "rate": 625.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -5557,7 +5664,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Ceramic",
-          "rate": 2500,
+          "rate": 2500.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 80 °C+"
@@ -5570,14 +5677,14 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Clay",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             },
             {
               "resource": "Coal",
-              "rate": 625,
+              "rate": 625.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5586,14 +5693,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Ceramic",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": "@ 80 °C+"
             }
           ],
-          "power": 0,
-          "heat": 20
+          "power": 0.0,
+          "heat": 20.0
         },
         {
           "id": "refined_carbon_coal",
@@ -5601,7 +5708,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Coal",
-              "rate": 3125,
+              "rate": 3125.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5610,14 +5717,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Refined Carbon",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": "@ 80 °C+"
             }
           ],
-          "power": 0,
-          "heat": 20
+          "power": 0.0,
+          "heat": 20.0
         },
         {
           "id": "refined_carbon_wood",
@@ -5625,7 +5732,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Wood",
-              "rate": 5000,
+              "rate": 5000.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5634,14 +5741,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Refined Carbon",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": "@ 80 °C+"
             }
           ],
-          "power": 0,
-          "heat": 20
+          "power": 0.0,
+          "heat": 20.0
         }
       ],
       "modifiers": [],
@@ -5654,12 +5761,12 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Rock_Crusher",
       "icon": "images/icons/Rock_Crusher.png",
-      "power": -240,
-      "heat": 16,
+      "power": -240.0,
+      "heat": 16.0,
       "inputs": [
         {
           "resource": "Fossil",
-          "rate": 2500,
+          "rate": 2500.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -5668,14 +5775,14 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Lime",
-          "rate": 125,
+          "rate": 125.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
         },
         {
           "resource": "Sedimentary Rock",
-          "rate": 2375,
+          "rate": 2375.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -5688,7 +5795,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Fossil",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5697,21 +5804,21 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Lime",
-              "rate": 125,
+              "rate": 125.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             },
             {
               "resource": "Sedimentary Rock",
-              "rate": 2375,
+              "rate": 2375.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 16
+          "power": -240.0,
+          "heat": 16.0
         },
         {
           "id": "eggshell_lime",
@@ -5719,7 +5826,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Egg Shell",
-              "rate": 125,
+              "rate": 125.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5728,14 +5835,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Lime",
-              "rate": 125,
+              "rate": 125.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 16
+          "power": -240.0,
+          "heat": 16.0
         },
         {
           "id": "sandstone_sand",
@@ -5743,7 +5850,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Sandstone",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5752,14 +5859,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Sand",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 16
+          "power": -240.0,
+          "heat": 16.0
         },
         {
           "id": "salt_table_salt",
@@ -5767,7 +5874,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Salt",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5776,14 +5883,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Sand",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             }
           ],
-          "power": -240,
-          "heat": 16
+          "power": -240.0,
+          "heat": 16.0
         }
       ],
       "modifiers": [],
@@ -5796,12 +5903,12 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Metal_Refinery",
       "icon": "images/icons/Metal_Refinery.png",
-      "power": -1200,
-      "heat": 16,
+      "power": -1200.0,
+      "heat": 16.0,
       "inputs": [
         {
           "resource": "Iron Ore",
-          "rate": 2500,
+          "rate": 2500.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -5810,7 +5917,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Iron",
-          "rate": 2500,
+          "rate": 2500.0,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 40 °C"
@@ -5823,7 +5930,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Iron Ore",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5832,14 +5939,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Iron",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": "@ 40 °C"
             }
           ],
-          "power": -1200,
-          "heat": 16
+          "power": -1200.0,
+          "heat": 16.0
         },
         {
           "id": "steel",
@@ -5847,21 +5954,21 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Iron",
-              "rate": 1750,
+              "rate": 1750.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             },
             {
               "resource": "Refined Carbon",
-              "rate": 500,
+              "rate": 500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
             },
             {
               "resource": "Lime",
-              "rate": 250,
+              "rate": 250.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5870,14 +5977,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Steel",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": "@ 40 °C"
             }
           ],
-          "power": -1200,
-          "heat": 16
+          "power": -1200.0,
+          "heat": 16.0
         },
         {
           "id": "copper",
@@ -5885,7 +5992,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Copper Ore",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5894,14 +6001,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Copper",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": "@ 40 °C"
             }
           ],
-          "power": -1200,
-          "heat": 16
+          "power": -1200.0,
+          "heat": 16.0
         },
         {
           "id": "gold",
@@ -5909,7 +6016,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Gold Amalgam",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -5918,14 +6025,14 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Gold",
-              "rate": 2500,
+              "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
               "temp": "@ 40 °C"
             }
           ],
-          "power": -1200,
-          "heat": 16
+          "power": -1200.0,
+          "heat": 16.0
         }
       ],
       "modifiers": [],
@@ -5938,8 +6045,8 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Glass_Forge",
       "icon": "images/icons/Glass_Forge.png",
-      "power": -1200,
-      "heat": 16,
+      "power": -1200.0,
+      "heat": 16.0,
       "inputs": [],
       "outputs": [],
       "recipes": [],
@@ -5953,8 +6060,8 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Molecular_Forge",
       "icon": "images/icons/Molecular_Forge.png",
-      "power": -1600,
-      "heat": 16,
+      "power": -1600.0,
+      "heat": 16.0,
       "inputs": [],
       "outputs": [],
       "recipes": [],
@@ -5968,8 +6075,8 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Bleach_Stone_Hopper",
       "icon": "images/icons/Bleach_Stone_Hopper.png",
-      "power": -480,
-      "heat": 3,
+      "power": -480.0,
+      "heat": 3.0,
       "inputs": [],
       "outputs": [],
       "recipes": [],
@@ -5983,19 +6090,19 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Brackwax_Gleaner",
       "icon": "images/icons/Gleaner.png",
-      "power": -480,
-      "heat": 8,
+      "power": -480.0,
+      "heat": 8.0,
       "inputs": [
         {
           "resource": "Brackene",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "or Ovolene",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -6004,42 +6111,42 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Brackwax",
-          "rate": 90,
+          "rate": 90.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "Brine",
-          "rate": 810,
+          "rate": 810.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "Carbon Dioxide",
-          "rate": 100,
+          "rate": 100.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": "@ 75 °C+"
         },
         {
           "resource": "Caviar",
-          "rate": 90,
+          "rate": 90.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "Mucin",
-          "rate": 810,
+          "rate": 810.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
         },
         {
           "resource": "Carbon Dioxide",
-          "rate": 100,
+          "rate": 100.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": "@ 75 °C+"
@@ -6056,12 +6163,12 @@ export const ONI_DATASET = {
       "subcategory": "Utilities",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Thermo_Aquatuner",
       "icon": "images/icons/Thermo_Aquatuner.png",
-      "power": -1200,
+      "power": -1200.0,
       "heat": 585.06,
       "inputs": [
         {
           "resource": "Water",
-          "rate": 10000,
+          "rate": 10000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -6070,7 +6177,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Water",
-          "rate": 10000,
+          "rate": 10000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": "-14 °C"
@@ -6083,7 +6190,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
@@ -6092,13 +6199,13 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": "-14 °C"
             }
           ],
-          "power": -1200,
+          "power": -1200.0,
           "heat": 585.06
         },
         {
@@ -6107,7 +6214,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Polluted Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
@@ -6116,13 +6223,13 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Polluted Water",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": "-14 °C"
             }
           ],
-          "power": -1200,
+          "power": -1200.0,
           "heat": 585.06
         },
         {
@@ -6131,7 +6238,7 @@ export const ONI_DATASET = {
           "inputs": [
             {
               "resource": "Super Coolant",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": null
@@ -6140,13 +6247,13 @@ export const ONI_DATASET = {
           "outputs": [
             {
               "resource": "Super Coolant",
-              "rate": 10000,
+              "rate": 10000.0,
               "unit": "g/s",
               "state": "in a pipe",
               "temp": "-14 °C"
             }
           ],
-          "power": -1200,
+          "power": -1200.0,
           "heat": 1181.6
         }
       ],
@@ -6160,8 +6267,8 @@ export const ONI_DATASET = {
       "subcategory": "Utilities",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Thermo_Regulator",
       "icon": "images/icons/Thermo_Regulator.png",
-      "power": -240,
-      "heat": 0,
+      "power": -240.0,
+      "heat": 0.0,
       "inputs": [],
       "outputs": [],
       "recipes": [],
@@ -6175,8 +6282,8 @@ export const ONI_DATASET = {
       "subcategory": "Utilities",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Ice-E_Fan",
       "icon": "images/icons/Ice-E_Fan.png",
-      "power": 0,
-      "heat": -32,
+      "power": 0.0,
+      "heat": -32.0,
       "inputs": [],
       "outputs": [],
       "recipes": [],
@@ -6190,8 +6297,8 @@ export const ONI_DATASET = {
       "subcategory": "Utilities",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Ice_Maker",
       "icon": "images/icons/Ice_Maker.png",
-      "power": -240,
-      "heat": 16,
+      "power": -240.0,
+      "heat": 16.0,
       "inputs": [],
       "outputs": [],
       "recipes": [],
@@ -6205,12 +6312,12 @@ export const ONI_DATASET = {
       "subcategory": "Utilities",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Oil_Well",
       "icon": "images/icons/Oil_Well.png",
-      "power": -240,
-      "heat": 2,
+      "power": -240.0,
+      "heat": 2.0,
       "inputs": [
         {
           "resource": "Water",
-          "rate": 1000,
+          "rate": 1000.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -6243,8 +6350,8 @@ export const ONI_DATASET = {
       "subcategory": "Medical",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Ore_Scrubber",
       "icon": "images/icons/Ore_Scrubber.png",
-      "power": 0,
-      "heat": 0,
+      "power": 0.0,
+      "heat": 0.0,
       "inputs": [],
       "outputs": [],
       "recipes": [],
@@ -6258,7 +6365,7 @@ export const ONI_DATASET = {
       "subcategory": "Food",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Microbe_Musher",
       "icon": "images/icons/Microbe_Musher.png",
-      "power": -240,
+      "power": -240.0,
       "heat": 2.5,
       "inputs": [],
       "outputs": [],
@@ -6273,7 +6380,7 @@ export const ONI_DATASET = {
       "subcategory": "Food",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Electric_Grill",
       "icon": "images/icons/Electric_Grill.png",
-      "power": -60,
+      "power": -60.0,
       "heat": 4.5,
       "inputs": [],
       "outputs": [],
@@ -6288,12 +6395,12 @@ export const ONI_DATASET = {
       "subcategory": "Food",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Gas_Range",
       "icon": "images/icons/Gas_Range.png",
-      "power": -240,
-      "heat": 9,
+      "power": -240.0,
+      "heat": 9.0,
       "inputs": [
         {
           "resource": "Natural Gas",
-          "rate": 100,
+          "rate": 100.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": null
@@ -6302,7 +6409,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Carbon Dioxide",
-          "rate": 25,
+          "rate": 25.0,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -6319,8 +6426,8 @@ export const ONI_DATASET = {
       "subcategory": "Food",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Deep_Fryer",
       "icon": "images/icons/FP_icon.png",
-      "power": -480,
-      "heat": 10,
+      "power": -480.0,
+      "heat": 10.0,
       "inputs": [],
       "outputs": [],
       "recipes": [],
@@ -6334,13 +6441,13 @@ export const ONI_DATASET = {
       "subcategory": "Food",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Smoker",
       "icon": "images/icons/PP_icon.png",
-      "power": 0,
-      "heat": 9,
+      "power": 0.0,
+      "heat": 9.0,
       "inputs": [],
       "outputs": [
         {
           "resource": "Carbon Dioxide",
-          "rate": 20,
+          "rate": 20.0,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": "@ 75 °C"
@@ -6357,7 +6464,7 @@ export const ONI_DATASET = {
       "subcategory": "Ranching",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Incubator",
       "icon": "images/icons/Incubator.png",
-      "power": -240,
+      "power": -240.0,
       "heat": 4.5,
       "inputs": [],
       "outputs": [],
@@ -6372,8 +6479,8 @@ export const ONI_DATASET = {
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Plant_Pulverizer",
       "icon": "images/icons/Plant_Pulverizer.png",
-      "power": 0,
-      "heat": 2,
+      "power": 0.0,
+      "heat": 2.0,
       "inputs": [],
       "outputs": [],
       "recipes": [],
@@ -6387,8 +6494,8 @@ export const ONI_DATASET = {
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Power_Control_Station",
       "icon": "images/icons/Metal_Refinery.png",
-      "power": 0,
-      "heat": 0,
+      "power": 0.0,
+      "heat": 0.0,
       "inputs": [],
       "outputs": [],
       "recipes": [

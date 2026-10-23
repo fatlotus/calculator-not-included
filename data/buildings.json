@@ -5357,9 +5357,116 @@
     "icon": "images/icons/AP_icon.png",
     "power": -120.0,
     "heat": 4.0,
-    "inputs": [],
-    "outputs": [],
-    "recipes": [],
+    "inputs": [
+      {
+        "resource": "Mud",
+        "rate": 7500.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Duplicant Labor",
+        "rate": 1.0,
+        "unit": "s/s",
+        "state": "labor",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Dirt",
+        "rate": 3000.0,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Water",
+        "rate": 4500.0,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "mud",
+        "name": "Mud -> Dirt + Water",
+        "inputs": [
+          {
+            "resource": "Mud",
+            "rate": 7500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1.0,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Dirt",
+            "rate": 3000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Water",
+            "rate": 4500.0,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "power": -120.0,
+        "heat": 4.0
+      },
+      {
+        "id": "polluted_mud",
+        "name": "Polluted Mud -> Polluted Dirt + Polluted Water",
+        "inputs": [
+          {
+            "resource": "Polluted Mud",
+            "rate": 7500.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1.0,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Polluted Dirt",
+            "rate": 3000.0,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Polluted Water",
+            "rate": 4500.0,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "power": -120.0,
+        "heat": 4.0
+      }
+    ],
     "modifiers": [],
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/AP_icon.png/42px-AP_icon.png?acd6ca"
   },
