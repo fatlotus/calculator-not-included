@@ -9363,9 +9363,9 @@ export const ONI_DATASET = {
           "temp": null
         },
         {
-          "resource": "Calories",
-          "rate": 0.8889,
-          "unit": "kcal/s",
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -9392,9 +9392,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -9421,9 +9421,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -9450,9 +9450,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -9502,9 +9502,9 @@ export const ONI_DATASET = {
           "temp": null
         },
         {
-          "resource": "Calories",
-          "rate": 0.8889,
-          "unit": "kcal/s",
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -9531,9 +9531,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -9560,9 +9560,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -9612,9 +9612,9 @@ export const ONI_DATASET = {
           "temp": null
         },
         {
-          "resource": "Calories",
-          "rate": 0.8889,
-          "unit": "kcal/s",
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -9641,9 +9641,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -9670,9 +9670,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -9722,9 +9722,9 @@ export const ONI_DATASET = {
           "temp": null
         },
         {
-          "resource": "Calories",
-          "rate": 0.8889,
-          "unit": "kcal/s",
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -9751,9 +9751,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -9780,9 +9780,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -9837,6 +9837,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.3704,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -9863,6 +9870,13 @@ export const ONI_DATASET = {
             {
               "resource": "Reed Fiber",
               "rate": 0.4167,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -9895,6 +9909,13 @@ export const ONI_DATASET = {
               "unit": "g/s",
               "state": "free",
               "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
             }
           ]
         },
@@ -9921,6 +9942,13 @@ export const ONI_DATASET = {
             {
               "resource": "Reed Fiber",
               "rate": 0.4167,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -9976,6 +10004,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.3704,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -10002,6 +10037,13 @@ export const ONI_DATASET = {
             {
               "resource": "Plastic",
               "rate": 83.33,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10034,6 +10076,13 @@ export const ONI_DATASET = {
               "unit": "g/s",
               "state": "free",
               "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
             }
           ]
         },
@@ -10060,6 +10109,13 @@ export const ONI_DATASET = {
             {
               "resource": "Plastic",
               "rate": 83.33,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10110,9 +10166,9 @@ export const ONI_DATASET = {
           "temp": null
         },
         {
-          "resource": "Calories",
-          "rate": 0.4444,
-          "unit": "kcal/s",
+          "resource": "Pacu Fillet",
+          "rate": 1.1111,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -10139,9 +10195,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.4444,
-              "unit": "kcal/s",
+              "resource": "Pacu Fillet",
+              "rate": 1.1111,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -10168,9 +10224,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.4444,
-              "unit": "kcal/s",
+              "resource": "Pacu Fillet",
+              "rate": 1.1111,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -10218,6 +10274,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -10237,6 +10300,13 @@ export const ONI_DATASET = {
             {
               "resource": "Crude Oil",
               "rate": 16.67,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.5556,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10285,6 +10355,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -10304,6 +10381,13 @@ export const ONI_DATASET = {
             {
               "resource": "Petroleum",
               "rate": 16.67,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.5556,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10352,6 +10436,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -10371,6 +10462,13 @@ export const ONI_DATASET = {
             {
               "resource": "Slime",
               "rate": 79.17,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.5556,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10419,6 +10517,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -10438,6 +10543,13 @@ export const ONI_DATASET = {
             {
               "resource": "Oxylite",
               "rate": 79.17,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.5556,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10486,6 +10598,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -10505,6 +10624,13 @@ export const ONI_DATASET = {
             {
               "resource": "Bleach Stone",
               "rate": 47.5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.5556,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10553,6 +10679,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.2778,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -10572,6 +10705,13 @@ export const ONI_DATASET = {
             {
               "resource": "Dirt",
               "rate": 33.33,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.2778,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10696,9 +10836,9 @@ export const ONI_DATASET = {
       ],
       "outputs": [
         {
-          "resource": "Calories",
-          "rate": 4.4444,
-          "unit": "kcal/s",
+          "resource": "Meat",
+          "rate": 2.7778,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -10718,9 +10858,9 @@ export const ONI_DATASET = {
           ],
           "outputs": [
             {
-              "resource": "Calories",
-              "rate": 4.4444,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 2.7778,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -10768,6 +10908,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.2778,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -10787,6 +10934,13 @@ export const ONI_DATASET = {
             {
               "resource": "Sucrose",
               "rate": 16.67,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.2778,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10835,6 +10989,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -10854,6 +11015,13 @@ export const ONI_DATASET = {
             {
               "resource": "Mud",
               "rate": 83.33,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.5556,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -10902,6 +11070,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -10921,6 +11096,13 @@ export const ONI_DATASET = {
             {
               "resource": "Hydrogen",
               "rate": 5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.5556,
               "unit": "g/s",
               "state": "free",
               "temp": null

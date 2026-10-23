@@ -6,8 +6,8 @@
     "subcategory": "Hatch",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Hatch",
     "icon": "images/icons/Hatch.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Sandstone",
@@ -26,9 +26,9 @@
         "temp": null
       },
       {
-        "resource": "Calories",
-        "rate": 0.8889,
-        "unit": "kcal/s",
+        "resource": "Meat",
+        "rate": 0.5556,
+        "unit": "g/s",
         "state": "free",
         "temp": null
       }
@@ -55,9 +55,9 @@
             "temp": null
           },
           {
-            "resource": "Calories",
-            "rate": 0.8889,
-            "unit": "kcal/s",
+            "resource": "Meat",
+            "rate": 0.5556,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -84,9 +84,9 @@
             "temp": null
           },
           {
-            "resource": "Calories",
-            "rate": 0.8889,
-            "unit": "kcal/s",
+            "resource": "Meat",
+            "rate": 0.5556,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -113,9 +113,9 @@
             "temp": null
           },
           {
-            "resource": "Calories",
-            "rate": 0.8889,
-            "unit": "kcal/s",
+            "resource": "Meat",
+            "rate": 0.5556,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -145,8 +145,8 @@
     "subcategory": "Hatch",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Hatch",
     "icon": "images/icons/Stone_Hatch.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Igneous Rock",
@@ -165,9 +165,9 @@
         "temp": null
       },
       {
-        "resource": "Calories",
-        "rate": 0.8889,
-        "unit": "kcal/s",
+        "resource": "Meat",
+        "rate": 0.5556,
+        "unit": "g/s",
         "state": "free",
         "temp": null
       }
@@ -194,9 +194,9 @@
             "temp": null
           },
           {
-            "resource": "Calories",
-            "rate": 0.8889,
-            "unit": "kcal/s",
+            "resource": "Meat",
+            "rate": 0.5556,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -223,9 +223,9 @@
             "temp": null
           },
           {
-            "resource": "Calories",
-            "rate": 0.8889,
-            "unit": "kcal/s",
+            "resource": "Meat",
+            "rate": 0.5556,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -255,8 +255,8 @@
     "subcategory": "Hatch",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Hatch",
     "icon": "images/icons/Sage_Hatch.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Dirt",
@@ -275,9 +275,9 @@
         "temp": null
       },
       {
-        "resource": "Calories",
-        "rate": 0.8889,
-        "unit": "kcal/s",
+        "resource": "Meat",
+        "rate": 0.5556,
+        "unit": "g/s",
         "state": "free",
         "temp": null
       }
@@ -304,9 +304,9 @@
             "temp": null
           },
           {
-            "resource": "Calories",
-            "rate": 0.8889,
-            "unit": "kcal/s",
+            "resource": "Meat",
+            "rate": 0.5556,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -333,9 +333,9 @@
             "temp": null
           },
           {
-            "resource": "Calories",
-            "rate": 0.8889,
-            "unit": "kcal/s",
+            "resource": "Meat",
+            "rate": 0.5556,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -365,8 +365,8 @@
     "subcategory": "Hatch",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Hatch",
     "icon": "images/icons/Smooth_Hatch.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Iron Ore",
@@ -379,15 +379,15 @@
     "outputs": [
       {
         "resource": "Iron",
-        "rate": 125.0,
+        "rate": 125,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
-        "resource": "Calories",
-        "rate": 0.8889,
-        "unit": "kcal/s",
+        "resource": "Meat",
+        "rate": 0.5556,
+        "unit": "g/s",
         "state": "free",
         "temp": null
       }
@@ -408,15 +408,15 @@
         "outputs": [
           {
             "resource": "Iron",
-            "rate": 125.0,
+            "rate": 125,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
-            "resource": "Calories",
-            "rate": 0.8889,
-            "unit": "kcal/s",
+            "resource": "Meat",
+            "rate": 0.5556,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -437,15 +437,15 @@
         "outputs": [
           {
             "resource": "Copper",
-            "rate": 125.0,
+            "rate": 125,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
-            "resource": "Calories",
-            "rate": 0.8889,
-            "unit": "kcal/s",
+            "resource": "Meat",
+            "rate": 0.5556,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -475,12 +475,12 @@
     "subcategory": "Drecko",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Drecko",
     "icon": "images/icons/Drecko.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Growth",
-        "rate": 1.0,
+        "rate": 1,
         "unit": "growth/s",
         "state": "free",
         "temp": null
@@ -500,6 +500,13 @@
         "unit": "g/s",
         "state": "free",
         "temp": null
+      },
+      {
+        "resource": "Meat",
+        "rate": 0.3704,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
       }
     ],
     "recipes": [
@@ -509,7 +516,7 @@
         "inputs": [
           {
             "resource": "Growth",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "growth/s",
             "state": "free",
             "temp": null
@@ -526,6 +533,13 @@
           {
             "resource": "Reed Fiber",
             "rate": 0.4167,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.3704,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -538,7 +552,7 @@
         "inputs": [
           {
             "resource": "Growth",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "growth/s",
             "state": "free",
             "temp": null
@@ -555,6 +569,13 @@
           {
             "resource": "Reed Fiber",
             "rate": 0.4167,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.3704,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -567,7 +588,7 @@
         "inputs": [
           {
             "resource": "Growth",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "growth/s",
             "state": "free",
             "temp": null
@@ -584,6 +605,13 @@
           {
             "resource": "Reed Fiber",
             "rate": 0.4167,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.3704,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -614,12 +642,12 @@
     "subcategory": "Drecko",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Drecko",
     "icon": "images/icons/Glossy_Drecko.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Growth",
-        "rate": 1.0,
+        "rate": 1,
         "unit": "growth/s",
         "state": "free",
         "temp": null
@@ -628,7 +656,7 @@
     "outputs": [
       {
         "resource": "Phosphorite",
-        "rate": 15.0,
+        "rate": 15,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -636,6 +664,13 @@
       {
         "resource": "Plastic",
         "rate": 83.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Meat",
+        "rate": 0.3704,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -648,7 +683,7 @@
         "inputs": [
           {
             "resource": "Growth",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "growth/s",
             "state": "free",
             "temp": null
@@ -657,7 +692,7 @@
         "outputs": [
           {
             "resource": "Phosphorite",
-            "rate": 15.0,
+            "rate": 15,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -665,6 +700,13 @@
           {
             "resource": "Plastic",
             "rate": 83.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.3704,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -677,7 +719,7 @@
         "inputs": [
           {
             "resource": "Growth",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "growth/s",
             "state": "free",
             "temp": null
@@ -686,7 +728,7 @@
         "outputs": [
           {
             "resource": "Phosphorite",
-            "rate": 15.0,
+            "rate": 15,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -694,6 +736,13 @@
           {
             "resource": "Plastic",
             "rate": 83.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.3704,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -706,7 +755,7 @@
         "inputs": [
           {
             "resource": "Growth",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "growth/s",
             "state": "free",
             "temp": null
@@ -715,7 +764,7 @@
         "outputs": [
           {
             "resource": "Phosphorite",
-            "rate": 15.0,
+            "rate": 15,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -723,6 +772,13 @@
           {
             "resource": "Plastic",
             "rate": 83.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.3704,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -753,8 +809,8 @@
     "subcategory": "Pacu",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Pacu",
     "icon": "images/icons/Pacu.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Seeds",
@@ -773,9 +829,9 @@
         "temp": null
       },
       {
-        "resource": "Calories",
-        "rate": 0.4444,
-        "unit": "kcal/s",
+        "resource": "Pacu Fillet",
+        "rate": 1.1111,
+        "unit": "g/s",
         "state": "free",
         "temp": null
       }
@@ -802,9 +858,9 @@
             "temp": null
           },
           {
-            "resource": "Calories",
-            "rate": 0.4444,
-            "unit": "kcal/s",
+            "resource": "Pacu Fillet",
+            "rate": 1.1111,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -831,9 +887,9 @@
             "temp": null
           },
           {
-            "resource": "Calories",
-            "rate": 0.4444,
-            "unit": "kcal/s",
+            "resource": "Pacu Fillet",
+            "rate": 1.1111,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -863,8 +919,8 @@
     "subcategory": "Slickster",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Slickster",
     "icon": "images/icons/Slickster.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Carbon Dioxide",
@@ -878,6 +934,13 @@
       {
         "resource": "Crude Oil",
         "rate": 16.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Meat",
+        "rate": 0.5556,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -900,6 +963,13 @@
           {
             "resource": "Crude Oil",
             "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.5556,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -930,8 +1000,8 @@
     "subcategory": "Slickster",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Slickster",
     "icon": "images/icons/Molten_Slickster.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Carbon Dioxide",
@@ -945,6 +1015,13 @@
       {
         "resource": "Petroleum",
         "rate": 16.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Meat",
+        "rate": 0.5556,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -967,6 +1044,13 @@
           {
             "resource": "Petroleum",
             "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.5556,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -997,8 +1081,8 @@
     "subcategory": "Puft",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Puft",
     "icon": "images/icons/Puft.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Polluted Oxygen",
@@ -1012,6 +1096,13 @@
       {
         "resource": "Slime",
         "rate": 79.17,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Meat",
+        "rate": 0.5556,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -1034,6 +1125,13 @@
           {
             "resource": "Slime",
             "rate": 79.17,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.5556,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1064,8 +1162,8 @@
     "subcategory": "Puft",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Puft",
     "icon": "images/icons/Dense_Puft.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Oxygen",
@@ -1079,6 +1177,13 @@
       {
         "resource": "Oxylite",
         "rate": 79.17,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Meat",
+        "rate": 0.5556,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -1101,6 +1206,13 @@
           {
             "resource": "Oxylite",
             "rate": 79.17,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.5556,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1131,12 +1243,12 @@
     "subcategory": "Puft",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Puft",
     "icon": "images/icons/Squeaky_Puft.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Chlorine",
-        "rate": 50.0,
+        "rate": 50,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -1149,6 +1261,13 @@
         "unit": "g/s",
         "state": "free",
         "temp": null
+      },
+      {
+        "resource": "Meat",
+        "rate": 0.5556,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
       }
     ],
     "recipes": [
@@ -1158,7 +1277,7 @@
         "inputs": [
           {
             "resource": "Chlorine",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1168,6 +1287,13 @@
           {
             "resource": "Bleach Stone",
             "rate": 47.5,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.5556,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1198,8 +1324,8 @@
     "subcategory": "Pip",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Pip",
     "icon": "images/icons/Pip.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Wood",
@@ -1213,6 +1339,13 @@
       {
         "resource": "Dirt",
         "rate": 33.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Meat",
+        "rate": 0.2778,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -1235,6 +1368,13 @@
           {
             "resource": "Dirt",
             "rate": 33.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.2778,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1265,8 +1405,8 @@
     "subcategory": "Pokeshell",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Pokeshell",
     "icon": "images/icons/Pokeshell.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Polluted Dirt",
@@ -1346,12 +1486,12 @@
     "subcategory": "Shove Vole",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Shove_Vole",
     "icon": "images/icons/Shove_Vole.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Regolith",
-        "rate": 8000.0,
+        "rate": 8000,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -1359,9 +1499,9 @@
     ],
     "outputs": [
       {
-        "resource": "Calories",
-        "rate": 4.4444,
-        "unit": "kcal/s",
+        "resource": "Meat",
+        "rate": 2.7778,
+        "unit": "g/s",
         "state": "free",
         "temp": null
       }
@@ -1373,7 +1513,7 @@
         "inputs": [
           {
             "resource": "Regolith",
-            "rate": 8000.0,
+            "rate": 8000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1381,9 +1521,9 @@
         ],
         "outputs": [
           {
-            "resource": "Calories",
-            "rate": 4.4444,
-            "unit": "kcal/s",
+            "resource": "Meat",
+            "rate": 2.7778,
+            "unit": "g/s",
             "state": "free",
             "temp": null
           }
@@ -1413,8 +1553,8 @@
     "subcategory": "Sweetle",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sweetle",
     "icon": "images/icons/Sweetle.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Sulfur",
@@ -1428,6 +1568,13 @@
       {
         "resource": "Sucrose",
         "rate": 16.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Meat",
+        "rate": 0.2778,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -1450,6 +1597,13 @@
           {
             "resource": "Sucrose",
             "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.2778,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1480,8 +1634,8 @@
     "subcategory": "Grubgrub",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Grubgrub",
     "icon": "images/icons/Grubgrub.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Sulfur",
@@ -1495,6 +1649,13 @@
       {
         "resource": "Mud",
         "rate": 83.33,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Meat",
+        "rate": 0.5556,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -1517,6 +1678,13 @@
           {
             "resource": "Mud",
             "rate": 83.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.5556,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1547,12 +1715,12 @@
     "subcategory": "Plug Slug",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Plug_Slug",
     "icon": "images/icons/Plug_Slug.png",
-    "power": 200.0,
-    "heat": 0.0,
+    "power": 200,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Iron Ore",
-        "rate": 100.0,
+        "rate": 100,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -1561,7 +1729,14 @@
     "outputs": [
       {
         "resource": "Hydrogen",
-        "rate": 5.0,
+        "rate": 5,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Meat",
+        "rate": 0.5556,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -1574,7 +1749,7 @@
         "inputs": [
           {
             "resource": "Iron Ore",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1583,14 +1758,21 @@
         "outputs": [
           {
             "resource": "Hydrogen",
-            "rate": 5.0,
+            "rate": 5,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Meat",
+            "rate": 0.5556,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": 200.0,
-        "heat": 0.0
+        "power": 200,
+        "heat": 0
       }
     ],
     "modifiers": [

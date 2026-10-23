@@ -25,6 +25,16 @@ export const SYNTHETIC_ELEMENTS = {
     icon: "images/icons/Food.png",
     state: "Food",
   },
+  Meat: {
+    name: "Meat",
+    icon: "images/icons/Food.png",
+    state: "Food",
+  },
+  "Pacu Fillet": {
+    name: "Pacu Fillet",
+    icon: "images/icons/Pacu.png",
+    state: "Food",
+  },
   "Duplicant Labor": {
     name: "Duplicant Labor",
     icon: "images/icons/Duplicants_preview.png",

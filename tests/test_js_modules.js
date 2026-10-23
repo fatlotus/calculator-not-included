@@ -767,6 +767,31 @@ console.log("=== Running JavaScript Module Tests ===");
     }
   }
 
+  // Critter Meat & Pacu Fillet Production
+  const evalHatch = evaluateRow({ entityId: "critter_hatch", qty: 1 }, entityMap, elementMap);
+  const hatchMeat = evalHatch.outputs.find((o) => o.resource === "Meat");
+  assert.ok(hatchMeat, "Hatch must output Meat");
+  assert.strictEqual(hatchMeat.rate, 0.5556, "Hatch produces 0.5556 g/s Meat (2 kg per 6-cycle egg)");
+  assert.strictEqual(evalHatch.outputs.find((o) => o.resource === "Calories"), undefined, "Hatch must not produce Calories directly");
+
+  const evalPacu = evaluateRow({ entityId: "critter_pacu", qty: 1 }, entityMap, elementMap);
+  const pacuFillet = evalPacu.outputs.find((o) => o.resource === "Pacu Fillet");
+  assert.ok(pacuFillet, "Pacu must output Pacu Fillet");
+  assert.strictEqual(pacuFillet.rate, 1.1111, "Pacu produces 1.1111 g/s Pacu Fillet (1 kg per 1.5-cycle egg)");
+  assert.strictEqual(evalPacu.outputs.find((o) => o.resource === "Calories"), undefined, "Pacu must not produce Calories directly");
+
+  const evalVole = evaluateRow({ entityId: "critter_shove_vole", qty: 1 }, entityMap, elementMap);
+  const voleMeat = evalVole.outputs.find((o) => o.resource === "Meat");
+  assert.ok(voleMeat, "Shove Vole must output Meat");
+  assert.strictEqual(voleMeat.rate, 2.7778, "Shove Vole produces 2.7778 g/s Meat (10 kg per 6-cycle egg)");
+  assert.strictEqual(evalVole.outputs.find((o) => o.resource === "Calories"), undefined, "Shove Vole must not produce Calories directly");
+
+  // Wild hatch produces 25% meat (0.1389 g/s)
+  const evalWildHatch = evaluateRow({ entityId: "critter_hatch", qty: 1, modifiers: ["wild"] }, entityMap, elementMap);
+  const wildMeat = evalWildHatch.outputs.find((o) => o.resource === "Meat");
+  assert.ok(wildMeat, "Wild Hatch must output Meat");
+  assert.strictEqual(Math.round(wildMeat.rate * 10000) / 10000, 0.1389);
+
   console.log("✓ Non-Thermal Resources (Duplicant Labor, Calories, Growth) tests passed");
 }
 
