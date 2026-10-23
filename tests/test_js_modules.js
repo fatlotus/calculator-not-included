@@ -1698,4 +1698,103 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Rock Crusher Building and Recipes tests passed");
 }
 
+// Metal Refinery: Metal Ore Refining Recipes
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const building = entityMap.get("metal_refinery");
+  assert.ok(building, "metal_refinery entity must exist in catalog");
+  assert.strictEqual(building.recipes.length, 7, "Metal Refinery should have 7 recipes");
+
+  // Evaluate aluminum recipe
+  const aluminumEval = evaluateRow(
+    { entityId: "metal_refinery", qty: 1, recipeId: "aluminum" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(aluminumEval.power, -1200.0);
+  assert.strictEqual(aluminumEval.heat, 16.0);
+  assert.strictEqual(aluminumEval.inputs.length, 1);
+  assert.strictEqual(aluminumEval.outputs.length, 1);
+  const alIn = aluminumEval.inputs.find((i) => i.resource === "Aluminum Ore");
+  assert.ok(alIn, "aluminum recipe must consume Aluminum Ore");
+  assert.strictEqual(alIn.rate, 2500.0);
+  assert.strictEqual(alIn.unit, "g/s");
+  assert.strictEqual(alIn.state, "free");
+  const alOut = aluminumEval.outputs.find((o) => o.resource === "Aluminum");
+  assert.ok(alOut, "aluminum recipe must produce Aluminum");
+  assert.strictEqual(alOut.rate, 2500.0);
+  assert.strictEqual(alOut.unit, "g/s");
+  assert.strictEqual(alOut.state, "free");
+  assert.strictEqual(alOut.temp, "@ 40 °C");
+
+  // Evaluate cobalt recipe
+  const cobaltEval = evaluateRow(
+    { entityId: "metal_refinery", qty: 2, recipeId: "cobalt" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(cobaltEval.power, -2400.0);
+  assert.strictEqual(cobaltEval.heat, 32.0);
+  assert.strictEqual(cobaltEval.inputs.length, 1);
+  assert.strictEqual(cobaltEval.outputs.length, 1);
+  const coIn = cobaltEval.inputs.find((i) => i.resource === "Cobalt Ore");
+  assert.ok(coIn, "cobalt recipe must consume Cobalt Ore");
+  assert.strictEqual(coIn.rate, 5000.0);
+  assert.strictEqual(coIn.unit, "g/s");
+  assert.strictEqual(coIn.state, "free");
+  const coOut = cobaltEval.outputs.find((o) => o.resource === "Cobalt");
+  assert.ok(coOut, "cobalt recipe must produce Cobalt");
+  assert.strictEqual(coOut.rate, 5000.0);
+  assert.strictEqual(coOut.unit, "g/s");
+  assert.strictEqual(coOut.state, "free");
+  assert.strictEqual(coOut.temp, "@ 40 °C");
+
+  // Evaluate tungsten recipe
+  const tungstenEval = evaluateRow(
+    { entityId: "metal_refinery", qty: 1, recipeId: "tungsten" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(tungstenEval.power, -1200.0);
+  assert.strictEqual(tungstenEval.heat, 16.0);
+  assert.strictEqual(tungstenEval.inputs.length, 1);
+  assert.strictEqual(tungstenEval.outputs.length, 1);
+  const tuIn = tungstenEval.inputs.find((i) => i.resource === "Wolframite");
+  assert.ok(tuIn, "tungsten recipe must consume Wolframite");
+  assert.strictEqual(tuIn.rate, 2500.0);
+  assert.strictEqual(tuIn.unit, "g/s");
+  assert.strictEqual(tuIn.state, "free");
+  const tuOut = tungstenEval.outputs.find((o) => o.resource === "Tungsten");
+  assert.ok(tuOut, "tungsten recipe must produce Tungsten");
+  assert.strictEqual(tuOut.rate, 2500.0);
+  assert.strictEqual(tuOut.unit, "g/s");
+  assert.strictEqual(tuOut.state, "free");
+  assert.strictEqual(tuOut.temp, "@ 40 °C");
+
+  // URL state round-trip with Metal Refinery recipes
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "metal_refinery", qty: 1, recipeId: "aluminum", modifiers: [] },
+      { entityId: "metal_refinery", qty: 2, recipeId: "cobalt", modifiers: [] },
+      { entityId: "metal_refinery", qty: 3, recipeId: "tungsten", modifiers: [] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 3);
+  assert.strictEqual(decoded.rows[0].entityId, "metal_refinery");
+  assert.strictEqual(decoded.rows[0].recipeId, "aluminum");
+  assert.strictEqual(decoded.rows[0].qty, 1);
+  assert.strictEqual(decoded.rows[1].entityId, "metal_refinery");
+  assert.strictEqual(decoded.rows[1].recipeId, "cobalt");
+  assert.strictEqual(decoded.rows[1].qty, 2);
+  assert.strictEqual(decoded.rows[2].entityId, "metal_refinery");
+  assert.strictEqual(decoded.rows[2].recipeId, "tungsten");
+  assert.strictEqual(decoded.rows[2].qty, 3);
+
+  console.log("✓ Metal Refinery Building and Recipes tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

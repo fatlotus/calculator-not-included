@@ -6600,6 +6600,78 @@ export const ONI_DATASET = {
           ],
           "power": -1200.0,
           "heat": 16.0
+        },
+        {
+          "id": "aluminum",
+          "name": "Aluminum Ore (100 kg) -> Aluminum (100 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Aluminum Ore",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Aluminum",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 40 °C"
+            }
+          ],
+          "power": -1200.0,
+          "heat": 16.0
+        },
+        {
+          "id": "cobalt",
+          "name": "Cobalt Ore (100 kg) -> Cobalt (100 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Cobalt Ore",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Cobalt",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 40 °C"
+            }
+          ],
+          "power": -1200.0,
+          "heat": 16.0
+        },
+        {
+          "id": "tungsten",
+          "name": "Wolframite (100 kg) -> Tungsten (100 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Wolframite",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Tungsten",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": "@ 40 °C"
+            }
+          ],
+          "power": -1200.0,
+          "heat": 16.0
         }
       ],
       "modifiers": [],
