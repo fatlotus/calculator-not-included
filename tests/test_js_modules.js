@@ -392,20 +392,46 @@ console.log("=== Running JavaScript Module Tests ===");
   // Zero net inputs: Balm Lily requires 0 inputs, Growth cancels out completely
   assert.strictEqual(regularDreckoNet.netInputs.length, 0, "Balm Lily Drecko ranch requires zero net inputs");
 
-  // Carbon Skimmer Loops include Gas Pump
+  // Carbon Skimmer Loops include Gas Pump with matched ratios
   const coalPreset = getPresetById("coal_skimmer_loop");
   assert.ok(coalPreset, "Coal skimmer loop preset should exist");
   assert.strictEqual(coalPreset.rows.length, 4);
+  const coalGenRow = coalPreset.rows.find((r) => r.entityId === "coal_generator");
+  assert.ok(coalGenRow, "Coal skimmer loop must contain coal generator");
+  assert.strictEqual(coalGenRow.qty, 15, "Coal generators should be 15x");
   const coalPumpRow = coalPreset.rows.find((r) => r.entityId === "gas_pump");
   assert.ok(coalPumpRow, "Coal skimmer loop must contain a gas pump");
+  assert.strictEqual(coalPumpRow.qty, 0.6, "Gas pump should be 0.6x");
   assert.strictEqual(coalPumpRow.recipeId, "carbon_dioxide");
+  const coalSkimmerRow = coalPreset.rows.find((r) => r.entityId === "carbon_skimmer");
+  assert.ok(coalSkimmerRow, "Coal skimmer loop must contain carbon skimmer");
+  assert.strictEqual(coalSkimmerRow.qty, 1, "Carbon skimmer should be 1x");
+  const coalSieveRow = coalPreset.rows.find((r) => r.entityId === "water_sieve");
+  assert.ok(coalSieveRow, "Coal skimmer loop must contain water sieve");
+  assert.strictEqual(coalSieveRow.qty, 0.2, "Water sieve should be 0.2x");
+
+  const evalCoal = coalPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const coalNet = calculateSystemNet(evalCoal);
+  assert.strictEqual(coalNet.netPower, 8712, "Coal skimmer loop should produce 8712 W net power");
+  // All intermediate loop resources cancel to zero
+  assert.strictEqual(coalNet.netOutputs.find((o) => o.resource === "Carbon Dioxide"), undefined);
+  assert.strictEqual(coalNet.netInputs.find((i) => i.resource === "Carbon Dioxide"), undefined);
+  assert.strictEqual(coalNet.netOutputs.find((o) => o.resource === "Water"), undefined);
+  assert.strictEqual(coalNet.netInputs.find((i) => i.resource === "Water"), undefined);
+  assert.strictEqual(coalNet.netOutputs.find((o) => o.resource === "Polluted Water"), undefined);
+  assert.strictEqual(coalNet.netInputs.find((i) => i.resource === "Polluted Water"), undefined);
 
   const arborPreset = getPresetById("arbor_ethanol_loop");
   assert.ok(arborPreset, "Arbor ethanol loop preset should exist");
   assert.strictEqual(arborPreset.rows.length, 5);
   const arborPumpRow = arborPreset.rows.find((r) => r.entityId === "gas_pump");
   assert.ok(arborPumpRow, "Arbor ethanol loop must contain a gas pump");
+  assert.strictEqual(arborPumpRow.qty, 0.6, "Arbor gas pump should be 0.6x to match 1x carbon skimmer");
   assert.strictEqual(arborPumpRow.recipeId, "carbon_dioxide");
+  const evalArbor = arborPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const arborNet = calculateSystemNet(evalArbor);
+  // Piped CO2 from gas pump is fully consumed by carbon skimmer
+  assert.strictEqual(arborNet.netOutputs.find((o) => o.resource === "Carbon Dioxide" && o.state === "in a pipe"), undefined);
 
   // Natural Gas Geyser Power preset test (Fractional Generator and Pump)
   const ngPreset = getPresetById("natural_gas_geyser_power");
