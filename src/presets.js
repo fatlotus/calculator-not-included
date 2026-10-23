@@ -14,7 +14,7 @@ export const PRESETS = [
       { entityId: "liquid_pump", qty: 0.1, recipeId: "water", modifiers: [] },
       { entityId: "gas_pump", qty: 0.224, recipeId: "hydrogen", modifiers: [] },
       { entityId: "hydrogen_generator", qty: 1.12, recipeId: null, modifiers: [] },
-      { entityId: "duplicant", qty: 8, recipeId: null, modifiers: [], bathroom: "plumbed" },
+      { entityId: "duplicant", qty: 8, recipeId: null, modifiers: [], bathroom: "plumbed", food: "none" },
     ],
   },
   {
@@ -37,7 +37,7 @@ export const PRESETS = [
     rows: [
       { entityId: "critter_stone_hatch", qty: 8, recipeId: "igneous_rock", modifiers: [] },
       { entityId: "coal_generator", qty: 1, recipeId: null, modifiers: [] },
-      { entityId: "duplicant", qty: 8, recipeId: null, modifiers: ["calories"], bathroom: "plumbed", food: "barbecue" },
+      { entityId: "duplicant", qty: 8, recipeId: null, modifiers: [], bathroom: "plumbed", food: "barbecue" },
     ],
   },
   {
@@ -75,7 +75,7 @@ export const PRESETS = [
       { entityId: "gas_pump", qty: 0.18, recipeId: "natural_gas", modifiers: [] },
       { entityId: "natural_gas_generator", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "petroleum_generator", qty: 2.5, recipeId: "petroleum", modifiers: [] },
-      { entityId: "duplicant", qty: 1.3333, recipeId: "schedule_default", modifiers: [], bathroom: "plumbed" },
+      { entityId: "duplicant", qty: 1.3333, recipeId: "schedule_default", modifiers: [], bathroom: "plumbed", food: "none" },
     ],
   },
   {

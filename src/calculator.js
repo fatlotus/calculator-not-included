@@ -561,7 +561,7 @@ export function evaluateRow(
   const activeModIds = new Set(
     row.modifiers !== undefined && row.modifiers !== null
       ? row.modifiers
-      : (entity.default_modifiers || (entity.id === "duplicant" ? ["calories"] : []))
+      : (entity.default_modifiers || [])
   );
 
   let baseInputs = entity.inputs || [];
@@ -638,7 +638,7 @@ export function evaluateRow(
     if (!activeModIds.has(mod.id)) continue;
     if (
       (row.entityId === "duplicant" || entity.id === "duplicant") &&
-      (mod.id === "calories" || mod.id === "bottomless_stomach")
+      mod.id === "bottomless_stomach"
     ) {
       continue;
     }
@@ -693,7 +693,7 @@ export function evaluateRow(
   // Handle regular duplicant food and bathroom inputs and outputs
   if (row.entityId === "duplicant" || entity.id === "duplicant") {
     // Duplicant Food / Diet Selection
-    if (activeModIds.has("calories") && row.food !== "none") {
+    if (row.food !== "none") {
       const foodId = row.food || "calories";
       const diet = DUPLICANT_DIETS[foodId] || DUPLICANT_DIETS.calories;
       const multiplier = activeModIds.has("bottomless_stomach") ? 1.5 : 1.0;

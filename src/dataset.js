@@ -12108,9 +12108,6 @@ export const ONI_DATASET = {
       "subcategory": "Standard",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Duplicant",
       "icon": "images/icons/Duplicants_preview.png",
-      "default_modifiers": [
-        "calories"
-      ],
       "power": 0,
       "heat": 0,
       "inputs": [
@@ -12373,19 +12370,6 @@ export const ONI_DATASET = {
           "output_multipliers": {
             "Carbon Dioxide": 2
           }
-        },
-        {
-          "id": "calories",
-          "name": "Include Food (-1000 kcal/cycle)",
-          "extra_inputs": [
-            {
-              "resource": "Calories",
-              "rate": 1.6667,
-              "unit": "kcal/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
         },
         {
           "id": "bottomless_stomach",
