@@ -702,6 +702,32 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(!netMeatRemain || Math.abs(netMeatRemain.rate) < 0.001, "Meat completely balances out in 12 Stone Hatches -> 0.1667 Grill -> 8 Duplicants chain");
   assert.ok(!netBbqRemain || Math.abs(netBbqRemain.rate) < 0.001, "Barbecue completely balances out in 12 Stone Hatches -> 0.1667 Grill -> 8 Duplicants chain");
 
+  // Verify Electric Grill labor cost and net labor calculation
+  const grillLaborIn = evalGrillMatched.inputs.find((i) => i.resource === "Duplicant Labor");
+  assert.ok(grillLaborIn, "Electric Grill must consume Duplicant Labor");
+  assert.strictEqual(grillLaborIn.rate, 0.16668, "Grill labor rate scales proportionally with machine quantity");
+
+  const netLabor = foodNet.netOutputs.find((o) => o.resource === "Duplicant Labor");
+  assert.ok(netLabor, "System net includes Duplicant Labor from duplicants minus labor consumed by Electric Grill");
+  assert.strictEqual(Math.round(netLabor.rate * 10000) / 10000, 5.8333, "8 Duplicants (6.0 s/s) minus 0.16668 Grill (0.16668 s/s) leaves 5.8333 s/s net labor");
+
+  // Verify all food-producing cooking machines require Duplicant Labor across all recipes
+  const cookingBuildingIds = ["microbe_musher", "electric_grill", "gas_range", "deep_fryer", "smoker"];
+  for (const bId of cookingBuildingIds) {
+    const building = entityMap.get(bId);
+    assert.ok(building, `Building ${bId} must exist`);
+    assert.ok(
+      building.inputs.some((i) => i.resource === "Duplicant Labor"),
+      `Base inputs of ${bId} must include Duplicant Labor`
+    );
+    for (const r of building.recipes || []) {
+      assert.ok(
+        r.inputs.some((i) => i.resource === "Duplicant Labor"),
+        `Recipe ${r.id} on ${bId} must include Duplicant Labor`
+      );
+    }
+  }
+
   console.log("✓ Duplicant Bathroom Options and Exhaled CO2 tests passed");
 }
 
