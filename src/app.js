@@ -82,9 +82,13 @@ class OniApp {
       elementMap: this.catalog.elementMap,
       onSelect: (entity) => {
         const recipeId = entity.recipes && entity.recipes.length > 0 ? entity.recipes[0].id : null;
-        const newRow = { entityId: entity.id, qty: 1, recipeId, modifiers: [] };
+        const defaultModifiers = entity.default_modifiers
+          ? [...entity.default_modifiers]
+          : [];
+        const newRow = { entityId: entity.id, qty: 1, recipeId, modifiers: defaultModifiers };
         if (entity.id === "duplicant") {
           newRow.bathroom = "plumbed";
+          newRow.food = "barbecue";
         }
         this.state.rows.push(newRow);
         this.onStateChange();
@@ -203,6 +207,9 @@ class OniApp {
           this.onStateChange();
         } else if (e.target.classList.contains("bathroom-select")) {
           row.bathroom = e.target.value;
+          this.onStateChange();
+        } else if (e.target.classList.contains("food-select")) {
+          row.food = e.target.value;
           this.onStateChange();
         } else if (e.target.classList.contains("mod-checkbox")) {
           const mods = new Set(row.modifiers || []);

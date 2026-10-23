@@ -270,19 +270,6 @@
         }
       },
       {
-        "id": "calories",
-        "name": "Include Food (-1000 kcal/cycle)",
-        "extra_inputs": [
-          {
-            "resource": "Calories",
-            "rate": 1.6667,
-            "unit": "kcal/s",
-            "state": "free",
-            "temp": null
-          }
-        ]
-      },
-      {
         "id": "bottomless_stomach",
         "name": "Bottomless Stomach (-500 kcal/cycle)",
         "extra_inputs": [

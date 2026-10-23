@@ -2,7 +2,7 @@
  * Component for rendering the bottom NET resource summary row.
  */
 
-import { formatNumber, formatStreamLine, getDefaultElementTemp, getNetInputTemp, isNonThermalResource } from "../calculator.js";
+import { formatNumber, formatStreamLine, getDefaultElementTemp, getNetInputTemp, isNonThermalResource, NET_RATE_EPSILON } from "../calculator.js";
 import { renderIcon } from "./table_row.js";
 
 /**
@@ -20,7 +20,7 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
 
   // NET Inputs list
   const inputLines = [];
-  if (net.netPower < 0) {
+  if (net.netPower < -1e-4) {
     inputLines.push(`
       <div class="stream-line net-stream net-power-neg">
         ${renderIcon(powerIcon, "Power", "stream-icon")}
@@ -28,7 +28,12 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
       </div>
     `);
   }
-  for (const stream of net.netInputs) {
+  for (const stream of net.netInputs || []) {
+    if (Math.abs(stream.rate || 0) < NET_RATE_EPSILON) continue;
+    const streamText = formatStreamLine(stream, false, rateMode, elementMap);
+    if (streamText.includes(": 0 ") || streamText.endsWith(": 0") || streamText.includes(": -0 ") || streamText.endsWith(": -0")) {
+      continue;
+    }
     const elem = elementMap?.get(stream.resource);
     const key = `${stream.resource}||${stream.state || "free"}`;
     const defaultT = getDefaultElementTemp(stream.resource, elementMap);
@@ -40,7 +45,7 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
     inputLines.push(`
       <div class="stream-line net-stream">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
-        <span class="stream-text">${formatStreamLine(stream, false, rateMode)}</span>
+        <span class="stream-text">${streamText}</span>
         ${isThermal ? `
         <span class="net-temp-wrapper">
           <span class="net-temp-at">@</span>
@@ -74,16 +79,21 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
       </div>
     `);
   }
-  for (const stream of net.netOutputs) {
+  for (const stream of net.netOutputs || []) {
+    if (Math.abs(stream.rate || 0) < NET_RATE_EPSILON) continue;
+    const streamText = formatStreamLine(stream, true, rateMode, elementMap);
+    if (streamText.includes(": 0 ") || streamText.endsWith(": 0") || streamText.includes(": +0 ") || streamText.endsWith(": +0")) {
+      continue;
+    }
     const elem = elementMap?.get(stream.resource);
     outputLines.push(`
       <div class="stream-line net-stream">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
-        <span class="stream-text">${formatStreamLine(stream, true, rateMode)}</span>
+        <span class="stream-text">${streamText}</span>
       </div>
     `);
   }
-  if (net.netPower > 0) {
+  if (net.netPower > 1e-4) {
     outputLines.push(`
       <div class="stream-line net-stream net-power-pos">
         ${renderIcon(powerIcon, "Power", "stream-icon")}

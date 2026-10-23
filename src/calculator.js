@@ -6,7 +6,15 @@
  * and two-stage NET cancellation.
  */
 
+import { ONI_DATASET } from "./dataset.js";
+
 export const SECONDS_PER_CYCLE = 600;
+
+/**
+ * Standard epsilon for resource rate cancellation and display elision.
+ * Rates with magnitude below this threshold are considered roundoff noise.
+ */
+export const NET_RATE_EPSILON = 1e-4;
 
 /**
  * Standard mass unit multipliers (in grams).
@@ -52,6 +60,25 @@ export function isNonThermalResource(resource, unit = "") {
 }
 
 /**
+ * Check if a resource is a solid element or solid resource.
+ * Checks elementMap first if provided, then falls back to ONI_DATASET.elements.
+ */
+export function isSolidResource(resource, elementMap = null) {
+  if (!resource) return false;
+  if (elementMap) {
+    const elem = elementMap instanceof Map ? elementMap.get(resource) : elementMap[resource];
+    if (elem?.state) {
+      return String(elem.state).toLowerCase() === "solid";
+    }
+  }
+  const elem = ONI_DATASET?.elements?.[resource];
+  if (elem?.state) {
+    return String(elem.state).toLowerCase() === "solid";
+  }
+  return false;
+}
+
+/**
  * Format a numeric value cleanly with up to maxDecimals (default 4) stripping trailing zeros.
  */
 export function formatNumber(val, maxDecimals = 4) {
@@ -64,8 +91,9 @@ export function formatNumber(val, maxDecimals = 4) {
 
 /**
  * Format a resource stream line with automatic unit scaling (g, Kg, T).
+ * Elides (free) for solid resources since solids cannot go in a pipe in the game.
  */
-export function formatStreamLine(stream, isOutput, rateMode = "s") {
+export function formatStreamLine(stream, isOutput, rateMode = "s", elementMap = null) {
   const sign = isOutput ? "+" : "-";
   const rawRate = Math.abs(stream.rate || 0);
   const rawUnit = stream.unit || "g/s";
@@ -113,12 +141,18 @@ export function formatStreamLine(stream, isOutput, rateMode = "s") {
     }
   }
 
-  let text = `${stream.resource}: ${sign}${formatNumber(displayRate)} ${displayUnit}`;
+  const formattedVal = formatNumber(displayRate);
+  const displaySign = formattedVal === "0" ? "" : sign;
+  let text = `${stream.resource}: ${displaySign}${formattedVal} ${displayUnit}`;
   if (isOutput && stream.temp && !isNonThermalResource(stream.resource, stream.unit)) {
     text += ` ${stream.temp}`;
   }
   if (stream.state) {
-    text += ` (${stream.state})`;
+    if (stream.state === "free" && isSolidResource(stream.resource, elementMap)) {
+      // Elide (free) for solids since solids cannot go in a pipe in the game
+    } else {
+      text += ` (${stream.state})`;
+    }
   }
   return text;
 }
@@ -270,6 +304,234 @@ export const DUPLICANT_BATHROOMS = {
   },
 };
 
+export const DUPLICANT_DIETS = {
+  calories: {
+    id: "calories",
+    name: "Calories (1000 kcal/cycle)",
+    resource: "Calories",
+    rate: 1.6667,
+    unit: "kcal/s",
+    state: "free",
+    temp: null,
+  },
+  barbecue: {
+    id: "barbecue",
+    name: "Barbecue (4000 kcal / 250 g/cycle)",
+    resource: "Barbecue",
+    rate: 0.4167,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  cooked_seafood: {
+    id: "cooked_seafood",
+    name: "Cooked Seafood (1600 kcal / 625 g/cycle)",
+    resource: "Cooked Seafood",
+    rate: 1.0417,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  surf_and_turf: {
+    id: "surf_and_turf",
+    name: "Surf'n'Turf (6000 kcal / 167 g/cycle)",
+    resource: "Surf'n'Turf",
+    rate: 0.2778,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  frost_burger: {
+    id: "frost_burger",
+    name: "Frost Burger (6000 kcal / 167 g/cycle)",
+    resource: "Frost Burger",
+    rate: 0.2778,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  pepper_bread: {
+    id: "pepper_bread",
+    name: "Pepper Bread (4000 kcal / 250 g/cycle)",
+    resource: "Pepper Bread",
+    rate: 0.4167,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  spicy_tofu: {
+    id: "spicy_tofu",
+    name: "Spicy Tofu (4000 kcal / 250 g/cycle)",
+    resource: "Spicy Tofu",
+    rate: 0.4167,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  stuffed_berry: {
+    id: "stuffed_berry",
+    name: "Stuffed Berry (4400 kcal / 227 g/cycle)",
+    resource: "Stuffed Berry",
+    rate: 0.3788,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  mushroom_wrap: {
+    id: "mushroom_wrap",
+    name: "Mushroom Wrap (4800 kcal / 208 g/cycle)",
+    resource: "Mushroom Wrap",
+    rate: 0.3472,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  fried_mushroom: {
+    id: "fried_mushroom",
+    name: "Fried Mushroom (2800 kcal / 357 g/cycle)",
+    resource: "Fried Mushroom",
+    rate: 0.5952,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  gristle_berry: {
+    id: "gristle_berry",
+    name: "Gristle Berry (2000 kcal / 500 g/cycle)",
+    resource: "Gristle Berry",
+    rate: 0.8333,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  frost_bun: {
+    id: "frost_bun",
+    name: "Frost Bun (1200 kcal / 833 g/cycle)",
+    resource: "Frost Bun",
+    rate: 1.3889,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  pickled_meal: {
+    id: "pickled_meal",
+    name: "Pickled Meal (1800 kcal / 556 g/cycle)",
+    resource: "Pickled Meal",
+    rate: 0.9259,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  mush_fry: {
+    id: "mush_fry",
+    name: "Mush Fry (1050 kcal / 952 g/cycle)",
+    resource: "Mush Fry",
+    rate: 1.5873,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  mush_bar: {
+    id: "mush_bar",
+    name: "Mush Bar (800 kcal / 1250 g/cycle)",
+    resource: "Mush Bar",
+    rate: 2.0833,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  liceloaf: {
+    id: "liceloaf",
+    name: "Liceloaf (1700 kcal / 588 g/cycle)",
+    resource: "Liceloaf",
+    rate: 0.9804,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  tofu: {
+    id: "tofu",
+    name: "Tofu (3600 kcal / 278 g/cycle)",
+    resource: "Tofu",
+    rate: 0.4630,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  berry_sludge: {
+    id: "berry_sludge",
+    name: "Berry Sludge (4000 kcal / 250 g/cycle)",
+    resource: "Berry Sludge",
+    rate: 0.4167,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  fish_tacos: {
+    id: "fish_tacos",
+    name: "Fish Tacos (4200 kcal / 238 g/cycle)",
+    resource: "Fish Tacos",
+    rate: 0.3968,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  squash_fries: {
+    id: "squash_fries",
+    name: "Squash Fries (5400 kcal / 185 g/cycle)",
+    resource: "Squash Fries",
+    rate: 0.3086,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  meal_lice: {
+    id: "meal_lice",
+    name: "Meal Lice (600 kcal / 1667 g/cycle)",
+    resource: "Meal Lice",
+    rate: 2.7778,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  bristle_berry: {
+    id: "bristle_berry",
+    name: "Bristle Berry (1600 kcal / 625 g/cycle)",
+    resource: "Bristle Berry",
+    rate: 1.0417,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  mushroom: {
+    id: "mushroom",
+    name: "Mushroom (2400 kcal / 417 g/cycle)",
+    resource: "Mushroom",
+    rate: 0.6944,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  meat: {
+    id: "meat",
+    name: "Raw Meat (1600 kcal / 625 g/cycle)",
+    resource: "Meat",
+    rate: 1.0417,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+  pacu_fillet: {
+    id: "pacu_fillet",
+    name: "Raw Pacu Fillet (1000 kcal / 1000 g/cycle)",
+    resource: "Pacu Fillet",
+    rate: 1.6667,
+    unit: "g/s",
+    state: "free",
+    temp: null,
+  },
+};
+
 export function evaluateRow(
   row,
   entityMap,
@@ -296,7 +558,11 @@ export function evaluateRow(
   }
 
   const qty = Math.max(0, Number(row.qty) || 0);
-  const activeModIds = new Set(row.modifiers || []);
+  const activeModIds = new Set(
+    row.modifiers !== undefined && row.modifiers !== null
+      ? row.modifiers
+      : (entity.default_modifiers || [])
+  );
 
   let baseInputs = entity.inputs || [];
   let baseOutputs = entity.outputs || [];
@@ -370,6 +636,12 @@ export function evaluateRow(
 
   for (const mod of entity.modifiers || []) {
     if (!activeModIds.has(mod.id)) continue;
+    if (
+      (row.entityId === "duplicant" || entity.id === "duplicant") &&
+      mod.id === "bottomless_stomach"
+    ) {
+      continue;
+    }
     if (mod.input_multiplier !== undefined) for (const s of inputs) s.rate *= mod.input_multiplier;
     if (mod.output_multiplier !== undefined) for (const s of outputs) s.rate *= mod.output_multiplier;
     if (mod.input_multipliers) {
@@ -418,8 +690,23 @@ export function evaluateRow(
     }
   }
 
-  // Handle regular duplicant bathroom inputs and outputs
+  // Handle regular duplicant food and bathroom inputs and outputs
   if (row.entityId === "duplicant" || entity.id === "duplicant") {
+    // Duplicant Food / Diet Selection
+    if (row.food !== "none") {
+      const foodId = row.food || "calories";
+      const diet = DUPLICANT_DIETS[foodId] || DUPLICANT_DIETS.calories;
+      const multiplier = activeModIds.has("bottomless_stomach") ? 1.5 : 1.0;
+      inputs.push({
+        resource: diet.resource,
+        rate: diet.rate * multiplier,
+        unit: diet.unit,
+        state: diet.state,
+        temp: null,
+        tempC: undefined,
+      });
+    }
+
     const bType = row.bathroom || "plumbed";
     const bathroom = DUPLICANT_BATHROOMS[bType] || DUPLICANT_BATHROOMS.plumbed;
     if (bathroom) {
@@ -686,7 +973,7 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap) {
     const k = `in:${inp.resource}||${inp.state || "free"}`;
     const bucketKey = `${inp.resource}||${inp.state || "free"}`;
     const surplus = otherBuckets.get(bucketKey) || 0;
-    if (surplus > 1e-5 && inp.rate > 1e-6) {
+    if (surplus >= NET_RATE_EPSILON && inp.rate > 1e-6) {
       const targetQty = surplus / inp.rate;
       matches[k] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
     }
@@ -696,16 +983,16 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap) {
     const k = `out:${out.resource}||${out.state || "free"}`;
     const bucketKey = `${out.resource}||${out.state || "free"}`;
     const deficit = otherBuckets.get(bucketKey) || 0;
-    if (deficit < -1e-5 && out.rate > 1e-6) {
+    if (deficit <= -NET_RATE_EPSILON && out.rate > 1e-6) {
       const targetQty = Math.abs(deficit) / out.rate;
       matches[k] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
     }
   }
 
-  if (unitRow.power < -1e-5 && otherNetPower > 1e-5) {
+  if (unitRow.power < -1e-4 && otherNetPower > 1e-4) {
     const targetQty = otherNetPower / Math.abs(unitRow.power);
     matches["in:Power"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
-  } else if (unitRow.power > 1e-5 && otherNetPower < -1e-5) {
+  } else if (unitRow.power > 1e-4 && otherNetPower < -1e-4) {
     const targetQty = Math.abs(otherNetPower) / unitRow.power;
     matches["out:Power"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
   }
@@ -781,7 +1068,7 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
 
   const finalBuckets = [];
   for (const b of buckets.values()) {
-    if (Math.abs(b.netRate) >= 1e-5) {
+    if (Math.abs(b.netRate) >= NET_RATE_EPSILON) {
       finalBuckets.push(b);
     }
   }
@@ -791,7 +1078,7 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
 
   for (const b of finalBuckets) {
     const isNonThermal = isNonThermalResource(b.resource, b.unit);
-    if (b.netRate < -1e-5) {
+    if (b.netRate <= -NET_RATE_EPSILON) {
       let tempC;
       let temp = null;
       if (!isNonThermal) {
@@ -807,7 +1094,7 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
         tempC,
         temp,
       });
-    } else if (b.netRate > 1e-5) {
+    } else if (b.netRate >= NET_RATE_EPSILON) {
       netOutputs.push({
         resource: b.resource,
         rate: b.netRate,

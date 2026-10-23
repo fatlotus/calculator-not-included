@@ -6,7 +6,7 @@
 export const PRESETS = [
   {
     id: "hydra_spom",
-    name: "Hydra SPOM (PDF Example)",
+    name: "Hydra SPOM",
     description: "Self-Powered Oxygen Machine supporting 8 duplicants with net surplus hydrogen and power.",
     rateMode: "s",
     rows: [
@@ -14,18 +14,19 @@ export const PRESETS = [
       { entityId: "liquid_pump", qty: 0.1, recipeId: "water", modifiers: [] },
       { entityId: "gas_pump", qty: 0.224, recipeId: "hydrogen", modifiers: [] },
       { entityId: "hydrogen_generator", qty: 1.12, recipeId: null, modifiers: [] },
-      { entityId: "duplicant", qty: 8, recipeId: null, modifiers: [], bathroom: "plumbed" },
+      { entityId: "duplicant", qty: 8, recipeId: null, modifiers: [], bathroom: "plumbed", food: "none" },
     ],
   },
   {
     id: "coal_skimmer_loop",
     name: "Coal Generator + Carbon Skimmer Loop",
-    description: "Continuous 600 W power generation with closed-loop CO2 scrubbing and water filtration.",
+    description: "Continuous 9 kW power generation with closed-loop CO2 scrubbing and water filtration.",
     rateMode: "s",
     rows: [
-      { entityId: "coal_generator", qty: 1, recipeId: null, modifiers: [] },
+      { entityId: "coal_generator", qty: 15, recipeId: null, modifiers: [] },
+      { entityId: "gas_pump", qty: 0.6, recipeId: "carbon_dioxide", modifiers: [] },
       { entityId: "carbon_skimmer", qty: 1, recipeId: null, modifiers: [] },
-      { entityId: "water_sieve", qty: 1, recipeId: "sand", modifiers: [] },
+      { entityId: "water_sieve", qty: 0.2, recipeId: "sand", modifiers: [] },
     ],
   },
   {
@@ -36,7 +37,8 @@ export const PRESETS = [
     rows: [
       { entityId: "critter_stone_hatch", qty: 8, recipeId: "igneous_rock", modifiers: [] },
       { entityId: "coal_generator", qty: 1, recipeId: null, modifiers: [] },
-      { entityId: "duplicant", qty: 8, recipeId: null, modifiers: [], bathroom: "plumbed" },
+      { entityId: "electric_grill", qty: 0.1667, recipeId: "barbecue", modifiers: [] },
+      { entityId: "duplicant", qty: 8, recipeId: null, modifiers: [], bathroom: "plumbed", food: "barbecue" },
     ],
   },
   {
@@ -48,6 +50,7 @@ export const PRESETS = [
       { entityId: "plant_arbor_tree", qty: 8, recipeId: null, modifiers: [] },
       { entityId: "ethanol_distiller", qty: 4, recipeId: null, modifiers: [] },
       { entityId: "petroleum_generator", qty: 1, recipeId: "ethanol", modifiers: [] },
+      { entityId: "gas_pump", qty: 0.6, recipeId: "carbon_dioxide", modifiers: [] },
       { entityId: "carbon_skimmer", qty: 1, recipeId: null, modifiers: [] },
     ],
   },
@@ -73,7 +76,7 @@ export const PRESETS = [
       { entityId: "gas_pump", qty: 0.18, recipeId: "natural_gas", modifiers: [] },
       { entityId: "natural_gas_generator", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "petroleum_generator", qty: 2.5, recipeId: "petroleum", modifiers: [] },
-      { entityId: "duplicant", qty: 1.3333, recipeId: "schedule_default", modifiers: [], bathroom: "plumbed" },
+      { entityId: "duplicant", qty: 1.3333, recipeId: "schedule_default", modifiers: [], bathroom: "plumbed", food: "none" },
     ],
   },
   {
@@ -82,8 +85,8 @@ export const PRESETS = [
     description: "Renewable plastic ranch utilizing Glossy Dreckos fed by live Bristle Blossom plants to produce plastic and phosphorite.",
     rateMode: "s",
     rows: [
-      { entityId: "critter_glossy_drecko", qty: 3, recipeId: "bristle_blossom_plastic", modifiers: [] },
-      { entityId: "plant_bristle_blossom", qty: 3, recipeId: "growth", modifiers: [] },
+      { entityId: "critter_glossy_drecko", qty: 1, recipeId: "bristle_blossom_plastic", modifiers: [] },
+      { entityId: "plant_bristle_blossom", qty: 1, recipeId: "growth", modifiers: [] },
     ],
   },
   {
@@ -92,8 +95,8 @@ export const PRESETS = [
     description: "Zero-resource sustainable ranch utilizing regular Dreckos fed by live Balm Lily plants to produce Reed Fiber and Phosphorite in a Chlorine atmosphere.",
     rateMode: "s",
     rows: [
-      { entityId: "critter_drecko", qty: 3, recipeId: "balm_lily", modifiers: [] },
-      { entityId: "plant_balm_lily", qty: 3, recipeId: "growth", modifiers: [] },
+      { entityId: "critter_drecko", qty: 1, recipeId: "balm_lily", modifiers: [] },
+      { entityId: "plant_balm_lily", qty: 1, recipeId: "growth", modifiers: [] },
     ],
   },
 ];

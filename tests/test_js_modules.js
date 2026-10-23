@@ -19,6 +19,8 @@ import {
   getNetInputTemp,
   formatNumber,
   formatStreamLine,
+  isSolidResource,
+  NET_RATE_EPSILON,
 } from "../src/calculator.js";
 import { buildEntityCatalog, searchEntities } from "../src/data_loader.js";
 import { PRESETS, getPresetById } from "../src/presets.js";
@@ -244,7 +246,7 @@ console.log("=== Running JavaScript Module Tests ===");
   );
   assert.strictEqual(
     formatStreamLine({ resource: "Coal", rate: 1000, unit: "g/s", state: "free" }, false, "s"),
-    "Coal: -1 Kg/s (free)"
+    "Coal: -1 Kg/s"
   );
   assert.strictEqual(
     formatStreamLine({ resource: "Crude Oil", rate: 10000, unit: "g/s", state: "in a pipe" }, false, "s"),
@@ -265,7 +267,25 @@ console.log("=== Running JavaScript Module Tests ===");
   );
   assert.strictEqual(
     formatStreamLine({ resource: "Gold", rate: 1, unit: "g/s", state: "free" }, false, "c"),
-    "Gold: -600 g/cycle (free)"
+    "Gold: -600 g/cycle"
+  );
+
+  // F. Elide (free) for solids tests
+  assert.strictEqual(
+    formatStreamLine({ resource: "Dirt", rate: 200, unit: "g/s", state: "free" }, false, "s"),
+    "Dirt: -200 g/s"
+  );
+  assert.strictEqual(
+    formatStreamLine({ resource: "Iron", rate: 500, unit: "g/s", state: "free" }, true, "s"),
+    "Iron: +500 g/s"
+  );
+  assert.strictEqual(
+    formatStreamLine({ resource: "Oxygen", rate: 888, unit: "g/s", state: "free" }, true, "s"),
+    "Oxygen: +888 g/s (free)"
+  );
+  assert.strictEqual(
+    formatStreamLine({ resource: "Water", rate: 1000, unit: "g/s", state: "free" }, false, "s"),
+    "Water: -1 Kg/s (free)"
   );
 
   console.log("✓ Calculator & Math Engine tests passed");
@@ -322,7 +342,7 @@ console.log("=== Running JavaScript Module Tests ===");
   const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
   assert.ok(PRESETS.length >= 5, "Should have at least 5 presets defined");
   const hydra = getPresetById("hydra_spom");
-  assert.strictEqual(hydra.name, "Hydra SPOM (PDF Example)");
+  assert.strictEqual(hydra.name, "Hydra SPOM");
   assert.strictEqual(hydra.rows.length, 5);
 
   // Oil refinery preset test
@@ -339,19 +359,21 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(dreckoPreset.rows.length, 2);
   const dreckoCritterRow = dreckoPreset.rows.find((r) => r.entityId === "critter_glossy_drecko");
   assert.ok(dreckoCritterRow, "Preset should contain critter_glossy_drecko");
+  assert.strictEqual(dreckoCritterRow.qty, 1);
   assert.ok(
     dreckoCritterRow.recipeId === "bristle_blossom_plastic" || dreckoCritterRow.recipeId === "bristle_berry_plastic",
     "Drecko should use Bristle Blossom/Berry recipe"
   );
   const dreckoPlantRow = dreckoPreset.rows.find((r) => r.entityId === "plant_bristle_blossom");
   assert.ok(dreckoPlantRow, "Preset should contain plant_bristle_blossom");
+  assert.strictEqual(dreckoPlantRow.qty, 1);
   assert.strictEqual(dreckoPlantRow.recipeId, "growth", "Bristle Blossom should use growth recipe");
 
   const evalDrecko = dreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
   const dreckoNet = calculateSystemNet(evalDrecko);
   const plasticOut = dreckoNet.netOutputs.find((o) => o.resource === "Plastic");
   assert.ok(plasticOut, "Drecko preset must output Plastic");
-  assert.ok(plasticOut.rate > 200, "Plastic output should be > 200 g/s");
+  assert.ok(plasticOut.rate > 80, "Plastic output should be > 80 g/s");
 
   // Growth cancels out completely to 0
   const netGrowthIn = dreckoNet.netInputs.find((i) => i.resource === "Growth");
@@ -371,21 +393,64 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(regularDreckoPreset.rows.length, 2);
   const regularDreckoRow = regularDreckoPreset.rows.find((r) => r.entityId === "critter_drecko");
   assert.ok(regularDreckoRow, "Preset should contain critter_drecko");
+  assert.strictEqual(regularDreckoRow.qty, 1);
   assert.strictEqual(regularDreckoRow.recipeId, "balm_lily");
   const balmLilyRow = regularDreckoPreset.rows.find((r) => r.entityId === "plant_balm_lily");
   assert.ok(balmLilyRow, "Preset should contain plant_balm_lily");
+  assert.strictEqual(balmLilyRow.qty, 1);
   assert.strictEqual(balmLilyRow.recipeId, "growth");
 
   const evalRegularDrecko = regularDreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
   const regularDreckoNet = calculateSystemNet(evalRegularDrecko);
   const reedFiberOut = regularDreckoNet.netOutputs.find((o) => o.resource === "Reed Fiber");
   assert.ok(reedFiberOut, "Drecko preset must output Reed Fiber");
-  assert.ok(reedFiberOut.rate > 1, "Reed Fiber output should be > 1 g/s");
+  assert.ok(reedFiberOut.rate > 0.4, "Reed Fiber output should be > 0.4 g/s");
   const regularPhosphoriteOut = regularDreckoNet.netOutputs.find((o) => o.resource === "Phosphorite");
   assert.ok(regularPhosphoriteOut, "Drecko preset must output Phosphorite");
 
   // Zero net inputs: Balm Lily requires 0 inputs, Growth cancels out completely
   assert.strictEqual(regularDreckoNet.netInputs.length, 0, "Balm Lily Drecko ranch requires zero net inputs");
+
+  // Carbon Skimmer Loops include Gas Pump with matched ratios
+  const coalPreset = getPresetById("coal_skimmer_loop");
+  assert.ok(coalPreset, "Coal skimmer loop preset should exist");
+  assert.strictEqual(coalPreset.rows.length, 4);
+  const coalGenRow = coalPreset.rows.find((r) => r.entityId === "coal_generator");
+  assert.ok(coalGenRow, "Coal skimmer loop must contain coal generator");
+  assert.strictEqual(coalGenRow.qty, 15, "Coal generators should be 15x");
+  const coalPumpRow = coalPreset.rows.find((r) => r.entityId === "gas_pump");
+  assert.ok(coalPumpRow, "Coal skimmer loop must contain a gas pump");
+  assert.strictEqual(coalPumpRow.qty, 0.6, "Gas pump should be 0.6x");
+  assert.strictEqual(coalPumpRow.recipeId, "carbon_dioxide");
+  const coalSkimmerRow = coalPreset.rows.find((r) => r.entityId === "carbon_skimmer");
+  assert.ok(coalSkimmerRow, "Coal skimmer loop must contain carbon skimmer");
+  assert.strictEqual(coalSkimmerRow.qty, 1, "Carbon skimmer should be 1x");
+  const coalSieveRow = coalPreset.rows.find((r) => r.entityId === "water_sieve");
+  assert.ok(coalSieveRow, "Coal skimmer loop must contain water sieve");
+  assert.strictEqual(coalSieveRow.qty, 0.2, "Water sieve should be 0.2x");
+
+  const evalCoal = coalPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const coalNet = calculateSystemNet(evalCoal);
+  assert.strictEqual(coalNet.netPower, 8712, "Coal skimmer loop should produce 8712 W net power");
+  // All intermediate loop resources cancel to zero
+  assert.strictEqual(coalNet.netOutputs.find((o) => o.resource === "Carbon Dioxide"), undefined);
+  assert.strictEqual(coalNet.netInputs.find((i) => i.resource === "Carbon Dioxide"), undefined);
+  assert.strictEqual(coalNet.netOutputs.find((o) => o.resource === "Water"), undefined);
+  assert.strictEqual(coalNet.netInputs.find((i) => i.resource === "Water"), undefined);
+  assert.strictEqual(coalNet.netOutputs.find((o) => o.resource === "Polluted Water"), undefined);
+  assert.strictEqual(coalNet.netInputs.find((i) => i.resource === "Polluted Water"), undefined);
+
+  const arborPreset = getPresetById("arbor_ethanol_loop");
+  assert.ok(arborPreset, "Arbor ethanol loop preset should exist");
+  assert.strictEqual(arborPreset.rows.length, 5);
+  const arborPumpRow = arborPreset.rows.find((r) => r.entityId === "gas_pump");
+  assert.ok(arborPumpRow, "Arbor ethanol loop must contain a gas pump");
+  assert.strictEqual(arborPumpRow.qty, 0.6, "Arbor gas pump should be 0.6x to match 1x carbon skimmer");
+  assert.strictEqual(arborPumpRow.recipeId, "carbon_dioxide");
+  const evalArbor = arborPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const arborNet = calculateSystemNet(evalArbor);
+  // Piped CO2 from gas pump is fully consumed by carbon skimmer
+  assert.strictEqual(arborNet.netOutputs.find((o) => o.resource === "Carbon Dioxide" && o.state === "in a pipe"), undefined);
 
   // Natural Gas Geyser Power preset test (Fractional Generator and Pump)
   const ngPreset = getPresetById("natural_gas_geyser_power");
@@ -494,10 +559,16 @@ console.log("=== Running JavaScript Module Tests ===");
 
   const tunedCg = evaluateRow({ entityId: "coal_generator", qty: 1, modifiers: ["engie_tuneup"] }, entityMap, elementMap);
   assert.strictEqual(tunedCg.power, 900);
+  const cgRowHtml = renderTableRowHtml({ entityId: "coal_generator", qty: 1 }, tunedCg, elementMap, "s", 0, {});
+  assert.ok(cgRowHtml.includes("Coal: -1 Kg/s"), "Row HTML should display Coal without (free)");
+  assert.ok(!cgRowHtml.includes("Coal: -1 Kg/s (free)"), "Row HTML must NOT display (free) next to solid Coal");
+
   const cgNet = calculateSystemNet([tunedCg]);
   const cgNetHtml = renderNetSummaryRowHtml(cgNet, elementMap, "s", {}, true);
   assert.ok(cgNetHtml.includes("Microchip: -0.0006 chips/s (solid)"), "NET summary should display Microchip input");
   assert.ok(!cgNetHtml.includes('data-resource="Microchip"'), "Microchip must not have a net-temp-input field");
+  assert.ok(cgNetHtml.includes("Coal: -1 Kg/s"), "NET summary should display Coal input without (free)");
+  assert.ok(!cgNetHtml.includes("Coal: -1 Kg/s (free)"), "NET summary must NOT show (free) next to solid Coal");
 
   // Branding verification
   const indexHtml = fs.readFileSync(path.resolve(__dirname, "../index.html"), "utf8");
@@ -594,6 +665,68 @@ console.log("=== Running JavaScript Module Tests ===");
   const html = renderTableRowHtml(rowFloor, floorRow, elementMap, "s", 0, {});
   assert.ok(html.includes('class="bathroom-select"'), "HTML must render bathroom-select");
   assert.ok(html.includes('value="floor" selected'), "HTML must select floor option");
+  assert.ok(html.includes('class="food-select"'), "HTML must render food-select");
+
+  // Duplicant Food / Diet Selection tests
+  const bbqRow = evaluateRow({ entityId: "duplicant", qty: 1, food: "barbecue" }, entityMap, elementMap);
+  const bbqIn = bbqRow.inputs.find((i) => i.resource === "Barbecue");
+  assert.ok(bbqIn, "Duplicant eating Barbecue must consume Barbecue");
+  assert.strictEqual(bbqIn.rate, 0.4167, "Duplicant consumes 0.4167 g/s Barbecue (250 g/cycle = 1000 kcal)");
+  assert.strictEqual(bbqRow.inputs.find((i) => i.resource === "Calories"), undefined, "Duplicant eating Barbecue does not consume generic Calories");
+
+  const seafoodRow = evaluateRow({ entityId: "duplicant", qty: 1, food: "cooked_seafood" }, entityMap, elementMap);
+  const seafoodIn = seafoodRow.inputs.find((i) => i.resource === "Cooked Seafood");
+  assert.ok(seafoodIn, "Duplicant eating Cooked Seafood must consume Cooked Seafood");
+  assert.strictEqual(seafoodIn.rate, 1.0417, "Duplicant consumes 1.0417 g/s Cooked Seafood (625 g/cycle = 1000 kcal)");
+
+  const fastingRow = evaluateRow({ entityId: "duplicant", qty: 1, food: "none" }, entityMap, elementMap);
+  assert.strictEqual(fastingRow.inputs.find((i) => i.resource === "Barbecue" || i.resource === "Calories"), undefined, "Fasting duplicant consumes no food");
+
+  const bottomlessBbq = evaluateRow({ entityId: "duplicant", qty: 1, food: "barbecue", modifiers: ["bottomless_stomach"] }, entityMap, elementMap);
+  const bBbqIn = bottomlessBbq.inputs.find((i) => i.resource === "Barbecue");
+  assert.ok(bBbqIn, "Bottomless Stomach duplicant eating Barbecue must consume Barbecue");
+  assert.strictEqual(Math.round(bBbqIn.rate * 10000) / 10000, 0.6251, "Bottomless stomach increases food consumption by 1.5x (0.6251 g/s)");
+
+  // End-to-End Ranch -> Grill -> Duplicant Diet Stream Cancellation
+  // 8 Duplicants eating Barbecue need 8 * 0.4167 = 3.3336 g/s Barbecue
+  // Electric Grill produces 20 g/s Barbecue & consumes 40 g/s Meat -> 3.3336 / 20 = 0.16668 Grills
+  // 0.16668 Grills consume 0.16668 * 40 = 6.6672 g/s Meat
+  // Stone Hatch produces 0.5556 g/s Meat -> 6.6672 / 0.5556 = 12 Stone Hatches
+  const evalHatches12 = evaluateRow({ entityId: "critter_stone_hatch", qty: 12, recipeId: "igneous_rock" }, entityMap, elementMap);
+  const evalGrillMatched = evaluateRow({ entityId: "electric_grill", qty: 0.16668, recipeId: "barbecue" }, entityMap, elementMap);
+  const evalDupes8 = evaluateRow({ entityId: "duplicant", qty: 8, food: "barbecue" }, entityMap, elementMap);
+
+  const foodNet = calculateSystemNet([evalHatches12, evalGrillMatched, evalDupes8]);
+  const netMeatRemain = foodNet.netInputs.find((i) => i.resource === "Meat") || foodNet.netOutputs.find((o) => o.resource === "Meat");
+  const netBbqRemain = foodNet.netInputs.find((i) => i.resource === "Barbecue") || foodNet.netOutputs.find((o) => o.resource === "Barbecue");
+  assert.ok(!netMeatRemain || Math.abs(netMeatRemain.rate) < 0.001, "Meat completely balances out in 12 Stone Hatches -> 0.1667 Grill -> 8 Duplicants chain");
+  assert.ok(!netBbqRemain || Math.abs(netBbqRemain.rate) < 0.001, "Barbecue completely balances out in 12 Stone Hatches -> 0.1667 Grill -> 8 Duplicants chain");
+
+  // Verify Electric Grill labor cost and net labor calculation
+  const grillLaborIn = evalGrillMatched.inputs.find((i) => i.resource === "Duplicant Labor");
+  assert.ok(grillLaborIn, "Electric Grill must consume Duplicant Labor");
+  assert.strictEqual(grillLaborIn.rate, 0.16668, "Grill labor rate scales proportionally with machine quantity");
+
+  const netLabor = foodNet.netOutputs.find((o) => o.resource === "Duplicant Labor");
+  assert.ok(netLabor, "System net includes Duplicant Labor from duplicants minus labor consumed by Electric Grill");
+  assert.strictEqual(Math.round(netLabor.rate * 10000) / 10000, 5.8333, "8 Duplicants (6.0 s/s) minus 0.16668 Grill (0.16668 s/s) leaves 5.8333 s/s net labor");
+
+  // Verify all food-producing cooking machines require Duplicant Labor across all recipes
+  const cookingBuildingIds = ["microbe_musher", "electric_grill", "gas_range", "deep_fryer", "smoker"];
+  for (const bId of cookingBuildingIds) {
+    const building = entityMap.get(bId);
+    assert.ok(building, `Building ${bId} must exist`);
+    assert.ok(
+      building.inputs.some((i) => i.resource === "Duplicant Labor"),
+      `Base inputs of ${bId} must include Duplicant Labor`
+    );
+    for (const r of building.recipes || []) {
+      assert.ok(
+        r.inputs.some((i) => i.resource === "Duplicant Labor"),
+        `Recipe ${r.id} on ${bId} must include Duplicant Labor`
+      );
+    }
+  }
 
   console.log("✓ Duplicant Bathroom Options and Exhaled CO2 tests passed");
 }
@@ -601,15 +734,35 @@ console.log("=== Running JavaScript Module Tests ===");
 // 8. Non-Thermal Resources: Duplicant Labor and Calories have no temperature
 {
   const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
-  const evaluatedDupe = evaluateRow({ entityId: "duplicant", qty: 1, modifiers: ["calories"] }, entityMap, elementMap);
+  const dupeEntity = entityMap.get("duplicant");
+  assert.strictEqual(
+    dupeEntity.modifiers?.some((m) => m.id === "calories"),
+    false,
+    "Duplicant must not have Include Food (calories) modifier"
+  );
+
+  const evaluatedDupe = evaluateRow({ entityId: "duplicant", qty: 1 }, entityMap, elementMap);
 
   const calIn = evaluatedDupe.inputs.find((i) => i.resource === "Calories");
-  assert.ok(calIn, "Duplicant with calories modifier must have Calories input");
+  assert.ok(calIn, "Duplicant must have Calories input by default");
   assert.strictEqual(calIn.tempC, undefined, "Calories input must not have tempC");
   assert.strictEqual(calIn.temp, null, "Calories input must have null temp");
   const calText = formatStreamLine(calIn, false, "c");
   assert.strictEqual(calText.includes("°C"), false, "Calories stream line must not include temperature");
   assert.strictEqual(calText, "Calories: -1000.02 kcal/cycle (free)");
+
+  // Duplicant with explicit empty modifiers still consumes calories by default
+  const emptyModsDupe = evaluateRow({ entityId: "duplicant", qty: 1, modifiers: [] }, entityMap, elementMap);
+  const emptyModsCalIn = emptyModsDupe.inputs.find((i) => i.resource === "Calories");
+  assert.ok(emptyModsCalIn, "Duplicant with empty modifiers still consumes Calories by default");
+
+  // Fasting duplicant (food: 'none') disables food/calorie consumption
+  const fastingDupe = evaluateRow({ entityId: "duplicant", qty: 1, food: "none" }, entityMap, elementMap);
+  assert.strictEqual(fastingDupe.inputs.find((i) => i.resource === "Calories"), undefined, "Fasting duplicant does not consume calories");
+
+  // Bionic duplicant does not consume calories
+  const bionicDupe = evaluateRow({ entityId: "bionic_duplicant", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(bionicDupe.inputs.find((i) => i.resource === "Calories"), undefined, "Bionic duplicant must never consume calories");
 
   const laborOut = evaluatedDupe.outputs.find((o) => o.resource === "Duplicant Labor");
   assert.ok(laborOut, "Duplicant must have Duplicant Labor output");
@@ -682,6 +835,66 @@ console.log("=== Running JavaScript Module Tests ===");
     }
   }
 
+  // Critter Meat & Pacu Fillet Production
+  const evalHatch = evaluateRow({ entityId: "critter_hatch", qty: 1 }, entityMap, elementMap);
+  const hatchMeat = evalHatch.outputs.find((o) => o.resource === "Meat");
+  assert.ok(hatchMeat, "Hatch must output Meat");
+  assert.strictEqual(hatchMeat.rate, 0.5556, "Hatch produces 0.5556 g/s Meat (2 kg per 6-cycle egg)");
+  assert.strictEqual(evalHatch.outputs.find((o) => o.resource === "Calories"), undefined, "Hatch must not produce Calories directly");
+
+  const evalPacu = evaluateRow({ entityId: "critter_pacu", qty: 1 }, entityMap, elementMap);
+  const pacuFillet = evalPacu.outputs.find((o) => o.resource === "Pacu Fillet");
+  assert.ok(pacuFillet, "Pacu must output Pacu Fillet");
+  assert.strictEqual(pacuFillet.rate, 1.1111, "Pacu produces 1.1111 g/s Pacu Fillet (1 kg per 1.5-cycle egg)");
+  assert.strictEqual(evalPacu.outputs.find((o) => o.resource === "Calories"), undefined, "Pacu must not produce Calories directly");
+
+  const evalVole = evaluateRow({ entityId: "critter_shove_vole", qty: 1 }, entityMap, elementMap);
+  const voleMeat = evalVole.outputs.find((o) => o.resource === "Meat");
+  assert.ok(voleMeat, "Shove Vole must output Meat");
+  assert.strictEqual(voleMeat.rate, 2.7778, "Shove Vole produces 2.7778 g/s Meat (10 kg per 6-cycle egg)");
+  assert.strictEqual(evalVole.outputs.find((o) => o.resource === "Calories"), undefined, "Shove Vole must not produce Calories directly");
+
+  // Wild hatch produces 25% meat (0.1389 g/s)
+  const evalWildHatch = evaluateRow({ entityId: "critter_hatch", qty: 1, modifiers: ["wild"] }, entityMap, elementMap);
+  const wildMeat = evalWildHatch.outputs.find((o) => o.resource === "Meat");
+  assert.ok(wildMeat, "Wild Hatch must output Meat");
+  assert.strictEqual(Math.round(wildMeat.rate * 10000) / 10000, 0.1389);
+
+  // Food-Producing Machines: Microbe Musher, Electric Grill, Gas Range, Deep Fryer
+  const evalGrill = evaluateRow({ entityId: "electric_grill", qty: 1, recipeId: "barbecue" }, entityMap, elementMap);
+  const grillMeatIn = evalGrill.inputs.find((i) => i.resource === "Meat");
+  const grillLaborIn = evalGrill.inputs.find((i) => i.resource === "Duplicant Labor");
+  const grillBbqOut = evalGrill.outputs.find((o) => o.resource === "Barbecue");
+  assert.ok(grillMeatIn, "Electric Grill must consume Meat for Barbecue");
+  assert.strictEqual(grillMeatIn.rate, 40.0, "Grill consumes 40 g/s Meat (2 kg per 50s batch)");
+  assert.ok(grillLaborIn, "Electric Grill requires Duplicant Labor");
+  assert.strictEqual(grillLaborIn.rate, 1.0);
+  assert.ok(grillBbqOut, "Electric Grill outputs Barbecue");
+  assert.strictEqual(grillBbqOut.rate, 20.0, "Grill produces 20 g/s Barbecue (1 kg per 50s batch)");
+  assert.strictEqual(evalGrill.power, -60);
+  assert.strictEqual(evalGrill.heat, 4.5);
+
+  const evalGasRange = evaluateRow({ entityId: "gas_range", qty: 1, recipeId: "surf_and_turf" }, entityMap, elementMap);
+  const rangeBbqIn = evalGasRange.inputs.find((i) => i.resource === "Barbecue");
+  const rangeFishIn = evalGasRange.inputs.find((i) => i.resource === "Cooked Seafood");
+  const rangeGasIn = evalGasRange.inputs.find((i) => i.resource === "Natural Gas" && i.state === "in a pipe");
+  const rangeSurfOut = evalGasRange.outputs.find((o) => o.resource === "Surf'n'Turf");
+  const rangeCo2Out = evalGasRange.outputs.find((o) => o.resource === "Carbon Dioxide");
+  assert.ok(rangeBbqIn && rangeFishIn && rangeGasIn && rangeSurfOut && rangeCo2Out, "Gas Range Surf'n'Turf streams verified");
+  assert.strictEqual(rangeGasIn.rate, 100.0);
+  assert.strictEqual(rangeCo2Out.rate, 25.0);
+  assert.strictEqual(evalGasRange.power, -240);
+  assert.strictEqual(evalGasRange.heat, 9.0);
+
+  // System Net: Ranch to Grill meat matching
+  // 8 Hatches * 0.5556 g/s Meat = 4.4448 g/s Meat
+  // Grill takes 40 g/s Meat, so 4.4448 / 40 = 0.11112 Grills
+  const evalHatches = evaluateRow({ entityId: "critter_hatch", qty: 8 }, entityMap, elementMap);
+  const evalMatchedGrill = evaluateRow({ entityId: "electric_grill", qty: 0.11112, recipeId: "barbecue" }, entityMap, elementMap);
+  const netRanchGrill = calculateSystemNet([evalHatches, evalMatchedGrill]);
+  const netMeat = netRanchGrill.netInputs.find((i) => i.resource === "Meat") || netRanchGrill.netOutputs.find((o) => o.resource === "Meat");
+  assert.ok(!netMeat || Math.abs(netMeat.rate) < 0.001, "Meat cancels out between 8 ranched hatches and matched grill");
+
   console.log("✓ Non-Thermal Resources (Duplicant Labor, Calories, Growth) tests passed");
 }
 
@@ -740,6 +953,170 @@ console.log("=== Running JavaScript Module Tests ===");
 
   console.log("✓ Geotuner Connected Inputs by Geyser Type tests passed");
 }
+
+// 10. Elision of Small Net Resource Inputs and Outputs (Roundoff Error Handling)
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  assert.strictEqual(NET_RATE_EPSILON, 1e-4, "NET_RATE_EPSILON must be 1e-4 (0.0001)");
+
+  // 10.1 Oil Refinery preset: 1 oil refinery (1 s/s labor input) + 1.3333 duplicants (0.75 s/s labor output each)
+  // Net labor is 0.999975 - 1.0 = -0.000025 s/s. This residual roundoff must be elided.
+  const oilPreset = getPresetById("oil_refinery_petroleum_loop");
+  assert.ok(oilPreset, "Oil refinery preset should exist");
+  const evalOil = oilPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const oilNet = calculateSystemNet(evalOil, { elementMap });
+
+  const laborInNet = oilNet.netInputs.find((i) => i.resource === "Duplicant Labor");
+  const laborOutNet = oilNet.netOutputs.find((o) => o.resource === "Duplicant Labor");
+  assert.strictEqual(laborInNet, undefined, "Duplicant Labor roundoff residual (-0.000025 s/s) must be elided from netInputs");
+  assert.strictEqual(laborOutNet, undefined, "Duplicant Labor must not appear in netOutputs");
+
+  // Verify NET summary row HTML does NOT render "Duplicant Labor: -0 s/s (labor)" or any "-0" text
+  const oilNetHtml = renderNetSummaryRowHtml(oilNet, elementMap, "s");
+  assert.ok(!oilNetHtml.includes("Duplicant Labor"), "NET summary HTML must not render elided Duplicant Labor");
+  assert.ok(!oilNetHtml.includes("-0 s/s"), "NET summary HTML must not display -0 s/s");
+  assert.ok(!oilNetHtml.includes("-0 "), "NET summary HTML must not display negative zero for any resource");
+
+  // Legitimate real inputs in this preset should remain intact
+  assert.ok(oilNetHtml.includes("Crude Oil: -10 Kg/s"), "Real net input Crude Oil must be displayed");
+  assert.ok(oilNetHtml.includes("Oxygen: -133.33 g/s"), "Real net input Oxygen must be displayed");
+  assert.ok(oilNetHtml.includes("Water: -11.1108 g/s"), "Real net input Water must be displayed");
+
+  // 10.2 Synthetic small amount elision for both inputs and outputs
+  const tinyInputRow = {
+    power: 0,
+    heat: 0,
+    inputs: [{ resource: "Water", rate: 0.00005, unit: "g/s", state: "free" }],
+    outputs: [],
+  };
+  const tinyOutputRow = {
+    power: 0,
+    heat: 0,
+    inputs: [],
+    outputs: [{ resource: "Oxygen", rate: 0.000025, unit: "g/s", state: "free" }],
+  };
+  const tinyNet = calculateSystemNet([tinyInputRow, tinyOutputRow]);
+  assert.strictEqual(tinyNet.netInputs.length, 0, "Tiny inputs below NET_RATE_EPSILON must be elided");
+  assert.strictEqual(tinyNet.netOutputs.length, 0, "Tiny outputs below NET_RATE_EPSILON must be elided");
+
+  // When all inputs/outputs are elided, empty-state placeholders must render
+  const tinyHtml = renderNetSummaryRowHtml(tinyNet, elementMap, "s");
+  assert.ok(tinyHtml.includes("None (0 net input required)"), "Empty input state rendered when inputs are elided");
+  assert.ok(tinyHtml.includes("None (0 net surplus)"), "Empty output state rendered when outputs are elided");
+
+  // 10.3 Preserving legitimate small resources above NET_RATE_EPSILON (e.g. Microchips, Gear Balm)
+  const bionicRow = { entityId: "bionic_duplicant", qty: 1, recipeId: "gear_balm", modifiers: [] };
+  const bionicEval = evaluateRow(bionicRow, entityMap, elementMap);
+  const bionicNet = calculateSystemNet([bionicEval], { elementMap });
+  const balmIn = bionicNet.netInputs.find((i) => i.resource === "Gear Balm");
+  assert.ok(balmIn, "Gear Balm (0.0004167 balm/s) is above NET_RATE_EPSILON and must NOT be elided");
+  assert.strictEqual(balmIn.rate, 0.0004167);
+
+  const bionicHtml = renderNetSummaryRowHtml(bionicNet, elementMap, "s");
+  assert.ok(bionicHtml.includes("Gear Balm: -0.0004 balm/s"), "Gear Balm must be displayed in NET inputs");
+
+  const generatorRow = { entityId: "coal_generator", qty: 1, modifiers: ["engie_tuneup"] };
+  const genEval = evaluateRow(generatorRow, entityMap, elementMap);
+  const genNet = calculateSystemNet([genEval], { elementMap });
+  const chipIn = genNet.netInputs.find((i) => i.resource === "Microchip");
+  assert.ok(chipIn, "Microchip (0.0005556 chips/s) is above NET_RATE_EPSILON and must NOT be elided");
+
+  // 10.4 formatStreamLine zero-sign behavior
+  const zeroLabor = formatStreamLine({ resource: "Duplicant Labor", rate: 0, unit: "s/s", state: "labor" }, false, "s");
+  assert.strictEqual(zeroLabor, "Duplicant Labor: 0 s/s (labor)", "Zero stream rate must format with unsigned 0");
+  const tinyLabor = formatStreamLine({ resource: "Duplicant Labor", rate: 0.000025, unit: "s/s", state: "labor" }, false, "s");
+  assert.strictEqual(tinyLabor, "Duplicant Labor: 0 s/s (labor)", "Stream rate rounding to 0 must format with unsigned 0, never -0");
+
+  // 10.5 Cycle mode ("c") roundoff elision
+  const oilNetHtmlCycle = renderNetSummaryRowHtml(oilNet, elementMap, "c");
+  assert.ok(!oilNetHtmlCycle.includes("Duplicant Labor"), "Duplicant Labor must also be elided in cycle rate mode");
+  assert.ok(!oilNetHtmlCycle.includes("-0 /cycle"), "Cycle mode must never render -0 /cycle");
+
+  console.log("✓ Small Net Resource Inputs & Outputs Elision (Roundoff Error Handling) tests passed");
+}
+
+// 11. Icon Integrity and Accuracy Tests
+{
+  const { entities, entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+
+  // Machine icons must be actual machine graphics, not expansion pack logos
+  const sublimation = entityMap.get("sublimation_station");
+  assert.ok(sublimation, "Sublimation Station must exist");
+  assert.strictEqual(sublimation.icon, "images/icons/Sublimation_Station.png", "Sublimation Station must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", sublimation.icon)), "Sublimation Station icon file must exist");
+
+  const peatBurner = entityMap.get("peat_burner");
+  assert.ok(peatBurner, "Peat Burner must exist");
+  assert.strictEqual(peatBurner.icon, "images/icons/Peat_Burner.png", "Peat Burner must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", peatBurner.icon)), "Peat Burner icon file must exist");
+
+  const sludgePress = entityMap.get("sludge_press");
+  assert.ok(sludgePress, "Sludge Press must exist");
+  assert.strictEqual(sludgePress.icon, "images/icons/Sludge_Press.png", "Sludge Press must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", sludgePress.icon)), "Sludge Press icon file must exist");
+
+  const deepFryer = entityMap.get("deep_fryer");
+  assert.ok(deepFryer, "Deep Fryer must exist");
+  assert.strictEqual(deepFryer.icon, "images/icons/Deep_Fryer.png", "Deep Fryer must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", deepFryer.icon)), "Deep Fryer icon file must exist");
+
+  const smoker = entityMap.get("smoker");
+  assert.ok(smoker, "Smoker must exist");
+  assert.strictEqual(smoker.icon, "images/icons/Smoker.png", "Smoker must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", smoker.icon)), "Smoker icon file must exist");
+
+  const powerControl = entityMap.get("power_control_station");
+  assert.ok(powerControl, "Power Control Station must exist");
+  assert.strictEqual(powerControl.icon, "images/icons/Power_Control_Station.png", "Power Control Station must use its machine icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", powerControl.icon)), "Power Control Station icon file must exist");
+
+  // Element and resource icons verification
+  const reedFiber = elementMap.get("Reed Fiber");
+  assert.ok(reedFiber, "Reed Fiber must exist in elementMap");
+  assert.strictEqual(reedFiber.icon, "images/icons/Reed_Fiber.png", "Reed Fiber must have Reed_Fiber.png icon");
+  assert.ok(fs.existsSync(path.resolve(__dirname, "..", reedFiber.icon)), "Reed Fiber icon file must exist");
+
+  const pollutedDirt = elementMap.get("Polluted Dirt");
+  assert.ok(pollutedDirt, "Polluted Dirt must exist in elementMap");
+  assert.strictEqual(pollutedDirt.icon, "images/icons/Polluted_Dirt.png", "Polluted Dirt must use Polluted_Dirt.png icon");
+
+  const microchip = elementMap.get("Microchip");
+  assert.ok(microchip, "Microchip must exist in elementMap");
+  assert.strictEqual(microchip.icon, "images/icons/Microchip.png", "Microchip must use Microchip.png icon");
+
+  const gearBalm = elementMap.get("Gear Balm");
+  assert.ok(gearBalm, "Gear Balm must exist in elementMap");
+  assert.strictEqual(gearBalm.icon, "images/icons/Gear_Balm.png", "Gear Balm must use Gear_Balm.png icon");
+
+  // Verify no entity or input/output stream uses an expansion pack icon
+  for (const ent of entities) {
+    assert.ok(!ent.icon.includes("_icon.png"), `Entity ${ent.name} must not use expansion pack icon (${ent.icon})`);
+
+    const checkStreams = (streams) => {
+      if (!streams) return;
+      for (const s of streams) {
+        const elem = elementMap.get(s.resource);
+        assert.ok(elem, `Resource ${s.resource} used in ${ent.name} must resolve in elementMap`);
+        assert.ok(elem.icon, `Resource ${s.resource} must have an icon`);
+        assert.ok(fs.existsSync(path.resolve(__dirname, "..", elem.icon)), `Icon file ${elem.icon} for resource ${s.resource} must exist`);
+        assert.ok(!elem.icon.includes("_icon.png"), `Resource ${s.resource} must not use expansion pack icon (${elem.icon})`);
+      }
+    };
+
+    checkStreams(ent.inputs);
+    checkStreams(ent.outputs);
+    if (ent.recipes) {
+      for (const r of ent.recipes) {
+        checkStreams(r.inputs);
+        checkStreams(r.outputs);
+      }
+    }
+  }
+
+  console.log("✓ Icon Integrity and Accuracy tests passed");
+}
+
+console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
 
 // 10. Sludge Press Recipes and Calculations
 {

@@ -23,14 +23,14 @@
         "rate": 888.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 70 \u00b0C+"
+        "temp": "@ 70 °C+"
       },
       {
         "resource": "Hydrogen",
         "rate": 112.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 70 \u00b0C+"
+        "temp": "@ 70 °C+"
       }
     ],
     "recipes": [],
@@ -61,7 +61,7 @@
         "rate": 500.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       }
     ],
     "recipes": [],
@@ -106,14 +106,14 @@
         "rate": 40.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       },
       {
         "resource": "Polluted Water",
         "rate": 290.33,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       }
     ],
     "recipes": [],
@@ -159,21 +159,21 @@
         "rate": 570.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       },
       {
         "resource": "Chlorine",
         "rate": 30.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       },
       {
         "resource": "Iron Ore",
         "rate": 400.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       }
     ],
     "recipes": [],
@@ -186,13 +186,13 @@
     "category": "Machine",
     "subcategory": "Oxygen",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sublimation_Station",
-    "icon": "images/icons/SO_icon.png",
-    "power": -60.0,
+    "icon": "images/icons/Sublimation_Station.png",
+    "power": -60,
     "heat": 1.5,
     "inputs": [
       {
         "resource": "Polluted Dirt",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -201,15 +201,15 @@
     "outputs": [
       {
         "resource": "Polluted Oxygen",
-        "rate": 660.0,
+        "rate": 660,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       }
     ],
     "recipes": [],
     "modifiers": [],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/SO_icon.png/42px-SO_icon.png?379082"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Sublimation_Station.png"
   },
   {
     "id": "deodorizer",
@@ -325,7 +325,7 @@
         "rate": 600.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       }
     ],
     "recipes": [],
@@ -394,7 +394,7 @@
         "rate": 20.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 110 \u00b0C+"
+        "temp": "@ 110 °C+"
       }
     ],
     "recipes": [],
@@ -440,7 +440,7 @@
         "rate": 170.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 110 \u00b0C+"
+        "temp": "@ 110 °C+"
       }
     ],
     "recipes": [],
@@ -468,7 +468,7 @@
     "category": "Machine",
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Peat_Burner",
-    "icon": "images/icons/PP_icon.png",
+    "icon": "images/icons/Peat_Burner.png",
     "power": 480.0,
     "heat": 4.5,
     "inputs": [
@@ -486,7 +486,7 @@
         "rate": 40.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 110 \u00b0C+"
+        "temp": "@ 110 °C+"
       }
     ],
     "recipes": [],
@@ -506,7 +506,7 @@
         ]
       }
     ],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/PP_icon.png/42px-PP_icon.png?bc0815"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Peat_Burner.png"
   },
   {
     "id": "natural_gas_generator",
@@ -532,14 +532,14 @@
         "rate": 67.5,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 40 \u00b0C+"
+        "temp": "@ 40 °C+"
       },
       {
         "resource": "Carbon Dioxide",
         "rate": 22.5,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 110 \u00b0C+"
+        "temp": "@ 110 °C+"
       }
     ],
     "recipes": [],
@@ -585,14 +585,14 @@
         "rate": 750.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 40 \u00b0C+"
+        "temp": "@ 40 °C+"
       },
       {
         "resource": "Carbon Dioxide",
         "rate": 500.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 110 \u00b0C+"
+        "temp": "@ 110 °C+"
       }
     ],
     "recipes": [
@@ -614,14 +614,14 @@
             "rate": 750.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C+"
+            "temp": "@ 40 °C+"
           },
           {
             "resource": "Carbon Dioxide",
             "rate": 500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 110 \u00b0C+"
+            "temp": "@ 110 °C+"
           }
         ],
         "power": 2000.0,
@@ -645,14 +645,14 @@
             "rate": 750.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C+"
+            "temp": "@ 40 °C+"
           },
           {
             "resource": "Carbon Dioxide",
             "rate": 500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 110 \u00b0C+"
+            "temp": "@ 110 °C+"
           }
         ],
         "power": 2000.0,
@@ -692,7 +692,7 @@
         "rate": 2000.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 125 \u00b0C+"
+        "temp": "@ 125 °C+"
       }
     ],
     "outputs": [
@@ -701,7 +701,7 @@
         "rate": 2000.0,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 95 \u00b0C"
+        "temp": "@ 95 °C"
       }
     ],
     "recipes": [],
@@ -5297,21 +5297,21 @@
         "rate": 500.0,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 73.4 \u00b0C+"
+        "temp": "@ 73.4 °C+"
       },
       {
         "resource": "Polluted Dirt",
         "rate": 333.33,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 93.4 \u00b0C+"
+        "temp": "@ 93.4 °C+"
       },
       {
         "resource": "Carbon Dioxide",
         "rate": 166.67,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 93.4 \u00b0C+"
+        "temp": "@ 93.4 °C+"
       }
     ],
     "recipes": [],
@@ -5342,14 +5342,14 @@
         "rate": 200.0,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       },
       {
         "resource": "Polluted Water",
         "rate": 400.0,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       }
     ],
     "recipes": [],
@@ -5362,7 +5362,7 @@
     "category": "Machine",
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sludge_Press",
-    "icon": "images/icons/AP_icon.png",
+    "icon": "images/icons/Sludge_Press.png",
     "power": -120.0,
     "heat": 4.0,
     "inputs": [
@@ -5476,7 +5476,7 @@
       }
     ],
     "modifiers": [],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/AP_icon.png/42px-AP_icon.png?acd6ca"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Sludge_Press.png"
   },
   {
     "id": "compost",
@@ -5908,14 +5908,14 @@
         "rate": 120.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 50 \u00b0C+"
+        "temp": "@ 50 °C+"
       },
       {
         "resource": "Natural Gas",
         "rate": 10.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 76.85 \u00b0C+"
+        "temp": "@ 76.85 °C+"
       }
     ],
     "recipes": [],
@@ -5946,21 +5946,21 @@
         "rate": 500.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       },
       {
         "resource": "Steam",
         "rate": 8.33,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 200 \u00b0C+"
+        "temp": "@ 200 °C+"
       },
       {
         "resource": "Carbon Dioxide",
         "rate": 8.33,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 150 \u00b0C+"
+        "temp": "@ 150 °C+"
       }
     ],
     "recipes": [],
@@ -5998,14 +5998,14 @@
         "rate": 5000.0,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       },
       {
         "resource": "Natural Gas",
         "rate": 90.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       }
     ],
     "recipes": [],
@@ -6043,7 +6043,7 @@
         "rate": 2500.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 80 \u00b0C+"
+        "temp": "@ 80 °C+"
       }
     ],
     "recipes": [
@@ -6072,7 +6072,7 @@
             "rate": 2500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 80 \u00b0C+"
+            "temp": "@ 80 °C+"
           }
         ],
         "power": 0.0,
@@ -6096,7 +6096,7 @@
             "rate": 2500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 80 \u00b0C+"
+            "temp": "@ 80 °C+"
           }
         ],
         "power": 0.0,
@@ -6120,7 +6120,7 @@
             "rate": 2500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 80 \u00b0C+"
+            "temp": "@ 80 °C+"
           }
         ],
         "power": 0.0,
@@ -6486,7 +6486,7 @@
         "rate": 2500.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 40 \u00b0C"
+        "temp": "@ 40 °C"
       }
     ],
     "recipes": [
@@ -6508,7 +6508,7 @@
             "rate": 2500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200.0,
@@ -6546,7 +6546,7 @@
             "rate": 2500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200.0,
@@ -6570,7 +6570,7 @@
             "rate": 2500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200.0,
@@ -6594,7 +6594,7 @@
             "rate": 2500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200.0,
@@ -6618,7 +6618,7 @@
             "rate": 2500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200.0,
@@ -6642,7 +6642,7 @@
             "rate": 2500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200.0,
@@ -6666,7 +6666,7 @@
             "rate": 2500.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200.0,
@@ -6707,7 +6707,7 @@
         "rate": 625.0,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 1750 \u00b0C"
+        "temp": "@ 1750 °C"
       }
     ],
     "recipes": [
@@ -6736,7 +6736,7 @@
             "rate": 625.0,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "@ 1750 \u00b0C"
+            "temp": "@ 1750 °C"
           }
         ],
         "power": -1200.0,
@@ -7163,7 +7163,7 @@
         "rate": 100.0,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       }
     ],
     "recipes": [
@@ -7199,7 +7199,7 @@
             "rate": 100.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": -480.0,
@@ -7237,7 +7237,7 @@
             "rate": 100.0,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": -480.0,
@@ -7271,13 +7271,13 @@
         "rate": 10000.0,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "-14 \u00b0C"
+        "temp": "-14 °C"
       }
     ],
     "recipes": [
       {
         "id": "water",
-        "name": "Cool Water (-14 \u00b0C @ 10 kg/s -> +585.06 kDTU/s)",
+        "name": "Cool Water (-14 °C @ 10 kg/s -> +585.06 kDTU/s)",
         "inputs": [
           {
             "resource": "Water",
@@ -7293,7 +7293,7 @@
             "rate": 10000.0,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200.0,
@@ -7301,7 +7301,7 @@
       },
       {
         "id": "polluted_water",
-        "name": "Cool Polluted Water (-14 \u00b0C @ 10 kg/s -> +585.06 kDTU/s)",
+        "name": "Cool Polluted Water (-14 °C @ 10 kg/s -> +585.06 kDTU/s)",
         "inputs": [
           {
             "resource": "Polluted Water",
@@ -7317,7 +7317,7 @@
             "rate": 10000.0,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200.0,
@@ -7325,7 +7325,7 @@
       },
       {
         "id": "super_coolant",
-        "name": "Cool Super Coolant (-14 \u00b0C @ 10 kg/s -> +1181.6 kDTU/s)",
+        "name": "Cool Super Coolant (-14 °C @ 10 kg/s -> +1181.6 kDTU/s)",
         "inputs": [
           {
             "resource": "Super Coolant",
@@ -7341,7 +7341,7 @@
             "rate": 10000.0,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200.0,
@@ -7598,14 +7598,14 @@
         "rate": 3333.33,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 90 \u00b0C+"
+        "temp": "@ 90 °C+"
       },
       {
         "resource": "Natural Gas",
         "rate": 33.33,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 300 \u00b0C+"
+        "temp": "@ 300 °C+"
       }
     ],
     "recipes": [],
@@ -7634,11 +7634,194 @@
     "subcategory": "Food",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Microbe_Musher",
     "icon": "images/icons/Microbe_Musher.png",
-    "power": -240.0,
+    "power": -240,
     "heat": 2.5,
-    "inputs": [],
-    "outputs": [],
-    "recipes": [],
+    "inputs": [
+      {
+        "resource": "Dirt",
+        "rate": 1875,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Water",
+        "rate": 1875,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Duplicant Labor",
+        "rate": 1,
+        "unit": "s/s",
+        "state": "labor",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Mush Bar",
+        "rate": 25,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "mush_bar",
+        "name": "Mush Bar (75 kg Dirt + 75 kg Water -> 800 kcal)",
+        "inputs": [
+          {
+            "resource": "Dirt",
+            "rate": 1875,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Water",
+            "rate": 1875,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Mush Bar",
+            "rate": 25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -240,
+        "heat": 2.5
+      },
+      {
+        "id": "liceloaf",
+        "name": "Liceloaf (2 Meal Lice + 50 kg Water -> 1700 kcal)",
+        "inputs": [
+          {
+            "resource": "Meal Lice",
+            "rate": 50,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Water",
+            "rate": 1250,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liceloaf",
+            "rate": 25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -240,
+        "heat": 2.5
+      },
+      {
+        "id": "tofu",
+        "name": "Tofu (6 Nosh Beans + 50 kg Water -> 3600 kcal)",
+        "inputs": [
+          {
+            "resource": "Nosh Bean",
+            "rate": 150,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Water",
+            "rate": 1250,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Tofu",
+            "rate": 25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -240,
+        "heat": 2.5
+      },
+      {
+        "id": "berry_sludge",
+        "name": "Berry Sludge (5 Sleet Wheat Grain + 1 Bristle Berry -> 4000 kcal)",
+        "inputs": [
+          {
+            "resource": "Sleet Wheat Grain",
+            "rate": 125,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Bristle Berry",
+            "rate": 25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Berry Sludge",
+            "rate": 25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -240,
+        "heat": 2.5
+      }
+    ],
     "modifiers": [],
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Microbe_Musher.png?6ddbe5"
   },
@@ -7649,11 +7832,252 @@
     "subcategory": "Food",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Electric_Grill",
     "icon": "images/icons/Electric_Grill.png",
-    "power": -60.0,
+    "power": -60,
     "heat": 4.5,
-    "inputs": [],
-    "outputs": [],
-    "recipes": [],
+    "inputs": [
+      {
+        "resource": "Meat",
+        "rate": 40,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Duplicant Labor",
+        "rate": 1,
+        "unit": "s/s",
+        "state": "labor",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Barbecue",
+        "rate": 20,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "barbecue",
+        "name": "Barbecue (2 kg Meat -> 4000 kcal)",
+        "inputs": [
+          {
+            "resource": "Meat",
+            "rate": 40,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Barbecue",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -60,
+        "heat": 4.5
+      },
+      {
+        "id": "cooked_seafood",
+        "name": "Cooked Seafood (1 kg Pacu Fillet -> 1600 kcal)",
+        "inputs": [
+          {
+            "resource": "Pacu Fillet",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Cooked Seafood",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -60,
+        "heat": 4.5
+      },
+      {
+        "id": "fried_mushroom",
+        "name": "Fried Mushroom (1 kg Mushroom -> 2800 kcal)",
+        "inputs": [
+          {
+            "resource": "Mushroom",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Fried Mushroom",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -60,
+        "heat": 4.5
+      },
+      {
+        "id": "gristle_berry",
+        "name": "Gristle Berry (1 kg Bristle Berry -> 2000 kcal)",
+        "inputs": [
+          {
+            "resource": "Bristle Berry",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Gristle Berry",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -60,
+        "heat": 4.5
+      },
+      {
+        "id": "frost_bun",
+        "name": "Frost Bun (3 Sleet Wheat Grain -> 1200 kcal)",
+        "inputs": [
+          {
+            "resource": "Sleet Wheat Grain",
+            "rate": 60,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Frost Bun",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -60,
+        "heat": 4.5
+      },
+      {
+        "id": "pickled_meal",
+        "name": "Pickled Meal (3 Meal Lice -> 1800 kcal)",
+        "inputs": [
+          {
+            "resource": "Meal Lice",
+            "rate": 60,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Pickled Meal",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -60,
+        "heat": 4.5
+      },
+      {
+        "id": "mush_fry",
+        "name": "Mush Fry (1 Mush Bar -> 1050 kcal)",
+        "inputs": [
+          {
+            "resource": "Mush Bar",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Mush Fry",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -60,
+        "heat": 4.5
+      }
+    ],
     "modifiers": [],
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Electric_Grill.png?7e3bb5"
   },
@@ -7664,27 +8088,375 @@
     "subcategory": "Food",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Gas_Range",
     "icon": "images/icons/Gas_Range.png",
-    "power": -240.0,
-    "heat": 9.0,
+    "power": -240,
+    "heat": 9,
     "inputs": [
       {
+        "resource": "Barbecue",
+        "rate": 20,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Cooked Seafood",
+        "rate": 20,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
         "resource": "Natural Gas",
-        "rate": 100.0,
+        "rate": 100,
         "unit": "g/s",
         "state": "in a pipe",
+        "temp": null
+      },
+      {
+        "resource": "Duplicant Labor",
+        "rate": 1,
+        "unit": "s/s",
+        "state": "labor",
         "temp": null
       }
     ],
     "outputs": [
       {
+        "resource": "Surf'n'Turf",
+        "rate": 20,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
         "resource": "Carbon Dioxide",
-        "rate": 25.0,
+        "rate": 25,
         "unit": "g/s",
         "state": "free",
         "temp": null
       }
     ],
-    "recipes": [],
+    "recipes": [
+      {
+        "id": "surf_and_turf",
+        "name": "Surf'n'Turf (1 kg Barbecue + 1 kg Cooked Seafood -> 6000 kcal)",
+        "inputs": [
+          {
+            "resource": "Barbecue",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Cooked Seafood",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Natural Gas",
+            "rate": 100,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Surf'n'Turf",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -240,
+        "heat": 9
+      },
+      {
+        "id": "stuffed_berry",
+        "name": "Stuffed Berry (2 kg Gristle Berry + 2 Pincha Peppernut -> 4400 kcal)",
+        "inputs": [
+          {
+            "resource": "Gristle Berry",
+            "rate": 40,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Pincha Peppernut",
+            "rate": 40,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Natural Gas",
+            "rate": 100,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Stuffed Berry",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -240,
+        "heat": 9
+      },
+      {
+        "id": "mushroom_wrap",
+        "name": "Mushroom Wrap (1 kg Fried Mushroom + 4 kg Lettuce -> 4800 kcal)",
+        "inputs": [
+          {
+            "resource": "Fried Mushroom",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Lettuce",
+            "rate": 80,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Natural Gas",
+            "rate": 100,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Mushroom Wrap",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -240,
+        "heat": 9
+      },
+      {
+        "id": "pepper_bread",
+        "name": "Pepper Bread (10 Sleet Wheat Grain + 1 Pincha Peppernut -> 4000 kcal)",
+        "inputs": [
+          {
+            "resource": "Sleet Wheat Grain",
+            "rate": 200,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Pincha Peppernut",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Natural Gas",
+            "rate": 100,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Pepper Bread",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -240,
+        "heat": 9
+      },
+      {
+        "id": "spicy_tofu",
+        "name": "Spicy Tofu (1 kg Tofu + 1 Pincha Peppernut -> 4000 kcal)",
+        "inputs": [
+          {
+            "resource": "Tofu",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Pincha Peppernut",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Natural Gas",
+            "rate": 100,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Spicy Tofu",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -240,
+        "heat": 9
+      },
+      {
+        "id": "frost_burger",
+        "name": "Frost Burger (1 Frost Bun + 1 kg Lettuce + 1 kg Barbecue -> 6000 kcal)",
+        "inputs": [
+          {
+            "resource": "Frost Bun",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Lettuce",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Barbecue",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Natural Gas",
+            "rate": 100,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Frost Burger",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 25,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -240,
+        "heat": 9
+      }
+    ],
     "modifiers": [],
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Gas_Range.png?caa6a2"
   },
@@ -7694,14 +8466,135 @@
     "category": "Machine",
     "subcategory": "Food",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Deep_Fryer",
-    "icon": "images/icons/FP_icon.png",
-    "power": -480.0,
-    "heat": 10.0,
-    "inputs": [],
-    "outputs": [],
-    "recipes": [],
+    "icon": "images/icons/Deep_Fryer.png",
+    "power": -480,
+    "heat": 10,
+    "inputs": [
+      {
+        "resource": "Pacu Fillet",
+        "rate": 20,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Megafrond Grain",
+        "rate": 40,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Resin",
+        "rate": 48,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null
+      },
+      {
+        "resource": "Duplicant Labor",
+        "rate": 1,
+        "unit": "s/s",
+        "state": "labor",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Fish Tacos",
+        "rate": 20,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "fish_tacos",
+        "name": "Fish Tacos (1 kg Pacu Fillet + 2 Megafrond Grain + 2.4 kg Resin -> 4200 kcal)",
+        "inputs": [
+          {
+            "resource": "Pacu Fillet",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Megafrond Grain",
+            "rate": 40,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Resin",
+            "rate": 48,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Fish Tacos",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -480,
+        "heat": 10
+      },
+      {
+        "id": "squash_fries",
+        "name": "Squash Fries (1 Plume Squash + 1 kg Resin -> 5400 kcal)",
+        "inputs": [
+          {
+            "resource": "Plume Squash",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Resin",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Squash Fries",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": -480,
+        "heat": 10
+      }
+    ],
     "modifiers": [],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/FP_icon.png/42px-FP_icon.png?d6f229"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Deep_Fryer.png"
   },
   {
     "id": "smoker",
@@ -7709,22 +8602,121 @@
     "category": "Machine",
     "subcategory": "Food",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Smoker",
-    "icon": "images/icons/PP_icon.png",
-    "power": 0.0,
-    "heat": 9.0,
-    "inputs": [],
-    "outputs": [
+    "icon": "images/icons/Smoker.png",
+    "power": 0,
+    "heat": 9,
+    "inputs": [
       {
-        "resource": "Carbon Dioxide",
-        "rate": 20.0,
+        "resource": "Meat",
+        "rate": 33.33,
         "unit": "g/s",
-        "state": "in a pipe",
-        "temp": "@ 75 \u00b0C"
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Duplicant Labor",
+        "rate": 1,
+        "unit": "s/s",
+        "state": "labor",
+        "temp": null
       }
     ],
-    "recipes": [],
+    "outputs": [
+      {
+        "resource": "Barbecue",
+        "rate": 16.67,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Carbon Dioxide",
+        "rate": 20,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": "@ 75 °C"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "smoked_meat",
+        "name": "Smoked Meat (2 kg Meat -> 4000 kcal Barbecue)",
+        "inputs": [
+          {
+            "resource": "Meat",
+            "rate": 33.33,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Barbecue",
+            "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": "@ 75 °C"
+          }
+        ],
+        "power": 0,
+        "heat": 9
+      },
+      {
+        "id": "smoked_fish",
+        "name": "Smoked Fish (1 kg Pacu Fillet -> 1600 kcal Cooked Seafood)",
+        "inputs": [
+          {
+            "resource": "Pacu Fillet",
+            "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Duplicant Labor",
+            "rate": 1,
+            "unit": "s/s",
+            "state": "labor",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Cooked Seafood",
+            "rate": 16.67,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          },
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 20,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": "@ 75 °C"
+          }
+        ],
+        "power": 0,
+        "heat": 9
+      }
+    ],
     "modifiers": [],
-    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/PP_icon.png/42px-PP_icon.png?bc0815"
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Smoker.png"
   },
   {
     "id": "incubator",
@@ -7983,9 +8975,9 @@
     "category": "Machine",
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Power_Control_Station",
-    "icon": "images/icons/Metal_Refinery.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "icon": "images/icons/Power_Control_Station.png",
+    "power": 0,
+    "heat": 0,
     "inputs": [],
     "outputs": [],
     "recipes": [

@@ -187,13 +187,13 @@ export const ONI_DATASET = {
       "category": "Machine",
       "subcategory": "Oxygen",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sublimation_Station",
-      "icon": "images/icons/SO_icon.png",
-      "power": -60.0,
+      "icon": "images/icons/Sublimation_Station.png",
+      "power": -60,
       "heat": 1.5,
       "inputs": [
         {
           "resource": "Polluted Dirt",
-          "rate": 1000.0,
+          "rate": 1000,
           "unit": "g/s",
           "state": "free",
           "temp": null
@@ -202,7 +202,7 @@ export const ONI_DATASET = {
       "outputs": [
         {
           "resource": "Polluted Oxygen",
-          "rate": 660.0,
+          "rate": 660,
           "unit": "g/s",
           "state": "free",
           "temp": "@ 30 °C+"
@@ -210,7 +210,7 @@ export const ONI_DATASET = {
       ],
       "recipes": [],
       "modifiers": [],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/SO_icon.png/42px-SO_icon.png?379082"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Sublimation_Station.png"
     },
     {
       "id": "deodorizer",
@@ -469,7 +469,7 @@ export const ONI_DATASET = {
       "category": "Machine",
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Peat_Burner",
-      "icon": "images/icons/PP_icon.png",
+      "icon": "images/icons/Peat_Burner.png",
       "power": 480.0,
       "heat": 4.5,
       "inputs": [
@@ -507,7 +507,7 @@ export const ONI_DATASET = {
           ]
         }
       ],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/PP_icon.png/42px-PP_icon.png?bc0815"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Peat_Burner.png"
     },
     {
       "id": "natural_gas_generator",
@@ -5363,7 +5363,7 @@ export const ONI_DATASET = {
       "category": "Machine",
       "subcategory": "Refinement",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sludge_Press",
-      "icon": "images/icons/AP_icon.png",
+      "icon": "images/icons/Sludge_Press.png",
       "power": -120.0,
       "heat": 4.0,
       "inputs": [
@@ -5477,7 +5477,7 @@ export const ONI_DATASET = {
         }
       ],
       "modifiers": [],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/AP_icon.png/42px-AP_icon.png?acd6ca"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Sludge_Press.png"
     },
     {
       "id": "compost",
@@ -7635,11 +7635,194 @@ export const ONI_DATASET = {
       "subcategory": "Food",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Microbe_Musher",
       "icon": "images/icons/Microbe_Musher.png",
-      "power": -240.0,
+      "power": -240,
       "heat": 2.5,
-      "inputs": [],
-      "outputs": [],
-      "recipes": [],
+      "inputs": [
+        {
+          "resource": "Dirt",
+          "rate": 1875,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Water",
+          "rate": 1875,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Mush Bar",
+          "rate": 25,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        }
+      ],
+      "recipes": [
+        {
+          "id": "mush_bar",
+          "name": "Mush Bar (75 kg Dirt + 75 kg Water -> 800 kcal)",
+          "inputs": [
+            {
+              "resource": "Dirt",
+              "rate": 1875,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Water",
+              "rate": 1875,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mush Bar",
+              "rate": 25,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240,
+          "heat": 2.5
+        },
+        {
+          "id": "liceloaf",
+          "name": "Liceloaf (2 Meal Lice + 50 kg Water -> 1700 kcal)",
+          "inputs": [
+            {
+              "resource": "Meal Lice",
+              "rate": 50,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Water",
+              "rate": 1250,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liceloaf",
+              "rate": 25,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240,
+          "heat": 2.5
+        },
+        {
+          "id": "tofu",
+          "name": "Tofu (6 Nosh Beans + 50 kg Water -> 3600 kcal)",
+          "inputs": [
+            {
+              "resource": "Nosh Bean",
+              "rate": 150,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Water",
+              "rate": 1250,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Tofu",
+              "rate": 25,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240,
+          "heat": 2.5
+        },
+        {
+          "id": "berry_sludge",
+          "name": "Berry Sludge (5 Sleet Wheat Grain + 1 Bristle Berry -> 4000 kcal)",
+          "inputs": [
+            {
+              "resource": "Sleet Wheat Grain",
+              "rate": 125,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Bristle Berry",
+              "rate": 25,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Berry Sludge",
+              "rate": 25,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240,
+          "heat": 2.5
+        }
+      ],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Microbe_Musher.png?6ddbe5"
     },
@@ -7650,11 +7833,252 @@ export const ONI_DATASET = {
       "subcategory": "Food",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Electric_Grill",
       "icon": "images/icons/Electric_Grill.png",
-      "power": -60.0,
+      "power": -60,
       "heat": 4.5,
-      "inputs": [],
-      "outputs": [],
-      "recipes": [],
+      "inputs": [
+        {
+          "resource": "Meat",
+          "rate": 40,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Barbecue",
+          "rate": 20,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        }
+      ],
+      "recipes": [
+        {
+          "id": "barbecue",
+          "name": "Barbecue (2 kg Meat -> 4000 kcal)",
+          "inputs": [
+            {
+              "resource": "Meat",
+              "rate": 40,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Barbecue",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -60,
+          "heat": 4.5
+        },
+        {
+          "id": "cooked_seafood",
+          "name": "Cooked Seafood (1 kg Pacu Fillet -> 1600 kcal)",
+          "inputs": [
+            {
+              "resource": "Pacu Fillet",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Cooked Seafood",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -60,
+          "heat": 4.5
+        },
+        {
+          "id": "fried_mushroom",
+          "name": "Fried Mushroom (1 kg Mushroom -> 2800 kcal)",
+          "inputs": [
+            {
+              "resource": "Mushroom",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Fried Mushroom",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -60,
+          "heat": 4.5
+        },
+        {
+          "id": "gristle_berry",
+          "name": "Gristle Berry (1 kg Bristle Berry -> 2000 kcal)",
+          "inputs": [
+            {
+              "resource": "Bristle Berry",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Gristle Berry",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -60,
+          "heat": 4.5
+        },
+        {
+          "id": "frost_bun",
+          "name": "Frost Bun (3 Sleet Wheat Grain -> 1200 kcal)",
+          "inputs": [
+            {
+              "resource": "Sleet Wheat Grain",
+              "rate": 60,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Frost Bun",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -60,
+          "heat": 4.5
+        },
+        {
+          "id": "pickled_meal",
+          "name": "Pickled Meal (3 Meal Lice -> 1800 kcal)",
+          "inputs": [
+            {
+              "resource": "Meal Lice",
+              "rate": 60,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Pickled Meal",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -60,
+          "heat": 4.5
+        },
+        {
+          "id": "mush_fry",
+          "name": "Mush Fry (1 Mush Bar -> 1050 kcal)",
+          "inputs": [
+            {
+              "resource": "Mush Bar",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mush Fry",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -60,
+          "heat": 4.5
+        }
+      ],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Electric_Grill.png?7e3bb5"
     },
@@ -7665,27 +8089,375 @@ export const ONI_DATASET = {
       "subcategory": "Food",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Gas_Range",
       "icon": "images/icons/Gas_Range.png",
-      "power": -240.0,
-      "heat": 9.0,
+      "power": -240,
+      "heat": 9,
       "inputs": [
         {
+          "resource": "Barbecue",
+          "rate": 20,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Cooked Seafood",
+          "rate": 20,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
           "resource": "Natural Gas",
-          "rate": 100.0,
+          "rate": 100,
           "unit": "g/s",
           "state": "in a pipe",
+          "temp": null
+        },
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1,
+          "unit": "s/s",
+          "state": "labor",
           "temp": null
         }
       ],
       "outputs": [
         {
+          "resource": "Surf'n'Turf",
+          "rate": 20,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
           "resource": "Carbon Dioxide",
-          "rate": 25.0,
+          "rate": 25,
           "unit": "g/s",
           "state": "free",
           "temp": null
         }
       ],
-      "recipes": [],
+      "recipes": [
+        {
+          "id": "surf_and_turf",
+          "name": "Surf'n'Turf (1 kg Barbecue + 1 kg Cooked Seafood -> 6000 kcal)",
+          "inputs": [
+            {
+              "resource": "Barbecue",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Cooked Seafood",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Natural Gas",
+              "rate": 100,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Surf'n'Turf",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 25,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240,
+          "heat": 9
+        },
+        {
+          "id": "stuffed_berry",
+          "name": "Stuffed Berry (2 kg Gristle Berry + 2 Pincha Peppernut -> 4400 kcal)",
+          "inputs": [
+            {
+              "resource": "Gristle Berry",
+              "rate": 40,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Pincha Peppernut",
+              "rate": 40,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Natural Gas",
+              "rate": 100,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Stuffed Berry",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 25,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240,
+          "heat": 9
+        },
+        {
+          "id": "mushroom_wrap",
+          "name": "Mushroom Wrap (1 kg Fried Mushroom + 4 kg Lettuce -> 4800 kcal)",
+          "inputs": [
+            {
+              "resource": "Fried Mushroom",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Lettuce",
+              "rate": 80,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Natural Gas",
+              "rate": 100,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mushroom Wrap",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 25,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240,
+          "heat": 9
+        },
+        {
+          "id": "pepper_bread",
+          "name": "Pepper Bread (10 Sleet Wheat Grain + 1 Pincha Peppernut -> 4000 kcal)",
+          "inputs": [
+            {
+              "resource": "Sleet Wheat Grain",
+              "rate": 200,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Pincha Peppernut",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Natural Gas",
+              "rate": 100,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Pepper Bread",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 25,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240,
+          "heat": 9
+        },
+        {
+          "id": "spicy_tofu",
+          "name": "Spicy Tofu (1 kg Tofu + 1 Pincha Peppernut -> 4000 kcal)",
+          "inputs": [
+            {
+              "resource": "Tofu",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Pincha Peppernut",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Natural Gas",
+              "rate": 100,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Spicy Tofu",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 25,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240,
+          "heat": 9
+        },
+        {
+          "id": "frost_burger",
+          "name": "Frost Burger (1 Frost Bun + 1 kg Lettuce + 1 kg Barbecue -> 6000 kcal)",
+          "inputs": [
+            {
+              "resource": "Frost Bun",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Lettuce",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Barbecue",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Natural Gas",
+              "rate": 100,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Frost Burger",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 25,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240,
+          "heat": 9
+        }
+      ],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Gas_Range.png?caa6a2"
     },
@@ -7695,14 +8467,135 @@ export const ONI_DATASET = {
       "category": "Machine",
       "subcategory": "Food",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Deep_Fryer",
-      "icon": "images/icons/FP_icon.png",
-      "power": -480.0,
-      "heat": 10.0,
-      "inputs": [],
-      "outputs": [],
-      "recipes": [],
+      "icon": "images/icons/Deep_Fryer.png",
+      "power": -480,
+      "heat": 10,
+      "inputs": [
+        {
+          "resource": "Pacu Fillet",
+          "rate": 20,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Megafrond Grain",
+          "rate": 40,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Resin",
+          "rate": 48,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": null
+        },
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Fish Tacos",
+          "rate": 20,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        }
+      ],
+      "recipes": [
+        {
+          "id": "fish_tacos",
+          "name": "Fish Tacos (1 kg Pacu Fillet + 2 Megafrond Grain + 2.4 kg Resin -> 4200 kcal)",
+          "inputs": [
+            {
+              "resource": "Pacu Fillet",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Megafrond Grain",
+              "rate": 40,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Resin",
+              "rate": 48,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Fish Tacos",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -480,
+          "heat": 10
+        },
+        {
+          "id": "squash_fries",
+          "name": "Squash Fries (1 Plume Squash + 1 kg Resin -> 5400 kcal)",
+          "inputs": [
+            {
+              "resource": "Plume Squash",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Resin",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Squash Fries",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -480,
+          "heat": 10
+        }
+      ],
       "modifiers": [],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/FP_icon.png/42px-FP_icon.png?d6f229"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Deep_Fryer.png"
     },
     {
       "id": "smoker",
@@ -7710,22 +8603,121 @@ export const ONI_DATASET = {
       "category": "Machine",
       "subcategory": "Food",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Smoker",
-      "icon": "images/icons/PP_icon.png",
-      "power": 0.0,
-      "heat": 9.0,
-      "inputs": [],
+      "icon": "images/icons/Smoker.png",
+      "power": 0,
+      "heat": 9,
+      "inputs": [
+        {
+          "resource": "Meat",
+          "rate": 33.33,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
+        }
+      ],
       "outputs": [
         {
+          "resource": "Barbecue",
+          "rate": 16.67,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        },
+        {
           "resource": "Carbon Dioxide",
-          "rate": 20.0,
+          "rate": 20,
           "unit": "g/s",
           "state": "in a pipe",
           "temp": "@ 75 °C"
         }
       ],
-      "recipes": [],
+      "recipes": [
+        {
+          "id": "smoked_meat",
+          "name": "Smoked Meat (2 kg Meat -> 4000 kcal Barbecue)",
+          "inputs": [
+            {
+              "resource": "Meat",
+              "rate": 33.33,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Barbecue",
+              "rate": 16.67,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "@ 75 °C"
+            }
+          ],
+          "power": 0,
+          "heat": 9
+        },
+        {
+          "id": "smoked_fish",
+          "name": "Smoked Fish (1 kg Pacu Fillet -> 1600 kcal Cooked Seafood)",
+          "inputs": [
+            {
+              "resource": "Pacu Fillet",
+              "rate": 16.67,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Cooked Seafood",
+              "rate": 16.67,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Carbon Dioxide",
+              "rate": 20,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "@ 75 °C"
+            }
+          ],
+          "power": 0,
+          "heat": 9
+        }
+      ],
       "modifiers": [],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/PP_icon.png/42px-PP_icon.png?bc0815"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Smoker.png"
     },
     {
       "id": "incubator",
@@ -7984,9 +8976,9 @@ export const ONI_DATASET = {
       "category": "Machine",
       "subcategory": "Power",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Power_Control_Station",
-      "icon": "images/icons/Metal_Refinery.png",
-      "power": 0.0,
-      "heat": 0.0,
+      "icon": "images/icons/Power_Control_Station.png",
+      "power": 0,
+      "heat": 0,
       "inputs": [],
       "outputs": [],
       "recipes": [
@@ -10961,9 +11953,9 @@ export const ONI_DATASET = {
           "temp": null
         },
         {
-          "resource": "Calories",
-          "rate": 0.8889,
-          "unit": "kcal/s",
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -10990,9 +11982,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -11019,9 +12011,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -11048,9 +12040,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -11100,9 +12092,9 @@ export const ONI_DATASET = {
           "temp": null
         },
         {
-          "resource": "Calories",
-          "rate": 0.8889,
-          "unit": "kcal/s",
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -11129,9 +12121,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -11158,9 +12150,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -11210,9 +12202,9 @@ export const ONI_DATASET = {
           "temp": null
         },
         {
-          "resource": "Calories",
-          "rate": 0.8889,
-          "unit": "kcal/s",
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -11239,9 +12231,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -11268,9 +12260,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -11320,9 +12312,9 @@ export const ONI_DATASET = {
           "temp": null
         },
         {
-          "resource": "Calories",
-          "rate": 0.8889,
-          "unit": "kcal/s",
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -11349,9 +12341,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -11378,9 +12370,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.8889,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 0.5556,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -11435,6 +12427,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.3704,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -11461,6 +12460,13 @@ export const ONI_DATASET = {
             {
               "resource": "Reed Fiber",
               "rate": 0.4167,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -11493,6 +12499,13 @@ export const ONI_DATASET = {
               "unit": "g/s",
               "state": "free",
               "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
             }
           ]
         },
@@ -11519,6 +12532,13 @@ export const ONI_DATASET = {
             {
               "resource": "Reed Fiber",
               "rate": 0.4167,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -11574,6 +12594,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.3704,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -11600,6 +12627,13 @@ export const ONI_DATASET = {
             {
               "resource": "Plastic",
               "rate": 83.33,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -11632,6 +12666,13 @@ export const ONI_DATASET = {
               "unit": "g/s",
               "state": "free",
               "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
             }
           ]
         },
@@ -11658,6 +12699,13 @@ export const ONI_DATASET = {
             {
               "resource": "Plastic",
               "rate": 83.33,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -11708,9 +12756,9 @@ export const ONI_DATASET = {
           "temp": null
         },
         {
-          "resource": "Calories",
-          "rate": 0.4444,
-          "unit": "kcal/s",
+          "resource": "Pacu Fillet",
+          "rate": 1.1111,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -11737,9 +12785,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.4444,
-              "unit": "kcal/s",
+              "resource": "Pacu Fillet",
+              "rate": 1.1111,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -11766,9 +12814,9 @@ export const ONI_DATASET = {
               "temp": null
             },
             {
-              "resource": "Calories",
-              "rate": 0.4444,
-              "unit": "kcal/s",
+              "resource": "Pacu Fillet",
+              "rate": 1.1111,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -11816,6 +12864,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -11835,6 +12890,13 @@ export const ONI_DATASET = {
             {
               "resource": "Crude Oil",
               "rate": 16.67,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.5556,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -11883,6 +12945,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -11902,6 +12971,13 @@ export const ONI_DATASET = {
             {
               "resource": "Petroleum",
               "rate": 16.67,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.5556,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -11950,6 +13026,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.3704,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -11969,6 +13052,13 @@ export const ONI_DATASET = {
             {
               "resource": "Slime",
               "rate": 79.17,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -12017,6 +13107,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.3704,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -12036,6 +13133,13 @@ export const ONI_DATASET = {
             {
               "resource": "Oxylite",
               "rate": 79.17,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -12084,6 +13188,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.3704,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -12103,6 +13214,13 @@ export const ONI_DATASET = {
             {
               "resource": "Bleach Stone",
               "rate": 47.5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -12151,6 +13269,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.2778,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -12170,6 +13295,13 @@ export const ONI_DATASET = {
             {
               "resource": "Dirt",
               "rate": 33.33,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.2778,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -12294,9 +13426,9 @@ export const ONI_DATASET = {
       ],
       "outputs": [
         {
-          "resource": "Calories",
-          "rate": 4.4444,
-          "unit": "kcal/s",
+          "resource": "Meat",
+          "rate": 2.7778,
+          "unit": "g/s",
           "state": "free",
           "temp": null
         }
@@ -12316,9 +13448,9 @@ export const ONI_DATASET = {
           ],
           "outputs": [
             {
-              "resource": "Calories",
-              "rate": 4.4444,
-              "unit": "kcal/s",
+              "resource": "Meat",
+              "rate": 2.7778,
+              "unit": "g/s",
               "state": "free",
               "temp": null
             }
@@ -12366,6 +13498,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.3704,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -12385,6 +13524,13 @@ export const ONI_DATASET = {
             {
               "resource": "Sucrose",
               "rate": 16.67,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.3704,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -12433,6 +13579,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -12452,6 +13605,13 @@ export const ONI_DATASET = {
             {
               "resource": "Mud",
               "rate": 83.33,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.5556,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -12500,6 +13660,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Meat",
+          "rate": 0.5556,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
         }
       ],
       "recipes": [
@@ -12519,6 +13686,13 @@ export const ONI_DATASET = {
             {
               "resource": "Hydrogen",
               "rate": 5,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Meat",
+              "rate": 0.5556,
               "unit": "g/s",
               "state": "free",
               "temp": null
@@ -12815,19 +13989,6 @@ export const ONI_DATASET = {
           "output_multipliers": {
             "Carbon Dioxide": 2
           }
-        },
-        {
-          "id": "calories",
-          "name": "Include Food (-1000 kcal/cycle)",
-          "extra_inputs": [
-            {
-              "resource": "Calories",
-              "rate": 1.6667,
-              "unit": "kcal/s",
-              "state": "free",
-              "temp": null
-            }
-          ]
         },
         {
           "id": "bottomless_stomach",
@@ -15267,1007 +16428,17 @@ export const ONI_DATASET = {
     }
   ],
   "elements": {
-    "Aluminum Gas": {
-      "name": "Aluminum Gas",
-      "element_id": "AluminumGas",
-      "state": "Gas",
-      "shc": 0.91,
-      "thermal_conductivity": 2.5,
-      "low_temp": 2470.0,
-      "high_temp": null,
-      "default_temp": 2926.85,
-      "icon": "images/icons/Molten_Aluminum.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Aluminum.png/24px-Molten_Aluminum.png?5b6c67"
-    },
-    "Carbon Dioxide": {
-      "name": "Carbon Dioxide",
-      "element_id": "CarbonDioxide",
-      "state": "Gas",
-      "shc": 0.846,
-      "thermal_conductivity": 0.0146,
-      "low_temp": -48.15,
-      "high_temp": null,
-      "default_temp": 20.0,
-      "icon": "images/icons/Liquid_Carbon_Dioxide.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon_Dioxide.png/24px-Liquid_Carbon_Dioxide.png?254ea5"
-    },
-    "Carbon Gas": {
-      "name": "Carbon Gas",
-      "element_id": "CarbonGas",
-      "state": "Gas",
-      "shc": 0.71,
-      "thermal_conductivity": 1.7,
-      "low_temp": 4826.85,
-      "high_temp": null,
-      "default_temp": 5426.85,
-      "icon": "images/icons/Liquid_Carbon.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon.png/24px-Liquid_Carbon.png?b4ff39"
-    },
-    "Chlorine": {
-      "name": "Chlorine",
-      "element_id": "ChlorineGas",
-      "state": "Gas",
-      "shc": 0.48,
-      "thermal_conductivity": 0.0081,
-      "low_temp": -34.6,
-      "high_temp": null,
-      "default_temp": 20.0,
-      "icon": "images/icons/Liquid_Chlorine.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Chlorine.png/24px-Liquid_Chlorine.png?fec2b9"
-    },
-    "Polluted Oxygen": {
-      "name": "Polluted Oxygen",
-      "element_id": "ContaminatedOxygen",
-      "state": "Gas",
-      "shc": 1.01,
-      "thermal_conductivity": 0.024,
-      "low_temp": -182.96,
-      "high_temp": null,
-      "default_temp": 20.0,
-      "icon": "images/icons/Polluted_Oxygen.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Oxygen.png/24px-Polluted_Oxygen.png?69c186"
-    },
-    "Copper Gas": {
-      "name": "Copper Gas",
-      "element_id": "CopperGas",
-      "state": "Gas",
-      "shc": 0.386,
+    "Abyssalite": {
+      "name": "Abyssalite",
+      "element_id": "Katairite",
+      "state": "Solid",
+      "shc": 4.0,
       "thermal_conductivity": 1.0,
-      "low_temp": 2560.85,
-      "high_temp": null,
-      "default_temp": 2926.85,
-      "icon": "images/icons/Molten_Copper.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Copper.png/24px-Molten_Copper.png?3c18f0"
-    },
-    "Gold Gas": {
-      "name": "Gold Gas",
-      "element_id": "GoldGas",
-      "state": "Gas",
-      "shc": 0.1291,
-      "thermal_conductivity": 1.0,
-      "low_temp": 2855.85,
-      "high_temp": null,
-      "default_temp": 3226.85,
-      "icon": "images/icons/Molten_Gold.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Gold.png/24px-Molten_Gold.png?658b8f"
-    },
-    "Helium": {
-      "name": "Helium",
-      "element_id": "Helium",
-      "state": "Gas",
-      "shc": 0.14,
-      "thermal_conductivity": 0.236,
-      "low_temp": -268.93,
-      "high_temp": null,
+      "low_temp": null,
+      "high_temp": 3421.85,
       "default_temp": 20.0,
-      "icon": null
-    },
-    "Hydrogen": {
-      "name": "Hydrogen",
-      "element_id": "Hydrogen",
-      "state": "Gas",
-      "shc": 2.4,
-      "thermal_conductivity": 0.168,
-      "low_temp": -252.15,
-      "high_temp": null,
-      "default_temp": 20.0,
-      "icon": "images/icons/Liquid_Hydrogen.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Hydrogen.png/24px-Liquid_Hydrogen.png?d70401"
-    },
-    "Iron Gas": {
-      "name": "Iron Gas",
-      "element_id": "IronGas",
-      "state": "Gas",
-      "shc": 0.449,
-      "thermal_conductivity": 1.0,
-      "low_temp": 2749.85,
-      "high_temp": null,
-      "default_temp": 3726.85,
-      "icon": "images/icons/Molten_Iron.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
-    },
-    "Cobalt Gas": {
-      "name": "Cobalt Gas",
-      "element_id": "CobaltGas",
-      "state": "Gas",
-      "shc": 0.42,
-      "thermal_conductivity": 1.0,
-      "low_temp": 2926.85,
-      "high_temp": null,
-      "default_temp": 3726.85,
-      "icon": "images/icons/Molten_Cobalt.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
-    },
-    "Lead Gas": {
-      "name": "Lead Gas",
-      "element_id": "LeadGas",
-      "state": "Gas",
-      "shc": 0.128,
-      "thermal_conductivity": 3.5,
-      "low_temp": 1749.0,
-      "high_temp": null,
-      "default_temp": 3226.85,
-      "icon": "images/icons/Molten_Lead.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
-    },
-    "Mercury Gas": {
-      "name": "Mercury Gas",
-      "element_id": "MercuryGas",
-      "state": "Gas",
-      "shc": 0.14,
-      "thermal_conductivity": 8.3,
-      "low_temp": 356.75,
-      "high_temp": null,
-      "default_temp": 576.85,
-      "icon": "images/icons/Liquid_Mercury.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Mercury.png/24px-Liquid_Mercury.png?bfbddd"
-    },
-    "Natural Gas": {
-      "name": "Natural Gas",
-      "element_id": "Methane",
-      "state": "Gas",
-      "shc": 2.191,
-      "thermal_conductivity": 0.035,
-      "low_temp": -161.5,
-      "high_temp": null,
-      "default_temp": 20.0,
-      "icon": "images/icons/Liquid_Methane.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
-    },
-    "Niobium Gas": {
-      "name": "Niobium Gas",
-      "element_id": "NiobiumGas",
-      "state": "Gas",
-      "shc": 0.265,
-      "thermal_conductivity": 1.0,
-      "low_temp": 4743.85,
-      "high_temp": null,
-      "default_temp": 5226.85,
-      "icon": "images/icons/Molten_Niobium.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Niobium.png/24px-Molten_Niobium.png?bd76f8"
-    },
-    "Nuclear Fallout": {
-      "name": "Nuclear Fallout",
-      "element_id": "Fallout",
-      "state": "Gas",
-      "shc": 0.265,
-      "thermal_conductivity": 1.0,
-      "low_temp": 66.85,
-      "high_temp": null,
-      "default_temp": 226.85,
-      "icon": "images/icons/Liquid_Nuclear_Waste.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Nuclear_Waste.png/24px-Liquid_Nuclear_Waste.png?1be0fb"
-    },
-    "Oxygen": {
-      "name": "Oxygen",
-      "element_id": "Oxygen",
-      "state": "Gas",
-      "shc": 1.005,
-      "thermal_conductivity": 0.024,
-      "low_temp": -182.96,
-      "high_temp": null,
-      "default_temp": 20.0,
-      "icon": "images/icons/Oxygen.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Oxygen.png/24px-Oxygen.png?4db039"
-    },
-    "Phosphorus Gas": {
-      "name": "Phosphorus Gas",
-      "element_id": "PhosphorusGas",
-      "state": "Gas",
-      "shc": 0.7697,
-      "thermal_conductivity": 0.236,
-      "low_temp": 280.45,
-      "high_temp": null,
-      "default_temp": 426.85,
-      "icon": "images/icons/Liquid_Phosphorus.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Phosphorus.png/24px-Liquid_Phosphorus.png?267c27"
-    },
-    "Propane": {
-      "name": "Propane",
-      "element_id": "Propane",
-      "state": "Gas",
-      "shc": 2.4,
-      "thermal_conductivity": 0.015,
-      "low_temp": -42.15,
-      "high_temp": null,
-      "default_temp": 20.0,
-      "icon": null
-    },
-    "Rock Gas": {
-      "name": "Rock Gas",
-      "element_id": "RockGas",
-      "state": "Gas",
-      "shc": 1.0,
-      "thermal_conductivity": 0.1,
-      "low_temp": 2356.85,
-      "high_temp": null,
-      "default_temp": 2726.85,
-      "icon": "images/icons/Magma.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
-    },
-    "Salt Gas": {
-      "name": "Salt Gas",
-      "element_id": "SaltGas",
-      "state": "Gas",
-      "shc": 0.88,
-      "thermal_conductivity": 0.444,
-      "low_temp": 1464.85,
-      "high_temp": null,
-      "default_temp": 2726.85,
-      "icon": "images/icons/Molten_Salt.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Salt.png/24px-Molten_Salt.png?fd6bf8"
-    },
-    "Sour Gas": {
-      "name": "Sour Gas",
-      "element_id": "SourGas",
-      "state": "Gas",
-      "shc": 1.898,
-      "thermal_conductivity": 0.018,
-      "low_temp": -161.5,
-      "high_temp": null,
-      "default_temp": 20.0,
-      "icon": "images/icons/Liquid_Methane.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
-    },
-    "Steam": {
-      "name": "Steam",
-      "element_id": "Steam",
-      "state": "Gas",
-      "shc": 4.179,
-      "thermal_conductivity": 0.184,
-      "low_temp": 99.35,
-      "high_temp": null,
-      "default_temp": 126.85,
-      "icon": "images/icons/Steam.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
-    },
-    "Steel Gas": {
-      "name": "Steel Gas",
-      "element_id": "SteelGas",
-      "state": "Gas",
-      "shc": 0.49,
-      "thermal_conductivity": 1.0,
-      "low_temp": 3826.85,
-      "high_temp": null,
-      "default_temp": 4226.85,
-      "icon": "images/icons/Molten_Steel.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Steel.png/24px-Molten_Steel.png?ca95f8"
-    },
-    "Sulfur Gas": {
-      "name": "Sulfur Gas",
-      "element_id": "SulfurGas",
-      "state": "Gas",
-      "shc": 0.7,
-      "thermal_conductivity": 0.2,
-      "low_temp": 337.0,
-      "high_temp": null,
-      "default_temp": 426.85,
-      "icon": "images/icons/Liquid_Sulfur.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur.png/24px-Liquid_Sulfur.png?dccb21"
-    },
-    "Super Coolant Gas": {
-      "name": "Super Coolant Gas",
-      "element_id": "SuperCoolantGas",
-      "state": "Gas",
-      "shc": 8.44,
-      "thermal_conductivity": 1.2,
-      "low_temp": 436.85,
-      "high_temp": null,
-      "default_temp": 576.85,
-      "icon": "images/icons/Super_Coolant.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Super_Coolant.png/24px-Super_Coolant.png?767a6a"
-    },
-    "Tungsten Gas": {
-      "name": "Tungsten Gas",
-      "element_id": "TungstenGas",
-      "state": "Gas",
-      "shc": 0.134,
-      "thermal_conductivity": 1.0,
-      "low_temp": 5929.85,
-      "high_temp": null,
-      "default_temp": 6226.85,
-      "icon": "images/icons/Molten_Tungsten.png",
+      "icon": "images/icons/Abyssalite.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
-    },
-    "Ethanol Gas": {
-      "name": "Ethanol Gas",
-      "element_id": "EthanolGas",
-      "state": "Gas",
-      "shc": 2.148,
-      "thermal_conductivity": 0.167,
-      "low_temp": 78.35,
-      "high_temp": null,
-      "default_temp": 116.85,
-      "icon": "images/icons/Ethanol.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ethanol.png/24px-Ethanol.png?4051f1"
-    },
-    "Syngas": {
-      "name": "Syngas",
-      "element_id": "Syngas",
-      "state": "Gas",
-      "shc": 2.4,
-      "thermal_conductivity": 0.168,
-      "low_temp": -252.15,
-      "high_temp": null,
-      "default_temp": 20.0,
-      "icon": null
-    },
-    "Nickel Gas": {
-      "name": "Nickel Gas",
-      "element_id": "NickelGas",
-      "state": "Gas",
-      "shc": 0.44,
-      "thermal_conductivity": 1.0,
-      "low_temp": 2729.85,
-      "high_temp": null,
-      "default_temp": 2926.85,
-      "icon": "images/icons/Molten_Nickel.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Nickel.png/24px-Molten_Nickel.png?cc293d"
-    },
-    "Iridium Gas": {
-      "name": "Iridium Gas",
-      "element_id": "IridiumGas",
-      "state": "Gas",
-      "shc": 0.131,
-      "thermal_conductivity": 1.0,
-      "low_temp": 4129.85,
-      "high_temp": null,
-      "default_temp": 4226.85,
-      "icon": "images/icons/Molten_Iridium.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iridium.png/24px-Molten_Iridium.png?767b1b"
-    },
-    "Zinc Gas": {
-      "name": "Zinc Gas",
-      "element_id": "ZincGas",
-      "state": "Gas",
-      "shc": 0.388,
-      "thermal_conductivity": 1.0,
-      "low_temp": 906.85,
-      "high_temp": null,
-      "default_temp": 2926.85,
-      "icon": "images/icons/Molten_Zinc.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Zinc.png/24px-Molten_Zinc.png?732868"
-    },
-    "Brine": {
-      "name": "Brine",
-      "element_id": "Brine",
-      "state": "Liquid",
-      "shc": 3.4,
-      "thermal_conductivity": 0.609,
-      "low_temp": -22.5,
-      "high_temp": 102.75,
-      "default_temp": 20.0,
-      "icon": "images/icons/Brine.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine.png/24px-Brine.png?925651"
-    },
-    "Polluted Brine": {
-      "name": "Polluted Brine",
-      "element_id": "MurkyBrine",
-      "state": "Liquid",
-      "shc": 3.6,
-      "thermal_conductivity": 0.409,
-      "low_temp": -25.5,
-      "high_temp": 106.75,
-      "default_temp": 20.0,
-      "icon": "images/icons/Polluted_Water.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
-    },
-    "Liquid Chlorine": {
-      "name": "Liquid Chlorine",
-      "element_id": "Chlorine",
-      "state": "Liquid",
-      "shc": 0.48,
-      "thermal_conductivity": 0.0081,
-      "low_temp": -100.98,
-      "high_temp": -34.6,
-      "default_temp": -73.15,
-      "icon": "images/icons/Liquid_Chlorine.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Chlorine.png/24px-Liquid_Chlorine.png?fec2b9"
-    },
-    "Crude Oil": {
-      "name": "Crude Oil",
-      "element_id": "CrudeOil",
-      "state": "Liquid",
-      "shc": 1.69,
-      "thermal_conductivity": 2.0,
-      "low_temp": -40.15,
-      "high_temp": 399.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Crude_Oil.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Crude_Oil.png/24px-Crude_Oil.png?d7ab3a"
-    },
-    "Polluted Water": {
-      "name": "Polluted Water",
-      "element_id": "DirtyWater",
-      "state": "Liquid",
-      "shc": 4.179,
-      "thermal_conductivity": 0.58,
-      "low_temp": -20.65,
-      "high_temp": 119.35,
-      "default_temp": 20.0,
-      "icon": "images/icons/Polluted_Water.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
-    },
-    "Liquid Carbon Dioxide": {
-      "name": "Liquid Carbon Dioxide",
-      "element_id": "LiquidCarbonDioxide",
-      "state": "Liquid",
-      "shc": 0.846,
-      "thermal_conductivity": 1.46,
-      "low_temp": -56.55,
-      "high_temp": -48.15,
-      "default_temp": -53.15,
-      "icon": "images/icons/Liquid_Carbon_Dioxide.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon_Dioxide.png/24px-Liquid_Carbon_Dioxide.png?254ea5"
-    },
-    "Gunk": {
-      "name": "Gunk",
-      "element_id": "LiquidGunk",
-      "state": "Liquid",
-      "shc": 1.2,
-      "thermal_conductivity": 1.5,
-      "low_temp": -8.15,
-      "high_temp": 447.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Petroleum.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Petroleum.png/24px-Petroleum.png?a8a630"
-    },
-    "Liquid Helium": {
-      "name": "Liquid Helium",
-      "element_id": "LiquidHelium",
-      "state": "Liquid",
-      "shc": 0.2,
-      "thermal_conductivity": 0.236,
-      "low_temp": -273.15,
-      "high_temp": -268.93,
-      "default_temp": -272.15,
-      "icon": null
-    },
-    "Liquid Hydrogen": {
-      "name": "Liquid Hydrogen",
-      "element_id": "LiquidHydrogen",
-      "state": "Liquid",
-      "shc": 2.4,
-      "thermal_conductivity": 0.1,
-      "low_temp": -259.15,
-      "high_temp": -252.15,
-      "default_temp": -255.15,
-      "icon": "images/icons/Liquid_Hydrogen.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Hydrogen.png/24px-Liquid_Hydrogen.png?d70401"
-    },
-    "Liquid Methane": {
-      "name": "Liquid Methane",
-      "element_id": "LiquidMethane",
-      "state": "Liquid",
-      "shc": 2.191,
-      "thermal_conductivity": 0.03,
-      "low_temp": -182.6,
-      "high_temp": -161.5,
-      "default_temp": -173.15,
-      "icon": "images/icons/Liquid_Methane.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
-    },
-    "Liquid Oxygen": {
-      "name": "Liquid Oxygen",
-      "element_id": "LiquidOxygen",
-      "state": "Liquid",
-      "shc": 1.01,
-      "thermal_conductivity": 2.0,
-      "low_temp": -218.79,
-      "high_temp": -182.96,
-      "default_temp": -198.79,
-      "icon": "images/icons/Liquid_Oxygen.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Oxygen.png/24px-Liquid_Oxygen.png?17b4c3"
-    },
-    "Liquid Phosphorus": {
-      "name": "Liquid Phosphorus",
-      "element_id": "LiquidPhosphorus",
-      "state": "Liquid",
-      "shc": 0.7697,
-      "thermal_conductivity": 0.236,
-      "low_temp": 44.15,
-      "high_temp": 280.45,
-      "default_temp": 226.85,
-      "icon": "images/icons/Liquid_Phosphorus.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Phosphorus.png/24px-Liquid_Phosphorus.png?267c27"
-    },
-    "Liquid Propane": {
-      "name": "Liquid Propane",
-      "element_id": "LiquidPropane",
-      "state": "Liquid",
-      "shc": 2.4,
-      "thermal_conductivity": 0.1,
-      "low_temp": -188.15,
-      "high_temp": -42.15,
-      "default_temp": -73.15,
-      "icon": null
-    },
-    "Liquid Sulfur": {
-      "name": "Liquid Sulfur",
-      "element_id": "LiquidSulfur",
-      "state": "Liquid",
-      "shc": 0.7,
-      "thermal_conductivity": 0.2,
-      "low_temp": 115.2,
-      "high_temp": 337.0,
-      "default_temp": 176.85,
-      "icon": "images/icons/Liquid_Sulfur.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur.png/24px-Liquid_Sulfur.png?dccb21"
-    },
-    "Brackene": {
-      "name": "Brackene",
-      "element_id": "Milk",
-      "state": "Liquid",
-      "shc": 4.1,
-      "thermal_conductivity": 0.609,
-      "low_temp": -16.5,
-      "high_temp": 80.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Brine.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine.png/24px-Brine.png?925651"
-    },
-    "Ovolene": {
-      "name": "Ovolene",
-      "element_id": "FishMilk",
-      "state": "Liquid",
-      "shc": 4.1,
-      "thermal_conductivity": 0.609,
-      "low_temp": -16.5,
-      "high_temp": 80.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Steam.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
-    },
-    "Magma": {
-      "name": "Magma",
-      "element_id": "Magma",
-      "state": "Liquid",
-      "shc": 1.0,
-      "thermal_conductivity": 1.0,
-      "low_temp": 1409.85,
-      "high_temp": 2356.85,
-      "default_temp": 1726.85,
-      "icon": "images/icons/Magma.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
-    },
-    "Mercury": {
-      "name": "Mercury",
-      "element_id": "Mercury",
-      "state": "Liquid",
-      "shc": 0.14,
-      "thermal_conductivity": 8.3,
-      "low_temp": -38.85,
-      "high_temp": 356.75,
-      "default_temp": 20.0,
-      "icon": "images/icons/Liquid_Mercury.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Mercury.png/24px-Liquid_Mercury.png?bfbddd"
-    },
-    "Molten Aluminum": {
-      "name": "Molten Aluminum",
-      "element_id": "MoltenAluminum",
-      "state": "Liquid",
-      "shc": 0.91,
-      "thermal_conductivity": 20.5,
-      "low_temp": 660.3,
-      "high_temp": 2470.0,
-      "default_temp": 1726.85,
-      "icon": "images/icons/Molten_Aluminum.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Aluminum.png/24px-Molten_Aluminum.png?5b6c67"
-    },
-    "Liquid Carbon": {
-      "name": "Liquid Carbon",
-      "element_id": "MoltenCarbon",
-      "state": "Liquid",
-      "shc": 0.71,
-      "thermal_conductivity": 2.0,
-      "low_temp": 3551.85,
-      "high_temp": 4826.85,
-      "default_temp": 4326.85,
-      "icon": "images/icons/Liquid_Carbon.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon.png/24px-Liquid_Carbon.png?b4ff39"
-    },
-    "Molten Copper": {
-      "name": "Molten Copper",
-      "element_id": "MoltenCopper",
-      "state": "Liquid",
-      "shc": 0.386,
-      "thermal_conductivity": 12.0,
-      "low_temp": 1083.85,
-      "high_temp": 2560.85,
-      "default_temp": 1526.85,
-      "icon": "images/icons/Molten_Copper.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Copper.png/24px-Molten_Copper.png?3c18f0"
-    },
-    "Molten Glass": {
-      "name": "Molten Glass",
-      "element_id": "MoltenGlass",
-      "state": "Liquid",
-      "shc": 0.2,
-      "thermal_conductivity": 1.0,
-      "low_temp": 1126.85,
-      "high_temp": 2356.85,
-      "default_temp": 1941.85,
-      "icon": "images/icons/Rock_Gas.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Rock_Gas.png/24px-Rock_Gas.png?b50149"
-    },
-    "Molten Gold": {
-      "name": "Molten Gold",
-      "element_id": "MoltenGold",
-      "state": "Liquid",
-      "shc": 0.1291,
-      "thermal_conductivity": 6.0,
-      "low_temp": 1063.85,
-      "high_temp": 2855.85,
-      "default_temp": 1726.85,
-      "icon": "images/icons/Molten_Gold.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Gold.png/24px-Molten_Gold.png?658b8f"
-    },
-    "Molten Iron": {
-      "name": "Molten Iron",
-      "element_id": "MoltenIron",
-      "state": "Liquid",
-      "shc": 0.449,
-      "thermal_conductivity": 4.0,
-      "low_temp": 1534.85,
-      "high_temp": 2749.85,
-      "default_temp": 2226.85,
-      "icon": "images/icons/Molten_Iron.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
-    },
-    "Molten Cobalt": {
-      "name": "Molten Cobalt",
-      "element_id": "MoltenCobalt",
-      "state": "Liquid",
-      "shc": 0.42,
-      "thermal_conductivity": 4.0,
-      "low_temp": 1494.85,
-      "high_temp": 2926.85,
-      "default_temp": 2226.85,
-      "icon": "images/icons/Molten_Cobalt.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
-    },
-    "Molten Lead": {
-      "name": "Molten Lead",
-      "element_id": "MoltenLead",
-      "state": "Liquid",
-      "shc": 0.128,
-      "thermal_conductivity": 11.0,
-      "low_temp": 327.5,
-      "high_temp": 1749.0,
-      "default_temp": 1726.85,
-      "icon": "images/icons/Molten_Lead.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
-    },
-    "Molten Niobium": {
-      "name": "Molten Niobium",
-      "element_id": "MoltenNiobium",
-      "state": "Liquid",
-      "shc": 0.265,
-      "thermal_conductivity": 54.0,
-      "low_temp": 2476.85,
-      "high_temp": 4743.85,
-      "default_temp": 2726.85,
-      "icon": "images/icons/Molten_Niobium.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Niobium.png/24px-Molten_Niobium.png?bd76f8"
-    },
-    "Molten Salt": {
-      "name": "Molten Salt",
-      "element_id": "MoltenSalt",
-      "state": "Liquid",
-      "shc": 0.7,
-      "thermal_conductivity": 0.444,
-      "low_temp": 799.85,
-      "high_temp": 1464.85,
-      "default_temp": 1132.35,
-      "icon": "images/icons/Molten_Salt.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Salt.png/24px-Molten_Salt.png?fd6bf8"
-    },
-    "Molten Steel": {
-      "name": "Molten Steel",
-      "element_id": "MoltenSteel",
-      "state": "Liquid",
-      "shc": 0.386,
-      "thermal_conductivity": 80.0,
-      "low_temp": 1083.85,
-      "high_temp": 3826.85,
-      "default_temp": 1726.85,
-      "icon": "images/icons/Molten_Steel.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Steel.png/24px-Molten_Steel.png?ca95f8"
-    },
-    "Molten Tungsten": {
-      "name": "Molten Tungsten",
-      "element_id": "MoltenTungsten",
-      "state": "Liquid",
-      "shc": 0.134,
-      "thermal_conductivity": 4.0,
-      "low_temp": 3421.85,
-      "high_temp": 5929.85,
-      "default_temp": 3726.85,
-      "icon": "images/icons/Molten_Tungsten.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
-    },
-    "Liquid Uranium": {
-      "name": "Liquid Uranium",
-      "element_id": "MoltenUranium",
-      "state": "Liquid",
-      "shc": 1.69,
-      "thermal_conductivity": 2.0,
-      "low_temp": 132.85,
-      "high_temp": 4131.85,
-      "default_temp": 186.85,
-      "icon": "images/icons/Rock_Gas.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Rock_Gas.png/24px-Rock_Gas.png?b50149"
-    },
-    "Liquid Naphtha": {
-      "name": "Liquid Naphtha",
-      "element_id": "Naphtha",
-      "state": "Liquid",
-      "shc": 2.191,
-      "thermal_conductivity": 0.2,
-      "low_temp": -50.15,
-      "high_temp": 538.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Sour_Gas.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sour_Gas.png/24px-Sour_Gas.png?681999"
-    },
-    "Liquid Nuclear Waste": {
-      "name": "Liquid Nuclear Waste",
-      "element_id": "NuclearWaste",
-      "state": "Liquid",
-      "shc": 7.44,
-      "thermal_conductivity": 6.0,
-      "low_temp": 26.85,
-      "high_temp": 526.85,
-      "default_temp": 126.85,
-      "icon": "images/icons/Liquid_Nuclear_Waste.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Nuclear_Waste.png/24px-Liquid_Nuclear_Waste.png?1be0fb"
-    },
-    "Petroleum": {
-      "name": "Petroleum",
-      "element_id": "Petroleum",
-      "state": "Liquid",
-      "shc": 1.76,
-      "thermal_conductivity": 2.0,
-      "low_temp": -57.15,
-      "high_temp": 538.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Petroleum.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Petroleum.png/24px-Petroleum.png?a8a630"
-    },
-    "Resin": {
-      "name": "Resin",
-      "element_id": "NaturalResin",
-      "state": "Liquid",
-      "shc": 1.11,
-      "thermal_conductivity": 0.15,
-      "low_temp": 20.0,
-      "high_temp": 125.0,
-      "default_temp": 26.85,
-      "icon": "images/icons/Steam.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
-    },
-    "Sap": {
-      "name": "Sap",
-      "element_id": "Resin",
-      "state": "Liquid",
-      "shc": 1.11,
-      "thermal_conductivity": 0.15,
-      "low_temp": 20.0,
-      "high_temp": 125.0,
-      "default_temp": 26.85,
-      "icon": "images/icons/Steam.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
-    },
-    "Salt Water": {
-      "name": "Salt Water",
-      "element_id": "SaltWater",
-      "state": "Liquid",
-      "shc": 4.1,
-      "thermal_conductivity": 0.609,
-      "low_temp": -7.5,
-      "high_temp": 99.69,
-      "default_temp": 20.0,
-      "icon": "images/icons/Salt_Water.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt_Water.png/24px-Salt_Water.png?8067b5"
-    },
-    "Nectar": {
-      "name": "Nectar",
-      "element_id": "SugarWater",
-      "state": "Liquid",
-      "shc": 4.1,
-      "thermal_conductivity": 0.609,
-      "low_temp": -82.5,
-      "high_temp": 160.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Nectar.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nectar.png/24px-Nectar.png?bb9575"
-    },
-    "Super Coolant": {
-      "name": "Super Coolant",
-      "element_id": "SuperCoolant",
-      "state": "Liquid",
-      "shc": 8.44,
-      "thermal_conductivity": 9.46,
-      "low_temp": -271.15,
-      "high_temp": 436.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Super_Coolant.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Super_Coolant.png/24px-Super_Coolant.png?767a6a"
-    },
-    "Visco-Gel Fluid": {
-      "name": "Visco-Gel Fluid",
-      "element_id": "ViscoGel",
-      "state": "Liquid",
-      "shc": 1.55,
-      "thermal_conductivity": 0.45,
-      "low_temp": -30.65,
-      "high_temp": 479.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Visco-Gel_Fluid.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Visco-Gel_Fluid.png/24px-Visco-Gel_Fluid.png?2f36d1"
-    },
-    "Water": {
-      "name": "Water",
-      "element_id": "Water",
-      "state": "Liquid",
-      "shc": 4.179,
-      "thermal_conductivity": 0.609,
-      "low_temp": -0.65,
-      "high_temp": 99.35,
-      "default_temp": 20.0,
-      "icon": "images/icons/Water.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
-    },
-    "Squid Ink": {
-      "name": "Squid Ink",
-      "element_id": "Ink",
-      "state": "Liquid",
-      "shc": 2.0,
-      "thermal_conductivity": 0.5,
-      "low_temp": -20.65,
-      "high_temp": 80.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Mucin.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mucin.png/24px-Mucin.png?1e3722"
-    },
-    "Ethanol": {
-      "name": "Ethanol",
-      "element_id": "Ethanol",
-      "state": "Liquid",
-      "shc": 2.46,
-      "thermal_conductivity": 0.171,
-      "low_temp": -114.05,
-      "high_temp": 78.35,
-      "default_temp": 20.0,
-      "icon": "images/icons/Ethanol.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ethanol.png/24px-Ethanol.png?4051f1"
-    },
-    "Molten Syngas": {
-      "name": "Molten Syngas",
-      "element_id": "MoltenSyngas",
-      "state": "Liquid",
-      "shc": 2.4,
-      "thermal_conductivity": 0.1,
-      "low_temp": -259.15,
-      "high_temp": -252.15,
-      "default_temp": -255.15,
-      "icon": null
-    },
-    "Phyto Oil": {
-      "name": "Phyto Oil",
-      "element_id": "PhytoOil",
-      "state": "Liquid",
-      "shc": 0.9,
-      "thermal_conductivity": 2.0,
-      "low_temp": -33.15,
-      "high_temp": 75.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Carbon_Dioxide.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
-    },
-    "Biodiesel": {
-      "name": "Biodiesel",
-      "element_id": "RefinedLipid",
-      "state": "Liquid",
-      "shc": 2.19,
-      "thermal_conductivity": 2.0,
-      "low_temp": -10.0,
-      "high_temp": 180.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Carbon_Dioxide.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
-    },
-    "Liquid Sucrose": {
-      "name": "Liquid Sucrose",
-      "element_id": "MoltenSucrose",
-      "state": "Liquid",
-      "shc": 1.255,
-      "thermal_conductivity": 0.15,
-      "low_temp": 185.85,
-      "high_temp": 230.0,
-      "default_temp": 226.85,
-      "icon": "images/icons/Carbon_Dioxide.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
-    },
-    "Molten Nickel": {
-      "name": "Molten Nickel",
-      "element_id": "MoltenNickel",
-      "state": "Liquid",
-      "shc": 0.44,
-      "thermal_conductivity": 30.0,
-      "low_temp": 1454.85,
-      "high_temp": 2729.85,
-      "default_temp": 1526.85,
-      "icon": "images/icons/Molten_Nickel.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Nickel.png/24px-Molten_Nickel.png?cc293d"
-    },
-    "Molten Iridium": {
-      "name": "Molten Iridium",
-      "element_id": "MoltenIridium",
-      "state": "Liquid",
-      "shc": 0.131,
-      "thermal_conductivity": 170.0,
-      "low_temp": 2445.85,
-      "high_temp": 4129.85,
-      "default_temp": 3226.85,
-      "icon": "images/icons/Molten_Iridium.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iridium.png/24px-Molten_Iridium.png?767b1b"
-    },
-    "Latex": {
-      "name": "Latex",
-      "element_id": "Latex",
-      "state": "Liquid",
-      "shc": 2.01,
-      "thermal_conductivity": 0.065,
-      "low_temp": -0.65,
-      "high_temp": 99.35,
-      "default_temp": 20.0,
-      "icon": "images/icons/Carbon_Dioxide.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
-    },
-    "Mucin": {
-      "name": "Mucin",
-      "element_id": "Mucus",
-      "state": "Liquid",
-      "shc": 3.0,
-      "thermal_conductivity": 0.45,
-      "low_temp": -10.0,
-      "high_temp": 90.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Mucin.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mucin.png/24px-Mucin.png?1e3722"
-    },
-    "Molten Zinc": {
-      "name": "Molten Zinc",
-      "element_id": "MoltenZinc",
-      "state": "Liquid",
-      "shc": 0.388,
-      "thermal_conductivity": 12.0,
-      "low_temp": 419.73,
-      "high_temp": 906.85,
-      "default_temp": 626.85,
-      "icon": "images/icons/Molten_Zinc.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Zinc.png/24px-Molten_Zinc.png?732868"
     },
     "Aerogel": {
       "name": "Aerogel",
@@ -16278,7 +16449,7 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 9726.85,
       "default_temp": 20.0,
-      "icon": null
+      "icon": "images/icons/Crushed_Rock.png"
     },
     "Algae": {
       "name": "Algae",
@@ -16292,18 +16463,6 @@ export const ONI_DATASET = {
       "icon": "images/icons/Algae.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Algae.png/24px-Algae.png?b63024"
     },
-    "Pearl": {
-      "name": "Pearl",
-      "element_id": "Pearl",
-      "state": "Solid",
-      "shc": 0.45,
-      "thermal_conductivity": 0.9,
-      "low_temp": null,
-      "high_temp": 824.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Carbon_Dioxide.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
-    },
     "Aluminum": {
       "name": "Aluminum",
       "element_id": "Aluminum",
@@ -16315,6 +16474,18 @@ export const ONI_DATASET = {
       "default_temp": 20.0,
       "icon": "images/icons/Aluminum.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum.png/24px-Aluminum.png?7ed80e"
+    },
+    "Aluminum Gas": {
+      "name": "Aluminum Gas",
+      "element_id": "AluminumGas",
+      "state": "Gas",
+      "shc": 0.91,
+      "thermal_conductivity": 2.5,
+      "low_temp": 2470.0,
+      "high_temp": null,
+      "default_temp": 2926.85,
+      "icon": "images/icons/Aluminum_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Aluminum.png/24px-Molten_Aluminum.png?5b6c67"
     },
     "Aluminum Ore": {
       "name": "Aluminum Ore",
@@ -16328,6 +16499,42 @@ export const ONI_DATASET = {
       "icon": "images/icons/Aluminum_Ore.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Aluminum_Ore.png/24px-Aluminum_Ore.png?1e9490"
     },
+    "Amber": {
+      "name": "Amber",
+      "element_id": "Amber",
+      "state": "Solid",
+      "shc": 1.3,
+      "thermal_conductivity": 0.17,
+      "low_temp": null,
+      "high_temp": 95.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Amber.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resin.png/24px-Resin.png?a211c1"
+    },
+    "Basalt": {
+      "name": "Basalt",
+      "element_id": "Basalt",
+      "state": "Solid",
+      "shc": 0.25,
+      "thermal_conductivity": 2.5,
+      "low_temp": null,
+      "high_temp": 1256.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Basalt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Biodiesel": {
+      "name": "Biodiesel",
+      "element_id": "RefinedLipid",
+      "state": "Liquid",
+      "shc": 2.19,
+      "thermal_conductivity": 2.0,
+      "low_temp": -10.0,
+      "high_temp": 180.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Biodiesel.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+    },
     "Bitumen": {
       "name": "Bitumen",
       "element_id": "Bitumen",
@@ -16337,7 +16544,7 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 538.85,
       "default_temp": 20.0,
-      "icon": null
+      "icon": "images/icons/Petroleum.png"
     },
     "Bleach Stone": {
       "name": "Bleach Stone",
@@ -16348,8 +16555,32 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 668.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Liquid_Chlorine.png",
+      "icon": "images/icons/Bleach_Stone.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Chlorine.png/24px-Liquid_Chlorine.png?fec2b9"
+    },
+    "Brackene": {
+      "name": "Brackene",
+      "element_id": "Milk",
+      "state": "Liquid",
+      "shc": 4.1,
+      "thermal_conductivity": 0.609,
+      "low_temp": -16.5,
+      "high_temp": 80.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Brackene.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine.png/24px-Brine.png?925651"
+    },
+    "Brackwax": {
+      "name": "Brackwax",
+      "element_id": "MilkFat",
+      "state": "Solid",
+      "shc": 1.92,
+      "thermal_conductivity": 0.15,
+      "low_temp": null,
+      "high_temp": 159.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Brackwax.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brackwax.png/24px-Brackwax.png?c7e172"
     },
     "Brick": {
       "name": "Brick",
@@ -16360,7 +16591,19 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 1409.85,
       "default_temp": 20.0,
-      "icon": null
+      "icon": "images/icons/Clay.png"
+    },
+    "Brine": {
+      "name": "Brine",
+      "element_id": "Brine",
+      "state": "Liquid",
+      "shc": 3.4,
+      "thermal_conductivity": 0.609,
+      "low_temp": -22.5,
+      "high_temp": 102.75,
+      "default_temp": 20.0,
+      "icon": "images/icons/Brine.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine.png/24px-Brine.png?925651"
     },
     "Brine Ice": {
       "name": "Brine Ice",
@@ -16374,65 +16617,17 @@ export const ONI_DATASET = {
       "icon": "images/icons/Brine_Ice.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brine_Ice.png/24px-Brine_Ice.png?bca819"
     },
-    "Polluted Brine Ice": {
-      "name": "Polluted Brine Ice",
-      "element_id": "MurkyBrineIce",
-      "state": "Solid",
-      "shc": 3.6,
-      "thermal_conductivity": 2.18,
-      "low_temp": null,
-      "high_temp": -25.5,
-      "default_temp": -50.0,
-      "icon": "images/icons/Polluted_Ice.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Ice.png/24px-Polluted_Ice.png?d57167"
-    },
-    "Frozen Brackene": {
-      "name": "Frozen Brackene",
-      "element_id": "MilkIce",
-      "state": "Solid",
-      "shc": 3.4,
-      "thermal_conductivity": 2.18,
-      "low_temp": null,
-      "high_temp": -16.5,
-      "default_temp": -41.0,
-      "icon": "images/icons/Frozen_Brackene.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Brackene.png/24px-Frozen_Brackene.png?1d5da7"
-    },
-    "Frozen Ovolene": {
-      "name": "Frozen Ovolene",
-      "element_id": "FishMilkIce",
-      "state": "Solid",
-      "shc": 3.4,
-      "thermal_conductivity": 2.18,
-      "low_temp": null,
-      "high_temp": -16.5,
-      "default_temp": -41.0,
-      "icon": "images/icons/Frozen_Brackene.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Brackene.png/24px-Frozen_Brackene.png?1d5da7"
-    },
-    "Coal": {
-      "name": "Coal",
-      "element_id": "Carbon",
-      "state": "Solid",
-      "shc": 0.71,
-      "thermal_conductivity": 1.25,
-      "low_temp": null,
-      "high_temp": 276.85,
+    "Carbon Dioxide": {
+      "name": "Carbon Dioxide",
+      "element_id": "CarbonDioxide",
+      "state": "Gas",
+      "shc": 0.846,
+      "thermal_conductivity": 0.0146,
+      "low_temp": -48.15,
+      "high_temp": null,
       "default_temp": 20.0,
-      "icon": "images/icons/Coal.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Coal.png/24px-Coal.png?7beae2"
-    },
-    "Peat": {
-      "name": "Peat",
-      "element_id": "Peat",
-      "state": "Solid",
-      "shc": 0.71,
-      "thermal_conductivity": 0.6,
-      "low_temp": null,
-      "high_temp": 226.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Coal.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Coal.png/24px-Coal.png?7beae2"
+      "icon": "images/icons/Carbon_Dioxide.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon_Dioxide.png/24px-Liquid_Carbon_Dioxide.png?254ea5"
     },
     "Carbon Fibre": {
       "name": "Carbon Fibre",
@@ -16443,7 +16638,31 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 4726.85,
       "default_temp": 20.0,
-      "icon": null
+      "icon": "images/icons/Refined_Carbon.png"
+    },
+    "Carbon Gas": {
+      "name": "Carbon Gas",
+      "element_id": "CarbonGas",
+      "state": "Gas",
+      "shc": 0.71,
+      "thermal_conductivity": 1.7,
+      "low_temp": 4826.85,
+      "high_temp": null,
+      "default_temp": 5426.85,
+      "icon": "images/icons/Carbon_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon.png/24px-Liquid_Carbon.png?b4ff39"
+    },
+    "Caviar": {
+      "name": "Caviar",
+      "element_id": "Caviar",
+      "state": "Solid",
+      "shc": 3.47,
+      "thermal_conductivity": 0.5,
+      "low_temp": null,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Food.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Food.png/24px-Food.png"
     },
     "Cement": {
       "name": "Cement",
@@ -16454,7 +16673,7 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 1409.85,
       "default_temp": 20.0,
-      "icon": null
+      "icon": "images/icons/Crushed_Rock.png"
     },
     "Cement Mix": {
       "name": "Cement Mix",
@@ -16465,7 +16684,7 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 1409.85,
       "default_temp": 20.0,
-      "icon": null
+      "icon": "images/icons/Crushed_Rock.png"
     },
     "Ceramic": {
       "name": "Ceramic",
@@ -16479,6 +16698,30 @@ export const ONI_DATASET = {
       "icon": "images/icons/Ceramic.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ceramic.png/24px-Ceramic.png?86c3a0"
     },
+    "Chlorine": {
+      "name": "Chlorine",
+      "element_id": "ChlorineGas",
+      "state": "Gas",
+      "shc": 0.48,
+      "thermal_conductivity": 0.0081,
+      "low_temp": -34.6,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Chlorine.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Chlorine.png/24px-Liquid_Chlorine.png?fec2b9"
+    },
+    "Cinnabar Ore": {
+      "name": "Cinnabar Ore",
+      "element_id": "Cinnabar",
+      "state": "Solid",
+      "shc": 0.386,
+      "thermal_conductivity": 4.5,
+      "low_temp": null,
+      "high_temp": 583.5,
+      "default_temp": 20.0,
+      "icon": "images/icons/Cinnabar_Ore.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mercury_Gas.png/24px-Mercury_Gas.png?b623d6"
+    },
     "Clay": {
       "name": "Clay",
       "element_id": "Clay",
@@ -16490,6 +16733,54 @@ export const ONI_DATASET = {
       "default_temp": 20.0,
       "icon": "images/icons/Clay.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Clay.png/24px-Clay.png?e3f0c1"
+    },
+    "Coal": {
+      "name": "Coal",
+      "element_id": "Carbon",
+      "state": "Solid",
+      "shc": 0.71,
+      "thermal_conductivity": 1.25,
+      "low_temp": null,
+      "high_temp": 276.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Coal.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Coal.png/24px-Coal.png?7beae2"
+    },
+    "Cobalt": {
+      "name": "Cobalt",
+      "element_id": "Cobalt",
+      "state": "Solid",
+      "shc": 0.42,
+      "thermal_conductivity": 100.0,
+      "low_temp": null,
+      "high_temp": 1494.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Cobalt_(Spaced_Out).png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cobalt_%28Spaced_Out%29.png/24px-Cobalt_%28Spaced_Out%29.png?e48f1e"
+    },
+    "Cobalt Gas": {
+      "name": "Cobalt Gas",
+      "element_id": "CobaltGas",
+      "state": "Gas",
+      "shc": 0.42,
+      "thermal_conductivity": 1.0,
+      "low_temp": 2926.85,
+      "high_temp": null,
+      "default_temp": 3726.85,
+      "icon": "images/icons/Cobalt_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
+    },
+    "Cobalt Ore": {
+      "name": "Cobalt Ore",
+      "element_id": "Cobaltite",
+      "state": "Solid",
+      "shc": 0.42,
+      "thermal_conductivity": 4.0,
+      "low_temp": null,
+      "high_temp": 1494.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Molten_Cobalt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
     },
     "Copper": {
       "name": "Copper",
@@ -16503,41 +16794,17 @@ export const ONI_DATASET = {
       "icon": "images/icons/Copper.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper.png/24px-Copper.png?13f1d4"
     },
-    "Genetic Ooze": {
-      "name": "Genetic Ooze",
-      "element_id": "Creature",
-      "state": "Solid",
-      "shc": 3.47,
-      "thermal_conductivity": 0.6,
-      "low_temp": null,
-      "high_temp": 9726.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Genetic_Ooze.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Genetic_Ooze.png/24px-Genetic_Ooze.png?b63024"
-    },
-    "Crushed Ice": {
-      "name": "Crushed Ice",
-      "element_id": "CrushedIce",
-      "state": "Solid",
-      "shc": 2.05,
-      "thermal_conductivity": 2.18,
-      "low_temp": null,
-      "high_temp": -0.65,
-      "default_temp": -31.0,
-      "icon": "images/icons/Water.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
-    },
-    "Crushed Rock": {
-      "name": "Crushed Rock",
-      "element_id": "CrushedRock",
-      "state": "Solid",
-      "shc": 0.2,
-      "thermal_conductivity": 2.0,
-      "low_temp": null,
-      "high_temp": 1409.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Magma.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    "Copper Gas": {
+      "name": "Copper Gas",
+      "element_id": "CopperGas",
+      "state": "Gas",
+      "shc": 0.386,
+      "thermal_conductivity": 1.0,
+      "low_temp": 2560.85,
+      "high_temp": null,
+      "default_temp": 2926.85,
+      "icon": "images/icons/Copper_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Copper.png/24px-Molten_Copper.png?3c18f0"
     },
     "Copper Ore": {
       "name": "Copper Ore",
@@ -16550,6 +16817,78 @@ export const ONI_DATASET = {
       "default_temp": 20.0,
       "icon": "images/icons/Copper_Ore.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Copper_Ore.png/24px-Copper_Ore.png?4cb760"
+    },
+    "Coquina": {
+      "name": "Coquina",
+      "element_id": "Coquina",
+      "state": "Solid",
+      "shc": 0.8,
+      "thermal_conductivity": 1.5,
+      "low_temp": null,
+      "high_temp": 926.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Coquina.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Corallium": {
+      "name": "Corallium",
+      "element_id": "Corallium",
+      "state": "Solid",
+      "shc": 0.2,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 125.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Corallium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sand.png/24px-Sand.png?c5f250"
+    },
+    "Corium": {
+      "name": "Corium",
+      "element_id": "Corium",
+      "state": "Solid",
+      "shc": 7.44,
+      "thermal_conductivity": 6.0,
+      "low_temp": null,
+      "high_temp": 626.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Nuclear_Fallout.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nuclear_Fallout.png/24px-Nuclear_Fallout.png?966807"
+    },
+    "Crude Oil": {
+      "name": "Crude Oil",
+      "element_id": "CrudeOil",
+      "state": "Liquid",
+      "shc": 1.69,
+      "thermal_conductivity": 2.0,
+      "low_temp": -40.15,
+      "high_temp": 399.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Crude_Oil.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Crude_Oil.png/24px-Crude_Oil.png?d7ab3a"
+    },
+    "Crushed Ice": {
+      "name": "Crushed Ice",
+      "element_id": "CrushedIce",
+      "state": "Solid",
+      "shc": 2.05,
+      "thermal_conductivity": 2.18,
+      "low_temp": null,
+      "high_temp": -0.65,
+      "default_temp": -31.0,
+      "icon": "images/icons/Crushed_Ice.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
+    },
+    "Crushed Rock": {
+      "name": "Crushed Rock",
+      "element_id": "CrushedRock",
+      "state": "Solid",
+      "shc": 0.2,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 1409.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Crushed_Rock.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
     },
     "Depleted Uranium": {
       "name": "Depleted Uranium",
@@ -16587,18 +16926,6 @@ export const ONI_DATASET = {
       "icon": "images/icons/Resource_Dirt.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png?1569e7"
     },
-    "Polluted Ice": {
-      "name": "Polluted Ice",
-      "element_id": "DirtyIce",
-      "state": "Solid",
-      "shc": 3.05,
-      "thermal_conductivity": 1.0,
-      "low_temp": null,
-      "high_temp": -20.65,
-      "default_temp": -43.15,
-      "icon": "images/icons/Polluted_Ice.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Ice.png/24px-Polluted_Ice.png?d57167"
-    },
     "Electrum": {
       "name": "Electrum",
       "element_id": "Electrum",
@@ -16608,7 +16935,7 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 1063.85,
       "default_temp": 20.0,
-      "icon": null
+      "icon": "images/icons/Gold_Amalgam.png"
     },
     "Enriched Uranium": {
       "name": "Enriched Uranium",
@@ -16619,8 +16946,32 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 858.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Liquid_Uranium.png",
+      "icon": "images/icons/Enriched_Uranium.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Uranium.png/24px-Liquid_Uranium.png?f88c40"
+    },
+    "Ethanol": {
+      "name": "Ethanol",
+      "element_id": "Ethanol",
+      "state": "Liquid",
+      "shc": 2.46,
+      "thermal_conductivity": 0.171,
+      "low_temp": -114.05,
+      "high_temp": 78.35,
+      "default_temp": 20.0,
+      "icon": "images/icons/Ethanol.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ethanol.png/24px-Ethanol.png?4051f1"
+    },
+    "Ethanol Gas": {
+      "name": "Ethanol Gas",
+      "element_id": "EthanolGas",
+      "state": "Gas",
+      "shc": 2.148,
+      "thermal_conductivity": 0.167,
+      "low_temp": 78.35,
+      "high_temp": null,
+      "default_temp": 116.85,
+      "icon": "images/icons/Ethanol_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ethanol.png/24px-Ethanol.png?4051f1"
     },
     "Fertilizer": {
       "name": "Fertilizer",
@@ -16631,20 +16982,8 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 125.0,
       "default_temp": 20.0,
-      "icon": "images/icons/Resource_Dirt.png",
+      "icon": "images/icons/Fertilizer.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png?1569e7"
-    },
-    "Pyrite": {
-      "name": "Pyrite",
-      "element_id": "FoolsGold",
-      "state": "Solid",
-      "shc": 0.386,
-      "thermal_conductivity": 4.5,
-      "low_temp": null,
-      "high_temp": 1083.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Molten_Iron.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
     },
     "Fossil": {
       "name": "Fossil",
@@ -16658,6 +16997,42 @@ export const ONI_DATASET = {
       "icon": "images/icons/Fossil.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Fossil.png/24px-Fossil.png?dceeef"
     },
+    "Frozen Brackene": {
+      "name": "Frozen Brackene",
+      "element_id": "MilkIce",
+      "state": "Solid",
+      "shc": 3.4,
+      "thermal_conductivity": 2.18,
+      "low_temp": null,
+      "high_temp": -16.5,
+      "default_temp": -41.0,
+      "icon": "images/icons/Frozen_Brackene.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Brackene.png/24px-Frozen_Brackene.png?1d5da7"
+    },
+    "Frozen Mucin": {
+      "name": "Frozen Mucin",
+      "element_id": "SolidMucus",
+      "state": "Solid",
+      "shc": 3.05,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": -10.0,
+      "default_temp": -25.0,
+      "icon": "images/icons/Frozen_Mucin.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Mucin.png/24px-Frozen_Mucin.png?c2f594"
+    },
+    "Frozen Ovolene": {
+      "name": "Frozen Ovolene",
+      "element_id": "FishMilkIce",
+      "state": "Solid",
+      "shc": 3.4,
+      "thermal_conductivity": 2.18,
+      "low_temp": null,
+      "high_temp": -16.5,
+      "default_temp": -41.0,
+      "icon": "images/icons/Frozen_Brackene.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Brackene.png/24px-Frozen_Brackene.png?1d5da7"
+    },
     "Frozen Phyto Oil": {
       "name": "Frozen Phyto Oil",
       "element_id": "FrozenPhytoOil",
@@ -16670,6 +17045,18 @@ export const ONI_DATASET = {
       "icon": "images/icons/Frozen_Phyto_Oil.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Phyto_Oil.png/24px-Frozen_Phyto_Oil.png?cfa065"
     },
+    "Frozen Squid Ink": {
+      "name": "Frozen Squid Ink",
+      "element_id": "FrozenInk",
+      "state": "Solid",
+      "shc": 2.0,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": -20.65,
+      "default_temp": -41.0,
+      "icon": "images/icons/Frozen_Squid_Ink.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Squid_Ink.png/24px-Frozen_Squid_Ink.png?49a98b"
+    },
     "Fullerene": {
       "name": "Fullerene",
       "element_id": "Fullerene",
@@ -16679,8 +17066,32 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 3926.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Liquid_Carbon.png",
+      "icon": "images/icons/Fullerene.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon.png/24px-Liquid_Carbon.png?b4ff39"
+    },
+    "Galena": {
+      "name": "Galena",
+      "element_id": "Galena",
+      "state": "Solid",
+      "shc": 0.21,
+      "thermal_conductivity": 2.3,
+      "low_temp": null,
+      "high_temp": 1114.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Galena.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
+    },
+    "Genetic Ooze": {
+      "name": "Genetic Ooze",
+      "element_id": "Creature",
+      "state": "Solid",
+      "shc": 3.47,
+      "thermal_conductivity": 0.6,
+      "low_temp": null,
+      "high_temp": 9726.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Genetic_Ooze.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Genetic_Ooze.png/24px-Genetic_Ooze.png?b63024"
     },
     "Glass": {
       "name": "Glass",
@@ -16718,6 +17129,18 @@ export const ONI_DATASET = {
       "icon": "images/icons/Gold_Amalgam.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Gold_Amalgam.png/24px-Gold_Amalgam.png?215d21"
     },
+    "Gold Gas": {
+      "name": "Gold Gas",
+      "element_id": "GoldGas",
+      "state": "Gas",
+      "shc": 0.1291,
+      "thermal_conductivity": 1.0,
+      "low_temp": 2855.85,
+      "high_temp": null,
+      "default_temp": 3226.85,
+      "icon": "images/icons/Gold_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Gold.png/24px-Molten_Gold.png?658b8f"
+    },
     "Granite": {
       "name": "Granite",
       "element_id": "Granite",
@@ -16729,6 +17152,65 @@ export const ONI_DATASET = {
       "default_temp": 20.0,
       "icon": "images/icons/Granite.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Granite.png/24px-Granite.png?e0ce7e"
+    },
+    "Graphite": {
+      "name": "Graphite",
+      "element_id": "Graphite",
+      "state": "Solid",
+      "shc": 0.71,
+      "thermal_conductivity": 8.0,
+      "low_temp": null,
+      "high_temp": 276.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Graphite.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Graphite.png/24px-Graphite.png?58a17d"
+    },
+    "Gum Wood": {
+      "name": "Gum Wood",
+      "element_id": "PalmWood",
+      "state": "Solid",
+      "shc": 2.3,
+      "thermal_conductivity": 0.22,
+      "low_temp": null,
+      "high_temp": 600.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Gum_Wood.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+    },
+    "Gunk": {
+      "name": "Gunk",
+      "element_id": "LiquidGunk",
+      "state": "Liquid",
+      "shc": 1.2,
+      "thermal_conductivity": 1.5,
+      "low_temp": -8.15,
+      "high_temp": 447.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Gunk.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Petroleum.png/24px-Petroleum.png?a8a630"
+    },
+    "Helium": {
+      "name": "Helium",
+      "element_id": "Helium",
+      "state": "Gas",
+      "shc": 0.14,
+      "thermal_conductivity": 0.236,
+      "low_temp": -268.93,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Hydrogen_Gas.png"
+    },
+    "Hydrogen": {
+      "name": "Hydrogen",
+      "element_id": "Hydrogen",
+      "state": "Gas",
+      "shc": 2.4,
+      "thermal_conductivity": 0.168,
+      "low_temp": -252.15,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Hydrogen.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Hydrogen.png/24px-Liquid_Hydrogen.png?d70401"
     },
     "Ice": {
       "name": "Ice",
@@ -16742,18 +17224,6 @@ export const ONI_DATASET = {
       "icon": "images/icons/Ice.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Ice.png/24px-Ice.png?8bef06"
     },
-    "Frozen Squid Ink": {
-      "name": "Frozen Squid Ink",
-      "element_id": "FrozenInk",
-      "state": "Solid",
-      "shc": 2.0,
-      "thermal_conductivity": 2.0,
-      "low_temp": null,
-      "high_temp": -20.65,
-      "default_temp": -41.0,
-      "icon": "images/icons/Frozen_Squid_Ink.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Squid_Ink.png/24px-Frozen_Squid_Ink.png?49a98b"
-    },
     "Igneous Rock": {
       "name": "Igneous Rock",
       "element_id": "IgneousRock",
@@ -16765,6 +17235,42 @@ export const ONI_DATASET = {
       "default_temp": 20.0,
       "icon": "images/icons/Igneous_Rock.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Igneous_Rock.png/24px-Igneous_Rock.png?c2bb8e"
+    },
+    "Insulite": {
+      "name": "Insulite",
+      "element_id": "SuperInsulator",
+      "state": "Solid",
+      "shc": 5.57,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": 3621.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Insulite.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Insulite.png/24px-Insulite.png?e04a6f"
+    },
+    "Iridium": {
+      "name": "Iridium",
+      "element_id": "Iridium",
+      "state": "Solid",
+      "shc": 0.131,
+      "thermal_conductivity": 170.0,
+      "low_temp": null,
+      "high_temp": 2445.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Iridium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iridium.png/24px-Iridium.png?a998d5"
+    },
+    "Iridium Gas": {
+      "name": "Iridium Gas",
+      "element_id": "IridiumGas",
+      "state": "Gas",
+      "shc": 0.131,
+      "thermal_conductivity": 1.0,
+      "low_temp": 4129.85,
+      "high_temp": null,
+      "default_temp": 4226.85,
+      "icon": "images/icons/Iridium_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iridium.png/24px-Molten_Iridium.png?767b1b"
     },
     "Iron": {
       "name": "Iron",
@@ -16778,6 +17284,18 @@ export const ONI_DATASET = {
       "icon": "images/icons/Iron.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron.png/24px-Iron.png?89103b"
     },
+    "Iron Gas": {
+      "name": "Iron Gas",
+      "element_id": "IronGas",
+      "state": "Gas",
+      "shc": 0.449,
+      "thermal_conductivity": 1.0,
+      "low_temp": 2749.85,
+      "high_temp": null,
+      "default_temp": 3726.85,
+      "icon": "images/icons/Iron_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
+    },
     "Iron Ore": {
       "name": "Iron Ore",
       "element_id": "IronOre",
@@ -16789,30 +17307,6 @@ export const ONI_DATASET = {
       "default_temp": 20.0,
       "icon": "images/icons/Iron_Ore.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iron_Ore.png/24px-Iron_Ore.png?9814a5"
-    },
-    "Cobalt": {
-      "name": "Cobalt",
-      "element_id": "Cobalt",
-      "state": "Solid",
-      "shc": 0.42,
-      "thermal_conductivity": 100.0,
-      "low_temp": null,
-      "high_temp": 1494.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Cobalt_(Spaced_Out).png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Cobalt_%28Spaced_Out%29.png/24px-Cobalt_%28Spaced_Out%29.png?e48f1e"
-    },
-    "Cobalt Ore": {
-      "name": "Cobalt Ore",
-      "element_id": "Cobaltite",
-      "state": "Solid",
-      "shc": 0.42,
-      "thermal_conductivity": 4.0,
-      "low_temp": null,
-      "high_temp": 1494.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Molten_Cobalt.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
     },
     "Isosap": {
       "name": "Isosap",
@@ -16826,17 +17320,17 @@ export const ONI_DATASET = {
       "icon": "images/icons/Isoresin.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Isoresin.png/24px-Isoresin.png?4b6900"
     },
-    "Abyssalite": {
-      "name": "Abyssalite",
-      "element_id": "Katairite",
-      "state": "Solid",
-      "shc": 4.0,
-      "thermal_conductivity": 1.0,
-      "low_temp": null,
-      "high_temp": 3421.85,
+    "Latex": {
+      "name": "Latex",
+      "element_id": "Latex",
+      "state": "Liquid",
+      "shc": 2.01,
+      "thermal_conductivity": 0.065,
+      "low_temp": -0.65,
+      "high_temp": 99.35,
       "default_temp": 20.0,
-      "icon": "images/icons/Molten_Tungsten.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
+      "icon": "images/icons/Latex.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
     "Lead": {
       "name": "Lead",
@@ -16847,8 +17341,20 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 327.5,
       "default_temp": 20.0,
-      "icon": "images/icons/Isoresin.png",
+      "icon": "images/icons/Lead.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Isoresin.png/24px-Isoresin.png?4b6900"
+    },
+    "Lead Gas": {
+      "name": "Lead Gas",
+      "element_id": "LeadGas",
+      "state": "Gas",
+      "shc": 0.128,
+      "thermal_conductivity": 3.5,
+      "low_temp": 1749.0,
+      "high_temp": null,
+      "default_temp": 3226.85,
+      "icon": "images/icons/Lead_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
     },
     "Lime": {
       "name": "Lime",
@@ -16859,20 +17365,174 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 1056.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Magma.png",
+      "icon": "images/icons/Lime.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
     },
-    "Brackwax": {
-      "name": "Brackwax",
-      "element_id": "MilkFat",
-      "state": "Solid",
-      "shc": 1.92,
-      "thermal_conductivity": 0.15,
-      "low_temp": null,
-      "high_temp": 159.85,
+    "Liquid Carbon": {
+      "name": "Liquid Carbon",
+      "element_id": "MoltenCarbon",
+      "state": "Liquid",
+      "shc": 0.71,
+      "thermal_conductivity": 2.0,
+      "low_temp": 3551.85,
+      "high_temp": 4826.85,
+      "default_temp": 4326.85,
+      "icon": "images/icons/Liquid_Carbon.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon.png/24px-Liquid_Carbon.png?b4ff39"
+    },
+    "Liquid Carbon Dioxide": {
+      "name": "Liquid Carbon Dioxide",
+      "element_id": "LiquidCarbonDioxide",
+      "state": "Liquid",
+      "shc": 0.846,
+      "thermal_conductivity": 1.46,
+      "low_temp": -56.55,
+      "high_temp": -48.15,
+      "default_temp": -53.15,
+      "icon": "images/icons/Liquid_Carbon_Dioxide.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Carbon_Dioxide.png/24px-Liquid_Carbon_Dioxide.png?254ea5"
+    },
+    "Liquid Chlorine": {
+      "name": "Liquid Chlorine",
+      "element_id": "Chlorine",
+      "state": "Liquid",
+      "shc": 0.48,
+      "thermal_conductivity": 0.0081,
+      "low_temp": -100.98,
+      "high_temp": -34.6,
+      "default_temp": -73.15,
+      "icon": "images/icons/Liquid_Chlorine.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Chlorine.png/24px-Liquid_Chlorine.png?fec2b9"
+    },
+    "Liquid Helium": {
+      "name": "Liquid Helium",
+      "element_id": "LiquidHelium",
+      "state": "Liquid",
+      "shc": 0.2,
+      "thermal_conductivity": 0.236,
+      "low_temp": -273.15,
+      "high_temp": -268.93,
+      "default_temp": -272.15,
+      "icon": "images/icons/Liquid_Hydrogen.png"
+    },
+    "Liquid Hydrogen": {
+      "name": "Liquid Hydrogen",
+      "element_id": "LiquidHydrogen",
+      "state": "Liquid",
+      "shc": 2.4,
+      "thermal_conductivity": 0.1,
+      "low_temp": -259.15,
+      "high_temp": -252.15,
+      "default_temp": -255.15,
+      "icon": "images/icons/Liquid_Hydrogen.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Hydrogen.png/24px-Liquid_Hydrogen.png?d70401"
+    },
+    "Liquid Methane": {
+      "name": "Liquid Methane",
+      "element_id": "LiquidMethane",
+      "state": "Liquid",
+      "shc": 2.191,
+      "thermal_conductivity": 0.03,
+      "low_temp": -182.6,
+      "high_temp": -161.5,
+      "default_temp": -173.15,
+      "icon": "images/icons/Liquid_Methane.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
+    },
+    "Liquid Naphtha": {
+      "name": "Liquid Naphtha",
+      "element_id": "Naphtha",
+      "state": "Liquid",
+      "shc": 2.191,
+      "thermal_conductivity": 0.2,
+      "low_temp": -50.15,
+      "high_temp": 538.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Brackwax.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Brackwax.png/24px-Brackwax.png?c7e172"
+      "icon": "images/icons/Liquid_Naphtha.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sour_Gas.png/24px-Sour_Gas.png?681999"
+    },
+    "Liquid Nuclear Waste": {
+      "name": "Liquid Nuclear Waste",
+      "element_id": "NuclearWaste",
+      "state": "Liquid",
+      "shc": 7.44,
+      "thermal_conductivity": 6.0,
+      "low_temp": 26.85,
+      "high_temp": 526.85,
+      "default_temp": 126.85,
+      "icon": "images/icons/Liquid_Nuclear_Waste.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Nuclear_Waste.png/24px-Liquid_Nuclear_Waste.png?1be0fb"
+    },
+    "Liquid Oxygen": {
+      "name": "Liquid Oxygen",
+      "element_id": "LiquidOxygen",
+      "state": "Liquid",
+      "shc": 1.01,
+      "thermal_conductivity": 2.0,
+      "low_temp": -218.79,
+      "high_temp": -182.96,
+      "default_temp": -198.79,
+      "icon": "images/icons/Liquid_Oxygen.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Oxygen.png/24px-Liquid_Oxygen.png?17b4c3"
+    },
+    "Liquid Phosphorus": {
+      "name": "Liquid Phosphorus",
+      "element_id": "LiquidPhosphorus",
+      "state": "Liquid",
+      "shc": 0.7697,
+      "thermal_conductivity": 0.236,
+      "low_temp": 44.15,
+      "high_temp": 280.45,
+      "default_temp": 226.85,
+      "icon": "images/icons/Liquid_Phosphorus.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Phosphorus.png/24px-Liquid_Phosphorus.png?267c27"
+    },
+    "Liquid Propane": {
+      "name": "Liquid Propane",
+      "element_id": "LiquidPropane",
+      "state": "Liquid",
+      "shc": 2.4,
+      "thermal_conductivity": 0.1,
+      "low_temp": -188.15,
+      "high_temp": -42.15,
+      "default_temp": -73.15,
+      "icon": "images/icons/Liquid_Methane.png"
+    },
+    "Liquid Sucrose": {
+      "name": "Liquid Sucrose",
+      "element_id": "MoltenSucrose",
+      "state": "Liquid",
+      "shc": 1.255,
+      "thermal_conductivity": 0.15,
+      "low_temp": 185.85,
+      "high_temp": 230.0,
+      "default_temp": 226.85,
+      "icon": "images/icons/Liquid_Sucrose.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+    },
+    "Liquid Sulfur": {
+      "name": "Liquid Sulfur",
+      "element_id": "LiquidSulfur",
+      "state": "Liquid",
+      "shc": 0.7,
+      "thermal_conductivity": 0.2,
+      "low_temp": 115.2,
+      "high_temp": 337.0,
+      "default_temp": 176.85,
+      "icon": "images/icons/Liquid_Sulfur.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur.png/24px-Liquid_Sulfur.png?dccb21"
+    },
+    "Liquid Uranium": {
+      "name": "Liquid Uranium",
+      "element_id": "MoltenUranium",
+      "state": "Liquid",
+      "shc": 1.69,
+      "thermal_conductivity": 2.0,
+      "low_temp": 132.85,
+      "high_temp": 4131.85,
+      "default_temp": 186.85,
+      "icon": "images/icons/Liquid_Uranium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Rock_Gas.png/24px-Rock_Gas.png?b50149"
     },
     "Mafic Rock": {
       "name": "Mafic Rock",
@@ -16886,6 +17546,317 @@ export const ONI_DATASET = {
       "icon": "images/icons/Mafic_Rock.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mafic_Rock.png/24px-Mafic_Rock.png?28d1c8"
     },
+    "Magma": {
+      "name": "Magma",
+      "element_id": "Magma",
+      "state": "Liquid",
+      "shc": 1.0,
+      "thermal_conductivity": 1.0,
+      "low_temp": 1409.85,
+      "high_temp": 2356.85,
+      "default_temp": 1726.85,
+      "icon": "images/icons/Magma.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Mercury": {
+      "name": "Mercury",
+      "element_id": "Mercury",
+      "state": "Liquid",
+      "shc": 0.14,
+      "thermal_conductivity": 8.3,
+      "low_temp": -38.85,
+      "high_temp": 356.75,
+      "default_temp": 20.0,
+      "icon": "images/icons/Liquid_Mercury.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Mercury.png/24px-Liquid_Mercury.png?bfbddd"
+    },
+    "Mercury Gas": {
+      "name": "Mercury Gas",
+      "element_id": "MercuryGas",
+      "state": "Gas",
+      "shc": 0.14,
+      "thermal_conductivity": 8.3,
+      "low_temp": 356.75,
+      "high_temp": null,
+      "default_temp": 576.85,
+      "icon": "images/icons/Mercury_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Mercury.png/24px-Liquid_Mercury.png?bfbddd"
+    },
+    "Molten Aluminum": {
+      "name": "Molten Aluminum",
+      "element_id": "MoltenAluminum",
+      "state": "Liquid",
+      "shc": 0.91,
+      "thermal_conductivity": 20.5,
+      "low_temp": 660.3,
+      "high_temp": 2470.0,
+      "default_temp": 1726.85,
+      "icon": "images/icons/Molten_Aluminum.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Aluminum.png/24px-Molten_Aluminum.png?5b6c67"
+    },
+    "Molten Cobalt": {
+      "name": "Molten Cobalt",
+      "element_id": "MoltenCobalt",
+      "state": "Liquid",
+      "shc": 0.42,
+      "thermal_conductivity": 4.0,
+      "low_temp": 1494.85,
+      "high_temp": 2926.85,
+      "default_temp": 2226.85,
+      "icon": "images/icons/Molten_Cobalt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Cobalt.png/24px-Molten_Cobalt.png?1a5724"
+    },
+    "Molten Copper": {
+      "name": "Molten Copper",
+      "element_id": "MoltenCopper",
+      "state": "Liquid",
+      "shc": 0.386,
+      "thermal_conductivity": 12.0,
+      "low_temp": 1083.85,
+      "high_temp": 2560.85,
+      "default_temp": 1526.85,
+      "icon": "images/icons/Molten_Copper.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Copper.png/24px-Molten_Copper.png?3c18f0"
+    },
+    "Molten Glass": {
+      "name": "Molten Glass",
+      "element_id": "MoltenGlass",
+      "state": "Liquid",
+      "shc": 0.2,
+      "thermal_conductivity": 1.0,
+      "low_temp": 1126.85,
+      "high_temp": 2356.85,
+      "default_temp": 1941.85,
+      "icon": "images/icons/Molten_Glass.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Rock_Gas.png/24px-Rock_Gas.png?b50149"
+    },
+    "Molten Gold": {
+      "name": "Molten Gold",
+      "element_id": "MoltenGold",
+      "state": "Liquid",
+      "shc": 0.1291,
+      "thermal_conductivity": 6.0,
+      "low_temp": 1063.85,
+      "high_temp": 2855.85,
+      "default_temp": 1726.85,
+      "icon": "images/icons/Molten_Gold.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Gold.png/24px-Molten_Gold.png?658b8f"
+    },
+    "Molten Iridium": {
+      "name": "Molten Iridium",
+      "element_id": "MoltenIridium",
+      "state": "Liquid",
+      "shc": 0.131,
+      "thermal_conductivity": 170.0,
+      "low_temp": 2445.85,
+      "high_temp": 4129.85,
+      "default_temp": 3226.85,
+      "icon": "images/icons/Molten_Iridium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iridium.png/24px-Molten_Iridium.png?767b1b"
+    },
+    "Molten Iron": {
+      "name": "Molten Iron",
+      "element_id": "MoltenIron",
+      "state": "Liquid",
+      "shc": 0.449,
+      "thermal_conductivity": 4.0,
+      "low_temp": 1534.85,
+      "high_temp": 2749.85,
+      "default_temp": 2226.85,
+      "icon": "images/icons/Molten_Iron.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
+    },
+    "Molten Lead": {
+      "name": "Molten Lead",
+      "element_id": "MoltenLead",
+      "state": "Liquid",
+      "shc": 0.128,
+      "thermal_conductivity": 11.0,
+      "low_temp": 327.5,
+      "high_temp": 1749.0,
+      "default_temp": 1726.85,
+      "icon": "images/icons/Molten_Lead.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
+    },
+    "Molten Nickel": {
+      "name": "Molten Nickel",
+      "element_id": "MoltenNickel",
+      "state": "Liquid",
+      "shc": 0.44,
+      "thermal_conductivity": 30.0,
+      "low_temp": 1454.85,
+      "high_temp": 2729.85,
+      "default_temp": 1526.85,
+      "icon": "images/icons/Molten_Nickel.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Nickel.png/24px-Molten_Nickel.png?cc293d"
+    },
+    "Molten Niobium": {
+      "name": "Molten Niobium",
+      "element_id": "MoltenNiobium",
+      "state": "Liquid",
+      "shc": 0.265,
+      "thermal_conductivity": 54.0,
+      "low_temp": 2476.85,
+      "high_temp": 4743.85,
+      "default_temp": 2726.85,
+      "icon": "images/icons/Molten_Niobium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Niobium.png/24px-Molten_Niobium.png?bd76f8"
+    },
+    "Molten Salt": {
+      "name": "Molten Salt",
+      "element_id": "MoltenSalt",
+      "state": "Liquid",
+      "shc": 0.7,
+      "thermal_conductivity": 0.444,
+      "low_temp": 799.85,
+      "high_temp": 1464.85,
+      "default_temp": 1132.35,
+      "icon": "images/icons/Molten_Salt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Salt.png/24px-Molten_Salt.png?fd6bf8"
+    },
+    "Molten Steel": {
+      "name": "Molten Steel",
+      "element_id": "MoltenSteel",
+      "state": "Liquid",
+      "shc": 0.386,
+      "thermal_conductivity": 80.0,
+      "low_temp": 1083.85,
+      "high_temp": 3826.85,
+      "default_temp": 1726.85,
+      "icon": "images/icons/Molten_Steel.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Steel.png/24px-Molten_Steel.png?ca95f8"
+    },
+    "Molten Syngas": {
+      "name": "Molten Syngas",
+      "element_id": "MoltenSyngas",
+      "state": "Liquid",
+      "shc": 2.4,
+      "thermal_conductivity": 0.1,
+      "low_temp": -259.15,
+      "high_temp": -252.15,
+      "default_temp": -255.15,
+      "icon": "images/icons/Liquid_Methane.png"
+    },
+    "Molten Tungsten": {
+      "name": "Molten Tungsten",
+      "element_id": "MoltenTungsten",
+      "state": "Liquid",
+      "shc": 0.134,
+      "thermal_conductivity": 4.0,
+      "low_temp": 3421.85,
+      "high_temp": 5929.85,
+      "default_temp": 3726.85,
+      "icon": "images/icons/Molten_Tungsten.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
+    },
+    "Molten Zinc": {
+      "name": "Molten Zinc",
+      "element_id": "MoltenZinc",
+      "state": "Liquid",
+      "shc": 0.388,
+      "thermal_conductivity": 12.0,
+      "low_temp": 419.73,
+      "high_temp": 906.85,
+      "default_temp": 626.85,
+      "icon": "images/icons/Molten_Zinc.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Zinc.png/24px-Molten_Zinc.png?732868"
+    },
+    "Mucin": {
+      "name": "Mucin",
+      "element_id": "Mucus",
+      "state": "Liquid",
+      "shc": 3.0,
+      "thermal_conductivity": 0.45,
+      "low_temp": -10.0,
+      "high_temp": 90.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Mucin.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mucin.png/24px-Mucin.png?1e3722"
+    },
+    "Mud": {
+      "name": "Mud",
+      "element_id": "Mud",
+      "state": "Solid",
+      "shc": 0.83,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 99.69,
+      "default_temp": 20.0,
+      "icon": "images/icons/Mud_(Spaced_Out).png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+    },
+    "Natural Gas": {
+      "name": "Natural Gas",
+      "element_id": "Methane",
+      "state": "Gas",
+      "shc": 2.191,
+      "thermal_conductivity": 0.035,
+      "low_temp": -161.5,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Natural_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
+    },
+    "Nectar": {
+      "name": "Nectar",
+      "element_id": "SugarWater",
+      "state": "Liquid",
+      "shc": 4.1,
+      "thermal_conductivity": 0.609,
+      "low_temp": -82.5,
+      "high_temp": 160.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Nectar.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nectar.png/24px-Nectar.png?bb9575"
+    },
+    "Neutronium": {
+      "name": "Neutronium",
+      "element_id": "Unobtanium",
+      "state": "Solid",
+      "shc": 0.0,
+      "thermal_conductivity": 0.0,
+      "low_temp": null,
+      "high_temp": 9726.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Neutronium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Neutronium.png/24px-Neutronium.png?3f25b8"
+    },
+    "Nickel": {
+      "name": "Nickel",
+      "element_id": "Nickel",
+      "state": "Solid",
+      "shc": 0.44,
+      "thermal_conductivity": 91.0,
+      "low_temp": null,
+      "high_temp": 1454.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Nickel.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nickel.png/24px-Nickel.png?c6ff23"
+    },
+    "Nickel Gas": {
+      "name": "Nickel Gas",
+      "element_id": "NickelGas",
+      "state": "Gas",
+      "shc": 0.44,
+      "thermal_conductivity": 1.0,
+      "low_temp": 2729.85,
+      "high_temp": null,
+      "default_temp": 2926.85,
+      "icon": "images/icons/Nickel_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Nickel.png/24px-Molten_Nickel.png?cc293d"
+    },
+    "Nickel Ore": {
+      "name": "Nickel Ore",
+      "element_id": "NickelOre",
+      "state": "Solid",
+      "shc": 0.45,
+      "thermal_conductivity": 3.0,
+      "low_temp": null,
+      "high_temp": 1454.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Nickel_Ore.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Nickel.png/24px-Molten_Nickel.png?cc293d"
+    },
     "Niobium": {
       "name": "Niobium",
       "element_id": "Niobium",
@@ -16898,17 +17869,29 @@ export const ONI_DATASET = {
       "icon": "images/icons/Niobium.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Niobium.png/24px-Niobium.png?7c3764"
     },
-    "Corium": {
-      "name": "Corium",
-      "element_id": "Corium",
-      "state": "Solid",
-      "shc": 7.44,
-      "thermal_conductivity": 6.0,
-      "low_temp": null,
-      "high_temp": 626.85,
-      "default_temp": 20.0,
+    "Niobium Gas": {
+      "name": "Niobium Gas",
+      "element_id": "NiobiumGas",
+      "state": "Gas",
+      "shc": 0.265,
+      "thermal_conductivity": 1.0,
+      "low_temp": 4743.85,
+      "high_temp": null,
+      "default_temp": 5226.85,
+      "icon": "images/icons/Niobium_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Niobium.png/24px-Molten_Niobium.png?bd76f8"
+    },
+    "Nuclear Fallout": {
+      "name": "Nuclear Fallout",
+      "element_id": "Fallout",
+      "state": "Gas",
+      "shc": 0.265,
+      "thermal_conductivity": 1.0,
+      "low_temp": 66.85,
+      "high_temp": null,
+      "default_temp": 226.85,
       "icon": "images/icons/Nuclear_Fallout.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nuclear_Fallout.png/24px-Nuclear_Fallout.png?966807"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Nuclear_Waste.png/24px-Liquid_Nuclear_Waste.png?1be0fb"
     },
     "Obsidian": {
       "name": "Obsidian",
@@ -16922,6 +17905,30 @@ export const ONI_DATASET = {
       "icon": "images/icons/Obsidian.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Obsidian.png/24px-Obsidian.png?854afa"
     },
+    "Ovolene": {
+      "name": "Ovolene",
+      "element_id": "FishMilk",
+      "state": "Liquid",
+      "shc": 4.1,
+      "thermal_conductivity": 0.609,
+      "low_temp": -16.5,
+      "high_temp": 80.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Ovolene.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+    },
+    "Oxygen": {
+      "name": "Oxygen",
+      "element_id": "Oxygen",
+      "state": "Gas",
+      "shc": 1.005,
+      "thermal_conductivity": 0.024,
+      "low_temp": -182.96,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Oxygen.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Oxygen.png/24px-Oxygen.png?4db039"
+    },
     "Oxylite": {
       "name": "Oxylite",
       "element_id": "OxyRock",
@@ -16931,8 +17938,44 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 1409.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Magma.png",
+      "icon": "images/icons/Oxylite.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Pearl": {
+      "name": "Pearl",
+      "element_id": "Pearl",
+      "state": "Solid",
+      "shc": 0.45,
+      "thermal_conductivity": 0.9,
+      "low_temp": null,
+      "high_temp": 824.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Pearl.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+    },
+    "Peat": {
+      "name": "Peat",
+      "element_id": "Peat",
+      "state": "Solid",
+      "shc": 0.71,
+      "thermal_conductivity": 0.6,
+      "low_temp": null,
+      "high_temp": 226.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Peat.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Coal.png/24px-Coal.png?7beae2"
+    },
+    "Petroleum": {
+      "name": "Petroleum",
+      "element_id": "Petroleum",
+      "state": "Liquid",
+      "shc": 1.76,
+      "thermal_conductivity": 2.0,
+      "low_temp": -57.15,
+      "high_temp": 538.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Petroleum.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Petroleum.png/24px-Petroleum.png?a8a630"
     },
     "Phosphate Nodules": {
       "name": "Phosphate Nodules",
@@ -16943,7 +17986,7 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 426.85,
       "default_temp": 20.0,
-      "icon": null
+      "icon": "images/icons/Phosphorite.png"
     },
     "Phosphorite": {
       "name": "Phosphorite",
@@ -16954,32 +17997,32 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 243.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Liquid_Phosphorus.png",
+      "icon": "images/icons/Phosphorite.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Phosphorus.png/24px-Liquid_Phosphorus.png?267c27"
     },
-    "Refined Phosphorus": {
-      "name": "Refined Phosphorus",
-      "element_id": "Phosphorus",
-      "state": "Solid",
+    "Phosphorus Gas": {
+      "name": "Phosphorus Gas",
+      "element_id": "PhosphorusGas",
+      "state": "Gas",
       "shc": 0.7697,
       "thermal_conductivity": 0.236,
-      "low_temp": null,
-      "high_temp": 44.15,
-      "default_temp": 20.0,
-      "icon": "images/icons/Refined_Phosphorus.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Refined_Phosphorus.png/24px-Refined_Phosphorus.png?35cd71"
+      "low_temp": 280.45,
+      "high_temp": null,
+      "default_temp": 426.85,
+      "icon": "images/icons/Phosphorus_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Phosphorus.png/24px-Liquid_Phosphorus.png?267c27"
     },
-    "Plastium": {
-      "name": "Plastium",
-      "element_id": "HardPolypropylene",
-      "state": "Solid",
-      "shc": 1.5,
-      "thermal_conductivity": 0.25,
-      "low_temp": null,
-      "high_temp": 1826.85,
+    "Phyto Oil": {
+      "name": "Phyto Oil",
+      "element_id": "PhytoOil",
+      "state": "Liquid",
+      "shc": 0.9,
+      "thermal_conductivity": 2.0,
+      "low_temp": -33.15,
+      "high_temp": 75.0,
       "default_temp": 20.0,
-      "icon": "images/icons/Sour_Gas.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sour_Gas.png/24px-Sour_Gas.png?681999"
+      "icon": "images/icons/Phyto_Oil.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
     },
     "Plastic": {
       "name": "Plastic",
@@ -16993,6 +18036,137 @@ export const ONI_DATASET = {
       "icon": "images/icons/Plastic.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plastic.png/24px-Plastic.png?6dabe6"
     },
+    "Plastium": {
+      "name": "Plastium",
+      "element_id": "HardPolypropylene",
+      "state": "Solid",
+      "shc": 1.5,
+      "thermal_conductivity": 0.25,
+      "low_temp": null,
+      "high_temp": 1826.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Plastium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sour_Gas.png/24px-Sour_Gas.png?681999"
+    },
+    "Plywood": {
+      "name": "Plywood",
+      "element_id": "FabricatedWood",
+      "state": "Solid",
+      "shc": 2.3,
+      "thermal_conductivity": 0.35,
+      "low_temp": null,
+      "high_temp": 550.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Plywood.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plywood.png/24px-Plywood.png?70560f"
+    },
+    "Polluted Brine": {
+      "name": "Polluted Brine",
+      "element_id": "MurkyBrine",
+      "state": "Liquid",
+      "shc": 3.6,
+      "thermal_conductivity": 0.409,
+      "low_temp": -25.5,
+      "high_temp": 106.75,
+      "default_temp": 20.0,
+      "icon": "images/icons/Polluted_Brine.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
+    },
+    "Polluted Brine Ice": {
+      "name": "Polluted Brine Ice",
+      "element_id": "MurkyBrineIce",
+      "state": "Solid",
+      "shc": 3.6,
+      "thermal_conductivity": 2.18,
+      "low_temp": null,
+      "high_temp": -25.5,
+      "default_temp": -50.0,
+      "icon": "images/icons/Polluted_Ice.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Ice.png/24px-Polluted_Ice.png?d57167"
+    },
+    "Polluted Dirt": {
+      "name": "Polluted Dirt",
+      "element_id": "ToxicSand",
+      "state": "Solid",
+      "shc": 0.83,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 1712.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Polluted_Dirt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Glass.png/24px-Molten_Glass.png?d6f734"
+    },
+    "Polluted Ice": {
+      "name": "Polluted Ice",
+      "element_id": "DirtyIce",
+      "state": "Solid",
+      "shc": 3.05,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": -20.65,
+      "default_temp": -43.15,
+      "icon": "images/icons/Polluted_Ice.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Ice.png/24px-Polluted_Ice.png?d57167"
+    },
+    "Polluted Mud": {
+      "name": "Polluted Mud",
+      "element_id": "ToxicMud",
+      "state": "Solid",
+      "shc": 0.83,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 99.69,
+      "default_temp": 20.0,
+      "icon": "images/icons/Polluted_Mud_(Spaced_Out).png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+    },
+    "Polluted Oxygen": {
+      "name": "Polluted Oxygen",
+      "element_id": "ContaminatedOxygen",
+      "state": "Gas",
+      "shc": 1.01,
+      "thermal_conductivity": 0.024,
+      "low_temp": -182.96,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Polluted_Oxygen.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Oxygen.png/24px-Polluted_Oxygen.png?69c186"
+    },
+    "Polluted Water": {
+      "name": "Polluted Water",
+      "element_id": "DirtyWater",
+      "state": "Liquid",
+      "shc": 4.179,
+      "thermal_conductivity": 0.58,
+      "low_temp": -20.65,
+      "high_temp": 119.35,
+      "default_temp": 20.0,
+      "icon": "images/icons/Polluted_Water.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Polluted_Water.png/24px-Polluted_Water.png?38ace1"
+    },
+    "Propane": {
+      "name": "Propane",
+      "element_id": "Propane",
+      "state": "Gas",
+      "shc": 2.4,
+      "thermal_conductivity": 0.015,
+      "low_temp": -42.15,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Natural_Gas.png"
+    },
+    "Pyrite": {
+      "name": "Pyrite",
+      "element_id": "FoolsGold",
+      "state": "Solid",
+      "shc": 0.386,
+      "thermal_conductivity": 4.5,
+      "low_temp": null,
+      "high_temp": 1083.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Pyrite.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
+    },
     "Radium": {
       "name": "Radium",
       "element_id": "Radium",
@@ -17002,8 +18176,20 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 959.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Magma.png",
+      "icon": "images/icons/Radium.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Reed Fiber": {
+      "name": "Reed Fiber",
+      "element_id": "BasicFabric",
+      "state": "Solid",
+      "shc": 1.0,
+      "thermal_conductivity": 0.15,
+      "low_temp": null,
+      "high_temp": 160.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Reed_Fiber.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Resource_Reed_Fiber.png"
     },
     "Refined Carbon": {
       "name": "Refined Carbon",
@@ -17017,6 +18203,18 @@ export const ONI_DATASET = {
       "icon": "images/icons/Refined_Carbon.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Refined_Carbon.png/24px-Refined_Carbon.png?7beae2"
     },
+    "Refined Phosphorus": {
+      "name": "Refined Phosphorus",
+      "element_id": "Phosphorus",
+      "state": "Solid",
+      "shc": 0.7697,
+      "thermal_conductivity": 0.236,
+      "low_temp": null,
+      "high_temp": 44.15,
+      "default_temp": 20.0,
+      "icon": "images/icons/Refined_Phosphorus.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Refined_Phosphorus.png/24px-Refined_Phosphorus.png?35cd71"
+    },
     "Regolith": {
       "name": "Regolith",
       "element_id": "Regolith",
@@ -17026,20 +18224,44 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 1409.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Magma.png",
+      "icon": "images/icons/Regolith.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
     },
-    "Rust": {
-      "name": "Rust",
-      "element_id": "Rust",
+    "Resin": {
+      "name": "Resin",
+      "element_id": "NaturalResin",
+      "state": "Liquid",
+      "shc": 1.11,
+      "thermal_conductivity": 0.15,
+      "low_temp": 20.0,
+      "high_temp": 125.0,
+      "default_temp": 26.85,
+      "icon": "images/icons/Resin.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+    },
+    "Rock Gas": {
+      "name": "Rock Gas",
+      "element_id": "RockGas",
+      "state": "Gas",
+      "shc": 1.0,
+      "thermal_conductivity": 0.1,
+      "low_temp": 2356.85,
+      "high_temp": null,
+      "default_temp": 2726.85,
+      "icon": "images/icons/Rock_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
+    "Rot Pile": {
+      "name": "Rot Pile",
+      "element_id": "Compost",
       "state": "Solid",
-      "shc": 0.449,
-      "thermal_conductivity": 4.0,
+      "shc": 0.83,
+      "thermal_conductivity": 2.0,
       "low_temp": null,
-      "high_temp": 1534.85,
+      "high_temp": null,
       "default_temp": 20.0,
-      "icon": "images/icons/Molten_Iron.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
+      "icon": "images/icons/Polluted_Dirt.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png"
     },
     "Rubber": {
       "name": "Rubber",
@@ -17050,8 +18272,20 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 220.0,
       "default_temp": 20.0,
-      "icon": "images/icons/Carbon_Dioxide.png",
+      "icon": "images/icons/Rubber.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
+    },
+    "Rust": {
+      "name": "Rust",
+      "element_id": "Rust",
+      "state": "Solid",
+      "shc": 0.449,
+      "thermal_conductivity": 4.0,
+      "low_temp": null,
+      "high_temp": 1534.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Rust.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Iron.png/24px-Molten_Iron.png?f9f1e3"
     },
     "Salt": {
       "name": "Salt",
@@ -17064,6 +18298,30 @@ export const ONI_DATASET = {
       "default_temp": 20.0,
       "icon": "images/icons/Salt.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt.png/24px-Salt.png?731ebc"
+    },
+    "Salt Gas": {
+      "name": "Salt Gas",
+      "element_id": "SaltGas",
+      "state": "Gas",
+      "shc": 0.88,
+      "thermal_conductivity": 0.444,
+      "low_temp": 1464.85,
+      "high_temp": null,
+      "default_temp": 2726.85,
+      "icon": "images/icons/Salt_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Salt.png/24px-Molten_Salt.png?fd6bf8"
+    },
+    "Salt Water": {
+      "name": "Salt Water",
+      "element_id": "SaltWater",
+      "state": "Liquid",
+      "shc": 4.1,
+      "thermal_conductivity": 0.609,
+      "low_temp": -7.5,
+      "high_temp": 99.69,
+      "default_temp": 20.0,
+      "icon": "images/icons/Salt_Water.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Salt_Water.png/24px-Salt_Water.png?8067b5"
     },
     "Sand": {
       "name": "Sand",
@@ -17086,7 +18344,7 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 1409.85,
       "default_temp": 20.0,
-      "icon": null
+      "icon": "images/icons/Sand.png"
     },
     "Sandstone": {
       "name": "Sandstone",
@@ -17099,6 +18357,18 @@ export const ONI_DATASET = {
       "default_temp": 20.0,
       "icon": "images/icons/Sandstone.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sandstone.png/24px-Sandstone.png?fd380d"
+    },
+    "Sap": {
+      "name": "Sap",
+      "element_id": "Resin",
+      "state": "Liquid",
+      "shc": 1.11,
+      "thermal_conductivity": 0.15,
+      "low_temp": 20.0,
+      "high_temp": 125.0,
+      "default_temp": 26.85,
+      "icon": "images/icons/Sap.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
     },
     "Sedimentary Rock": {
       "name": "Sedimentary Rock",
@@ -17124,6 +18394,18 @@ export const ONI_DATASET = {
       "icon": "images/icons/Shale.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Shale.png/24px-Shale.png?52fc62"
     },
+    "Siltstone": {
+      "name": "Siltstone",
+      "element_id": "SiltStone",
+      "state": "Solid",
+      "shc": 0.9,
+      "thermal_conductivity": 2.0,
+      "low_temp": null,
+      "high_temp": 926.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Siltstone.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
+    },
     "Slabs": {
       "name": "Slabs",
       "element_id": "Slabs",
@@ -17133,7 +18415,7 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": 1409.85,
       "default_temp": 20.0,
-      "icon": null
+      "icon": "images/icons/Crushed_Rock.png"
     },
     "Slime": {
       "name": "Slime",
@@ -17156,19 +18438,8 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": -0.65,
       "default_temp": -31.0,
-      "icon": "images/icons/Water.png",
+      "icon": "images/icons/Snow.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
-    },
-    "Stable Snow": {
-      "name": "Stable Snow",
-      "element_id": "StableSnow",
-      "state": "Solid",
-      "shc": 2.05,
-      "thermal_conductivity": 0.545,
-      "low_temp": null,
-      "high_temp": -0.65,
-      "default_temp": -31.0,
-      "icon": null
     },
     "Solid Carbon Dioxide": {
       "name": "Solid Carbon Dioxide",
@@ -17205,6 +18476,30 @@ export const ONI_DATASET = {
       "default_temp": -73.15,
       "icon": "images/icons/Solid_Crude_Oil.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Crude_Oil.png/24px-Solid_Crude_Oil.png?f1c9bc"
+    },
+    "Solid Ethanol": {
+      "name": "Solid Ethanol",
+      "element_id": "SolidEthanol",
+      "state": "Solid",
+      "shc": 2.46,
+      "thermal_conductivity": 20.0,
+      "low_temp": null,
+      "high_temp": -114.05,
+      "default_temp": -123.15,
+      "icon": "images/icons/Solid_Ethanol.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Ethanol.png/24px-Solid_Ethanol.png?30411c"
+    },
+    "Solid Gunk": {
+      "name": "Solid Gunk",
+      "element_id": "Gunk",
+      "state": "Solid",
+      "shc": 1.2,
+      "thermal_conductivity": 1.5,
+      "low_temp": null,
+      "high_temp": -8.15,
+      "default_temp": -23.15,
+      "icon": "images/icons/Solid_Gunk.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Gunk.png/24px-Solid_Gunk.png?2a2c46"
     },
     "Solid Hydrogen": {
       "name": "Solid Hydrogen",
@@ -17254,6 +18549,18 @@ export const ONI_DATASET = {
       "icon": "images/icons/Solid_Naphtha.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Naphtha.png/24px-Solid_Naphtha.png?69d9d9"
     },
+    "Solid Nuclear Waste": {
+      "name": "Solid Nuclear Waste",
+      "element_id": "SolidNuclearWaste",
+      "state": "Solid",
+      "shc": 7.44,
+      "thermal_conductivity": 6.0,
+      "low_temp": null,
+      "high_temp": 26.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Uranium_Ore.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Uranium_Ore.png/24px-Uranium_Ore.png?510845"
+    },
     "Solid Oxygen": {
       "name": "Solid Oxygen",
       "element_id": "SolidOxygen",
@@ -17287,19 +18594,7 @@ export const ONI_DATASET = {
       "low_temp": null,
       "high_temp": -188.15,
       "default_temp": -213.15,
-      "icon": null
-    },
-    "Solid Sap": {
-      "name": "Solid Sap",
-      "element_id": "SolidResin",
-      "state": "Solid",
-      "shc": 1.3,
-      "thermal_conductivity": 0.17,
-      "low_temp": null,
-      "high_temp": 20.0,
-      "default_temp": -31.0,
-      "icon": "images/icons/Solid_Sap.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Sap.png/24px-Solid_Sap.png?7e98e4"
+      "icon": "images/icons/Solid_Methane.png"
     },
     "Solid Resin": {
       "name": "Solid Resin",
@@ -17313,17 +18608,17 @@ export const ONI_DATASET = {
       "icon": "images/icons/Solid_Resin.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Resin.png/24px-Solid_Resin.png?7e98e4"
     },
-    "Amber": {
-      "name": "Amber",
-      "element_id": "Amber",
+    "Solid Sap": {
+      "name": "Solid Sap",
+      "element_id": "SolidResin",
       "state": "Solid",
       "shc": 1.3,
       "thermal_conductivity": 0.17,
       "low_temp": null,
-      "high_temp": 95.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Resin.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resin.png/24px-Resin.png?a211c1"
+      "high_temp": 20.0,
+      "default_temp": -31.0,
+      "icon": "images/icons/Solid_Sap.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Sap.png/24px-Solid_Sap.png?7e98e4"
     },
     "Solid Super Coolant": {
       "name": "Solid Super Coolant",
@@ -17337,6 +18632,17 @@ export const ONI_DATASET = {
       "icon": "images/icons/Solid_Super_Coolant.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Super_Coolant.png/24px-Solid_Super_Coolant.png?204b38"
     },
+    "Solid Syngas": {
+      "name": "Solid Syngas",
+      "element_id": "SolidSyngas",
+      "state": "Solid",
+      "shc": 2.4,
+      "thermal_conductivity": 1.0,
+      "low_temp": null,
+      "high_temp": -259.15,
+      "default_temp": -268.15,
+      "icon": "images/icons/Solid_Methane.png"
+    },
     "Solid Visco-Gel": {
       "name": "Solid Visco-Gel",
       "element_id": "SolidViscoGel",
@@ -17348,6 +18654,53 @@ export const ONI_DATASET = {
       "default_temp": -123.15,
       "icon": "images/icons/Solid_Visco-Gel.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Visco-Gel.png/24px-Solid_Visco-Gel.png?d9cfb7"
+    },
+    "Sour Gas": {
+      "name": "Sour Gas",
+      "element_id": "SourGas",
+      "state": "Gas",
+      "shc": 1.898,
+      "thermal_conductivity": 0.018,
+      "low_temp": -161.5,
+      "high_temp": null,
+      "default_temp": 20.0,
+      "icon": "images/icons/Sour_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Methane.png/24px-Liquid_Methane.png?fc91d4"
+    },
+    "Squid Ink": {
+      "name": "Squid Ink",
+      "element_id": "Ink",
+      "state": "Liquid",
+      "shc": 2.0,
+      "thermal_conductivity": 0.5,
+      "low_temp": -20.65,
+      "high_temp": 80.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Squid_Ink.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mucin.png/24px-Mucin.png?1e3722"
+    },
+    "Stable Snow": {
+      "name": "Stable Snow",
+      "element_id": "StableSnow",
+      "state": "Solid",
+      "shc": 2.05,
+      "thermal_conductivity": 0.545,
+      "low_temp": null,
+      "high_temp": -0.65,
+      "default_temp": -31.0,
+      "icon": "images/icons/Snow.png"
+    },
+    "Steam": {
+      "name": "Steam",
+      "element_id": "Steam",
+      "state": "Gas",
+      "shc": 4.179,
+      "thermal_conductivity": 0.184,
+      "low_temp": 99.35,
+      "high_temp": null,
+      "default_temp": 126.85,
+      "icon": "images/icons/Steam.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
     },
     "Steel": {
       "name": "Steel",
@@ -17361,159 +18714,17 @@ export const ONI_DATASET = {
       "icon": "images/icons/Steel.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steel.png/24px-Steel.png?c944c4"
     },
-    "Sulfur": {
-      "name": "Sulfur",
-      "element_id": "Sulfur",
-      "state": "Solid",
-      "shc": 0.7,
-      "thermal_conductivity": 0.2,
-      "low_temp": null,
-      "high_temp": 115.2,
-      "default_temp": 20.0,
-      "icon": "images/icons/Sulfur.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sulfur.png/24px-Sulfur.png?9f057b"
-    },
-    "Insulite": {
-      "name": "Insulite",
-      "element_id": "SuperInsulator",
-      "state": "Solid",
-      "shc": 5.57,
+    "Steel Gas": {
+      "name": "Steel Gas",
+      "element_id": "SteelGas",
+      "state": "Gas",
+      "shc": 0.49,
       "thermal_conductivity": 1.0,
-      "low_temp": null,
-      "high_temp": 3621.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Insulite.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Insulite.png/24px-Insulite.png?e04a6f"
-    },
-    "Thermium": {
-      "name": "Thermium",
-      "element_id": "TempConductorSolid",
-      "state": "Solid",
-      "shc": 0.622,
-      "thermal_conductivity": 220.0,
-      "low_temp": null,
-      "high_temp": 2676.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Thermium.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Thermium.png/24px-Thermium.png?f0bdfe"
-    },
-    "Polluted Dirt": {
-      "name": "Polluted Dirt",
-      "element_id": "ToxicSand",
-      "state": "Solid",
-      "shc": 0.83,
-      "thermal_conductivity": 2.0,
-      "low_temp": null,
-      "high_temp": 1712.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Molten_Glass.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Glass.png/24px-Molten_Glass.png?d6f734"
-    },
-    "Tungsten": {
-      "name": "Tungsten",
-      "element_id": "Tungsten",
-      "state": "Solid",
-      "shc": 0.134,
-      "thermal_conductivity": 60.0,
-      "low_temp": null,
-      "high_temp": 3421.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Tungsten.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tungsten.png/24px-Tungsten.png?5d89ee"
-    },
-    "Neutronium": {
-      "name": "Neutronium",
-      "element_id": "Unobtanium",
-      "state": "Solid",
-      "shc": 0.0,
-      "thermal_conductivity": 0.0,
-      "low_temp": null,
-      "high_temp": 9726.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Neutronium.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Neutronium.png/24px-Neutronium.png?3f25b8"
-    },
-    "Uranium Ore": {
-      "name": "Uranium Ore",
-      "element_id": "UraniumOre",
-      "state": "Solid",
-      "shc": 1.0,
-      "thermal_conductivity": 20.0,
-      "low_temp": null,
-      "high_temp": 132.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Uranium_Ore.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Uranium_Ore.png/24px-Uranium_Ore.png?510845"
-    },
-    "Wolframite": {
-      "name": "Wolframite",
-      "element_id": "Wolframite",
-      "state": "Solid",
-      "shc": 0.134,
-      "thermal_conductivity": 15.0,
-      "low_temp": null,
-      "high_temp": 2926.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Wolframite.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Wolframite.png/24px-Wolframite.png?69d9d9"
-    },
-    "Yellowcake": {
-      "name": "Yellowcake",
-      "element_id": "Yellowcake",
-      "state": "Solid",
-      "shc": 1.0,
-      "thermal_conductivity": 20.0,
-      "low_temp": null,
-      "high_temp": 858.85,
-      "default_temp": 20.0,
-      "icon": null
-    },
-    "Solid Ethanol": {
-      "name": "Solid Ethanol",
-      "element_id": "SolidEthanol",
-      "state": "Solid",
-      "shc": 2.46,
-      "thermal_conductivity": 20.0,
-      "low_temp": null,
-      "high_temp": -114.05,
-      "default_temp": -123.15,
-      "icon": "images/icons/Solid_Ethanol.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Ethanol.png/24px-Solid_Ethanol.png?30411c"
-    },
-    "Solid Syngas": {
-      "name": "Solid Syngas",
-      "element_id": "SolidSyngas",
-      "state": "Solid",
-      "shc": 2.4,
-      "thermal_conductivity": 1.0,
-      "low_temp": null,
-      "high_temp": -259.15,
-      "default_temp": -268.15,
-      "icon": null
-    },
-    "Polluted Mud": {
-      "name": "Polluted Mud",
-      "element_id": "ToxicMud",
-      "state": "Solid",
-      "shc": 0.83,
-      "thermal_conductivity": 2.0,
-      "low_temp": null,
-      "high_temp": 99.69,
-      "default_temp": 20.0,
-      "icon": "images/icons/Steam.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
-    },
-    "Mud": {
-      "name": "Mud",
-      "element_id": "Mud",
-      "state": "Solid",
-      "shc": 0.83,
-      "thermal_conductivity": 2.0,
-      "low_temp": null,
-      "high_temp": 99.69,
-      "default_temp": 20.0,
-      "icon": "images/icons/Steam.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Steam.png/24px-Steam.png?758d6b"
+      "low_temp": 3826.85,
+      "high_temp": null,
+      "default_temp": 4226.85,
+      "icon": "images/icons/Steel_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Steel.png/24px-Molten_Steel.png?ca95f8"
     },
     "Sucrose": {
       "name": "Sucrose",
@@ -17527,65 +18738,64 @@ export const ONI_DATASET = {
       "icon": "images/icons/Sucrose_(Spaced_Out).png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sucrose_%28Spaced_Out%29.png/24px-Sucrose_%28Spaced_Out%29.png?ecab3e"
     },
-    "Graphite": {
-      "name": "Graphite",
-      "element_id": "Graphite",
+    "Sulfur": {
+      "name": "Sulfur",
+      "element_id": "Sulfur",
       "state": "Solid",
-      "shc": 0.71,
-      "thermal_conductivity": 8.0,
+      "shc": 0.7,
+      "thermal_conductivity": 0.2,
       "low_temp": null,
-      "high_temp": 276.85,
+      "high_temp": 115.2,
       "default_temp": 20.0,
-      "icon": "images/icons/Graphite.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Graphite.png/24px-Graphite.png?58a17d"
+      "icon": "images/icons/Sulfur.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sulfur.png/24px-Sulfur.png?9f057b"
     },
-    "Solid Nuclear Waste": {
-      "name": "Solid Nuclear Waste",
-      "element_id": "SolidNuclearWaste",
-      "state": "Solid",
-      "shc": 7.44,
-      "thermal_conductivity": 6.0,
-      "low_temp": null,
-      "high_temp": 26.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Uranium_Ore.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Uranium_Ore.png/24px-Uranium_Ore.png?510845"
+    "Sulfur Gas": {
+      "name": "Sulfur Gas",
+      "element_id": "SulfurGas",
+      "state": "Gas",
+      "shc": 0.7,
+      "thermal_conductivity": 0.2,
+      "low_temp": 337.0,
+      "high_temp": null,
+      "default_temp": 426.85,
+      "icon": "images/icons/Sulfur_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Liquid_Sulfur.png/24px-Liquid_Sulfur.png?dccb21"
     },
-    "Cinnabar Ore": {
-      "name": "Cinnabar Ore",
-      "element_id": "Cinnabar",
-      "state": "Solid",
-      "shc": 0.386,
-      "thermal_conductivity": 4.5,
-      "low_temp": null,
-      "high_temp": 583.5,
+    "Super Coolant": {
+      "name": "Super Coolant",
+      "element_id": "SuperCoolant",
+      "state": "Liquid",
+      "shc": 8.44,
+      "thermal_conductivity": 9.46,
+      "low_temp": -271.15,
+      "high_temp": 436.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Mercury_Gas.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Mercury_Gas.png/24px-Mercury_Gas.png?b623d6"
+      "icon": "images/icons/Super_Coolant.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Super_Coolant.png/24px-Super_Coolant.png?767a6a"
     },
-    "Wood": {
-      "name": "Wood",
-      "element_id": "WoodLog",
-      "state": "Solid",
-      "shc": 2.3,
-      "thermal_conductivity": 0.22,
-      "low_temp": null,
-      "high_temp": 600.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Lumber.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Lumber.png/24px-Lumber.png?3cce86"
+    "Super Coolant Gas": {
+      "name": "Super Coolant Gas",
+      "element_id": "SuperCoolantGas",
+      "state": "Gas",
+      "shc": 8.44,
+      "thermal_conductivity": 1.2,
+      "low_temp": 436.85,
+      "high_temp": null,
+      "default_temp": 576.85,
+      "icon": "images/icons/Super_Coolant_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Super_Coolant.png/24px-Super_Coolant.png?767a6a"
     },
-    "Plywood": {
-      "name": "Plywood",
-      "element_id": "FabricatedWood",
-      "state": "Solid",
-      "shc": 2.3,
-      "thermal_conductivity": 0.35,
-      "low_temp": null,
-      "high_temp": 550.0,
+    "Syngas": {
+      "name": "Syngas",
+      "element_id": "Syngas",
+      "state": "Gas",
+      "shc": 2.4,
+      "thermal_conductivity": 0.168,
+      "low_temp": -252.15,
+      "high_temp": null,
       "default_temp": 20.0,
-      "icon": "images/icons/Plywood.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Plywood.png/24px-Plywood.png?70560f"
+      "icon": "images/icons/Natural_Gas.png"
     },
     "Tallow": {
       "name": "Tallow",
@@ -17599,89 +18809,112 @@ export const ONI_DATASET = {
       "icon": "images/icons/Tallow.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tallow.png/24px-Tallow.png?57ed23"
     },
-    "Solid Gunk": {
-      "name": "Solid Gunk",
-      "element_id": "Gunk",
+    "Thermium": {
+      "name": "Thermium",
+      "element_id": "TempConductorSolid",
       "state": "Solid",
-      "shc": 1.2,
-      "thermal_conductivity": 1.5,
+      "shc": 0.622,
+      "thermal_conductivity": 220.0,
       "low_temp": null,
-      "high_temp": -8.15,
-      "default_temp": -23.15,
-      "icon": "images/icons/Solid_Gunk.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Solid_Gunk.png/24px-Solid_Gunk.png?2a2c46"
-    },
-    "Nickel Ore": {
-      "name": "Nickel Ore",
-      "element_id": "NickelOre",
-      "state": "Solid",
-      "shc": 0.45,
-      "thermal_conductivity": 3.0,
-      "low_temp": null,
-      "high_temp": 1454.85,
+      "high_temp": 2676.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Molten_Nickel.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Nickel.png/24px-Molten_Nickel.png?cc293d"
+      "icon": "images/icons/Thermium.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Thermium.png/24px-Thermium.png?f0bdfe"
     },
-    "Nickel": {
-      "name": "Nickel",
-      "element_id": "Nickel",
+    "Tungsten": {
+      "name": "Tungsten",
+      "element_id": "Tungsten",
       "state": "Solid",
-      "shc": 0.44,
-      "thermal_conductivity": 91.0,
+      "shc": 0.134,
+      "thermal_conductivity": 60.0,
       "low_temp": null,
-      "high_temp": 1454.85,
+      "high_temp": 3421.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Nickel.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Nickel.png/24px-Nickel.png?c6ff23"
+      "icon": "images/icons/Tungsten.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Tungsten.png/24px-Tungsten.png?5d89ee"
     },
-    "Iridium": {
-      "name": "Iridium",
-      "element_id": "Iridium",
-      "state": "Solid",
-      "shc": 0.131,
-      "thermal_conductivity": 170.0,
-      "low_temp": null,
-      "high_temp": 2445.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Iridium.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Iridium.png/24px-Iridium.png?a998d5"
-    },
-    "Siltstone": {
-      "name": "Siltstone",
-      "element_id": "SiltStone",
-      "state": "Solid",
-      "shc": 0.9,
-      "thermal_conductivity": 2.0,
-      "low_temp": null,
-      "high_temp": 926.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Magma.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
-    },
-    "Frozen Mucin": {
-      "name": "Frozen Mucin",
-      "element_id": "SolidMucus",
-      "state": "Solid",
-      "shc": 3.05,
+    "Tungsten Gas": {
+      "name": "Tungsten Gas",
+      "element_id": "TungstenGas",
+      "state": "Gas",
+      "shc": 0.134,
       "thermal_conductivity": 1.0,
-      "low_temp": null,
-      "high_temp": -10.0,
-      "default_temp": -25.0,
-      "icon": "images/icons/Frozen_Mucin.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Frozen_Mucin.png/24px-Frozen_Mucin.png?c2f594"
+      "low_temp": 5929.85,
+      "high_temp": null,
+      "default_temp": 6226.85,
+      "icon": "images/icons/Tungsten_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Tungsten.png/24px-Molten_Tungsten.png?f937b3"
     },
-    "Zinc Ore": {
-      "name": "Zinc Ore",
-      "element_id": "ZincOre",
+    "Uranium Ore": {
+      "name": "Uranium Ore",
+      "element_id": "UraniumOre",
       "state": "Solid",
-      "shc": 0.388,
-      "thermal_conductivity": 4.0,
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
       "low_temp": null,
-      "high_temp": 419.5,
+      "high_temp": 132.85,
       "default_temp": 20.0,
-      "icon": "images/icons/Molten_Zinc.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Zinc.png/24px-Molten_Zinc.png?732868"
+      "icon": "images/icons/Uranium_Ore.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Uranium_Ore.png/24px-Uranium_Ore.png?510845"
+    },
+    "Visco-Gel Fluid": {
+      "name": "Visco-Gel Fluid",
+      "element_id": "ViscoGel",
+      "state": "Liquid",
+      "shc": 1.55,
+      "thermal_conductivity": 0.45,
+      "low_temp": -30.65,
+      "high_temp": 479.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Visco-Gel_Fluid.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Visco-Gel_Fluid.png/24px-Visco-Gel_Fluid.png?2f36d1"
+    },
+    "Water": {
+      "name": "Water",
+      "element_id": "Water",
+      "state": "Liquid",
+      "shc": 4.179,
+      "thermal_conductivity": 0.609,
+      "low_temp": -0.65,
+      "high_temp": 99.35,
+      "default_temp": 20.0,
+      "icon": "images/icons/Water.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Water.png/24px-Water.png?d7de6d"
+    },
+    "Wolframite": {
+      "name": "Wolframite",
+      "element_id": "Wolframite",
+      "state": "Solid",
+      "shc": 0.134,
+      "thermal_conductivity": 15.0,
+      "low_temp": null,
+      "high_temp": 2926.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Wolframite.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Wolframite.png/24px-Wolframite.png?69d9d9"
+    },
+    "Wood": {
+      "name": "Wood",
+      "element_id": "WoodLog",
+      "state": "Solid",
+      "shc": 2.3,
+      "thermal_conductivity": 0.22,
+      "low_temp": null,
+      "high_temp": 600.0,
+      "default_temp": 20.0,
+      "icon": "images/icons/Lumber.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Lumber.png/24px-Lumber.png?3cce86"
+    },
+    "Yellowcake": {
+      "name": "Yellowcake",
+      "element_id": "Yellowcake",
+      "state": "Solid",
+      "shc": 1.0,
+      "thermal_conductivity": 20.0,
+      "low_temp": null,
+      "high_temp": 858.85,
+      "default_temp": 20.0,
+      "icon": "images/icons/Uranium_Ore.png"
     },
     "Zinc": {
       "name": "Zinc",
@@ -17695,89 +18928,29 @@ export const ONI_DATASET = {
       "icon": "images/icons/Zinc.png",
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Zinc.png/24px-Zinc.png?df8b94"
     },
-    "Corallium": {
-      "name": "Corallium",
-      "element_id": "Corallium",
-      "state": "Solid",
-      "shc": 0.2,
-      "thermal_conductivity": 2.0,
-      "low_temp": null,
-      "high_temp": 125.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Sand.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Sand.png/24px-Sand.png?c5f250"
-    },
-    "Coquina": {
-      "name": "Coquina",
-      "element_id": "Coquina",
-      "state": "Solid",
-      "shc": 0.8,
-      "thermal_conductivity": 1.5,
-      "low_temp": null,
-      "high_temp": 926.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Magma.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
-    },
-    "Basalt": {
-      "name": "Basalt",
-      "element_id": "Basalt",
-      "state": "Solid",
-      "shc": 0.25,
-      "thermal_conductivity": 2.5,
-      "low_temp": null,
-      "high_temp": 1256.85,
-      "default_temp": 20.0,
-      "icon": "images/icons/Magma.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Magma.png/24px-Magma.png?d66afa"
-    },
-    "Gum Wood": {
-      "name": "Gum Wood",
-      "element_id": "PalmWood",
-      "state": "Solid",
-      "shc": 2.3,
-      "thermal_conductivity": 0.22,
-      "low_temp": null,
-      "high_temp": 600.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Carbon_Dioxide.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Carbon_Dioxide.png/24px-Carbon_Dioxide.png?636191"
-    },
-    "Galena": {
-      "name": "Galena",
-      "element_id": "Galena",
-      "state": "Solid",
-      "shc": 0.21,
-      "thermal_conductivity": 2.3,
-      "low_temp": null,
-      "high_temp": 1114.0,
-      "default_temp": 20.0,
-      "icon": "images/icons/Molten_Lead.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Lead.png/24px-Molten_Lead.png?46a23b"
-    },
-    "Rot Pile": {
-      "name": "Rot Pile",
-      "element_id": "Compost",
-      "state": "Solid",
-      "shc": 0.83,
-      "thermal_conductivity": 2.0,
-      "low_temp": null,
+    "Zinc Gas": {
+      "name": "Zinc Gas",
+      "element_id": "ZincGas",
+      "state": "Gas",
+      "shc": 0.388,
+      "thermal_conductivity": 1.0,
+      "low_temp": 906.85,
       "high_temp": null,
-      "default_temp": 20.0,
-      "icon": "images/icons/Polluted_Dirt.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Resource_Dirt.png/24px-Resource_Dirt.png"
+      "default_temp": 2926.85,
+      "icon": "images/icons/Zinc_Gas.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Zinc.png/24px-Molten_Zinc.png?732868"
     },
-    "Caviar": {
-      "name": "Caviar",
-      "element_id": "Caviar",
+    "Zinc Ore": {
+      "name": "Zinc Ore",
+      "element_id": "ZincOre",
       "state": "Solid",
-      "shc": 3.47,
-      "thermal_conductivity": 0.5,
+      "shc": 0.388,
+      "thermal_conductivity": 4.0,
       "low_temp": null,
-      "high_temp": null,
+      "high_temp": 419.5,
       "default_temp": 20.0,
-      "icon": "images/icons/Food.png",
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Food.png/24px-Food.png"
+      "icon": "images/icons/Zinc_Ore.png",
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/thumb/Molten_Zinc.png/24px-Molten_Zinc.png?732868"
     }
   }
 };

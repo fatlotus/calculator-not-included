@@ -32,6 +32,8 @@ import {
   ENUM_TO_ELEMENT,
   BATHROOM_TO_ENUM,
   ENUM_TO_BATHROOM,
+  FOOD_TO_ENUM,
+  ENUM_TO_FOOD,
   ENTITY_ALIASES,
 } from "./proto_catalog.js";
 
@@ -138,6 +140,14 @@ export function encodeStateToProtobuf(state, elementMap = null) {
       const bEnum = BATHROOM_TO_ENUM.get(String(row.bathroom).trim());
       if (bEnum !== undefined && bEnum !== 0) {
         pbRow.bathroom = bEnum;
+      }
+    }
+
+    // Food enum (calories is default 0)
+    if (row.food && row.food !== "calories") {
+      const fEnum = FOOD_TO_ENUM.get(String(row.food).trim());
+      if (fEnum !== undefined && fEnum !== 0) {
+        pbRow.food = fEnum;
       }
     }
 
@@ -257,11 +267,15 @@ export function decodeStateFromProtobuf(bytes) {
 
     let recipeId = null;
     let bathroom = null;
+    let food = null;
     if (r.recipe && ENUM_TO_RECIPE[r.recipe]) {
       recipeId = ENUM_TO_RECIPE[r.recipe];
     }
     if (r.bathroom && ENUM_TO_BATHROOM[r.bathroom]) {
       bathroom = ENUM_TO_BATHROOM[r.bathroom];
+    }
+    if (r.food !== undefined && r.food !== null && ENUM_TO_FOOD[r.food]) {
+      food = ENUM_TO_FOOD[r.food];
     }
 
     const modifiers = [];
@@ -281,8 +295,12 @@ export function decodeStateFromProtobuf(bytes) {
 
     if (entityId === "duplicant") {
       rowObj.bathroom = bathroom || "plumbed";
-    } else if (bathroom) {
-      rowObj.bathroom = bathroom;
+      if (food) {
+        rowObj.food = food;
+      }
+    } else {
+      if (bathroom) rowObj.bathroom = bathroom;
+      if (food) rowObj.food = food;
     }
 
     if (r.inputTemp !== undefined && r.inputTemp !== null && Number.isFinite(Number(r.inputTemp))) {

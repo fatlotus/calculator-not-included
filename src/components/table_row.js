@@ -4,7 +4,7 @@
  * feed temperature tuning, and thermal tracking.
  */
 
-import { formatNumber, formatStreamLine } from "../calculator.js";
+import { DUPLICANT_DIETS, formatNumber, formatStreamLine, isSolidResource } from "../calculator.js";
 
 /**
  * Render an element/resource icon or placeholder.
@@ -82,6 +82,7 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
 
     if (isDuplicant) {
       const selectedBathroom = row.bathroom || "plumbed";
+      const selectedFood = row.food || "calories";
       machineHtml += `
         <div class="bathroom-wrapper">
           <label class="field-label" for="bathroom-${rowIndex}">Bathroom:</label>
@@ -89,6 +90,17 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
             <option value="plumbed" ${selectedBathroom === "plumbed" ? "selected" : ""}>Plumbed</option>
             <option value="outhouse" ${selectedBathroom === "outhouse" ? "selected" : ""}>Outhouse</option>
             <option value="floor" ${selectedBathroom === "floor" ? "selected" : ""}>Peeing on the floor</option>
+          </select>
+        </div>
+        <div class="food-wrapper">
+          <label class="field-label" for="food-${rowIndex}">Food:</label>
+          <select id="food-${rowIndex}" class="food-select" data-row-index="${rowIndex}">
+      `;
+      for (const [fId, fObj] of Object.entries(DUPLICANT_DIETS)) {
+        machineHtml += `<option value="${fId}" ${selectedFood === fId ? "selected" : ""}>${fObj.name}</option>`;
+      }
+      machineHtml += `
+            <option value="none" ${selectedFood === "none" ? "selected" : ""}>None (Fasting)</option>
           </select>
         </div>
       `;
@@ -157,11 +169,15 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
   for (const stream of evaluated.inputs) {
     const elem = elementMap?.get(stream.resource);
     const key = `in:${stream.resource}||${stream.state || "free"}`;
-    const matchBtn = getMatchBtn(key, `${stream.resource} (${stream.state || "free"})`);
+    const streamState = stream.state || "free";
+    const descState = (streamState === "free" && isSolidResource(stream.resource, elementMap))
+      ? ""
+      : ` (${streamState})`;
+    const matchBtn = getMatchBtn(key, `${stream.resource}${descState}`);
     inputLines.push(`
       <div class="stream-line">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
-        <span class="stream-text">${formatStreamLine(stream, false, rateMode)}</span>
+        <span class="stream-text">${formatStreamLine(stream, false, rateMode, elementMap)}</span>
         ${matchBtn}
       </div>
     `);
@@ -183,11 +199,15 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
   for (const stream of evaluated.outputs) {
     const elem = elementMap?.get(stream.resource);
     const key = `out:${stream.resource}||${stream.state || "free"}`;
-    const matchBtn = getMatchBtn(key, `${stream.resource} (${stream.state || "free"})`);
+    const streamState = stream.state || "free";
+    const descState = (streamState === "free" && isSolidResource(stream.resource, elementMap))
+      ? ""
+      : ` (${streamState})`;
+    const matchBtn = getMatchBtn(key, `${stream.resource}${descState}`);
     outputLines.push(`
       <div class="stream-line">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
-        <span class="stream-text">${formatStreamLine(stream, true, rateMode)}</span>
+        <span class="stream-text">${formatStreamLine(stream, true, rateMode, elementMap)}</span>
         ${matchBtn}
       </div>
     `);
