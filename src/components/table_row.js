@@ -4,7 +4,7 @@
  * feed temperature tuning, and thermal tracking.
  */
 
-import { formatNumber, formatStreamLine } from "../calculator.js";
+import { formatNumber, formatStreamLine, isSolidResource } from "../calculator.js";
 
 /**
  * Render an element/resource icon or placeholder.
@@ -157,11 +157,15 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
   for (const stream of evaluated.inputs) {
     const elem = elementMap?.get(stream.resource);
     const key = `in:${stream.resource}||${stream.state || "free"}`;
-    const matchBtn = getMatchBtn(key, `${stream.resource} (${stream.state || "free"})`);
+    const streamState = stream.state || "free";
+    const descState = (streamState === "free" && isSolidResource(stream.resource, elementMap))
+      ? ""
+      : ` (${streamState})`;
+    const matchBtn = getMatchBtn(key, `${stream.resource}${descState}`);
     inputLines.push(`
       <div class="stream-line">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
-        <span class="stream-text">${formatStreamLine(stream, false, rateMode)}</span>
+        <span class="stream-text">${formatStreamLine(stream, false, rateMode, elementMap)}</span>
         ${matchBtn}
       </div>
     `);
@@ -183,11 +187,15 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
   for (const stream of evaluated.outputs) {
     const elem = elementMap?.get(stream.resource);
     const key = `out:${stream.resource}||${stream.state || "free"}`;
-    const matchBtn = getMatchBtn(key, `${stream.resource} (${stream.state || "free"})`);
+    const streamState = stream.state || "free";
+    const descState = (streamState === "free" && isSolidResource(stream.resource, elementMap))
+      ? ""
+      : ` (${streamState})`;
+    const matchBtn = getMatchBtn(key, `${stream.resource}${descState}`);
     outputLines.push(`
       <div class="stream-line">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
-        <span class="stream-text">${formatStreamLine(stream, true, rateMode)}</span>
+        <span class="stream-text">${formatStreamLine(stream, true, rateMode, elementMap)}</span>
         ${matchBtn}
       </div>
     `);

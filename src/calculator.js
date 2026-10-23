@@ -6,6 +6,8 @@
  * and two-stage NET cancellation.
  */
 
+import { ONI_DATASET } from "./dataset.js";
+
 export const SECONDS_PER_CYCLE = 600;
 
 /**
@@ -58,6 +60,25 @@ export function isNonThermalResource(resource, unit = "") {
 }
 
 /**
+ * Check if a resource is a solid element or solid resource.
+ * Checks elementMap first if provided, then falls back to ONI_DATASET.elements.
+ */
+export function isSolidResource(resource, elementMap = null) {
+  if (!resource) return false;
+  if (elementMap) {
+    const elem = elementMap instanceof Map ? elementMap.get(resource) : elementMap[resource];
+    if (elem?.state) {
+      return String(elem.state).toLowerCase() === "solid";
+    }
+  }
+  const elem = ONI_DATASET?.elements?.[resource];
+  if (elem?.state) {
+    return String(elem.state).toLowerCase() === "solid";
+  }
+  return false;
+}
+
+/**
  * Format a numeric value cleanly with up to maxDecimals (default 4) stripping trailing zeros.
  */
 export function formatNumber(val, maxDecimals = 4) {
@@ -70,8 +91,9 @@ export function formatNumber(val, maxDecimals = 4) {
 
 /**
  * Format a resource stream line with automatic unit scaling (g, Kg, T).
+ * Elides (free) for solid resources since solids cannot go in a pipe in the game.
  */
-export function formatStreamLine(stream, isOutput, rateMode = "s") {
+export function formatStreamLine(stream, isOutput, rateMode = "s", elementMap = null) {
   const sign = isOutput ? "+" : "-";
   const rawRate = Math.abs(stream.rate || 0);
   const rawUnit = stream.unit || "g/s";
@@ -126,7 +148,11 @@ export function formatStreamLine(stream, isOutput, rateMode = "s") {
     text += ` ${stream.temp}`;
   }
   if (stream.state) {
-    text += ` (${stream.state})`;
+    if (stream.state === "free" && isSolidResource(stream.resource, elementMap)) {
+      // Elide (free) for solids since solids cannot go in a pipe in the game
+    } else {
+      text += ` (${stream.state})`;
+    }
   }
   return text;
 }

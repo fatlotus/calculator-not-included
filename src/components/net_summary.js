@@ -30,7 +30,7 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
   }
   for (const stream of net.netInputs || []) {
     if (Math.abs(stream.rate || 0) < NET_RATE_EPSILON) continue;
-    const streamText = formatStreamLine(stream, false, rateMode);
+    const streamText = formatStreamLine(stream, false, rateMode, elementMap);
     if (streamText.includes(": 0 ") || streamText.endsWith(": 0") || streamText.includes(": -0 ") || streamText.endsWith(": -0")) {
       continue;
     }
@@ -81,7 +81,7 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
   }
   for (const stream of net.netOutputs || []) {
     if (Math.abs(stream.rate || 0) < NET_RATE_EPSILON) continue;
-    const streamText = formatStreamLine(stream, true, rateMode);
+    const streamText = formatStreamLine(stream, true, rateMode, elementMap);
     if (streamText.includes(": 0 ") || streamText.endsWith(": 0") || streamText.includes(": +0 ") || streamText.endsWith(": +0")) {
       continue;
     }
