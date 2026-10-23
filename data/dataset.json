@@ -7311,9 +7311,230 @@
       "icon": "images/icons/Plant_Pulverizer.png",
       "power": 0.0,
       "heat": 2.0,
-      "inputs": [],
-      "outputs": [],
-      "recipes": [],
+      "inputs": [
+        {
+          "resource": "Sleet Wheat Grain",
+          "rate": 0.25,
+          "unit": "units/s",
+          "state": "free",
+          "temp": null
+        },
+        {
+          "resource": "Water",
+          "rate": 375.0,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": null
+        },
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1.0,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Brackene",
+          "rate": 500.0,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": null
+        }
+      ],
+      "recipes": [
+        {
+          "id": "brackene_sleet_wheat",
+          "name": "10 Sleet Wheat Grain + 15 kg Water -> 20 kg Brackene [40s]",
+          "inputs": [
+            {
+              "resource": "Sleet Wheat Grain",
+              "rate": 0.25,
+              "unit": "units/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Water",
+              "rate": 375.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brackene",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": 0.0,
+          "heat": 2.0
+        },
+        {
+          "id": "brackene_nosh_bean",
+          "name": "2 Nosh Bean + 18 kg Water -> 20 kg Brackene [40s]",
+          "inputs": [
+            {
+              "resource": "Nosh Bean",
+              "rate": 0.05,
+              "unit": "units/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Water",
+              "rate": 450.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brackene",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": 0.0,
+          "heat": 2.0
+        },
+        {
+          "id": "brackene_pincha_pepper",
+          "name": "3000 g Pincha Peppernut + 17 kg Water -> 20 kg Brackene [40s]",
+          "inputs": [
+            {
+              "resource": "Pincha Peppernut",
+              "rate": 75.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Water",
+              "rate": 425.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brackene",
+              "rate": 500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": 0.0,
+          "heat": 2.0
+        },
+        {
+          "id": "phyto_oil_slime",
+          "name": "100 kg Slime -> 70 kg Phyto Oil + 30 kg Dirt [40s]",
+          "inputs": [
+            {
+              "resource": "Slime",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Phyto Oil",
+              "rate": 1750.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Dirt",
+              "rate": 750.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": 0.0,
+          "heat": 2.0
+        },
+        {
+          "id": "phyto_oil_seakomb",
+          "name": "25 kg Seakomb Leaf + 75 kg Water -> 100 kg Phyto Oil [40s]",
+          "inputs": [
+            {
+              "resource": "Seakomb Leaf",
+              "rate": 625.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Water",
+              "rate": 1875.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Phyto Oil",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "power": 0.0,
+          "heat": 2.0
+        }
+      ],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Plant_Pulverizer.png?3950d5"
     },

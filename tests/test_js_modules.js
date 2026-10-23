@@ -1356,4 +1356,120 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Molecular Forge Building and Recipes tests passed");
 }
 
+// 17. Plant Pulverizer Building and Recipe Calculations
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const pulverizer = entityMap.get("plant_pulverizer");
+  assert.ok(pulverizer, "plant_pulverizer entity must exist");
+  assert.strictEqual(pulverizer.name, "Plant Pulverizer");
+  assert.strictEqual(pulverizer.category, "Machine");
+  assert.strictEqual(pulverizer.subcategory, "Refinement");
+  assert.strictEqual(pulverizer.recipes.length, 5);
+  assert.strictEqual(pulverizer.recipes[0].id, "brackene_sleet_wheat");
+  assert.strictEqual(pulverizer.recipes[1].id, "brackene_nosh_bean");
+  assert.strictEqual(pulverizer.recipes[2].id, "brackene_pincha_pepper");
+  assert.strictEqual(pulverizer.recipes[3].id, "phyto_oil_slime");
+  assert.strictEqual(pulverizer.recipes[4].id, "phyto_oil_seakomb");
+
+  // Default evaluation (brackene_sleet_wheat recipe)
+  const defaultEval = evaluateRow({ entityId: "plant_pulverizer", qty: 1 }, entityMap, elementMap);
+  assert.strictEqual(defaultEval.power, 0.0);
+  assert.strictEqual(defaultEval.heat, 2.0);
+  assert.strictEqual(defaultEval.inputs.length, 3);
+  assert.strictEqual(defaultEval.outputs.length, 1);
+
+  const sleetWheatIn = defaultEval.inputs.find((i) => i.resource === "Sleet Wheat Grain");
+  assert.ok(sleetWheatIn, "Plant Pulverizer default must consume Sleet Wheat Grain");
+  assert.strictEqual(sleetWheatIn.rate, 0.25);
+  assert.strictEqual(sleetWheatIn.unit, "units/s");
+  assert.strictEqual(sleetWheatIn.state, "free");
+
+  const waterIn = defaultEval.inputs.find((i) => i.resource === "Water");
+  assert.ok(waterIn, "Plant Pulverizer default must consume Water");
+  assert.strictEqual(waterIn.rate, 375.0);
+  assert.strictEqual(waterIn.unit, "g/s");
+  assert.strictEqual(waterIn.state, "in a pipe");
+
+  const laborIn = defaultEval.inputs.find((i) => i.resource === "Duplicant Labor");
+  assert.ok(laborIn, "Plant Pulverizer default must require Duplicant Labor");
+  assert.strictEqual(laborIn.rate, 1.0);
+  assert.strictEqual(laborIn.unit, "s/s");
+  assert.strictEqual(laborIn.state, "labor");
+
+  const brackeneOut = defaultEval.outputs.find((o) => o.resource === "Brackene");
+  assert.ok(brackeneOut, "Plant Pulverizer default must output Brackene");
+  assert.strictEqual(brackeneOut.rate, 500.0);
+  assert.strictEqual(brackeneOut.unit, "g/s");
+  assert.strictEqual(brackeneOut.state, "in a pipe");
+
+  // Explicit recipe: brackene_nosh_bean
+  const noshBeanEval = evaluateRow(
+    { entityId: "plant_pulverizer", qty: 1, recipeId: "brackene_nosh_bean" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(noshBeanEval.power, 0.0);
+  assert.strictEqual(noshBeanEval.heat, 2.0);
+  assert.strictEqual(noshBeanEval.inputs.find((i) => i.resource === "Nosh Bean").rate, 0.05);
+  assert.strictEqual(noshBeanEval.inputs.find((i) => i.resource === "Water").rate, 450.0);
+  assert.strictEqual(noshBeanEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(noshBeanEval.outputs.find((o) => o.resource === "Brackene").rate, 500.0);
+
+  // Explicit recipe: brackene_pincha_pepper
+  const pinchaEval = evaluateRow(
+    { entityId: "plant_pulverizer", qty: 1, recipeId: "brackene_pincha_pepper" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(pinchaEval.power, 0.0);
+  assert.strictEqual(pinchaEval.heat, 2.0);
+  assert.strictEqual(pinchaEval.inputs.find((i) => i.resource === "Pincha Peppernut").rate, 75.0);
+  assert.strictEqual(pinchaEval.inputs.find((i) => i.resource === "Water").rate, 425.0);
+  assert.strictEqual(pinchaEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(pinchaEval.outputs.find((o) => o.resource === "Brackene").rate, 500.0);
+
+  // Explicit recipe: phyto_oil_slime
+  const slimeEval = evaluateRow(
+    { entityId: "plant_pulverizer", qty: 1, recipeId: "phyto_oil_slime" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(slimeEval.power, 0.0);
+  assert.strictEqual(slimeEval.heat, 2.0);
+  assert.strictEqual(slimeEval.inputs.find((i) => i.resource === "Slime").rate, 2500.0);
+  assert.strictEqual(slimeEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(slimeEval.outputs.find((o) => o.resource === "Phyto Oil").rate, 1750.0);
+  assert.strictEqual(slimeEval.outputs.find((o) => o.resource === "Dirt").rate, 750.0);
+
+  // Explicit recipe: phyto_oil_seakomb with qty: 2
+  const seakombEval = evaluateRow(
+    { entityId: "plant_pulverizer", qty: 2, recipeId: "phyto_oil_seakomb" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(seakombEval.power, 0.0);
+  assert.strictEqual(seakombEval.heat, 4.0);
+  assert.strictEqual(seakombEval.inputs.find((i) => i.resource === "Seakomb Leaf").rate, 1250.0);
+  assert.strictEqual(seakombEval.inputs.find((i) => i.resource === "Water").rate, 3750.0);
+  assert.strictEqual(seakombEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 2.0);
+  assert.strictEqual(seakombEval.outputs.find((o) => o.resource === "Phyto Oil").rate, 5000.0);
+
+  // URL state round-trip with Plant Pulverizer
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "plant_pulverizer", qty: 2, recipeId: "phyto_oil_seakomb", modifiers: [] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 1);
+  assert.strictEqual(decoded.rows[0].entityId, "plant_pulverizer");
+  assert.strictEqual(decoded.rows[0].qty, 2);
+  assert.strictEqual(decoded.rows[0].recipeId, "phyto_oil_seakomb");
+
+  console.log("✓ Plant Pulverizer Building and Recipes tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
