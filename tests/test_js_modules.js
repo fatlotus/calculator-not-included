@@ -19,6 +19,7 @@ import {
   getNetInputTemp,
   formatNumber,
   formatStreamLine,
+  NET_RATE_EPSILON,
 } from "../src/calculator.js";
 import { buildEntityCatalog, searchEntities } from "../src/data_loader.js";
 import { PRESETS, getPresetById } from "../src/presets.js";
@@ -758,6 +759,87 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(netPhos.rate, 25.0);
 
   console.log("✓ Geotuner Connected Inputs by Geyser Type tests passed");
+}
+
+// 10. Elision of Small Net Resource Inputs and Outputs (Roundoff Error Handling)
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  assert.strictEqual(NET_RATE_EPSILON, 1e-4, "NET_RATE_EPSILON must be 1e-4 (0.0001)");
+
+  // 10.1 Oil Refinery preset: 1 oil refinery (1 s/s labor input) + 1.3333 duplicants (0.75 s/s labor output each)
+  // Net labor is 0.999975 - 1.0 = -0.000025 s/s. This residual roundoff must be elided.
+  const oilPreset = getPresetById("oil_refinery_petroleum_loop");
+  assert.ok(oilPreset, "Oil refinery preset should exist");
+  const evalOil = oilPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+  const oilNet = calculateSystemNet(evalOil, { elementMap });
+
+  const laborInNet = oilNet.netInputs.find((i) => i.resource === "Duplicant Labor");
+  const laborOutNet = oilNet.netOutputs.find((o) => o.resource === "Duplicant Labor");
+  assert.strictEqual(laborInNet, undefined, "Duplicant Labor roundoff residual (-0.000025 s/s) must be elided from netInputs");
+  assert.strictEqual(laborOutNet, undefined, "Duplicant Labor must not appear in netOutputs");
+
+  // Verify NET summary row HTML does NOT render "Duplicant Labor: -0 s/s (labor)" or any "-0" text
+  const oilNetHtml = renderNetSummaryRowHtml(oilNet, elementMap, "s");
+  assert.ok(!oilNetHtml.includes("Duplicant Labor"), "NET summary HTML must not render elided Duplicant Labor");
+  assert.ok(!oilNetHtml.includes("-0 s/s"), "NET summary HTML must not display -0 s/s");
+  assert.ok(!oilNetHtml.includes("-0 "), "NET summary HTML must not display negative zero for any resource");
+
+  // Legitimate real inputs in this preset should remain intact
+  assert.ok(oilNetHtml.includes("Crude Oil: -10 Kg/s"), "Real net input Crude Oil must be displayed");
+  assert.ok(oilNetHtml.includes("Oxygen: -133.33 g/s"), "Real net input Oxygen must be displayed");
+  assert.ok(oilNetHtml.includes("Water: -11.1108 g/s"), "Real net input Water must be displayed");
+
+  // 10.2 Synthetic small amount elision for both inputs and outputs
+  const tinyInputRow = {
+    power: 0,
+    heat: 0,
+    inputs: [{ resource: "Water", rate: 0.00005, unit: "g/s", state: "free" }],
+    outputs: [],
+  };
+  const tinyOutputRow = {
+    power: 0,
+    heat: 0,
+    inputs: [],
+    outputs: [{ resource: "Oxygen", rate: 0.000025, unit: "g/s", state: "free" }],
+  };
+  const tinyNet = calculateSystemNet([tinyInputRow, tinyOutputRow]);
+  assert.strictEqual(tinyNet.netInputs.length, 0, "Tiny inputs below NET_RATE_EPSILON must be elided");
+  assert.strictEqual(tinyNet.netOutputs.length, 0, "Tiny outputs below NET_RATE_EPSILON must be elided");
+
+  // When all inputs/outputs are elided, empty-state placeholders must render
+  const tinyHtml = renderNetSummaryRowHtml(tinyNet, elementMap, "s");
+  assert.ok(tinyHtml.includes("None (0 net input required)"), "Empty input state rendered when inputs are elided");
+  assert.ok(tinyHtml.includes("None (0 net surplus)"), "Empty output state rendered when outputs are elided");
+
+  // 10.3 Preserving legitimate small resources above NET_RATE_EPSILON (e.g. Microchips, Gear Balm)
+  const bionicRow = { entityId: "bionic_duplicant", qty: 1, recipeId: "gear_balm", modifiers: [] };
+  const bionicEval = evaluateRow(bionicRow, entityMap, elementMap);
+  const bionicNet = calculateSystemNet([bionicEval], { elementMap });
+  const balmIn = bionicNet.netInputs.find((i) => i.resource === "Gear Balm");
+  assert.ok(balmIn, "Gear Balm (0.0004167 balm/s) is above NET_RATE_EPSILON and must NOT be elided");
+  assert.strictEqual(balmIn.rate, 0.0004167);
+
+  const bionicHtml = renderNetSummaryRowHtml(bionicNet, elementMap, "s");
+  assert.ok(bionicHtml.includes("Gear Balm: -0.0004 balm/s"), "Gear Balm must be displayed in NET inputs");
+
+  const generatorRow = { entityId: "coal_generator", qty: 1, modifiers: ["engie_tuneup"] };
+  const genEval = evaluateRow(generatorRow, entityMap, elementMap);
+  const genNet = calculateSystemNet([genEval], { elementMap });
+  const chipIn = genNet.netInputs.find((i) => i.resource === "Microchip");
+  assert.ok(chipIn, "Microchip (0.0005556 chips/s) is above NET_RATE_EPSILON and must NOT be elided");
+
+  // 10.4 formatStreamLine zero-sign behavior
+  const zeroLabor = formatStreamLine({ resource: "Duplicant Labor", rate: 0, unit: "s/s", state: "labor" }, false, "s");
+  assert.strictEqual(zeroLabor, "Duplicant Labor: 0 s/s (labor)", "Zero stream rate must format with unsigned 0");
+  const tinyLabor = formatStreamLine({ resource: "Duplicant Labor", rate: 0.000025, unit: "s/s", state: "labor" }, false, "s");
+  assert.strictEqual(tinyLabor, "Duplicant Labor: 0 s/s (labor)", "Stream rate rounding to 0 must format with unsigned 0, never -0");
+
+  // 10.5 Cycle mode ("c") roundoff elision
+  const oilNetHtmlCycle = renderNetSummaryRowHtml(oilNet, elementMap, "c");
+  assert.ok(!oilNetHtmlCycle.includes("Duplicant Labor"), "Duplicant Labor must also be elided in cycle rate mode");
+  assert.ok(!oilNetHtmlCycle.includes("-0 /cycle"), "Cycle mode must never render -0 /cycle");
+
+  console.log("✓ Small Net Resource Inputs & Outputs Elision (Roundoff Error Handling) tests passed");
 }
 
 // 11. Icon Integrity and Accuracy Tests

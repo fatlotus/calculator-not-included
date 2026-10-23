@@ -9,6 +9,12 @@
 export const SECONDS_PER_CYCLE = 600;
 
 /**
+ * Standard epsilon for resource rate cancellation and display elision.
+ * Rates with magnitude below this threshold are considered roundoff noise.
+ */
+export const NET_RATE_EPSILON = 1e-4;
+
+/**
  * Standard mass unit multipliers (in grams).
  */
 export const MASS_UNITS = {
@@ -113,7 +119,9 @@ export function formatStreamLine(stream, isOutput, rateMode = "s") {
     }
   }
 
-  let text = `${stream.resource}: ${sign}${formatNumber(displayRate)} ${displayUnit}`;
+  const formattedVal = formatNumber(displayRate);
+  const displaySign = formattedVal === "0" ? "" : sign;
+  let text = `${stream.resource}: ${displaySign}${formattedVal} ${displayUnit}`;
   if (isOutput && stream.temp && !isNonThermalResource(stream.resource, stream.unit)) {
     text += ` ${stream.temp}`;
   }
@@ -686,7 +694,7 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap) {
     const k = `in:${inp.resource}||${inp.state || "free"}`;
     const bucketKey = `${inp.resource}||${inp.state || "free"}`;
     const surplus = otherBuckets.get(bucketKey) || 0;
-    if (surplus > 1e-5 && inp.rate > 1e-6) {
+    if (surplus >= NET_RATE_EPSILON && inp.rate > 1e-6) {
       const targetQty = surplus / inp.rate;
       matches[k] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
     }
@@ -696,16 +704,16 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap) {
     const k = `out:${out.resource}||${out.state || "free"}`;
     const bucketKey = `${out.resource}||${out.state || "free"}`;
     const deficit = otherBuckets.get(bucketKey) || 0;
-    if (deficit < -1e-5 && out.rate > 1e-6) {
+    if (deficit <= -NET_RATE_EPSILON && out.rate > 1e-6) {
       const targetQty = Math.abs(deficit) / out.rate;
       matches[k] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
     }
   }
 
-  if (unitRow.power < -1e-5 && otherNetPower > 1e-5) {
+  if (unitRow.power < -1e-4 && otherNetPower > 1e-4) {
     const targetQty = otherNetPower / Math.abs(unitRow.power);
     matches["in:Power"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
-  } else if (unitRow.power > 1e-5 && otherNetPower < -1e-5) {
+  } else if (unitRow.power > 1e-4 && otherNetPower < -1e-4) {
     const targetQty = Math.abs(otherNetPower) / unitRow.power;
     matches["out:Power"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
   }
@@ -781,7 +789,7 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
 
   const finalBuckets = [];
   for (const b of buckets.values()) {
-    if (Math.abs(b.netRate) >= 1e-5) {
+    if (Math.abs(b.netRate) >= NET_RATE_EPSILON) {
       finalBuckets.push(b);
     }
   }
@@ -791,7 +799,7 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
 
   for (const b of finalBuckets) {
     const isNonThermal = isNonThermalResource(b.resource, b.unit);
-    if (b.netRate < -1e-5) {
+    if (b.netRate <= -NET_RATE_EPSILON) {
       let tempC;
       let temp = null;
       if (!isNonThermal) {
@@ -807,7 +815,7 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
         tempC,
         temp,
       });
-    } else if (b.netRate > 1e-5) {
+    } else if (b.netRate >= NET_RATE_EPSILON) {
       netOutputs.push({
         resource: b.resource,
         rate: b.netRate,
