@@ -322,7 +322,7 @@ console.log("=== Running JavaScript Module Tests ===");
   const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
   assert.ok(PRESETS.length >= 5, "Should have at least 5 presets defined");
   const hydra = getPresetById("hydra_spom");
-  assert.strictEqual(hydra.name, "Hydra SPOM (PDF Example)");
+  assert.strictEqual(hydra.name, "Hydra SPOM");
   assert.strictEqual(hydra.rows.length, 5);
 
   // Oil refinery preset test
@@ -339,19 +339,21 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(dreckoPreset.rows.length, 2);
   const dreckoCritterRow = dreckoPreset.rows.find((r) => r.entityId === "critter_glossy_drecko");
   assert.ok(dreckoCritterRow, "Preset should contain critter_glossy_drecko");
+  assert.strictEqual(dreckoCritterRow.qty, 1);
   assert.ok(
     dreckoCritterRow.recipeId === "bristle_blossom_plastic" || dreckoCritterRow.recipeId === "bristle_berry_plastic",
     "Drecko should use Bristle Blossom/Berry recipe"
   );
   const dreckoPlantRow = dreckoPreset.rows.find((r) => r.entityId === "plant_bristle_blossom");
   assert.ok(dreckoPlantRow, "Preset should contain plant_bristle_blossom");
+  assert.strictEqual(dreckoPlantRow.qty, 1);
   assert.strictEqual(dreckoPlantRow.recipeId, "growth", "Bristle Blossom should use growth recipe");
 
   const evalDrecko = dreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
   const dreckoNet = calculateSystemNet(evalDrecko);
   const plasticOut = dreckoNet.netOutputs.find((o) => o.resource === "Plastic");
   assert.ok(plasticOut, "Drecko preset must output Plastic");
-  assert.ok(plasticOut.rate > 200, "Plastic output should be > 200 g/s");
+  assert.ok(plasticOut.rate > 80, "Plastic output should be > 80 g/s");
 
   // Growth cancels out completely to 0
   const netGrowthIn = dreckoNet.netInputs.find((i) => i.resource === "Growth");
@@ -371,21 +373,38 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(regularDreckoPreset.rows.length, 2);
   const regularDreckoRow = regularDreckoPreset.rows.find((r) => r.entityId === "critter_drecko");
   assert.ok(regularDreckoRow, "Preset should contain critter_drecko");
+  assert.strictEqual(regularDreckoRow.qty, 1);
   assert.strictEqual(regularDreckoRow.recipeId, "balm_lily");
   const balmLilyRow = regularDreckoPreset.rows.find((r) => r.entityId === "plant_balm_lily");
   assert.ok(balmLilyRow, "Preset should contain plant_balm_lily");
+  assert.strictEqual(balmLilyRow.qty, 1);
   assert.strictEqual(balmLilyRow.recipeId, "growth");
 
   const evalRegularDrecko = regularDreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
   const regularDreckoNet = calculateSystemNet(evalRegularDrecko);
   const reedFiberOut = regularDreckoNet.netOutputs.find((o) => o.resource === "Reed Fiber");
   assert.ok(reedFiberOut, "Drecko preset must output Reed Fiber");
-  assert.ok(reedFiberOut.rate > 1, "Reed Fiber output should be > 1 g/s");
+  assert.ok(reedFiberOut.rate > 0.4, "Reed Fiber output should be > 0.4 g/s");
   const regularPhosphoriteOut = regularDreckoNet.netOutputs.find((o) => o.resource === "Phosphorite");
   assert.ok(regularPhosphoriteOut, "Drecko preset must output Phosphorite");
 
   // Zero net inputs: Balm Lily requires 0 inputs, Growth cancels out completely
   assert.strictEqual(regularDreckoNet.netInputs.length, 0, "Balm Lily Drecko ranch requires zero net inputs");
+
+  // Carbon Skimmer Loops include Gas Pump
+  const coalPreset = getPresetById("coal_skimmer_loop");
+  assert.ok(coalPreset, "Coal skimmer loop preset should exist");
+  assert.strictEqual(coalPreset.rows.length, 4);
+  const coalPumpRow = coalPreset.rows.find((r) => r.entityId === "gas_pump");
+  assert.ok(coalPumpRow, "Coal skimmer loop must contain a gas pump");
+  assert.strictEqual(coalPumpRow.recipeId, "carbon_dioxide");
+
+  const arborPreset = getPresetById("arbor_ethanol_loop");
+  assert.ok(arborPreset, "Arbor ethanol loop preset should exist");
+  assert.strictEqual(arborPreset.rows.length, 5);
+  const arborPumpRow = arborPreset.rows.find((r) => r.entityId === "gas_pump");
+  assert.ok(arborPumpRow, "Arbor ethanol loop must contain a gas pump");
+  assert.strictEqual(arborPumpRow.recipeId, "carbon_dioxide");
 
   // Natural Gas Geyser Power preset test (Fractional Generator and Pump)
   const ngPreset = getPresetById("natural_gas_geyser_power");

@@ -75,5 +75,5 @@ To make sharing designs effortless via URL (`?s=...`):
 2. `styles/main.css`: GitHub-inspired monochrome CSS variables for light & dark themes, responsive grid/table rules, autocomplete popover styles, and badge/modifier pill styles.
 3. `src/calculator.js`: Pure, dependency-free calculation and formatting functions (unit conversion between `/s` and `/cycle`, row math, two-stage NET aggregation).
 4. `src/url_state.js`: Compact URL encoder/decoder and browser `history.replaceState` synchronization.
-5. `src/presets.js`: Curated presets including **Hydra SPOM (PDF Example)**, **Coal + Carbon Skimmer Loop**, **Stone Hatch Ranch + Coal Power**, and **Rodriguez SPOM**.
+5. `src/presets.js`: Curated presets including **Hydra SPOM**, **Coal + Carbon Skimmer Loop**, **Stone Hatch Ranch + Coal Power**, and **Rodriguez SPOM**.
 6. `src/app.js`: Interactive table rendering, typeahead autocomplete search with entity & element icons, keyboard navigation (`ArrowUp`/`ArrowDown`/`Enter`/`Escape`), and instant state updates.
