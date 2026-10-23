@@ -6268,6 +6268,196 @@ export const ONI_DATASET = {
           ],
           "power": -240.0,
           "heat": 16.0
+        },
+        {
+          "id": "crushed_copper",
+          "name": "Copper Ore (100 kg) -> Copper (50 kg) + Sand (50 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Copper Ore",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Copper",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Sand",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 16.0
+        },
+        {
+          "id": "crushed_gold",
+          "name": "Gold Amalgam (100 kg) -> Gold (50 kg) + Sand (50 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Gold Amalgam",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Gold",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Sand",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 16.0
+        },
+        {
+          "id": "crushed_iron",
+          "name": "Iron Ore (100 kg) -> Iron (50 kg) + Sand (50 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Iron Ore",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Iron",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Sand",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 16.0
+        },
+        {
+          "id": "crushed_aluminum",
+          "name": "Aluminum Ore (100 kg) -> Aluminum (50 kg) + Sand (50 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Aluminum Ore",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Aluminum",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Sand",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 16.0
+        },
+        {
+          "id": "crushed_tungsten",
+          "name": "Wolframite (100 kg) -> Tungsten (50 kg) + Sand (50 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Wolframite",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Tungsten",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Sand",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 16.0
         }
       ],
       "modifiers": [],

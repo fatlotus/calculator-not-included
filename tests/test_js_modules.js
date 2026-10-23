@@ -1579,4 +1579,123 @@ console.log("=== Running JavaScript Module Tests ===");
   console.log("✓ Thermo Regulator Building and Recipes tests passed");
 }
 
+// Rock Crusher: Metal Ore Crushing Recipes
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+  const building = entityMap.get("rock_crusher");
+  assert.ok(building, "rock_crusher entity must exist in catalog");
+  assert.strictEqual(building.recipes.length, 9, "Rock Crusher should have 9 recipes");
+
+  // Evaluate crushed_copper recipe
+  const copperEval = evaluateRow(
+    { entityId: "rock_crusher", qty: 1, recipeId: "crushed_copper" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(copperEval.power, -240.0);
+  assert.strictEqual(copperEval.heat, 16.0);
+  assert.strictEqual(copperEval.inputs.length, 2);
+  assert.strictEqual(copperEval.outputs.length, 2);
+
+  const copperOreIn = copperEval.inputs.find((i) => i.resource === "Copper Ore");
+  assert.ok(copperOreIn, "crushed_copper must consume Copper Ore");
+  assert.strictEqual(copperOreIn.rate, 2500.0);
+  assert.strictEqual(copperOreIn.unit, "g/s");
+  assert.strictEqual(copperOreIn.state, "free");
+
+  const copperLaborIn = copperEval.inputs.find((i) => i.resource === "Duplicant Labor");
+  assert.ok(copperLaborIn, "crushed_copper must require Duplicant Labor");
+  assert.strictEqual(copperLaborIn.rate, 1.0);
+  assert.strictEqual(copperLaborIn.unit, "s/s");
+  assert.strictEqual(copperLaborIn.state, "labor");
+
+  const copperOut = copperEval.outputs.find((o) => o.resource === "Copper");
+  assert.ok(copperOut, "crushed_copper must produce Copper");
+  assert.strictEqual(copperOut.rate, 1250.0);
+  assert.strictEqual(copperOut.unit, "g/s");
+  assert.strictEqual(copperOut.state, "free");
+
+  const copperSandOut = copperEval.outputs.find((o) => o.resource === "Sand");
+  assert.ok(copperSandOut, "crushed_copper must produce Sand");
+  assert.strictEqual(copperSandOut.rate, 1250.0);
+  assert.strictEqual(copperSandOut.unit, "g/s");
+  assert.strictEqual(copperSandOut.state, "free");
+
+  // Evaluate crushed_gold recipe
+  const goldEval = evaluateRow(
+    { entityId: "rock_crusher", qty: 2, recipeId: "crushed_gold" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(goldEval.power, -480.0);
+  assert.strictEqual(goldEval.heat, 32.0);
+  const goldAmalgamIn = goldEval.inputs.find((i) => i.resource === "Gold Amalgam");
+  assert.strictEqual(goldAmalgamIn.rate, 5000.0);
+  const goldLaborIn = goldEval.inputs.find((i) => i.resource === "Duplicant Labor");
+  assert.strictEqual(goldLaborIn.rate, 2.0);
+  const goldOut = goldEval.outputs.find((o) => o.resource === "Gold");
+  assert.strictEqual(goldOut.rate, 2500.0);
+  const goldSandOut = goldEval.outputs.find((o) => o.resource === "Sand");
+  assert.strictEqual(goldSandOut.rate, 2500.0);
+
+  // Evaluate crushed_iron recipe
+  const ironEval = evaluateRow(
+    { entityId: "rock_crusher", qty: 1, recipeId: "crushed_iron" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(ironEval.power, -240.0);
+  assert.strictEqual(ironEval.heat, 16.0);
+  assert.strictEqual(ironEval.inputs.find((i) => i.resource === "Iron Ore").rate, 2500.0);
+  assert.strictEqual(ironEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(ironEval.outputs.find((o) => o.resource === "Iron").rate, 1250.0);
+  assert.strictEqual(ironEval.outputs.find((o) => o.resource === "Sand").rate, 1250.0);
+
+  // Evaluate crushed_aluminum recipe
+  const aluminumEval = evaluateRow(
+    { entityId: "rock_crusher", qty: 1, recipeId: "crushed_aluminum" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(aluminumEval.power, -240.0);
+  assert.strictEqual(aluminumEval.heat, 16.0);
+  assert.strictEqual(aluminumEval.inputs.find((i) => i.resource === "Aluminum Ore").rate, 2500.0);
+  assert.strictEqual(aluminumEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(aluminumEval.outputs.find((o) => o.resource === "Aluminum").rate, 1250.0);
+  assert.strictEqual(aluminumEval.outputs.find((o) => o.resource === "Sand").rate, 1250.0);
+
+  // Evaluate crushed_tungsten recipe
+  const tungstenEval = evaluateRow(
+    { entityId: "rock_crusher", qty: 1, recipeId: "crushed_tungsten" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(tungstenEval.power, -240.0);
+  assert.strictEqual(tungstenEval.heat, 16.0);
+  assert.strictEqual(tungstenEval.inputs.find((i) => i.resource === "Wolframite").rate, 2500.0);
+  assert.strictEqual(tungstenEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(tungstenEval.outputs.find((o) => o.resource === "Tungsten").rate, 1250.0);
+  assert.strictEqual(tungstenEval.outputs.find((o) => o.resource === "Sand").rate, 1250.0);
+
+  // URL state round-trip with Rock Crusher recipes
+  const urlState = {
+    rateMode: "s",
+    rows: [
+      { entityId: "rock_crusher", qty: 1, recipeId: "crushed_copper", modifiers: [] },
+      { entityId: "rock_crusher", qty: 2, recipeId: "crushed_tungsten", modifiers: [] }
+    ],
+    netInputTemps: {}
+  };
+  const encoded = encodeStateToParam(urlState);
+  const decoded = decodeStateFromParam(encoded);
+  assert.strictEqual(decoded.rows.length, 2);
+  assert.strictEqual(decoded.rows[0].entityId, "rock_crusher");
+  assert.strictEqual(decoded.rows[0].recipeId, "crushed_copper");
+  assert.strictEqual(decoded.rows[1].entityId, "rock_crusher");
+  assert.strictEqual(decoded.rows[1].qty, 2);
+  assert.strictEqual(decoded.rows[1].recipeId, "crushed_tungsten");
+
+  console.log("✓ Rock Crusher Building and Recipes tests passed");
+}
+
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
