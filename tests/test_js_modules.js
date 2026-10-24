@@ -1963,6 +1963,39 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
   assert.ok(building, "rock_crusher entity must exist in catalog");
   assert.strictEqual(building.recipes.length, 15, "Rock Crusher should have 15 recipes");
 
+  // Default Rock Crusher inputs & outputs (fossil_lime)
+  const defaultEval = evaluateRow(
+    { entityId: "rock_crusher", qty: 1 },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(defaultEval.power, -240.0);
+  assert.strictEqual(defaultEval.heat, 16.0);
+  assert.strictEqual(defaultEval.inputs.find((i) => i.resource === "Fossil").rate, 2500.0);
+  assert.strictEqual(defaultEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(defaultEval.outputs.find((o) => o.resource === "Lime").rate, 125.0);
+  assert.strictEqual(defaultEval.outputs.find((o) => o.resource === "Sedimentary Rock").rate, 2375.0);
+
+  // Evaluate eggshell_lime recipe
+  const eggEval = evaluateRow(
+    { entityId: "rock_crusher", qty: 1, recipeId: "eggshell_lime" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(eggEval.inputs.find((i) => i.resource === "Egg Shell").rate, 125.0);
+  assert.strictEqual(eggEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(eggEval.outputs.find((o) => o.resource === "Lime").rate, 125.0);
+
+  // Evaluate salt_table_salt recipe
+  const saltEval = evaluateRow(
+    { entityId: "rock_crusher", qty: 1, recipeId: "salt_table_salt" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(saltEval.inputs.find((i) => i.resource === "Salt").rate, 2500.0);
+  assert.strictEqual(saltEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(saltEval.outputs.find((o) => o.resource === "Sand").rate, 2500.0);
+
   // Verify all rock-to-sand crushing recipes
   const rockRecipes = [
     { recipeId: "sandstone_sand", resource: "Sandstone" },

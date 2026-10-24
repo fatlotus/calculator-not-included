@@ -6147,6 +6147,13 @@ export const ONI_DATASET = {
           "unit": "g/s",
           "state": "free",
           "temp": null
+        },
+        {
+          "resource": "Duplicant Labor",
+          "rate": 1.0,
+          "unit": "s/s",
+          "state": "labor",
+          "temp": null
         }
       ],
       "outputs": [
@@ -6168,13 +6175,20 @@ export const ONI_DATASET = {
       "recipes": [
         {
           "id": "fossil_lime",
-          "name": "Fossil (100 kg) -> Lime (5 kg) + Sedimentary Rock (95 kg)",
+          "name": "Fossil (100 kg) -> Lime (5 kg) + Sedimentary Rock (95 kg) [40s]",
           "inputs": [
             {
               "resource": "Fossil",
               "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
               "temp": null
             }
           ],
@@ -6199,13 +6213,20 @@ export const ONI_DATASET = {
         },
         {
           "id": "eggshell_lime",
-          "name": "Egg Shell (5 kg) -> Lime (5 kg)",
+          "name": "Egg Shell (5 kg) -> Lime (5 kg) [40s]",
           "inputs": [
             {
               "resource": "Egg Shell",
               "rate": 125.0,
               "unit": "g/s",
               "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
               "temp": null
             }
           ],
@@ -6409,13 +6430,20 @@ export const ONI_DATASET = {
         },
         {
           "id": "salt_table_salt",
-          "name": "Salt (100 kg) -> Sand (100 kg) + Table Salt",
+          "name": "Salt (100 kg) -> Sand (100 kg) + Table Salt [40s]",
           "inputs": [
             {
               "resource": "Salt",
               "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
               "temp": null
             }
           ],
