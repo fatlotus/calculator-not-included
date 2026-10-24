@@ -1956,12 +1956,52 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
   console.log("✓ Thermo Regulator Building and Recipes tests passed");
 }
 
-// Rock Crusher: Metal Ore Crushing Recipes
+// Rock Crusher: Rock and Metal Ore Crushing Recipes
 {
   const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
   const building = entityMap.get("rock_crusher");
   assert.ok(building, "rock_crusher entity must exist in catalog");
-  assert.strictEqual(building.recipes.length, 9, "Rock Crusher should have 9 recipes");
+  assert.strictEqual(building.recipes.length, 14, "Rock Crusher should have 14 recipes");
+
+  // Verify all rock-to-sand crushing recipes
+  const rockRecipes = [
+    { recipeId: "sandstone_sand", resource: "Sandstone" },
+    { recipeId: "granite_sand", resource: "Granite" },
+    { recipeId: "igneous_rock_sand", resource: "Igneous Rock" },
+    { recipeId: "obsidian_sand", resource: "Obsidian" },
+    { recipeId: "sedimentary_rock_sand", resource: "Sedimentary Rock" },
+    { recipeId: "mafic_rock_sand", resource: "Mafic Rock" },
+  ];
+
+  for (const { recipeId, resource } of rockRecipes) {
+    const rockEval = evaluateRow(
+      { entityId: "rock_crusher", qty: 1, recipeId },
+      entityMap,
+      elementMap
+    );
+    assert.strictEqual(rockEval.power, -240.0);
+    assert.strictEqual(rockEval.heat, 16.0);
+    assert.strictEqual(rockEval.inputs.length, 2, `${recipeId} must have 2 inputs (rock + labor)`);
+    assert.strictEqual(rockEval.outputs.length, 1, `${recipeId} must have 1 output (sand)`);
+
+    const rockIn = rockEval.inputs.find((i) => i.resource === resource);
+    assert.ok(rockIn, `${recipeId} must consume ${resource}`);
+    assert.strictEqual(rockIn.rate, 2500.0);
+    assert.strictEqual(rockIn.unit, "g/s");
+    assert.strictEqual(rockIn.state, "free");
+
+    const laborIn = rockEval.inputs.find((i) => i.resource === "Duplicant Labor");
+    assert.ok(laborIn, `${recipeId} must require Duplicant Labor`);
+    assert.strictEqual(laborIn.rate, 1.0);
+    assert.strictEqual(laborIn.unit, "s/s");
+    assert.strictEqual(laborIn.state, "labor");
+
+    const sandOut = rockEval.outputs.find((o) => o.resource === "Sand");
+    assert.ok(sandOut, `${recipeId} must produce Sand`);
+    assert.strictEqual(sandOut.rate, 2500.0);
+    assert.strictEqual(sandOut.unit, "g/s");
+    assert.strictEqual(sandOut.state, "free");
+  }
 
   // Evaluate crushed_copper recipe
   const copperEval = evaluateRow(
@@ -2059,18 +2099,25 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
     rateMode: "s",
     rows: [
       { entityId: "rock_crusher", qty: 1, recipeId: "crushed_copper", modifiers: [] },
-      { entityId: "rock_crusher", qty: 2, recipeId: "crushed_tungsten", modifiers: [] }
+      { entityId: "rock_crusher", qty: 2, recipeId: "crushed_tungsten", modifiers: [] },
+      { entityId: "rock_crusher", qty: 1, recipeId: "igneous_rock_sand", modifiers: [] },
+      { entityId: "rock_crusher", qty: 3, recipeId: "sedimentary_rock_sand", modifiers: [] }
     ],
     netInputTemps: {}
   };
   const encoded = encodeStateToParam(urlState);
   const decoded = decodeStateFromParam(encoded);
-  assert.strictEqual(decoded.rows.length, 2);
+  assert.strictEqual(decoded.rows.length, 4);
   assert.strictEqual(decoded.rows[0].entityId, "rock_crusher");
   assert.strictEqual(decoded.rows[0].recipeId, "crushed_copper");
   assert.strictEqual(decoded.rows[1].entityId, "rock_crusher");
   assert.strictEqual(decoded.rows[1].qty, 2);
   assert.strictEqual(decoded.rows[1].recipeId, "crushed_tungsten");
+  assert.strictEqual(decoded.rows[2].entityId, "rock_crusher");
+  assert.strictEqual(decoded.rows[2].recipeId, "igneous_rock_sand");
+  assert.strictEqual(decoded.rows[3].entityId, "rock_crusher");
+  assert.strictEqual(decoded.rows[3].qty, 3);
+  assert.strictEqual(decoded.rows[3].recipeId, "sedimentary_rock_sand");
 
   console.log("✓ Rock Crusher Building and Recipes tests passed");
 }

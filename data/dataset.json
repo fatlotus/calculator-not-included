@@ -6223,13 +6223,175 @@
         },
         {
           "id": "sandstone_sand",
-          "name": "Raw Mineral (100 kg) -> Sand (100 kg)",
+          "name": "Sandstone (100 kg) -> Sand (100 kg) [40s]",
           "inputs": [
             {
               "resource": "Sandstone",
               "rate": 2500.0,
               "unit": "g/s",
               "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sand",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 16.0
+        },
+        {
+          "id": "granite_sand",
+          "name": "Granite (100 kg) -> Sand (100 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Granite",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sand",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 16.0
+        },
+        {
+          "id": "igneous_rock_sand",
+          "name": "Igneous Rock (100 kg) -> Sand (100 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Igneous Rock",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sand",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 16.0
+        },
+        {
+          "id": "obsidian_sand",
+          "name": "Obsidian (100 kg) -> Sand (100 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Obsidian",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sand",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 16.0
+        },
+        {
+          "id": "sedimentary_rock_sand",
+          "name": "Sedimentary Rock (100 kg) -> Sand (100 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Sedimentary Rock",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sand",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 16.0
+        },
+        {
+          "id": "mafic_rock_sand",
+          "name": "Mafic Rock (100 kg) -> Sand (100 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Mafic Rock",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
               "temp": null
             }
           ],
