@@ -10,6 +10,7 @@ enum Bathroom {
   BATHROOM_PLUMBED = 0;
   BATHROOM_OUTHOUSE = 1;
   BATHROOM_FLOOR = 2;
+  BATHROOM_NONE = 3;
 }
 
 enum Food {

@@ -142,6 +142,7 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
       { entityId: "liquid_pump", qty: 0.125, recipeId: "water" }, // Fractional -> uses count_double
       { entityId: "microbe_musher", qty: 0 }, // Zero quantity
       { entityId: "duplicant", qty: 8, bathroom: "outhouse", food: "barbecue", modifiers: ["divers_lungs"], inputTemp: -15.5 },
+      { entityId: "duplicant", qty: 4, bathroom: "none", food: "none" },
     ],
     netInputTemps: {
       "Water||free": 95,
@@ -163,9 +164,13 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
   assert.strictEqual(rawDecoded.rows[3].countInt, 8);
   assert.strictEqual(rawDecoded.rows[3].bathroom, 1); // BATHROOM_OUTHOUSE = 1
 
+  assert.strictEqual(rawDecoded.rows[4].count, "countInt");
+  assert.strictEqual(rawDecoded.rows[4].countInt, 4);
+  assert.strictEqual(rawDecoded.rows[4].bathroom, 3); // BATHROOM_NONE = 3
+
   const restored = decodeStateFromProtobuf(bytes);
   assert.strictEqual(restored.rateMode, "c");
-  assert.strictEqual(restored.rows.length, 4);
+  assert.strictEqual(restored.rows.length, 5);
   assert.strictEqual(restored.rows[0].qty, 2);
   assert.strictEqual(restored.rows[1].qty, 0.125);
   assert.strictEqual(restored.rows[1].recipeId, "water");
@@ -173,6 +178,8 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
   assert.strictEqual(restored.rows[3].bathroom, "outhouse");
   assert.strictEqual(restored.rows[3].food, "barbecue");
   assert.strictEqual(restored.rows[3].inputTemp, -15.5);
+  assert.strictEqual(restored.rows[4].bathroom, "none");
+  assert.strictEqual(restored.rows[4].food, "none");
   assert.strictEqual(restored.netInputTemps["Water||free"], 95);
   assert.strictEqual(restored.netInputTemps["Hydrogen||in a pipe"], -20.5);
 

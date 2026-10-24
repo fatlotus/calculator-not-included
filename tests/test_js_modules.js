@@ -652,6 +652,11 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(fPollutedWaterOut, "Floor peeing must produce free polluted water");
   assert.strictEqual(fPollutedWaterOut.rate, 11.1667);
 
+  // None (External / Ignored) bathroom
+  const noneRow = evaluateRow({ entityId: "duplicant", qty: 1, bathroom: "none" }, entityMap, elementMap);
+  assert.strictEqual(noneRow.inputs.some((i) => i.resource === "Water" || i.resource === "Dirt"), false, "None bathroom requires no water/dirt inputs");
+  assert.strictEqual(noneRow.outputs.some((o) => o.resource === "Polluted Water" || o.resource === "Polluted Dirt"), false, "None bathroom produces no polluted water/dirt outputs");
+
   // URL State encoding/decoding of bathroom options
   const rowFloor = { entityId: "duplicant", qty: 2, recipeId: null, modifiers: [], bathroom: "floor" };
   const paramFloor = encodeStateToParam({ rateMode: "s", rows: [rowFloor] });
@@ -661,11 +666,23 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(decodedStateFloor.rows[0].qty, 2);
   assert.strictEqual(decodedStateFloor.rows[0].bathroom, "floor");
 
+  const rowNone = { entityId: "duplicant", qty: 3, recipeId: null, modifiers: [], bathroom: "none" };
+  const paramNone = encodeStateToParam({ rateMode: "s", rows: [rowNone] });
+  const decodedStateNone = decodeStateFromParam(paramNone);
+  assert.strictEqual(decodedStateNone.rows.length, 1);
+  assert.strictEqual(decodedStateNone.rows[0].entityId, "duplicant");
+  assert.strictEqual(decodedStateNone.rows[0].qty, 3);
+  assert.strictEqual(decodedStateNone.rows[0].bathroom, "none");
+
   // HTML rendering contains bathroom selector for duplicants
   const html = renderTableRowHtml(rowFloor, floorRow, elementMap, "s", 0, {});
   assert.ok(html.includes('class="bathroom-select"'), "HTML must render bathroom-select");
   assert.ok(html.includes('value="floor" selected'), "HTML must select floor option");
+  assert.ok(html.includes('value="none"'), "HTML must include none option");
   assert.ok(html.includes('class="food-select"'), "HTML must render food-select");
+
+  const htmlNone = renderTableRowHtml(rowNone, noneRow, elementMap, "s", 0, {});
+  assert.ok(htmlNone.includes('value="none" selected'), "HTML must select none option when configured");
 
   // Duplicant Food / Diet Selection tests
   const bbqRow = evaluateRow({ entityId: "duplicant", qty: 1, food: "barbecue" }, entityMap, elementMap);
@@ -2338,6 +2355,136 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
   assert.strictEqual(decoded.rows[0].recipeId, "ice");
 
   console.log("✓ Ice Maker Building and Recipes tests passed");
+}
+
+// 21. Closed Loop Matching, Unrounded Match Precision, and Thermal Isolation
+{
+  const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+
+  // A. Match Button HTML uses full-precision targetQty in data-target-qty
+  const targetFloat = 8.571183680466273;
+  const mockMatches = {
+    "out:Coal||free": { targetQty: targetFloat, isMatched: false }
+  };
+  const testRow = { entityId: "critter_stone_hatch", qty: 1, recipeId: "igneous_rock" };
+  const evaluatedTestRow = evaluateRow(testRow, entityMap, elementMap);
+  const matchHtml = renderTableRowHtml(testRow, evaluatedTestRow, elementMap, "s", 0, mockMatches);
+  assert.ok(matchHtml.includes(`data-target-qty="${targetFloat}"`), "Match button must embed full unrounded float in data-target-qty");
+  assert.ok(matchHtml.includes("[match: 8.5712×]"), "Match button display text should still show cleanly formatted 4-decimal quantity");
+
+  // B. Carbon Skimmer output temperature pass-through: Polluted Water output adopts Water input temperature
+  // Carbon Skimmer with Water @ 20 °C and Carbon Dioxide @ 110 °C
+  const csRow = { entityId: "carbon_skimmer", qty: 1 };
+  const csInputsWithTemps = {
+    "Water||in a pipe": 20.0,
+    "Carbon Dioxide||in a pipe": 110.0,
+  };
+  const csEval = evaluateRow(csRow, entityMap, elementMap, 20.0, csInputsWithTemps);
+  const pwOut = csEval.outputs.find((o) => o.resource === "Polluted Water");
+  assert.ok(pwOut, "Carbon skimmer must output Polluted Water");
+  assert.strictEqual(pwOut.tempC, 20.0, "Carbon skimmer Polluted Water output temp must inherit Water inlet temp (20 °C), not blend 110 °C CO2");
+  assert.strictEqual(pwOut.temp, "@ 20 °C");
+
+  // C. End-to-end Closed Loop Matching and Thermal Stability (User Scenario: Hatch + Coal Gen + Grill + Dupes + Skimmer + Pump + Sieve)
+  const loopRows = [
+    { entityId: "critter_stone_hatch", qty: 1, recipeId: "igneous_rock", modifiers: [], food: "calories" },
+    { entityId: "coal_generator", qty: 1, recipeId: null, modifiers: [], food: "calories" },
+    { entityId: "electric_grill", qty: 1, recipeId: "barbecue", modifiers: [], food: "calories" },
+    { entityId: "duplicant", qty: 1, recipeId: null, modifiers: [], bathroom: "none", food: "barbecue" },
+    { entityId: "carbon_skimmer", qty: 1, recipeId: null, modifiers: [], food: "calories" },
+    { entityId: "gas_pump", qty: 1, recipeId: "carbon_dioxide", modifiers: [], food: "calories" },
+    { entityId: "water_sieve", qty: 1, recipeId: "sand", modifiers: [], food: "calories" },
+  ];
+
+  // Match 1: Hatch coal to Coal Generator (1.0x coal generator -> 1000 g/s coal)
+  const t0 = calculateRowMatchTargets(0, loopRows, entityMap);
+  assert.ok(t0["out:Coal||free"], "Hatch should have out:Coal match target");
+  loopRows[0].qty = t0["out:Coal||free"].targetQty;
+
+  // Match 2: Electric Grill to Hatch meat
+  const t2 = calculateRowMatchTargets(2, loopRows, entityMap);
+  assert.ok(t2["in:Meat||free"], "Electric Grill should have in:Meat match target");
+  loopRows[2].qty = t2["in:Meat||free"].targetQty;
+
+  // Match 3: Duplicants to Grill barbecue
+  const t3 = calculateRowMatchTargets(3, loopRows, entityMap);
+  assert.ok(t3["in:Barbecue||free"], "Duplicants should have in:Barbecue match target");
+  loopRows[3].qty = t3["in:Barbecue||free"].targetQty;
+
+  // Match 4: Gas Pump to Coal Gen + Dupe CO2 (free)
+  const t5 = calculateRowMatchTargets(5, loopRows, entityMap);
+  assert.ok(t5["in:Carbon Dioxide||free"], "Gas Pump should have in:Carbon Dioxide match target");
+  loopRows[5].qty = t5["in:Carbon Dioxide||free"].targetQty;
+
+  // Match 5: Carbon Skimmer to piped CO2
+  const t4 = calculateRowMatchTargets(4, loopRows, entityMap);
+  assert.ok(t4["in:Carbon Dioxide||in a pipe"], "Carbon Skimmer should have in:Carbon Dioxide match target");
+  loopRows[4].qty = t4["in:Carbon Dioxide||in a pipe"].targetQty;
+
+  // Match 6: Water Sieve to Polluted Water from Carbon Skimmer
+  const t6 = calculateRowMatchTargets(6, loopRows, entityMap);
+  assert.ok(t6["in:Polluted Water||in a pipe"], "Water Sieve should have in:Polluted Water match target");
+  loopRows[6].qty = t6["in:Polluted Water||in a pipe"].targetQty;
+
+  // Evaluate thermal propagation and system net
+  const evaluatedLoop = resolveTableTemperatures(loopRows, entityMap, elementMap);
+  const netLoop = calculateSystemNet(evaluatedLoop);
+
+  // Intermediate resources (Coal, Meat, Barbecue, Carbon Dioxide, Water, Polluted Water) must be 100% matched with 0 net residue
+  assert.strictEqual(netLoop.netInputs.find((i) => i.resource === "Coal"), undefined, "Coal must not appear in net inputs");
+  assert.strictEqual(netLoop.netOutputs.find((o) => o.resource === "Coal"), undefined, "Coal must not appear in net outputs");
+  assert.strictEqual(netLoop.netInputs.find((i) => i.resource === "Meat"), undefined, "Meat must not appear in net inputs");
+  assert.strictEqual(netLoop.netOutputs.find((o) => o.resource === "Meat"), undefined, "Meat must not appear in net outputs");
+  assert.strictEqual(netLoop.netInputs.find((i) => i.resource === "Barbecue"), undefined, "Barbecue must not appear in net inputs");
+  assert.strictEqual(netLoop.netOutputs.find((o) => o.resource === "Barbecue"), undefined, "Barbecue must not appear in net outputs");
+  assert.strictEqual(netLoop.netInputs.find((i) => i.resource === "Carbon Dioxide"), undefined, "Carbon Dioxide must not appear in net inputs");
+  assert.strictEqual(netLoop.netOutputs.find((o) => o.resource === "Carbon Dioxide"), undefined, "Carbon Dioxide must not appear in net outputs");
+  assert.strictEqual(netLoop.netInputs.find((i) => i.resource === "Water"), undefined, "Water must not appear in net inputs");
+  assert.strictEqual(netLoop.netOutputs.find((o) => o.resource === "Water"), undefined, "Water must not appear in net outputs");
+  assert.strictEqual(netLoop.netInputs.find((i) => i.resource === "Polluted Water"), undefined, "Polluted Water must not appear in net inputs");
+  assert.strictEqual(netLoop.netOutputs.find((o) => o.resource === "Polluted Water"), undefined, "Polluted Water must not appear in net outputs");
+
+  // Check that all match targets in the closed loop report isMatched: true
+  const finalMatches0 = calculateRowMatchTargets(0, loopRows, entityMap);
+  assert.strictEqual(finalMatches0["out:Coal||free"].isMatched, true);
+  assert.strictEqual(finalMatches0["out:Meat||free"].isMatched, true);
+
+  const finalMatches1 = calculateRowMatchTargets(1, loopRows, entityMap);
+  assert.strictEqual(finalMatches1["in:Coal||free"].isMatched, true);
+  assert.strictEqual(finalMatches1["out:Carbon Dioxide||free"].isMatched, true);
+
+  const finalMatches2 = calculateRowMatchTargets(2, loopRows, entityMap);
+  assert.strictEqual(finalMatches2["in:Meat||free"].isMatched, true);
+  assert.strictEqual(finalMatches2["out:Barbecue||free"].isMatched, true);
+
+  const finalMatches3 = calculateRowMatchTargets(3, loopRows, entityMap);
+  assert.strictEqual(finalMatches3["in:Barbecue||free"].isMatched, true);
+  assert.strictEqual(finalMatches3["out:Carbon Dioxide||free"].isMatched, true);
+
+  const finalMatches4 = calculateRowMatchTargets(4, loopRows, entityMap);
+  assert.strictEqual(finalMatches4["in:Water||in a pipe"].isMatched, true);
+  assert.strictEqual(finalMatches4["in:Carbon Dioxide||in a pipe"].isMatched, true);
+  assert.strictEqual(finalMatches4["out:Polluted Water||in a pipe"].isMatched, true);
+
+  const finalMatches5 = calculateRowMatchTargets(5, loopRows, entityMap);
+  assert.strictEqual(finalMatches5["in:Carbon Dioxide||free"].isMatched, true);
+  assert.strictEqual(finalMatches5["out:Carbon Dioxide||in a pipe"].isMatched, true);
+
+  const finalMatches6 = calculateRowMatchTargets(6, loopRows, entityMap);
+  assert.strictEqual(finalMatches6["in:Polluted Water||in a pipe"].isMatched, true);
+  assert.strictEqual(finalMatches6["out:Water||in a pipe"].isMatched, true);
+
+  // Water loop thermal temperature must remain stable at 20 °C
+  const csWaterIn = evaluatedLoop[4].inputs.find((i) => i.resource === "Water");
+  const csPwOut = evaluatedLoop[4].outputs.find((o) => o.resource === "Polluted Water");
+  const wsPwIn = evaluatedLoop[6].inputs.find((i) => i.resource === "Polluted Water");
+  const wsWaterOut = evaluatedLoop[6].outputs.find((o) => o.resource === "Water");
+  assert.strictEqual(Math.round(csWaterIn.tempC * 10) / 10, 20.0, "Water loop feed into Carbon Skimmer must be 20 °C");
+  assert.strictEqual(Math.round(csPwOut.tempC * 10) / 10, 20.0, "Polluted Water output from Carbon Skimmer must be 20 °C");
+  assert.strictEqual(Math.round(wsPwIn.tempC * 10) / 10, 20.0, "Polluted Water feed into Water Sieve must be 20 °C");
+  assert.strictEqual(Math.round(wsWaterOut.tempC * 10) / 10, 20.0, "Water output from Water Sieve must be 20 °C");
+
+  console.log("✓ Closed Loop Matching, Unrounded Match Precision, and Thermal Isolation tests passed");
 }
 
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
