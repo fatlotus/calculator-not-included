@@ -238,8 +238,8 @@ function getOutputInletTemp(outputStream, evaluatedInputs, defaultTemp = 20.0) {
   const exact = evaluatedInputs.find((inp) => inp.resource === outputStream.resource && !isNonThermalResource(inp.resource, inp.unit));
   if (exact && exact.tempC !== undefined) return exact.tempC;
 
-  // 2. Liquid purification: Water from Polluted Water / Salt Water / Brine (Water Sieve, Desalinator)
-  if (outputStream.resource === "Water") {
+  // 2. Liquid purification / conversion: Water <-> Polluted Water / Salt Water / Brine (Water Sieve, Desalinator, Carbon Skimmer)
+  if (outputStream.resource.includes("Water") || outputStream.resource === "Brine") {
     const fluidIn = evaluatedInputs.find(
       (inp) => (inp.resource.includes("Water") || inp.resource === "Brine") && !isNonThermalResource(inp.resource, inp.unit)
     );
@@ -301,6 +301,12 @@ export const DUPLICANT_BATHROOMS = {
     outputs: [
       { resource: "Polluted Water", rate: 11.1667, unit: "g/s", state: "free", temp: "@ 37 °C" },
     ],
+  },
+  none: {
+    id: "none",
+    name: "None (External / Ignored)",
+    inputs: [],
+    outputs: [],
   },
 };
 
