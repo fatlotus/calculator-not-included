@@ -6620,6 +6620,44 @@
           ],
           "power": -240.0,
           "heat": 16.0
+        },
+        {
+          "id": "crushed_cobalt",
+          "name": "Cobalt Ore (100 kg) -> Cobalt (50 kg) + Sand (50 kg) [40s]",
+          "inputs": [
+            {
+              "resource": "Cobalt Ore",
+              "rate": 2500.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Duplicant Labor",
+              "rate": 1.0,
+              "unit": "s/s",
+              "state": "labor",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Cobalt",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            },
+            {
+              "resource": "Sand",
+              "rate": 1250.0,
+              "unit": "g/s",
+              "state": "free",
+              "temp": null
+            }
+          ],
+          "power": -240.0,
+          "heat": 16.0
         }
       ],
       "modifiers": [],

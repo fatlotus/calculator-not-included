@@ -1961,7 +1961,7 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
   const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
   const building = entityMap.get("rock_crusher");
   assert.ok(building, "rock_crusher entity must exist in catalog");
-  assert.strictEqual(building.recipes.length, 14, "Rock Crusher should have 14 recipes");
+  assert.strictEqual(building.recipes.length, 15, "Rock Crusher should have 15 recipes");
 
   // Verify all rock-to-sand crushing recipes
   const rockRecipes = [
@@ -2094,12 +2094,25 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
   assert.strictEqual(tungstenEval.outputs.find((o) => o.resource === "Tungsten").rate, 1250.0);
   assert.strictEqual(tungstenEval.outputs.find((o) => o.resource === "Sand").rate, 1250.0);
 
+  // Evaluate crushed_cobalt recipe
+  const cobaltEval = evaluateRow(
+    { entityId: "rock_crusher", qty: 1, recipeId: "crushed_cobalt" },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(cobaltEval.power, -240.0);
+  assert.strictEqual(cobaltEval.heat, 16.0);
+  assert.strictEqual(cobaltEval.inputs.find((i) => i.resource === "Cobalt Ore").rate, 2500.0);
+  assert.strictEqual(cobaltEval.inputs.find((i) => i.resource === "Duplicant Labor").rate, 1.0);
+  assert.strictEqual(cobaltEval.outputs.find((o) => o.resource === "Cobalt").rate, 1250.0);
+  assert.strictEqual(cobaltEval.outputs.find((o) => o.resource === "Sand").rate, 1250.0);
+
   // URL state round-trip with Rock Crusher recipes
   const urlState = {
     rateMode: "s",
     rows: [
       { entityId: "rock_crusher", qty: 1, recipeId: "crushed_copper", modifiers: [] },
-      { entityId: "rock_crusher", qty: 2, recipeId: "crushed_tungsten", modifiers: [] },
+      { entityId: "rock_crusher", qty: 2, recipeId: "crushed_cobalt", modifiers: [] },
       { entityId: "rock_crusher", qty: 1, recipeId: "igneous_rock_sand", modifiers: [] },
       { entityId: "rock_crusher", qty: 3, recipeId: "sedimentary_rock_sand", modifiers: [] }
     ],
@@ -2112,7 +2125,7 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
   assert.strictEqual(decoded.rows[0].recipeId, "crushed_copper");
   assert.strictEqual(decoded.rows[1].entityId, "rock_crusher");
   assert.strictEqual(decoded.rows[1].qty, 2);
-  assert.strictEqual(decoded.rows[1].recipeId, "crushed_tungsten");
+  assert.strictEqual(decoded.rows[1].recipeId, "crushed_cobalt");
   assert.strictEqual(decoded.rows[2].entityId, "rock_crusher");
   assert.strictEqual(decoded.rows[2].recipeId, "igneous_rock_sand");
   assert.strictEqual(decoded.rows[3].entityId, "rock_crusher");
