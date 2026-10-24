@@ -90,6 +90,7 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
             <option value="plumbed" ${selectedBathroom === "plumbed" ? "selected" : ""}>Plumbed</option>
             <option value="outhouse" ${selectedBathroom === "outhouse" ? "selected" : ""}>Outhouse</option>
             <option value="floor" ${selectedBathroom === "floor" ? "selected" : ""}>Peeing on the floor</option>
+            <option value="none" ${selectedBathroom === "none" ? "selected" : ""}>None</option>
           </select>
         </div>
         <div class="food-wrapper">
@@ -151,7 +152,8 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
     if (m.isMatched) {
       return `<span class="badge-matched" title="Quantity exactly matches available rate">[✓ matched]</span>`;
     }
-    return `<button type="button" class="btn-match-stream" data-row-index="${rowIndex}" data-target-qty="${formattedTarget}" title="Tune row quantity to ${formattedTarget}× to match ${desc}">[match: ${formattedTarget}×]</button>`;
+    const cleanTarget = Math.abs(Math.round(m.targetQty) - m.targetQty) < 1e-9 ? Math.round(m.targetQty) : m.targetQty;
+    return `<button type="button" class="btn-match-stream" data-row-index="${rowIndex}" data-target-qty="${cleanTarget}" title="Tune row quantity to ${formattedTarget}× to match ${desc}">[match: ${formattedTarget}×]</button>`;
   };
 
   // Inputs Column HTML
