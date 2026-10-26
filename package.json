@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Resource Balance Accounting Calculator for Oxygen Not Included",
   "type": "module",
+  "bin": {
+    "calc": "./bin/calc.js"
+  },
   "scripts": {
-    "test": "node tests/test_js_modules.js && node tests/test_url_state_protobuf.js"
+    "test": "node tests/test_js_modules.js && node tests/test_url_state_protobuf.js && node tests/test_cli_snapshots.js",
+    "test:snapshot": "node tests/test_cli_snapshots.js"
   },
   "license": "MIT"
 }

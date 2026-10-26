@@ -1,0 +1,18 @@
+Preset: Drecko Ranch (Reed Fiber) via Balm Lily
+Description: Zero-resource sustainable ranch utilizing regular Dreckos fed by live Balm Lily plants to produce Reed Fiber and Phosphorite in a Chlorine atmosphere.
+Rate Mode: per second (/s)
++=============================================================+=============================+==================================+
+| Machine                                                     | Inputs                      | Outputs                          |
++=============================================================+=============================+==================================+
+| 1× Drecko                                                   | Growth: -1 growth/s (free)  | Phosphorite: +16.67 g/s @ 20 °C  |
+|   [Mode: Balm Lily -> 10 kg/cycle Phosphorite + Reed Fiber] |                             | Reed Fiber: +0.4167 g/s @ 20 °C  |
+|                                                             |                             | Meat: +0.3704 g/s @ 20 °C (free) |
++-------------------------------------------------------------+-----------------------------+----------------------------------+
+| 1× Balm Lily                                                | —                           | Growth: +1 growth/s (free)       |
+|   [Mode: Drecko Grazing / Growth]                           |                             |                                  |
++-------------------------------------------------------------+-----------------------------+----------------------------------+
++=============================================================+=============================+==================================+
+| NET                                                         | None (0 net input required) | Phosphorite: +16.67 g/s @ 20 °C  |
+| System Balance                                              |                             | Reed Fiber: +0.4167 g/s @ 20 °C  |
+|                                                             |                             | Meat: +0.3704 g/s @ 20 °C (free) |
++=============================================================+=============================+==================================+
