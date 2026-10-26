@@ -589,7 +589,8 @@ body {
   color: var(--fg-default);
 }
 
-.btn-match-stream {
+.btn-match-stream,
+.btn-loop-stream {
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
   color: var(--accent-primary);
@@ -603,9 +604,52 @@ body {
   transition: all 0.15s ease;
 }
 
-.btn-match-stream:hover {
+.btn-match-stream:hover,
+.btn-loop-stream:hover {
   background: var(--accent-bg);
   border-color: var(--accent-primary);
+}
+
+.btn-unloop-stream {
+  color: var(--fg-muted);
+}
+
+.btn-unloop-stream:hover {
+  color: #cf222e;
+  border-color: #cf222e;
+  background: var(--bg-subtle);
+}
+
+/* Loop Start & Loop End Rows */
+.loop-row {
+  background: var(--bg-surface);
+}
+
+.loop-start-row {
+  border-bottom: 2px solid var(--border-default);
+}
+
+.loop-end-row {
+  border-top: 2px solid var(--border-default);
+}
+
+.loop-badge-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.loop-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--fg-default);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.loop-subtext {
+  font-size: 11px;
+  color: var(--fg-muted);
 }
 
 .badge-matched {

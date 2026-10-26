@@ -28,7 +28,12 @@ import {
   encodeStateToParam,
   decodeStateFromParam,
 } from "../src/url_state.js";
-import { renderTableRowHtml, renderIcon } from "../src/components/table_row.js";
+import {
+  renderTableRowHtml,
+  renderLoopStartRowHtml,
+  renderLoopEndRowHtml,
+  renderIcon,
+} from "../src/components/table_row.js";
 import { renderNetSummaryRowHtml } from "../src/components/net_summary.js";
 
 console.log("=== Running JavaScript Module Tests ===");
@@ -160,7 +165,7 @@ console.log("=== Running JavaScript Module Tests ===");
   // Fractional Hydra SPOM Net Calculation
   const hydra = getPresetById("hydra_spom");
   const evaluatedHydra = hydra.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-  const net = calculateSystemNet(evaluatedHydra);
+  const net = calculateSystemNet(evaluatedHydra, { loops: hydra.loops });
 
   assert.strictEqual(net.netPower, 698.24);
   assert.strictEqual(net.netBuildingHeat, 6.38);
@@ -182,15 +187,15 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(pWaterOut.rate, 156);
 
   // Check match targets for Gas Pump (index 2)
-  const matches = calculateRowMatchTargets(2, hydra.rows, entityMap);
+  const matches = calculateRowMatchTargets(2, hydra.rows, entityMap, { loops: hydra.loops });
   assert.strictEqual(matches["in:Hydrogen||free"].isMatched, true);
   assert.strictEqual(matches["in:Hydrogen||free"].targetQty, 0.224);
   assert.strictEqual(matches["out:Hydrogen||in a pipe"].isMatched, true);
 
   // --- Thermal Propagation Tests ---
-  // A. Hydra SPOM at default 20 °C gives Electrolyzer outputs @ 70 °C
-  const resolvedDefault = resolveTableTemperatures(hydra.rows, entityMap, elementMap);
-  const elResolved = resolvedDefault[0];
+  // A. Hydra SPOM at default 20 °C gives Electrolyzer outputs @ 70 °C (index 0 = Liquid Pump, index 1 = Electrolyzer)
+  const resolvedDefault = resolveTableTemperatures(hydra.rows, entityMap, elementMap, { loops: hydra.loops });
+  const elResolved = resolvedDefault[1];
   const o2Out = elResolved.outputs.find((o) => o.resource === "Oxygen");
   const h2Out = elResolved.outputs.find((o) => o.resource === "Hydrogen");
   assert.strictEqual(o2Out.tempC, 70);
@@ -205,11 +210,12 @@ console.log("=== Running JavaScript Module Tests ===");
   // B. NET input Water set to 95 °C propagates through Water Pump to Electrolyzer -> outputs @ 95 °C
   const resolved95 = resolveTableTemperatures(hydra.rows, entityMap, elementMap, {
     netInputTemps: { "Water||free": 95, "Water||in a pipe": 95 },
+    loops: hydra.loops,
   });
-  const wpResolved95 = resolved95[1];
+  const wpResolved95 = resolved95[0];
   assert.strictEqual(wpResolved95.outputs[0].tempC, 95);
   assert.strictEqual(wpResolved95.outputs[0].temp, "@ 95 °C");
-  const elResolved95 = resolved95[0];
+  const elResolved95 = resolved95[1];
   const o2Out95 = elResolved95.outputs.find((o) => o.resource === "Oxygen");
   const h2Out95 = elResolved95.outputs.find((o) => o.resource === "Hydrogen");
   assert.strictEqual(o2Out95.tempC, 95);
@@ -350,7 +356,7 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(oilPreset, "Oil refinery preset should exist");
   assert.strictEqual(oilPreset.rows.length, 6);
   const evaluatedOil = oilPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-  const oilNet = calculateSystemNet(evaluatedOil);
+  const oilNet = calculateSystemNet(evaluatedOil, { loops: oilPreset.loops });
   assert.ok(oilNet.netPower > 5000, "Oil refinery power plant should produce > 5000 W net");
 
   // Drecko plastic preset test (Bristle Berry / Bristle Blossom)
@@ -370,7 +376,7 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(dreckoPlantRow.recipeId, "growth", "Bristle Blossom should use growth recipe");
 
   const evalDrecko = dreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-  const dreckoNet = calculateSystemNet(evalDrecko);
+  const dreckoNet = calculateSystemNet(evalDrecko, { loops: dreckoPreset.loops });
   const plasticOut = dreckoNet.netOutputs.find((o) => o.resource === "Plastic");
   assert.ok(plasticOut, "Drecko preset must output Plastic");
   assert.ok(plasticOut.rate > 80, "Plastic output should be > 80 g/s");
@@ -401,7 +407,7 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(balmLilyRow.recipeId, "growth");
 
   const evalRegularDrecko = regularDreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-  const regularDreckoNet = calculateSystemNet(evalRegularDrecko);
+  const regularDreckoNet = calculateSystemNet(evalRegularDrecko, { loops: regularDreckoPreset.loops });
   const reedFiberOut = regularDreckoNet.netOutputs.find((o) => o.resource === "Reed Fiber");
   assert.ok(reedFiberOut, "Drecko preset must output Reed Fiber");
   assert.ok(reedFiberOut.rate > 0.4, "Reed Fiber output should be > 0.4 g/s");
@@ -430,7 +436,7 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(coalSieveRow.qty, 0.2, "Water sieve should be 0.2x");
 
   const evalCoal = coalPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-  const coalNet = calculateSystemNet(evalCoal);
+  const coalNet = calculateSystemNet(evalCoal, { loops: coalPreset.loops });
   assert.strictEqual(coalNet.netPower, 8712, "Coal skimmer loop should produce 8712 W net power");
   // All intermediate loop resources cancel to zero
   assert.strictEqual(coalNet.netOutputs.find((o) => o.resource === "Carbon Dioxide"), undefined);
@@ -448,7 +454,7 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(arborPumpRow.qty, 0.6, "Arbor gas pump should be 0.6x to match 1x carbon skimmer");
   assert.strictEqual(arborPumpRow.recipeId, "carbon_dioxide");
   const evalArbor = arborPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-  const arborNet = calculateSystemNet(evalArbor);
+  const arborNet = calculateSystemNet(evalArbor, { loops: arborPreset.loops });
   // Piped CO2 from gas pump is fully consumed by carbon skimmer
   assert.strictEqual(arborNet.netOutputs.find((o) => o.resource === "Carbon Dioxide" && o.state === "in a pipe"), undefined);
 
@@ -464,7 +470,7 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(ngPumpRow.qty, 0.21, "Gas pump should use fractional 0.21 qty");
 
   const evalNG = ngPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-  const ngNet = calculateSystemNet(evalNG);
+  const ngNet = calculateSystemNet(evalNG, { loops: ngPreset.loops });
   assert.ok(ngNet.netPower > 850, "Natural gas geyser preset should produce > 850 W net power");
 
   const ngFreeGasOut = ngNet.netOutputs.find((o) => o.resource === "Natural Gas" && o.state === "free");
@@ -491,11 +497,11 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.ok(freeWaterOutput, "Free water must be produced as an output");
   assert.strictEqual(freeWaterOutput.rate, 3000);
 
-  // When a liquid pump is added, it converts free water to in-pipe water to satisfy the electrolyzer
+  // When a liquid pump is added between the geyser and electrolyzer, it converts free water to in-pipe water to satisfy the electrolyzer
   const pumpRows = [
     { entityId: "geyser_water_geyser", qty: 1, recipeId: null, modifiers: [] },
-    { entityId: "electrolyzer", qty: 1, recipeId: null, modifiers: [] },
     { entityId: "liquid_pump", qty: 0.1, recipeId: "water", modifiers: [] }, // 1000 g/s pump
+    { entityId: "electrolyzer", qty: 1, recipeId: null, modifiers: [] },
   ];
   const evalPumpRows = pumpRows.map((r) => evaluateRow(r, entityMap, elementMap));
   const pumpNet = calculateSystemNet(evalPumpRows);
@@ -713,7 +719,9 @@ console.log("=== Running JavaScript Module Tests ===");
   const evalGrillMatched = evaluateRow({ entityId: "electric_grill", qty: 0.16668, recipeId: "barbecue" }, entityMap, elementMap);
   const evalDupes8 = evaluateRow({ entityId: "duplicant", qty: 8, food: "barbecue" }, entityMap, elementMap);
 
-  const foodNet = calculateSystemNet([evalHatches12, evalGrillMatched, evalDupes8]);
+  const foodNet = calculateSystemNet([evalHatches12, evalGrillMatched, evalDupes8], {
+    loops: [{ resource: "Duplicant Labor", state: "labor", rate: 0.16668, unit: "s/s" }],
+  });
   const netMeatRemain = foodNet.netInputs.find((i) => i.resource === "Meat") || foodNet.netOutputs.find((o) => o.resource === "Meat");
   const netBbqRemain = foodNet.netInputs.find((i) => i.resource === "Barbecue") || foodNet.netOutputs.find((o) => o.resource === "Barbecue");
   assert.ok(!netMeatRemain || Math.abs(netMeatRemain.rate) < 0.001, "Meat completely balances out in 12 Stone Hatches -> 0.1667 Grill -> 8 Duplicants chain");
@@ -800,7 +808,7 @@ console.log("=== Running JavaScript Module Tests ===");
   assert.strictEqual(calOutText, "Calories: +199.98 kcal/cycle (free)");
 
   // calculateSystemNet
-  const net = calculateSystemNet([evaluatedDupe, evaluatedMealwood]);
+  const net = calculateSystemNet([evaluatedMealwood, evaluatedDupe]);
   const netLabor = net.netOutputs.find((o) => o.resource === "Duplicant Labor");
   assert.ok(netLabor, "System net outputs should contain Duplicant Labor");
   assert.strictEqual(netLabor.tempC, undefined, "Net Duplicant Labor output must not have tempC");
@@ -981,7 +989,7 @@ console.log("=== Running JavaScript Module Tests ===");
   const oilPreset = getPresetById("oil_refinery_petroleum_loop");
   assert.ok(oilPreset, "Oil refinery preset should exist");
   const evalOil = oilPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-  const oilNet = calculateSystemNet(evalOil, { elementMap });
+  const oilNet = calculateSystemNet(evalOil, { elementMap, loops: oilPreset.loops });
 
   const laborInNet = oilNet.netInputs.find((i) => i.resource === "Duplicant Labor");
   const laborOutNet = oilNet.netOutputs.find((o) => o.resource === "Duplicant Labor");
@@ -2385,14 +2393,14 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
   assert.strictEqual(pwOut.tempC, 20.0, "Carbon skimmer Polluted Water output temp must inherit Water inlet temp (20 °C), not blend 110 °C CO2");
   assert.strictEqual(pwOut.temp, "@ 20 °C");
 
-  // C. End-to-end Closed Loop Matching and Thermal Stability (User Scenario: Hatch + Coal Gen + Grill + Dupes + Skimmer + Pump + Sieve)
+  // C. End-to-end Closed Loop Matching and Thermal Stability (User Scenario: Hatch + Coal Gen + Grill + Dupes + Pump + Skimmer + Sieve)
   const loopRows = [
     { entityId: "critter_stone_hatch", qty: 1, recipeId: "igneous_rock", modifiers: [], food: "calories" },
     { entityId: "coal_generator", qty: 1, recipeId: null, modifiers: [], food: "calories" },
     { entityId: "electric_grill", qty: 1, recipeId: "barbecue", modifiers: [], food: "calories" },
     { entityId: "duplicant", qty: 1, recipeId: null, modifiers: [], bathroom: "none", food: "barbecue" },
-    { entityId: "carbon_skimmer", qty: 1, recipeId: null, modifiers: [], food: "calories" },
     { entityId: "gas_pump", qty: 1, recipeId: "carbon_dioxide", modifiers: [], food: "calories" },
+    { entityId: "carbon_skimmer", qty: 1, recipeId: null, modifiers: [], food: "calories" },
     { entityId: "water_sieve", qty: 1, recipeId: "sand", modifiers: [], food: "calories" },
   ];
 
@@ -2412,23 +2420,29 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
   loopRows[3].qty = t3["in:Barbecue||free"].targetQty;
 
   // Match 4: Gas Pump to Coal Gen + Dupe CO2 (free)
-  const t5 = calculateRowMatchTargets(5, loopRows, entityMap);
-  assert.ok(t5["in:Carbon Dioxide||free"], "Gas Pump should have in:Carbon Dioxide match target");
-  loopRows[5].qty = t5["in:Carbon Dioxide||free"].targetQty;
+  const t4 = calculateRowMatchTargets(4, loopRows, entityMap);
+  assert.ok(t4["in:Carbon Dioxide||free"], "Gas Pump should have in:Carbon Dioxide match target");
+  loopRows[4].qty = t4["in:Carbon Dioxide||free"].targetQty;
 
   // Match 5: Carbon Skimmer to piped CO2
-  const t4 = calculateRowMatchTargets(4, loopRows, entityMap);
-  assert.ok(t4["in:Carbon Dioxide||in a pipe"], "Carbon Skimmer should have in:Carbon Dioxide match target");
-  loopRows[4].qty = t4["in:Carbon Dioxide||in a pipe"].targetQty;
+  const t5 = calculateRowMatchTargets(5, loopRows, entityMap);
+  assert.ok(t5["in:Carbon Dioxide||in a pipe"], "Carbon Skimmer should have in:Carbon Dioxide match target");
+  loopRows[5].qty = t5["in:Carbon Dioxide||in a pipe"].targetQty;
 
   // Match 6: Water Sieve to Polluted Water from Carbon Skimmer
   const t6 = calculateRowMatchTargets(6, loopRows, entityMap);
   assert.ok(t6["in:Polluted Water||in a pipe"], "Water Sieve should have in:Polluted Water match target");
   loopRows[6].qty = t6["in:Polluted Water||in a pipe"].targetQty;
 
+  // Configure explicit loop streams for Water (in a pipe) and Duplicant Labor (consumed by Grill before Dupes produce it)
+  const closedLoops = [
+    { resource: "Water", state: "in a pipe", rate: 5000.0 * loopRows[6].qty, unit: "g/s", tempC: 20.0 },
+    { resource: "Duplicant Labor", state: "labor", rate: 1.0 * loopRows[2].qty, unit: "s/s" },
+  ];
+
   // Evaluate thermal propagation and system net
-  const evaluatedLoop = resolveTableTemperatures(loopRows, entityMap, elementMap);
-  const netLoop = calculateSystemNet(evaluatedLoop);
+  const evaluatedLoop = resolveTableTemperatures(loopRows, entityMap, elementMap, {}, { loops: closedLoops });
+  const netLoop = calculateSystemNet(evaluatedLoop, { loops: closedLoops, elementMap });
 
   // Intermediate resources (Coal, Meat, Barbecue, Carbon Dioxide, Water, Polluted Water) must be 100% matched with 0 net residue
   assert.strictEqual(netLoop.netInputs.find((i) => i.resource === "Coal"), undefined, "Coal must not appear in net inputs");
@@ -2445,44 +2459,71 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
   assert.strictEqual(netLoop.netOutputs.find((o) => o.resource === "Polluted Water"), undefined, "Polluted Water must not appear in net outputs");
 
   // Check that all match targets in the closed loop report isMatched: true
-  const finalMatches0 = calculateRowMatchTargets(0, loopRows, entityMap);
+  const finalMatches0 = calculateRowMatchTargets(0, loopRows, entityMap, { loops: closedLoops });
   assert.strictEqual(finalMatches0["out:Coal||free"].isMatched, true);
   assert.strictEqual(finalMatches0["out:Meat||free"].isMatched, true);
 
-  const finalMatches1 = calculateRowMatchTargets(1, loopRows, entityMap);
+  const finalMatches1 = calculateRowMatchTargets(1, loopRows, entityMap, { loops: closedLoops });
   assert.strictEqual(finalMatches1["in:Coal||free"].isMatched, true);
   assert.strictEqual(finalMatches1["out:Carbon Dioxide||free"].isMatched, true);
 
-  const finalMatches2 = calculateRowMatchTargets(2, loopRows, entityMap);
+  const finalMatches2 = calculateRowMatchTargets(2, loopRows, entityMap, { loops: closedLoops });
   assert.strictEqual(finalMatches2["in:Meat||free"].isMatched, true);
   assert.strictEqual(finalMatches2["out:Barbecue||free"].isMatched, true);
 
-  const finalMatches3 = calculateRowMatchTargets(3, loopRows, entityMap);
+  const finalMatches3 = calculateRowMatchTargets(3, loopRows, entityMap, { loops: closedLoops });
   assert.strictEqual(finalMatches3["in:Barbecue||free"].isMatched, true);
   assert.strictEqual(finalMatches3["out:Carbon Dioxide||free"].isMatched, true);
 
-  const finalMatches4 = calculateRowMatchTargets(4, loopRows, entityMap);
-  assert.strictEqual(finalMatches4["in:Water||in a pipe"].isMatched, true);
-  assert.strictEqual(finalMatches4["in:Carbon Dioxide||in a pipe"].isMatched, true);
-  assert.strictEqual(finalMatches4["out:Polluted Water||in a pipe"].isMatched, true);
+  const finalMatches4 = calculateRowMatchTargets(4, loopRows, entityMap, { loops: closedLoops });
+  assert.strictEqual(finalMatches4["in:Carbon Dioxide||free"].isMatched, true);
+  assert.strictEqual(finalMatches4["out:Carbon Dioxide||in a pipe"].isMatched, true);
 
-  const finalMatches5 = calculateRowMatchTargets(5, loopRows, entityMap);
-  assert.strictEqual(finalMatches5["in:Carbon Dioxide||free"].isMatched, true);
-  assert.strictEqual(finalMatches5["out:Carbon Dioxide||in a pipe"].isMatched, true);
+  const finalMatches5 = calculateRowMatchTargets(5, loopRows, entityMap, { loops: closedLoops });
+  assert.strictEqual(finalMatches5["in:Water||in a pipe"].isMatched, true);
+  assert.strictEqual(finalMatches5["in:Carbon Dioxide||in a pipe"].isMatched, true);
+  assert.strictEqual(finalMatches5["out:Polluted Water||in a pipe"].isMatched, true);
 
-  const finalMatches6 = calculateRowMatchTargets(6, loopRows, entityMap);
+  const finalMatches6 = calculateRowMatchTargets(6, loopRows, entityMap, { loops: closedLoops });
   assert.strictEqual(finalMatches6["in:Polluted Water||in a pipe"].isMatched, true);
   assert.strictEqual(finalMatches6["out:Water||in a pipe"].isMatched, true);
 
   // Water loop thermal temperature must remain stable at 20 °C
-  const csWaterIn = evaluatedLoop[4].inputs.find((i) => i.resource === "Water");
-  const csPwOut = evaluatedLoop[4].outputs.find((o) => o.resource === "Polluted Water");
+  const csWaterIn = evaluatedLoop[5].inputs.find((i) => i.resource === "Water");
+  const csPwOut = evaluatedLoop[5].outputs.find((o) => o.resource === "Polluted Water");
   const wsPwIn = evaluatedLoop[6].inputs.find((i) => i.resource === "Polluted Water");
   const wsWaterOut = evaluatedLoop[6].outputs.find((o) => o.resource === "Water");
   assert.strictEqual(Math.round(csWaterIn.tempC * 10) / 10, 20.0, "Water loop feed into Carbon Skimmer must be 20 °C");
   assert.strictEqual(Math.round(csPwOut.tempC * 10) / 10, 20.0, "Polluted Water output from Carbon Skimmer must be 20 °C");
   assert.strictEqual(Math.round(wsPwIn.tempC * 10) / 10, 20.0, "Polluted Water feed into Water Sieve must be 20 °C");
   assert.strictEqual(Math.round(wsWaterOut.tempC * 10) / 10, 20.0, "Water output from Water Sieve must be 20 °C");
+
+  // D. Top-to-bottom order sensitivity and Loop Start / Loop End rendering
+  // Placing Coal Generator (consumer of Coal) above Stone Hatch (producer of Coal) without a loop must NOT cancel Coal
+  const reversedCoalRows = [
+    evaluateRow({ entityId: "coal_generator", qty: 1 }, entityMap, elementMap),
+    evaluateRow({ entityId: "critter_stone_hatch", qty: 8.5714, recipeId: "igneous_rock" }, entityMap, elementMap),
+  ];
+  const reversedCoalNet = calculateSystemNet(reversedCoalRows);
+  assert.ok(reversedCoalNet.netInputs.some((i) => i.resource === "Coal"), "Consumer above producer without loop must leave Coal in netInputs");
+  assert.ok(reversedCoalNet.netOutputs.some((o) => o.resource === "Coal"), "Consumer above producer without loop must leave Coal in netOutputs");
+
+  // Loop Start and Loop End HTML rendering
+  assert.strictEqual(renderLoopStartRowHtml([], elementMap, "s"), "", "Empty loopStartStreams must render empty string");
+  assert.strictEqual(renderLoopEndRowHtml([], elementMap, "s"), "", "Empty loopEndStreams must render empty string");
+  const loopStartHtml = renderLoopStartRowHtml(netLoop.loopStartStreams, elementMap, "s");
+  const loopEndHtml = renderLoopEndRowHtml(netLoop.loopEndStreams, elementMap, "s");
+  assert.ok(loopStartHtml.includes("Loop Start"), "Loop Start HTML must include Loop Start label");
+  assert.ok(loopStartHtml.includes("[unloop]"), "Loop Start HTML must include [unloop] link");
+  assert.ok(loopEndHtml.includes("Loop End"), "Loop End HTML must include Loop End label");
+  assert.ok(loopEndHtml.includes("[unloop]"), "Loop End HTML must include [unloop] link");
+  assert.ok(loopEndHtml.includes("@ 20 °C"), "Loop End HTML must display arriving temperature on thermal stream");
+
+  // Output stream [loop] and [unloop] button rendering on machine rows
+  const sieveHtmlUnlooped = renderTableRowHtml(loopRows[6], evaluatedLoop[6], elementMap, "s", 6, {}, 7, []);
+  assert.ok(sieveHtmlUnlooped.includes("[loop]"), "Unlooped machine output must render [loop] link");
+  const sieveHtmlLooped = renderTableRowHtml(loopRows[6], evaluatedLoop[6], elementMap, "s", 6, {}, 7, closedLoops);
+  assert.ok(sieveHtmlLooped.includes("[unloop]"), "Looped machine output must render [unloop] link");
 
   console.log("✓ Closed Loop Matching, Unrounded Match Precision, and Thermal Isolation tests passed");
 }

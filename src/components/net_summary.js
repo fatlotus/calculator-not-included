@@ -20,11 +20,12 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
 
   // NET Inputs list
   const inputLines = [];
-  if (net.netPower < -1e-4) {
+  const powerIn = net.netPowerIn !== undefined ? net.netPowerIn : (net.netPower < -1e-4 ? Math.abs(net.netPower) : 0);
+  if (powerIn > 1e-4) {
     inputLines.push(`
       <div class="stream-line net-stream net-power-neg">
         ${renderIcon(powerIcon, "Power", "stream-icon")}
-        <span class="stream-text">Power: -${formatNumber(Math.abs(net.netPower))} W</span>
+        <span class="stream-text">Power: -${formatNumber(powerIn)} W</span>
       </div>
     `);
   }
@@ -93,11 +94,12 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
       </div>
     `);
   }
-  if (net.netPower > 1e-4) {
+  const powerOut = net.netPowerOut !== undefined ? net.netPowerOut : (net.netPower > 1e-4 ? net.netPower : 0);
+  if (powerOut > 1e-4) {
     outputLines.push(`
       <div class="stream-line net-stream net-power-pos">
         ${renderIcon(powerIcon, "Power", "stream-icon")}
-        <span class="stream-text">Power: +${formatNumber(net.netPower)} W</span>
+        <span class="stream-text">Power: +${formatNumber(powerOut)} W</span>
       </div>
     `);
   }

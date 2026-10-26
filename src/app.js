@@ -11,7 +11,11 @@ import {
 } from "./calculator.js";
 import { PRESETS, getPresetById } from "./presets.js";
 import { syncStateToUrl, loadStateFromUrl } from "./url_state.js";
-import { renderTableRowHtml } from "./components/table_row.js";
+import {
+  renderTableRowHtml,
+  renderLoopStartRowHtml,
+  renderLoopEndRowHtml,
+} from "./components/table_row.js";
 import { renderNetSummaryRowHtml } from "./components/net_summary.js";
 import { AutocompleteComponent } from "./components/autocomplete.js";
 
@@ -22,6 +26,7 @@ class OniApp {
       rateMode: "s",
       rows: [],
       netInputTemps: {},
+      loops: [],
     };
     this.autocomplete = null;
     this.theme = localStorage.getItem("onimath_theme") || "auto";
@@ -60,11 +65,12 @@ class OniApp {
   initState() {
     const hasUrlParam = typeof window !== "undefined" && window.location && new URLSearchParams(window.location.search).has("s");
     const urlState = loadStateFromUrl();
-    if (urlState && (urlState.rows?.length > 0 || hasUrlParam)) {
+    if (urlState && (urlState.rows?.length > 0 || urlState.loops?.length > 0 || hasUrlParam)) {
       this.state = {
         rateMode: urlState.rateMode || "s",
         rows: urlState.rows || [],
         netInputTemps: urlState.netInputTemps || {},
+        loops: urlState.loops || [],
       };
     } else {
       const def = PRESETS[0];
@@ -72,6 +78,7 @@ class OniApp {
         rateMode: def.rateMode || "s",
         rows: JSON.parse(JSON.stringify(def.rows)),
         netInputTemps: def.netInputTemps ? JSON.parse(JSON.stringify(def.netInputTemps)) : {},
+        loops: def.loops ? JSON.parse(JSON.stringify(def.loops)) : [],
       };
     }
   }
@@ -107,6 +114,7 @@ class OniApp {
           this.state.rateMode = preset.rateMode || "s";
           this.state.rows = JSON.parse(JSON.stringify(preset.rows));
           this.state.netInputTemps = preset.netInputTemps ? JSON.parse(JSON.stringify(preset.netInputTemps)) : {};
+          this.state.loops = preset.loops ? JSON.parse(JSON.stringify(preset.loops)) : [];
           this.onStateChange();
           presetSelect.value = "";
         }
@@ -256,6 +264,45 @@ class OniApp {
           return;
         }
 
+        const unloopBtn = e.target.closest(".btn-unloop-stream");
+        if (unloopBtn) {
+          const resource = unloopBtn.dataset.resource;
+          const state = unloopBtn.dataset.state || "free";
+          if (resource) {
+            this.state.loops = (this.state.loops || []).filter(
+              (l) => !(l.resource === resource && (l.state || "free") === state)
+            );
+            this.onStateChange(true);
+          }
+          return;
+        }
+
+        const loopBtn = e.target.closest(".btn-loop-stream");
+        if (loopBtn) {
+          const resource = loopBtn.dataset.resource;
+          const state = loopBtn.dataset.state || "free";
+          const rate = parseFloat(loopBtn.dataset.rate);
+          const unit = loopBtn.dataset.unit || "";
+          const tempRaw = loopBtn.dataset.temp;
+          if (resource && !isNaN(rate) && rate > 0) {
+            const loopObj = { resource, state, rate, unit };
+            if (tempRaw !== undefined && tempRaw !== "" && !isNaN(parseFloat(tempRaw))) {
+              loopObj.tempC = parseFloat(tempRaw);
+            }
+            if (!Array.isArray(this.state.loops)) this.state.loops = [];
+            const existingIdx = this.state.loops.findIndex(
+              (l) => l && l.resource === resource && (l.state || "free") === state
+            );
+            if (existingIdx >= 0) {
+              this.state.loops[existingIdx] = loopObj;
+            } else {
+              this.state.loops.push(loopObj);
+            }
+            this.onStateChange(true);
+          }
+          return;
+        }
+
         const delBtn = e.target.closest(".btn-delete-row");
         if (delBtn) {
           const idx = parseInt(delBtn.dataset.rowIndex, 10);
@@ -381,22 +428,57 @@ class OniApp {
       this.catalog.elementMap,
       {
         netInputTemps: this.state.netInputTemps,
+        loops: this.state.loops,
       }
     );
 
     const net = calculateSystemNet(evaluatedRows, {
       elementMap: this.catalog.elementMap,
       netInputTemps: this.state.netInputTemps,
+      loops: this.state.loops,
     });
 
-    tbody.innerHTML = evaluatedRows
+    const loopStartHtml = renderLoopStartRowHtml(
+      net.loopStartStreams,
+      this.catalog.elementMap,
+      this.state.rateMode
+    );
+
+    const machineRowsHtml = evaluatedRows
       .map((ev, i) => {
-        const matches = calculateRowMatchTargets(i, this.state.rows, this.catalog.entityMap);
-        return renderTableRowHtml(this.state.rows[i], ev, this.catalog.elementMap, this.state.rateMode, i, matches, evaluatedRows.length);
+        const matches = calculateRowMatchTargets(i, this.state.rows, this.catalog.entityMap, {
+          loops: this.state.loops,
+        });
+        return renderTableRowHtml(
+          this.state.rows[i],
+          ev,
+          this.catalog.elementMap,
+          this.state.rateMode,
+          i,
+          matches,
+          evaluatedRows.length,
+          this.state.loops
+        );
       })
       .join("");
 
+    const loopEndHtml = renderLoopEndRowHtml(
+      net.loopEndStreams,
+      this.catalog.elementMap,
+      this.state.rateMode
+    );
+
+    tbody.innerHTML = loopStartHtml + machineRowsHtml;
+
     if (this.autocomplete) tbody.appendChild(this.autocomplete.render());
+
+    if (loopEndHtml) {
+      const dummy = document.createElement("tbody");
+      dummy.innerHTML = loopEndHtml;
+      if (dummy.firstElementChild) {
+        tbody.appendChild(dummy.firstElementChild);
+      }
+    }
 
     const tfoot = document.getElementById("calc-table-foot");
     if (tfoot) {
@@ -416,27 +498,54 @@ class OniApp {
       this.catalog.elementMap,
       {
         netInputTemps: this.state.netInputTemps,
+        loops: this.state.loops,
       }
     );
 
     const net = calculateSystemNet(evaluatedRows, {
       elementMap: this.catalog.elementMap,
       netInputTemps: this.state.netInputTemps,
+      loops: this.state.loops,
     });
 
     const rows = document.querySelectorAll(".calc-row");
     rows.forEach((tr, i) => {
       const ev = evaluatedRows[i];
       if (!ev) return;
-      const matches = calculateRowMatchTargets(i, this.state.rows, this.catalog.entityMap);
+      const matches = calculateRowMatchTargets(i, this.state.rows, this.catalog.entityMap, {
+        loops: this.state.loops,
+      });
       const dummy = document.createElement("tbody");
-      dummy.innerHTML = renderTableRowHtml(this.state.rows[i], ev, this.catalog.elementMap, this.state.rateMode, i, matches, evaluatedRows.length);
+      dummy.innerHTML = renderTableRowHtml(
+        this.state.rows[i],
+        ev,
+        this.catalog.elementMap,
+        this.state.rateMode,
+        i,
+        matches,
+        evaluatedRows.length,
+        this.state.loops
+      );
       const newTr = dummy.firstElementChild;
       if (newTr) {
         tr.querySelector(".col-inputs").innerHTML = newTr.querySelector(".col-inputs").innerHTML;
         tr.querySelector(".col-outputs").innerHTML = newTr.querySelector(".col-outputs").innerHTML;
       }
     });
+
+    const loopEndTr = document.querySelector(".loop-end-row");
+    if (loopEndTr) {
+      const dummy = document.createElement("tbody");
+      dummy.innerHTML = renderLoopEndRowHtml(
+        net.loopEndStreams,
+        this.catalog.elementMap,
+        this.state.rateMode
+      );
+      const newEndTr = dummy.firstElementChild;
+      if (newEndTr) {
+        loopEndTr.querySelector(".col-inputs").innerHTML = newEndTr.querySelector(".col-inputs").innerHTML;
+      }
+    }
 
     const tfoot = document.getElementById("calc-table-foot");
     if (tfoot) {

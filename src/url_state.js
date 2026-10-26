@@ -19,7 +19,12 @@
  */
 
 import protobuf from "./lib/protobuf.js";
-import { getDefaultElementTemp } from "./calculator.js";
+import {
+  getDefaultElementTemp,
+  getResourceDefaultUnit,
+  getResourceDefaultState,
+  isNonThermalResource,
+} from "./calculator.js";
 import {
   CalculatorStateType,
   ENTITY_TO_ENUM,
@@ -34,6 +39,8 @@ import {
   ENUM_TO_BATHROOM,
   FOOD_TO_ENUM,
   ENUM_TO_FOOD,
+  STREAM_STATE_TO_ENUM,
+  ENUM_TO_STREAM_STATE,
   ENTITY_ALIASES,
 } from "./proto_catalog.js";
 
@@ -203,10 +210,49 @@ export function encodeStateToProtobuf(state, elementMap = null) {
         seenCombos.add(comboKey);
         pbNetTemps.push({
           element: elemEnum,
-          state: stateName === "in a pipe" ? 1 : 0,
+          state: STREAM_STATE_TO_ENUM.get(stateName) ?? 0,
           temperature: numVal,
         });
       }
+    }
+  }
+
+  // repeated LoopedStream
+  const pbLoops = [];
+  if (Array.isArray(state.loops)) {
+    const seenLoopCombos = new Set();
+    for (const loop of state.loops) {
+      if (!loop || !loop.resource) continue;
+      const rateVal = Number(loop.rate);
+      if (!Number.isFinite(rateVal) || rateVal <= 0) continue;
+
+      const elemEnum = ELEMENT_TO_ENUM.get(loop.resource);
+      if (!elemEnum) continue;
+
+      const stateName = loop.state || getResourceDefaultState(loop.resource);
+      const stateEnum = STREAM_STATE_TO_ENUM.get(stateName) ?? 0;
+
+      const comboKey = `${elemEnum}:${stateEnum}`;
+      if (seenLoopCombos.has(comboKey)) continue;
+      seenLoopCombos.add(comboKey);
+
+      const pbLoop = {
+        element: elemEnum,
+        state: stateEnum,
+        rate: rateVal,
+      };
+
+      const unit = loop.unit || getResourceDefaultUnit(loop.resource);
+      if (
+        !isNonThermalResource(loop.resource, unit) &&
+        loop.tempC !== undefined &&
+        loop.tempC !== null &&
+        Number.isFinite(Number(loop.tempC))
+      ) {
+        pbLoop.temperature = Number(loop.tempC);
+      }
+
+      pbLoops.push(pbLoop);
     }
   }
 
@@ -215,6 +261,7 @@ export function encodeStateToProtobuf(state, elementMap = null) {
     rateMode: isCycle ? 1 : 0,
     rows: pbRows,
     netTemperatures: pbNetTemps,
+    loops: pbLoops,
   };
 
   const message = CalculatorStateType.create(payload);
@@ -233,6 +280,7 @@ export function decodeStateFromProtobuf(bytes) {
     unit: "s",
     rows: [],
     netInputTemps: {},
+    loops: [],
   };
 
   if (!bytes || bytes.length === 0) {
@@ -315,7 +363,7 @@ export function decodeStateFromProtobuf(bytes) {
     for (const entry of decoded.netTemperatures) {
       const elementName = ENUM_TO_ELEMENT[entry.element];
       if (!elementName) continue;
-      const pipeState = entry.state === 1 ? "in a pipe" : "free";
+      const pipeState = ENUM_TO_STREAM_STATE[entry.state] || "free";
       const tempVal = Number(entry.temperature);
       if (Number.isFinite(tempVal)) {
         netInputTemps[`${elementName}||${pipeState}`] = tempVal;
@@ -324,11 +372,43 @@ export function decodeStateFromProtobuf(bytes) {
     }
   }
 
+  const loops = [];
+  if (Array.isArray(decoded.loops)) {
+    for (const entry of decoded.loops) {
+      const elementName = ENUM_TO_ELEMENT[entry.element];
+      if (!elementName) continue;
+      const rateVal = Number(entry.rate);
+      if (!Number.isFinite(rateVal) || rateVal <= 0) continue;
+      const pipeState = ENUM_TO_STREAM_STATE[entry.state] || getResourceDefaultState(elementName);
+      const unit = getResourceDefaultUnit(elementName);
+      const loopObj = {
+        resource: elementName,
+        state: pipeState,
+        rate: rateVal,
+        unit,
+      };
+      if (
+        !isNonThermalResource(elementName, unit) &&
+        entry.temperature !== undefined &&
+        entry.temperature !== null &&
+        Number.isFinite(Number(entry.temperature))
+      ) {
+        loopObj.tempC = Number(entry.temperature);
+      } else if (!isNonThermalResource(elementName, unit)) {
+        loopObj.tempC = getDefaultElementTemp(elementName, null);
+      }
+      loops.push(loopObj);
+    }
+  }
+
+  Object.defineProperty(rows, "_loops", { value: loops, enumerable: false, writable: true });
+
   return {
     rateMode,
     unit: rateMode,
     rows,
     netInputTemps,
+    loops,
   };
 }
 
@@ -344,8 +424,9 @@ export function encodeStateToParam(state, elementMap = null) {
 
   const hasRows = Array.isArray(state.rows) && state.rows.some((r) => r && r.entityId);
   const hasCustomTemps = state.netInputTemps && Object.keys(state.netInputTemps).length > 0;
+  const hasLoops = Array.isArray(state.loops) && state.loops.some((l) => l && l.resource && Number(l.rate) > 0);
   const isCycle = (state.rateMode || state.unit) === "c";
-  if (!hasRows && !hasCustomTemps && !isCycle) {
+  if (!hasRows && !hasCustomTemps && !hasLoops && !isCycle) {
     return "";
   }
 
@@ -366,6 +447,7 @@ export function decodeStateFromParam(paramStr) {
     unit: "s",
     rows: [],
     netInputTemps: {},
+    loops: [],
   };
 
   if (!paramStr || typeof paramStr !== "string") {

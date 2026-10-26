@@ -1,6 +1,7 @@
 /**
  * Built-in system presets for ONI Resource Calculator.
- * Features fractional machine utilization (e.g. 0.1x Water Pump, 0.224x Gas Pump).
+ * Features fractional machine utilization (e.g. 0.1x Water Pump, 0.224x Gas Pump)
+ * and top-to-bottom resource flow with explicit loop start/end streams.
  */
 
 export const PRESETS = [
@@ -9,9 +10,12 @@ export const PRESETS = [
     name: "Hydra SPOM",
     description: "Self-Powered Oxygen Machine supporting 8 duplicants with net surplus hydrogen and power.",
     rateMode: "s",
+    loops: [
+      { resource: "Power", state: "free", rate: 896, unit: "W" },
+    ],
     rows: [
-      { entityId: "electrolyzer", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "liquid_pump", qty: 0.1, recipeId: "water", modifiers: [] },
+      { entityId: "electrolyzer", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "gas_pump", qty: 0.224, recipeId: "hydrogen", modifiers: [] },
       { entityId: "hydrogen_generator", qty: 1.12, recipeId: null, modifiers: [] },
       { entityId: "duplicant", qty: 8, recipeId: null, modifiers: [], bathroom: "plumbed", food: "none" },
@@ -22,6 +26,9 @@ export const PRESETS = [
     name: "Coal Generator + Carbon Skimmer Loop",
     description: "Continuous 9 kW power generation with closed-loop CO2 scrubbing and water filtration.",
     rateMode: "s",
+    loops: [
+      { resource: "Water", state: "in a pipe", rate: 1000, unit: "g/s", tempC: 20 },
+    ],
     rows: [
       { entityId: "coal_generator", qty: 15, recipeId: null, modifiers: [] },
       { entityId: "gas_pump", qty: 0.6, recipeId: "carbon_dioxide", modifiers: [] },
@@ -34,6 +41,9 @@ export const PRESETS = [
     name: "Stone Hatch Ranch (8x) + Coal Power",
     description: "Sustainable ranch of 8 stone hatches consuming igneous rock to feed a coal generator and 8 duplicants.",
     rateMode: "s",
+    loops: [
+      { resource: "Duplicant Labor", state: "labor", rate: 6, unit: "s/s" },
+    ],
     rows: [
       { entityId: "critter_stone_hatch", qty: 8, recipeId: "igneous_rock", modifiers: [] },
       { entityId: "coal_generator", qty: 1, recipeId: null, modifiers: [] },
@@ -46,6 +56,10 @@ export const PRESETS = [
     name: "Arbor Tree Ethanol Power Loop",
     description: "Closed-loop wood and ethanol cycle producing massive net power, polluted water, and dirt.",
     rateMode: "s",
+    loops: [
+      { resource: "Polluted Water", state: "in a pipe", rate: 1000, unit: "g/s", tempC: 20 },
+      { resource: "Power", state: "free", rate: 2000, unit: "W" },
+    ],
     rows: [
       { entityId: "plant_arbor_tree", qty: 8, recipeId: null, modifiers: [] },
       { entityId: "ethanol_distiller", qty: 4, recipeId: null, modifiers: [] },
@@ -59,6 +73,9 @@ export const PRESETS = [
     name: "Natural Gas Geyser Power Plant",
     description: "Harvesting a natural gas geyser (105 g/s) with fractional gas pump (0.21x) and generator (1.1667x) for 100% fuel efficiency and clean power generation.",
     rateMode: "s",
+    loops: [
+      { resource: "Power", state: "free", rate: 933.36, unit: "W" },
+    ],
     rows: [
       { entityId: "geyser_natural_gas_geyser", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "gas_pump", qty: 0.21, recipeId: "natural_gas", modifiers: [] },
@@ -70,13 +87,16 @@ export const PRESETS = [
     name: "Oil Refinery + Petroleum Power Plant",
     description: "Refines 10 kg/s Crude Oil into Petroleum and Natural Gas, supporting 5 kW continuous power generation.",
     rateMode: "s",
+    loops: [
+      { resource: "Power", state: "free", rate: 5000, unit: "W" },
+    ],
     rows: [
-      { entityId: "oil_refinery", qty: 1, recipeId: null, modifiers: [] },
+      { entityId: "duplicant", qty: 1.3333, recipeId: "schedule_default", modifiers: [], bathroom: "plumbed", food: "none" },
       { entityId: "liquid_pump", qty: 1, recipeId: "crude_oil", modifiers: [] },
+      { entityId: "oil_refinery", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "gas_pump", qty: 0.18, recipeId: "natural_gas", modifiers: [] },
       { entityId: "natural_gas_generator", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "petroleum_generator", qty: 2.5, recipeId: "petroleum", modifiers: [] },
-      { entityId: "duplicant", qty: 1.3333, recipeId: "schedule_default", modifiers: [], bathroom: "plumbed", food: "none" },
     ],
   },
   {
@@ -84,9 +104,10 @@ export const PRESETS = [
     name: "Glossy Drecko Plastic via Bristle Berry",
     description: "Renewable plastic ranch utilizing Glossy Dreckos fed by live Bristle Blossom plants to produce plastic and phosphorite.",
     rateMode: "s",
+    loops: [],
     rows: [
-      { entityId: "critter_glossy_drecko", qty: 1, recipeId: "bristle_blossom_plastic", modifiers: [] },
       { entityId: "plant_bristle_blossom", qty: 1, recipeId: "growth", modifiers: [] },
+      { entityId: "critter_glossy_drecko", qty: 1, recipeId: "bristle_blossom_plastic", modifiers: [] },
     ],
   },
   {
@@ -94,12 +115,21 @@ export const PRESETS = [
     name: "Drecko Ranch (Reed Fiber) via Balm Lily",
     description: "Zero-resource sustainable ranch utilizing regular Dreckos fed by live Balm Lily plants to produce Reed Fiber and Phosphorite in a Chlorine atmosphere.",
     rateMode: "s",
+    loops: [],
     rows: [
-      { entityId: "critter_drecko", qty: 1, recipeId: "balm_lily", modifiers: [] },
       { entityId: "plant_balm_lily", qty: 1, recipeId: "growth", modifiers: [] },
+      { entityId: "critter_drecko", qty: 1, recipeId: "balm_lily", modifiers: [] },
     ],
   },
 ];
+
+for (const preset of PRESETS) {
+  Object.defineProperty(preset.rows, "_loops", {
+    value: preset.loops || [],
+    enumerable: false,
+    writable: true,
+  });
+}
 
 /**
  * Retrieve a preset by its identifier, defaulting to the Hydra SPOM preset.

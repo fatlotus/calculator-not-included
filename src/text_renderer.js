@@ -28,11 +28,14 @@ import {
 export function findMatchingPreset(state) {
   if (!state || !Array.isArray(state.rows)) return null;
   const rateMode = state.rateMode || state.unit || "s";
+  const stateLoops = state.loops || state.rows?._loops || [];
 
   for (const preset of PRESETS) {
     const presetRate = preset.rateMode || preset.unit || "s";
     if (presetRate !== rateMode) continue;
     if (preset.rows.length !== state.rows.length) continue;
+    const presetLoops = preset.loops || [];
+    if (presetLoops.length !== stateLoops.length) continue;
 
     let matched = true;
     for (let i = 0; i < preset.rows.length; i++) {
@@ -61,6 +64,21 @@ export function findMatchingPreset(state) {
       if (pr.food && sr.food && pr.food !== sr.food) {
         matched = false;
         break;
+      }
+    }
+
+    if (matched) {
+      for (let i = 0; i < presetLoops.length; i++) {
+        const pl = presetLoops[i];
+        const sl = stateLoops[i];
+        if (!sl || pl.resource !== sl.resource || (pl.state || "free") !== (sl.state || "free")) {
+          matched = false;
+          break;
+        }
+        if (Math.abs(Number(pl.rate || 0) - Number(sl.rate || 0)) > 1e-4) {
+          matched = false;
+          break;
+        }
       }
     }
 
@@ -112,15 +130,37 @@ export function computeStateData(state, catalog = null) {
   const rateMode = state?.rateMode || state?.unit || "s";
   const rows = state?.rows || [];
   const netInputTemps = state?.netInputTemps || {};
+  const loops = state?.loops || rows?._loops || [];
 
   const evaluatedRows = resolveTableTemperatures(rows, catalog.entityMap, catalog.elementMap, {
     netInputTemps,
+    loops,
   });
 
   const net = calculateSystemNet(evaluatedRows, {
     elementMap: catalog.elementMap,
     netInputTemps,
+    loops,
   });
+
+  let loopStartData = null;
+  let loopEndData = null;
+  if (Array.isArray(net.loopStartStreams) && net.loopStartStreams.length > 0) {
+    loopStartData = {
+      machineLines: ["Loop Start", "Fed from Loop End"],
+      inputLines: ["—"],
+      outputLines: net.loopStartStreams.map((s) =>
+        formatStreamLine(s, true, rateMode, catalog.elementMap)
+      ),
+    };
+    loopEndData = {
+      machineLines: ["Loop End", "Sent to Loop Start"],
+      inputLines: net.loopEndStreams.map((s) =>
+        formatStreamLine(s, false, rateMode, catalog.elementMap, { showTemp: true })
+      ),
+      outputLines: ["—"],
+    };
+  }
 
   const rowsData = evaluatedRows.map((ev, i) => {
     const row = rows[i] || {};
@@ -191,8 +231,9 @@ export function computeStateData(state, catalog = null) {
   const netMachineLines = ["NET", "System Balance"];
 
   const netInputLines = [];
-  if (net.netPower < -1e-4) {
-    netInputLines.push(`Power: -${formatNumber(Math.abs(net.netPower))} W`);
+  const powerIn = net.netPowerIn !== undefined ? net.netPowerIn : (net.netPower < -1e-4 ? Math.abs(net.netPower) : 0);
+  if (powerIn > 1e-4) {
+    netInputLines.push(`Power: -${formatNumber(powerIn)} W`);
   }
   for (const stream of net.netInputs || []) {
     if (Math.abs(stream.rate || 0) < NET_RATE_EPSILON) continue;
@@ -223,8 +264,9 @@ export function computeStateData(state, catalog = null) {
     }
     netOutputLines.push(streamText);
   }
-  if (net.netPower > 1e-4) {
-    netOutputLines.push(`Power: +${formatNumber(net.netPower)} W`);
+  const powerOut = net.netPowerOut !== undefined ? net.netPowerOut : (net.netPower > 1e-4 ? net.netPower : 0);
+  if (powerOut > 1e-4) {
+    netOutputLines.push(`Power: +${formatNumber(powerOut)} W`);
   }
   if (netOutputLines.length === 0) {
     netOutputLines.push("None (0 net surplus)");
@@ -242,6 +284,8 @@ export function computeStateData(state, catalog = null) {
   return {
     rateMode,
     rowsData,
+    loopStartData,
+    loopEndData,
     netData,
     preset,
   };
@@ -254,15 +298,22 @@ export function computeStateData(state, catalog = null) {
  * @param {Object} netData
  * @param {string} rateMode
  * @param {Object} [headerInfo]
+ * @param {Object|null} [loopStartData]
+ * @param {Object|null} [loopEndData]
  * @returns {string}
  */
-export function formatAsciiTable(rowsData, netData, rateMode, headerInfo = {}) {
+export function formatAsciiTable(rowsData, netData, rateMode, headerInfo = {}, loopStartData = null, loopEndData = null) {
   const colNames = ["Machine", "Inputs", "Outputs"];
   let w0 = colNames[0].length;
   let w1 = colNames[1].length;
   let w2 = colNames[2].length;
 
-  const allRows = [...rowsData, netData];
+  const displayRows = [
+    ...(loopStartData ? [loopStartData] : []),
+    ...rowsData,
+    ...(loopEndData ? [loopEndData] : []),
+  ];
+  const allRows = [...displayRows, netData];
   for (const r of allRows) {
     for (const line of r.machineLines || []) w0 = Math.max(w0, line.length);
     for (const line of r.inputLines || []) w1 = Math.max(w1, line.length);
@@ -290,12 +341,12 @@ export function formatAsciiTable(rowsData, netData, rateMode, headerInfo = {}) {
   lines.push(`| ${pad(colNames[0], w0)} | ${pad(colNames[1], w1)} | ${pad(colNames[2], w2)} |`);
   lines.push(thickBorder);
 
-  if (rowsData.length === 0) {
+  if (displayRows.length === 0) {
     const emptyMsg = "(No machines configured in system)";
     lines.push(`| ${pad(emptyMsg, w0)} | ${pad("—", w1)} | ${pad("—", w2)} |`);
     lines.push(thinBorder);
   } else {
-    for (const r of rowsData) {
+    for (const r of displayRows) {
       const maxL = Math.max(r.machineLines.length, r.inputLines.length, r.outputLines.length);
       for (let i = 0; i < maxL; i++) {
         const m = r.machineLines[i] || "";
@@ -348,7 +399,14 @@ export function renderStateToText(state, options = {}) {
     headerInfo.description = data.preset.description;
   }
 
-  return formatAsciiTable(data.rowsData, data.netData, data.rateMode, headerInfo);
+  return formatAsciiTable(
+    data.rowsData,
+    data.netData,
+    data.rateMode,
+    headerInfo,
+    data.loopStartData,
+    data.loopEndData
+  );
 }
 
 /**

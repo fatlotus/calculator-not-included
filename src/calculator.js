@@ -60,6 +60,47 @@ export function isNonThermalResource(resource, unit = "") {
 }
 
 /**
+ * Return the canonical default unit for a resource.
+ */
+export function getResourceDefaultUnit(resource) {
+  switch (resource) {
+    case "Power":
+      return "W";
+    case "Heat":
+      return "kDTU/s";
+    case "Duplicant Labor":
+      return "s/s";
+    case "Calories":
+      return "kcal/s";
+    case "Microchip":
+      return "chips/s";
+    case "Gear Balm":
+    case "Tallow Gear Balm":
+      return "balm/s";
+    case "Growth":
+      return "growth/s";
+    default:
+      return "g/s";
+  }
+}
+
+/**
+ * Return the canonical default stream state for a resource.
+ */
+export function getResourceDefaultState(resource) {
+  switch (resource) {
+    case "Duplicant Labor":
+      return "labor";
+    case "Microchip":
+    case "Gear Balm":
+    case "Tallow Gear Balm":
+      return "solid";
+    default:
+      return "free";
+  }
+}
+
+/**
  * Check if a resource is a solid element or solid resource.
  * Checks elementMap first if provided, then falls back to ONI_DATASET.elements.
  */
@@ -93,10 +134,15 @@ export function formatNumber(val, maxDecimals = 4) {
  * Format a resource stream line with automatic unit scaling (g, Kg, T).
  * Elides (free) for solid resources since solids cannot go in a pipe in the game.
  */
-export function formatStreamLine(stream, isOutput, rateMode = "s", elementMap = null) {
+export function formatStreamLine(stream, isOutput, rateMode = "s", elementMap = null, options = null) {
   const sign = isOutput ? "+" : "-";
   const rawRate = Math.abs(stream.rate || 0);
-  const rawUnit = stream.unit || "g/s";
+  if (stream.resource === "Power") {
+    const formattedVal = formatNumber(rawRate);
+    const displaySign = formattedVal === "0" ? "" : sign;
+    return `Power: ${displaySign}${formattedVal} W`;
+  }
+  const rawUnit = stream.unit || getResourceDefaultUnit(stream.resource);
 
   const baseUnitMatch = rawUnit.replace(/\/(s|cycle)$/, "");
   const isMassUnit = MASS_UNITS[baseUnitMatch] !== undefined;
@@ -144,7 +190,8 @@ export function formatStreamLine(stream, isOutput, rateMode = "s", elementMap = 
   const formattedVal = formatNumber(displayRate);
   const displaySign = formattedVal === "0" ? "" : sign;
   let text = `${stream.resource}: ${displaySign}${formattedVal} ${displayUnit}`;
-  if (isOutput && stream.temp && !isNonThermalResource(stream.resource, stream.unit)) {
+  const showTemp = isOutput || (options && options.showTemp);
+  if (showTemp && stream.temp && !isNonThermalResource(stream.resource, stream.unit)) {
     text += ` ${stream.temp}`;
   }
   if (stream.state) {
@@ -770,19 +817,22 @@ export function evaluateRow(
 }
 
 /**
- * Iteratively resolve system-wide element temperatures across the table rows.
- * For each resource key (resource||state with strict pipe matching):
- * - temperature seen by consumers is the rate-weighted average of all output streams of that key.
- * - if key has a net deficit (appears in NET inputs), blend in deficit mass at NET input temperature.
- * - if key has no outputs at all, use NET input temperature.
- * Output streams follow their machine thermal mode.
- * Iterates until convergence (capped at maxPasses, default 10).
+ * Resolve element temperatures sequentially from top to bottom across the table rows.
+ * Starts with any fixed-temperature streams from Loop Start (options.loops),
+ * then propagates available pool mass and temperature top-to-bottom through each row.
+ * If a row requires more of a resource than is currently in the upstream pool,
+ * the shortfall is drawn from external NET inputs at the NET input temperature.
  */
 export function resolveTableTemperatures(rows, entityMap, elementMap = null, options = {}) {
   const netInputTemps = (typeof options === "object" && options.netInputTemps) || {};
-  const maxPasses = (typeof options === "object" && options.maxPasses) || 10;
+  const loops =
+    (typeof options === "object" && Array.isArray(options.loops) ? options.loops : rows?._loops) || [];
 
-  if (!rows || rows.length === 0) return [];
+  if (!rows || rows.length === 0) {
+    const empty = [];
+    Object.defineProperty(empty, "_loops", { value: loops, enumerable: false, writable: true });
+    return empty;
+  }
 
   const getKey = (res, st) => `${res}||${st || "free"}`;
 
@@ -791,215 +841,247 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
     return getNetInputTemp(res, st, netInputTemps, def);
   };
 
-  const currentTemps = {};
+  // Running top-to-bottom pool: key -> { availRate, availTempC }
+  const pool = new Map();
 
-  // Pre-seed keys from table rows
+  // 1. Seed pool from Loop Start
+  for (const loop of loops) {
+    if (!loop || !loop.resource) continue;
+    const rate = Number(loop.rate);
+    if (!(rate > 0)) continue;
+    const unit = loop.unit || getResourceDefaultUnit(loop.resource);
+    if (isNonThermalResource(loop.resource, unit)) continue;
+    const st = loop.state || getResourceDefaultState(loop.resource);
+    const k = getKey(loop.resource, st);
+    const loopTemp =
+      loop.tempC !== undefined && loop.tempC !== null && !isNaN(Number(loop.tempC))
+        ? Number(loop.tempC)
+        : getDefNetTemp(loop.resource, st);
+
+    if (!pool.has(k)) {
+      pool.set(k, { availRate: rate, availTempC: loopTemp });
+    } else {
+      const p = pool.get(k);
+      const newRate = p.availRate + rate;
+      p.availTempC = newRate > 1e-9 ? (p.availRate * p.availTempC + rate * loopTemp) / newRate : loopTemp;
+      p.availRate = newRate;
+    }
+  }
+
+  const evaluatedRows = [];
+
+  // 2. Step sequentially top-to-bottom through machine rows
   for (const row of rows) {
-    const entity = entityMap.get(row.entityId);
-    if (!entity) continue;
-    let baseInps = entity.inputs || [];
-    let baseOuts = entity.outputs || [];
-    if (entity.recipes && entity.recipes.length > 0) {
-      const rec = entity.recipes.find((r) => r.id === row.recipeId) || entity.recipes[0];
-      baseInps = rec.inputs || [];
-      baseOuts = rec.outputs || [];
-    }
-    for (const inp of baseInps) {
+    const preEval = evaluateRow(row, entityMap, elementMap, 20.0, null);
+    const rowInputTemps = {};
+
+    for (const inp of preEval.inputs) {
       if (isNonThermalResource(inp.resource, inp.unit)) continue;
-      const k = getKey(inp.resource, inp.state);
-      if (currentTemps[k] === undefined) {
-        currentTemps[k] = getDefNetTemp(inp.resource, inp.state);
-      }
-    }
-    for (const out of baseOuts) {
-      if (isNonThermalResource(out.resource, out.unit)) continue;
-      const k = getKey(out.resource, out.state);
-      if (currentTemps[k] === undefined) {
-        currentTemps[k] = getDefNetTemp(out.resource, out.state);
-      }
-    }
-    if (row.entityId === "duplicant") {
-      const bType = row.bathroom || "plumbed";
-      const bObj = DUPLICANT_BATHROOMS[bType] || DUPLICANT_BATHROOMS.plumbed;
-      if (bObj) {
-        for (const inp of bObj.inputs) {
-          if (isNonThermalResource(inp.resource, inp.unit)) continue;
-          const k = getKey(inp.resource, inp.state);
-          if (currentTemps[k] === undefined) {
-            currentTemps[k] = getDefNetTemp(inp.resource, inp.state);
-          }
-        }
-        for (const out of bObj.outputs) {
-          if (isNonThermalResource(out.resource, out.unit)) continue;
-          const k = getKey(out.resource, out.state);
-          if (currentTemps[k] === undefined) {
-            currentTemps[k] = getDefNetTemp(out.resource, out.state);
-          }
-        }
-      }
-    }
-    if (row.modifiers && Array.isArray(row.modifiers)) {
-      for (const modId of row.modifiers) {
-        const mod = (entity.modifiers || []).find((m) => m.id === modId);
-        if (!mod) continue;
-        if (mod.extra_inputs) {
-          for (const inp of mod.extra_inputs) {
-            if (isNonThermalResource(inp.resource, inp.unit)) continue;
-            const k = getKey(inp.resource, inp.state);
-            if (currentTemps[k] === undefined) {
-              currentTemps[k] = getDefNetTemp(inp.resource, inp.state);
-            }
-          }
-        }
-        if (mod.extra_outputs) {
-          for (const out of mod.extra_outputs) {
-            if (isNonThermalResource(out.resource, out.unit)) continue;
-            const k = getKey(out.resource, out.state);
-            if (currentTemps[k] === undefined) {
-              currentTemps[k] = getDefNetTemp(out.resource, out.state);
-            }
-          }
-        }
-      }
-    }
-  }
+      const st = inp.state || "free";
+      const k = getKey(inp.resource, st);
+      const tNet = getDefNetTemp(inp.resource, st);
 
-  let evaluatedRows = [];
-
-  for (let pass = 0; pass < maxPasses; pass++) {
-    // 1. Evaluate rows with current temperatures
-    evaluatedRows = rows.map((row) =>
-      evaluateRow(row, entityMap, elementMap, 20.0, currentTemps)
-    );
-
-    // 2. Aggregate production and consumption by key
-    const prodMass = {};
-    const prodEnthalpy = {};
-    const consMass = {};
-
-    for (const r of evaluatedRows) {
-      for (const inp of r.inputs) {
-        if (isNonThermalResource(inp.resource, inp.unit)) continue;
-        const k = getKey(inp.resource, inp.state);
-        consMass[k] = (consMass[k] || 0) + inp.rate;
-      }
-      for (const out of r.outputs) {
-        if (isNonThermalResource(out.resource, out.unit)) continue;
-        const k = getKey(out.resource, out.state);
-        prodMass[k] = (prodMass[k] || 0) + out.rate;
-        const outT = out.tempC !== undefined ? out.tempC : 20.0;
-        prodEnthalpy[k] = (prodEnthalpy[k] || 0) + out.rate * outT;
-      }
-    }
-
-    // 3. Compute new blended temperature for each key
-    const allKeys = new Set([
-      ...Object.keys(currentTemps),
-      ...Object.keys(prodMass),
-      ...Object.keys(consMass),
-    ]);
-    let maxDiff = 0;
-
-    for (const k of allKeys) {
-      const pM = prodMass[k] || 0;
-      const pH = prodEnthalpy[k] || 0;
-      const cM = consMass[k] || 0;
-
-      let res = k;
-      let st = "free";
-      if (k.includes("||")) {
-        const parts = k.split("||");
-        res = parts[0];
-        st = parts[1] || "free";
+      if (row.inputTemp !== undefined && row.inputTemp !== null && !isNaN(Number(row.inputTemp))) {
+        rowInputTemps[k] = Number(row.inputTemp);
+        continue;
       }
 
-      const tNet = getDefNetTemp(res, st);
-      const deficit = Math.max(0, cM - pM);
+      const p = pool.get(k);
+      const availRate = p ? p.availRate : 0;
+      const availTempC = p ? p.availTempC : tNet;
+      const reqRate = Math.abs(inp.rate || 0);
 
-      let newT = tNet;
-      if (pM + deficit > 1e-6) {
-        newT = (pH + deficit * tNet) / (pM + deficit);
-      } else if (pM > 1e-6) {
-        newT = pH / pM;
+      if (reqRate > 1e-9) {
+        const fromPool = Math.min(reqRate, availRate);
+        const fromExt = Math.max(0, reqRate - availRate);
+        rowInputTemps[k] = (fromPool * availTempC + fromExt * tNet) / reqRate;
       } else {
-        newT = tNet;
+        rowInputTemps[k] = availRate > 1e-9 ? availTempC : tNet;
       }
-
-      const prevT = currentTemps[k] !== undefined ? currentTemps[k] : tNet;
-      const diff = Math.abs(newT - prevT);
-      if (diff > maxDiff) maxDiff = diff;
-      currentTemps[k] = newT;
     }
 
-    if (maxDiff < 1e-4) {
-      break;
+    const ev = evaluateRow(row, entityMap, elementMap, 20.0, rowInputTemps);
+
+    // Consume inputs from running pool
+    for (const inp of ev.inputs) {
+      if (isNonThermalResource(inp.resource, inp.unit)) continue;
+      const st = inp.state || "free";
+      const k = getKey(inp.resource, st);
+      const p = pool.get(k);
+      if (p) {
+        p.availRate = Math.max(0, p.availRate - Math.abs(inp.rate || 0));
+      }
     }
+
+    // Add outputs into running pool
+    for (const out of ev.outputs) {
+      if (isNonThermalResource(out.resource, out.unit)) continue;
+      const outRate = Math.abs(out.rate || 0);
+      if (outRate <= 1e-9) continue;
+      const st = out.state || "free";
+      const k = getKey(out.resource, st);
+      const outTemp = out.tempC !== undefined ? out.tempC : getDefNetTemp(out.resource, st);
+
+      if (!pool.has(k)) {
+        pool.set(k, { availRate: outRate, availTempC: outTemp });
+      } else {
+        const p = pool.get(k);
+        const newRate = p.availRate + outRate;
+        p.availTempC = newRate > 1e-9 ? (p.availRate * p.availTempC + outRate * outTemp) / newRate : outTemp;
+        p.availRate = newRate;
+      }
+    }
+
+    evaluatedRows.push(ev);
   }
 
-  // Final evaluation pass with converged temperatures
-  evaluatedRows = rows.map((row) =>
-    evaluateRow(row, entityMap, elementMap, 20.0, currentTemps)
-  );
-
+  Object.defineProperty(evaluatedRows, "_loops", { value: loops, enumerable: false, writable: true });
   return evaluatedRows;
 }
 
 /**
- * Calculate target quantity for each input/output stream of targetRow to exactly cancel system net.
+ * Calculate target quantity for each input/output stream of targetRow in top-to-bottom flow:
+ * - Input streams match the available unconsumed surplus arriving from rows above targetRow (including Loop Start).
+ * - Output streams match the cumulative unmet deficit of rows below targetRow (including Loop End).
  */
-export function calculateRowMatchTargets(targetRowIndex, rows, entityMap) {
-  const targetRow = rows[targetRowIndex];
+export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, options = {}) {
+  const targetRow = rows?.[targetRowIndex];
   if (!targetRow) return {};
 
+  const loops =
+    (options && Array.isArray(options.loops) ? options.loops : rows?._loops) || [];
+
   const unitRow = evaluateRow({ ...targetRow, qty: 1 }, entityMap);
-  const otherEvaluated = [];
-  for (let j = 0; j < rows.length; j++) {
-    if (j === targetRowIndex) continue;
-    otherEvaluated.push(evaluateRow(rows[j], entityMap));
+  const currentTargetEval = evaluateRow(targetRow, entityMap);
+
+  // 1. Simulate upstream pool from Loop Start through rows[0 .. targetRowIndex - 1]
+  const upstreamPool = new Map();
+  let upstreamPower = 0;
+
+  for (const loop of loops) {
+    if (!loop || !loop.resource) continue;
+    const rate = Number(loop.rate);
+    if (!(rate > 0)) continue;
+    if (loop.resource === "Power") {
+      upstreamPower += rate;
+    } else {
+      const st = loop.state || getResourceDefaultState(loop.resource);
+      const k = `${loop.resource}||${st}`;
+      upstreamPool.set(k, (upstreamPool.get(k) || 0) + rate);
+    }
   }
 
-  const otherBuckets = new Map();
-  let otherNetPower = 0;
-
-  for (const r of otherEvaluated) {
-    otherNetPower += r.power;
+  for (let j = 0; j < targetRowIndex; j++) {
+    const r = evaluateRow(rows[j], entityMap);
+    if (r.power < 0) {
+      upstreamPower = Math.max(0, upstreamPower - Math.abs(r.power));
+    }
     for (const inp of r.inputs) {
       const k = `${inp.resource}||${inp.state || "free"}`;
-      otherBuckets.set(k, (otherBuckets.get(k) || 0) - inp.rate);
+      upstreamPool.set(k, Math.max(0, (upstreamPool.get(k) || 0) - inp.rate));
     }
     for (const out of r.outputs) {
       const k = `${out.resource}||${out.state || "free"}`;
-      otherBuckets.set(k, (otherBuckets.get(k) || 0) + out.rate);
+      upstreamPool.set(k, (upstreamPool.get(k) || 0) + out.rate);
+    }
+    if (r.power > 0) {
+      upstreamPower += r.power;
     }
   }
 
   const matches = {};
 
+  // Match inputs against upstream available pool arriving at targetRowIndex
   for (const inp of unitRow.inputs) {
-    const k = `in:${inp.resource}||${inp.state || "free"}`;
     const bucketKey = `${inp.resource}||${inp.state || "free"}`;
-    const surplus = otherBuckets.get(bucketKey) || 0;
+    const k = `in:${bucketKey}`;
+    const surplus = upstreamPool.get(bucketKey) || 0;
     if (surplus >= NET_RATE_EPSILON && inp.rate > 1e-6) {
       const targetQty = surplus / inp.rate;
       matches[k] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
     }
   }
 
+  if (unitRow.power < -1e-4 && upstreamPower > 1e-4) {
+    const targetQty = upstreamPower / Math.abs(unitRow.power);
+    matches["in:Power"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
+  }
+
+  // 2. Simulate downstream deficit from targetRowIndex + 1 through Loop End (with 0 output from targetRow)
+  const downstreamPool = new Map(upstreamPool);
+  let downstreamPowerPool = upstreamPower;
+
+  // Consume targetRow's own inputs first
+  if (currentTargetEval.power < 0) {
+    downstreamPowerPool = Math.max(0, downstreamPowerPool - Math.abs(currentTargetEval.power));
+  }
+  for (const inp of currentTargetEval.inputs) {
+    const k = `${inp.resource}||${inp.state || "free"}`;
+    downstreamPool.set(k, Math.max(0, (downstreamPool.get(k) || 0) - inp.rate));
+  }
+
+  const downstreamDeficit = new Map();
+  let downstreamPowerDeficit = 0;
+
+  for (let j = targetRowIndex + 1; j < rows.length; j++) {
+    const r = evaluateRow(rows[j], entityMap);
+    if (r.power < 0) {
+      const reqP = Math.abs(r.power);
+      const fromPoolP = Math.min(reqP, downstreamPowerPool);
+      const fromExtP = Math.max(0, reqP - downstreamPowerPool);
+      downstreamPowerPool = Math.max(0, downstreamPowerPool - fromPoolP);
+      downstreamPowerDeficit += fromExtP;
+    }
+    for (const inp of r.inputs) {
+      const k = `${inp.resource}||${inp.state || "free"}`;
+      const avail = downstreamPool.get(k) || 0;
+      const fromPool = Math.min(inp.rate, avail);
+      const fromExt = Math.max(0, inp.rate - avail);
+      downstreamPool.set(k, Math.max(0, avail - fromPool));
+      downstreamDeficit.set(k, (downstreamDeficit.get(k) || 0) + fromExt);
+    }
+    for (const out of r.outputs) {
+      const k = `${out.resource}||${out.state || "free"}`;
+      downstreamPool.set(k, (downstreamPool.get(k) || 0) + out.rate);
+    }
+    if (r.power > 0) {
+      downstreamPowerPool += r.power;
+    }
+  }
+
+  // Also consume Loop End demands
+  for (const loop of loops) {
+    if (!loop || !loop.resource) continue;
+    const reqRate = Number(loop.rate);
+    if (!(reqRate > 0)) continue;
+    if (loop.resource === "Power") {
+      const fromPoolP = Math.min(reqRate, downstreamPowerPool);
+      const fromExtP = Math.max(0, reqRate - downstreamPowerPool);
+      downstreamPowerPool = Math.max(0, downstreamPowerPool - fromPoolP);
+      downstreamPowerDeficit += fromExtP;
+    } else {
+      const st = loop.state || getResourceDefaultState(loop.resource);
+      const k = `${loop.resource}||${st}`;
+      const avail = downstreamPool.get(k) || 0;
+      const fromPool = Math.min(reqRate, avail);
+      const fromExt = Math.max(0, reqRate - avail);
+      downstreamPool.set(k, Math.max(0, avail - fromPool));
+      downstreamDeficit.set(k, (downstreamDeficit.get(k) || 0) + fromExt);
+    }
+  }
+
   for (const out of unitRow.outputs) {
-    const k = `out:${out.resource}||${out.state || "free"}`;
     const bucketKey = `${out.resource}||${out.state || "free"}`;
-    const deficit = otherBuckets.get(bucketKey) || 0;
-    if (deficit <= -NET_RATE_EPSILON && out.rate > 1e-6) {
-      const targetQty = Math.abs(deficit) / out.rate;
+    const k = `out:${bucketKey}`;
+    const deficit = downstreamDeficit.get(bucketKey) || 0;
+    if (deficit >= NET_RATE_EPSILON && out.rate > 1e-6) {
+      const targetQty = deficit / out.rate;
       matches[k] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
     }
   }
 
-  if (unitRow.power < -1e-4 && otherNetPower > 1e-4) {
-    const targetQty = otherNetPower / Math.abs(unitRow.power);
-    matches["in:Power"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
-  } else if (unitRow.power > 1e-4 && otherNetPower < -1e-4) {
-    const targetQty = Math.abs(otherNetPower) / unitRow.power;
+  if (unitRow.power > 1e-4 && downstreamPowerDeficit > 1e-4) {
+    const targetQty = downstreamPowerDeficit / unitRow.power;
     matches["out:Power"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
   }
 
@@ -1007,84 +1089,191 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap) {
 }
 
 /**
- * Compute system-wide NET balance across evaluated rows.
+ * Compute system-wide NET balance across evaluated rows using top-to-bottom resource flow.
+ * Resources (including Power) flow from Loop Start -> evaluatedRows[0..N-1] -> Loop End.
+ * Unmet inputs at any step accumulate into NET Inputs; unconsumed outputs remaining after Loop End flow into NET Outputs.
  */
 export function calculateSystemNet(evaluatedRows, options = {}) {
   const netInputTemps = options.netInputTemps || {};
   const elementMap = options.elementMap || null;
+  const loops =
+    (options && Array.isArray(options.loops) ? options.loops : evaluatedRows?._loops) || [];
 
-  let netPower = 0;
+  let availPower = 0;
+  let deficitPower = 0;
   let netHeat = 0;
   const buckets = new Map();
 
-  for (const row of evaluatedRows) {
-    netPower += row.power;
+  const getOrCreateBucket = (resource, state, unit) => {
+    const st = state || getResourceDefaultState(resource);
+    const key = `${resource}||${st}`;
+    if (!buckets.has(key)) {
+      const defT = getDefaultElementTemp(resource, elementMap);
+      const initTemp = getNetInputTemp(resource, st, netInputTemps, defT);
+      buckets.set(key, {
+        resource,
+        state: st,
+        unit: unit || getResourceDefaultUnit(resource),
+        availRate: 0,
+        availTempC: initTemp,
+        deficitRate: 0,
+      });
+    }
+    return buckets.get(key);
+  };
+
+  const loopStartStreams = [];
+  const loopEndStreams = [];
+
+  // 1. Inject Loop Start streams into the top of the table
+  for (const loop of loops) {
+    if (!loop || !loop.resource) continue;
+    const rate = Number(loop.rate);
+    if (!(rate > 0)) continue;
+
+    if (loop.resource === "Power") {
+      availPower += rate;
+      loopStartStreams.push({
+        resource: "Power",
+        state: "free",
+        rate,
+        unit: "W",
+        temp: null,
+        tempC: undefined,
+        isPower: true,
+      });
+      continue;
+    }
+
+    const st = loop.state || getResourceDefaultState(loop.resource);
+    const unit = loop.unit || getResourceDefaultUnit(loop.resource);
+    const isNonThermal = isNonThermalResource(loop.resource, unit);
+    const defT = getDefaultElementTemp(loop.resource, elementMap);
+    const tempC = !isNonThermal
+      ? loop.tempC !== undefined && loop.tempC !== null && !isNaN(Number(loop.tempC))
+        ? Number(loop.tempC)
+        : getNetInputTemp(loop.resource, st, netInputTemps, defT)
+      : undefined;
+    const temp = !isNonThermal ? `@ ${formatNumber(tempC)} °C` : null;
+
+    const b = getOrCreateBucket(loop.resource, st, unit);
+    if (!isNonThermal && rate > 1e-9) {
+      const newRate = b.availRate + rate;
+      b.availTempC = newRate > 1e-9 ? (b.availRate * b.availTempC + rate * tempC) / newRate : tempC;
+      b.availRate = newRate;
+    } else {
+      b.availRate += rate;
+    }
+
+    loopStartStreams.push({
+      resource: loop.resource,
+      state: st,
+      rate,
+      unit,
+      temp,
+      tempC,
+    });
+  }
+
+  // 2. Process machine rows sequentially from top to bottom
+  for (const row of evaluatedRows || []) {
     netHeat += row.heat !== undefined ? row.heat : 0;
 
-    for (const inp of row.inputs) {
-      const key = `${inp.resource}||${inp.state || "free"}`;
-      if (!buckets.has(key)) {
-        buckets.set(key, {
-          resource: inp.resource,
-          state: inp.state || "free",
-          unit: inp.unit || "g/s",
-          netRate: 0,
-          temp: null,
-          tempEnthalpy: 0,
-          totalOutRate: 0,
-        });
-      }
-      buckets.get(key).netRate -= inp.rate;
+    if (row.power < 0) {
+      const reqP = Math.abs(row.power);
+      const fromPoolP = Math.min(reqP, availPower);
+      const fromExtP = Math.max(0, reqP - availPower);
+      availPower = Math.max(0, availPower - fromPoolP);
+      deficitPower += fromExtP;
     }
 
-    for (const out of row.outputs) {
-      const key = `${out.resource}||${out.state || "free"}`;
-      if (!buckets.has(key)) {
-        buckets.set(key, {
-          resource: out.resource,
-          state: out.state || "free",
-          unit: out.unit || "g/s",
-          netRate: 0,
-          temp: null,
-          tempEnthalpy: 0,
-          totalOutRate: 0,
-        });
-      }
-      const b = buckets.get(key);
-      b.netRate += out.rate;
-      if (!isNonThermalResource(out.resource, out.unit)) {
+    for (const inp of row.inputs || []) {
+      const b = getOrCreateBucket(inp.resource, inp.state || "free", inp.unit);
+      const reqRate = Math.abs(inp.rate || 0);
+      const fromPool = Math.min(reqRate, b.availRate);
+      const fromExt = Math.max(0, reqRate - b.availRate);
+      b.availRate = Math.max(0, b.availRate - fromPool);
+      b.deficitRate += fromExt;
+    }
+
+    for (const out of row.outputs || []) {
+      const b = getOrCreateBucket(out.resource, out.state || "free", out.unit);
+      const outRate = Math.abs(out.rate || 0);
+      if (!isNonThermalResource(out.resource, out.unit) && outRate > 1e-9) {
         const t = out.tempC !== undefined ? out.tempC : 20.0;
-        b.tempEnthalpy += out.rate * t;
-        b.totalOutRate += out.rate;
-        if (out.temp && !b.temp) b.temp = out.temp;
+        const newRate = b.availRate + outRate;
+        b.availTempC = newRate > 1e-9 ? (b.availRate * b.availTempC + outRate * t) / newRate : t;
+        b.availRate = newRate;
+      } else {
+        b.availRate += outRate;
       }
     }
-  }
 
-  for (const b of buckets.values()) {
-    if (isNonThermalResource(b.resource, b.unit)) {
-      b.tempC = undefined;
-      b.temp = null;
-    } else if (b.totalOutRate > 0) {
-      const avgT = b.tempEnthalpy / b.totalOutRate;
-      b.tempC = avgT;
-      b.temp = `@ ${formatNumber(avgT)} °C`;
+    if (row.power > 0) {
+      availPower += row.power;
     }
   }
 
-  const finalBuckets = [];
-  for (const b of buckets.values()) {
-    if (Math.abs(b.netRate) >= NET_RATE_EPSILON) {
-      finalBuckets.push(b);
+  // 3. Process Loop End streams at the bottom of the table
+  for (const loop of loops) {
+    if (!loop || !loop.resource) continue;
+    const reqRate = Number(loop.rate);
+    if (!(reqRate > 0)) continue;
+
+    if (loop.resource === "Power") {
+      const fromPoolP = Math.min(reqRate, availPower);
+      const fromExtP = Math.max(0, reqRate - availPower);
+      availPower = Math.max(0, availPower - fromPoolP);
+      deficitPower += fromExtP;
+      loopEndStreams.push({
+        resource: "Power",
+        state: "free",
+        rate: reqRate,
+        unit: "W",
+        temp: null,
+        tempC: undefined,
+        isPower: true,
+      });
+      continue;
     }
+
+    const st = loop.state || getResourceDefaultState(loop.resource);
+    const unit = loop.unit || getResourceDefaultUnit(loop.resource);
+    const b = getOrCreateBucket(loop.resource, st, unit);
+    const isNonThermal = isNonThermalResource(loop.resource, unit);
+    const defT = getDefaultElementTemp(loop.resource, elementMap);
+    const tNet = getNetInputTemp(loop.resource, st, netInputTemps, defT);
+
+    const fromPool = Math.min(reqRate, b.availRate);
+    const fromExt = Math.max(0, reqRate - b.availRate);
+
+    let arrivingTempC = undefined;
+    let arrivingTemp = null;
+    if (!isNonThermal) {
+      arrivingTempC = reqRate > 1e-9 ? (fromPool * b.availTempC + fromExt * tNet) / reqRate : b.availTempC;
+      arrivingTemp = `@ ${formatNumber(arrivingTempC)} °C`;
+    }
+
+    b.availRate = Math.max(0, b.availRate - fromPool);
+    b.deficitRate += fromExt;
+
+    loopEndStreams.push({
+      resource: loop.resource,
+      state: st,
+      rate: reqRate,
+      unit,
+      temp: arrivingTemp,
+      tempC: arrivingTempC,
+    });
   }
 
+  // 4. Collect NET Inputs and NET Outputs
   const netInputs = [];
   const netOutputs = [];
 
-  for (const b of finalBuckets) {
+  for (const b of buckets.values()) {
     const isNonThermal = isNonThermalResource(b.resource, b.unit);
-    if (b.netRate <= -NET_RATE_EPSILON) {
+    if (b.deficitRate >= NET_RATE_EPSILON) {
       let tempC;
       let temp = null;
       if (!isNonThermal) {
@@ -1094,29 +1283,39 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
       }
       netInputs.push({
         resource: b.resource,
-        rate: Math.abs(b.netRate),
+        rate: b.deficitRate,
         unit: b.unit,
         state: b.state,
         tempC,
         temp,
       });
-    } else if (b.netRate >= NET_RATE_EPSILON) {
+    }
+    if (b.availRate >= NET_RATE_EPSILON) {
+      const avgT = b.availTempC;
       netOutputs.push({
         resource: b.resource,
-        rate: b.netRate,
+        rate: b.availRate,
         unit: b.unit,
         state: b.state,
-        temp: isNonThermal ? null : b.temp,
-        tempC: isNonThermal ? undefined : b.tempC,
+        temp: isNonThermal ? null : `@ ${formatNumber(avgT)} °C`,
+        tempC: isNonThermal ? undefined : avgT,
       });
     }
   }
 
+  const netPowerIn = deficitPower >= NET_RATE_EPSILON ? Math.round(deficitPower * 100) / 100 : 0;
+  const netPowerOut = availPower >= NET_RATE_EPSILON ? Math.round(availPower * 100) / 100 : 0;
+  const netPower = Math.round((availPower - deficitPower) * 100) / 100;
+
   return {
-    netPower: Math.round(netPower * 100) / 100,
+    netPower,
+    netPowerIn,
+    netPowerOut,
     netHeat: Math.round(netHeat * 100) / 100,
     netBuildingHeat: Math.round(netHeat * 100) / 100,
     netInputs,
     netOutputs,
+    loopStartStreams,
+    loopEndStreams,
   };
 }

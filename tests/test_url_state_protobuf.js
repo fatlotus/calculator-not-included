@@ -21,6 +21,7 @@ import {
   CalculatorStateType,
   RowStateType,
   NetTemperatureType,
+  LoopedStreamType,
   ENTITY_TO_ENUM,
   ENUM_TO_ENTITY,
   RECIPE_TO_ENUM,
@@ -51,6 +52,11 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
   const netTempFields = Object.values(NetTemperatureType.fields);
   for (const f of netTempFields) {
     assert.notStrictEqual(f.type, "string", `NetTemperature field ${f.name} must not be string`);
+  }
+
+  const loopFields = Object.values(LoopedStreamType.fields);
+  for (const f of loopFields) {
+    assert.notStrictEqual(f.type, "string", `LoopedStream field ${f.name} must not be string`);
   }
 
   const calcFields = Object.values(CalculatorStateType.fields);
@@ -100,6 +106,7 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
     const originalState = {
       rateMode: preset.rateMode || "s",
       rows: JSON.parse(JSON.stringify(preset.rows)),
+      loops: preset.loops ? JSON.parse(JSON.stringify(preset.loops)) : [],
       netInputTemps: preset.netInputTemps ? JSON.parse(JSON.stringify(preset.netInputTemps)) : {},
     };
 
@@ -116,6 +123,15 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
     const decodedState = decodeStateFromParam(encodedParam);
     assert.strictEqual(decodedState.rateMode, originalState.rateMode, `RateMode mismatch in preset ${preset.id}`);
     assert.strictEqual(decodedState.rows.length, originalState.rows.length, `Row count mismatch in preset ${preset.id}`);
+    assert.strictEqual((decodedState.loops || []).length, originalState.loops.length, `Loop count mismatch in preset ${preset.id}`);
+    for (let j = 0; j < originalState.loops.length; j++) {
+      assert.strictEqual(decodedState.loops[j].resource, originalState.loops[j].resource);
+      assert.strictEqual(decodedState.loops[j].state, originalState.loops[j].state);
+      assert.strictEqual(decodedState.loops[j].rate, originalState.loops[j].rate);
+      if (originalState.loops[j].tempC !== undefined) {
+        assert.strictEqual(decodedState.loops[j].tempC, originalState.loops[j].tempC);
+      }
+    }
 
     for (let i = 0; i < originalState.rows.length; i++) {
       const origRow = originalState.rows[i];

@@ -1,4 +1,4 @@
-# ONI Thermal Energy, Specific Heat Capacity (SHC), & Loop Heat Tracking Design
+# ONI Thermal Energy, Specific Heat Capacity (SHC), & Sequential Loop Temperature Design
 
 ## 1. Fundamental Thermal Math in *Oxygen Not Included*
 Every element in *Oxygen Not Included* has a **Specific Heat Capacity ($c$ or $\text{SHC}$)** measured in $\text{DTU}/(\text{g}\cdot\text{°C})$.
@@ -8,7 +8,6 @@ For any resource stream with mass flow rate $\dot{m}$ (in $\text{g/s}$), specifi
   $$\dot{C} = \dot{m} \cdot c \quad [\text{DTU}/(\text{s}\cdot\text{°C})]$$
 - **Thermal Power / Enthalpy Flow ($\dot{Q}$) relative to reference temperature $T_{\text{ref}}$**:
   $$\dot{Q}(T) = \frac{\dot{m} \cdot c \cdot (T - T_{\text{ref}})}{1000} \quad [\text{kDTU/s}]$$
-  *(Note: When comparing input vs. output streams at known temperatures $T_{\text{in}}$ and $T_{\text{out}}$ relative to $0\text{ °C}$, $\dot{Q} = \frac{\dot{m} \cdot c \cdot T}{1000}\text{ kDTU/s}$.)*
 
 ---
 
@@ -29,10 +28,11 @@ Machines in ONI determine the temperature $T_{\text{out}}$ of their output strea
 
 2. **Pass-Through Temperature (`pass_through`)**:
    $$T_{\text{out}} = T_{\text{in}}$$
-   The output resource inherits the exact temperature of the input resource.
+   The output resource inherits the exact temperature of the primary input resource.
    - **Examples**:
-     - `Water Pump` (`Liquid Pump`), `Gas Pump`, `Mini Liquid Pump`, `Mini Gas Pump`.
+     - `Liquid Pump`, `Gas Pump`, `Mini Liquid Pump`, `Mini Gas Pump`.
      - `Water Sieve` & `Desalinator`: Output clean Water exits at the exact input Polluted Water / Salt Water / Brine temperature.
+     - `Carbon Skimmer`: Output Polluted Water inherits the incoming piped `Water` temperature (ignoring the `Carbon Dioxide` temperature).
 
 3. **Fixed Output Temperature (`fixed_temp`, denoted `@ X °C`)**:
    $$T_{\text{out}} = T_{\text{fixed}}$$
@@ -49,36 +49,27 @@ Machines in ONI determine the temperature $T_{\text{out}}$ of their output strea
 
 5. **Resource Consumption / Mass Deletion (`total_consumer`)**:
    - **Examples**:
-     - `Hydrogen Generator`, `Natural Gas Generator`, `Duplicants`, `Plants`: Any mass consumed without a corresponding mass output deletes the thermal enthalpy carried by that input stream.
+     - `Hydrogen Generator`, `Natural Gas Generator`, `Duplicants`, `Plants`: Consume input mass without a corresponding thermal mass output.
 
 ---
 
-## 3. Specific Heat Created or Destroyed in a Machine or Loop
+## 3. Sequential Top-to-Bottom Temperature Resolution & Loop Thermal Tracking (`src/calculator.js`)
 
-For any row or closed loop with known input temperatures $T_{\text{in}}$ (defaulting to a user-configurable ambient/feed temperature, e.g., $20\text{ °C}$, or overridden per-row such as $95\text{ °C}$ geyser water):
+In `resolveTableTemperatures` and `calculateSystemNet`, stream temperatures propagate sequentially from the top of the table to the bottom in a single deterministic pass:
 
-1. **Stream Temperature Propagation**:
-   - If a row produces resource $R$ at temperature $T_R$ (e.g., `Water Pump` with input temp $95\text{ °C}$ outputs `Water (in a pipe) @ 95 °C`), downstream consumers of `Water (in a pipe)` automatically know the incoming water is at $95\text{ °C}$ (unless overridden on that row).
-2. **SHC / Process Heat Delta ($\Delta \dot{Q}_{\text{SHC}}$)**:
-   When a machine transforms inputs $\{( \dot{m}_i, c_i, T_i )\}$ into outputs $\{( \dot{m}_j, c_j, T_j )\}$, the thermal energy created or destroyed strictly by the temperature change and Specific Heat Capacity (SHC) change (relative to $0\text{ °C}$) is:
-   $$\Delta \dot{Q}_{\text{SHC}} = \sum_{j \in \text{Outputs}} \frac{\dot{m}_j \cdot c_j \cdot T_j}{1000} - \sum_{i \in \text{Inputs}} \frac{\dot{m}_i \cdot c_i \cdot T_i}{1000} \quad [\text{kDTU/s}]$$
-3. **Total Net Heat Created/Destroyed ($\dot{Q}_{\text{total}}$)**:
-   Adding the building's own operational heat $\dot{Q}_{\text{self}}$:
-   $$\dot{Q}_{\text{total}} = \dot{Q}_{\text{self}} + \Delta \dot{Q}_{\text{SHC}}$$
+1. **`Loop Start` Seeding**:
+   - Any thermal stream configured in `state.loops` enters the top of the table (`Loop Start`) at its locked-in rate $\dot{m}_{\text{loop}}$ and locked-in temperature $T_{\text{loop}}$.
+   - This seeds the available upstream pool for `(resource, state)` with `availRate` $= \dot{m}_{\text{loop}}$ and `availTempC` $= T_{\text{loop}}$.
 
-### Worked Example: Electrolyzer with $20\text{ °C}$ vs. $95\text{ °C}$ Water
-- **Water**: $\dot{m}_{\text{w}} = 1000\text{ g/s}$, $c_{\text{w}} = 4.179\text{ DTU}/(\text{g}\cdot\text{°C}) \implies \dot{C}_{\text{in}} = 4.179\text{ kDTU}/(\text{s}\cdot\text{°C})$.
-- **Outputs**:
-  - Oxygen: $888\text{ g/s} \times 1.005 = 892.44\text{ DTU}/(\text{s}\cdot\text{°C})$
-  - Hydrogen: $112\text{ g/s} \times 2.400 = 268.80\text{ DTU}/(\text{s}\cdot\text{°C})$
-  - Combined Output Thermal Capacity: $\dot{C}_{\text{out}} = 1.16124\text{ kDTU}/(\text{s}\cdot\text{°C})$.
-- **At $T_{\text{in}} = 20\text{ °C}$**:
-  - $T_{\text{out}} = \max(20, 70) = 70\text{ °C}$.
-  - Input enthalpy: $4.179 \times 20 = 83.58\text{ kDTU/s}$.
-  - Output gas enthalpy: $1.16124 \times 70 = 81.29\text{ kDTU/s}$.
-  - $\Delta \dot{Q}_{\text{SHC}} = 81.29 - 83.58 = -2.29\text{ kDTU/s}$ (plus $+1.25\text{ kDTU/s}$ building heat $= -1.04\text{ kDTU/s}$ net thermal change!).
-- **At $T_{\text{in}} = 95\text{ °C}$**:
-  - $T_{\text{out}} = \max(95, 70) = 95\text{ °C}$.
-  - Input enthalpy: $4.179 \times 95 = 397.01\text{ kDTU/s}$.
-  - Output gas enthalpy: $1.16124 \times 95 = 110.32\text{ kDTU/s}$.
-  - $\Delta \dot{Q}_{\text{SHC}} = 110.32 - 397.01 = -286.69\text{ kDTU/s}$ (plus $+1.25\text{ kDTU/s}$ building heat $= -285.44\text{ kDTU/s}$ net heat **destroyed** by SHC reduction!).
+2. **Row Consumption & Blending (`rows[0 .. N-1]`)**:
+   - When row $i$ consumes rate $\dot{m}_{\text{req}}$ of `(resource, state)`:
+     - $\dot{m}_{\text{pool}} = \min(\dot{m}_{\text{req}}, \text{availRate})$ is drawn from the upstream pool at temperature $T_{\text{pool}} = \text{availTempC}$.
+     - Any unmet shortfall $\dot{m}_{\text{ext}} = \max(0, \dot{m}_{\text{req}} - \text{availRate})$ is drawn from **NET Inputs** at the user-configurable NET feed temperature $T_{\text{net}}$.
+     - The effective incoming temperature for that stream at row $i$ is the mass-weighted blend:
+       $$T_{\text{in}} = \frac{\dot{m}_{\text{pool}} \cdot T_{\text{pool}} + \dot{m}_{\text{ext}} \cdot T_{\text{net}}}{\dot{m}_{\text{req}}}$$
+   - Row $i$ is evaluated with these resolved input temperatures, and its thermal outputs $( \dot{m}_{\text{out}}, T_{\text{out}} )$ are blended into the available pool for downstream rows:
+     $$\text{availTempC}' = \frac{\text{availRate} \cdot \text{availTempC} + \dot{m}_{\text{out}} \cdot T_{\text{out}}}{\text{availRate} + \dot{m}_{\text{out}}}$$
+
+3. **`Loop End` Arriving Temperature**:
+   - After the final machine row executes, `Loop End` consumes $\dot{m}_{\text{loop}}$ from the available pool.
+   - `Loop End` displays the actual arriving temperature $T_{\text{arrive}}$ of the resource reaching the bottom of the table (e.g., `Water: -1 Kg/s @ 20 °C (in a pipe)` or `Polluted Water: -3.5 Kg/s @ 75 °C (in a pipe)`), allowing users to compare the `Loop End` arriving temperature against the `Loop Start` feed temperature without altering the building operational `Heat` (`kDTU/s`) total.
