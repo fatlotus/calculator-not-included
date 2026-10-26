@@ -206,6 +206,8 @@ enum Entity {
   ENTITY_THERMO_REGULATOR = 153;
   ENTITY_WATER_SIEVE = 154;
   ENTITY_WOOD_BURNER = 155;
+  ENTITY_ABSORB_HEAT = 156;
+  ENTITY_COUNTERFLOW_HEAT_EXCHANGER = 157;
 }
 
 enum Recipe {
@@ -723,6 +725,10 @@ message RowState {
   repeated Modifier modifiers = 6;
   optional double input_temp = 7;
   Food food = 8;
+  Element material = 9;
+  StreamState material_state = 10;
+  Element cold_material = 11;
+  StreamState cold_material_state = 12;
 }
 
 message NetTemperature {

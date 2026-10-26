@@ -176,6 +176,32 @@ export function encodeStateToProtobuf(state, elementMap = null) {
       pbRow.inputTemp = Number(row.inputTemp);
     }
 
+    // Material and cold material
+    if (row.material) {
+      const mEnum = ELEMENT_TO_ENUM.get(String(row.material).trim());
+      if (mEnum) {
+        pbRow.material = mEnum;
+      }
+    }
+    if (row.materialState) {
+      const sEnum = STREAM_STATE_TO_ENUM.get(String(row.materialState).trim());
+      if (sEnum !== undefined && sEnum !== 0) {
+        pbRow.materialState = sEnum;
+      }
+    }
+    if (row.coldMaterial) {
+      const cmEnum = ELEMENT_TO_ENUM.get(String(row.coldMaterial).trim());
+      if (cmEnum) {
+        pbRow.coldMaterial = cmEnum;
+      }
+    }
+    if (row.coldMaterialState) {
+      const csEnum = STREAM_STATE_TO_ENUM.get(String(row.coldMaterialState).trim());
+      if (csEnum !== undefined && csEnum !== 0) {
+        pbRow.coldMaterialState = csEnum;
+      }
+    }
+
     pbRows.push(pbRow);
   }
 
@@ -353,6 +379,28 @@ export function decodeStateFromProtobuf(bytes) {
 
     if (r.inputTemp !== undefined && r.inputTemp !== null && Number.isFinite(Number(r.inputTemp))) {
       rowObj.inputTemp = Number(r.inputTemp);
+    }
+
+    if (r.material && ENUM_TO_ELEMENT[r.material]) {
+      rowObj.material = ENUM_TO_ELEMENT[r.material];
+      rowObj.materialState =
+        ENUM_TO_STREAM_STATE[r.materialState] || getResourceDefaultState(rowObj.material);
+    }
+    if (r.coldMaterial && ENUM_TO_ELEMENT[r.coldMaterial]) {
+      rowObj.coldMaterial = ENUM_TO_ELEMENT[r.coldMaterial];
+      rowObj.coldMaterialState =
+        ENUM_TO_STREAM_STATE[r.coldMaterialState] || getResourceDefaultState(rowObj.coldMaterial);
+    }
+
+    if (entityId === "absorb_heat") {
+      if (!rowObj.material) rowObj.material = "Water";
+      if (!rowObj.materialState) rowObj.materialState = "free";
+    }
+    if (entityId === "counterflow_heat_exchanger") {
+      rowObj.material = rowObj.material || "Petroleum";
+      rowObj.materialState = rowObj.materialState || "free";
+      rowObj.coldMaterial = rowObj.coldMaterial || "Crude Oil";
+      rowObj.coldMaterialState = rowObj.coldMaterialState || "in a pipe";
     }
 
     rows.push(rowObj);

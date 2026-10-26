@@ -21,6 +21,8 @@ import {
   formatStreamLine,
   isSolidResource,
   NET_RATE_EPSILON,
+  applyHeatAndPhaseChange,
+  getAbsorbHeatEntityName,
 } from "../src/calculator.js";
 import { buildEntityCatalog, searchEntities } from "../src/data_loader.js";
 import { PRESETS, getPresetById } from "../src/presets.js";
@@ -2526,6 +2528,234 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
   assert.ok(sieveHtmlLooped.includes("[unloop]"), "Looped machine output must render [unloop] link");
 
   console.log("✓ Closed Loop Matching, Unrounded Match Precision, and Thermal Isolation tests passed");
+}
+
+// 25. Meta-Machine: Absorb Heat into liquid / gas / solid and 212 Element Transitions
+{
+  const catalog = buildEntityCatalog();
+  const { entityMap, elementMap } = catalog;
+
+  // A. Dynamic label based on input material phase
+  assert.strictEqual(getAbsorbHeatEntityName("Water", elementMap), "Absorb heat into liquid");
+  assert.strictEqual(getAbsorbHeatEntityName("Oxygen", elementMap), "Absorb heat into gas");
+  assert.strictEqual(getAbsorbHeatEntityName("Dirt", elementMap), "Absorb heat into solid");
+  assert.strictEqual(getAbsorbHeatEntityName("Sand", elementMap), "Absorb heat into solid");
+  assert.strictEqual(getAbsorbHeatEntityName("Molten Iron", elementMap), "Absorb heat into liquid");
+
+  const evWater = evaluateRow({ entityId: "absorb_heat", qty: 1, material: "Water" }, entityMap, elementMap);
+  assert.strictEqual(evWater.entity.name, "Absorb heat into liquid");
+
+  const evGas = evaluateRow({ entityId: "absorb_heat", qty: 1, material: "Oxygen" }, entityMap, elementMap);
+  assert.strictEqual(evGas.entity.name, "Absorb heat into gas");
+
+  const evSolid = evaluateRow({ entityId: "absorb_heat", qty: 1, material: "Dirt" }, entityMap, elementMap);
+  assert.strictEqual(evSolid.entity.name, "Absorb heat into solid");
+
+  // B. Sensible Heating without phase change
+  // 1000 g/s Water @ 20 °C absorbing 10 kDTU/s: deltaT = 10*1000 / (1000 * 4.179) = 2.3929 °C -> 22.39 °C
+  const sensibleOut = applyHeatAndPhaseChange("Water", 1000, 20, 10, "in a pipe", elementMap);
+  assert.strictEqual(sensibleOut.length, 1);
+  assert.strictEqual(sensibleOut[0].resource, "Water");
+  assert.strictEqual(sensibleOut[0].rate, 1000);
+  assert.strictEqual(sensibleOut[0].state, "in a pipe");
+  assert.strictEqual(Math.round(sensibleOut[0].tempC * 100) / 100, 22.39);
+
+  // C. High-Temp Phase Change Transitions
+  // Water (1000 g/s @ 20 °C) absorbs 500 kDTU/s -> Steam @ 139.64 °C (state becomes free)
+  const waterBoil = applyHeatAndPhaseChange("Water", 1000, 20, 500, "in a pipe", elementMap);
+  assert.strictEqual(waterBoil.length, 1);
+  assert.strictEqual(waterBoil[0].resource, "Steam");
+  assert.strictEqual(waterBoil[0].rate, 1000);
+  assert.strictEqual(waterBoil[0].state, "free", "Steam boiled from liquid pipe must transition to free state");
+  assert.strictEqual(Math.round(waterBoil[0].tempC * 100) / 100, 139.65);
+
+  // Polluted Water (1000 g/s @ 20 °C) absorbs 500 kDTU/s -> 99% Steam (990 g/s) + 1% Dirt (10 g/s) @ 139.78 °C
+  const pwBoil = applyHeatAndPhaseChange("Polluted Water", 1000, 20, 500, "in a pipe", elementMap);
+  assert.strictEqual(pwBoil.length, 2);
+  const pwSteam = pwBoil.find((o) => o.resource === "Steam");
+  const pwDirt = pwBoil.find((o) => o.resource === "Dirt");
+  assert.ok(pwSteam && pwDirt, "Boiled Polluted Water must produce both Steam and Dirt");
+  assert.strictEqual(pwSteam.rate, 990);
+  assert.strictEqual(pwSteam.state, "free");
+  assert.strictEqual(pwDirt.rate, 10);
+  assert.strictEqual(pwDirt.state, "free");
+  assert.strictEqual(pwSteam.rate + pwDirt.rate, 1000, "Mass must be 100% conserved");
+  assert.strictEqual(Math.round(pwSteam.tempC * 100) / 100, 139.78);
+  assert.strictEqual(Math.round(pwDirt.tempC * 100) / 100, 139.78);
+
+  // Crude Oil (10,000 g/s @ 370 °C) absorbs 600 kDTU/s -> Petroleum @ 405.28 °C
+  const oilBoil = applyHeatAndPhaseChange("Crude Oil", 10000, 370, 600, "free", elementMap);
+  assert.strictEqual(oilBoil.length, 1);
+  assert.strictEqual(oilBoil[0].resource, "Petroleum");
+  assert.strictEqual(oilBoil[0].rate, 10000);
+  assert.strictEqual(Math.round(oilBoil[0].tempC * 100) / 100, 405.28);
+
+  // Dirt heats into Sand at 326.85 °C (NOT Glass!)
+  const dirtTrans = applyHeatAndPhaseChange("Dirt", 1000, 20, 600, "free", elementMap);
+  assert.strictEqual(dirtTrans.length, 1);
+  assert.strictEqual(dirtTrans[0].resource, "Sand", "Dirt high-temp transition must produce Sand");
+  assert.strictEqual(dirtTrans[0].rate, 1000);
+
+  // Polluted Dirt heats into Molten Glass at 1712.85 °C (NOT Glass!)
+  const pdTrans = applyHeatAndPhaseChange("Polluted Dirt", 1000, 20, 1450, "free", elementMap);
+  assert.strictEqual(pdTrans.length, 1);
+  assert.strictEqual(pdTrans[0].resource, "Molten Glass", "Polluted Dirt high-temp transition must produce Molten Glass");
+  assert.strictEqual(pdTrans[0].rate, 1000);
+
+  // Multi-stage high-temp transition: Polluted Dirt -> Molten Glass -> Rock Gas (> 2356.85 °C)
+  const pdMultiTrans = applyHeatAndPhaseChange("Polluted Dirt", 1000, 20, 2000, "free", elementMap);
+  assert.strictEqual(pdMultiTrans.length, 1);
+  assert.strictEqual(pdMultiTrans[0].resource, "Rock Gas", "Sufficient heat must trigger multi-stage transition to Rock Gas");
+  assert.strictEqual(pdMultiTrans[0].rate, 1000);
+
+  // D. Upstream pool flow rate and temperature propagation in resolveTableTemperatures
+  const boilerChain = [
+    { entityId: "liquid_pump", qty: 1, recipeId: "water" }, // outputs 10,000 g/s Water @ 20 °C (in a pipe)
+    { entityId: "absorb_heat", qty: 500, material: "Water", materialState: "in a pipe" },
+  ];
+  const evalBoiler = resolveTableTemperatures(boilerChain, entityMap, elementMap);
+  assert.strictEqual(evalBoiler[1].inputs[0].rate, 10000, "absorb_heat must consume all 10,000 g/s from upstream pump");
+  assert.strictEqual(evalBoiler[1].inputs[0].state, "in a pipe");
+  assert.strictEqual(evalBoiler[1].heat, -5000, "Building heat must equal -10 * qty kDTU/s");
+
+  console.log("✓ Absorb Heat Meta-Machine and Phase Change Transitions tests passed");
+}
+
+// 26. Meta-Machine: Counterflow Heat Exchanger and Thermal Clamping
+{
+  const catalog = buildEntityCatalog();
+  const { entityMap, elementMap } = catalog;
+
+  // A. Counterflow heat transfer between Petroleum (hot) and Crude Oil (cold)
+  // Hot: 1000 g/s Petroleum @ 400 °C (shc 1.76). Cold: 1000 g/s Crude Oil @ 100 °C (shc 1.69)
+  // Transfer Q = 50 kDTU/s (qty: 5)
+  // Delta T hot = 50000 / (1000 * 1.76) = 28.409 °C -> 371.59 °C
+  // Delta T cold = 50000 / (1000 * 1.69) = 29.586 °C -> 129.59 °C
+  const rowExchanger = {
+    entityId: "counterflow_heat_exchanger",
+    qty: 5,
+    material: "Petroleum",
+    materialState: "free",
+    coldMaterial: "Crude Oil",
+    coldMaterialState: "in a pipe",
+  };
+  const evExchanger = evaluateRow(
+    rowExchanger,
+    entityMap,
+    elementMap,
+    20.0,
+    { "Petroleum||free": 400, "Crude Oil||in a pipe": 100 }
+  );
+  assert.strictEqual(evExchanger.heat, 0, "Counterflow heat exchanger building heat must be 0");
+  assert.strictEqual(evExchanger.power, 0, "Counterflow heat exchanger power must be 0");
+  assert.strictEqual(evExchanger.inputs.length, 2);
+  assert.strictEqual(evExchanger.outputs.length, 2);
+
+  const petIn = evExchanger.inputs.find((i) => i.resource === "Petroleum");
+  const oilIn = evExchanger.inputs.find((i) => i.resource === "Crude Oil");
+  const petOut = evExchanger.outputs.find((o) => o.resource === "Petroleum");
+  const oilOut = evExchanger.outputs.find((o) => o.resource === "Crude Oil");
+
+  assert.strictEqual(petIn.tempC, 400);
+  assert.strictEqual(oilIn.tempC, 100);
+  assert.strictEqual(Math.round(petOut.tempC * 100) / 100, 371.59);
+  assert.strictEqual(Math.round(oilOut.tempC * 100) / 100, 129.59);
+
+  // B. Thermodynamic Clamping: Hot output can NEVER become colder than Cold output
+  // Huge qty (e.g. 5000x = 50,000 kDTU/s) must clamp at equilibrium
+  const rowHuge = {
+    entityId: "counterflow_heat_exchanger",
+    qty: 5000,
+    material: "Petroleum",
+    materialState: "free",
+    coldMaterial: "Crude Oil",
+    coldMaterialState: "in a pipe",
+  };
+  const evHuge = evaluateRow(
+    rowHuge,
+    entityMap,
+    elementMap,
+    20.0,
+    { "Petroleum||free": 400, "Crude Oil||in a pipe": 100 }
+  );
+  const petOutClamped = evHuge.outputs.find((o) => o.resource === "Petroleum");
+  const oilOutClamped = evHuge.outputs.find((o) => o.resource === "Crude Oil");
+
+  assert.ok(
+    Math.abs(petOutClamped.tempC - oilOutClamped.tempC) < 1e-4,
+    `Output temperatures must equalize at thermodynamic limit, were ${petOutClamped.tempC} and ${oilOutClamped.tempC}`
+  );
+  assert.strictEqual(Math.round(petOutClamped.tempC * 100) / 100, 253.04);
+  assert.strictEqual(Math.round(oilOutClamped.tempC * 100) / 100, 253.04);
+
+  // C. Match target calculation for Counterflow Heat Exchanger
+  const matchTargets = calculateRowMatchTargets(0, [rowExchanger], entityMap, {
+    elementMap,
+    netInputTemps: { "Petroleum||free": 400, "Crude Oil||in a pipe": 100 },
+  });
+  assert.ok(matchTargets["out:Heat"], "Counterflow heat exchanger must provide heat match target for Q_max");
+  // Q_max = (400 - 100) * (1760 * 1690) / (1760 + 1690) / 1000 = 258.64 kDTU/s -> targetQty = 25.86x
+  assert.strictEqual(Math.round(matchTargets["out:Heat"].targetQty * 100) / 100, 25.86);
+
+  console.log("✓ Counterflow Heat Exchanger and Thermal Clamping tests passed");
+}
+
+// 27. Dynamic Steam Turbine Power & Heat Simulation
+{
+  const catalog = buildEntityCatalog();
+  const { entityMap, elementMap } = catalog;
+
+  // A. Below minimum operating threshold (< 125 °C) -> 0 W, 0 kDTU/s
+  const evCold = evaluateRow({ entityId: "steam_turbine", qty: 1, inputTemp: 100 }, entityMap, elementMap);
+  assert.strictEqual(evCold.power, 0, "Turbine with steam < 125 °C must produce 0 W");
+  assert.strictEqual(evCold.heat, 0, "Turbine with steam < 125 °C must produce 0 kDTU/s");
+
+  // B. Operating at 125 °C
+  // Power: 850 * (125 - 95) / 105 = 242.86 W
+  // Q_removed: 2 * 4.179 * 30 = 250.74 kDTU/s
+  // Heat: 4.0 + 0.10 * 250.74 = 29.074 kDTU/s
+  const ev125 = evaluateRow({ entityId: "steam_turbine", qty: 1, inputTemp: 125 }, entityMap, elementMap);
+  assert.strictEqual(Math.round(ev125.power * 100) / 100, 242.86);
+  assert.strictEqual(Math.round(ev125.heat * 100) / 100, 29.07);
+  assert.strictEqual(ev125.outputs[0].resource, "Water");
+  assert.strictEqual(ev125.outputs[0].tempC, 95);
+
+  // C. Operating at 200 °C (Max standard power)
+  // Power: 850 W
+  // Q_removed: 2 * 4.179 * 105 = 877.59 kDTU/s
+  // Heat: 4.0 + 0.10 * 877.59 = 91.759 kDTU/s
+  const ev200 = evaluateRow({ entityId: "steam_turbine", qty: 1, inputTemp: 200 }, entityMap, elementMap);
+  assert.strictEqual(ev200.power, 850);
+  assert.strictEqual(Math.round(ev200.heat * 100) / 100, 91.76);
+
+  // D. Operating at 500 °C (Steam Vent temp: power capped at 850 W, heat emitted continues rising)
+  // Power: 850 W
+  // Q_removed: 2 * 4.179 * 405 = 3384.99 kDTU/s
+  // Heat: 4.0 + 0.10 * 3384.99 = 342.499 kDTU/s
+  const ev500 = evaluateRow({ entityId: "steam_turbine", qty: 1, inputTemp: 500 }, entityMap, elementMap);
+  assert.strictEqual(ev500.power, 850);
+  assert.strictEqual(Math.round(ev500.heat * 100) / 100, 342.50);
+
+  // E. Engie's Tune-Up modifier boosts power by +50% (1275 W at 200 °C)
+  const evTuneUp = evaluateRow(
+    { entityId: "steam_turbine", qty: 1, inputTemp: 200, modifiers: ["engie_tuneup"] },
+    entityMap,
+    elementMap
+  );
+  assert.strictEqual(evTuneUp.power, 1275, "Engie's Tune-up must boost turbine power to 1275 W");
+
+  // F. Integration in resolveTableTemperatures (Boiler -> Steam Turbine)
+  const systemRows = [
+    { entityId: "absorb_heat", qty: 150.444, material: "Water", materialState: "free", rate: 2000 }, // Water @ 20 °C + 1504.44 kDTU/s -> Steam @ 200 °C (2000 g/s)
+    { entityId: "steam_turbine", qty: 1 },
+  ];
+  const evalSystem = resolveTableTemperatures(systemRows, entityMap, elementMap);
+  assert.strictEqual(Math.round(evalSystem[0].outputs[0].tempC), 200);
+  assert.strictEqual(evalSystem[1].inputs[0].resource, "Steam");
+  assert.strictEqual(Math.round(evalSystem[1].inputs[0].tempC), 200);
+  assert.strictEqual(Math.round(evalSystem[1].power), 850, "Turbine fed from boiler must generate 850 W");
+
+  console.log("✓ Dynamic Steam Turbine Power & Heat Simulation tests passed");
 }
 
 console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");

@@ -376,4 +376,60 @@ console.log("=== Running Protocol Buffer URL State Tests ===");
   console.log(`✓ 100-machine complex design serialized into only ${encodedLarge.length} chars (~1KB!)`);
 }
 
+// 9. Meta-Machines Protocol Buffer Round-Trip
+{
+  const catalog = buildEntityCatalog();
+  const metaState = {
+    rateMode: "s",
+    rows: [
+      {
+        entityId: "absorb_heat",
+        qty: 45.5,
+        material: "Polluted Water",
+        materialState: "in a pipe",
+      },
+      {
+        entityId: "counterflow_heat_exchanger",
+        qty: 12.25,
+        material: "Petroleum",
+        materialState: "free",
+        coldMaterial: "Crude Oil",
+        coldMaterialState: "in a pipe",
+      },
+      {
+        entityId: "absorb_heat",
+        qty: 10,
+        material: "Oxygen",
+        materialState: "free",
+      },
+    ],
+    netInputTemps: {},
+    loops: [],
+  };
+
+  const encoded = encodeStateToParam(metaState, catalog.elementMap);
+  assert.ok(encoded.length > 0, "Meta-machine state must serialize to non-empty param");
+  const decoded = decodeStateFromParam(encoded);
+
+  assert.strictEqual(decoded.rows.length, 3);
+  assert.strictEqual(decoded.rows[0].entityId, "absorb_heat");
+  assert.strictEqual(decoded.rows[0].qty, 45.5);
+  assert.strictEqual(decoded.rows[0].material, "Polluted Water");
+  assert.strictEqual(decoded.rows[0].materialState, "in a pipe");
+
+  assert.strictEqual(decoded.rows[1].entityId, "counterflow_heat_exchanger");
+  assert.strictEqual(decoded.rows[1].qty, 12.25);
+  assert.strictEqual(decoded.rows[1].material, "Petroleum");
+  assert.strictEqual(decoded.rows[1].materialState, "free");
+  assert.strictEqual(decoded.rows[1].coldMaterial, "Crude Oil");
+  assert.strictEqual(decoded.rows[1].coldMaterialState, "in a pipe");
+
+  assert.strictEqual(decoded.rows[2].entityId, "absorb_heat");
+  assert.strictEqual(decoded.rows[2].qty, 10);
+  assert.strictEqual(decoded.rows[2].material, "Oxygen");
+  assert.strictEqual(decoded.rows[2].materialState, "free");
+
+  console.log("✓ Meta-machines Protocol Buffer roundtrip verified with custom materials and states");
+}
+
 console.log("\n ALL PROTOCOL BUFFER URL STATE TESTS PASSED SUCCESSFULLY! \n");

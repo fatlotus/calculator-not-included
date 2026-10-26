@@ -312,6 +312,295 @@ function getOutputInletTemp(outputStream, evaluatedInputs, defaultTemp = 20.0) {
 }
 
 /**
+ * Dynamic label for absorb_heat based on material state.
+ */
+export function getAbsorbHeatEntityName(materialName, elementMap = null) {
+  let elem = null;
+  if (elementMap) {
+    elem = elementMap instanceof Map ? elementMap.get(materialName) : elementMap[materialName];
+  }
+  if (!elem && ONI_DATASET?.elements) {
+    elem = ONI_DATASET.elements[materialName];
+  }
+  if (elem?.state === "Gas") {
+    return "Absorb heat into gas";
+  } else if (elem?.state === "Solid") {
+    return "Absorb heat into solid";
+  }
+  return "Absorb heat into liquid";
+}
+
+/**
+ * Apply thermal energy and element phase transitions to a material stream.
+ *
+ * @param {string} resource - Material name (e.g. "Water", "Crude Oil")
+ * @param {number} massRate - Mass flow rate in g/s
+ * @param {number} startTempC - Inlet temperature in °C
+ * @param {number} deltaQkDTU - Thermal energy added (positive for heating, negative for cooling) in kDTU/s
+ * @param {string} pipeState - Current delivery state ("free", "in a pipe", "solid")
+ * @param {Map<string, Object>|Object|null} elementMap - Element catalog
+ * @param {number} depth - Recursion guard for multi-stage transitions (e.g. Solid -> Liquid -> Gas)
+ * @returns {Array<{ resource: string, rate: number, unit: string, state: string, tempC: number, temp: string }>}
+ */
+export function applyHeatAndPhaseChange(
+  resource,
+  massRate,
+  startTempC,
+  deltaQkDTU,
+  pipeState = "free",
+  elementMap = null,
+  depth = 0
+) {
+  if (massRate <= 1e-9 || depth > 2) {
+    return [{
+      resource,
+      rate: massRate,
+      unit: "g/s",
+      state: pipeState,
+      tempC: startTempC,
+      temp: `@ ${formatNumber(startTempC)} °C`,
+    }];
+  }
+
+  let elem = null;
+  if (elementMap) {
+    elem = elementMap instanceof Map ? elementMap.get(resource) : elementMap[resource];
+  }
+  if (!elem && ONI_DATASET?.elements) {
+    elem = ONI_DATASET.elements[resource];
+  }
+
+  if (!elem) {
+    return [{
+      resource,
+      rate: massRate,
+      unit: "g/s",
+      state: pipeState,
+      tempC: startTempC,
+      temp: `@ ${formatNumber(startTempC)} °C`,
+    }];
+  }
+
+  const c = (elem.shc !== undefined && elem.shc !== null && !isNaN(Number(elem.shc))) ? Number(elem.shc) : 1.0;
+
+  if (Math.abs(deltaQkDTU) < 1e-9) {
+    const outState = isSolidResource(resource, elementMap) ? "free" : pipeState;
+    return [{
+      resource,
+      rate: massRate,
+      unit: "g/s",
+      state: outState,
+      tempC: startTempC,
+      temp: `@ ${formatNumber(startTempC)} °C`,
+    }];
+  }
+
+  const deltaT = (deltaQkDTU * 1000.0) / (massRate * c);
+  const targetTemp = startTempC + deltaT;
+
+  // 1. High-Temp Phase Change Transition (Heating)
+  if (
+    deltaQkDTU > 0 &&
+    elem.high_temp_transition &&
+    elem.high_temp !== null &&
+    elem.high_temp !== undefined
+  ) {
+    const tHigh = Number(elem.high_temp);
+    if (targetTemp >= tHigh) {
+      const qToThreshold = startTempC < tHigh
+        ? ((tHigh - startTempC) * massRate * c) / 1000.0
+        : 0;
+      const qRemaining = Math.max(0, deltaQkDTU - qToThreshold);
+
+      const outputsDef = elem.high_temp_transition.outputs && elem.high_temp_transition.outputs.length > 0
+        ? elem.high_temp_transition.outputs
+        : [{ element: elem.high_temp_transition.target, ratio: 1.0 }];
+
+      let c_prod = 0;
+      for (const out of outputsDef) {
+        let outElem = null;
+        if (elementMap) {
+          outElem = elementMap instanceof Map ? elementMap.get(out.element) : elementMap[out.element];
+        }
+        if (!outElem && ONI_DATASET?.elements) {
+          outElem = ONI_DATASET.elements[out.element];
+        }
+        const outShc = (outElem && outElem.shc) ? Number(outElem.shc) : c;
+        c_prod += out.ratio * outShc;
+      }
+      if (c_prod <= 0) c_prod = c;
+
+      const tBase = Math.max(startTempC, tHigh);
+      const finalTemp = tBase + (qRemaining * 1000.0) / (massRate * c_prod);
+
+      // Multi-stage check: if single output exceeds its own high_temp
+      if (outputsDef.length === 1 && depth < 2) {
+        const nextElemName = outputsDef[0].element;
+        let nextElem = null;
+        if (elementMap) {
+          nextElem = elementMap instanceof Map ? elementMap.get(nextElemName) : elementMap[nextElemName];
+        }
+        if (!nextElem && ONI_DATASET?.elements) {
+          nextElem = ONI_DATASET.elements[nextElemName];
+        }
+        if (
+          nextElem &&
+          nextElem.high_temp_transition &&
+          nextElem.high_temp !== null &&
+          nextElem.high_temp !== undefined &&
+          finalTemp >= nextElem.high_temp
+        ) {
+          let nextState = pipeState;
+          if (nextElem.state !== elem.state || isSolidResource(nextElemName, elementMap)) {
+            nextState = "free";
+          }
+          return applyHeatAndPhaseChange(
+            nextElemName,
+            massRate * outputsDef[0].ratio,
+            tBase,
+            qRemaining,
+            nextState,
+            elementMap,
+            depth + 1
+          );
+        }
+      }
+
+      const results = [];
+      for (const out of outputsDef) {
+        let outElem = null;
+        if (elementMap) {
+          outElem = elementMap instanceof Map ? elementMap.get(out.element) : elementMap[out.element];
+        }
+        if (!outElem && ONI_DATASET?.elements) {
+          outElem = ONI_DATASET.elements[out.element];
+        }
+        let outState = pipeState;
+        if (!outElem || outElem.state !== elem.state || isSolidResource(out.element, elementMap)) {
+          outState = "free";
+        }
+        results.push({
+          resource: out.element,
+          rate: massRate * out.ratio,
+          unit: "g/s",
+          state: outState,
+          tempC: finalTemp,
+          temp: `@ ${formatNumber(finalTemp)} °C`,
+        });
+      }
+      return results;
+    }
+  }
+
+  // 2. Low-Temp Phase Change Transition (Cooling)
+  if (
+    deltaQkDTU < 0 &&
+    elem.low_temp_transition &&
+    elem.low_temp !== null &&
+    elem.low_temp !== undefined
+  ) {
+    const tLow = Number(elem.low_temp);
+    if (targetTemp <= tLow) {
+      const absQ = Math.abs(deltaQkDTU);
+      const qToThreshold = startTempC > tLow
+        ? ((startTempC - tLow) * massRate * c) / 1000.0
+        : 0;
+      const qRemaining = Math.max(0, absQ - qToThreshold);
+
+      const outputsDef = elem.low_temp_transition.outputs && elem.low_temp_transition.outputs.length > 0
+        ? elem.low_temp_transition.outputs
+        : [{ element: elem.low_temp_transition.target, ratio: 1.0 }];
+
+      let c_prod = 0;
+      for (const out of outputsDef) {
+        let outElem = null;
+        if (elementMap) {
+          outElem = elementMap instanceof Map ? elementMap.get(out.element) : elementMap[out.element];
+        }
+        if (!outElem && ONI_DATASET?.elements) {
+          outElem = ONI_DATASET.elements[out.element];
+        }
+        const outShc = (outElem && outElem.shc) ? Number(outElem.shc) : c;
+        c_prod += out.ratio * outShc;
+      }
+      if (c_prod <= 0) c_prod = c;
+
+      const tBase = Math.min(startTempC, tLow);
+      const finalTemp = Math.max(-273.15, tBase - (qRemaining * 1000.0) / (massRate * c_prod));
+
+      // Multi-stage check: if single output drops below its own low_temp
+      if (outputsDef.length === 1 && depth < 2) {
+        const nextElemName = outputsDef[0].element;
+        let nextElem = null;
+        if (elementMap) {
+          nextElem = elementMap instanceof Map ? elementMap.get(nextElemName) : elementMap[nextElemName];
+        }
+        if (!nextElem && ONI_DATASET?.elements) {
+          nextElem = ONI_DATASET.elements[nextElemName];
+        }
+        if (
+          nextElem &&
+          nextElem.low_temp_transition &&
+          nextElem.low_temp !== null &&
+          nextElem.low_temp !== undefined &&
+          finalTemp <= nextElem.low_temp
+        ) {
+          let nextState = pipeState;
+          if (nextElem.state !== elem.state || isSolidResource(nextElemName, elementMap)) {
+            nextState = "free";
+          }
+          return applyHeatAndPhaseChange(
+            nextElemName,
+            massRate * outputsDef[0].ratio,
+            tBase,
+            -qRemaining,
+            nextState,
+            elementMap,
+            depth + 1
+          );
+        }
+      }
+
+      const results = [];
+      for (const out of outputsDef) {
+        let outElem = null;
+        if (elementMap) {
+          outElem = elementMap instanceof Map ? elementMap.get(out.element) : elementMap[out.element];
+        }
+        if (!outElem && ONI_DATASET?.elements) {
+          outElem = ONI_DATASET.elements[out.element];
+        }
+        let outState = pipeState;
+        if (!outElem || outElem.state !== elem.state || isSolidResource(out.element, elementMap)) {
+          outState = "free";
+        }
+        results.push({
+          resource: out.element,
+          rate: massRate * out.ratio,
+          unit: "g/s",
+          state: outState,
+          tempC: finalTemp,
+          temp: `@ ${formatNumber(finalTemp)} °C`,
+        });
+      }
+      return results;
+    }
+  }
+
+  // 3. Sensible temperature change without phase transition
+  const finalTemp = Math.max(-273.15, targetTemp);
+  const outState = isSolidResource(resource, elementMap) ? "free" : pipeState;
+  return [{
+    resource,
+    rate: massRate,
+    unit: "g/s",
+    state: outState,
+    tempC: finalTemp,
+    temp: `@ ${formatNumber(finalTemp)} °C`,
+  }];
+}
+
+/**
  * Evaluate a single calculator table row into resolved inputs, outputs, power, and thermal delta.
  */
 export const ENTITY_ALIASES = {
@@ -590,7 +879,8 @@ export function evaluateRow(
   entityMap,
   elementMap = null,
   defaultInputTemp = 20.0,
-  inputTemps = null
+  inputTemps = null,
+  options = null
 ) {
   let entity = entityMap ? entityMap.get(row.entityId) : null;
   if (!entity && entityMap && ENTITY_ALIASES[row.entityId]) {
@@ -616,6 +906,191 @@ export function evaluateRow(
       ? row.modifiers
       : (entity.default_modifiers || [])
   );
+
+  // Meta-Machine: Absorb Heat into liquid / gas / solid
+  if (row.entityId === "absorb_heat" || entity.id === "absorb_heat") {
+    const mat = row.material || "Water";
+    const matState = isSolidResource(mat, elementMap) ? "free" : (row.materialState || "free");
+    const massRate =
+      options?.streamRates?.massRate ??
+      options?.streamRates?.rate ??
+      row.rate ??
+      1000.0;
+
+    let inpTemp = defaultInputTemp;
+    if (inputTemps && typeof inputTemps === "object") {
+      const k = `${mat}||${matState}`;
+      const kSingle = `${mat}|${matState}`;
+      if (inputTemps[k] !== undefined) inpTemp = Number(inputTemps[k]);
+      else if (inputTemps[kSingle] !== undefined) inpTemp = Number(inputTemps[kSingle]);
+      else if (inputTemps[mat] !== undefined) inpTemp = Number(inputTemps[mat]);
+      else inpTemp = getDefaultElementTemp(mat, elementMap);
+    } else if (row.inputTemp !== undefined && row.inputTemp !== null && !isNaN(Number(row.inputTemp))) {
+      inpTemp = Number(row.inputTemp);
+    } else {
+      inpTemp = getDefaultElementTemp(mat, elementMap);
+    }
+
+    const deltaQ = 10.0 * qty;
+    const inputs = [
+      {
+        resource: mat,
+        rate: massRate,
+        unit: "g/s",
+        state: matState,
+        tempC: inpTemp,
+        temp: `@ ${formatNumber(inpTemp)} °C`,
+      },
+    ];
+
+    const outputs = applyHeatAndPhaseChange(
+      mat,
+      massRate,
+      inpTemp,
+      deltaQ,
+      matState,
+      elementMap
+    );
+
+    const buildingHeat = -10.0 * qty;
+    const dynamicEntity = {
+      ...entity,
+      name: getAbsorbHeatEntityName(mat, elementMap),
+    };
+
+    return {
+      entity: dynamicEntity,
+      qty,
+      power: 0,
+      heat: buildingHeat,
+      buildingHeat,
+      inputTemp: inpTemp,
+      inputs: qty <= 0 ? [] : inputs,
+      outputs: qty <= 0 ? [] : outputs,
+      isStateTransferFor: new Set(),
+    };
+  }
+
+  // Meta-Machine: Counterflow Heat Exchanger
+  if (row.entityId === "counterflow_heat_exchanger" || entity.id === "counterflow_heat_exchanger") {
+    const hotMat = row.material || "Petroleum";
+    const hotState = isSolidResource(hotMat, elementMap) ? "free" : (row.materialState || "free");
+    const coldMat = row.coldMaterial || "Crude Oil";
+    const coldState = isSolidResource(coldMat, elementMap) ? "free" : (row.coldMaterialState || "in a pipe");
+
+    const hotRate =
+      options?.streamRates?.hotRate ??
+      row.hotRate ??
+      1000.0;
+    const coldRate =
+      options?.streamRates?.coldRate ??
+      row.coldRate ??
+      1000.0;
+
+    let tHotIn = defaultInputTemp;
+    let tColdIn = defaultInputTemp;
+
+    if (inputTemps && typeof inputTemps === "object") {
+      const kHot = `${hotMat}||${hotState}`;
+      const kHotSingle = `${hotMat}|${hotState}`;
+      if (inputTemps[kHot] !== undefined) tHotIn = Number(inputTemps[kHot]);
+      else if (inputTemps[kHotSingle] !== undefined) tHotIn = Number(inputTemps[kHotSingle]);
+      else if (inputTemps[hotMat] !== undefined) tHotIn = Number(inputTemps[hotMat]);
+      else tHotIn = getDefaultElementTemp(hotMat, elementMap);
+
+      const kCold = `${coldMat}||${coldState}`;
+      const kColdSingle = `${coldMat}|${coldState}`;
+      if (inputTemps[kCold] !== undefined) tColdIn = Number(inputTemps[kCold]);
+      else if (inputTemps[kColdSingle] !== undefined) tColdIn = Number(inputTemps[kColdSingle]);
+      else if (inputTemps[coldMat] !== undefined) tColdIn = Number(inputTemps[coldMat]);
+      else tColdIn = getDefaultElementTemp(coldMat, elementMap);
+    } else {
+      tHotIn = getDefaultElementTemp(hotMat, elementMap);
+      tColdIn = getDefaultElementTemp(coldMat, elementMap);
+    }
+
+    if (row.inputTemp !== undefined && row.inputTemp !== null && !isNaN(Number(row.inputTemp))) {
+      tHotIn = Number(row.inputTemp);
+    }
+
+    const Q_req = 10.0 * qty;
+    let Q_actual = 0;
+
+    if (tHotIn > tColdIn && hotRate > 1e-9 && coldRate > 1e-9 && qty > 0) {
+      const thReq = applyHeatAndPhaseChange(hotMat, hotRate, tHotIn, -Q_req, hotState, elementMap)[0]?.tempC ?? tHotIn;
+      const tcReq = applyHeatAndPhaseChange(coldMat, coldRate, tColdIn, +Q_req, coldState, elementMap)[0]?.tempC ?? tColdIn;
+
+      if (thReq >= tcReq) {
+        Q_actual = Q_req;
+      } else {
+        // Temperature crossover at Q_req; bisect to find exact Q_max where th == tc
+        let low = 0;
+        let high = Q_req;
+        for (let iter = 0; iter < 60; iter++) {
+          const mid = (low + high) / 2;
+          const th = applyHeatAndPhaseChange(hotMat, hotRate, tHotIn, -mid, hotState, elementMap)[0]?.tempC ?? tHotIn;
+          const tc = applyHeatAndPhaseChange(coldMat, coldRate, tColdIn, +mid, coldState, elementMap)[0]?.tempC ?? tColdIn;
+          if (th >= tc) {
+            low = mid;
+          } else {
+            high = mid;
+          }
+        }
+        Q_actual = low;
+      }
+    }
+
+    const inputs = [
+      {
+        resource: hotMat,
+        rate: hotRate,
+        unit: "g/s",
+        state: hotState,
+        tempC: tHotIn,
+        temp: `@ ${formatNumber(tHotIn)} °C`,
+      },
+      {
+        resource: coldMat,
+        rate: coldRate,
+        unit: "g/s",
+        state: coldState,
+        tempC: tColdIn,
+        temp: `@ ${formatNumber(tColdIn)} °C`,
+      },
+    ];
+
+    const hotOutputs = applyHeatAndPhaseChange(
+      hotMat,
+      hotRate,
+      tHotIn,
+      -Q_actual,
+      hotState,
+      elementMap
+    );
+    const coldOutputs = applyHeatAndPhaseChange(
+      coldMat,
+      coldRate,
+      tColdIn,
+      +Q_actual,
+      coldState,
+      elementMap
+    );
+    const outputs = [...hotOutputs, ...coldOutputs];
+
+    return {
+      entity,
+      qty,
+      power: 0,
+      heat: 0,
+      buildingHeat: 0,
+      inputTemp: tHotIn,
+      inputs: qty <= 0 ? [] : inputs,
+      outputs: qty <= 0 ? [] : outputs,
+      isStateTransferFor: new Set(),
+      qActual: Q_actual,
+      qReq: Q_req,
+    };
+  }
 
   let baseInputs = entity.inputs || [];
   let baseOutputs = entity.outputs || [];
@@ -683,6 +1158,23 @@ export function evaluateRow(
 
     return { ...s, temp: tempStr, tempC: outTemp };
   });
+
+  // Dynamic Steam Turbine power and heat calculation based on inlet steam temperature
+  if (row.entityId === "steam_turbine" || entity.id === "steam_turbine") {
+    let inTemp = inputs[0]?.tempC;
+    if (inTemp === undefined || inTemp === null || isNaN(inTemp)) {
+      inTemp = row.inputTemp !== undefined ? Number(row.inputTemp) : (getDefaultElementTemp("Steam", elementMap) || 126.85);
+      if (inputs[0]) inputs[0].tempC = inTemp;
+    }
+    if (inTemp < 125.0) {
+      basePower = 0.0;
+      baseHeat = 0.0;
+    } else {
+      const qRemoved = (2000.0 * 4.179 * (inTemp - 95.0)) / 1000.0;
+      basePower = Math.min(850.0, 850.0 * ((inTemp - 95.0) / 105.0));
+      baseHeat = 4.0 + 0.10 * qRemoved;
+    }
+  }
 
   let power = basePower;
   let heat = baseHeat;
@@ -872,7 +1364,27 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
 
   // 2. Step sequentially top-to-bottom through machine rows
   for (const row of rows) {
-    const preEval = evaluateRow(row, entityMap, elementMap, 20.0, null);
+    let streamRates = null;
+    if (row.entityId === "absorb_heat") {
+      const mat = row.material || "Water";
+      const st = isSolidResource(mat, elementMap) ? "free" : (row.materialState || "free");
+      const p = pool.get(getKey(mat, st));
+      const avail = p ? p.availRate : 0;
+      const massRate = avail > 1e-6 ? avail : (row.rate ?? 1000.0);
+      streamRates = { massRate, rate: massRate };
+    } else if (row.entityId === "counterflow_heat_exchanger") {
+      const hotMat = row.material || "Petroleum";
+      const hotSt = isSolidResource(hotMat, elementMap) ? "free" : (row.materialState || "free");
+      const coldMat = row.coldMaterial || "Crude Oil";
+      const coldSt = isSolidResource(coldMat, elementMap) ? "free" : (row.coldMaterialState || "in a pipe");
+      const pHot = pool.get(getKey(hotMat, hotSt));
+      const pCold = pool.get(getKey(coldMat, coldSt));
+      const hotRate = pHot && pHot.availRate > 1e-6 ? pHot.availRate : (row.hotRate ?? 1000.0);
+      const coldRate = pCold && pCold.availRate > 1e-6 ? pCold.availRate : (row.coldRate ?? 1000.0);
+      streamRates = { hotRate, coldRate };
+    }
+
+    const preEval = evaluateRow(row, entityMap, elementMap, 20.0, null, { streamRates });
     const rowInputTemps = {};
 
     for (const inp of preEval.inputs) {
@@ -900,7 +1412,7 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
       }
     }
 
-    const ev = evaluateRow(row, entityMap, elementMap, 20.0, rowInputTemps);
+    const ev = evaluateRow(row, entityMap, elementMap, 20.0, rowInputTemps, { streamRates });
 
     // Consume inputs from running pool
     for (const inp of ev.inputs) {
@@ -948,11 +1460,17 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, option
   const targetRow = rows?.[targetRowIndex];
   if (!targetRow) return {};
 
+  const elementMap = options?.elementMap || null;
   const loops =
     (options && Array.isArray(options.loops) ? options.loops : rows?._loops) || [];
 
-  const unitRow = evaluateRow({ ...targetRow, qty: 1 }, entityMap);
-  const currentTargetEval = evaluateRow(targetRow, entityMap);
+  const evaluatedRows =
+    options?.evaluatedRows ||
+    resolveTableTemperatures(rows, entityMap, elementMap, options);
+
+  const unitRow = evaluateRow({ ...targetRow, qty: 1 }, entityMap, elementMap);
+  const currentTargetEval =
+    evaluatedRows[targetRowIndex] || evaluateRow(targetRow, entityMap, elementMap);
 
   // 1. Simulate upstream pool from Loop Start through rows[0 .. targetRowIndex - 1]
   const upstreamPool = new Map();
@@ -972,7 +1490,7 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, option
   }
 
   for (let j = 0; j < targetRowIndex; j++) {
-    const r = evaluateRow(rows[j], entityMap);
+    const r = evaluatedRows[j] || evaluateRow(rows[j], entityMap, elementMap);
     if (r.power < 0) {
       upstreamPower = Math.max(0, upstreamPower - Math.abs(r.power));
     }
@@ -1024,7 +1542,7 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, option
   let downstreamPowerDeficit = 0;
 
   for (let j = targetRowIndex + 1; j < rows.length; j++) {
-    const r = evaluateRow(rows[j], entityMap);
+    const r = evaluatedRows[j] || evaluateRow(rows[j], entityMap, elementMap);
     if (r.power < 0) {
       const reqP = Math.abs(r.power);
       const fromPoolP = Math.min(reqP, downstreamPowerPool);
@@ -1083,6 +1601,64 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, option
   if (unitRow.power > 1e-4 && downstreamPowerDeficit > 1e-4) {
     const targetQty = downstreamPowerDeficit / unitRow.power;
     matches["out:Power"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
+  }
+
+  // Special match targets for Meta-Machines:
+  if (targetRow.entityId === "absorb_heat") {
+    // 1. Balance net system heat produced by other rows
+    let otherPositiveHeat = 0;
+    for (let j = 0; j < rows.length; j++) {
+      if (j !== targetRowIndex) {
+        const r = evaluatedRows[j];
+        if (r && r.heat > 1e-4) otherPositiveHeat += r.heat;
+      }
+    }
+    if (otherPositiveHeat > 1e-4) {
+      const targetQty = otherPositiveHeat / 10.0;
+      matches["out:Heat"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
+    }
+
+    // 2. Heat to phase change transition
+    const mat = targetRow.material || "Water";
+    const elem = elementMap instanceof Map ? elementMap.get(mat) : elementMap?.[mat];
+    if (elem?.high_temp_transition && elem.high_temp !== null && elem.high_temp !== undefined) {
+      const tIn = currentTargetEval.inputTemp;
+      if (tIn < elem.high_temp) {
+        const massRate = currentTargetEval.inputs[0]?.rate || 1000.0;
+        const c = (elem.shc !== undefined && elem.shc !== null) ? Number(elem.shc) : 1.0;
+        const qToThreshold = ((elem.high_temp - tIn) * massRate * c) / 1000.0;
+        const targetQty = qToThreshold / 10.0;
+        matches["out:phase_change"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
+      }
+    }
+  } else if (targetRow.entityId === "counterflow_heat_exchanger") {
+    // Match to maximum thermodynamic heat transfer Q_max
+    const hotMat = targetRow.material || "Petroleum";
+    const coldMat = targetRow.coldMaterial || "Crude Oil";
+    const hotSt = targetRow.materialState || "free";
+    const coldSt = targetRow.coldMaterialState || "in a pipe";
+    const hotRate = currentTargetEval.inputs[0]?.rate || 1000.0;
+    const coldRate = currentTargetEval.inputs[1]?.rate || 1000.0;
+    const tHotIn = currentTargetEval.inputs[0]?.tempC ?? 20.0;
+    const tColdIn = currentTargetEval.inputs[1]?.tempC ?? 20.0;
+
+    if (tHotIn > tColdIn && hotRate > 1e-9 && coldRate > 1e-9) {
+      const Q_upper = ((tHotIn - tColdIn) * 10000.0 * 10.0) / 1000.0;
+      let low = 0;
+      let high = Q_upper;
+      for (let iter = 0; iter < 60; iter++) {
+        const mid = (low + high) / 2;
+        const th = applyHeatAndPhaseChange(hotMat, hotRate, tHotIn, -mid, hotSt, elementMap)[0]?.tempC ?? tHotIn;
+        const tc = applyHeatAndPhaseChange(coldMat, coldRate, tColdIn, +mid, coldSt, elementMap)[0]?.tempC ?? tColdIn;
+        if (th >= tc) {
+          low = mid;
+        } else {
+          high = mid;
+        }
+      }
+      const targetQty = low / 10.0;
+      matches["out:Heat"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
+    }
   }
 
   return matches;

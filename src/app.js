@@ -8,6 +8,7 @@ import {
   resolveTableTemperatures,
   calculateSystemNet,
   calculateRowMatchTargets,
+  isSolidResource,
 } from "./calculator.js";
 import { PRESETS, getPresetById } from "./presets.js";
 import { syncStateToUrl, loadStateFromUrl } from "./url_state.js";
@@ -96,6 +97,14 @@ class OniApp {
         if (entity.id === "duplicant") {
           newRow.bathroom = "plumbed";
           newRow.food = "barbecue";
+        } else if (entity.id === "absorb_heat") {
+          newRow.material = "Water";
+          newRow.materialState = "free";
+        } else if (entity.id === "counterflow_heat_exchanger") {
+          newRow.material = "Petroleum";
+          newRow.materialState = "free";
+          newRow.coldMaterial = "Crude Oil";
+          newRow.coldMaterialState = "in a pipe";
         }
         this.state.rows.push(newRow);
         this.onStateChange();
@@ -224,6 +233,24 @@ class OniApp {
           if (e.target.checked) mods.add(e.target.dataset.modId);
           else mods.delete(e.target.dataset.modId);
           row.modifiers = Array.from(mods);
+          this.onStateChange();
+        } else if (e.target.classList.contains("material-select")) {
+          row.material = e.target.value;
+          if (isSolidResource(row.material, this.catalog.elementMap)) {
+            row.materialState = "free";
+          }
+          this.onStateChange();
+        } else if (e.target.classList.contains("material-state-select")) {
+          row.materialState = e.target.value;
+          this.onStateChange();
+        } else if (e.target.classList.contains("cold-material-select")) {
+          row.coldMaterial = e.target.value;
+          if (isSolidResource(row.coldMaterial, this.catalog.elementMap)) {
+            row.coldMaterialState = "free";
+          }
+          this.onStateChange();
+        } else if (e.target.classList.contains("cold-material-state-select")) {
+          row.coldMaterialState = e.target.value;
           this.onStateChange();
         }
       });
@@ -448,6 +475,9 @@ class OniApp {
       .map((ev, i) => {
         const matches = calculateRowMatchTargets(i, this.state.rows, this.catalog.entityMap, {
           loops: this.state.loops,
+          elementMap: this.catalog.elementMap,
+          netInputTemps: this.state.netInputTemps,
+          evaluatedRows,
         });
         return renderTableRowHtml(
           this.state.rows[i],
@@ -514,6 +544,9 @@ class OniApp {
       if (!ev) return;
       const matches = calculateRowMatchTargets(i, this.state.rows, this.catalog.entityMap, {
         loops: this.state.loops,
+        elementMap: this.catalog.elementMap,
+        netInputTemps: this.state.netInputTemps,
+        evaluatedRows,
       });
       const dummy = document.createElement("tbody");
       dummy.innerHTML = renderTableRowHtml(

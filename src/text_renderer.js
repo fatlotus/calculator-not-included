@@ -15,6 +15,7 @@ import {
   getDefaultElementTemp,
   getNetInputTemp,
   isNonThermalResource,
+  isSolidResource,
   NET_RATE_EPSILON,
   DUPLICANT_DIETS,
 } from "./calculator.js";
@@ -62,6 +63,14 @@ export function findMatchingPreset(state) {
         break;
       }
       if (pr.food && sr.food && pr.food !== sr.food) {
+        matched = false;
+        break;
+      }
+      if (pr.material && sr.material && pr.material !== sr.material) {
+        matched = false;
+        break;
+      }
+      if (pr.coldMaterial && sr.coldMaterial && pr.coldMaterial !== sr.coldMaterial) {
         matched = false;
         break;
       }
@@ -179,6 +188,21 @@ export function computeStateData(state, catalog = null) {
       const bName = getDuplicantBathroomName(row.bathroom);
       const fName = getDuplicantFoodName(row.food);
       machineLines.push(`  [Bathroom: ${bName}, Food: ${fName}]`);
+    }
+
+    if (row.entityId === "absorb_heat") {
+      const mat = row.material || "Water";
+      const isSolid = isSolidResource(mat, catalog.elementMap);
+      const matState = row.materialState || "free";
+      machineLines.push(`  [Material: ${mat}${isSolid ? "" : ` (${matState})`}]`);
+    } else if (row.entityId === "counterflow_heat_exchanger") {
+      const hotMat = row.material || "Petroleum";
+      const isHotSolid = isSolidResource(hotMat, catalog.elementMap);
+      const hotState = row.materialState || "free";
+      const coldMat = row.coldMaterial || "Crude Oil";
+      const isColdSolid = isSolidResource(coldMat, catalog.elementMap);
+      const coldState = row.coldMaterialState || "in a pipe";
+      machineLines.push(`  [Hot: ${hotMat}${isHotSolid ? "" : ` (${hotState})`}, Cold: ${coldMat}${isColdSolid ? "" : ` (${coldState})`}]`);
     }
 
     if (Array.isArray(row.modifiers) && row.modifiers.length > 0) {

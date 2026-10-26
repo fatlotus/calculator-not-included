@@ -6,12 +6,12 @@
     "subcategory": "Oxygen",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Electrolyzer",
     "icon": "images/icons/Electrolyzer.png",
-    "power": -120.0,
+    "power": -120,
     "heat": 1.25,
     "inputs": [
       {
         "resource": "Water",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -20,14 +20,14 @@
     "outputs": [
       {
         "resource": "Oxygen",
-        "rate": 888.0,
+        "rate": 888,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 70 °C+"
       },
       {
         "resource": "Hydrogen",
-        "rate": 112.0,
+        "rate": 112,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 70 °C+"
@@ -44,12 +44,12 @@
     "subcategory": "Oxygen",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Oxygen_Diffuser",
     "icon": "images/icons/Oxygen_Diffuser.png",
-    "power": -120.0,
+    "power": -120,
     "heat": 1.5,
     "inputs": [
       {
         "resource": "Algae",
-        "rate": 550.0,
+        "rate": 550,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -58,7 +58,7 @@
     "outputs": [
       {
         "resource": "Oxygen",
-        "rate": 500.0,
+        "rate": 500,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 30 °C+"
@@ -75,19 +75,19 @@
     "subcategory": "Oxygen",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Algae_Terrarium",
     "icon": "images/icons/Algae_Terrarium.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Algae",
-        "rate": 30.0,
+        "rate": 30,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
         "resource": "Water",
-        "rate": 300.0,
+        "rate": 300,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -103,7 +103,7 @@
     "outputs": [
       {
         "resource": "Oxygen",
-        "rate": 40.0,
+        "rate": 40,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 30 °C+"
@@ -135,19 +135,19 @@
     "subcategory": "Oxygen",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Rust_Deoxidizer",
     "icon": "images/icons/Rust_Deoxidizer.png",
-    "power": -60.0,
+    "power": -60,
     "heat": 1.125,
     "inputs": [
       {
         "resource": "Rust",
-        "rate": 750.0,
+        "rate": 750,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
         "resource": "Salt",
-        "rate": 250.0,
+        "rate": 250,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -156,21 +156,21 @@
     "outputs": [
       {
         "resource": "Oxygen",
-        "rate": 570.0,
+        "rate": 570,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 75 °C+"
       },
       {
         "resource": "Chlorine",
-        "rate": 30.0,
+        "rate": 30,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 75 °C+"
       },
       {
         "resource": "Iron Ore",
-        "rate": 400.0,
+        "rate": 400,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 75 °C+"
@@ -218,12 +218,12 @@
     "subcategory": "Oxygen",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Deodorizer",
     "icon": "images/icons/Deodorizer.png",
-    "power": -5.0,
+    "power": -5,
     "heat": 0.625,
     "inputs": [
       {
         "resource": "Polluted Oxygen",
-        "rate": 100.0,
+        "rate": 100,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -239,7 +239,7 @@
     "outputs": [
       {
         "resource": "Oxygen",
-        "rate": 90.0,
+        "rate": 90,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -263,19 +263,19 @@
     "subcategory": "Oxygen",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Carbon_Skimmer",
     "icon": "images/icons/Carbon_Skimmer.png",
-    "power": -120.0,
-    "heat": 1.0,
+    "power": -120,
+    "heat": 1,
     "inputs": [
       {
         "resource": "Water",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
       },
       {
         "resource": "Carbon Dioxide",
-        "rate": 300.0,
+        "rate": 300,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -284,7 +284,7 @@
     "outputs": [
       {
         "resource": "Polluted Water",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -301,19 +301,19 @@
     "subcategory": "Oxygen",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Oxylite_Refinery",
     "icon": "images/icons/Oxylite_Refinery.png",
-    "power": -1200.0,
-    "heat": 12.0,
+    "power": -1200,
+    "heat": 12,
     "inputs": [
       {
         "resource": "Oxygen",
-        "rate": 600.0,
+        "rate": 600,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
       },
       {
         "resource": "Gold",
-        "rate": 3.0,
+        "rate": 3,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -322,7 +322,7 @@
     "outputs": [
       {
         "resource": "Oxylite",
-        "rate": 600.0,
+        "rate": 600,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 30 °C+"
@@ -339,12 +339,12 @@
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Hydrogen_Generator",
     "icon": "images/icons/Hydrogen_Generator.png",
-    "power": 800.0,
-    "heat": 4.0,
+    "power": 800,
+    "heat": 4,
     "inputs": [
       {
         "resource": "Hydrogen",
-        "rate": 100.0,
+        "rate": 100,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -377,12 +377,12 @@
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Coal_Generator",
     "icon": "images/icons/Coal_Generator.png",
-    "power": 600.0,
-    "heat": 9.0,
+    "power": 600,
+    "heat": 9,
     "inputs": [
       {
         "resource": "Coal",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -391,7 +391,7 @@
     "outputs": [
       {
         "resource": "Carbon Dioxide",
-        "rate": 20.0,
+        "rate": 20,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 110 °C+"
@@ -423,12 +423,12 @@
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Wood_Burner",
     "icon": "images/icons/Wood_Burner.png",
-    "power": 300.0,
-    "heat": 9.0,
+    "power": 300,
+    "heat": 9,
     "inputs": [
       {
         "resource": "Wood",
-        "rate": 1200.0,
+        "rate": 1200,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -437,7 +437,7 @@
     "outputs": [
       {
         "resource": "Carbon Dioxide",
-        "rate": 170.0,
+        "rate": 170,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 110 °C+"
@@ -469,12 +469,12 @@
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Peat_Burner",
     "icon": "images/icons/Peat_Burner.png",
-    "power": 480.0,
+    "power": 480,
     "heat": 4.5,
     "inputs": [
       {
         "resource": "Peat",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -483,7 +483,7 @@
     "outputs": [
       {
         "resource": "Carbon Dioxide",
-        "rate": 40.0,
+        "rate": 40,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 110 °C+"
@@ -515,12 +515,12 @@
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Natural_Gas_Generator",
     "icon": "images/icons/Natural_Gas_Generator.png",
-    "power": 800.0,
-    "heat": 10.0,
+    "power": 800,
+    "heat": 10,
     "inputs": [
       {
         "resource": "Natural Gas",
-        "rate": 90.0,
+        "rate": 90,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -568,12 +568,12 @@
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Petroleum_Generator",
     "icon": "images/icons/Petroleum_Generator.png",
-    "power": 2000.0,
-    "heat": 20.0,
+    "power": 2000,
+    "heat": 20,
     "inputs": [
       {
         "resource": "Petroleum",
-        "rate": 2000.0,
+        "rate": 2000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -582,14 +582,14 @@
     "outputs": [
       {
         "resource": "Polluted Water",
-        "rate": 750.0,
+        "rate": 750,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 40 °C+"
       },
       {
         "resource": "Carbon Dioxide",
-        "rate": 500.0,
+        "rate": 500,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 110 °C+"
@@ -602,7 +602,7 @@
         "inputs": [
           {
             "resource": "Petroleum",
-            "rate": 2000.0,
+            "rate": 2000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -611,21 +611,21 @@
         "outputs": [
           {
             "resource": "Polluted Water",
-            "rate": 750.0,
+            "rate": 750,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C+"
           },
           {
             "resource": "Carbon Dioxide",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 110 °C+"
           }
         ],
-        "power": 2000.0,
-        "heat": 20.0
+        "power": 2000,
+        "heat": 20
       },
       {
         "id": "ethanol",
@@ -633,7 +633,7 @@
         "inputs": [
           {
             "resource": "Ethanol",
-            "rate": 2000.0,
+            "rate": 2000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -642,21 +642,21 @@
         "outputs": [
           {
             "resource": "Polluted Water",
-            "rate": 750.0,
+            "rate": 750,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C+"
           },
           {
             "resource": "Carbon Dioxide",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 110 °C+"
           }
         ],
-        "power": 2000.0,
-        "heat": 20.0
+        "power": 2000,
+        "heat": 20
       }
     ],
     "modifiers": [
@@ -684,12 +684,12 @@
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Steam_Turbine",
     "icon": "images/icons/Steam_Turbine.png",
-    "power": 850.0,
-    "heat": 4.0,
+    "power": 850,
+    "heat": 4,
     "inputs": [
       {
         "resource": "Steam",
-        "rate": 2000.0,
+        "rate": 2000,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 125 °C+"
@@ -698,7 +698,7 @@
     "outputs": [
       {
         "resource": "Water",
-        "rate": 2000.0,
+        "rate": 2000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": "@ 95 °C"
@@ -730,8 +730,8 @@
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Solar_Panel",
     "icon": "images/icons/Solar_Panel.png",
-    "power": 380.0,
-    "heat": 0.0,
+    "power": 380,
+    "heat": 0,
     "inputs": [],
     "outputs": [],
     "recipes": [],
@@ -745,12 +745,12 @@
     "subcategory": "Power",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Manual_Generator",
     "icon": "images/icons/Manual_Generator.png",
-    "power": 400.0,
-    "heat": 1.0,
+    "power": 400,
+    "heat": 1,
     "inputs": [
       {
         "resource": "Duplicant Labor",
-        "rate": 1.0,
+        "rate": 1,
         "unit": "s/s",
         "state": "labor",
         "temp": null
@@ -783,12 +783,12 @@
     "subcategory": "Plumbing",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Liquid_Pump",
     "icon": "images/icons/Liquid_Pump.png",
-    "power": -240.0,
-    "heat": 2.0,
+    "power": -240,
+    "heat": 2,
     "inputs": [
       {
         "resource": "Water",
-        "rate": 10000.0,
+        "rate": 10000,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -797,7 +797,7 @@
     "outputs": [
       {
         "resource": "Water",
-        "rate": 10000.0,
+        "rate": 10000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -810,7 +810,7 @@
         "inputs": [
           {
             "resource": "Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -819,14 +819,14 @@
         "outputs": [
           {
             "resource": "Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "water_full",
@@ -834,7 +834,7 @@
         "inputs": [
           {
             "resource": "Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -843,14 +843,14 @@
         "outputs": [
           {
             "resource": "Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "biodiesel",
@@ -858,7 +858,7 @@
         "inputs": [
           {
             "resource": "Biodiesel",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -867,14 +867,14 @@
         "outputs": [
           {
             "resource": "Biodiesel",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "brackene",
@@ -882,7 +882,7 @@
         "inputs": [
           {
             "resource": "Brackene",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -891,14 +891,14 @@
         "outputs": [
           {
             "resource": "Brackene",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "brine",
@@ -906,7 +906,7 @@
         "inputs": [
           {
             "resource": "Brine",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -915,14 +915,14 @@
         "outputs": [
           {
             "resource": "Brine",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "crude_oil",
@@ -930,7 +930,7 @@
         "inputs": [
           {
             "resource": "Crude Oil",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -939,14 +939,14 @@
         "outputs": [
           {
             "resource": "Crude Oil",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "crude_oil_full",
@@ -954,7 +954,7 @@
         "inputs": [
           {
             "resource": "Crude Oil",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -963,14 +963,14 @@
         "outputs": [
           {
             "resource": "Crude Oil",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "ethanol",
@@ -978,7 +978,7 @@
         "inputs": [
           {
             "resource": "Ethanol",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -987,14 +987,14 @@
         "outputs": [
           {
             "resource": "Ethanol",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "gunk",
@@ -1002,7 +1002,7 @@
         "inputs": [
           {
             "resource": "Gunk",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1011,14 +1011,14 @@
         "outputs": [
           {
             "resource": "Gunk",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "latex",
@@ -1026,7 +1026,7 @@
         "inputs": [
           {
             "resource": "Latex",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1035,14 +1035,14 @@
         "outputs": [
           {
             "resource": "Latex",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_carbon",
@@ -1050,7 +1050,7 @@
         "inputs": [
           {
             "resource": "Liquid Carbon",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1059,14 +1059,14 @@
         "outputs": [
           {
             "resource": "Liquid Carbon",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_carbon_dioxide",
@@ -1074,7 +1074,7 @@
         "inputs": [
           {
             "resource": "Liquid Carbon Dioxide",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1083,14 +1083,14 @@
         "outputs": [
           {
             "resource": "Liquid Carbon Dioxide",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_chlorine",
@@ -1098,7 +1098,7 @@
         "inputs": [
           {
             "resource": "Liquid Chlorine",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1107,14 +1107,14 @@
         "outputs": [
           {
             "resource": "Liquid Chlorine",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_helium",
@@ -1122,7 +1122,7 @@
         "inputs": [
           {
             "resource": "Liquid Helium",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1131,14 +1131,14 @@
         "outputs": [
           {
             "resource": "Liquid Helium",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_hydrogen",
@@ -1146,7 +1146,7 @@
         "inputs": [
           {
             "resource": "Liquid Hydrogen",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1155,14 +1155,14 @@
         "outputs": [
           {
             "resource": "Liquid Hydrogen",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_methane",
@@ -1170,7 +1170,7 @@
         "inputs": [
           {
             "resource": "Liquid Methane",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1179,14 +1179,14 @@
         "outputs": [
           {
             "resource": "Liquid Methane",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_naphtha",
@@ -1194,7 +1194,7 @@
         "inputs": [
           {
             "resource": "Liquid Naphtha",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1203,14 +1203,14 @@
         "outputs": [
           {
             "resource": "Liquid Naphtha",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_nuclear_waste",
@@ -1218,7 +1218,7 @@
         "inputs": [
           {
             "resource": "Liquid Nuclear Waste",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1227,14 +1227,14 @@
         "outputs": [
           {
             "resource": "Liquid Nuclear Waste",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_oxygen",
@@ -1242,7 +1242,7 @@
         "inputs": [
           {
             "resource": "Liquid Oxygen",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1251,14 +1251,14 @@
         "outputs": [
           {
             "resource": "Liquid Oxygen",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_phosphorus",
@@ -1266,7 +1266,7 @@
         "inputs": [
           {
             "resource": "Liquid Phosphorus",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1275,14 +1275,14 @@
         "outputs": [
           {
             "resource": "Liquid Phosphorus",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_propane",
@@ -1290,7 +1290,7 @@
         "inputs": [
           {
             "resource": "Liquid Propane",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1299,14 +1299,14 @@
         "outputs": [
           {
             "resource": "Liquid Propane",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_sucrose",
@@ -1314,7 +1314,7 @@
         "inputs": [
           {
             "resource": "Liquid Sucrose",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1323,14 +1323,14 @@
         "outputs": [
           {
             "resource": "Liquid Sucrose",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_sulfur",
@@ -1338,7 +1338,7 @@
         "inputs": [
           {
             "resource": "Liquid Sulfur",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1347,14 +1347,14 @@
         "outputs": [
           {
             "resource": "Liquid Sulfur",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "liquid_uranium",
@@ -1362,7 +1362,7 @@
         "inputs": [
           {
             "resource": "Liquid Uranium",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1371,14 +1371,14 @@
         "outputs": [
           {
             "resource": "Liquid Uranium",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "magma",
@@ -1386,7 +1386,7 @@
         "inputs": [
           {
             "resource": "Magma",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1395,14 +1395,14 @@
         "outputs": [
           {
             "resource": "Magma",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "mercury",
@@ -1410,7 +1410,7 @@
         "inputs": [
           {
             "resource": "Mercury",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1419,14 +1419,14 @@
         "outputs": [
           {
             "resource": "Mercury",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_aluminum",
@@ -1434,7 +1434,7 @@
         "inputs": [
           {
             "resource": "Molten Aluminum",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1443,14 +1443,14 @@
         "outputs": [
           {
             "resource": "Molten Aluminum",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_cobalt",
@@ -1458,7 +1458,7 @@
         "inputs": [
           {
             "resource": "Molten Cobalt",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1467,14 +1467,14 @@
         "outputs": [
           {
             "resource": "Molten Cobalt",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_copper",
@@ -1482,7 +1482,7 @@
         "inputs": [
           {
             "resource": "Molten Copper",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1491,14 +1491,14 @@
         "outputs": [
           {
             "resource": "Molten Copper",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_glass",
@@ -1506,7 +1506,7 @@
         "inputs": [
           {
             "resource": "Molten Glass",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1515,14 +1515,14 @@
         "outputs": [
           {
             "resource": "Molten Glass",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_gold",
@@ -1530,7 +1530,7 @@
         "inputs": [
           {
             "resource": "Molten Gold",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1539,14 +1539,14 @@
         "outputs": [
           {
             "resource": "Molten Gold",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_iridium",
@@ -1554,7 +1554,7 @@
         "inputs": [
           {
             "resource": "Molten Iridium",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1563,14 +1563,14 @@
         "outputs": [
           {
             "resource": "Molten Iridium",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_iron",
@@ -1578,7 +1578,7 @@
         "inputs": [
           {
             "resource": "Molten Iron",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1587,14 +1587,14 @@
         "outputs": [
           {
             "resource": "Molten Iron",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_lead",
@@ -1602,7 +1602,7 @@
         "inputs": [
           {
             "resource": "Molten Lead",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1611,14 +1611,14 @@
         "outputs": [
           {
             "resource": "Molten Lead",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_nickel",
@@ -1626,7 +1626,7 @@
         "inputs": [
           {
             "resource": "Molten Nickel",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1635,14 +1635,14 @@
         "outputs": [
           {
             "resource": "Molten Nickel",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_niobium",
@@ -1650,7 +1650,7 @@
         "inputs": [
           {
             "resource": "Molten Niobium",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1659,14 +1659,14 @@
         "outputs": [
           {
             "resource": "Molten Niobium",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_salt",
@@ -1674,7 +1674,7 @@
         "inputs": [
           {
             "resource": "Molten Salt",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1683,14 +1683,14 @@
         "outputs": [
           {
             "resource": "Molten Salt",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_steel",
@@ -1698,7 +1698,7 @@
         "inputs": [
           {
             "resource": "Molten Steel",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1707,14 +1707,14 @@
         "outputs": [
           {
             "resource": "Molten Steel",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_syngas",
@@ -1722,7 +1722,7 @@
         "inputs": [
           {
             "resource": "Molten Syngas",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1731,14 +1731,14 @@
         "outputs": [
           {
             "resource": "Molten Syngas",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_tungsten",
@@ -1746,7 +1746,7 @@
         "inputs": [
           {
             "resource": "Molten Tungsten",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1755,14 +1755,14 @@
         "outputs": [
           {
             "resource": "Molten Tungsten",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "molten_zinc",
@@ -1770,7 +1770,7 @@
         "inputs": [
           {
             "resource": "Molten Zinc",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1779,14 +1779,14 @@
         "outputs": [
           {
             "resource": "Molten Zinc",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "mucin",
@@ -1794,7 +1794,7 @@
         "inputs": [
           {
             "resource": "Mucin",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1803,14 +1803,14 @@
         "outputs": [
           {
             "resource": "Mucin",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "nectar",
@@ -1818,7 +1818,7 @@
         "inputs": [
           {
             "resource": "Nectar",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1827,14 +1827,14 @@
         "outputs": [
           {
             "resource": "Nectar",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "ovolene",
@@ -1842,7 +1842,7 @@
         "inputs": [
           {
             "resource": "Ovolene",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1851,14 +1851,14 @@
         "outputs": [
           {
             "resource": "Ovolene",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "petroleum",
@@ -1866,7 +1866,7 @@
         "inputs": [
           {
             "resource": "Petroleum",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1875,14 +1875,14 @@
         "outputs": [
           {
             "resource": "Petroleum",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "petroleum_full",
@@ -1890,7 +1890,7 @@
         "inputs": [
           {
             "resource": "Petroleum",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1899,14 +1899,14 @@
         "outputs": [
           {
             "resource": "Petroleum",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "phyto_oil",
@@ -1914,7 +1914,7 @@
         "inputs": [
           {
             "resource": "Phyto Oil",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1923,14 +1923,14 @@
         "outputs": [
           {
             "resource": "Phyto Oil",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "polluted_brine",
@@ -1938,7 +1938,7 @@
         "inputs": [
           {
             "resource": "Polluted Brine",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1947,14 +1947,14 @@
         "outputs": [
           {
             "resource": "Polluted Brine",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "polluted_water",
@@ -1962,7 +1962,7 @@
         "inputs": [
           {
             "resource": "Polluted Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1971,14 +1971,14 @@
         "outputs": [
           {
             "resource": "Polluted Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "polluted_water_full",
@@ -1986,7 +1986,7 @@
         "inputs": [
           {
             "resource": "Polluted Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -1995,14 +1995,14 @@
         "outputs": [
           {
             "resource": "Polluted Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "resin",
@@ -2010,7 +2010,7 @@
         "inputs": [
           {
             "resource": "Resin",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2019,14 +2019,14 @@
         "outputs": [
           {
             "resource": "Resin",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "salt_water",
@@ -2034,7 +2034,7 @@
         "inputs": [
           {
             "resource": "Salt Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2043,14 +2043,14 @@
         "outputs": [
           {
             "resource": "Salt Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "sap",
@@ -2058,7 +2058,7 @@
         "inputs": [
           {
             "resource": "Sap",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2067,14 +2067,14 @@
         "outputs": [
           {
             "resource": "Sap",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "squid_ink",
@@ -2082,7 +2082,7 @@
         "inputs": [
           {
             "resource": "Squid Ink",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2091,14 +2091,14 @@
         "outputs": [
           {
             "resource": "Squid Ink",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "super_coolant",
@@ -2106,7 +2106,7 @@
         "inputs": [
           {
             "resource": "Super Coolant",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2115,14 +2115,14 @@
         "outputs": [
           {
             "resource": "Super Coolant",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "visco_gel_fluid",
@@ -2130,7 +2130,7 @@
         "inputs": [
           {
             "resource": "Visco-Gel Fluid",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2139,14 +2139,14 @@
         "outputs": [
           {
             "resource": "Visco-Gel Fluid",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       }
     ],
     "modifiers": [],
@@ -2162,12 +2162,12 @@
     "subcategory": "Plumbing",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Mini_Liquid_Pump",
     "icon": "images/icons/Mini_Liquid_Pump.png",
-    "power": -60.0,
-    "heat": 0.0,
+    "power": -60,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Water",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -2176,7 +2176,7 @@
     "outputs": [
       {
         "resource": "Water",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -2189,7 +2189,7 @@
         "inputs": [
           {
             "resource": "Water",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2198,14 +2198,14 @@
         "outputs": [
           {
             "resource": "Water",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "biodiesel",
@@ -2213,7 +2213,7 @@
         "inputs": [
           {
             "resource": "Biodiesel",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2222,14 +2222,14 @@
         "outputs": [
           {
             "resource": "Biodiesel",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "brackene",
@@ -2237,7 +2237,7 @@
         "inputs": [
           {
             "resource": "Brackene",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2246,14 +2246,14 @@
         "outputs": [
           {
             "resource": "Brackene",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "brine",
@@ -2261,7 +2261,7 @@
         "inputs": [
           {
             "resource": "Brine",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2270,14 +2270,14 @@
         "outputs": [
           {
             "resource": "Brine",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "crude_oil",
@@ -2285,7 +2285,7 @@
         "inputs": [
           {
             "resource": "Crude Oil",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2294,14 +2294,14 @@
         "outputs": [
           {
             "resource": "Crude Oil",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "ethanol",
@@ -2309,7 +2309,7 @@
         "inputs": [
           {
             "resource": "Ethanol",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2318,14 +2318,14 @@
         "outputs": [
           {
             "resource": "Ethanol",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "gunk",
@@ -2333,7 +2333,7 @@
         "inputs": [
           {
             "resource": "Gunk",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2342,14 +2342,14 @@
         "outputs": [
           {
             "resource": "Gunk",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "latex",
@@ -2357,7 +2357,7 @@
         "inputs": [
           {
             "resource": "Latex",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2366,14 +2366,14 @@
         "outputs": [
           {
             "resource": "Latex",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_carbon",
@@ -2381,7 +2381,7 @@
         "inputs": [
           {
             "resource": "Liquid Carbon",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2390,14 +2390,14 @@
         "outputs": [
           {
             "resource": "Liquid Carbon",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_carbon_dioxide",
@@ -2405,7 +2405,7 @@
         "inputs": [
           {
             "resource": "Liquid Carbon Dioxide",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2414,14 +2414,14 @@
         "outputs": [
           {
             "resource": "Liquid Carbon Dioxide",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_chlorine",
@@ -2429,7 +2429,7 @@
         "inputs": [
           {
             "resource": "Liquid Chlorine",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2438,14 +2438,14 @@
         "outputs": [
           {
             "resource": "Liquid Chlorine",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_helium",
@@ -2453,7 +2453,7 @@
         "inputs": [
           {
             "resource": "Liquid Helium",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2462,14 +2462,14 @@
         "outputs": [
           {
             "resource": "Liquid Helium",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_hydrogen",
@@ -2477,7 +2477,7 @@
         "inputs": [
           {
             "resource": "Liquid Hydrogen",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2486,14 +2486,14 @@
         "outputs": [
           {
             "resource": "Liquid Hydrogen",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_methane",
@@ -2501,7 +2501,7 @@
         "inputs": [
           {
             "resource": "Liquid Methane",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2510,14 +2510,14 @@
         "outputs": [
           {
             "resource": "Liquid Methane",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_naphtha",
@@ -2525,7 +2525,7 @@
         "inputs": [
           {
             "resource": "Liquid Naphtha",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2534,14 +2534,14 @@
         "outputs": [
           {
             "resource": "Liquid Naphtha",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_nuclear_waste",
@@ -2549,7 +2549,7 @@
         "inputs": [
           {
             "resource": "Liquid Nuclear Waste",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2558,14 +2558,14 @@
         "outputs": [
           {
             "resource": "Liquid Nuclear Waste",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_oxygen",
@@ -2573,7 +2573,7 @@
         "inputs": [
           {
             "resource": "Liquid Oxygen",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2582,14 +2582,14 @@
         "outputs": [
           {
             "resource": "Liquid Oxygen",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_phosphorus",
@@ -2597,7 +2597,7 @@
         "inputs": [
           {
             "resource": "Liquid Phosphorus",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2606,14 +2606,14 @@
         "outputs": [
           {
             "resource": "Liquid Phosphorus",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_propane",
@@ -2621,7 +2621,7 @@
         "inputs": [
           {
             "resource": "Liquid Propane",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2630,14 +2630,14 @@
         "outputs": [
           {
             "resource": "Liquid Propane",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_sucrose",
@@ -2645,7 +2645,7 @@
         "inputs": [
           {
             "resource": "Liquid Sucrose",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2654,14 +2654,14 @@
         "outputs": [
           {
             "resource": "Liquid Sucrose",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_sulfur",
@@ -2669,7 +2669,7 @@
         "inputs": [
           {
             "resource": "Liquid Sulfur",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2678,14 +2678,14 @@
         "outputs": [
           {
             "resource": "Liquid Sulfur",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "liquid_uranium",
@@ -2693,7 +2693,7 @@
         "inputs": [
           {
             "resource": "Liquid Uranium",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2702,14 +2702,14 @@
         "outputs": [
           {
             "resource": "Liquid Uranium",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "magma",
@@ -2717,7 +2717,7 @@
         "inputs": [
           {
             "resource": "Magma",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2726,14 +2726,14 @@
         "outputs": [
           {
             "resource": "Magma",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "mercury",
@@ -2741,7 +2741,7 @@
         "inputs": [
           {
             "resource": "Mercury",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2750,14 +2750,14 @@
         "outputs": [
           {
             "resource": "Mercury",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_aluminum",
@@ -2765,7 +2765,7 @@
         "inputs": [
           {
             "resource": "Molten Aluminum",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2774,14 +2774,14 @@
         "outputs": [
           {
             "resource": "Molten Aluminum",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_cobalt",
@@ -2789,7 +2789,7 @@
         "inputs": [
           {
             "resource": "Molten Cobalt",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2798,14 +2798,14 @@
         "outputs": [
           {
             "resource": "Molten Cobalt",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_copper",
@@ -2813,7 +2813,7 @@
         "inputs": [
           {
             "resource": "Molten Copper",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2822,14 +2822,14 @@
         "outputs": [
           {
             "resource": "Molten Copper",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_glass",
@@ -2837,7 +2837,7 @@
         "inputs": [
           {
             "resource": "Molten Glass",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2846,14 +2846,14 @@
         "outputs": [
           {
             "resource": "Molten Glass",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_gold",
@@ -2861,7 +2861,7 @@
         "inputs": [
           {
             "resource": "Molten Gold",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2870,14 +2870,14 @@
         "outputs": [
           {
             "resource": "Molten Gold",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_iridium",
@@ -2885,7 +2885,7 @@
         "inputs": [
           {
             "resource": "Molten Iridium",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2894,14 +2894,14 @@
         "outputs": [
           {
             "resource": "Molten Iridium",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_iron",
@@ -2909,7 +2909,7 @@
         "inputs": [
           {
             "resource": "Molten Iron",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2918,14 +2918,14 @@
         "outputs": [
           {
             "resource": "Molten Iron",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_lead",
@@ -2933,7 +2933,7 @@
         "inputs": [
           {
             "resource": "Molten Lead",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2942,14 +2942,14 @@
         "outputs": [
           {
             "resource": "Molten Lead",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_nickel",
@@ -2957,7 +2957,7 @@
         "inputs": [
           {
             "resource": "Molten Nickel",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2966,14 +2966,14 @@
         "outputs": [
           {
             "resource": "Molten Nickel",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_niobium",
@@ -2981,7 +2981,7 @@
         "inputs": [
           {
             "resource": "Molten Niobium",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -2990,14 +2990,14 @@
         "outputs": [
           {
             "resource": "Molten Niobium",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_salt",
@@ -3005,7 +3005,7 @@
         "inputs": [
           {
             "resource": "Molten Salt",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3014,14 +3014,14 @@
         "outputs": [
           {
             "resource": "Molten Salt",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_steel",
@@ -3029,7 +3029,7 @@
         "inputs": [
           {
             "resource": "Molten Steel",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3038,14 +3038,14 @@
         "outputs": [
           {
             "resource": "Molten Steel",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_syngas",
@@ -3053,7 +3053,7 @@
         "inputs": [
           {
             "resource": "Molten Syngas",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3062,14 +3062,14 @@
         "outputs": [
           {
             "resource": "Molten Syngas",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_tungsten",
@@ -3077,7 +3077,7 @@
         "inputs": [
           {
             "resource": "Molten Tungsten",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3086,14 +3086,14 @@
         "outputs": [
           {
             "resource": "Molten Tungsten",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "molten_zinc",
@@ -3101,7 +3101,7 @@
         "inputs": [
           {
             "resource": "Molten Zinc",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3110,14 +3110,14 @@
         "outputs": [
           {
             "resource": "Molten Zinc",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "mucin",
@@ -3125,7 +3125,7 @@
         "inputs": [
           {
             "resource": "Mucin",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3134,14 +3134,14 @@
         "outputs": [
           {
             "resource": "Mucin",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "nectar",
@@ -3149,7 +3149,7 @@
         "inputs": [
           {
             "resource": "Nectar",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3158,14 +3158,14 @@
         "outputs": [
           {
             "resource": "Nectar",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "ovolene",
@@ -3173,7 +3173,7 @@
         "inputs": [
           {
             "resource": "Ovolene",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3182,14 +3182,14 @@
         "outputs": [
           {
             "resource": "Ovolene",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "petroleum",
@@ -3197,7 +3197,7 @@
         "inputs": [
           {
             "resource": "Petroleum",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3206,14 +3206,14 @@
         "outputs": [
           {
             "resource": "Petroleum",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "phyto_oil",
@@ -3221,7 +3221,7 @@
         "inputs": [
           {
             "resource": "Phyto Oil",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3230,14 +3230,14 @@
         "outputs": [
           {
             "resource": "Phyto Oil",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "polluted_brine",
@@ -3245,7 +3245,7 @@
         "inputs": [
           {
             "resource": "Polluted Brine",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3254,14 +3254,14 @@
         "outputs": [
           {
             "resource": "Polluted Brine",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "polluted_water",
@@ -3269,7 +3269,7 @@
         "inputs": [
           {
             "resource": "Polluted Water",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3278,14 +3278,14 @@
         "outputs": [
           {
             "resource": "Polluted Water",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "resin",
@@ -3293,7 +3293,7 @@
         "inputs": [
           {
             "resource": "Resin",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3302,14 +3302,14 @@
         "outputs": [
           {
             "resource": "Resin",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "salt_water",
@@ -3317,7 +3317,7 @@
         "inputs": [
           {
             "resource": "Salt Water",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3326,14 +3326,14 @@
         "outputs": [
           {
             "resource": "Salt Water",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "sap",
@@ -3341,7 +3341,7 @@
         "inputs": [
           {
             "resource": "Sap",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3350,14 +3350,14 @@
         "outputs": [
           {
             "resource": "Sap",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "squid_ink",
@@ -3365,7 +3365,7 @@
         "inputs": [
           {
             "resource": "Squid Ink",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3374,14 +3374,14 @@
         "outputs": [
           {
             "resource": "Squid Ink",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "super_coolant",
@@ -3389,7 +3389,7 @@
         "inputs": [
           {
             "resource": "Super Coolant",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3398,14 +3398,14 @@
         "outputs": [
           {
             "resource": "Super Coolant",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "visco_gel_fluid",
@@ -3413,7 +3413,7 @@
         "inputs": [
           {
             "resource": "Visco-Gel Fluid",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3422,14 +3422,14 @@
         "outputs": [
           {
             "resource": "Visco-Gel Fluid",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       }
     ],
     "modifiers": [],
@@ -3442,8 +3442,8 @@
     "subcategory": "Plumbing",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Pitcher_Pump",
     "icon": "images/icons/Pitcher_Pump.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [],
     "outputs": [],
     "recipes": [],
@@ -3457,12 +3457,12 @@
     "subcategory": "Ventilation",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Gas_Pump",
     "icon": "images/icons/Gas_Pump.png",
-    "power": -240.0,
-    "heat": 2.0,
+    "power": -240,
+    "heat": 2,
     "inputs": [
       {
         "resource": "Hydrogen",
-        "rate": 500.0,
+        "rate": 500,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -3471,7 +3471,7 @@
     "outputs": [
       {
         "resource": "Hydrogen",
-        "rate": 500.0,
+        "rate": 500,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -3484,7 +3484,7 @@
         "inputs": [
           {
             "resource": "Hydrogen",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3493,14 +3493,14 @@
         "outputs": [
           {
             "resource": "Hydrogen",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "oxygen",
@@ -3508,7 +3508,7 @@
         "inputs": [
           {
             "resource": "Oxygen",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3517,14 +3517,14 @@
         "outputs": [
           {
             "resource": "Oxygen",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "natural_gas",
@@ -3532,7 +3532,7 @@
         "inputs": [
           {
             "resource": "Natural Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3541,14 +3541,14 @@
         "outputs": [
           {
             "resource": "Natural Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "carbon_dioxide",
@@ -3556,7 +3556,7 @@
         "inputs": [
           {
             "resource": "Carbon Dioxide",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3565,14 +3565,14 @@
         "outputs": [
           {
             "resource": "Carbon Dioxide",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "aluminum_gas",
@@ -3580,7 +3580,7 @@
         "inputs": [
           {
             "resource": "Aluminum Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3589,14 +3589,14 @@
         "outputs": [
           {
             "resource": "Aluminum Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "carbon_gas",
@@ -3604,7 +3604,7 @@
         "inputs": [
           {
             "resource": "Carbon Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3613,14 +3613,14 @@
         "outputs": [
           {
             "resource": "Carbon Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "chlorine",
@@ -3628,7 +3628,7 @@
         "inputs": [
           {
             "resource": "Chlorine",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3637,14 +3637,14 @@
         "outputs": [
           {
             "resource": "Chlorine",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "cobalt_gas",
@@ -3652,7 +3652,7 @@
         "inputs": [
           {
             "resource": "Cobalt Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3661,14 +3661,14 @@
         "outputs": [
           {
             "resource": "Cobalt Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "copper_gas",
@@ -3676,7 +3676,7 @@
         "inputs": [
           {
             "resource": "Copper Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3685,14 +3685,14 @@
         "outputs": [
           {
             "resource": "Copper Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "ethanol_gas",
@@ -3700,7 +3700,7 @@
         "inputs": [
           {
             "resource": "Ethanol Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3709,14 +3709,14 @@
         "outputs": [
           {
             "resource": "Ethanol Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "gold_gas",
@@ -3724,7 +3724,7 @@
         "inputs": [
           {
             "resource": "Gold Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3733,14 +3733,14 @@
         "outputs": [
           {
             "resource": "Gold Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "helium",
@@ -3748,7 +3748,7 @@
         "inputs": [
           {
             "resource": "Helium",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3757,14 +3757,14 @@
         "outputs": [
           {
             "resource": "Helium",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "iridium_gas",
@@ -3772,7 +3772,7 @@
         "inputs": [
           {
             "resource": "Iridium Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3781,14 +3781,14 @@
         "outputs": [
           {
             "resource": "Iridium Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "iron_gas",
@@ -3796,7 +3796,7 @@
         "inputs": [
           {
             "resource": "Iron Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3805,14 +3805,14 @@
         "outputs": [
           {
             "resource": "Iron Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "lead_gas",
@@ -3820,7 +3820,7 @@
         "inputs": [
           {
             "resource": "Lead Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3829,14 +3829,14 @@
         "outputs": [
           {
             "resource": "Lead Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "mercury_gas",
@@ -3844,7 +3844,7 @@
         "inputs": [
           {
             "resource": "Mercury Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3853,14 +3853,14 @@
         "outputs": [
           {
             "resource": "Mercury Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "nickel_gas",
@@ -3868,7 +3868,7 @@
         "inputs": [
           {
             "resource": "Nickel Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3877,14 +3877,14 @@
         "outputs": [
           {
             "resource": "Nickel Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "niobium_gas",
@@ -3892,7 +3892,7 @@
         "inputs": [
           {
             "resource": "Niobium Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3901,14 +3901,14 @@
         "outputs": [
           {
             "resource": "Niobium Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "nuclear_fallout",
@@ -3916,7 +3916,7 @@
         "inputs": [
           {
             "resource": "Nuclear Fallout",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3925,14 +3925,14 @@
         "outputs": [
           {
             "resource": "Nuclear Fallout",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "phosphorus_gas",
@@ -3940,7 +3940,7 @@
         "inputs": [
           {
             "resource": "Phosphorus Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3949,14 +3949,14 @@
         "outputs": [
           {
             "resource": "Phosphorus Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "polluted_oxygen",
@@ -3964,7 +3964,7 @@
         "inputs": [
           {
             "resource": "Polluted Oxygen",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3973,14 +3973,14 @@
         "outputs": [
           {
             "resource": "Polluted Oxygen",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "propane",
@@ -3988,7 +3988,7 @@
         "inputs": [
           {
             "resource": "Propane",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -3997,14 +3997,14 @@
         "outputs": [
           {
             "resource": "Propane",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "rock_gas",
@@ -4012,7 +4012,7 @@
         "inputs": [
           {
             "resource": "Rock Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4021,14 +4021,14 @@
         "outputs": [
           {
             "resource": "Rock Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "salt_gas",
@@ -4036,7 +4036,7 @@
         "inputs": [
           {
             "resource": "Salt Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4045,14 +4045,14 @@
         "outputs": [
           {
             "resource": "Salt Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "sour_gas",
@@ -4060,7 +4060,7 @@
         "inputs": [
           {
             "resource": "Sour Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4069,14 +4069,14 @@
         "outputs": [
           {
             "resource": "Sour Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "steam",
@@ -4084,7 +4084,7 @@
         "inputs": [
           {
             "resource": "Steam",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4093,14 +4093,14 @@
         "outputs": [
           {
             "resource": "Steam",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "steel_gas",
@@ -4108,7 +4108,7 @@
         "inputs": [
           {
             "resource": "Steel Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4117,14 +4117,14 @@
         "outputs": [
           {
             "resource": "Steel Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "sulfur_gas",
@@ -4132,7 +4132,7 @@
         "inputs": [
           {
             "resource": "Sulfur Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4141,14 +4141,14 @@
         "outputs": [
           {
             "resource": "Sulfur Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "super_coolant_gas",
@@ -4156,7 +4156,7 @@
         "inputs": [
           {
             "resource": "Super Coolant Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4165,14 +4165,14 @@
         "outputs": [
           {
             "resource": "Super Coolant Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "syngas",
@@ -4180,7 +4180,7 @@
         "inputs": [
           {
             "resource": "Syngas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4189,14 +4189,14 @@
         "outputs": [
           {
             "resource": "Syngas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "tungsten_gas",
@@ -4204,7 +4204,7 @@
         "inputs": [
           {
             "resource": "Tungsten Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4213,14 +4213,14 @@
         "outputs": [
           {
             "resource": "Tungsten Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       },
       {
         "id": "zinc_gas",
@@ -4228,7 +4228,7 @@
         "inputs": [
           {
             "resource": "Zinc Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4237,14 +4237,14 @@
         "outputs": [
           {
             "resource": "Zinc Gas",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 2.0
+        "power": -240,
+        "heat": 2
       }
     ],
     "modifiers": [],
@@ -4257,12 +4257,12 @@
     "subcategory": "Ventilation",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Mini_Gas_Pump",
     "icon": "images/icons/Mini_Gas_Pump.png",
-    "power": -60.0,
-    "heat": 0.0,
+    "power": -60,
+    "heat": 0,
     "inputs": [
       {
         "resource": "Oxygen",
-        "rate": 50.0,
+        "rate": 50,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -4271,7 +4271,7 @@
     "outputs": [
       {
         "resource": "Oxygen",
-        "rate": 50.0,
+        "rate": 50,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -4284,7 +4284,7 @@
         "inputs": [
           {
             "resource": "Oxygen",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4293,14 +4293,14 @@
         "outputs": [
           {
             "resource": "Oxygen",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "hydrogen",
@@ -4308,7 +4308,7 @@
         "inputs": [
           {
             "resource": "Hydrogen",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4317,14 +4317,14 @@
         "outputs": [
           {
             "resource": "Hydrogen",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "aluminum_gas",
@@ -4332,7 +4332,7 @@
         "inputs": [
           {
             "resource": "Aluminum Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4341,14 +4341,14 @@
         "outputs": [
           {
             "resource": "Aluminum Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "carbon_dioxide",
@@ -4356,7 +4356,7 @@
         "inputs": [
           {
             "resource": "Carbon Dioxide",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4365,14 +4365,14 @@
         "outputs": [
           {
             "resource": "Carbon Dioxide",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "carbon_gas",
@@ -4380,7 +4380,7 @@
         "inputs": [
           {
             "resource": "Carbon Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4389,14 +4389,14 @@
         "outputs": [
           {
             "resource": "Carbon Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "chlorine",
@@ -4404,7 +4404,7 @@
         "inputs": [
           {
             "resource": "Chlorine",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4413,14 +4413,14 @@
         "outputs": [
           {
             "resource": "Chlorine",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "cobalt_gas",
@@ -4428,7 +4428,7 @@
         "inputs": [
           {
             "resource": "Cobalt Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4437,14 +4437,14 @@
         "outputs": [
           {
             "resource": "Cobalt Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "copper_gas",
@@ -4452,7 +4452,7 @@
         "inputs": [
           {
             "resource": "Copper Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4461,14 +4461,14 @@
         "outputs": [
           {
             "resource": "Copper Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "ethanol_gas",
@@ -4476,7 +4476,7 @@
         "inputs": [
           {
             "resource": "Ethanol Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4485,14 +4485,14 @@
         "outputs": [
           {
             "resource": "Ethanol Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "gold_gas",
@@ -4500,7 +4500,7 @@
         "inputs": [
           {
             "resource": "Gold Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4509,14 +4509,14 @@
         "outputs": [
           {
             "resource": "Gold Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "helium",
@@ -4524,7 +4524,7 @@
         "inputs": [
           {
             "resource": "Helium",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4533,14 +4533,14 @@
         "outputs": [
           {
             "resource": "Helium",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "iridium_gas",
@@ -4548,7 +4548,7 @@
         "inputs": [
           {
             "resource": "Iridium Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4557,14 +4557,14 @@
         "outputs": [
           {
             "resource": "Iridium Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "iron_gas",
@@ -4572,7 +4572,7 @@
         "inputs": [
           {
             "resource": "Iron Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4581,14 +4581,14 @@
         "outputs": [
           {
             "resource": "Iron Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "lead_gas",
@@ -4596,7 +4596,7 @@
         "inputs": [
           {
             "resource": "Lead Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4605,14 +4605,14 @@
         "outputs": [
           {
             "resource": "Lead Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "mercury_gas",
@@ -4620,7 +4620,7 @@
         "inputs": [
           {
             "resource": "Mercury Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4629,14 +4629,14 @@
         "outputs": [
           {
             "resource": "Mercury Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "natural_gas",
@@ -4644,7 +4644,7 @@
         "inputs": [
           {
             "resource": "Natural Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4653,14 +4653,14 @@
         "outputs": [
           {
             "resource": "Natural Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "nickel_gas",
@@ -4668,7 +4668,7 @@
         "inputs": [
           {
             "resource": "Nickel Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4677,14 +4677,14 @@
         "outputs": [
           {
             "resource": "Nickel Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "niobium_gas",
@@ -4692,7 +4692,7 @@
         "inputs": [
           {
             "resource": "Niobium Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4701,14 +4701,14 @@
         "outputs": [
           {
             "resource": "Niobium Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "nuclear_fallout",
@@ -4716,7 +4716,7 @@
         "inputs": [
           {
             "resource": "Nuclear Fallout",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4725,14 +4725,14 @@
         "outputs": [
           {
             "resource": "Nuclear Fallout",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "phosphorus_gas",
@@ -4740,7 +4740,7 @@
         "inputs": [
           {
             "resource": "Phosphorus Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4749,14 +4749,14 @@
         "outputs": [
           {
             "resource": "Phosphorus Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "polluted_oxygen",
@@ -4764,7 +4764,7 @@
         "inputs": [
           {
             "resource": "Polluted Oxygen",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4773,14 +4773,14 @@
         "outputs": [
           {
             "resource": "Polluted Oxygen",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "propane",
@@ -4788,7 +4788,7 @@
         "inputs": [
           {
             "resource": "Propane",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4797,14 +4797,14 @@
         "outputs": [
           {
             "resource": "Propane",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "rock_gas",
@@ -4812,7 +4812,7 @@
         "inputs": [
           {
             "resource": "Rock Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4821,14 +4821,14 @@
         "outputs": [
           {
             "resource": "Rock Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "salt_gas",
@@ -4836,7 +4836,7 @@
         "inputs": [
           {
             "resource": "Salt Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4845,14 +4845,14 @@
         "outputs": [
           {
             "resource": "Salt Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "sour_gas",
@@ -4860,7 +4860,7 @@
         "inputs": [
           {
             "resource": "Sour Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4869,14 +4869,14 @@
         "outputs": [
           {
             "resource": "Sour Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "steam",
@@ -4884,7 +4884,7 @@
         "inputs": [
           {
             "resource": "Steam",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4893,14 +4893,14 @@
         "outputs": [
           {
             "resource": "Steam",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "steel_gas",
@@ -4908,7 +4908,7 @@
         "inputs": [
           {
             "resource": "Steel Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4917,14 +4917,14 @@
         "outputs": [
           {
             "resource": "Steel Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "sulfur_gas",
@@ -4932,7 +4932,7 @@
         "inputs": [
           {
             "resource": "Sulfur Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4941,14 +4941,14 @@
         "outputs": [
           {
             "resource": "Sulfur Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "super_coolant_gas",
@@ -4956,7 +4956,7 @@
         "inputs": [
           {
             "resource": "Super Coolant Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4965,14 +4965,14 @@
         "outputs": [
           {
             "resource": "Super Coolant Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "syngas",
@@ -4980,7 +4980,7 @@
         "inputs": [
           {
             "resource": "Syngas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -4989,14 +4989,14 @@
         "outputs": [
           {
             "resource": "Syngas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "tungsten_gas",
@@ -5004,7 +5004,7 @@
         "inputs": [
           {
             "resource": "Tungsten Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5013,14 +5013,14 @@
         "outputs": [
           {
             "resource": "Tungsten Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       },
       {
         "id": "zinc_gas",
@@ -5028,7 +5028,7 @@
         "inputs": [
           {
             "resource": "Zinc Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5037,14 +5037,14 @@
         "outputs": [
           {
             "resource": "Zinc Gas",
-            "rate": 50.0,
+            "rate": 50,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -60.0,
-        "heat": 0.0
+        "power": -60,
+        "heat": 0
       }
     ],
     "modifiers": [],
@@ -5057,19 +5057,19 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Water_Sieve",
     "icon": "images/icons/Water_Sieve.png",
-    "power": -120.0,
-    "heat": 4.0,
+    "power": -120,
+    "heat": 4,
     "inputs": [
       {
         "resource": "Polluted Water",
-        "rate": 5000.0,
+        "rate": 5000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
       },
       {
         "resource": "Sand",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -5078,14 +5078,14 @@
     "outputs": [
       {
         "resource": "Water",
-        "rate": 5000.0,
+        "rate": 5000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
       },
       {
         "resource": "Polluted Dirt",
-        "rate": 200.0,
+        "rate": 200,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -5098,14 +5098,14 @@
         "inputs": [
           {
             "resource": "Polluted Water",
-            "rate": 5000.0,
+            "rate": 5000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Sand",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5114,21 +5114,21 @@
         "outputs": [
           {
             "resource": "Water",
-            "rate": 5000.0,
+            "rate": 5000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Polluted Dirt",
-            "rate": 200.0,
+            "rate": 200,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -120.0,
-        "heat": 4.0
+        "power": -120,
+        "heat": 4
       },
       {
         "id": "regolith",
@@ -5136,14 +5136,14 @@
         "inputs": [
           {
             "resource": "Polluted Water",
-            "rate": 5000.0,
+            "rate": 5000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Regolith",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5152,21 +5152,21 @@
         "outputs": [
           {
             "resource": "Water",
-            "rate": 5000.0,
+            "rate": 5000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Polluted Dirt",
-            "rate": 200.0,
+            "rate": 200,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -120.0,
-        "heat": 4.0
+        "power": -120,
+        "heat": 4
       }
     ],
     "modifiers": [],
@@ -5179,12 +5179,12 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Desalinator",
     "icon": "images/icons/Desalinator.png",
-    "power": -480.0,
-    "heat": 8.0,
+    "power": -480,
+    "heat": 8,
     "inputs": [
       {
         "resource": "Salt Water",
-        "rate": 5000.0,
+        "rate": 5000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -5193,14 +5193,14 @@
     "outputs": [
       {
         "resource": "Water",
-        "rate": 4650.0,
+        "rate": 4650,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
       },
       {
         "resource": "Salt",
-        "rate": 350.0,
+        "rate": 350,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -5213,7 +5213,7 @@
         "inputs": [
           {
             "resource": "Salt Water",
-            "rate": 5000.0,
+            "rate": 5000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -5222,21 +5222,21 @@
         "outputs": [
           {
             "resource": "Water",
-            "rate": 4650.0,
+            "rate": 4650,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Salt",
-            "rate": 350.0,
+            "rate": 350,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -480.0,
-        "heat": 8.0
+        "power": -480,
+        "heat": 8
       },
       {
         "id": "brine",
@@ -5244,7 +5244,7 @@
         "inputs": [
           {
             "resource": "Brine",
-            "rate": 5000.0,
+            "rate": 5000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -5253,21 +5253,21 @@
         "outputs": [
           {
             "resource": "Water",
-            "rate": 3500.0,
+            "rate": 3500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Salt",
-            "rate": 1500.0,
+            "rate": 1500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -480.0,
-        "heat": 8.0
+        "power": -480,
+        "heat": 8
       }
     ],
     "modifiers": [],
@@ -5280,12 +5280,12 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Ethanol_Distiller",
     "icon": "images/icons/Ethanol_Distiller.png",
-    "power": -240.0,
+    "power": -240,
     "heat": 4.5,
     "inputs": [
       {
         "resource": "Wood",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -5294,7 +5294,7 @@
     "outputs": [
       {
         "resource": "Ethanol",
-        "rate": 500.0,
+        "rate": 500,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": "@ 73.4 °C+"
@@ -5325,12 +5325,12 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Algae_Distiller",
     "icon": "images/icons/Algae_Distiller.png",
-    "power": -120.0,
+    "power": -120,
     "heat": 1.5,
     "inputs": [
       {
         "resource": "Slime",
-        "rate": 600.0,
+        "rate": 600,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -5339,14 +5339,14 @@
     "outputs": [
       {
         "resource": "Algae",
-        "rate": 200.0,
+        "rate": 200,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": "@ 30 °C+"
       },
       {
         "resource": "Polluted Water",
-        "rate": 400.0,
+        "rate": 400,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": "@ 30 °C+"
@@ -5363,19 +5363,19 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sludge_Press",
     "icon": "images/icons/Sludge_Press.png",
-    "power": -120.0,
-    "heat": 4.0,
+    "power": -120,
+    "heat": 4,
     "inputs": [
       {
         "resource": "Mud",
-        "rate": 7500.0,
+        "rate": 7500,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
         "resource": "Duplicant Labor",
-        "rate": 1.0,
+        "rate": 1,
         "unit": "s/s",
         "state": "labor",
         "temp": null
@@ -5384,14 +5384,14 @@
     "outputs": [
       {
         "resource": "Dirt",
-        "rate": 3000.0,
+        "rate": 3000,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
         "resource": "Water",
-        "rate": 4500.0,
+        "rate": 4500,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -5404,14 +5404,14 @@
         "inputs": [
           {
             "resource": "Mud",
-            "rate": 7500.0,
+            "rate": 7500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -5420,21 +5420,21 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 3000.0,
+            "rate": 3000,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Water",
-            "rate": 4500.0,
+            "rate": 4500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -120.0,
-        "heat": 4.0
+        "power": -120,
+        "heat": 4
       },
       {
         "id": "polluted_mud",
@@ -5442,14 +5442,14 @@
         "inputs": [
           {
             "resource": "Polluted Mud",
-            "rate": 7500.0,
+            "rate": 7500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -5458,21 +5458,21 @@
         "outputs": [
           {
             "resource": "Polluted Dirt",
-            "rate": 3000.0,
+            "rate": 3000,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Polluted Water",
-            "rate": 4500.0,
+            "rate": 4500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": -120.0,
-        "heat": 4.0
+        "power": -120,
+        "heat": 4
       }
     ],
     "modifiers": [],
@@ -5485,12 +5485,12 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Compost",
     "icon": "images/icons/Compost.png",
-    "power": 0.0,
+    "power": 0,
     "heat": 1.125,
     "inputs": [
       {
         "resource": "Polluted Dirt",
-        "rate": 100.0,
+        "rate": 100,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -5499,7 +5499,7 @@
     "outputs": [
       {
         "resource": "Dirt",
-        "rate": 100.0,
+        "rate": 100,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 75 °C+"
@@ -5512,7 +5512,7 @@
         "inputs": [
           {
             "resource": "Polluted Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5521,13 +5521,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5536,7 +5536,7 @@
         "inputs": [
           {
             "resource": "Rot Pile",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5545,13 +5545,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5560,7 +5560,7 @@
         "inputs": [
           {
             "resource": "Meal Lice",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5569,13 +5569,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5584,7 +5584,7 @@
         "inputs": [
           {
             "resource": "Bristle Berry",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5593,13 +5593,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5608,7 +5608,7 @@
         "inputs": [
           {
             "resource": "Mushroom",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5617,13 +5617,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5632,7 +5632,7 @@
         "inputs": [
           {
             "resource": "Lettuce",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5641,13 +5641,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5656,7 +5656,7 @@
         "inputs": [
           {
             "resource": "Nosh Bean",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5665,13 +5665,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5680,7 +5680,7 @@
         "inputs": [
           {
             "resource": "Pincha Peppernut",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5689,13 +5689,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5704,7 +5704,7 @@
         "inputs": [
           {
             "resource": "Sleet Wheat Grain",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5713,13 +5713,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5728,7 +5728,7 @@
         "inputs": [
           {
             "resource": "Bog Jelly",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5737,13 +5737,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5752,7 +5752,7 @@
         "inputs": [
           {
             "resource": "Grubfruit",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5761,13 +5761,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5776,7 +5776,7 @@
         "inputs": [
           {
             "resource": "Pikeapple",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5785,13 +5785,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5800,7 +5800,7 @@
         "inputs": [
           {
             "resource": "Plume Squash",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5809,13 +5809,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5824,7 +5824,7 @@
         "inputs": [
           {
             "resource": "Dewdrip",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5833,13 +5833,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       },
       {
@@ -5848,7 +5848,7 @@
         "inputs": [
           {
             "resource": "Seeds",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -5857,13 +5857,13 @@
         "outputs": [
           {
             "resource": "Dirt",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": 0.0,
+        "power": 0,
         "heat": 1.125
       }
     ],
@@ -5877,26 +5877,26 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Fertilizer_Synthesizer",
     "icon": "images/icons/Fertilizer_Synthesizer.png",
-    "power": -120.0,
-    "heat": 3.0,
+    "power": -120,
+    "heat": 3,
     "inputs": [
       {
         "resource": "Polluted Water",
-        "rate": 39.0,
+        "rate": 39,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
       },
       {
         "resource": "Dirt",
-        "rate": 65.0,
+        "rate": 65,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
         "resource": "Phosphorite",
-        "rate": 26.0,
+        "rate": 26,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -5905,14 +5905,14 @@
     "outputs": [
       {
         "resource": "Fertilizer",
-        "rate": 120.0,
+        "rate": 120,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 50 °C+"
       },
       {
         "resource": "Natural Gas",
-        "rate": 10.0,
+        "rate": 10,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 76.85 °C+"
@@ -5929,7 +5929,7 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Polymer_Press",
     "icon": "images/icons/Polymer_Press.png",
-    "power": -240.0,
+    "power": -240,
     "heat": 32.5,
     "inputs": [
       {
@@ -5943,7 +5943,7 @@
     "outputs": [
       {
         "resource": "Plastic",
-        "rate": 500.0,
+        "rate": 500,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 75 °C+"
@@ -5974,19 +5974,19 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Oil_Refinery",
     "icon": "images/icons/Oil_Refinery.png",
-    "power": -480.0,
-    "heat": 10.0,
+    "power": -480,
+    "heat": 10,
     "inputs": [
       {
         "resource": "Crude Oil",
-        "rate": 10000.0,
+        "rate": 10000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
       },
       {
         "resource": "Duplicant Labor",
-        "rate": 1.0,
+        "rate": 1,
         "unit": "s/s",
         "state": "labor",
         "temp": null
@@ -5995,14 +5995,14 @@
     "outputs": [
       {
         "resource": "Petroleum",
-        "rate": 5000.0,
+        "rate": 5000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": "@ 75 °C+"
       },
       {
         "resource": "Natural Gas",
-        "rate": 90.0,
+        "rate": 90,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 75 °C+"
@@ -6019,19 +6019,19 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Kiln",
     "icon": "images/icons/Kiln.png",
-    "power": 0.0,
-    "heat": 20.0,
+    "power": 0,
+    "heat": 20,
     "inputs": [
       {
         "resource": "Clay",
-        "rate": 2500.0,
+        "rate": 2500,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
         "resource": "Coal",
-        "rate": 625.0,
+        "rate": 625,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -6040,7 +6040,7 @@
     "outputs": [
       {
         "resource": "Ceramic",
-        "rate": 2500.0,
+        "rate": 2500,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 80 °C+"
@@ -6053,14 +6053,14 @@
         "inputs": [
           {
             "resource": "Clay",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Coal",
-            "rate": 625.0,
+            "rate": 625,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -6069,14 +6069,14 @@
         "outputs": [
           {
             "resource": "Ceramic",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 80 °C+"
           }
         ],
-        "power": 0.0,
-        "heat": 20.0
+        "power": 0,
+        "heat": 20
       },
       {
         "id": "refined_carbon_coal",
@@ -6084,7 +6084,7 @@
         "inputs": [
           {
             "resource": "Coal",
-            "rate": 3125.0,
+            "rate": 3125,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -6093,14 +6093,14 @@
         "outputs": [
           {
             "resource": "Refined Carbon",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 80 °C+"
           }
         ],
-        "power": 0.0,
-        "heat": 20.0
+        "power": 0,
+        "heat": 20
       },
       {
         "id": "refined_carbon_wood",
@@ -6108,7 +6108,7 @@
         "inputs": [
           {
             "resource": "Wood",
-            "rate": 5000.0,
+            "rate": 5000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -6117,14 +6117,14 @@
         "outputs": [
           {
             "resource": "Refined Carbon",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 80 °C+"
           }
         ],
-        "power": 0.0,
-        "heat": 20.0
+        "power": 0,
+        "heat": 20
       }
     ],
     "modifiers": [],
@@ -6137,19 +6137,19 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Rock_Crusher",
     "icon": "images/icons/Rock_Crusher.png",
-    "power": -240.0,
-    "heat": 16.0,
+    "power": -240,
+    "heat": 16,
     "inputs": [
       {
         "resource": "Fossil",
-        "rate": 2500.0,
+        "rate": 2500,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
         "resource": "Duplicant Labor",
-        "rate": 1.0,
+        "rate": 1,
         "unit": "s/s",
         "state": "labor",
         "temp": null
@@ -6158,14 +6158,14 @@
     "outputs": [
       {
         "resource": "Lime",
-        "rate": 125.0,
+        "rate": 125,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
         "resource": "Sedimentary Rock",
-        "rate": 2375.0,
+        "rate": 2375,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -6178,14 +6178,14 @@
         "inputs": [
           {
             "resource": "Fossil",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6194,21 +6194,21 @@
         "outputs": [
           {
             "resource": "Lime",
-            "rate": 125.0,
+            "rate": 125,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Sedimentary Rock",
-            "rate": 2375.0,
+            "rate": 2375,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "eggshell_lime",
@@ -6216,14 +6216,14 @@
         "inputs": [
           {
             "resource": "Egg Shell",
-            "rate": 125.0,
+            "rate": 125,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6232,14 +6232,14 @@
         "outputs": [
           {
             "resource": "Lime",
-            "rate": 125.0,
+            "rate": 125,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "sandstone_sand",
@@ -6247,14 +6247,14 @@
         "inputs": [
           {
             "resource": "Sandstone",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6263,14 +6263,14 @@
         "outputs": [
           {
             "resource": "Sand",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "granite_sand",
@@ -6278,14 +6278,14 @@
         "inputs": [
           {
             "resource": "Granite",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6294,14 +6294,14 @@
         "outputs": [
           {
             "resource": "Sand",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "igneous_rock_sand",
@@ -6309,14 +6309,14 @@
         "inputs": [
           {
             "resource": "Igneous Rock",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6325,14 +6325,14 @@
         "outputs": [
           {
             "resource": "Sand",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "obsidian_sand",
@@ -6340,14 +6340,14 @@
         "inputs": [
           {
             "resource": "Obsidian",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6356,14 +6356,14 @@
         "outputs": [
           {
             "resource": "Sand",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "sedimentary_rock_sand",
@@ -6371,14 +6371,14 @@
         "inputs": [
           {
             "resource": "Sedimentary Rock",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6387,14 +6387,14 @@
         "outputs": [
           {
             "resource": "Sand",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "mafic_rock_sand",
@@ -6402,14 +6402,14 @@
         "inputs": [
           {
             "resource": "Mafic Rock",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6418,14 +6418,14 @@
         "outputs": [
           {
             "resource": "Sand",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "salt_table_salt",
@@ -6433,14 +6433,14 @@
         "inputs": [
           {
             "resource": "Salt",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6449,14 +6449,14 @@
         "outputs": [
           {
             "resource": "Sand",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "crushed_copper",
@@ -6464,14 +6464,14 @@
         "inputs": [
           {
             "resource": "Copper Ore",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6480,21 +6480,21 @@
         "outputs": [
           {
             "resource": "Copper",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Sand",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "crushed_gold",
@@ -6502,14 +6502,14 @@
         "inputs": [
           {
             "resource": "Gold Amalgam",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6518,21 +6518,21 @@
         "outputs": [
           {
             "resource": "Gold",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Sand",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "crushed_iron",
@@ -6540,14 +6540,14 @@
         "inputs": [
           {
             "resource": "Iron Ore",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6556,21 +6556,21 @@
         "outputs": [
           {
             "resource": "Iron",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Sand",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "crushed_aluminum",
@@ -6578,14 +6578,14 @@
         "inputs": [
           {
             "resource": "Aluminum Ore",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6594,21 +6594,21 @@
         "outputs": [
           {
             "resource": "Aluminum",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Sand",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "crushed_tungsten",
@@ -6616,14 +6616,14 @@
         "inputs": [
           {
             "resource": "Wolframite",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6632,21 +6632,21 @@
         "outputs": [
           {
             "resource": "Tungsten",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Sand",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       },
       {
         "id": "crushed_cobalt",
@@ -6654,14 +6654,14 @@
         "inputs": [
           {
             "resource": "Cobalt Ore",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6670,21 +6670,21 @@
         "outputs": [
           {
             "resource": "Cobalt",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Sand",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -240.0,
-        "heat": 16.0
+        "power": -240,
+        "heat": 16
       }
     ],
     "modifiers": [],
@@ -6697,12 +6697,12 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Metal_Refinery",
     "icon": "images/icons/Metal_Refinery.png",
-    "power": -1200.0,
-    "heat": 16.0,
+    "power": -1200,
+    "heat": 16,
     "inputs": [
       {
         "resource": "Iron Ore",
-        "rate": 2500.0,
+        "rate": 2500,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -6711,7 +6711,7 @@
     "outputs": [
       {
         "resource": "Iron",
-        "rate": 2500.0,
+        "rate": 2500,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 40 °C"
@@ -6724,7 +6724,7 @@
         "inputs": [
           {
             "resource": "Iron Ore",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -6733,14 +6733,14 @@
         "outputs": [
           {
             "resource": "Iron",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C"
           }
         ],
-        "power": -1200.0,
-        "heat": 16.0
+        "power": -1200,
+        "heat": 16
       },
       {
         "id": "steel",
@@ -6748,21 +6748,21 @@
         "inputs": [
           {
             "resource": "Iron",
-            "rate": 1750.0,
+            "rate": 1750,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Refined Carbon",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Lime",
-            "rate": 250.0,
+            "rate": 250,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -6771,14 +6771,14 @@
         "outputs": [
           {
             "resource": "Steel",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C"
           }
         ],
-        "power": -1200.0,
-        "heat": 16.0
+        "power": -1200,
+        "heat": 16
       },
       {
         "id": "copper",
@@ -6786,7 +6786,7 @@
         "inputs": [
           {
             "resource": "Copper Ore",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -6795,14 +6795,14 @@
         "outputs": [
           {
             "resource": "Copper",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C"
           }
         ],
-        "power": -1200.0,
-        "heat": 16.0
+        "power": -1200,
+        "heat": 16
       },
       {
         "id": "gold",
@@ -6810,7 +6810,7 @@
         "inputs": [
           {
             "resource": "Gold Amalgam",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -6819,14 +6819,14 @@
         "outputs": [
           {
             "resource": "Gold",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C"
           }
         ],
-        "power": -1200.0,
-        "heat": 16.0
+        "power": -1200,
+        "heat": 16
       },
       {
         "id": "aluminum",
@@ -6834,7 +6834,7 @@
         "inputs": [
           {
             "resource": "Aluminum Ore",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -6843,14 +6843,14 @@
         "outputs": [
           {
             "resource": "Aluminum",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C"
           }
         ],
-        "power": -1200.0,
-        "heat": 16.0
+        "power": -1200,
+        "heat": 16
       },
       {
         "id": "cobalt",
@@ -6858,7 +6858,7 @@
         "inputs": [
           {
             "resource": "Cobalt Ore",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -6867,14 +6867,14 @@
         "outputs": [
           {
             "resource": "Cobalt",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C"
           }
         ],
-        "power": -1200.0,
-        "heat": 16.0
+        "power": -1200,
+        "heat": 16
       },
       {
         "id": "tungsten",
@@ -6882,7 +6882,7 @@
         "inputs": [
           {
             "resource": "Wolframite",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -6891,14 +6891,14 @@
         "outputs": [
           {
             "resource": "Tungsten",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C"
           }
         ],
-        "power": -1200.0,
-        "heat": 16.0
+        "power": -1200,
+        "heat": 16
       }
     ],
     "modifiers": [],
@@ -6911,19 +6911,19 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Glass_Forge",
     "icon": "images/icons/Glass_Forge.png",
-    "power": -1200.0,
-    "heat": 16.0,
+    "power": -1200,
+    "heat": 16,
     "inputs": [
       {
         "resource": "Sand",
-        "rate": 2500.0,
+        "rate": 2500,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
         "resource": "Duplicant Labor",
-        "rate": 1.0,
+        "rate": 1,
         "unit": "s/s",
         "state": "labor",
         "temp": null
@@ -6932,7 +6932,7 @@
     "outputs": [
       {
         "resource": "Molten Glass",
-        "rate": 625.0,
+        "rate": 625,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": "@ 1750 °C"
@@ -6945,14 +6945,14 @@
         "inputs": [
           {
             "resource": "Sand",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -6961,14 +6961,14 @@
         "outputs": [
           {
             "resource": "Molten Glass",
-            "rate": 625.0,
+            "rate": 625,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": "@ 1750 °C"
           }
         ],
-        "power": -1200.0,
-        "heat": 16.0
+        "power": -1200,
+        "heat": 16
       }
     ],
     "modifiers": [],
@@ -6981,8 +6981,8 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Molecular_Forge",
     "icon": "images/icons/Molecular_Forge.png",
-    "power": -1600.0,
-    "heat": 16.0,
+    "power": -1600,
+    "heat": 16,
     "inputs": [
       {
         "resource": "Tungsten",
@@ -7000,7 +7000,7 @@
       },
       {
         "resource": "Duplicant Labor",
-        "rate": 1.0,
+        "rate": 1,
         "unit": "s/s",
         "state": "labor",
         "temp": null
@@ -7009,7 +7009,7 @@
     "outputs": [
       {
         "resource": "Thermium",
-        "rate": 1250.0,
+        "rate": 1250,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 40 °C+"
@@ -7036,7 +7036,7 @@
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -7045,14 +7045,14 @@
         "outputs": [
           {
             "resource": "Thermium",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C+"
           }
         ],
-        "power": -1600.0,
-        "heat": 16.0
+        "power": -1600,
+        "heat": 16
       },
       {
         "id": "super_coolant",
@@ -7081,7 +7081,7 @@
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -7090,14 +7090,14 @@
         "outputs": [
           {
             "resource": "Super Coolant",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C+"
           }
         ],
-        "power": -1600.0,
-        "heat": 16.0
+        "power": -1600,
+        "heat": 16
       },
       {
         "id": "visco_gel_fluid",
@@ -7119,7 +7119,7 @@
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -7128,14 +7128,14 @@
         "outputs": [
           {
             "resource": "Visco-Gel Fluid",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C+"
           }
         ],
-        "power": -1600.0,
-        "heat": 16.0
+        "power": -1600,
+        "heat": 16
       },
       {
         "id": "insulite",
@@ -7150,7 +7150,7 @@
           },
           {
             "resource": "Abyssalite",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -7164,7 +7164,7 @@
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -7173,14 +7173,14 @@
         "outputs": [
           {
             "resource": "Insulite",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C+"
           }
         ],
-        "power": -1600.0,
-        "heat": 16.0
+        "power": -1600,
+        "heat": 16
       },
       {
         "id": "plastium",
@@ -7195,7 +7195,7 @@
           },
           {
             "resource": "Plastic",
-            "rate": 875.0,
+            "rate": 875,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -7209,7 +7209,7 @@
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -7218,14 +7218,14 @@
         "outputs": [
           {
             "resource": "Plastium",
-            "rate": 1250.0,
+            "rate": 1250,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 40 °C+"
           }
         ],
-        "power": -1600.0,
-        "heat": 16.0
+        "power": -1600,
+        "heat": 16
       }
     ],
     "modifiers": [],
@@ -7238,12 +7238,12 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Bleach_Stone_Hopper",
     "icon": "images/icons/Bleach_Stone_Hopper.png",
-    "power": -480.0,
-    "heat": 3.0,
+    "power": -480,
+    "heat": 3,
     "inputs": [
       {
         "resource": "Salt",
-        "rate": 750.0,
+        "rate": 750,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -7259,14 +7259,14 @@
     "outputs": [
       {
         "resource": "Bleach Stone",
-        "rate": 250.0,
+        "rate": 250,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
         "resource": "Sand",
-        "rate": 500.0,
+        "rate": 500,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -7279,7 +7279,7 @@
         "inputs": [
           {
             "resource": "Salt",
-            "rate": 750.0,
+            "rate": 750,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -7295,21 +7295,21 @@
         "outputs": [
           {
             "resource": "Bleach Stone",
-            "rate": 250.0,
+            "rate": 250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Sand",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -480.0,
-        "heat": 3.0
+        "power": -480,
+        "heat": 3
       },
       {
         "id": "bleach_stone_gold_amalgam",
@@ -7317,7 +7317,7 @@
         "inputs": [
           {
             "resource": "Salt",
-            "rate": 750.0,
+            "rate": 750,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -7333,21 +7333,21 @@
         "outputs": [
           {
             "resource": "Bleach Stone",
-            "rate": 250.0,
+            "rate": 250,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Sand",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": -480.0,
-        "heat": 3.0
+        "power": -480,
+        "heat": 3
       }
     ],
     "modifiers": [],
@@ -7360,12 +7360,12 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Brackwax_Gleaner",
     "icon": "images/icons/Gleaner.png",
-    "power": -480.0,
-    "heat": 8.0,
+    "power": -480,
+    "heat": 8,
     "inputs": [
       {
         "resource": "Brackene",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -7374,21 +7374,21 @@
     "outputs": [
       {
         "resource": "Brackwax",
-        "rate": 90.0,
+        "rate": 90,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
         "resource": "Brine",
-        "rate": 810.0,
+        "rate": 810,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
       },
       {
         "resource": "Carbon Dioxide",
-        "rate": 100.0,
+        "rate": 100,
         "unit": "g/s",
         "state": "free",
         "temp": "@ 75 °C+"
@@ -7401,7 +7401,7 @@
         "inputs": [
           {
             "resource": "Brackene",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -7410,28 +7410,28 @@
         "outputs": [
           {
             "resource": "Brackwax",
-            "rate": 90.0,
+            "rate": 90,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Brine",
-            "rate": 810.0,
+            "rate": 810,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Carbon Dioxide",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": -480.0,
-        "heat": 8.0
+        "power": -480,
+        "heat": 8
       },
       {
         "id": "ovolene",
@@ -7439,7 +7439,7 @@
         "inputs": [
           {
             "resource": "Ovolene",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -7448,28 +7448,28 @@
         "outputs": [
           {
             "resource": "Caviar",
-            "rate": 90.0,
+            "rate": 90,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Mucin",
-            "rate": 810.0,
+            "rate": 810,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Carbon Dioxide",
-            "rate": 100.0,
+            "rate": 100,
             "unit": "g/s",
             "state": "free",
             "temp": "@ 75 °C+"
           }
         ],
-        "power": -480.0,
-        "heat": 8.0
+        "power": -480,
+        "heat": 8
       }
     ],
     "modifiers": [],
@@ -7482,12 +7482,12 @@
     "subcategory": "Utilities",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Thermo_Aquatuner",
     "icon": "images/icons/Thermo_Aquatuner.png",
-    "power": -1200.0,
+    "power": -1200,
     "heat": 585.06,
     "inputs": [
       {
         "resource": "Water",
-        "rate": 10000.0,
+        "rate": 10000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -7496,7 +7496,7 @@
     "outputs": [
       {
         "resource": "Water",
-        "rate": 10000.0,
+        "rate": 10000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": "-14 °C"
@@ -7509,7 +7509,7 @@
         "inputs": [
           {
             "resource": "Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -7518,13 +7518,13 @@
         "outputs": [
           {
             "resource": "Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": "-14 °C"
           }
         ],
-        "power": -1200.0,
+        "power": -1200,
         "heat": 585.06
       },
       {
@@ -7533,7 +7533,7 @@
         "inputs": [
           {
             "resource": "Polluted Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -7542,13 +7542,13 @@
         "outputs": [
           {
             "resource": "Polluted Water",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": "-14 °C"
           }
         ],
-        "power": -1200.0,
+        "power": -1200,
         "heat": 585.06
       },
       {
@@ -7557,7 +7557,7 @@
         "inputs": [
           {
             "resource": "Super Coolant",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -7566,13 +7566,13 @@
         "outputs": [
           {
             "resource": "Super Coolant",
-            "rate": 10000.0,
+            "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": "-14 °C"
           }
         ],
-        "power": -1200.0,
+        "power": -1200,
         "heat": 1181.6
       }
     ],
@@ -7586,12 +7586,12 @@
     "subcategory": "Utilities",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Thermo_Regulator",
     "icon": "images/icons/Thermo_Regulator.png",
-    "power": -240.0,
+    "power": -240,
     "heat": 33.6,
     "inputs": [
       {
         "resource": "Hydrogen",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -7600,7 +7600,7 @@
     "outputs": [
       {
         "resource": "Hydrogen",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": "-14 °C"
@@ -7613,7 +7613,7 @@
         "inputs": [
           {
             "resource": "Hydrogen",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -7622,13 +7622,13 @@
         "outputs": [
           {
             "resource": "Hydrogen",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": "-14 °C"
           }
         ],
-        "power": -240.0,
+        "power": -240,
         "heat": 33.6
       },
       {
@@ -7637,7 +7637,7 @@
         "inputs": [
           {
             "resource": "Oxygen",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -7646,13 +7646,13 @@
         "outputs": [
           {
             "resource": "Oxygen",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": "-14 °C"
           }
         ],
-        "power": -240.0,
+        "power": -240,
         "heat": 14.07
       },
       {
@@ -7661,7 +7661,7 @@
         "inputs": [
           {
             "resource": "Natural Gas",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -7670,13 +7670,13 @@
         "outputs": [
           {
             "resource": "Natural Gas",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": "-14 °C"
           }
         ],
-        "power": -240.0,
+        "power": -240,
         "heat": 30.674
       },
       {
@@ -7685,7 +7685,7 @@
         "inputs": [
           {
             "resource": "Chlorine",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -7694,13 +7694,13 @@
         "outputs": [
           {
             "resource": "Chlorine",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": "-14 °C"
           }
         ],
-        "power": -240.0,
+        "power": -240,
         "heat": 6.72
       },
       {
@@ -7709,7 +7709,7 @@
         "inputs": [
           {
             "resource": "Carbon Dioxide",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
@@ -7718,13 +7718,13 @@
         "outputs": [
           {
             "resource": "Carbon Dioxide",
-            "rate": 1000.0,
+            "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": "-14 °C"
           }
         ],
-        "power": -240.0,
+        "power": -240,
         "heat": 11.844
       }
     ],
@@ -7738,8 +7738,8 @@
     "subcategory": "Utilities",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Ice-E_Fan",
     "icon": "images/icons/Ice-E_Fan.png",
-    "power": 0.0,
-    "heat": -32.0,
+    "power": 0,
+    "heat": -32,
     "inputs": [],
     "outputs": [],
     "recipes": [],
@@ -7753,12 +7753,12 @@
     "subcategory": "Utilities",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Ice_Maker",
     "icon": "images/icons/Ice_Maker.png",
-    "power": -60.0,
-    "heat": 16.0,
+    "power": -60,
+    "heat": 16,
     "inputs": [
       {
         "resource": "Water",
-        "rate": 500.0,
+        "rate": 500,
         "unit": "g/s",
         "state": "free",
         "temp": null
@@ -7767,7 +7767,7 @@
     "outputs": [
       {
         "resource": "Ice",
-        "rate": 500.0,
+        "rate": 500,
         "unit": "g/s",
         "state": "free",
         "temp": "@ -20 °C"
@@ -7780,7 +7780,7 @@
         "inputs": [
           {
             "resource": "Water",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": null
@@ -7789,14 +7789,14 @@
         "outputs": [
           {
             "resource": "Ice",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "free",
             "temp": "@ -20 °C"
           }
         ],
-        "power": -60.0,
-        "heat": 16.0
+        "power": -60,
+        "heat": 16
       }
     ],
     "modifiers": [],
@@ -7809,12 +7809,12 @@
     "subcategory": "Utilities",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Oil_Well",
     "icon": "images/icons/Oil_Well.png",
-    "power": -240.0,
-    "heat": 2.0,
+    "power": -240,
+    "heat": 2,
     "inputs": [
       {
         "resource": "Water",
-        "rate": 1000.0,
+        "rate": 1000,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -7847,8 +7847,8 @@
     "subcategory": "Medical",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Ore_Scrubber",
     "icon": "images/icons/Ore_Scrubber.png",
-    "power": 0.0,
-    "heat": 0.0,
+    "power": 0,
+    "heat": 0,
     "inputs": [],
     "outputs": [],
     "recipes": [],
@@ -8953,7 +8953,7 @@
     "subcategory": "Ranching",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Incubator",
     "icon": "images/icons/Incubator.png",
-    "power": -240.0,
+    "power": -240,
     "heat": 4.5,
     "inputs": [],
     "outputs": [],
@@ -8968,8 +8968,8 @@
     "subcategory": "Refinement",
     "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Plant_Pulverizer",
     "icon": "images/icons/Plant_Pulverizer.png",
-    "power": 0.0,
-    "heat": 2.0,
+    "power": 0,
+    "heat": 2,
     "inputs": [
       {
         "resource": "Sleet Wheat Grain",
@@ -8980,14 +8980,14 @@
       },
       {
         "resource": "Water",
-        "rate": 375.0,
+        "rate": 375,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
       },
       {
         "resource": "Duplicant Labor",
-        "rate": 1.0,
+        "rate": 1,
         "unit": "s/s",
         "state": "labor",
         "temp": null
@@ -8996,7 +8996,7 @@
     "outputs": [
       {
         "resource": "Brackene",
-        "rate": 500.0,
+        "rate": 500,
         "unit": "g/s",
         "state": "in a pipe",
         "temp": null
@@ -9016,14 +9016,14 @@
           },
           {
             "resource": "Water",
-            "rate": 375.0,
+            "rate": 375,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -9032,14 +9032,14 @@
         "outputs": [
           {
             "resource": "Brackene",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": 0.0,
-        "heat": 2.0
+        "power": 0,
+        "heat": 2
       },
       {
         "id": "brackene_nosh_bean",
@@ -9054,14 +9054,14 @@
           },
           {
             "resource": "Water",
-            "rate": 450.0,
+            "rate": 450,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -9070,14 +9070,14 @@
         "outputs": [
           {
             "resource": "Brackene",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": 0.0,
-        "heat": 2.0
+        "power": 0,
+        "heat": 2
       },
       {
         "id": "brackene_pincha_pepper",
@@ -9085,21 +9085,21 @@
         "inputs": [
           {
             "resource": "Pincha Peppernut",
-            "rate": 75.0,
+            "rate": 75,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Water",
-            "rate": 425.0,
+            "rate": 425,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -9108,14 +9108,14 @@
         "outputs": [
           {
             "resource": "Brackene",
-            "rate": 500.0,
+            "rate": 500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": 0.0,
-        "heat": 2.0
+        "power": 0,
+        "heat": 2
       },
       {
         "id": "phyto_oil_slime",
@@ -9123,14 +9123,14 @@
         "inputs": [
           {
             "resource": "Slime",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -9139,21 +9139,21 @@
         "outputs": [
           {
             "resource": "Phyto Oil",
-            "rate": 1750.0,
+            "rate": 1750,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Dirt",
-            "rate": 750.0,
+            "rate": 750,
             "unit": "g/s",
             "state": "free",
             "temp": null
           }
         ],
-        "power": 0.0,
-        "heat": 2.0
+        "power": 0,
+        "heat": 2
       },
       {
         "id": "phyto_oil_seakomb",
@@ -9161,21 +9161,21 @@
         "inputs": [
           {
             "resource": "Seakomb Leaf",
-            "rate": 625.0,
+            "rate": 625,
             "unit": "g/s",
             "state": "free",
             "temp": null
           },
           {
             "resource": "Water",
-            "rate": 1875.0,
+            "rate": 1875,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           },
           {
             "resource": "Duplicant Labor",
-            "rate": 1.0,
+            "rate": 1,
             "unit": "s/s",
             "state": "labor",
             "temp": null
@@ -9184,14 +9184,14 @@
         "outputs": [
           {
             "resource": "Phyto Oil",
-            "rate": 2500.0,
+            "rate": 2500,
             "unit": "g/s",
             "state": "in a pipe",
             "temp": null
           }
         ],
-        "power": 0.0,
-        "heat": 2.0
+        "power": 0,
+        "heat": 2
       }
     ],
     "modifiers": [],
@@ -9386,5 +9386,96 @@
     ],
     "modifiers": [],
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Power_Control_Station.png"
+  },
+  {
+    "id": "absorb_heat",
+    "name": "Absorb heat into liquid",
+    "aliases": [
+      "Absorb heat into liquid",
+      "Absorb heat into gas",
+      "Absorb heat into solid",
+      "Absorb heat",
+      "Boiler",
+      "Heater",
+      "Cooler",
+      "Phase Change"
+    ],
+    "category": "Machine",
+    "subcategory": "Meta",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Thermal_Conductivity",
+    "icon": "images/icons/Heat.png",
+    "power": 0,
+    "heat": -10,
+    "inputs": [
+      {
+        "resource": "Water",
+        "rate": 1000,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Water",
+        "rate": 1000,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Heat.png"
+  },
+  {
+    "id": "counterflow_heat_exchanger",
+    "name": "Counterflow heat exchanger",
+    "aliases": [
+      "Counterflow heat exchanger",
+      "Heat exchanger",
+      "Counterflow"
+    ],
+    "category": "Machine",
+    "subcategory": "Meta",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Thermal_Conductivity",
+    "icon": "images/icons/Thermo_Aquatuner.png",
+    "power": 0,
+    "heat": 0,
+    "inputs": [
+      {
+        "resource": "Petroleum",
+        "rate": 1000,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Crude Oil",
+        "rate": 1000,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Petroleum",
+        "rate": 1000,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      },
+      {
+        "resource": "Crude Oil",
+        "rate": 1000,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null
+      }
+    ],
+    "recipes": [],
+    "modifiers": [],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Thermo_Aquatuner.png"
   }
 ]

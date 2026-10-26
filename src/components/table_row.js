@@ -67,12 +67,32 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
         </div>
   `;
 
-  // Recipe & Bathroom subcontrols
+  // Recipe, Bathroom, & Meta-Machine subcontrols
   const hasRecipes = entity.recipes && entity.recipes.length > 0;
   const isDuplicant = row.entityId === "duplicant";
+  const isAbsorbHeat = row.entityId === "absorb_heat" || entity.id === "absorb_heat";
+  const isCounterflow = row.entityId === "counterflow_heat_exchanger" || entity.id === "counterflow_heat_exchanger";
 
-  if (hasRecipes || isDuplicant) {
+  if (hasRecipes || isDuplicant || isAbsorbHeat || isCounterflow) {
     machineHtml += `<div class="row-subcontrols">`;
+
+    let elementOptionsHtml = null;
+    if (isAbsorbHeat || isCounterflow) {
+      const physicalElements = [];
+      if (elementMap) {
+        const src = elementMap instanceof Map ? elementMap.values() : Object.values(elementMap);
+        for (const elem of src) {
+          if (elem?.name && (elem.state === "Liquid" || elem.state === "Gas" || elem.state === "Solid")) {
+            physicalElements.push(elem.name);
+          }
+        }
+      }
+      physicalElements.sort((a, b) => a.localeCompare(b));
+      elementOptionsHtml = (selectedName) => physicalElements.map((name) =>
+        `<option value="${name}" ${selectedName === name ? "selected" : ""}>${name}</option>`
+      ).join("");
+    }
+
     if (hasRecipes) {
       machineHtml += `
         <div class="recipe-wrapper">
@@ -112,6 +132,79 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
         </div>
       `;
     }
+
+    if (isAbsorbHeat && elementOptionsHtml) {
+      const selectedMat = row.material || "Water";
+      const isSolid = isSolidResource(selectedMat, elementMap);
+      const selectedState = isSolid ? "free" : (row.materialState || "free");
+      machineHtml += `
+        <div class="material-wrapper">
+          <label class="field-label" for="material-${rowIndex}">Material:</label>
+          <select id="material-${rowIndex}" class="material-select" data-row-index="${rowIndex}">
+            ${elementOptionsHtml(selectedMat)}
+          </select>
+        </div>
+      `;
+      if (!isSolid) {
+        machineHtml += `
+          <div class="material-state-wrapper">
+            <label class="field-label" for="material-state-${rowIndex}">State:</label>
+            <select id="material-state-${rowIndex}" class="material-state-select" data-row-index="${rowIndex}">
+              <option value="free" ${selectedState === "free" ? "selected" : ""}>Free</option>
+              <option value="in a pipe" ${selectedState === "in a pipe" ? "selected" : ""}>In a pipe</option>
+            </select>
+          </div>
+        `;
+      }
+    }
+
+    if (isCounterflow && elementOptionsHtml) {
+      const selectedHot = row.material || "Petroleum";
+      const isHotSolid = isSolidResource(selectedHot, elementMap);
+      const selectedHotState = isHotSolid ? "free" : (row.materialState || "free");
+
+      const selectedCold = row.coldMaterial || "Crude Oil";
+      const isColdSolid = isSolidResource(selectedCold, elementMap);
+      const selectedColdState = isColdSolid ? "free" : (row.coldMaterialState || "in a pipe");
+
+      machineHtml += `
+        <div class="material-wrapper">
+          <label class="field-label" for="material-${rowIndex}">Hot Stream:</label>
+          <select id="material-${rowIndex}" class="material-select" data-row-index="${rowIndex}">
+            ${elementOptionsHtml(selectedHot)}
+          </select>
+        </div>
+      `;
+      if (!isHotSolid) {
+        machineHtml += `
+          <div class="material-state-wrapper">
+            <select id="material-state-${rowIndex}" class="material-state-select" data-row-index="${rowIndex}">
+              <option value="free" ${selectedHotState === "free" ? "selected" : ""}>Free</option>
+              <option value="in a pipe" ${selectedHotState === "in a pipe" ? "selected" : ""}>In a pipe</option>
+            </select>
+          </div>
+        `;
+      }
+      machineHtml += `
+        <div class="cold-material-wrapper">
+          <label class="field-label" for="cold-material-${rowIndex}">Cold Stream:</label>
+          <select id="cold-material-${rowIndex}" class="cold-material-select" data-row-index="${rowIndex}">
+            ${elementOptionsHtml(selectedCold)}
+          </select>
+        </div>
+      `;
+      if (!isColdSolid) {
+        machineHtml += `
+          <div class="cold-material-state-wrapper">
+            <select id="cold-material-state-${rowIndex}" class="cold-material-state-select" data-row-index="${rowIndex}">
+              <option value="in a pipe" ${selectedColdState === "in a pipe" ? "selected" : ""}>In a pipe</option>
+              <option value="free" ${selectedColdState === "free" ? "selected" : ""}>Free</option>
+            </select>
+          </div>
+        `;
+      }
+    }
+
     machineHtml += `</div>`;
   }
 
@@ -223,11 +316,21 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
 
   // Outputs Column HTML
   const outputLines = [];
+  const heatMatch = getMatchBtn("out:Heat", "heat balance");
   if (Math.abs(evaluated.heat) > 1e-4) {
     outputLines.push(`
       <div class="stream-line">
         ${renderIcon(heatIcon, "Heat", "stream-icon")}
         <span class="stream-text">Heat: ${evaluated.heat > 0 ? "+" : ""}${formatNumber(evaluated.heat)} kDTU/s</span>
+        ${heatMatch}
+      </div>
+    `);
+  } else if (isCounterflow && heatMatch) {
+    outputLines.push(`
+      <div class="stream-line">
+        ${renderIcon(heatIcon, "Heat", "stream-icon")}
+        <span class="stream-text">Heat: 0 kDTU/s</span>
+        ${heatMatch}
       </div>
     `);
   }
@@ -239,12 +342,14 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
       ? ""
       : ` (${streamState})`;
     const matchBtn = getMatchBtn(key, `${stream.resource}${descState}`);
+    const phaseMatch = isAbsorbHeat ? getMatchBtn("out:phase_change", "phase transition") : "";
     const loopBtn = getLoopBtn(stream.resource, streamState, stream.rate, stream.unit, stream.tempC);
     outputLines.push(`
       <div class="stream-line">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
         <span class="stream-text">${formatStreamLine(stream, true, rateMode, elementMap)}</span>
         ${matchBtn}
+        ${phaseMatch}
         ${loopBtn}
       </div>
     `);
