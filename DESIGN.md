@@ -3,6 +3,8 @@
 ## 1. System Overview & User Experience
 The web application models an *Oxygen Not Included* resource network as a **sequential top-to-bottom flow table** with explicit feedback loops (`Loop Start` and `Loop End`). Users assemble an ordered pipeline of machines, plants, critters, duplicants, and geysers; configure each row's quantity, active recipe/diet/bathroom mode, and modifiers; optionally loop output streams back to the top at a locked rate and temperature; and immediately see both row-level inputs/outputs and the system-wide **NET** resource balance.
 
+The application features **157 total entities** (comprising **54 buildings/machines**, plants, critters, duplicants, and geysers), **212 elements**, and **10 built-in presets**.
+
 ### 1.1 Visual Language (GitHub-Inspired Monochrome)
 - **Color Palette**:
   - **Light Mode**: Crisp white canvas (`#ffffff`), subtle header/footer fills (`#f6f8fa`), 1px structural borders (`#d0d7de`), primary ink (`#1f2328`), muted metadata (`#59636e`).
@@ -57,7 +59,21 @@ Resources—including materials, `Power`, and `Duplicant Labor`—flow strictly 
    - For a row's **inputs**, `[match: X×]` computes the target machine quantity required to consume the currently available **upstream** pool (including `Loop Start`).
    - For a row's **outputs**, `[match: X×]` computes the target machine quantity required to satisfy the cumulative **downstream** deficit (including `Loop End`).
 
-### 2.3 NET Row Aggregation (Hydra SPOM Example)
+### 2.3 Meta-Machines Simulation (`absorb_heat` & `counterflow_heat_exchanger`)
+To support complex thermal networks (such as industrial saunas and counterflow boilers), the calculator provides two specialized virtual meta-machines:
+1. **Absorb Heat (`absorb_heat`)**:
+   - **Dynamic Phase Label**: The entity label dynamically displays `"Absorb heat into liquid"`, `"Absorb heat into gas"`, or `"Absorb heat into solid"` matching the thermodynamic phase (`Liquid`, `Gas`, or `Solid`) of the selected material.
+   - **UI Selectors**: Allows selecting the primary material (`material`) and delivery state (`material_state`: `free`, `in a pipe`, `solid`).
+   - **Heat Absorption**: Transfers $10\text{ kDTU/s}$ of thermal energy per $1\times$ quantity from system ambient heat into the stream ($\text{Heat} = -10\text{ kDTU/s}$).
+   - **Upstream Pool Flow-Rate Matching**: In `resolveTableTemperatures`, the meta-machine automatically inspects the upstream pool for the specified `(material, material_state)`. If available, it automatically consumes the full upstream flow rate at its current incoming temperature, avoiding manual rate configuration. If no upstream pool exists, it draws from external NET inputs at the configured NET feed temperature.
+2. **Counterflow Heat Exchanger (`counterflow_heat_exchanger`)**:
+   - **Label**: `"Counterflow heat exchanger"`.
+   - **UI Selectors**: Dual stream selectors for the hot stream (`material`, `material_state`) and the cold stream (`cold_material`, `cold_material_state`).
+   - **Heat Exchange**: Transfers $10\text{ kDTU/s}$ per $1\times$ quantity directly from the hot stream to the cold stream with zero net building heat dissipation ($\text{Heat} = 0\text{ kDTU/s}$) and zero power consumption ($\text{Power} = 0\text{ W}$).
+   - **Thermodynamic Clamping**: Stream outlet temperatures are clamped by the Second Law of Thermodynamics for counterflow heat exchangers ($T_{\text{cold, out}} \le T_{\text{hot, in}}$ and $T_{\text{hot, out}} \ge T_{\text{cold, in}}$), preventing temperature crossover pinch violations.
+   - **Upstream Pool Flow-Rate Matching**: Automatically adopts flow rates and arriving temperatures for both the hot and cold streams directly from their respective upstream pools.
+
+### 2.4 NET Row Aggregation (Hydra SPOM Example)
 In the **Hydra SPOM** preset (`hydra_spom`), `Power: +896 W` from the `1.12× Hydrogen Generator` is looped via `Loop Start` / `Loop End` so upstream pumps and the electrolyzer receive power from the top of the table:
 1. **`Loop Start`**: Outputs `Power: +896 W`.
 2. **`0.1× Liquid Pump`** (mode `water`): Consumes `Power: -24 W` and `Water: -1 Kg/s (free)`; outputs `Water: +1 Kg/s @ 20 °C (in a pipe)` and `Heat: +0.2 kDTU/s`.
@@ -72,19 +88,49 @@ In the **Hydra SPOM** preset (`hydra_spom`), `Power: +896 W` from the `1.12× Hy
 ## 3. Protocol Buffer URL State Format (`src/state.proto`, `src/proto_catalog.js`, `src/url_state.js`)
 Calculator state is serialized into a compact URL-safe Base64 Protocol Buffer payload (`?s=...`) with **zero string fields on the wire**:
 - `CalculatorState`:
-  - `RateMode rate_mode = 1` (`RATE_MODE_PER_SECOND` or `RATE_MODE_PER_CYCLE`)
-  - `repeated RowState rows = 2` (entity enum, `oneof count { uint32 count_int; double count_double }`, recipe enum, bathroom enum, food enum, repeated modifier enums, optional `input_temp`)
-  - `repeated NetTemperature net_temps = 3` (element enum, stream state enum, temperature double)
-  - `repeated LoopedStream loops = 4` (element enum, stream state enum, rate double, optional temperature double)
+  - `RateMode rate_mode = 1` (`PER_SECOND = 0`, `PER_CYCLE = 1`)
+  - `repeated RowState rows = 2`:
+    - `Entity entity = 1` (**157 `Entity` enum values**)
+    - `oneof count { uint32 count_int = 2; double count_double = 3; }`
+    - `Recipe recipe = 4`
+    - `Bathroom bathroom = 5`
+    - `repeated Modifier modifiers = 6`
+    - `optional double input_temp = 7`
+    - `Food food = 8`
+    - `Element material = 9` (Meta-machine primary material enum)
+    - `StreamState material_state = 10` (Meta-machine primary stream state enum: `STREAM_STATE_FREE`, `STREAM_STATE_IN_A_PIPE`, `STREAM_STATE_SOLID`, `STREAM_STATE_LABOR`)
+    - `Element cold_material = 11` (Meta-machine counterflow cold stream material enum)
+    - `StreamState cold_material_state = 12` (Meta-machine counterflow cold stream state enum)
+  - `repeated NetTemperature net_temperatures = 3` (`element`, `state`, `temperature`)
+  - `repeated LoopedStream loops = 4`:
+    - `Element element = 1`
+    - `StreamState state = 2`
+    - `oneof flow_rate { uint32 rate_int = 3; double rate_double = 5; }`
+    - `oneof temp { sint32 temp_int = 4; double temp_double = 6; }`
 - Even complex multi-machine closed-loop presets serialize into `< 100 bytes` on the wire.
 
 ---
 
-## 4. Component Breakdown
+## 4. Presets & Component Breakdown
+
+### 4.1 Built-in Presets (`src/presets.js`)
+The application includes **10 built-in presets**:
+1. `hydra_spom` — **Hydra SPOM** (loops `Power: 896 W`)
+2. `coal_skimmer_loop` — **Coal Generator + Carbon Skimmer Loop** (loops `Water (in a pipe): 1000 g/s @ 20 °C`)
+3. `stone_hatch_coal` — **Stone Hatch Ranch (8x) + Coal Power**
+4. `arbor_ethanol_loop` — **Arbor Tree Ethanol Power Loop** (loops `Polluted Water (in a pipe): 3500 g/s @ 75 °C`)
+5. `natural_gas_geyser_power` — **Natural Gas Geyser Power Plant** (loops `Power: 800 W`)
+6. `oil_refinery_petroleum_loop` — **Oil Refinery + Petroleum Power Plant** (loops `Power: 5000 W`)
+7. `glossy_drecko_plastic` — **Glossy Drecko Plastic via Bristle Berry**
+8. `drecko_reed_fiber_balm_lily` — **Drecko Ranch (Reed Fiber) via Balm Lily**
+9. `industrial_sauna` — **Industrial Sauna** (loops `Power: 2400 W`, `Polluted Water (in a pipe): 10000 g/s @ 20 °C`, `Water (in a pipe): 4000 g/s @ 95 °C`)
+10. `petroleum_boiler` — **Petroleum Boiler** (loops `Petroleum (free): 10000 g/s @ 405 °C`)
+
+### 4.2 Component Breakdown
 1. `index.html`: Semantic, accessible single-page layout with toolbar (Preset selector, Per-second / Per-cycle toggle, Interactive Table / Plain Text view toggle, Copy Share Link button, Theme switcher), main calculator table, and quick reference footer.
 2. `styles/main.css`: GitHub-inspired monochrome CSS variables for light & dark themes, responsive grid/table rules, `.loop-row` styling for `Loop Start` and `Loop End`, `.btn-loop-stream` / `.btn-unloop-stream` controls, and autocomplete popover styles.
-3. `src/calculator.js`: Pure calculation and formatting engine (row evaluation, sequential top-to-bottom thermal resolution, upstream/downstream match target calculation, and sequential NET balance with `Loop Start` / `Loop End`).
+3. `src/calculator.js`: Pure calculation and formatting engine (row evaluation, meta-machines simulation, dynamic steam turbine scaling, phase-change transitions across 212 elements, counterflow heat exchanger clamping, sequential top-to-bottom thermal resolution, upstream/downstream match target calculation, and sequential NET balance with `Loop Start` / `Loop End`).
 4. `src/state.proto`, `src/proto_catalog.js`, `src/url_state.js`: Zero-string Protocol Buffer schema, enum catalog, and URL-safe Base64 encoder/decoder.
-5. `src/presets.js`: 8 curated presets ordered top-to-bottom with pre-configured `loops`.
+5. `src/presets.js`: 10 curated presets ordered top-to-bottom with pre-configured `loops`.
 6. `src/text_renderer.js` & `bin/calc.js`: Plain-text ASCII table and JSON renderer for both the web app's Plain Text view and the CLI tool (`node bin/calc.js`).
 7. `src/app.js` & `src/components/`: Interactive table rendering (`table_row.js`, `net_summary.js`, `autocomplete.js`), row reordering, `[loop]` / `[unloop]` handlers, and instant URL state synchronization.
