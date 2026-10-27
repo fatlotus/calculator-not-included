@@ -121,6 +121,24 @@ export const PRESETS = [
       { entityId: "critter_drecko", qty: 1, recipeId: "balm_lily", modifiers: [] },
     ],
   },
+  {
+    id: "industrial_sauna",
+    name: "Industrial Sauna",
+    description: "Industrial sauna recycling heat from a glass forge and thermo aquatuner coolant loop into steam turbines, producing net positive power.",
+    rateMode: "s",
+    loops: [
+      { resource: "Power", state: "free", rate: 2400, unit: "W" },
+      { resource: "Polluted Water", state: "in a pipe", rate: 10000, unit: "g/s", tempC: 20 },
+      { resource: "Water", state: "in a pipe", rate: 4000, unit: "g/s", tempC: 95 },
+    ],
+    rows: [
+      { entityId: "glass_forge", qty: 1, recipeId: null, modifiers: [] },
+      { entityId: "counterflow_heat_exchanger", qty: 58.506, material: "Molten Glass", materialState: "in a pipe", coldMaterial: "Polluted Water", coldMaterialState: "in a pipe", modifiers: [] },
+      { entityId: "thermo_aquatuner", qty: 1, recipeId: "polluted_water", modifiers: [] },
+      { entityId: "absorb_heat", qty: 175.518, material: "Water", materialState: "in a pipe", modifiers: [] },
+      { entityId: "steam_turbine", qty: 2, recipeId: null, modifiers: ["engie_tuneup"] },
+    ],
+  },
 ];
 
 for (const preset of PRESETS) {

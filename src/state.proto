@@ -740,8 +740,14 @@ message NetTemperature {
 message LoopedStream {
   Element element = 1;
   StreamState state = 2;
-  double rate = 3;
-  optional double temperature = 4;
+  oneof flow_rate {
+    uint32 rate_int = 3;
+    double rate_double = 5;
+  }
+  oneof temp {
+    sint32 temp_int = 4;
+    double temp_double = 6;
+  }
 }
 
 message CalculatorState {

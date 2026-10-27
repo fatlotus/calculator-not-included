@@ -265,17 +265,29 @@ export function encodeStateToProtobuf(state, elementMap = null) {
       const pbLoop = {
         element: elemEnum,
         state: stateEnum,
-        rate: rateVal,
       };
 
+      if (Number.isInteger(rateVal) && rateVal >= 0 && rateVal < 4294967296) {
+        pbLoop.rateInt = rateVal;
+      } else {
+        pbLoop.rateDouble = rateVal;
+      }
+
       const unit = loop.unit || getResourceDefaultUnit(loop.resource);
+      const defTemp = getDefaultElementTemp(loop.resource, elementMap);
       if (
         !isNonThermalResource(loop.resource, unit) &&
         loop.tempC !== undefined &&
         loop.tempC !== null &&
-        Number.isFinite(Number(loop.tempC))
+        Number.isFinite(Number(loop.tempC)) &&
+        Math.abs(Number(loop.tempC) - defTemp) > 1e-4
       ) {
-        pbLoop.temperature = Number(loop.tempC);
+        const numTemp = Number(loop.tempC);
+        if (Number.isInteger(numTemp) && numTemp >= -2147483648 && numTemp <= 2147483647) {
+          pbLoop.tempInt = numTemp;
+        } else {
+          pbLoop.tempDouble = numTemp;
+        }
       }
 
       pbLoops.push(pbLoop);
@@ -425,7 +437,18 @@ export function decodeStateFromProtobuf(bytes) {
     for (const entry of decoded.loops) {
       const elementName = ENUM_TO_ELEMENT[entry.element];
       if (!elementName) continue;
-      const rateVal = Number(entry.rate);
+      let rateVal = 0;
+      if (entry.flow_rate === "rateInt" || entry.flowRate === "rateInt") {
+        rateVal = Number(entry.rateInt);
+      } else if (entry.flow_rate === "rateDouble" || entry.flowRate === "rateDouble") {
+        rateVal = Number(entry.rateDouble);
+      } else if (entry.rate !== undefined && entry.rate !== null) {
+        rateVal = Number(entry.rate);
+      } else if (typeof entry.rateInt === "number" && entry.rateInt > 0) {
+        rateVal = entry.rateInt;
+      } else if (typeof entry.rateDouble === "number" && Number.isFinite(entry.rateDouble)) {
+        rateVal = entry.rateDouble;
+      }
       if (!Number.isFinite(rateVal) || rateVal <= 0) continue;
       const pipeState = ENUM_TO_STREAM_STATE[entry.state] || getResourceDefaultState(elementName);
       const unit = getResourceDefaultUnit(elementName);
@@ -435,15 +458,22 @@ export function decodeStateFromProtobuf(bytes) {
         rate: rateVal,
         unit,
       };
-      if (
-        !isNonThermalResource(elementName, unit) &&
-        entry.temperature !== undefined &&
-        entry.temperature !== null &&
-        Number.isFinite(Number(entry.temperature))
-      ) {
-        loopObj.tempC = Number(entry.temperature);
-      } else if (!isNonThermalResource(elementName, unit)) {
-        loopObj.tempC = getDefaultElementTemp(elementName, null);
+
+      let tempVal = undefined;
+      if (entry.temp === "tempInt" && typeof entry.tempInt === "number") {
+        tempVal = entry.tempInt;
+      } else if (entry.temp === "tempDouble" && typeof entry.tempDouble === "number" && Number.isFinite(entry.tempDouble)) {
+        tempVal = entry.tempDouble;
+      } else if (entry.temperature !== undefined && entry.temperature !== null && Number.isFinite(Number(entry.temperature))) {
+        tempVal = Number(entry.temperature);
+      }
+
+      if (!isNonThermalResource(elementName, unit)) {
+        if (tempVal !== undefined && Number.isFinite(tempVal)) {
+          loopObj.tempC = tempVal;
+        } else {
+          loopObj.tempC = getDefaultElementTemp(elementName, null);
+        }
       }
       loops.push(loopObj);
     }
