@@ -126,9 +126,15 @@ export function encodeStateToProtobuf(state, elementMap = null) {
       entity: entityEnum,
     };
 
-    // oneof count: count_int (if integer >= 0) or count_double
+    // oneof count: count_int (if integer >= 0) or count_scaled or count_double
     if (Number.isInteger(safeQty) && safeQty <= 4294967295) {
       pbRow.countInt = safeQty;
+    } else if (
+      (entityId === "absorb_heat" || entityId === "counterflow_heat_exchanger" || safeQty >= 10) &&
+      Math.abs(Math.round(safeQty * 10000) - safeQty * 10000) < 1e-6 &&
+      Math.round(safeQty * 10000) <= 4294967295
+    ) {
+      pbRow.countScaled = Math.round(safeQty * 10000);
     } else {
       pbRow.countDouble = safeQty;
     }
@@ -136,9 +142,12 @@ export function encodeStateToProtobuf(state, elementMap = null) {
     // Recipe enum
     if (row.recipeId) {
       const rId = String(row.recipeId).trim();
-      const rEnum = RECIPE_TO_ENUM.get(rId);
-      if (rEnum) {
-        pbRow.recipe = rEnum;
+      const isDefaultGlassRecipe = (entityId === "glass_forge" && rId === "molten_glass");
+      if (!isDefaultGlassRecipe) {
+        const rEnum = RECIPE_TO_ENUM.get(rId);
+        if (rEnum) {
+          pbRow.recipe = rEnum;
+        }
       }
     }
 
@@ -197,7 +206,8 @@ export function encodeStateToProtobuf(state, elementMap = null) {
     }
     if (row.coldMaterialState) {
       const csEnum = STREAM_STATE_TO_ENUM.get(String(row.coldMaterialState).trim());
-      if (csEnum !== undefined && csEnum !== 0) {
+      const isDefaultColdState = (entityId === "counterflow_heat_exchanger" && row.coldMaterialState === "in a pipe");
+      if (csEnum !== undefined && csEnum !== 0 && !isDefaultColdState) {
         pbRow.coldMaterialState = csEnum;
       }
     }
@@ -343,8 +353,12 @@ export function decodeStateFromProtobuf(bytes) {
     let qty = 1;
     if (r.count === "countInt" && typeof r.countInt === "number") {
       qty = r.countInt;
+    } else if (r.count === "countScaled" && typeof r.countScaled === "number") {
+      qty = r.countScaled / 10000;
     } else if (r.count === "countDouble" && typeof r.countDouble === "number" && Number.isFinite(r.countDouble)) {
       qty = r.countDouble;
+    } else if (typeof r.countScaled === "number" && r.countScaled > 0) {
+      qty = r.countScaled / 10000;
     } else if (typeof r.countInt === "number" && r.countInt > 0) {
       qty = r.countInt;
     } else if (typeof r.countDouble === "number" && Number.isFinite(r.countDouble)) {
@@ -356,6 +370,8 @@ export function decodeStateFromProtobuf(bytes) {
     let food = null;
     if (r.recipe && ENUM_TO_RECIPE[r.recipe]) {
       recipeId = ENUM_TO_RECIPE[r.recipe];
+    } else if (entityId === "glass_forge") {
+      recipeId = "molten_glass";
     }
     if (r.bathroom && ENUM_TO_BATHROOM[r.bathroom]) {
       bathroom = ENUM_TO_BATHROOM[r.bathroom];
@@ -401,7 +417,8 @@ export function decodeStateFromProtobuf(bytes) {
     if (r.coldMaterial && ENUM_TO_ELEMENT[r.coldMaterial]) {
       rowObj.coldMaterial = ENUM_TO_ELEMENT[r.coldMaterial];
       rowObj.coldMaterialState =
-        ENUM_TO_STREAM_STATE[r.coldMaterialState] || getResourceDefaultState(rowObj.coldMaterial);
+        (r.coldMaterialState && ENUM_TO_STREAM_STATE[r.coldMaterialState]) ||
+        (entityId === "counterflow_heat_exchanger" ? "in a pipe" : getResourceDefaultState(rowObj.coldMaterial));
     }
 
     if (entityId === "absorb_heat") {

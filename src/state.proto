@@ -719,6 +719,7 @@ message RowState {
   oneof count {
     uint32 count_int = 2;
     double count_double = 3;
+    uint32 count_scaled = 13;
   }
   Recipe recipe = 4;
   Bathroom bathroom = 5;

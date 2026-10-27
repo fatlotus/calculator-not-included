@@ -91,7 +91,7 @@ Calculator state is serialized into a compact URL-safe Base64 Protocol Buffer pa
   - `RateMode rate_mode = 1` (`PER_SECOND = 0`, `PER_CYCLE = 1`)
   - `repeated RowState rows = 2`:
     - `Entity entity = 1` (**157 `Entity` enum values**)
-    - `oneof count { uint32 count_int = 2; double count_double = 3; }`
+    - `oneof count { uint32 count_int = 2; double count_double = 3; uint32 count_scaled = 13; }`
     - `Recipe recipe = 4`
     - `Bathroom bathroom = 5`
     - `repeated Modifier modifiers = 6`

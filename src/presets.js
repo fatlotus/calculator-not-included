@@ -132,10 +132,11 @@ export const PRESETS = [
       { resource: "Water", state: "in a pipe", rate: 4000, unit: "g/s", tempC: 95 },
     ],
     rows: [
-      { entityId: "glass_forge", qty: 1, recipeId: null, modifiers: [] },
+      { entityId: "glass_forge", qty: 1, recipeId: "molten_glass", modifiers: [] },
+      { entityId: "counterflow_heat_exchanger", qty: 61.9615, material: "Molten Glass", materialState: "in a pipe", coldMaterial: "Water", coldMaterialState: "in a pipe", modifiers: [] },
       { entityId: "absorb_heat", qty: 58.506, material: "Polluted Water", materialState: "in a pipe", modifiers: [] },
       { entityId: "thermo_aquatuner", qty: 1, recipeId: "polluted_water", modifiers: [] },
-      { entityId: "absorb_heat", qty: 175.518, material: "Water", materialState: "in a pipe", modifiers: [] },
+      { entityId: "absorb_heat", qty: 113.5565, material: "Steam", materialState: "free", modifiers: [] },
       { entityId: "steam_turbine", qty: 2, recipeId: null, modifiers: ["engie_tuneup"] },
     ],
   },
