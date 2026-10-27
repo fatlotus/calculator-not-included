@@ -2661,8 +2661,9 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
   assert.strictEqual(Math.round(petOut.tempC * 100) / 100, 371.59);
   assert.strictEqual(Math.round(oilOut.tempC * 100) / 100, 129.59);
 
-  // B. Thermodynamic Clamping: Hot output can NEVER become colder than Cold output
-  // Huge qty (e.g. 5000x = 50,000 kDTU/s) must clamp at equilibrium
+  // B. Thermodynamic Clamping in Counterflow Heat Exchanger:
+  // Temperatures can never cross at either end (T_cold_out <= T_hot_in && T_hot_out >= T_cold_in).
+  // Huge qty (e.g. 5000x = 50,000 kDTU/s) clamps at maximum thermodynamic heat transfer limit.
   const rowHuge = {
     entityId: "counterflow_heat_exchanger",
     qty: 5000,
@@ -2678,15 +2679,19 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
     20.0,
     { "Petroleum||free": 400, "Crude Oil||in a pipe": 100 }
   );
-  const petOutClamped = evHuge.outputs.find((o) => o.resource === "Petroleum");
-  const oilOutClamped = evHuge.outputs.find((o) => o.resource === "Crude Oil");
+  const hotOutClamped = evHuge.outputs[0];
+  const coldOutClamped = evHuge.outputs[1];
 
   assert.ok(
-    Math.abs(petOutClamped.tempC - oilOutClamped.tempC) < 1e-4,
-    `Output temperatures must equalize at thermodynamic limit, were ${petOutClamped.tempC} and ${oilOutClamped.tempC}`
+    coldOutClamped.tempC <= 400.0 + 1e-4,
+    `Cold stream output cannot exceed hot inlet temperature (400 °C), was ${coldOutClamped.tempC}`
   );
-  assert.strictEqual(Math.round(petOutClamped.tempC * 100) / 100, 253.04);
-  assert.strictEqual(Math.round(oilOutClamped.tempC * 100) / 100, 253.04);
+  assert.ok(
+    hotOutClamped.tempC >= 100.0 - 1e-4,
+    `Hot stream output cannot drop below cold inlet temperature (100 °C), was ${hotOutClamped.tempC}`
+  );
+  assert.strictEqual(Math.round(hotOutClamped.tempC * 100) / 100, 111.93);
+  assert.strictEqual(Math.round(coldOutClamped.tempC * 100) / 100, 400);
 
   // C. Match target calculation for Counterflow Heat Exchanger
   const matchTargets = calculateRowMatchTargets(0, [rowExchanger], entityMap, {
@@ -2694,8 +2699,8 @@ console.log("\n ALL JAVASCRIPT MODULE TESTS PASSED SUCCESSFULLY! \n");
     netInputTemps: { "Petroleum||free": 400, "Crude Oil||in a pipe": 100 },
   });
   assert.ok(matchTargets["out:Heat"], "Counterflow heat exchanger must provide heat match target for Q_max");
-  // Q_max = (400 - 100) * (1760 * 1690) / (1760 + 1690) / 1000 = 258.64 kDTU/s -> targetQty = 25.86x
-  assert.strictEqual(Math.round(matchTargets["out:Heat"].targetQty * 100) / 100, 25.86);
+  // Q_max = (400 - 100) * 1690 / 1000 = 507.0 kDTU/s -> targetQty = 50.70x
+  assert.strictEqual(Math.round(matchTargets["out:Heat"].targetQty * 100) / 100, 50.7);
 
   console.log("✓ Counterflow Heat Exchanger and Thermal Clamping tests passed");
 }

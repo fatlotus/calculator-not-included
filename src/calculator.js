@@ -476,7 +476,7 @@ export function applyHeatAndPhaseChange(
           outElem = ONI_DATASET.elements[out.element];
         }
         let outState = pipeState;
-        if (!outElem || outElem.state !== elem.state || isSolidResource(out.element, elementMap)) {
+        if (depth > 0 || out.element !== resource || !outElem || outElem.state !== elem.state || outElem?.state === "Solid" || isSolidResource(out.element, elementMap)) {
           outState = "free";
         }
         results.push({
@@ -571,7 +571,7 @@ export function applyHeatAndPhaseChange(
           outElem = ONI_DATASET.elements[out.element];
         }
         let outState = pipeState;
-        if (!outElem || outElem.state !== elem.state || isSolidResource(out.element, elementMap)) {
+        if (depth > 0 || out.element !== resource || !outElem || outElem.state !== elem.state || outElem?.state === "Solid" || isSolidResource(out.element, elementMap)) {
           outState = "free";
         }
         results.push({
@@ -1020,17 +1020,17 @@ export function evaluateRow(
       const thReq = applyHeatAndPhaseChange(hotMat, hotRate, tHotIn, -Q_req, hotState, elementMap)[0]?.tempC ?? tHotIn;
       const tcReq = applyHeatAndPhaseChange(coldMat, coldRate, tColdIn, +Q_req, coldState, elementMap)[0]?.tempC ?? tColdIn;
 
-      if (thReq >= tcReq) {
+      if (tcReq <= tHotIn && thReq >= tColdIn) {
         Q_actual = Q_req;
       } else {
-        // Temperature crossover at Q_req; bisect to find exact Q_max where th == tc
+        // Temperature crossover at Q_req; bisect to find exact Q_max where tc <= tHotIn and th >= tColdIn
         let low = 0;
         let high = Q_req;
         for (let iter = 0; iter < 60; iter++) {
           const mid = (low + high) / 2;
           const th = applyHeatAndPhaseChange(hotMat, hotRate, tHotIn, -mid, hotState, elementMap)[0]?.tempC ?? tHotIn;
           const tc = applyHeatAndPhaseChange(coldMat, coldRate, tColdIn, +mid, coldState, elementMap)[0]?.tempC ?? tColdIn;
-          if (th >= tc) {
+          if (tc <= tHotIn && th >= tColdIn) {
             low = mid;
           } else {
             high = mid;
@@ -1643,14 +1643,14 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, option
     const tColdIn = currentTargetEval.inputs[1]?.tempC ?? 20.0;
 
     if (tHotIn > tColdIn && hotRate > 1e-9 && coldRate > 1e-9) {
-      const Q_upper = ((tHotIn - tColdIn) * 10000.0 * 10.0) / 1000.0;
+      const Q_upper = ((tHotIn - tColdIn) * Math.max(hotRate, coldRate, 10000.0) * 15.0) / 1000.0;
       let low = 0;
       let high = Q_upper;
       for (let iter = 0; iter < 60; iter++) {
         const mid = (low + high) / 2;
         const th = applyHeatAndPhaseChange(hotMat, hotRate, tHotIn, -mid, hotSt, elementMap)[0]?.tempC ?? tHotIn;
         const tc = applyHeatAndPhaseChange(coldMat, coldRate, tColdIn, +mid, coldSt, elementMap)[0]?.tempC ?? tColdIn;
-        if (th >= tc) {
+        if (tc <= tHotIn && th >= tColdIn) {
           low = mid;
         } else {
           high = mid;

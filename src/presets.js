@@ -139,6 +139,21 @@ export const PRESETS = [
       { entityId: "steam_turbine", qty: 2, recipeId: null, modifiers: ["engie_tuneup"] },
     ],
   },
+  {
+    id: "petroleum_boiler",
+    name: "Petroleum Boiler",
+    description: "Counterflow petroleum boiler using outgoing hot petroleum to preheat incoming crude oil, requiring only a small volcano magma heat injection to flash 10 kg/s of crude oil into petroleum.",
+    loops: [
+      { resource: "Petroleum", state: "free", rate: 10000, unit: "g/s", tempC: 405 },
+    ],
+    rows: [
+      { entityId: "liquid_pump", qty: 1, recipeId: "crude_oil", modifiers: [] },
+      { entityId: "counterflow_heat_exchanger", qty: 625, material: "Petroleum", materialState: "free", coldMaterial: "Crude Oil", coldMaterialState: "in a pipe", modifiers: [] },
+      { entityId: "liquid_pump", qty: 1, recipeId: "petroleum", modifiers: [] },
+      { entityId: "geyser_minor_volcano", qty: 1, recipeId: "lifetime_avg", modifiers: [] },
+      { entityId: "counterflow_heat_exchanger", qty: 26.0105, material: "Magma", materialState: "free", coldMaterial: "Crude Oil", coldMaterialState: "in a pipe", modifiers: [] },
+    ],
+  },
 ];
 
 for (const preset of PRESETS) {
