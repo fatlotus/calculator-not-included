@@ -33,6 +33,18 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
   const powerIcon = elementMap?.get("Power")?.icon;
   const heatIcon = elementMap?.get("Heat")?.icon;
 
+  // Helper for match button HTML
+  const getMatchBtn = (matchKey, desc) => {
+    const m = matches[matchKey];
+    if (!m) return "";
+    const formattedTarget = formatNumber(m.targetQty);
+    if (m.isMatched) {
+      return `<span class="badge-matched" title="Quantity exactly matches available rate">[✓ matched]</span>`;
+    }
+    const cleanTarget = Math.abs(Math.round(m.targetQty) - m.targetQty) < 1e-9 ? Math.round(m.targetQty) : m.targetQty;
+    return `<button type="button" class="btn-match-stream" data-row-index="${rowIndex}" data-target-qty="${cleanTarget}" title="Tune row quantity to ${formattedTarget}× to match ${desc}">[match: ${formattedTarget}×]</button>`;
+  };
+
   // Machine Column HTML
   let machineHtml = `
     <div class="machine-col-content">
@@ -203,6 +215,15 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
           </div>
         `;
       }
+
+      const counterflowMatch = getMatchBtn("out:Heat", "maximum heat transfer");
+      if (counterflowMatch) {
+        machineHtml += `
+          <div class="counterflow-match-wrapper">
+            ${counterflowMatch}
+          </div>
+        `;
+      }
     }
 
     machineHtml += `</div>`;
@@ -242,18 +263,6 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
       </div>
     </div>
   `;
-
-  // Helper for match button HTML
-  const getMatchBtn = (matchKey, desc) => {
-    const m = matches[matchKey];
-    if (!m) return "";
-    const formattedTarget = formatNumber(m.targetQty);
-    if (m.isMatched) {
-      return `<span class="badge-matched" title="Quantity exactly matches available rate">[✓ matched]</span>`;
-    }
-    const cleanTarget = Math.abs(Math.round(m.targetQty) - m.targetQty) < 1e-9 ? Math.round(m.targetQty) : m.targetQty;
-    return `<button type="button" class="btn-match-stream" data-row-index="${rowIndex}" data-target-qty="${cleanTarget}" title="Tune row quantity to ${formattedTarget}× to match ${desc}">[match: ${formattedTarget}×]</button>`;
-  };
 
   // Helper for loop/unloop button HTML on output streams
   const getLoopBtn = (resource, state, rate, unit, tempC) => {
@@ -322,14 +331,6 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
       <div class="stream-line">
         ${renderIcon(heatIcon, "Heat", "stream-icon")}
         <span class="stream-text">Heat: ${evaluated.heat > 0 ? "+" : ""}${formatNumber(evaluated.heat)} kDTU/s</span>
-        ${heatMatch}
-      </div>
-    `);
-  } else if (isCounterflow && heatMatch) {
-    outputLines.push(`
-      <div class="stream-line">
-        ${renderIcon(heatIcon, "Heat", "stream-icon")}
-        <span class="stream-text">Heat: 0 kDTU/s</span>
         ${heatMatch}
       </div>
     `);

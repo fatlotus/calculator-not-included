@@ -469,10 +469,19 @@ body {
 
 .recipe-wrapper,
 .bathroom-wrapper,
-.food-wrapper {
+.food-wrapper,
+.material-wrapper,
+.cold-material-wrapper,
+.material-state-wrapper,
+.cold-material-state-wrapper {
   display: flex;
   align-items: center;
   gap: 6px;
+  margin-top: 4px;
+}
+
+.counterflow-match-wrapper {
+  flex-basis: 100%;
   margin-top: 4px;
 }
 
@@ -483,7 +492,11 @@ body {
 
 .recipe-select,
 .bathroom-select,
-.food-select {
+.food-select,
+.material-select,
+.cold-material-select,
+.material-state-select,
+.cold-material-state-select {
   background: var(--bg-surface);
   color: var(--fg-default);
   border: 1px solid var(--border-default);
