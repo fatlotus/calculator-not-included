@@ -1,0 +1,159 @@
+/**
+ * Test Suite: Built-in Presets and System Balances.
+ * Tests preset configurations, fractional ratios, closed loops,
+ * and full system resource balance calculations.
+ */
+
+import { describe, it } from "node:test";
+import assert from "node:assert";
+
+import { ONI_DATASET } from "../src/dataset.js";
+import { evaluateRow, calculateSystemNet, calculateRowMatchTargets } from "../src/calculator.js";
+import { buildEntityCatalog } from "../src/data_loader.js";
+import { PRESETS, getPresetById } from "../src/presets.js";
+
+const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
+
+describe("Presets & System Balances", () => {
+  it("verifies built-in preset definitions exist", () => {
+    assert.ok(PRESETS.length >= 5, "Should have at least 5 presets defined");
+    for (const preset of PRESETS) {
+      assert.ok(preset.id, "Preset must have an id");
+      assert.ok(preset.name, "Preset must have a name");
+      assert.ok(Array.isArray(preset.rows), "Preset must have rows array");
+    }
+  });
+
+  it("evaluates Hydra SPOM preset net balance and match targets", () => {
+    const hydra = getPresetById("hydra_spom");
+    assert.strictEqual(hydra.name, "Hydra SPOM");
+    assert.strictEqual(hydra.rows.length, 5);
+
+    const evaluatedHydra = hydra.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+    const net = calculateSystemNet(evaluatedHydra, { loops: hydra.loops });
+
+    assert.strictEqual(net.netPower, 698.24);
+    assert.strictEqual(net.netBuildingHeat, 6.38);
+    assert.strictEqual(net.netInputs.length, 2);
+
+    const freeWaterIn = net.netInputs.find((i) => i.resource === "Water" && i.state === "free");
+    const pipeWaterIn = net.netInputs.find((i) => i.resource === "Water" && i.state === "in a pipe");
+    assert.strictEqual(freeWaterIn.rate, 1000);
+    assert.strictEqual(Math.round(pipeWaterIn.rate * 100) / 100, 66.67);
+
+    assert.strictEqual(net.netOutputs.length, 4);
+    assert.strictEqual(net.netOutputs.find((o) => o.resource === "Oxygen").rate, 88);
+    assert.strictEqual(net.netOutputs.find((o) => o.resource === "Duplicant Labor").rate, 6);
+    assert.strictEqual(net.netOutputs.find((o) => o.resource === "Carbon Dioxide").rate, 16);
+    assert.strictEqual(net.netOutputs.find((o) => o.resource === "Polluted Water").rate, 156);
+
+    // Match targets for Gas Pump (index 2)
+    const matches = calculateRowMatchTargets(2, hydra.rows, entityMap, { loops: hydra.loops });
+    assert.strictEqual(matches["in:Hydrogen||free"].isMatched, true);
+    assert.strictEqual(matches["in:Hydrogen||free"].targetQty, 0.224);
+    assert.strictEqual(matches["out:Hydrogen||in a pipe"].isMatched, true);
+  });
+
+  it("evaluates Oil Refinery + Petroleum Loop preset and verifies labor roundoff elision", () => {
+    const oilPreset = getPresetById("oil_refinery_petroleum_loop");
+    assert.ok(oilPreset);
+    assert.strictEqual(oilPreset.rows.length, 6);
+
+    const evalOil = oilPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+    const oilNet = calculateSystemNet(evalOil, { loops: oilPreset.loops, elementMap });
+
+    assert.ok(oilNet.netPower > 5000, "Power plant should produce > 5000 W net");
+
+    // Duplicant labor roundoff residual (-0.000025 s/s) is elided
+    assert.strictEqual(oilNet.netInputs.find((i) => i.resource === "Duplicant Labor"), undefined);
+    assert.strictEqual(oilNet.netOutputs.find((o) => o.resource === "Duplicant Labor"), undefined);
+
+    // Legitimate inputs remain
+    assert.ok(oilNet.netInputs.some((i) => i.resource === "Crude Oil"));
+    assert.ok(oilNet.netInputs.some((i) => i.resource === "Oxygen"));
+    assert.ok(oilNet.netInputs.some((i) => i.resource === "Water"));
+  });
+
+  it("evaluates Glossy Drecko Plastic preset (Growth cancels out completely)", () => {
+    const dreckoPreset = getPresetById("glossy_drecko_plastic");
+    assert.ok(dreckoPreset);
+    assert.strictEqual(dreckoPreset.rows.length, 2);
+
+    const evalDrecko = dreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+    const dreckoNet = calculateSystemNet(evalDrecko, { loops: dreckoPreset.loops });
+
+    const plasticOut = dreckoNet.netOutputs.find((o) => o.resource === "Plastic");
+    assert.ok(plasticOut);
+    assert.ok(plasticOut.rate > 80);
+
+    // Net growth completely cancelled
+    assert.strictEqual(dreckoNet.netInputs.find((i) => i.resource === "Growth"), undefined);
+    assert.strictEqual(dreckoNet.netOutputs.find((o) => o.resource === "Growth"), undefined);
+
+    // Net inputs require in-pipe Water, outputs Phosphorite
+    assert.ok(dreckoNet.netInputs.some((i) => i.resource === "Water" && i.state === "in a pipe"));
+    assert.ok(dreckoNet.netOutputs.some((o) => o.resource === "Phosphorite"));
+  });
+
+  it("evaluates Regular Drecko Balm Lily preset (Zero-Resource Reed Fiber)", () => {
+    const regularDreckoPreset = getPresetById("drecko_reed_fiber_balm_lily");
+    assert.ok(regularDreckoPreset);
+    assert.strictEqual(regularDreckoPreset.rows.length, 2);
+
+    const evalRegularDrecko = regularDreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+    const regularDreckoNet = calculateSystemNet(evalRegularDrecko, { loops: regularDreckoPreset.loops });
+
+    const reedFiberOut = regularDreckoNet.netOutputs.find((o) => o.resource === "Reed Fiber");
+    assert.ok(reedFiberOut);
+    assert.ok(reedFiberOut.rate > 0.4);
+    assert.ok(regularDreckoNet.netOutputs.some((o) => o.resource === "Phosphorite"));
+
+    // Balm Lily requires 0 inputs and growth cancels -> 0 net inputs
+    assert.strictEqual(regularDreckoNet.netInputs.length, 0);
+  });
+
+  it("evaluates Coal Generator + Carbon Skimmer Loop preset", () => {
+    const coalPreset = getPresetById("coal_skimmer_loop");
+    assert.ok(coalPreset);
+    assert.strictEqual(coalPreset.rows.length, 4);
+
+    const evalCoal = coalPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+    const coalNet = calculateSystemNet(evalCoal, { loops: coalPreset.loops });
+
+    assert.strictEqual(coalNet.netPower, 8712);
+    // Intermediate resources cancel out
+    assert.strictEqual(coalNet.netOutputs.find((o) => o.resource === "Carbon Dioxide"), undefined);
+    assert.strictEqual(coalNet.netInputs.find((i) => i.resource === "Carbon Dioxide"), undefined);
+    assert.strictEqual(coalNet.netOutputs.find((o) => o.resource === "Water"), undefined);
+    assert.strictEqual(coalNet.netInputs.find((i) => i.resource === "Water"), undefined);
+    assert.strictEqual(coalNet.netOutputs.find((o) => o.resource === "Polluted Water"), undefined);
+    assert.strictEqual(coalNet.netInputs.find((i) => i.resource === "Polluted Water"), undefined);
+  });
+
+  it("evaluates Arbor Tree Ethanol Power Loop preset", () => {
+    const arborPreset = getPresetById("arbor_ethanol_loop");
+    assert.ok(arborPreset);
+    assert.strictEqual(arborPreset.rows.length, 5);
+
+    const evalArbor = arborPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+    const arborNet = calculateSystemNet(evalArbor, { loops: arborPreset.loops });
+    assert.strictEqual(arborNet.netOutputs.find((o) => o.resource === "Carbon Dioxide" && o.state === "in a pipe"), undefined);
+  });
+
+  it("evaluates Natural Gas Geyser Power preset (fractional ratios)", () => {
+    const ngPreset = getPresetById("natural_gas_geyser_power");
+    assert.ok(ngPreset);
+    assert.strictEqual(ngPreset.rows.length, 3);
+
+    const evalNG = ngPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
+    const ngNet = calculateSystemNet(evalNG, { loops: ngPreset.loops });
+
+    assert.ok(ngNet.netPower > 850);
+    assert.strictEqual(ngNet.netOutputs.find((o) => o.resource === "Natural Gas" && o.state === "free"), undefined);
+    assert.strictEqual(ngNet.netOutputs.find((o) => o.resource === "Natural Gas" && o.state === "in a pipe"), undefined);
+
+    const ngGasIn = ngNet.netInputs.find((i) => i.resource === "Natural Gas");
+    const ngGasInRate = ngGasIn ? ngGasIn.rate : 0;
+    assert.ok(ngGasInRate < 0.01);
+  });
+});
