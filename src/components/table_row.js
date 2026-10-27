@@ -216,11 +216,24 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
         `;
       }
 
-      const counterflowMatch = getMatchBtn("out:Heat", "maximum heat transfer");
-      if (counterflowMatch) {
+      const cfMatch = matches["out:Heat"];
+      if (cfMatch) {
+        const formattedTarget = formatNumber(cfMatch.targetQty);
+        const qMaxKdtu = cfMatch.targetQty * 10;
+        const heatTransferStr =
+          qMaxKdtu >= 1
+            ? `${formatNumber(qMaxKdtu)} kDTU/s`
+            : `${formatNumber(qMaxKdtu * 1000)} DTU/s`;
+        const cleanTarget =
+          Math.abs(Math.round(cfMatch.targetQty) - cfMatch.targetQty) < 1e-9
+            ? Math.round(cfMatch.targetQty)
+            : cfMatch.targetQty;
+        const cfMatchHtml = cfMatch.isMatched
+          ? `<span class="badge-matched" title="Quantity (${formattedTarget}×) achieves maximum counterflow heat transfer (${heatTransferStr})">[✓ max heat transfer: ${heatTransferStr}]</span>`
+          : `<button type="button" class="btn-match-stream" data-row-index="${rowIndex}" data-target-qty="${cleanTarget}" title="Tune row quantity to ${formattedTarget}× to maximize heat transfer (${heatTransferStr})">[maximize heat transfer: ${heatTransferStr}]</button>`;
         machineHtml += `
           <div class="counterflow-match-wrapper">
-            ${counterflowMatch}
+            ${cfMatchHtml}
           </div>
         `;
       }
