@@ -9440,7 +9440,7 @@ export const ONI_DATASET = {
       "category": "Machine",
       "subcategory": "Meta",
       "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Thermal_Conductivity",
-      "icon": "images/icons/Thermo_Aquatuner.png",
+      "icon": "images/icons/Radiant_Liquid_Pipe.png",
       "power": 0,
       "heat": 0,
       "inputs": [
@@ -9477,7 +9477,7 @@ export const ONI_DATASET = {
       ],
       "recipes": [],
       "modifiers": [],
-      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Thermo_Aquatuner.png"
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Radiant_Liquid_Pipe.png"
     }
   ],
   "plants": [
