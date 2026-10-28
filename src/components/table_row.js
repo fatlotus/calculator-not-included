@@ -37,6 +37,14 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
   const getMatchBtn = (matchKey, desc) => {
     const m = matches[matchKey];
     if (!m) return "";
+    if (m.targetDeltaT !== undefined) {
+      const formattedDelta = (m.targetDeltaT >= 0 ? "+" : "") + formatNumber(m.targetDeltaT);
+      if (m.isMatched) {
+        return `<span class="badge-matched" title="Temperature rise matches ${desc}">[✓ matched: ${formattedDelta} °C]</span>`;
+      }
+      const cleanDelta = Math.abs(Math.round(m.targetDeltaT) - m.targetDeltaT) < 1e-9 ? Math.round(m.targetDeltaT) : m.targetDeltaT;
+      return `<button type="button" class="btn-match-heat" data-row-index="${rowIndex}" data-target-delta="${cleanDelta}" title="Tune temperature rise to ${formattedDelta} °C to match ${desc}">[match: ${formattedDelta} °C]</button>`;
+    }
     const formattedTarget = formatNumber(m.targetQty);
     if (m.isMatched) {
       return `<span class="badge-matched" title="Quantity exactly matches available rate">[✓ matched]</span>`;
@@ -168,6 +176,22 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
           </div>
         `;
       }
+      const tempDeltaVal = row.tempDelta !== undefined && row.tempDelta !== null ? row.tempDelta : 10;
+      machineHtml += `
+        <div class="temp-delta-wrapper">
+          <label class="field-label" for="temp-delta-${rowIndex}">Temp Rise:</label>
+          <input
+            type="number"
+            id="temp-delta-${rowIndex}"
+            class="temp-delta-input"
+            data-row-index="${rowIndex}"
+            value="${formatNumber(tempDeltaVal)}"
+            step="any"
+            aria-label="Temperature rise for ${entity.name}"
+          />
+          <span class="temp-delta-unit">°C</span>
+        </div>
+      `;
     }
 
     if (isCounterflow && elementOptionsHtml) {

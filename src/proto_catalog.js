@@ -805,6 +805,14 @@ export const PROTO_DESCRIPTOR = {
               "type": "StreamState",
               "id": 12,
               "protoName": "cold_material_state"
+            },
+            "tempDelta": {
+              "type": "double",
+              "id": 14,
+              "protoName": "temp_delta",
+              "options": {
+                "proto3_optional": true
+              }
             }
           }
         },

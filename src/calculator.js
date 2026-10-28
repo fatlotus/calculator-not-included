@@ -911,11 +911,8 @@ export function evaluateRow(
   if (row.entityId === "absorb_heat" || entity.id === "absorb_heat") {
     const mat = row.material || "Water";
     const matState = isSolidResource(mat, elementMap) ? "free" : (row.materialState || "free");
-    const massRate =
-      options?.streamRates?.massRate ??
-      options?.streamRates?.rate ??
-      row.rate ??
-      1000.0;
+    // Quantity scales input volume (1000 g/s base per 1 unit)
+    const massRate = 1000.0 * qty;
 
     let inpTemp = defaultInputTemp;
     if (inputTemps && typeof inputTemps === "object") {
@@ -931,7 +928,15 @@ export function evaluateRow(
       inpTemp = getDefaultElementTemp(mat, elementMap);
     }
 
-    const deltaQ = 10.0 * qty;
+    const tempDelta =
+      row.tempDelta !== undefined && row.tempDelta !== null && !isNaN(Number(row.tempDelta))
+        ? Number(row.tempDelta)
+        : 10.0;
+
+    const elem = elementMap instanceof Map ? elementMap.get(mat) : elementMap?.[mat];
+    const c = (elem?.shc !== undefined && elem?.shc !== null && Number(elem.shc) > 0) ? Number(elem.shc) : 1.0;
+    const deltaQ = (massRate * c * tempDelta) / 1000.0;
+
     const inputs = [
       {
         resource: mat,
@@ -952,7 +957,7 @@ export function evaluateRow(
       elementMap
     );
 
-    const buildingHeat = -10.0 * qty;
+    const buildingHeat = -deltaQ;
     const dynamicEntity = {
       ...entity,
       name: getAbsorbHeatEntityName(mat, elementMap),
@@ -968,6 +973,7 @@ export function evaluateRow(
       inputs: qty <= 0 ? [] : inputs,
       outputs: qty <= 0 ? [] : outputs,
       isStateTransferFor: new Set(),
+      tempDelta,
     };
   }
 
@@ -1337,17 +1343,7 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
 
   // 2. Step sequentially top-to-bottom through machine rows
   for (const row of rows) {
-    let streamRates = null;
-    if (row.entityId === "absorb_heat") {
-      const mat = row.material || "Water";
-      const st = isSolidResource(mat, elementMap) ? "free" : (row.materialState || "free");
-      const p = pool.get(getKey(mat, st));
-      const avail = p ? p.availRate : 0;
-      const massRate = avail > 1e-6 ? avail : (row.rate ?? 1000.0);
-      streamRates = { massRate, rate: massRate };
-    }
-
-    const preEval = evaluateRow(row, entityMap, elementMap, 20.0, null, { streamRates });
+    const preEval = evaluateRow(row, entityMap, elementMap, 20.0, null);
     const rowInputTemps = {};
 
     for (const inp of preEval.inputs) {
@@ -1375,7 +1371,7 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
       }
     }
 
-    const ev = evaluateRow(row, entityMap, elementMap, 20.0, rowInputTemps, { streamRates });
+    const ev = evaluateRow(row, entityMap, elementMap, 20.0, rowInputTemps);
 
     // Consume inputs from running pool
     for (const inp of ev.inputs) {
@@ -1568,7 +1564,7 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, option
 
   // Special match targets for Meta-Machines:
   if (targetRow.entityId === "absorb_heat") {
-    // 1. Balance net system heat produced by other rows
+    // 1. Balance net system heat produced by other rows by scaling temperature absorbed
     let otherPositiveHeat = 0;
     for (let j = 0; j < rows.length; j++) {
       if (j !== targetRowIndex) {
@@ -1576,22 +1572,31 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, option
         if (r && r.heat > 1e-4) otherPositiveHeat += r.heat;
       }
     }
-    if (otherPositiveHeat > 1e-4) {
-      const targetQty = otherPositiveHeat / 10.0;
-      matches["out:Heat"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
+    const mat = targetRow.material || "Water";
+    const elem = elementMap instanceof Map ? elementMap.get(mat) : elementMap?.[mat];
+    const c = (elem?.shc !== undefined && elem?.shc !== null && Number(elem.shc) > 0) ? Number(elem.shc) : 1.0;
+    const massRate = currentTargetEval.inputs[0]?.rate || (1000.0 * (targetRow.qty || 1));
+    if (otherPositiveHeat > 1e-4 && massRate > 1e-6 && c > 1e-6) {
+      const targetDeltaT = (otherPositiveHeat * 1000.0) / (massRate * c);
+      const currentDeltaT = targetRow.tempDelta !== undefined && targetRow.tempDelta !== null ? Number(targetRow.tempDelta) : 10.0;
+      matches["out:Heat"] = {
+        targetDeltaT,
+        targetQty: targetDeltaT,
+        isMatched: Math.abs(targetDeltaT - currentDeltaT) < 1e-2,
+      };
     }
 
     // 2. Heat to phase change transition
-    const mat = targetRow.material || "Water";
-    const elem = elementMap instanceof Map ? elementMap.get(mat) : elementMap?.[mat];
     if (elem?.high_temp_transition && elem.high_temp !== null && elem.high_temp !== undefined) {
       const tIn = currentTargetEval.inputTemp;
       if (tIn < elem.high_temp) {
-        const massRate = currentTargetEval.inputs[0]?.rate || 1000.0;
-        const c = (elem.shc !== undefined && elem.shc !== null) ? Number(elem.shc) : 1.0;
-        const qToThreshold = ((elem.high_temp - tIn) * massRate * c) / 1000.0;
-        const targetQty = qToThreshold / 10.0;
-        matches["out:phase_change"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
+        const targetDeltaT = elem.high_temp - tIn;
+        const currentDeltaT = targetRow.tempDelta !== undefined && targetRow.tempDelta !== null ? Number(targetRow.tempDelta) : 10.0;
+        matches["out:phase_change"] = {
+          targetDeltaT,
+          targetQty: targetDeltaT,
+          isMatched: Math.abs(targetDeltaT - currentDeltaT) < 1e-2,
+        };
       }
     }
   }

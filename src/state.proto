@@ -730,6 +730,7 @@ message RowState {
   StreamState material_state = 10;
   Element cold_material = 11;
   StreamState cold_material_state = 12;
+  optional double temp_delta = 14;
 }
 
 message NetTemperature {

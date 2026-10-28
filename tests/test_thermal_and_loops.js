@@ -350,9 +350,50 @@ describe("Meta-Machines: Dynamic Steam Turbine", () => {
     assert.strictEqual(evTuneUp.power, 1275);
   });
 
+  it("scales input mass volume with quantity and tunes temperature rise with tempDelta", () => {
+    // 10 units = 10,000 g/s Water
+    const ev10 = evaluateRow(
+      { entityId: "absorb_heat", qty: 10, material: "Water", materialState: "in a pipe", tempDelta: 14 },
+      entityMap,
+      elementMap,
+      20.0
+    );
+    assert.strictEqual(ev10.inputs[0].rate, 10000);
+    assert.strictEqual(ev10.inputs[0].resource, "Water");
+    assert.strictEqual(ev10.inputs[0].tempC, 20);
+
+    // 10,000 g/s Water @ 20 °C heated by +14 °C -> 34 °C
+    // Q = 10000 * 4.179 * 14 / 1000 = 585.06 kDTU/s absorbed
+    assert.strictEqual(ev10.outputs[0].rate, 10000);
+    assert.strictEqual(Math.round(ev10.outputs[0].tempC * 100) / 100, 34);
+    assert.strictEqual(Math.round(ev10.heat * 100) / 100, -585.06);
+  });
+
+  it("calculates heat match target scaling temperature rise to absorb positive system heat", () => {
+    const coalGen = {
+      entityId: "coal_generator",
+      qty: 1, // produces +9 kDTU/s heat
+    };
+    const absorb = {
+      entityId: "absorb_heat",
+      qty: 1, // 1000 g/s Water
+      material: "Water",
+      materialState: "in a pipe",
+      tempDelta: 10,
+    };
+    const matchTargets = calculateRowMatchTargets(1, [coalGen, absorb], entityMap, { elementMap });
+    assert.ok(matchTargets["out:Heat"]);
+    // Target delta T = (9 * 1000) / (1000 * 4.179) = 2.1536 °C
+    assert.strictEqual(Math.round(matchTargets["out:Heat"].targetDeltaT * 100) / 100, 2.15);
+  });
+
   it("integrates boiler with steam turbine in resolveTableTemperatures", () => {
+    // Water (2000 g/s @ 20 °C) flashed to Steam @ 200 °C:
+    // Heat needed = (99.35 - 20) * 2000 * 4.179 + 2000 * 1000 * 2.26 (approx vaporization) + (200 - 99.35) * 2000 * 2.0
+    // In our engine, heating Water to reach Steam @ 200 °C takes deltaQ = 1504.44 kDTU/s
+    // With 2000 g/s Water (qty: 2), deltaQ = (2000 * 4.179 * tempDelta) / 1000 = 1504.44 -> tempDelta = 180.0
     const systemRows = [
-      { entityId: "absorb_heat", qty: 150.444, material: "Water", materialState: "free", rate: 2000 },
+      { entityId: "absorb_heat", qty: 2, material: "Water", materialState: "free", tempDelta: 180 },
       { entityId: "steam_turbine", qty: 1 },
     ];
     const evalSystem = resolveTableTemperatures(systemRows, entityMap, elementMap);

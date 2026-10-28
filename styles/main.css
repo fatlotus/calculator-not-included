@@ -389,7 +389,8 @@ body {
   gap: 2px;
 }
 
-.qty-input {
+.qty-input,
+.temp-delta-input {
   width: 48px;
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
@@ -403,7 +404,8 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-.qty-input:focus {
+.qty-input:focus,
+.temp-delta-input:focus {
   outline: none;
   border-color: var(--accent-primary);
   box-shadow: 0 0 0 2px var(--focus-ring);
@@ -472,6 +474,7 @@ body {
 .food-wrapper,
 .material-wrapper,
 .cold-material-wrapper,
+.temp-delta-wrapper,
 .material-state-wrapper,
 .cold-material-state-wrapper {
   display: flex;
@@ -603,6 +606,7 @@ body {
 }
 
 .btn-match-stream,
+.btn-match-heat,
 .btn-loop-stream {
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
@@ -618,6 +622,7 @@ body {
 }
 
 .btn-match-stream:hover,
+.btn-match-heat:hover,
 .btn-loop-stream:hover {
   background: var(--accent-bg);
   border-color: var(--accent-primary);

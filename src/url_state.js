@@ -211,6 +211,12 @@ export function encodeStateToProtobuf(state, elementMap = null) {
         pbRow.coldMaterialState = csEnum;
       }
     }
+    if (row.tempDelta !== undefined && row.tempDelta !== null && Number.isFinite(Number(row.tempDelta))) {
+      const td = Number(row.tempDelta);
+      if (Math.abs(td - 10) > 1e-4) {
+        pbRow.tempDelta = td;
+      }
+    }
 
     pbRows.push(pbRow);
   }
@@ -419,6 +425,11 @@ export function decodeStateFromProtobuf(bytes) {
       rowObj.coldMaterialState =
         (r.coldMaterialState && ENUM_TO_STREAM_STATE[r.coldMaterialState]) ||
         (entityId === "counterflow_heat_exchanger" ? "in a pipe" : getResourceDefaultState(rowObj.coldMaterial));
+    }
+    if (r.tempDelta !== undefined && r.tempDelta !== null && Number.isFinite(Number(r.tempDelta))) {
+      rowObj.tempDelta = Number(r.tempDelta);
+    } else if (entityId === "absorb_heat") {
+      rowObj.tempDelta = 10;
     }
 
     if (entityId === "absorb_heat") {

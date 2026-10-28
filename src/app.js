@@ -208,6 +208,14 @@ class OniApp {
             this.onStateChange(false);
           }
         }
+        if (e.target.classList.contains("temp-delta-input")) {
+          const idx = parseInt(e.target.dataset.rowIndex, 10);
+          const val = parseFloat(e.target.value);
+          if (!isNaN(val) && this.state.rows[idx]) {
+            this.state.rows[idx].tempDelta = val;
+            this.onStateChange(false);
+          }
+        }
       });
 
       tbody.addEventListener("change", (e) => {
@@ -218,6 +226,10 @@ class OniApp {
         if (e.target.classList.contains("qty-input")) {
           const val = parseFloat(e.target.value);
           row.qty = isNaN(val) ? 1 : Math.max(0, val);
+          this.onStateChange(true);
+        } else if (e.target.classList.contains("temp-delta-input")) {
+          const val = parseFloat(e.target.value);
+          row.tempDelta = isNaN(val) ? 10 : val;
           this.onStateChange(true);
         } else if (e.target.classList.contains("recipe-select")) {
           row.recipeId = e.target.value;
@@ -286,6 +298,17 @@ class OniApp {
           const targetQty = parseFloat(matchBtn.dataset.targetQty);
           if (!isNaN(idx) && !isNaN(targetQty) && this.state.rows[idx]) {
             this.state.rows[idx].qty = targetQty;
+            this.onStateChange();
+          }
+          return;
+        }
+
+        const matchHeatBtn = e.target.closest(".btn-match-heat");
+        if (matchHeatBtn) {
+          const idx = parseInt(matchHeatBtn.dataset.rowIndex, 10);
+          const targetDelta = parseFloat(matchHeatBtn.dataset.targetDelta);
+          if (!isNaN(idx) && !isNaN(targetDelta) && this.state.rows[idx]) {
+            this.state.rows[idx].tempDelta = targetDelta;
             this.onStateChange();
           }
           return;
