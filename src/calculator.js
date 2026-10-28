@@ -190,7 +190,7 @@ export function formatStreamLine(stream, isOutput, rateMode = "s", elementMap = 
   const formattedVal = formatNumber(displayRate);
   const displaySign = formattedVal === "0" ? "" : sign;
   let text = `${stream.resource}: ${displaySign}${formattedVal} ${displayUnit}`;
-  const showTemp = isOutput || (options && options.showTemp);
+  const showTemp = !options?.omitTemp && (isOutput || (options && options.showTemp));
   if (showTemp && stream.temp && !isNonThermalResource(stream.resource, stream.unit)) {
     text += ` ${stream.temp}`;
   }
@@ -384,15 +384,19 @@ export function applyHeatAndPhaseChange(
   const c = (elem.shc !== undefined && elem.shc !== null && !isNaN(Number(elem.shc))) ? Number(elem.shc) : 1.0;
 
   if (Math.abs(deltaQkDTU) < 1e-9) {
-    const outState = isSolidResource(resource, elementMap) ? "free" : pipeState;
-    return [{
-      resource,
-      rate: massRate,
-      unit: "g/s",
-      state: outState,
-      tempC: startTempC,
-      temp: `@ ${formatNumber(startTempC)} °C`,
-    }];
+    const isOverHigh = elem.high_temp_transition && elem.high_temp !== null && elem.high_temp !== undefined && startTempC >= Number(elem.high_temp);
+    const isUnderLow = elem.low_temp_transition && elem.low_temp !== null && elem.low_temp !== undefined && startTempC <= Number(elem.low_temp);
+    if (!isOverHigh && !isUnderLow) {
+      const outState = isSolidResource(resource, elementMap) ? "free" : pipeState;
+      return [{
+        resource,
+        rate: massRate,
+        unit: "g/s",
+        state: outState,
+        tempC: startTempC,
+        temp: `@ ${formatNumber(startTempC)} °C`,
+      }];
+    }
   }
 
   const deltaT = (deltaQkDTU * 1000.0) / (massRate * c);
@@ -400,7 +404,7 @@ export function applyHeatAndPhaseChange(
 
   // 1. High-Temp Phase Change Transition (Heating)
   if (
-    deltaQkDTU > 0 &&
+    deltaQkDTU >= 0 &&
     elem.high_temp_transition &&
     elem.high_temp !== null &&
     elem.high_temp !== undefined
@@ -494,7 +498,7 @@ export function applyHeatAndPhaseChange(
 
   // 2. Low-Temp Phase Change Transition (Cooling)
   if (
-    deltaQkDTU < 0 &&
+    deltaQkDTU <= 0 &&
     elem.low_temp_transition &&
     elem.low_temp !== null &&
     elem.low_temp !== undefined
@@ -1288,31 +1292,15 @@ export function evaluateRow(
 }
 
 /**
- * Resolve element temperatures sequentially from top to bottom across the table rows.
- * Starts with any fixed-temperature streams from Loop Start (options.loops),
- * then propagates available pool mass and temperature top-to-bottom through each row.
- * If a row requires more of a resource than is currently in the upstream pool,
- * the shortfall is drawn from external NET inputs at the NET input temperature.
+ * Simulate row evaluation top-to-bottom with a given set of loop streams injected at the start.
  */
-export function resolveTableTemperatures(rows, entityMap, elementMap = null, options = {}) {
-  const netInputTemps = (typeof options === "object" && options.netInputTemps) || {};
-  const loops =
-    (typeof options === "object" && Array.isArray(options.loops) ? options.loops : rows?._loops) || [];
-
-  if (!rows || rows.length === 0) {
-    const empty = [];
-    Object.defineProperty(empty, "_loops", { value: loops, enumerable: false, writable: true });
-    return empty;
-  }
-
+function simulateRowEvaluation(rows, entityMap, elementMap, netInputTemps, loops = []) {
   const getKey = (res, st) => `${res}||${st || "free"}`;
-
   const getDefNetTemp = (res, st) => {
     const def = getDefaultElementTemp(res, elementMap);
     return getNetInputTemp(res, st, netInputTemps, def);
   };
 
-  // Running top-to-bottom pool: key -> { availRate, availTempC }
   const pool = new Map();
 
   // 1. Seed pool from Loop Start
@@ -1406,6 +1394,184 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
     evaluatedRows.push(ev);
   }
 
+  return evaluatedRows;
+}
+
+/**
+ * Detect automatic loops whenever an input and output of the same resource (and state)
+ * have matching temperatures (within 0.05 °C tolerance), or are non-thermal resources
+ * (like Power or Duplicant Labor) where no temperature constraint applies.
+ */
+export function detectAutomaticLoops(evaluatedRows, netInputTemps = {}, elementMap = null) {
+  let availPower = 0;
+  let deficitPower = 0;
+  const buckets = new Map();
+
+  const getKey = (res, st) => `${res}||${st || "free"}`;
+  const getOrCreateBucket = (resource, state, unit) => {
+    const st = state || getResourceDefaultState(resource);
+    const key = getKey(resource, st);
+    if (!buckets.has(key)) {
+      const defT = getDefaultElementTemp(resource, elementMap);
+      const initTemp = getNetInputTemp(resource, st, netInputTemps, defT);
+      buckets.set(key, {
+        resource,
+        state: st,
+        unit: unit || getResourceDefaultUnit(resource),
+        availRate: 0,
+        deficitRate: 0,
+        tempC: initTemp,
+        parcels: [],
+        deficits: [],
+      });
+    }
+    return buckets.get(key);
+  };
+
+  for (let rowIndex = 0; rowIndex < (evaluatedRows || []).length; rowIndex++) {
+    const row = evaluatedRows[rowIndex];
+    if (row.power < 0) {
+      const reqP = Math.abs(row.power);
+      const fromPoolP = Math.min(reqP, availPower);
+      const fromExtP = Math.max(0, reqP - availPower);
+      availPower = Math.max(0, availPower - fromPoolP);
+      deficitPower += fromExtP;
+    }
+    for (const inp of row.inputs || []) {
+      const b = getOrCreateBucket(inp.resource, inp.state || "free", inp.unit);
+      const reqRate = Math.abs(inp.rate || 0);
+      const isNonThermal = isNonThermalResource(inp.resource, inp.unit);
+
+      if (isNonThermal) {
+        const fromPool = Math.min(reqRate, b.availRate);
+        const fromExt = Math.max(0, reqRate - b.availRate);
+        b.availRate = Math.max(0, b.availRate - fromPool);
+        b.deficitRate += fromExt;
+      } else {
+        let needed = reqRate;
+        for (const p of b.parcels) {
+          if (needed <= 1e-9) break;
+          if (p.rate <= 1e-9) continue;
+          const take = Math.min(needed, p.rate);
+          p.rate -= take;
+          needed -= take;
+        }
+        if (needed >= NET_RATE_EPSILON) {
+          const defT = getDefaultElementTemp(inp.resource, elementMap);
+          const tIn = getNetInputTemp(inp.resource, inp.state || "free", netInputTemps, defT);
+          b.deficits.push({
+            rate: needed,
+            tempC: tIn,
+            unit: inp.unit,
+            rowIndex,
+          });
+          b.deficitRate += needed;
+        }
+      }
+    }
+    for (const out of row.outputs || []) {
+      const b = getOrCreateBucket(out.resource, out.state || "free", out.unit);
+      const outRate = Math.abs(out.rate || 0);
+      if (outRate < 1e-9) continue;
+      const isNonThermal = isNonThermalResource(out.resource, out.unit);
+      if (isNonThermal) {
+        b.availRate += outRate;
+      } else {
+        const t = out.tempC !== undefined ? out.tempC : 20.0;
+        b.parcels.push({
+          rate: outRate,
+          tempC: t,
+          unit: out.unit,
+          rowIndex,
+        });
+      }
+    }
+    if (row.power > 0) {
+      availPower += row.power;
+    }
+  }
+
+  const detected = [];
+  if (availPower >= NET_RATE_EPSILON && deficitPower >= NET_RATE_EPSILON) {
+    const pLoop = Math.min(availPower, deficitPower);
+    detected.push({
+      resource: "Power",
+      state: "free",
+      rate: pLoop,
+      unit: "W",
+      isPower: true,
+    });
+  }
+
+  for (const b of buckets.values()) {
+    const isNonThermal = isNonThermalResource(b.resource, b.unit);
+    if (isNonThermal) {
+      if (b.deficitRate >= NET_RATE_EPSILON && b.availRate >= NET_RATE_EPSILON) {
+        const rate = Math.min(b.deficitRate, b.availRate);
+        detected.push({
+          resource: b.resource,
+          state: b.state,
+          rate,
+          unit: b.unit,
+        });
+      }
+    } else {
+      for (const def of b.deficits) {
+        if (def.rate < NET_RATE_EPSILON) continue;
+        for (const out of b.parcels) {
+          if (out.rate < NET_RATE_EPSILON) continue;
+          if (Math.abs(def.tempC - out.tempC) <= 0.05) {
+            const loopRate = Math.min(def.rate, out.rate);
+            detected.push({
+              resource: b.resource,
+              state: b.state,
+              rate: loopRate,
+              unit: b.unit,
+              tempC: out.tempC,
+            });
+            def.rate -= loopRate;
+            out.rate -= loopRate;
+            if (def.rate < NET_RATE_EPSILON) break;
+          }
+        }
+      }
+    }
+  }
+
+  return detected;
+}
+
+/**
+ * Resolve element temperatures sequentially from top to bottom across the table rows.
+ * Automatically detects loops when inputs and outputs have matching temperatures,
+ * or accepts explicit loop definitions from options.loops.
+ */
+export function resolveTableTemperatures(rows, entityMap, elementMap = null, options = {}) {
+  const netInputTemps = (typeof options === "object" && options.netInputTemps) || {};
+  let loops =
+    (typeof options === "object" && Array.isArray(options.loops) && options.loops.length > 0 ? options.loops : null);
+
+  if (!rows || rows.length === 0) {
+    const empty = [];
+    Object.defineProperty(empty, "_loops", { value: loops || [], enumerable: false, writable: true });
+    return empty;
+  }
+
+  // Pass 1: simulate top-to-bottom
+  let evaluatedRows = simulateRowEvaluation(rows, entityMap, elementMap, netInputTemps, loops || []);
+
+  // If explicit loops were not provided, detect automatic loops
+  if (!loops) {
+    const autoLoops = detectAutomaticLoops(evaluatedRows, netInputTemps, elementMap);
+    if (autoLoops.length > 0) {
+      loops = autoLoops;
+      // Pass 2: re-evaluate with detected loops injected at top
+      evaluatedRows = simulateRowEvaluation(rows, entityMap, elementMap, netInputTemps, loops);
+    } else {
+      loops = [];
+    }
+  }
+
   Object.defineProperty(evaluatedRows, "_loops", { value: loops, enumerable: false, writable: true });
   return evaluatedRows;
 }
@@ -1421,7 +1587,7 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, option
 
   const elementMap = options?.elementMap || null;
   const loops =
-    (options && Array.isArray(options.loops) ? options.loops : rows?._loops) || [];
+    (options && Array.isArray(options.loops) ? options.loops : (options?.evaluatedRows?._loops || rows?._loops)) || [];
 
   const evaluatedRows =
     options?.evaluatedRows ||
@@ -1620,6 +1786,7 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
   let netHeat = 0;
   const buckets = new Map();
 
+  const getKey = (res, st) => `${res}||${st || "free"}`;
   const getOrCreateBucket = (resource, state, unit) => {
     const st = state || getResourceDefaultState(resource);
     const key = `${resource}||${st}`;
@@ -1631,8 +1798,10 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
         state: st,
         unit: unit || getResourceDefaultUnit(resource),
         availRate: 0,
-        availTempC: initTemp,
         deficitRate: 0,
+        tempC: initTemp,
+        parcels: [],
+        deficits: [],
       });
     }
     return buckets.get(key);
@@ -1673,12 +1842,16 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
     const temp = !isNonThermal ? `@ ${formatNumber(tempC)} °C` : null;
 
     const b = getOrCreateBucket(loop.resource, st, unit);
-    if (!isNonThermal && rate > 1e-9) {
-      const newRate = b.availRate + rate;
-      b.availTempC = newRate > 1e-9 ? (b.availRate * b.availTempC + rate * tempC) / newRate : tempC;
-      b.availRate = newRate;
-    } else {
+    if (isNonThermal) {
       b.availRate += rate;
+    } else {
+      b.parcels.push({
+        rate,
+        tempC,
+        unit,
+        rowIndex: -1,
+        isLoopStart: true,
+      });
     }
 
     loopStartStreams.push({
@@ -1692,7 +1865,8 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
   }
 
   // 2. Process machine rows sequentially from top to bottom
-  for (const row of evaluatedRows || []) {
+  for (let rowIndex = 0; rowIndex < (evaluatedRows || []).length; rowIndex++) {
+    const row = evaluatedRows[rowIndex];
     netHeat += row.heat !== undefined ? row.heat : 0;
 
     if (row.power < 0) {
@@ -1706,22 +1880,51 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
     for (const inp of row.inputs || []) {
       const b = getOrCreateBucket(inp.resource, inp.state || "free", inp.unit);
       const reqRate = Math.abs(inp.rate || 0);
-      const fromPool = Math.min(reqRate, b.availRate);
-      const fromExt = Math.max(0, reqRate - b.availRate);
-      b.availRate = Math.max(0, b.availRate - fromPool);
-      b.deficitRate += fromExt;
+      const isNonThermal = isNonThermalResource(inp.resource, inp.unit);
+
+      if (isNonThermal) {
+        const fromPool = Math.min(reqRate, b.availRate);
+        const fromExt = Math.max(0, reqRate - b.availRate);
+        b.availRate = Math.max(0, b.availRate - fromPool);
+        b.deficitRate += fromExt;
+      } else {
+        let needed = reqRate;
+        for (const p of b.parcels) {
+          if (needed <= 1e-9) break;
+          if (p.rate <= 1e-9) continue;
+          const take = Math.min(needed, p.rate);
+          p.rate -= take;
+          needed -= take;
+        }
+        if (needed >= NET_RATE_EPSILON) {
+          const defT = getDefaultElementTemp(inp.resource, elementMap);
+          const tIn = getNetInputTemp(inp.resource, inp.state || "free", netInputTemps, defT);
+          b.deficits.push({
+            rate: needed,
+            tempC: tIn,
+            unit: inp.unit,
+            rowIndex,
+          });
+          b.deficitRate += needed;
+        }
+      }
     }
 
     for (const out of row.outputs || []) {
       const b = getOrCreateBucket(out.resource, out.state || "free", out.unit);
       const outRate = Math.abs(out.rate || 0);
-      if (!isNonThermalResource(out.resource, out.unit) && outRate > 1e-9) {
-        const t = out.tempC !== undefined ? out.tempC : 20.0;
-        const newRate = b.availRate + outRate;
-        b.availTempC = newRate > 1e-9 ? (b.availRate * b.availTempC + outRate * t) / newRate : t;
-        b.availRate = newRate;
-      } else {
+      if (outRate < 1e-9) continue;
+      const isNonThermal = isNonThermalResource(out.resource, out.unit);
+      if (isNonThermal) {
         b.availRate += outRate;
+      } else {
+        const t = out.tempC !== undefined ? out.tempC : 20.0;
+        b.parcels.push({
+          rate: outRate,
+          tempC: t,
+          unit: out.unit,
+          rowIndex,
+        });
       }
     }
 
@@ -1760,18 +1963,50 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
     const defT = getDefaultElementTemp(loop.resource, elementMap);
     const tNet = getNetInputTemp(loop.resource, st, netInputTemps, defT);
 
-    const fromPool = Math.min(reqRate, b.availRate);
-    const fromExt = Math.max(0, reqRate - b.availRate);
-
     let arrivingTempC = undefined;
     let arrivingTemp = null;
-    if (!isNonThermal) {
-      arrivingTempC = reqRate > 1e-9 ? (fromPool * b.availTempC + fromExt * tNet) / reqRate : b.availTempC;
+
+    if (isNonThermal) {
+      const fromPool = Math.min(reqRate, b.availRate);
+      const fromExt = Math.max(0, reqRate - b.availRate);
+      b.availRate = Math.max(0, b.availRate - fromPool);
+      b.deficitRate += fromExt;
+    } else {
+      let needed = reqRate;
+      let drawnRate = 0;
+      let heatSum = 0;
+
+      // Preferentially consume from parcel matching loop.tempC
+      if (loop.tempC !== undefined) {
+        const match = b.parcels.find((p) => p.rate > 1e-9 && Math.abs(p.tempC - loop.tempC) <= 0.05);
+        if (match) {
+          const take = Math.min(needed, match.rate);
+          match.rate -= take;
+          needed -= take;
+          drawnRate += take;
+          heatSum += take * match.tempC;
+        }
+      }
+
+      for (const p of b.parcels) {
+        if (needed <= 1e-9) break;
+        if (p.rate <= 1e-9) continue;
+        const take = Math.min(needed, p.rate);
+        p.rate -= take;
+        needed -= take;
+        drawnRate += take;
+        heatSum += take * p.tempC;
+      }
+
+      if (needed >= NET_RATE_EPSILON) {
+        b.deficitRate += needed;
+        heatSum += needed * tNet;
+        drawnRate += needed;
+      }
+
+      arrivingTempC = drawnRate > 1e-9 ? heatSum / drawnRate : (loop.tempC !== undefined ? loop.tempC : tNet);
       arrivingTemp = `@ ${formatNumber(arrivingTempC)} °C`;
     }
-
-    b.availRate = Math.max(0, b.availRate - fromPool);
-    b.deficitRate += fromExt;
 
     loopEndStreams.push({
       resource: loop.resource,
@@ -1789,33 +2024,78 @@ export function calculateSystemNet(evaluatedRows, options = {}) {
 
   for (const b of buckets.values()) {
     const isNonThermal = isNonThermalResource(b.resource, b.unit);
-    if (b.deficitRate >= NET_RATE_EPSILON) {
-      let tempC;
-      let temp = null;
-      if (!isNonThermal) {
-        const defT = getDefaultElementTemp(b.resource, elementMap);
-        tempC = getNetInputTemp(b.resource, b.state, netInputTemps, defT);
-        temp = `@ ${formatNumber(tempC)} °C`;
+
+    if (isNonThermal) {
+      if (b.deficitRate >= NET_RATE_EPSILON) {
+        netInputs.push({
+          resource: b.resource,
+          rate: b.deficitRate,
+          unit: b.unit,
+          state: b.state,
+          tempC: undefined,
+          temp: null,
+          outputTempC: undefined,
+        });
       }
-      netInputs.push({
-        resource: b.resource,
-        rate: b.deficitRate,
-        unit: b.unit,
-        state: b.state,
-        tempC,
-        temp,
-      });
-    }
-    if (b.availRate >= NET_RATE_EPSILON) {
-      const avgT = b.availTempC;
-      netOutputs.push({
-        resource: b.resource,
-        rate: b.availRate,
-        unit: b.unit,
-        state: b.state,
-        temp: isNonThermal ? null : `@ ${formatNumber(avgT)} °C`,
-        tempC: isNonThermal ? undefined : avgT,
-      });
+      if (b.availRate >= NET_RATE_EPSILON) {
+        netOutputs.push({
+          resource: b.resource,
+          rate: b.availRate,
+          unit: b.unit,
+          state: b.state,
+          temp: null,
+          tempC: undefined,
+        });
+      }
+    } else {
+      const activeParcels = b.parcels.filter((p) => p.rate >= NET_RATE_EPSILON);
+
+      if (b.deficitRate >= NET_RATE_EPSILON) {
+        const defT = getDefaultElementTemp(b.resource, elementMap);
+        const tempC = getNetInputTemp(b.resource, b.state, netInputTemps, defT);
+        const temp = `@ ${formatNumber(tempC)} °C`;
+
+        let candidate = null;
+        if (activeParcels.length > 0) {
+          const firstDefRowIndex = b.deficits[0]?.rowIndex ?? -1;
+          candidate =
+            activeParcels.find((p) => p.rowIndex > firstDefRowIndex && Math.abs(p.tempC - tempC) > 0.05) ||
+            activeParcels.find((p) => p.rowIndex !== firstDefRowIndex && Math.abs(p.tempC - tempC) > 0.05) ||
+            activeParcels.find((p) => Math.abs(p.tempC - tempC) > 0.05) ||
+            activeParcels[0];
+        }
+
+        netInputs.push({
+          resource: b.resource,
+          rate: b.deficitRate,
+          unit: b.unit,
+          state: b.state,
+          tempC,
+          temp,
+          outputTempC: (candidate && Math.abs(candidate.tempC - tempC) > 0.05) ? candidate.tempC : undefined,
+        });
+      }
+
+      const mergedOut = [];
+      for (const p of activeParcels) {
+        const existing = mergedOut.find((m) => Math.abs(m.tempC - p.tempC) <= 0.05);
+        if (existing) {
+          existing.rate += p.rate;
+        } else {
+          mergedOut.push({ ...p });
+        }
+      }
+
+      for (const m of mergedOut) {
+        netOutputs.push({
+          resource: b.resource,
+          rate: m.rate,
+          unit: b.unit,
+          state: b.state,
+          temp: `@ ${formatNumber(m.tempC)} °C`,
+          tempC: m.tempC,
+        });
+      }
     }
   }
 

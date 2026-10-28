@@ -403,3 +403,104 @@ describe("Meta-Machines: Dynamic Steam Turbine", () => {
     assert.strictEqual(Math.round(evalSystem[1].power), 850);
   });
 });
+
+describe("Automatic Loop Detection & Net Matching", () => {
+  it("automatically forms a thermal loop when input and output temperatures match within 0.05 °C", () => {
+    // Row 0: Counterflow heat exchanger taking Crude Oil @ 90 °C and Petroleum @ 400 °C
+    // Row 1: Boiler turning Crude Oil into Petroleum @ 400 °C (simulated via absorb_heat flash)
+    const rows = [
+      {
+        entityId: "counterflow_heat_exchanger",
+        qty: 1,
+        material: "Petroleum",
+        materialState: "free",
+        coldMaterial: "Crude Oil",
+        coldMaterialState: "in a pipe",
+      },
+      {
+        entityId: "absorb_heat",
+        qty: 1000 / (1.69 * 1000), // match crude oil flow
+        material: "Crude Oil",
+        materialState: "in a pipe",
+        tempDelta: 0, // already at 400 °C from counterflow output, so it emerges as Petroleum @ 400 °C
+      },
+    ];
+
+    const netInputTemps = {
+      "Petroleum||free": 400,
+      "Crude Oil||in a pipe": 90,
+    };
+
+    const evaluated = resolveTableTemperatures(rows, entityMap, elementMap, { netInputTemps });
+    assert.ok(evaluated._loops, "Must have _loops attached");
+    const petLoop = evaluated._loops.find((l) => l.resource === "Petroleum");
+    assert.ok(petLoop, "Must automatically detect petroleum loop");
+    assert.strictEqual(Math.round(petLoop.tempC), 400);
+
+    const net = calculateSystemNet(evaluated, { elementMap, netInputTemps });
+    assert.strictEqual(net.loopStartStreams.length, 1);
+    assert.strictEqual(net.loopStartStreams[0].resource, "Petroleum");
+    assert.strictEqual(net.loopEndStreams.length, 1);
+    assert.strictEqual(net.loopEndStreams[0].resource, "Petroleum");
+
+    // Net inputs should only need Crude Oil, NOT Petroleum
+    const netPetIn = net.netInputs.find((i) => i.resource === "Petroleum");
+    assert.strictEqual(netPetIn, undefined, "Petroleum input is fully looped, no net input required");
+  });
+
+  it("exposes outputTempC on net input when temperatures do not match, and auto-loops when matched", () => {
+    const rows = [
+      {
+        entityId: "counterflow_heat_exchanger",
+        qty: 5,
+        material: "Petroleum",
+        materialState: "in a pipe",
+        coldMaterial: "Crude Oil",
+        coldMaterialState: "in a pipe",
+      },
+      {
+        entityId: "oil_refinery",
+        qty: (5 * 1000 / 1.69) / 10000,
+      },
+    ];
+
+    // Net Petroleum temp set to default 20 °C (does NOT match refinery output temp of 75 °C)
+    const netInputTemps = {
+      "Petroleum||in a pipe": 20,
+      "Crude Oil||in a pipe": 90,
+    };
+
+    const evaluatedNoMatch = resolveTableTemperatures(rows, entityMap, elementMap, { netInputTemps });
+    const petLoopNoMatch = (evaluatedNoMatch._loops || []).find((l) => l.resource === "Petroleum");
+    assert.strictEqual(petLoopNoMatch, undefined, "Must NOT loop when input temp (20) differs from output temp (75)");
+
+    const netNoMatch = calculateSystemNet(evaluatedNoMatch, { elementMap, netInputTemps });
+    const netPetIn = netNoMatch.netInputs.find((i) => i.resource === "Petroleum");
+    assert.ok(netPetIn, "Must have net Petroleum input");
+    assert.strictEqual(Math.round(netPetIn.outputTempC), 75, "Must expose outputTempC = 75 on net input");
+
+    // Setting net input temperature to match outputTempC immediately forms loop
+    netInputTemps["Petroleum||in a pipe"] = netPetIn.outputTempC;
+    const evaluatedMatched = resolveTableTemperatures(rows, entityMap, elementMap, { netInputTemps });
+    const petLoopMatched = evaluatedMatched._loops.find((l) => l.resource === "Petroleum");
+    assert.ok(petLoopMatched, "Must auto-loop once net input temp matches output temp");
+    assert.strictEqual(Math.round(petLoopMatched.tempC), 75);
+  });
+
+  it("automatically loops non-thermal streams (Power) up to min(supply, demand)", () => {
+    const rows = [
+      { entityId: "liquid_pump", qty: 1, recipeId: "water" }, // 240 W power deficit
+      { entityId: "coal_generator", qty: 1 }, // 600 W power supply
+    ];
+
+    const evaluated = resolveTableTemperatures(rows, entityMap, elementMap);
+    const powerLoop = evaluated._loops.find((l) => l.resource === "Power");
+    assert.ok(powerLoop, "Must automatically detect power loop");
+    assert.strictEqual(powerLoop.rate, 240, "Must loop min(supply, demand) = 240 W");
+
+    const net = calculateSystemNet(evaluated, { elementMap });
+    assert.strictEqual(net.netPower, 360, "Net power should be 600 - 240 = 360 W surplus");
+    assert.strictEqual(net.loopStartStreams[0].resource, "Power");
+    assert.strictEqual(net.loopStartStreams[0].rate, 240);
+  });
+});

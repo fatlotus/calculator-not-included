@@ -279,33 +279,6 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
     </div>
   `;
 
-  // Helper for loop/unloop button HTML on output streams
-  const getLoopBtn = (resource, state, rate, unit, tempC) => {
-    const normState = state || "free";
-    const existing = Array.isArray(loops)
-      ? loops.find((l) => l && l.resource === resource && (l.state || "free") === normState)
-      : null;
-    const isThermal = !isNonThermalResource(resource, unit);
-    const sameRate = existing && Math.abs(Number(existing.rate) - rate) < 1e-4;
-    const sameTemp =
-      !isThermal ||
-      (existing &&
-        Math.abs(
-          Number(existing.tempC !== undefined ? existing.tempC : 20) -
-            Number(tempC !== undefined ? tempC : 20)
-        ) < 1e-4);
-
-    if (existing && sameRate && sameTemp) {
-      return `<button type="button" class="btn-loop-stream btn-unloop-stream" data-resource="${resource}" data-state="${normState}" title="Remove ${resource} from loop">[unloop]</button>`;
-    }
-
-    const tempAttr =
-      isThermal && tempC !== undefined && tempC !== null && !isNaN(Number(tempC))
-        ? ` data-temp="${Number(tempC)}"`
-        : "";
-    return `<button type="button" class="btn-loop-stream" data-resource="${resource}" data-state="${normState}" data-rate="${rate}" data-unit="${unit || ""}"${tempAttr} title="Loop ${resource} back to top of table">[loop]</button>`;
-  };
-
   // Inputs Column HTML
   const inputLines = [];
   if (evaluated.power < 0) {
@@ -359,26 +332,22 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
       : ` (${streamState})`;
     const matchBtn = getMatchBtn(key, `${stream.resource}${descState}`);
     const phaseMatch = isAbsorbHeat ? getMatchBtn("out:phase_change", "phase transition") : "";
-    const loopBtn = getLoopBtn(stream.resource, streamState, stream.rate, stream.unit, stream.tempC);
     outputLines.push(`
       <div class="stream-line">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
         <span class="stream-text">${formatStreamLine(stream, true, rateMode, elementMap)}</span>
         ${matchBtn}
         ${phaseMatch}
-        ${loopBtn}
       </div>
     `);
   }
   if (evaluated.power > 0) {
     const powerMatch = getMatchBtn("out:Power", "power deficit");
-    const powerLoop = getLoopBtn("Power", "free", evaluated.power, "W", undefined);
     outputLines.push(`
       <div class="stream-line">
         ${renderIcon(powerIcon, "Power", "stream-icon")}
         <span class="stream-text">Power: +${formatNumber(evaluated.power)} W</span>
         ${powerMatch}
-        ${powerLoop}
       </div>
     `);
   }
@@ -404,11 +373,34 @@ export function renderLoopStartRowHtml(loopStartStreams, elementMap, rateMode = 
   const outputLines = loopStartStreams.map((stream) => {
     const elem = elementMap?.get(stream.resource);
     const normState = stream.state || "free";
+    const key = `${stream.resource}||${normState}`;
+    const isThermal = !stream.isPower && !isNonThermalResource(stream.resource, stream.unit);
+
+    let tempHtml = "";
+    if (isThermal && stream.tempC !== undefined) {
+      tempHtml = `
+        <span class="net-temp-wrapper">
+          <span class="net-temp-at">@</span>
+          <input
+            type="number"
+            class="loop-temp-input"
+            data-key="${key}"
+            data-resource="${stream.resource}"
+            data-state="${normState}"
+            value="${formatNumber(stream.tempC)}"
+            step="any"
+            aria-label="Loop temperature for ${stream.resource}"
+          />
+          <span class="net-temp-unit">°C</span>
+        </span>
+      `;
+    }
+
     return `
       <div class="stream-line">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
-        <span class="stream-text">${formatStreamLine(stream, true, rateMode, elementMap)}</span>
-        <button type="button" class="btn-loop-stream btn-unloop-stream" data-resource="${stream.resource}" data-state="${normState}" title="Remove ${stream.resource} from loop">[unloop]</button>
+        <span class="stream-text">${formatStreamLine(stream, true, rateMode, elementMap, { omitTemp: isThermal })}</span>
+        ${tempHtml}
       </div>
     `;
   });
@@ -435,12 +427,10 @@ export function renderLoopEndRowHtml(loopEndStreams, elementMap, rateMode = "s")
 
   const inputLines = loopEndStreams.map((stream) => {
     const elem = elementMap?.get(stream.resource);
-    const normState = stream.state || "free";
     return `
       <div class="stream-line">
         ${renderIcon(elem?.icon, stream.resource, "stream-icon")}
         <span class="stream-text">${formatStreamLine(stream, false, rateMode, elementMap, { showTemp: true })}</span>
-        <button type="button" class="btn-loop-stream btn-unloop-stream" data-resource="${stream.resource}" data-state="${normState}" title="Remove ${stream.resource} from loop">[unloop]</button>
       </div>
     `;
   });

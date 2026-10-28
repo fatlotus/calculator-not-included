@@ -42,6 +42,9 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
       ? stream.tempC
       : getNetInputTemp(stream.resource, stream.state, netInputTemps, defaultT);
     const isThermal = !isNonThermalResource(stream.resource, stream.unit);
+    const matchTempBtn = isThermal && stream.outputTempC !== undefined
+      ? `<button type="button" class="btn-match-net-temp" data-key="${key}" data-resource="${stream.resource}" data-state="${stream.state || 'free'}" data-target-temp="${stream.outputTempC}" title="Set input temperature to output temperature (${formatNumber(stream.outputTempC)} °C) to form an automatic loop">[match output: ${formatNumber(stream.outputTempC)} °C]</button>`
+      : "";
 
     inputLines.push(`
       <div class="stream-line net-stream">
@@ -62,6 +65,7 @@ export function renderNetSummaryRowHtml(net, elementMap, rateMode, netInputTemps
           />
           <span class="net-temp-unit">°C</span>
         </span>` : ""}
+        ${matchTempBtn}
       </div>
     `);
   }

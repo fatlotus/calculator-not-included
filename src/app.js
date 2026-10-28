@@ -216,9 +216,33 @@ class OniApp {
             this.onStateChange(false);
           }
         }
+        if (e.target.classList.contains("loop-temp-input")) {
+          const key = e.target.dataset.key;
+          const val = parseFloat(e.target.value);
+          if (key && !isNaN(val)) {
+            if (!this.state.netInputTemps) this.state.netInputTemps = {};
+            this.state.netInputTemps[key] = val;
+            this.onStateChange(false);
+          }
+        }
       });
 
       tbody.addEventListener("change", (e) => {
+        if (e.target.classList.contains("loop-temp-input")) {
+          const key = e.target.dataset.key;
+          const val = parseFloat(e.target.value);
+          if (key) {
+            if (!this.state.netInputTemps) this.state.netInputTemps = {};
+            if (isNaN(val)) {
+              delete this.state.netInputTemps[key];
+            } else {
+              this.state.netInputTemps[key] = val;
+            }
+            this.onStateChange(true);
+          }
+          return;
+        }
+
         const idx = parseInt(e.target.dataset.rowIndex, 10);
         const row = this.state.rows[idx];
         if (!row) return;
@@ -310,45 +334,6 @@ class OniApp {
           if (!isNaN(idx) && !isNaN(targetDelta) && this.state.rows[idx]) {
             this.state.rows[idx].tempDelta = targetDelta;
             this.onStateChange();
-          }
-          return;
-        }
-
-        const unloopBtn = e.target.closest(".btn-unloop-stream");
-        if (unloopBtn) {
-          const resource = unloopBtn.dataset.resource;
-          const state = unloopBtn.dataset.state || "free";
-          if (resource) {
-            this.state.loops = (this.state.loops || []).filter(
-              (l) => !(l.resource === resource && (l.state || "free") === state)
-            );
-            this.onStateChange(true);
-          }
-          return;
-        }
-
-        const loopBtn = e.target.closest(".btn-loop-stream");
-        if (loopBtn) {
-          const resource = loopBtn.dataset.resource;
-          const state = loopBtn.dataset.state || "free";
-          const rate = parseFloat(loopBtn.dataset.rate);
-          const unit = loopBtn.dataset.unit || "";
-          const tempRaw = loopBtn.dataset.temp;
-          if (resource && !isNaN(rate) && rate > 0) {
-            const loopObj = { resource, state, rate, unit };
-            if (tempRaw !== undefined && tempRaw !== "" && !isNaN(parseFloat(tempRaw))) {
-              loopObj.tempC = parseFloat(tempRaw);
-            }
-            if (!Array.isArray(this.state.loops)) this.state.loops = [];
-            const existingIdx = this.state.loops.findIndex(
-              (l) => l && l.resource === resource && (l.state || "free") === state
-            );
-            if (existingIdx >= 0) {
-              this.state.loops[existingIdx] = loopObj;
-            } else {
-              this.state.loops.push(loopObj);
-            }
-            this.onStateChange(true);
           }
           return;
         }
@@ -451,6 +436,19 @@ class OniApp {
             } else {
               this.state.netInputTemps[key] = val;
             }
+            this.onStateChange(true);
+          }
+        }
+      });
+
+      tfoot.addEventListener("click", (e) => {
+        const matchNetTempBtn = e.target.closest(".btn-match-net-temp");
+        if (matchNetTempBtn) {
+          const key = matchNetTempBtn.dataset.key;
+          const targetTemp = parseFloat(matchNetTempBtn.dataset.targetTemp);
+          if (key && !isNaN(targetTemp)) {
+            if (!this.state.netInputTemps) this.state.netInputTemps = {};
+            this.state.netInputTemps[key] = targetTemp;
             this.onStateChange(true);
           }
         }
@@ -560,6 +558,42 @@ class OniApp {
       netInputTemps: this.state.netInputTemps,
       loops: this.state.loops,
     });
+
+    const hasLoopStart = Boolean(document.querySelector(".loop-start-row"));
+    const shouldHaveLoopStart = Boolean(net.loopStartStreams && net.loopStartStreams.length > 0);
+    const hasLoopEnd = Boolean(document.querySelector(".loop-end-row"));
+    const shouldHaveLoopEnd = Boolean(net.loopEndStreams && net.loopEndStreams.length > 0);
+    if (hasLoopStart !== shouldHaveLoopStart || hasLoopEnd !== shouldHaveLoopEnd) {
+      this.render();
+      return;
+    }
+
+    const loopStartTr = document.querySelector(".loop-start-row");
+    if (loopStartTr) {
+      const activeEl = document.activeElement;
+      const isLoopInput = activeEl?.classList?.contains("loop-temp-input");
+      const focusedKey = isLoopInput ? activeEl.dataset.key : null;
+      const selStart = isLoopInput ? activeEl.selectionStart : null;
+      const selEnd = isLoopInput ? activeEl.selectionEnd : null;
+
+      const dummy = document.createElement("tbody");
+      dummy.innerHTML = renderLoopStartRowHtml(
+        net.loopStartStreams,
+        this.catalog.elementMap,
+        this.state.rateMode
+      );
+      const newStartTr = dummy.firstElementChild;
+      if (newStartTr) {
+        loopStartTr.querySelector(".col-outputs").innerHTML = newStartTr.querySelector(".col-outputs").innerHTML;
+        if (focusedKey) {
+          const el = loopStartTr.querySelector(`.loop-temp-input[data-key="${CSS.escape(focusedKey)}"]`);
+          if (el) {
+            el.focus();
+            if (selStart !== null && selEnd !== null) el.setSelectionRange(selStart, selEnd);
+          }
+        }
+      }
+    }
 
     const rows = document.querySelectorAll(".calc-row");
     rows.forEach((tr, i) => {

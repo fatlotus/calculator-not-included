@@ -607,6 +607,7 @@ body {
 
 .btn-match-stream,
 .btn-match-heat,
+.btn-match-net-temp,
 .btn-loop-stream {
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
@@ -623,6 +624,7 @@ body {
 
 .btn-match-stream:hover,
 .btn-match-heat:hover,
+.btn-match-net-temp:hover,
 .btn-loop-stream:hover {
   background: var(--accent-bg);
   border-color: var(--accent-primary);
@@ -893,7 +895,8 @@ body {
   color: var(--fg-muted);
 }
 
-.net-temp-input {
+.net-temp-input,
+.loop-temp-input {
   width: 48px;
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
@@ -905,7 +908,8 @@ body {
   font-family: ui-monospace, SFMono-Regular, monospace;
 }
 
-.net-temp-input:focus {
+.net-temp-input:focus,
+.loop-temp-input:focus {
   outline: none;
   border-color: var(--accent-primary);
   box-shadow: 0 0 0 2px var(--focus-ring);

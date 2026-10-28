@@ -85,20 +85,28 @@ describe("Table Row HTML Rendering", () => {
     assert.ok(htmlNone.includes('value="none" selected'));
   });
 
-  it("renders machine output stream [loop] and [unloop] toggle links", () => {
+  it("does not render obsolete [loop] and [unloop] toggle links on machine output streams", () => {
     const row = { entityId: "water_sieve", qty: 1, recipeId: "sand" };
     const evaluated = evaluateRow(row, entityMap, elementMap);
-    const closedLoops = [{ resource: "Water", state: "in a pipe", rate: 5000, unit: "g/s" }];
 
-    const sieveHtmlUnlooped = renderTableRowHtml(row, evaluated, elementMap, "s", 0, {}, 1, []);
-    assert.ok(sieveHtmlUnlooped.includes("[loop]"), "Unlooped machine output must render [loop] link");
-
-    const sieveHtmlLooped = renderTableRowHtml(row, evaluated, elementMap, "s", 0, {}, 1, closedLoops);
-    assert.ok(sieveHtmlLooped.includes("[unloop]"), "Looped machine output must render [unloop] link");
+    const sieveHtml = renderTableRowHtml(row, evaluated, elementMap, "s", 0, {}, 1, []);
+    assert.ok(!sieveHtml.includes("[loop]"), "Machine output must not render [loop] link");
+    assert.ok(!sieveHtml.includes("[unloop]"), "Machine output must not render [unloop] link");
   });
 });
 
 describe("NET Summary Row HTML Rendering", () => {
+  it("renders [match output: X °C] link on net inputs when corresponding output temperature differs", () => {
+    const net = {
+      netPower: 0,
+      netBuildingHeat: 0,
+      netInputs: [{ resource: "Petroleum", state: "free", rate: 10000, unit: "g/s", tempC: 20, outputTempC: 400 }],
+      netOutputs: [{ resource: "Petroleum", state: "free", rate: 10000, unit: "g/s", tempC: 400 }],
+    };
+    const netHtml = renderNetSummaryRowHtml(net, elementMap, "s", { "Petroleum||free": 20 }, true);
+    assert.ok(netHtml.includes("btn-match-net-temp"));
+    assert.ok(netHtml.includes("[match output: 400 °C]"));
+  });
   it("renders NET summary row with net badge and net temperature input fields", () => {
     const row = { entityId: "electrolyzer", qty: 1 };
     const evaluated = evaluateRow(row, entityMap, elementMap);
@@ -156,7 +164,7 @@ describe("Loop Start & Loop End Rows", () => {
     assert.strictEqual(renderLoopEndRowHtml([], elementMap, "s"), "");
   });
 
-  it("renders Loop Start and Loop End rows with arriving temperature on thermal streams", () => {
+  it("renders Loop Start and Loop End rows with editable temperature input on Loop Start and arriving temp on Loop End", () => {
     const loopStreams = [
       { resource: "Water", state: "in a pipe", rate: 5000, unit: "g/s", tempC: 20.0, temp: "@ 20 °C" },
     ];
@@ -164,9 +172,12 @@ describe("Loop Start & Loop End Rows", () => {
     const loopEndHtml = renderLoopEndRowHtml(loopStreams, elementMap, "s");
 
     assert.ok(loopStartHtml.includes("Loop Start"));
-    assert.ok(loopStartHtml.includes("[unloop]"));
+    assert.ok(!loopStartHtml.includes("[unloop]"), "Loop Start must not render [unloop]");
+    assert.ok(loopStartHtml.includes("loop-temp-input"), "Loop Start must render editable loop-temp-input");
+    assert.ok(loopStartHtml.includes('value="20"'));
+
     assert.ok(loopEndHtml.includes("Loop End"));
-    assert.ok(loopEndHtml.includes("[unloop]"));
+    assert.ok(!loopEndHtml.includes("[unloop]"), "Loop End must not render [unloop]");
     assert.ok(loopEndHtml.includes("@ 20 °C"));
   });
 });
