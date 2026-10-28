@@ -94,7 +94,7 @@ describe("Table Row HTML Rendering", () => {
     assert.ok(!sieveHtml.includes("[unloop]"), "Machine output must not render [unloop] link");
   });
 
-  it("renders counterflow heat exchanger with hot/cold selectors and heat exchange slider", () => {
+  it("renders counterflow heat exchanger with hot/cold selectors and heat exchange numeric input", () => {
     const row = {
       entityId: "counterflow_heat_exchanger",
       qty: 1,
@@ -107,9 +107,9 @@ describe("Table Row HTML Rendering", () => {
 
     assert.ok(html.includes('class="material-select"'), "Hot stream select rendered");
     assert.ok(html.includes('class="cold-material-select"'), "Cold stream select rendered");
-    assert.ok(html.includes('class="heat-exchange-slider"'), "Heat exchange slider rendered");
-    assert.ok(html.includes('value="95"'), "Heat exchange slider has value 95");
-    assert.ok(html.includes('Exchange: <span class="heat-exchange-val">95%</span>'), "Heat exchange value displayed");
+    assert.ok(html.includes('class="heat-exchange-input"'), "Heat exchange numeric input rendered");
+    assert.ok(html.includes('value="95"'), "Heat exchange numeric input has value 95");
+    assert.ok(html.includes('<span class="heat-exchange-unit">%</span>'), "Heat exchange unit % displayed");
   });
 });
 

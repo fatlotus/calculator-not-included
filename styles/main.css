@@ -390,7 +390,8 @@ body {
 }
 
 .qty-input,
-.temp-delta-input {
+.temp-delta-input,
+.heat-exchange-input {
   width: 48px;
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
@@ -405,7 +406,8 @@ body {
 }
 
 .qty-input:focus,
-.temp-delta-input:focus {
+.temp-delta-input:focus,
+.heat-exchange-input:focus {
   outline: none;
   border-color: var(--accent-primary);
   box-shadow: 0 0 0 2px var(--focus-ring);
@@ -484,17 +486,10 @@ body {
   margin-top: 4px;
 }
 
-.heat-exchange-slider {
-  accent-color: var(--accent-primary, #4fc3f7);
-  cursor: pointer;
-  width: 90px;
-  height: 6px;
-  vertical-align: middle;
-}
-
-.heat-exchange-val {
-  font-weight: 600;
-  color: var(--fg-default);
+.temp-delta-unit,
+.heat-exchange-unit {
+  font-size: 11px;
+  color: var(--fg-muted);
 }
 
 .counterflow-match-wrapper {

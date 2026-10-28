@@ -246,18 +246,19 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
 
       machineHtml += `
         <div class="heat-exchange-wrapper">
-          <label class="field-label" for="heat-exchange-${rowIndex}">Exchange: <span class="heat-exchange-val">${heatExchangeVal}%</span></label>
+          <label class="field-label" for="heat-exchange-${rowIndex}">Exchange:</label>
           <input
-            type="range"
+            type="number"
             id="heat-exchange-${rowIndex}"
-            class="heat-exchange-slider"
+            class="heat-exchange-input"
             data-row-index="${rowIndex}"
+            value="${formatNumber(heatExchangeVal)}"
             min="0"
             max="100"
-            step="1"
-            value="${heatExchangeVal}"
+            step="any"
             aria-label="Heat exchange percentage for ${entity.name}"
           />
+          <span class="heat-exchange-unit">%</span>
         </div>
       `;
     }

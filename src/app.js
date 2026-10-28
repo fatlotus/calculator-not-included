@@ -217,14 +217,11 @@ class OniApp {
             this.onStateChange(false);
           }
         }
-        if (e.target.classList.contains("heat-exchange-slider")) {
+        if (e.target.classList.contains("heat-exchange-input")) {
           const idx = parseInt(e.target.dataset.rowIndex, 10);
           const val = parseFloat(e.target.value);
           if (!isNaN(val) && this.state.rows[idx]) {
             this.state.rows[idx].heatExchange = Math.max(0, Math.min(100, val));
-            const wrapper = e.target.closest(".heat-exchange-wrapper");
-            const valSpan = wrapper ? wrapper.querySelector(".heat-exchange-val") : null;
-            if (valSpan) valSpan.textContent = `${this.state.rows[idx].heatExchange}%`;
             this.onStateChange(false);
           }
         }
@@ -267,7 +264,7 @@ class OniApp {
           const val = parseFloat(e.target.value);
           row.tempDelta = isNaN(val) ? 10 : val;
           this.onStateChange(true);
-        } else if (e.target.classList.contains("heat-exchange-slider")) {
+        } else if (e.target.classList.contains("heat-exchange-input")) {
           const val = parseFloat(e.target.value);
           row.heatExchange = isNaN(val) ? 100 : Math.max(0, Math.min(100, val));
           this.onStateChange(true);
