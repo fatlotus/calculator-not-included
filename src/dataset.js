@@ -7575,6 +7575,1182 @@ export const ONI_DATASET = {
           ],
           "power": -1200,
           "heat": 1181.6
+        },
+        {
+          "id": "biodiesel",
+          "name": "Cool Biodiesel (-14 °C @ 10 kg/s -> +306.6 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Biodiesel",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Biodiesel",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 306.6
+        },
+        {
+          "id": "brackene",
+          "name": "Cool Brackene (-14 °C @ 10 kg/s -> +574 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Brackene",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brackene",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 574
+        },
+        {
+          "id": "brine",
+          "name": "Cool Brine (-14 °C @ 10 kg/s -> +476 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Brine",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Brine",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 476
+        },
+        {
+          "id": "crude_oil",
+          "name": "Cool Crude Oil (-14 °C @ 10 kg/s -> +236.6 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Crude Oil",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Crude Oil",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 236.6
+        },
+        {
+          "id": "ethanol",
+          "name": "Cool Ethanol (-14 °C @ 10 kg/s -> +344.4 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Ethanol",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Ethanol",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 344.4
+        },
+        {
+          "id": "gunk",
+          "name": "Cool Gunk (-14 °C @ 10 kg/s -> +168 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Gunk",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Gunk",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 168
+        },
+        {
+          "id": "latex",
+          "name": "Cool Latex (-14 °C @ 10 kg/s -> +281.4 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Latex",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Latex",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 281.4
+        },
+        {
+          "id": "liquid_carbon",
+          "name": "Cool Liquid Carbon (-14 °C @ 10 kg/s -> +99.4 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Carbon",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Carbon",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 99.4
+        },
+        {
+          "id": "liquid_carbon_dioxide",
+          "name": "Cool Liquid Carbon Dioxide (-14 °C @ 10 kg/s -> +118.44 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Carbon Dioxide",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Carbon Dioxide",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 118.44
+        },
+        {
+          "id": "liquid_chlorine",
+          "name": "Cool Liquid Chlorine (-14 °C @ 10 kg/s -> +67.2 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Chlorine",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Chlorine",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 67.2
+        },
+        {
+          "id": "liquid_helium",
+          "name": "Cool Liquid Helium (-14 °C @ 10 kg/s -> +28 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Helium",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Helium",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 28
+        },
+        {
+          "id": "liquid_hydrogen",
+          "name": "Cool Liquid Hydrogen (-14 °C @ 10 kg/s -> +336 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Hydrogen",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Hydrogen",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 336
+        },
+        {
+          "id": "liquid_methane",
+          "name": "Cool Liquid Methane (-14 °C @ 10 kg/s -> +306.74 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Methane",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Methane",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 306.74
+        },
+        {
+          "id": "liquid_naphtha",
+          "name": "Cool Liquid Naphtha (-14 °C @ 10 kg/s -> +306.74 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Naphtha",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Naphtha",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 306.74
+        },
+        {
+          "id": "liquid_nuclear_waste",
+          "name": "Cool Liquid Nuclear Waste (-14 °C @ 10 kg/s -> +1041.6 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Nuclear Waste",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Nuclear Waste",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 1041.6
+        },
+        {
+          "id": "liquid_oxygen",
+          "name": "Cool Liquid Oxygen (-14 °C @ 10 kg/s -> +141.4 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Oxygen",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Oxygen",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 141.4
+        },
+        {
+          "id": "liquid_phosphorus",
+          "name": "Cool Liquid Phosphorus (-14 °C @ 10 kg/s -> +107.758 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Phosphorus",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Phosphorus",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 107.758
+        },
+        {
+          "id": "liquid_propane",
+          "name": "Cool Liquid Propane (-14 °C @ 10 kg/s -> +336 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Propane",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Propane",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 336
+        },
+        {
+          "id": "liquid_sucrose",
+          "name": "Cool Liquid Sucrose (-14 °C @ 10 kg/s -> +175.7 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Sucrose",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Sucrose",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 175.7
+        },
+        {
+          "id": "liquid_sulfur",
+          "name": "Cool Liquid Sulfur (-14 °C @ 10 kg/s -> +98 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Sulfur",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Sulfur",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 98
+        },
+        {
+          "id": "liquid_uranium",
+          "name": "Cool Liquid Uranium (-14 °C @ 10 kg/s -> +236.6 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Liquid Uranium",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Liquid Uranium",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 236.6
+        },
+        {
+          "id": "magma",
+          "name": "Cool Magma (-14 °C @ 10 kg/s -> +140 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Magma",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Magma",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 140
+        },
+        {
+          "id": "mercury",
+          "name": "Cool Mercury (-14 °C @ 10 kg/s -> +19.6 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Mercury",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mercury",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 19.6
+        },
+        {
+          "id": "molten_aluminum",
+          "name": "Cool Molten Aluminum (-14 °C @ 10 kg/s -> +127.4 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Aluminum",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Aluminum",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 127.4
+        },
+        {
+          "id": "molten_cobalt",
+          "name": "Cool Molten Cobalt (-14 °C @ 10 kg/s -> +58.8 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Cobalt",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Cobalt",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 58.8
+        },
+        {
+          "id": "molten_copper",
+          "name": "Cool Molten Copper (-14 °C @ 10 kg/s -> +54.04 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Copper",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Copper",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 54.04
+        },
+        {
+          "id": "molten_glass",
+          "name": "Cool Molten Glass (-14 °C @ 10 kg/s -> +28 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Glass",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Glass",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 28
+        },
+        {
+          "id": "molten_gold",
+          "name": "Cool Molten Gold (-14 °C @ 10 kg/s -> +18.074 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Gold",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Gold",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 18.074
+        },
+        {
+          "id": "molten_iridium",
+          "name": "Cool Molten Iridium (-14 °C @ 10 kg/s -> +18.34 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Iridium",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Iridium",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 18.34
+        },
+        {
+          "id": "molten_iron",
+          "name": "Cool Molten Iron (-14 °C @ 10 kg/s -> +62.86 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Iron",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Iron",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 62.86
+        },
+        {
+          "id": "molten_lead",
+          "name": "Cool Molten Lead (-14 °C @ 10 kg/s -> +17.92 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Lead",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Lead",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 17.92
+        },
+        {
+          "id": "molten_nickel",
+          "name": "Cool Molten Nickel (-14 °C @ 10 kg/s -> +61.6 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Nickel",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Nickel",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 61.6
+        },
+        {
+          "id": "molten_niobium",
+          "name": "Cool Molten Niobium (-14 °C @ 10 kg/s -> +37.1 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Niobium",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Niobium",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 37.1
+        },
+        {
+          "id": "molten_salt",
+          "name": "Cool Molten Salt (-14 °C @ 10 kg/s -> +98 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Salt",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Salt",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 98
+        },
+        {
+          "id": "molten_steel",
+          "name": "Cool Molten Steel (-14 °C @ 10 kg/s -> +54.04 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Steel",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Steel",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 54.04
+        },
+        {
+          "id": "molten_syngas",
+          "name": "Cool Molten Syngas (-14 °C @ 10 kg/s -> +336 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Syngas",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Syngas",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 336
+        },
+        {
+          "id": "molten_tungsten",
+          "name": "Cool Molten Tungsten (-14 °C @ 10 kg/s -> +18.76 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Tungsten",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Tungsten",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 18.76
+        },
+        {
+          "id": "molten_zinc",
+          "name": "Cool Molten Zinc (-14 °C @ 10 kg/s -> +54.32 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Molten Zinc",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Molten Zinc",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 54.32
+        },
+        {
+          "id": "mucin",
+          "name": "Cool Mucin (-14 °C @ 10 kg/s -> +420 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Mucin",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Mucin",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 420
+        },
+        {
+          "id": "nectar",
+          "name": "Cool Nectar (-14 °C @ 10 kg/s -> +574 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Nectar",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Nectar",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 574
+        },
+        {
+          "id": "ovolene",
+          "name": "Cool Ovolene (-14 °C @ 10 kg/s -> +574 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Ovolene",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Ovolene",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 574
+        },
+        {
+          "id": "petroleum",
+          "name": "Cool Petroleum (-14 °C @ 10 kg/s -> +246.4 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Petroleum",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Petroleum",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 246.4
+        },
+        {
+          "id": "phyto_oil",
+          "name": "Cool Phyto Oil (-14 °C @ 10 kg/s -> +126 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Phyto Oil",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Phyto Oil",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 126
+        },
+        {
+          "id": "polluted_brine",
+          "name": "Cool Polluted Brine (-14 °C @ 10 kg/s -> +504 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Polluted Brine",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Polluted Brine",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 504
+        },
+        {
+          "id": "resin",
+          "name": "Cool Resin (-14 °C @ 10 kg/s -> +155.4 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Resin",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Resin",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 155.4
+        },
+        {
+          "id": "salt_water",
+          "name": "Cool Salt Water (-14 °C @ 10 kg/s -> +574 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Salt Water",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Salt Water",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 574
+        },
+        {
+          "id": "sap",
+          "name": "Cool Sap (-14 °C @ 10 kg/s -> +155.4 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Sap",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Sap",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 155.4
+        },
+        {
+          "id": "squid_ink",
+          "name": "Cool Squid Ink (-14 °C @ 10 kg/s -> +280 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Squid Ink",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Squid Ink",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 280
+        },
+        {
+          "id": "visco_gel_fluid",
+          "name": "Cool Visco-Gel Fluid (-14 °C @ 10 kg/s -> +217 kDTU/s)",
+          "inputs": [
+            {
+              "resource": "Visco-Gel Fluid",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": null
+            }
+          ],
+          "outputs": [
+            {
+              "resource": "Visco-Gel Fluid",
+              "rate": 10000,
+              "unit": "g/s",
+              "state": "in a pipe",
+              "temp": "-14 °C"
+            }
+          ],
+          "power": -1200,
+          "heat": 217
         }
       ],
       "modifiers": [],

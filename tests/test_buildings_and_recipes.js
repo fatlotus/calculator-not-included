@@ -294,4 +294,51 @@ describe("Refining & Production Buildings", () => {
     assert.strictEqual(iceOut.rate, 500.0);
     assert.strictEqual(iceOut.tempC, -20.0);
   });
+
+  it("evaluates Thermo Aquatuner with all liquid elements", () => {
+    const aquatuner = entityMap.get("thermo_aquatuner");
+    assert.strictEqual(aquatuner.recipes.length, 52, "Thermo Aquatuner should have 52 recipes for all liquid elements");
+
+    // Test Crude Oil recipe: SHC = 1.69, heat = 140 * 1.69 = 236.6 kDTU/s
+    const crudeEval = evaluateRow(
+      { entityId: "thermo_aquatuner", qty: 1, recipeId: "crude_oil" },
+      entityMap,
+      elementMap,
+      20.0,
+      { "Crude Oil||in a pipe": 80.0 }
+    );
+    const crudeIn = crudeEval.inputs.find((i) => i.resource === "Crude Oil");
+    const crudeOut = crudeEval.outputs.find((o) => o.resource === "Crude Oil");
+    assert.strictEqual(crudeIn.rate, 10000.0);
+    assert.strictEqual(crudeOut.rate, 10000.0);
+    assert.strictEqual(crudeOut.tempC, 66.0, "Cools incoming Crude Oil by -14 °C (80 - 14 = 66 °C)");
+    assert.strictEqual(crudeEval.heat, 236.6);
+    assert.strictEqual(crudeEval.power, -1200);
+
+    // Test Petroleum recipe: SHC = 1.76, heat = 140 * 1.76 = 246.4 kDTU/s
+    const petroEval = evaluateRow(
+      { entityId: "thermo_aquatuner", qty: 1, recipeId: "petroleum" },
+      entityMap,
+      elementMap,
+      20.0,
+      { "Petroleum||in a pipe": 200.0 }
+    );
+    const petroOut = petroEval.outputs.find((o) => o.resource === "Petroleum");
+    assert.strictEqual(petroOut.tempC, 186.0, "Cools incoming Petroleum by -14 °C (200 - 14 = 186 °C)");
+    assert.strictEqual(petroEval.heat, 246.4);
+
+    // Test Ethanol recipe: SHC = 2.46, heat = 140 * 2.46 = 344.4 kDTU/s
+    const ethEval = evaluateRow(
+      { entityId: "thermo_aquatuner", qty: 2, recipeId: "ethanol" },
+      entityMap,
+      elementMap,
+      20.0,
+      { "Ethanol||in a pipe": -20.0 }
+    );
+    const ethOut = ethEval.outputs.find((o) => o.resource === "Ethanol");
+    assert.strictEqual(ethOut.rate, 20000.0);
+    assert.strictEqual(ethOut.tempC, -34.0, "Cools incoming Ethanol by -14 °C (-20 - 14 = -34 °C)");
+    assert.strictEqual(ethEval.heat, 688.8, "2x Aquatuner produces 2 * 344.4 = 688.8 kDTU/s");
+    assert.strictEqual(ethEval.power, -2400);
+  });
 });
