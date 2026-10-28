@@ -10620,14 +10620,14 @@
     "heat": 0,
     "inputs": [
       {
-        "resource": "Petroleum",
+        "resource": "Water",
         "rate": 1000,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
-        "resource": "Crude Oil",
+        "resource": "Polluted Water",
         "rate": 1000,
         "unit": "g/s",
         "state": "in a pipe",
@@ -10636,14 +10636,14 @@
     ],
     "outputs": [
       {
-        "resource": "Petroleum",
+        "resource": "Water",
         "rate": 1000,
         "unit": "g/s",
         "state": "free",
         "temp": null
       },
       {
-        "resource": "Crude Oil",
+        "resource": "Polluted Water",
         "rate": 1000,
         "unit": "g/s",
         "state": "in a pipe",

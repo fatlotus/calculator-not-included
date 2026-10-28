@@ -983,9 +983,9 @@ export function evaluateRow(
 
   // Meta-Machine: Counterflow Heat Exchanger
   if (row.entityId === "counterflow_heat_exchanger" || entity.id === "counterflow_heat_exchanger") {
-    const hotMat = row.material || "Petroleum";
+    const hotMat = row.material || "Water";
     const hotState = isSolidResource(hotMat, elementMap) ? "free" : (row.materialState || "free");
-    const coldMat = row.coldMaterial || "Crude Oil";
+    const coldMat = row.coldMaterial || "Polluted Water";
     const coldState = isSolidResource(coldMat, elementMap) ? "free" : (row.coldMaterialState || "in a pipe");
 
     const elemHot = elementMap instanceof Map ? elementMap.get(hotMat) : elementMap?.[hotMat];
@@ -1042,12 +1042,21 @@ export function evaluateRow(
       },
     ];
 
-    // Completely swap temperatures while conserving enthalpy
-    // Apply phase transitions to outgoing swapped streams
+    // Exchange heat up to slider percentage (0% to 100%, default 100%)
+    // At 100%, completely swaps temperatures while conserving enthalpy
+    const heatExchangePct = (row.heatExchange !== undefined && row.heatExchange !== null && !isNaN(Number(row.heatExchange)))
+      ? Math.max(0, Math.min(100, Number(row.heatExchange)))
+      : 100.0;
+    const exchangeRatio = heatExchangePct / 100.0;
+    const deltaT = (tHotIn - tColdIn) * exchangeRatio;
+    const tHotOut = tHotIn - deltaT;
+    const tColdOut = tColdIn + deltaT;
+
+    // Apply phase transitions to outgoing streams
     const hotOutputs = applyHeatAndPhaseChange(
       hotMat,
       hotRate,
-      tColdIn,
+      tHotOut,
       0,
       hotState,
       elementMap
@@ -1056,7 +1065,7 @@ export function evaluateRow(
     const coldOutputs = applyHeatAndPhaseChange(
       coldMat,
       coldRate,
-      tHotIn,
+      tColdOut,
       0,
       coldState,
       elementMap
@@ -1071,6 +1080,7 @@ export function evaluateRow(
       heat: 0,
       buildingHeat: 0,
       inputTemp: tHotIn,
+      heatExchange: heatExchangePct,
       inputs: qty <= 0 ? [] : inputs,
       outputs: qty <= 0 ? [] : outputs,
       isStateTransferFor: new Set(),

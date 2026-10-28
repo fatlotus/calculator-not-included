@@ -195,11 +195,11 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
     }
 
     if (isCounterflow && elementOptionsHtml) {
-      const selectedHot = row.material || "Petroleum";
+      const selectedHot = row.material || "Water";
       const isHotSolid = isSolidResource(selectedHot, elementMap);
       const selectedHotState = isHotSolid ? "free" : (row.materialState || "free");
 
-      const selectedCold = row.coldMaterial || "Crude Oil";
+      const selectedCold = row.coldMaterial || "Polluted Water";
       const isColdSolid = isSolidResource(selectedCold, elementMap);
       const selectedColdState = isColdSolid ? "free" : (row.coldMaterialState || "in a pipe");
 
@@ -239,6 +239,27 @@ export function renderTableRowHtml(row, evaluated, elementMap, rateMode, rowInde
           </div>
         `;
       }
+
+      const heatExchangeVal = (row.heatExchange !== undefined && row.heatExchange !== null && !isNaN(Number(row.heatExchange)))
+        ? Math.max(0, Math.min(100, Number(row.heatExchange)))
+        : 100;
+
+      machineHtml += `
+        <div class="heat-exchange-wrapper">
+          <label class="field-label" for="heat-exchange-${rowIndex}">Exchange: <span class="heat-exchange-val">${heatExchangeVal}%</span></label>
+          <input
+            type="range"
+            id="heat-exchange-${rowIndex}"
+            class="heat-exchange-slider"
+            data-row-index="${rowIndex}"
+            min="0"
+            max="100"
+            step="1"
+            value="${heatExchangeVal}"
+            aria-label="Heat exchange percentage for ${entity.name}"
+          />
+        </div>
+      `;
     }
 
     machineHtml += `</div>`;

@@ -101,10 +101,11 @@ class OniApp {
           newRow.material = "Water";
           newRow.materialState = "free";
         } else if (entity.id === "counterflow_heat_exchanger") {
-          newRow.material = "Petroleum";
+          newRow.material = "Water";
           newRow.materialState = "free";
-          newRow.coldMaterial = "Crude Oil";
+          newRow.coldMaterial = "Polluted Water";
           newRow.coldMaterialState = "in a pipe";
+          newRow.heatExchange = 100;
         }
         this.state.rows.push(newRow);
         this.onStateChange();
@@ -216,6 +217,17 @@ class OniApp {
             this.onStateChange(false);
           }
         }
+        if (e.target.classList.contains("heat-exchange-slider")) {
+          const idx = parseInt(e.target.dataset.rowIndex, 10);
+          const val = parseFloat(e.target.value);
+          if (!isNaN(val) && this.state.rows[idx]) {
+            this.state.rows[idx].heatExchange = Math.max(0, Math.min(100, val));
+            const wrapper = e.target.closest(".heat-exchange-wrapper");
+            const valSpan = wrapper ? wrapper.querySelector(".heat-exchange-val") : null;
+            if (valSpan) valSpan.textContent = `${this.state.rows[idx].heatExchange}%`;
+            this.onStateChange(false);
+          }
+        }
         if (e.target.classList.contains("loop-temp-input")) {
           const key = e.target.dataset.key;
           const val = parseFloat(e.target.value);
@@ -254,6 +266,10 @@ class OniApp {
         } else if (e.target.classList.contains("temp-delta-input")) {
           const val = parseFloat(e.target.value);
           row.tempDelta = isNaN(val) ? 10 : val;
+          this.onStateChange(true);
+        } else if (e.target.classList.contains("heat-exchange-slider")) {
+          const val = parseFloat(e.target.value);
+          row.heatExchange = isNaN(val) ? 100 : Math.max(0, Math.min(100, val));
           this.onStateChange(true);
         } else if (e.target.classList.contains("recipe-select")) {
           row.recipeId = e.target.value;

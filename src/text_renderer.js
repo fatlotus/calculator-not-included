@@ -200,13 +200,17 @@ export function computeStateData(state, catalog = null) {
       const matState = row.materialState || "free";
       machineLines.push(`  [Material: ${mat}${isSolid ? "" : ` (${matState})`}]`);
     } else if (row.entityId === "counterflow_heat_exchanger") {
-      const hotMat = row.material || "Petroleum";
+      const hotMat = row.material || "Water";
       const isHotSolid = isSolidResource(hotMat, catalog.elementMap);
       const hotState = row.materialState || "free";
-      const coldMat = row.coldMaterial || "Crude Oil";
+      const coldMat = row.coldMaterial || "Polluted Water";
       const isColdSolid = isSolidResource(coldMat, catalog.elementMap);
       const coldState = row.coldMaterialState || "in a pipe";
-      machineLines.push(`  [Hot: ${hotMat}${isHotSolid ? "" : ` (${hotState})`}, Cold: ${coldMat}${isColdSolid ? "" : ` (${coldState})`}]`);
+      const hx = (row.heatExchange !== undefined && row.heatExchange !== null && !isNaN(Number(row.heatExchange)))
+        ? Number(row.heatExchange)
+        : 100;
+      const hxStr = hx !== 100 ? `, Exchange: ${hx}%` : "";
+      machineLines.push(`  [Hot: ${hotMat}${isHotSolid ? "" : ` (${hotState})`}, Cold: ${coldMat}${isColdSolid ? "" : ` (${coldState})`}${hxStr}]`);
     }
 
     if (Array.isArray(row.modifiers) && row.modifiers.length > 0) {

@@ -217,6 +217,12 @@ export function encodeStateToProtobuf(state, elementMap = null) {
         pbRow.tempDelta = td;
       }
     }
+    if (row.heatExchange !== undefined && row.heatExchange !== null && Number.isFinite(Number(row.heatExchange))) {
+      const hx = Number(row.heatExchange);
+      if (Math.abs(hx - 100) > 1e-4) {
+        pbRow.heatExchange = hx;
+      }
+    }
 
     pbRows.push(pbRow);
   }
@@ -431,15 +437,20 @@ export function decodeStateFromProtobuf(bytes) {
     } else if (entityId === "absorb_heat") {
       rowObj.tempDelta = 10;
     }
+    if (r.heatExchange !== undefined && r.heatExchange !== null && Number.isFinite(Number(r.heatExchange))) {
+      rowObj.heatExchange = Number(r.heatExchange);
+    } else if (entityId === "counterflow_heat_exchanger") {
+      rowObj.heatExchange = 100;
+    }
 
     if (entityId === "absorb_heat") {
       if (!rowObj.material) rowObj.material = "Water";
       if (!rowObj.materialState) rowObj.materialState = "free";
     }
     if (entityId === "counterflow_heat_exchanger") {
-      rowObj.material = rowObj.material || "Petroleum";
+      rowObj.material = rowObj.material || "Water";
       rowObj.materialState = rowObj.materialState || "free";
-      rowObj.coldMaterial = rowObj.coldMaterial || "Crude Oil";
+      rowObj.coldMaterial = rowObj.coldMaterial || "Polluted Water";
       rowObj.coldMaterialState = rowObj.coldMaterialState || "in a pipe";
     }
 

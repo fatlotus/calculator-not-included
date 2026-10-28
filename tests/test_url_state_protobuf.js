@@ -348,6 +348,7 @@ describe("Complex Designs & Meta-Machines Serialization", () => {
           materialState: "free",
           coldMaterial: "Crude Oil",
           coldMaterialState: "in a pipe",
+          heatExchange: 95,
         },
         {
           entityId: "absorb_heat",
@@ -376,6 +377,7 @@ describe("Complex Designs & Meta-Machines Serialization", () => {
     assert.strictEqual(decoded.rows[1].materialState, "free");
     assert.strictEqual(decoded.rows[1].coldMaterial, "Crude Oil");
     assert.strictEqual(decoded.rows[1].coldMaterialState, "in a pipe");
+    assert.strictEqual(decoded.rows[1].heatExchange, 95);
 
     assert.strictEqual(decoded.rows[2].entityId, "absorb_heat");
     assert.strictEqual(decoded.rows[2].qty, 10);

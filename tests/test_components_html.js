@@ -93,6 +93,24 @@ describe("Table Row HTML Rendering", () => {
     assert.ok(!sieveHtml.includes("[loop]"), "Machine output must not render [loop] link");
     assert.ok(!sieveHtml.includes("[unloop]"), "Machine output must not render [unloop] link");
   });
+
+  it("renders counterflow heat exchanger with hot/cold selectors and heat exchange slider", () => {
+    const row = {
+      entityId: "counterflow_heat_exchanger",
+      qty: 1,
+      material: "Water",
+      coldMaterial: "Polluted Water",
+      heatExchange: 95,
+    };
+    const evaluated = evaluateRow(row, entityMap, elementMap);
+    const html = renderTableRowHtml(row, evaluated, elementMap, "s", 0, {}, 1, [], () => "<option>mock</option>");
+
+    assert.ok(html.includes('class="material-select"'), "Hot stream select rendered");
+    assert.ok(html.includes('class="cold-material-select"'), "Cold stream select rendered");
+    assert.ok(html.includes('class="heat-exchange-slider"'), "Heat exchange slider rendered");
+    assert.ok(html.includes('value="95"'), "Heat exchange slider has value 95");
+    assert.ok(html.includes('Exchange: <span class="heat-exchange-val">95%</span>'), "Heat exchange value displayed");
+  });
 });
 
 describe("NET Summary Row HTML Rendering", () => {

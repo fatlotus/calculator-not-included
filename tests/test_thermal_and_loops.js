@@ -339,6 +339,94 @@ describe("Meta-Machines: Counterflow Heat Exchanger", () => {
     assert.ok(matchTargets["in:Crude Oil||in a pipe"]);
     assert.strictEqual(Math.round(matchTargets["in:Crude Oil||in a pipe"].targetQty * 100) / 100, 16.9);
   });
+
+  it("defaults to Water and Polluted Water when materials are unspecified", () => {
+    const rowDefault = {
+      entityId: "counterflow_heat_exchanger",
+      qty: 1,
+    };
+    const evDefault = evaluateRow(rowDefault, entityMap, elementMap, 20.0);
+    const waterIn = evDefault.inputs.find((i) => i.resource === "Water");
+    const pWaterIn = evDefault.inputs.find((i) => i.resource === "Polluted Water");
+    assert.ok(waterIn, "Default hot material is Water");
+    assert.ok(pWaterIn, "Default cold material is Polluted Water");
+    assert.strictEqual(evDefault.heatExchange, 100, "Default heat exchange is 100%");
+  });
+
+  it("supports heat exchange percentage slider (0% to 100%) and prevents crude oil pipe burst at 95%", () => {
+    // 1) 0% exchange: no heat transferred
+    const ev0 = evaluateRow(
+      {
+        entityId: "counterflow_heat_exchanger",
+        qty: 1,
+        material: "Petroleum",
+        materialState: "free",
+        coldMaterial: "Crude Oil",
+        coldMaterialState: "in a pipe",
+        heatExchange: 0,
+      },
+      entityMap,
+      elementMap,
+      20.0,
+      { "Petroleum||free": 405, "Crude Oil||in a pipe": 20 }
+    );
+    const petOut0 = ev0.outputs.find((o) => o.resource === "Petroleum");
+    const oilOut0 = ev0.outputs.find((o) => o.resource === "Crude Oil");
+    assert.strictEqual(petOut0.tempC, 405, "0% exchange leaves hot stream at 405 °C");
+    assert.strictEqual(oilOut0.tempC, 20, "0% exchange leaves cold stream at 20 °C");
+
+    // 2) 50% exchange: half temperature difference exchanged
+    const ev50 = evaluateRow(
+      {
+        entityId: "counterflow_heat_exchanger",
+        qty: 1,
+        material: "Petroleum",
+        materialState: "free",
+        coldMaterial: "Crude Oil",
+        coldMaterialState: "in a pipe",
+        heatExchange: 50,
+      },
+      entityMap,
+      elementMap,
+      20.0,
+      { "Petroleum||free": 200, "Crude Oil||in a pipe": 100 }
+    );
+    const petOut50 = ev50.outputs.find((o) => o.resource === "Petroleum");
+    const oilOut50 = ev50.outputs.find((o) => o.resource === "Crude Oil");
+    assert.strictEqual(petOut50.tempC, 150, "50% exchange cools hot stream by (200-100)*0.5 = 50 °C to 150 °C");
+    assert.strictEqual(oilOut50.tempC, 150, "50% exchange warms cold stream by (200-100)*0.5 = 50 °C to 150 °C");
+
+    // 3) 95% exchange on 405 °C Petroleum + 20 °C Crude Oil:
+    // deltaT = (405 - 20) * 0.95 = 365.75 °C
+    // Crude oil warmed to 20 + 365.75 = 385.75 °C (< 399.85 °C flash point)
+    // It remains Crude Oil in a pipe (no flash, no pipe bursting!)
+    const ev95 = evaluateRow(
+      {
+        entityId: "counterflow_heat_exchanger",
+        qty: 1,
+        material: "Petroleum",
+        materialState: "free",
+        coldMaterial: "Crude Oil",
+        coldMaterialState: "in a pipe",
+        heatExchange: 95,
+      },
+      entityMap,
+      elementMap,
+      20.0,
+      { "Petroleum||free": 405, "Crude Oil||in a pipe": 20 }
+    );
+    const petOut95 = ev95.outputs.find((o) => o.resource === "Petroleum");
+    const oilOut95 = ev95.outputs.find((o) => o.resource === "Crude Oil");
+    assert.ok(oilOut95, "Crude Oil does not flash at 95% heat exchange");
+    assert.strictEqual(oilOut95.state, "in a pipe", "Crude Oil remains inside pipe");
+    assert.strictEqual(Math.round(oilOut95.tempC * 100) / 100, 385.75);
+    assert.strictEqual(Math.round(petOut95.tempC * 100) / 100, 39.25);
+
+    // Verify strict enthalpy conservation: H_in === H_out
+    const hIn = ev95.inputs[0].rate * 1.76 * 405 + ev95.inputs[1].rate * 1.69 * 20;
+    const hOut = petOut95.rate * 1.76 * petOut95.tempC + oilOut95.rate * 1.69 * oilOut95.tempC;
+    assert.ok(Math.abs(hIn - hOut) < 1e-6, "Enthalpy is strictly conserved");
+  });
 });
 
 describe("Meta-Machines: Dynamic Steam Turbine", () => {
