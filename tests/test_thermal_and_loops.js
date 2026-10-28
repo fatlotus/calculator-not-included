@@ -248,7 +248,7 @@ describe("Meta-Machines: Absorb Heat & Phase Change", () => {
 });
 
 describe("Meta-Machines: Counterflow Heat Exchanger", () => {
-  it("calculates heat transfer between hot and cold streams", () => {
+  it("calculates volume-scaled inputs and completely swaps stream temperatures conserving enthalpy", () => {
     const rowExchanger = {
       entityId: "counterflow_heat_exchanger",
       qty: 5,
@@ -267,53 +267,50 @@ describe("Meta-Machines: Counterflow Heat Exchanger", () => {
     assert.strictEqual(evExchanger.heat, 0);
     assert.strictEqual(evExchanger.power, 0);
 
+    // Rate = qty * (1000 / shc)
+    // Petroleum: 5 * (1000 / 1.76) = 2840.909 g/s
+    // Crude Oil: 5 * (1000 / 1.69) = 2958.580 g/s
+    const petIn = evExchanger.inputs.find((i) => i.resource === "Petroleum");
+    const oilIn = evExchanger.inputs.find((i) => i.resource === "Crude Oil");
+    assert.strictEqual(Math.round(petIn.rate * 100) / 100, 2840.91);
+    assert.strictEqual(Math.round(oilIn.rate * 100) / 100, 2958.58);
+
     const petOut = evExchanger.outputs.find((o) => o.resource === "Petroleum");
     const oilOut = evExchanger.outputs.find((o) => o.resource === "Crude Oil");
-    assert.strictEqual(Math.round(petOut.tempC * 100) / 100, 371.59);
-    assert.strictEqual(Math.round(oilOut.tempC * 100) / 100, 129.59);
+    // Completely swaps incoming temperatures
+    assert.strictEqual(petOut.tempC, 100);
+    assert.strictEqual(oilOut.tempC, 400);
+    assert.strictEqual(Math.round(petOut.rate * 100) / 100, 2840.91);
+    assert.strictEqual(Math.round(oilOut.rate * 100) / 100, 2958.58);
+
+    // Enthalpy conservation check: H_in === H_out
+    const hIn = petIn.rate * 1.76 * petIn.tempC + oilIn.rate * 1.69 * oilIn.tempC;
+    const hOut = petOut.rate * 1.76 * petOut.tempC + oilOut.rate * 1.69 * oilOut.tempC;
+    assert.ok(Math.abs(hIn - hOut) < 1e-6);
   });
 
-  it("enforces thermodynamic clamping preventing stream temperatures from crossing", () => {
-    const rowHuge = {
-      entityId: "counterflow_heat_exchanger",
-      qty: 5000,
-      material: "Petroleum",
-      materialState: "free",
-      coldMaterial: "Crude Oil",
-      coldMaterialState: "in a pipe",
+  it("matches upstream fluid surplus using standard stream matching", () => {
+    const pumpRow = {
+      entityId: "liquid_pump",
+      qty: 1,
+      recipeId: "crude_oil",
     };
-    const evHuge = evaluateRow(
-      rowHuge,
-      entityMap,
-      elementMap,
-      20.0,
-      { "Petroleum||free": 400, "Crude Oil||in a pipe": 100 }
-    );
-    const hotOutClamped = evHuge.outputs[0];
-    const coldOutClamped = evHuge.outputs[1];
-
-    assert.ok(coldOutClamped.tempC <= 400.0 + 1e-4);
-    assert.ok(hotOutClamped.tempC >= 100.0 - 1e-4);
-    assert.strictEqual(Math.round(hotOutClamped.tempC * 100) / 100, 111.93);
-    assert.strictEqual(Math.round(coldOutClamped.tempC * 100) / 100, 400);
-  });
-
-  it("calculates heat match target Q_max for counterflow heat exchanger", () => {
     const rowExchanger = {
       entityId: "counterflow_heat_exchanger",
-      qty: 5,
+      qty: 1,
       material: "Petroleum",
       materialState: "free",
       coldMaterial: "Crude Oil",
       coldMaterialState: "in a pipe",
     };
-    const matchTargets = calculateRowMatchTargets(0, [rowExchanger], entityMap, {
+    const matchTargets = calculateRowMatchTargets(1, [pumpRow, rowExchanger], entityMap, {
       elementMap,
-      netInputTemps: { "Petroleum||free": 400, "Crude Oil||in a pipe": 100 },
     });
-    assert.ok(matchTargets["out:Heat"], "Counterflow heat exchanger must provide heat match target for Q_max");
-    // Q_max = (400 - 100) * 1690 / 1000 = 507.0 kDTU/s -> targetQty = 50.70x
-    assert.strictEqual(Math.round(matchTargets["out:Heat"].targetQty * 100) / 100, 50.7);
+    // Pump produces 10000 g/s Crude Oil (in a pipe)
+    // 1 unit of Exchanger takes 1000 / 1.69 g/s Crude Oil
+    // Target qty = 10000 / (1000 / 1.69) = 16.9x
+    assert.ok(matchTargets["in:Crude Oil||in a pipe"]);
+    assert.strictEqual(Math.round(matchTargets["in:Crude Oil||in a pipe"].targetQty * 100) / 100, 16.9);
   });
 });
 

@@ -978,14 +978,14 @@ export function evaluateRow(
     const coldMat = row.coldMaterial || "Crude Oil";
     const coldState = isSolidResource(coldMat, elementMap) ? "free" : (row.coldMaterialState || "in a pipe");
 
-    const hotRate =
-      options?.streamRates?.hotRate ??
-      row.hotRate ??
-      1000.0;
-    const coldRate =
-      options?.streamRates?.coldRate ??
-      row.coldRate ??
-      1000.0;
+    const elemHot = elementMap instanceof Map ? elementMap.get(hotMat) : elementMap?.[hotMat];
+    const elemCold = elementMap instanceof Map ? elementMap.get(coldMat) : elementMap?.[coldMat];
+    const shcHot = (elemHot?.shc !== undefined && elemHot?.shc !== null && Number(elemHot.shc) > 0) ? Number(elemHot.shc) : 1.0;
+    const shcCold = (elemCold?.shc !== undefined && elemCold?.shc !== null && Number(elemCold.shc) > 0) ? Number(elemCold.shc) : 1.0;
+
+    // Unit rate is 1000 / shc g/s (1 / shc kg/s), scaling with qty
+    const hotRate = (1000.0 / shcHot) * qty;
+    const coldRate = (1000.0 / shcCold) * qty;
 
     let tHotIn = defaultInputTemp;
     let tColdIn = defaultInputTemp;
@@ -1013,33 +1013,6 @@ export function evaluateRow(
       tHotIn = Number(row.inputTemp);
     }
 
-    const Q_req = 10.0 * qty;
-    let Q_actual = 0;
-
-    if (tHotIn > tColdIn && hotRate > 1e-9 && coldRate > 1e-9 && qty > 0) {
-      const thReq = applyHeatAndPhaseChange(hotMat, hotRate, tHotIn, -Q_req, hotState, elementMap)[0]?.tempC ?? tHotIn;
-      const tcReq = applyHeatAndPhaseChange(coldMat, coldRate, tColdIn, +Q_req, coldState, elementMap)[0]?.tempC ?? tColdIn;
-
-      if (tcReq <= tHotIn && thReq >= tColdIn) {
-        Q_actual = Q_req;
-      } else {
-        // Temperature crossover at Q_req; bisect to find exact Q_max where tc <= tHotIn and th >= tColdIn
-        let low = 0;
-        let high = Q_req;
-        for (let iter = 0; iter < 60; iter++) {
-          const mid = (low + high) / 2;
-          const th = applyHeatAndPhaseChange(hotMat, hotRate, tHotIn, -mid, hotState, elementMap)[0]?.tempC ?? tHotIn;
-          const tc = applyHeatAndPhaseChange(coldMat, coldRate, tColdIn, +mid, coldState, elementMap)[0]?.tempC ?? tColdIn;
-          if (tc <= tHotIn && th >= tColdIn) {
-            low = mid;
-          } else {
-            high = mid;
-          }
-        }
-        Q_actual = low;
-      }
-    }
-
     const inputs = [
       {
         resource: hotMat,
@@ -1059,23 +1032,25 @@ export function evaluateRow(
       },
     ];
 
-    const hotOutputs = applyHeatAndPhaseChange(
-      hotMat,
-      hotRate,
-      tHotIn,
-      -Q_actual,
-      hotState,
-      elementMap
-    );
-    const coldOutputs = applyHeatAndPhaseChange(
-      coldMat,
-      coldRate,
-      tColdIn,
-      +Q_actual,
-      coldState,
-      elementMap
-    );
-    const outputs = [...hotOutputs, ...coldOutputs];
+    // Completely swap temperatures while conserving enthalpy
+    const outputs = [
+      {
+        resource: hotMat,
+        rate: hotRate,
+        unit: "g/s",
+        state: hotState,
+        tempC: tColdIn,
+        temp: `@ ${formatNumber(tColdIn)} °C`,
+      },
+      {
+        resource: coldMat,
+        rate: coldRate,
+        unit: "g/s",
+        state: coldState,
+        tempC: tHotIn,
+        temp: `@ ${formatNumber(tHotIn)} °C`,
+      },
+    ];
 
     return {
       entity,
@@ -1087,8 +1062,6 @@ export function evaluateRow(
       inputs: qty <= 0 ? [] : inputs,
       outputs: qty <= 0 ? [] : outputs,
       isStateTransferFor: new Set(),
-      qActual: Q_actual,
-      qReq: Q_req,
     };
   }
 
@@ -1372,16 +1345,6 @@ export function resolveTableTemperatures(rows, entityMap, elementMap = null, opt
       const avail = p ? p.availRate : 0;
       const massRate = avail > 1e-6 ? avail : (row.rate ?? 1000.0);
       streamRates = { massRate, rate: massRate };
-    } else if (row.entityId === "counterflow_heat_exchanger") {
-      const hotMat = row.material || "Petroleum";
-      const hotSt = isSolidResource(hotMat, elementMap) ? "free" : (row.materialState || "free");
-      const coldMat = row.coldMaterial || "Crude Oil";
-      const coldSt = isSolidResource(coldMat, elementMap) ? "free" : (row.coldMaterialState || "in a pipe");
-      const pHot = pool.get(getKey(hotMat, hotSt));
-      const pCold = pool.get(getKey(coldMat, coldSt));
-      const hotRate = pHot && pHot.availRate > 1e-6 ? pHot.availRate : (row.hotRate ?? 1000.0);
-      const coldRate = pCold && pCold.availRate > 1e-6 ? pCold.availRate : (row.coldRate ?? 1000.0);
-      streamRates = { hotRate, coldRate };
     }
 
     const preEval = evaluateRow(row, entityMap, elementMap, 20.0, null, { streamRates });
@@ -1630,34 +1593,6 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, option
         const targetQty = qToThreshold / 10.0;
         matches["out:phase_change"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
       }
-    }
-  } else if (targetRow.entityId === "counterflow_heat_exchanger") {
-    // Match to maximum thermodynamic heat transfer Q_max
-    const hotMat = targetRow.material || "Petroleum";
-    const coldMat = targetRow.coldMaterial || "Crude Oil";
-    const hotSt = targetRow.materialState || "free";
-    const coldSt = targetRow.coldMaterialState || "in a pipe";
-    const hotRate = currentTargetEval.inputs[0]?.rate || 1000.0;
-    const coldRate = currentTargetEval.inputs[1]?.rate || 1000.0;
-    const tHotIn = currentTargetEval.inputs[0]?.tempC ?? 20.0;
-    const tColdIn = currentTargetEval.inputs[1]?.tempC ?? 20.0;
-
-    if (tHotIn > tColdIn && hotRate > 1e-9 && coldRate > 1e-9) {
-      const Q_upper = ((tHotIn - tColdIn) * Math.max(hotRate, coldRate, 10000.0) * 15.0) / 1000.0;
-      let low = 0;
-      let high = Q_upper;
-      for (let iter = 0; iter < 60; iter++) {
-        const mid = (low + high) / 2;
-        const th = applyHeatAndPhaseChange(hotMat, hotRate, tHotIn, -mid, hotSt, elementMap)[0]?.tempC ?? tHotIn;
-        const tc = applyHeatAndPhaseChange(coldMat, coldRate, tColdIn, +mid, coldSt, elementMap)[0]?.tempC ?? tColdIn;
-        if (tc <= tHotIn && th >= tColdIn) {
-          low = mid;
-        } else {
-          high = mid;
-        }
-      }
-      const targetQty = low / 10.0;
-      matches["out:Heat"] = { targetQty, isMatched: Math.abs(targetQty - targetRow.qty) < 1e-4 };
     }
   }
 
