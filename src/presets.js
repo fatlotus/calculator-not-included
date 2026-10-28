@@ -10,9 +10,7 @@ export const PRESETS = [
     name: "Hydra SPOM",
     description: "Self-Powered Oxygen Machine supporting 8 duplicants with net surplus hydrogen and power.",
     rateMode: "s",
-    loops: [
-      { resource: "Power", state: "free", rate: 896, unit: "W" },
-    ],
+    loops: [],
     rows: [
       { entityId: "liquid_pump", qty: 0.1, recipeId: "water", modifiers: [] },
       { entityId: "electrolyzer", qty: 1, recipeId: null, modifiers: [] },
@@ -26,9 +24,10 @@ export const PRESETS = [
     name: "Coal Generator + Carbon Skimmer Loop",
     description: "Continuous 9 kW power generation with closed-loop CO2 scrubbing and water filtration.",
     rateMode: "s",
-    loops: [
-      { resource: "Water", state: "in a pipe", rate: 1000, unit: "g/s", tempC: 20 },
-    ],
+    loops: [],
+    netInputTemps: {
+      "Water||in a pipe": 20,
+    },
     rows: [
       { entityId: "coal_generator", qty: 15, recipeId: null, modifiers: [] },
       { entityId: "gas_pump", qty: 0.6, recipeId: "carbon_dioxide", modifiers: [] },
@@ -41,9 +40,7 @@ export const PRESETS = [
     name: "Stone Hatch Ranch (8x) + Coal Power",
     description: "Sustainable ranch of 8 stone hatches consuming igneous rock to feed a coal generator and 8 duplicants.",
     rateMode: "s",
-    loops: [
-      { resource: "Duplicant Labor", state: "labor", rate: 6, unit: "s/s" },
-    ],
+    loops: [],
     rows: [
       { entityId: "critter_stone_hatch", qty: 8, recipeId: "igneous_rock", modifiers: [] },
       { entityId: "coal_generator", qty: 1, recipeId: null, modifiers: [] },
@@ -56,10 +53,10 @@ export const PRESETS = [
     name: "Arbor Tree Ethanol Power Loop",
     description: "Closed-loop wood and ethanol cycle producing massive net power, polluted water, and dirt.",
     rateMode: "s",
-    loops: [
-      { resource: "Polluted Water", state: "in a pipe", rate: 1000, unit: "g/s", tempC: 20 },
-      { resource: "Power", state: "free", rate: 2000, unit: "W" },
-    ],
+    loops: [],
+    netInputTemps: {
+      "Polluted Water||in a pipe": 20,
+    },
     rows: [
       { entityId: "plant_arbor_tree", qty: 8, recipeId: null, modifiers: [] },
       { entityId: "ethanol_distiller", qty: 4, recipeId: null, modifiers: [] },
@@ -73,9 +70,7 @@ export const PRESETS = [
     name: "Natural Gas Geyser Power Plant",
     description: "Harvesting a natural gas geyser (105 g/s) with fractional gas pump (0.21x) and generator (1.1667x) for 100% fuel efficiency and clean power generation.",
     rateMode: "s",
-    loops: [
-      { resource: "Power", state: "free", rate: 933.36, unit: "W" },
-    ],
+    loops: [],
     rows: [
       { entityId: "geyser_natural_gas_geyser", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "gas_pump", qty: 0.21, recipeId: "natural_gas", modifiers: [] },
@@ -87,9 +82,7 @@ export const PRESETS = [
     name: "Oil Refinery + Petroleum Power Plant",
     description: "Refines 10 kg/s Crude Oil into Petroleum and Natural Gas, supporting 5 kW continuous power generation.",
     rateMode: "s",
-    loops: [
-      { resource: "Power", state: "free", rate: 5000, unit: "W" },
-    ],
+    loops: [],
     rows: [
       { entityId: "duplicant", qty: 1.3333, recipeId: "schedule_default", modifiers: [], bathroom: "plumbed", food: "none" },
       { entityId: "liquid_pump", qty: 1, recipeId: "crude_oil", modifiers: [] },
@@ -126,17 +119,17 @@ export const PRESETS = [
     name: "Industrial Sauna",
     description: "Industrial sauna recycling heat from a glass forge and thermo aquatuner coolant loop into steam turbines, producing net positive power.",
     rateMode: "s",
-    loops: [
-      { resource: "Power", state: "free", rate: 2400, unit: "W" },
-      { resource: "Polluted Water", state: "in a pipe", rate: 10000, unit: "g/s", tempC: 20 },
-      { resource: "Water", state: "in a pipe", rate: 4000, unit: "g/s", tempC: 95 },
-    ],
+    loops: [],
+    netInputTemps: {
+      "Polluted Water||in a pipe": 20,
+      "Water||in a pipe": 95,
+    },
     rows: [
       { entityId: "glass_forge", qty: 1, recipeId: "molten_glass", modifiers: [] },
-      { entityId: "counterflow_heat_exchanger", qty: 61.9615, material: "Molten Glass", materialState: "in a pipe", coldMaterial: "Water", coldMaterialState: "in a pipe", modifiers: [] },
-      { entityId: "absorb_heat", qty: 58.506, material: "Polluted Water", materialState: "in a pipe", modifiers: [] },
+      { entityId: "counterflow_heat_exchanger", qty: 0.05, material: "Molten Glass", materialState: "in a pipe", coldMaterial: "Water", coldMaterialState: "in a pipe", modifiers: [] },
+      { entityId: "absorb_heat", qty: 10, material: "Polluted Water", materialState: "in a pipe", tempDelta: 14, modifiers: [] },
       { entityId: "thermo_aquatuner", qty: 1, recipeId: "polluted_water", modifiers: [] },
-      { entityId: "absorb_heat", qty: 113.5565, material: "Steam", materialState: "free", modifiers: [] },
+      { entityId: "absorb_heat", qty: 4, material: "Water", materialState: "in a pipe", tempDelta: 40.63, modifiers: [] },
       { entityId: "steam_turbine", qty: 2, recipeId: null, modifiers: ["engie_tuneup"] },
     ],
   },
@@ -144,15 +137,17 @@ export const PRESETS = [
     id: "petroleum_boiler",
     name: "Petroleum Boiler",
     description: "Counterflow petroleum boiler using outgoing hot petroleum to preheat incoming crude oil, requiring only a small volcano magma heat injection to flash 10 kg/s of crude oil into petroleum.",
-    loops: [
-      { resource: "Petroleum", state: "free", rate: 10000, unit: "g/s", tempC: 405 },
-    ],
+    rateMode: "s",
+    loops: [],
+    netInputTemps: {
+      "Petroleum||free": 405,
+      "Crude Oil||free": 20,
+    },
     rows: [
       { entityId: "liquid_pump", qty: 1, recipeId: "crude_oil", modifiers: [] },
-      { entityId: "counterflow_heat_exchanger", qty: 625, material: "Petroleum", materialState: "free", coldMaterial: "Crude Oil", coldMaterialState: "in a pipe", modifiers: [] },
+      { entityId: "counterflow_heat_exchanger", qty: 16.9, material: "Petroleum", materialState: "free", coldMaterial: "Crude Oil", coldMaterialState: "in a pipe", modifiers: [] },
+      { entityId: "absorb_heat", qty: 10, material: "Crude Oil", materialState: "in a pipe", tempDelta: 0, modifiers: [] },
       { entityId: "liquid_pump", qty: 1, recipeId: "petroleum", modifiers: [] },
-      { entityId: "geyser_minor_volcano", qty: 1, recipeId: "lifetime_avg", modifiers: [] },
-      { entityId: "counterflow_heat_exchanger", qty: 26.0105, material: "Magma", materialState: "free", coldMaterial: "Crude Oil", coldMaterialState: "in a pipe", modifiers: [] },
     ],
   },
 ];

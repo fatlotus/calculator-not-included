@@ -8,7 +8,7 @@ import { describe, it } from "node:test";
 import assert from "node:assert";
 
 import { ONI_DATASET } from "../src/dataset.js";
-import { evaluateRow, calculateSystemNet, calculateRowMatchTargets } from "../src/calculator.js";
+import { evaluateRow, resolveTableTemperatures, calculateSystemNet, calculateRowMatchTargets } from "../src/calculator.js";
 import { buildEntityCatalog } from "../src/data_loader.js";
 import { PRESETS, getPresetById } from "../src/presets.js";
 
@@ -29,8 +29,13 @@ describe("Presets & System Balances", () => {
     assert.strictEqual(hydra.name, "Hydra SPOM");
     assert.strictEqual(hydra.rows.length, 5);
 
-    const evaluatedHydra = hydra.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-    const net = calculateSystemNet(evaluatedHydra, { loops: hydra.loops });
+    const evaluatedHydra = resolveTableTemperatures(hydra.rows, entityMap, elementMap, {
+      netInputTemps: hydra.netInputTemps,
+    });
+    const net = calculateSystemNet(evaluatedHydra, {
+      elementMap,
+      netInputTemps: hydra.netInputTemps,
+    });
 
     assert.strictEqual(net.netPower, 698.24);
     assert.strictEqual(net.netBuildingHeat, 6.38);
@@ -48,7 +53,11 @@ describe("Presets & System Balances", () => {
     assert.strictEqual(net.netOutputs.find((o) => o.resource === "Polluted Water").rate, 156);
 
     // Match targets for Gas Pump (index 2)
-    const matches = calculateRowMatchTargets(2, hydra.rows, entityMap, { loops: hydra.loops });
+    const matches = calculateRowMatchTargets(2, hydra.rows, entityMap, {
+      elementMap,
+      netInputTemps: hydra.netInputTemps,
+      evaluatedRows: evaluatedHydra,
+    });
     assert.strictEqual(matches["in:Hydrogen||free"].isMatched, true);
     assert.strictEqual(matches["in:Hydrogen||free"].targetQty, 0.224);
     assert.strictEqual(matches["out:Hydrogen||in a pipe"].isMatched, true);
@@ -59,8 +68,13 @@ describe("Presets & System Balances", () => {
     assert.ok(oilPreset);
     assert.strictEqual(oilPreset.rows.length, 6);
 
-    const evalOil = oilPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-    const oilNet = calculateSystemNet(evalOil, { loops: oilPreset.loops, elementMap });
+    const evalOil = resolveTableTemperatures(oilPreset.rows, entityMap, elementMap, {
+      netInputTemps: oilPreset.netInputTemps,
+    });
+    const oilNet = calculateSystemNet(evalOil, {
+      elementMap,
+      netInputTemps: oilPreset.netInputTemps,
+    });
 
     assert.ok(oilNet.netPower > 5000, "Power plant should produce > 5000 W net");
 
@@ -79,8 +93,13 @@ describe("Presets & System Balances", () => {
     assert.ok(dreckoPreset);
     assert.strictEqual(dreckoPreset.rows.length, 2);
 
-    const evalDrecko = dreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-    const dreckoNet = calculateSystemNet(evalDrecko, { loops: dreckoPreset.loops });
+    const evalDrecko = resolveTableTemperatures(dreckoPreset.rows, entityMap, elementMap, {
+      netInputTemps: dreckoPreset.netInputTemps,
+    });
+    const dreckoNet = calculateSystemNet(evalDrecko, {
+      elementMap,
+      netInputTemps: dreckoPreset.netInputTemps,
+    });
 
     const plasticOut = dreckoNet.netOutputs.find((o) => o.resource === "Plastic");
     assert.ok(plasticOut);
@@ -100,8 +119,13 @@ describe("Presets & System Balances", () => {
     assert.ok(regularDreckoPreset);
     assert.strictEqual(regularDreckoPreset.rows.length, 2);
 
-    const evalRegularDrecko = regularDreckoPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-    const regularDreckoNet = calculateSystemNet(evalRegularDrecko, { loops: regularDreckoPreset.loops });
+    const evalRegularDrecko = resolveTableTemperatures(regularDreckoPreset.rows, entityMap, elementMap, {
+      netInputTemps: regularDreckoPreset.netInputTemps,
+    });
+    const regularDreckoNet = calculateSystemNet(evalRegularDrecko, {
+      elementMap,
+      netInputTemps: regularDreckoPreset.netInputTemps,
+    });
 
     const reedFiberOut = regularDreckoNet.netOutputs.find((o) => o.resource === "Reed Fiber");
     assert.ok(reedFiberOut);
@@ -117,8 +141,13 @@ describe("Presets & System Balances", () => {
     assert.ok(coalPreset);
     assert.strictEqual(coalPreset.rows.length, 4);
 
-    const evalCoal = coalPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-    const coalNet = calculateSystemNet(evalCoal, { loops: coalPreset.loops });
+    const evalCoal = resolveTableTemperatures(coalPreset.rows, entityMap, elementMap, {
+      netInputTemps: coalPreset.netInputTemps,
+    });
+    const coalNet = calculateSystemNet(evalCoal, {
+      elementMap,
+      netInputTemps: coalPreset.netInputTemps,
+    });
 
     assert.strictEqual(coalNet.netPower, 8712);
     // Intermediate resources cancel out
@@ -135,8 +164,13 @@ describe("Presets & System Balances", () => {
     assert.ok(arborPreset);
     assert.strictEqual(arborPreset.rows.length, 5);
 
-    const evalArbor = arborPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-    const arborNet = calculateSystemNet(evalArbor, { loops: arborPreset.loops });
+    const evalArbor = resolveTableTemperatures(arborPreset.rows, entityMap, elementMap, {
+      netInputTemps: arborPreset.netInputTemps,
+    });
+    const arborNet = calculateSystemNet(evalArbor, {
+      elementMap,
+      netInputTemps: arborPreset.netInputTemps,
+    });
     assert.strictEqual(arborNet.netOutputs.find((o) => o.resource === "Carbon Dioxide" && o.state === "in a pipe"), undefined);
   });
 
@@ -145,8 +179,13 @@ describe("Presets & System Balances", () => {
     assert.ok(ngPreset);
     assert.strictEqual(ngPreset.rows.length, 3);
 
-    const evalNG = ngPreset.rows.map((r) => evaluateRow(r, entityMap, elementMap));
-    const ngNet = calculateSystemNet(evalNG, { loops: ngPreset.loops });
+    const evalNG = resolveTableTemperatures(ngPreset.rows, entityMap, elementMap, {
+      netInputTemps: ngPreset.netInputTemps,
+    });
+    const ngNet = calculateSystemNet(evalNG, {
+      elementMap,
+      netInputTemps: ngPreset.netInputTemps,
+    });
 
     assert.ok(ngNet.netPower > 850);
     assert.strictEqual(ngNet.netOutputs.find((o) => o.resource === "Natural Gas" && o.state === "free"), undefined);
@@ -155,5 +194,44 @@ describe("Presets & System Balances", () => {
     const ngGasIn = ngNet.netInputs.find((i) => i.resource === "Natural Gas");
     const ngGasInRate = ngGasIn ? ngGasIn.rate : 0;
     assert.ok(ngGasInRate < 0.01);
+  });
+
+  it("evaluates Industrial Sauna preset and verifies automated heat and water loops", () => {
+    const saunaPreset = getPresetById("industrial_sauna");
+    assert.ok(saunaPreset);
+    assert.strictEqual(saunaPreset.rows.length, 6);
+
+    const evalSauna = resolveTableTemperatures(saunaPreset.rows, entityMap, elementMap, {
+      netInputTemps: saunaPreset.netInputTemps,
+    });
+    const saunaNet = calculateSystemNet(evalSauna, {
+      elementMap,
+      netInputTemps: saunaPreset.netInputTemps,
+    });
+
+    assert.ok(evalSauna._loops.some((l) => l.resource === "Polluted Water"));
+    assert.ok(evalSauna._loops.some((l) => l.resource === "Water"));
+    assert.strictEqual(saunaNet.netInputs.find((i) => i.resource === "Water"), undefined);
+    assert.strictEqual(saunaNet.netInputs.find((i) => i.resource === "Polluted Water"), undefined);
+  });
+
+  it("evaluates Petroleum Boiler preset and verifies automated petroleum counterflow loop", () => {
+    const boilerPreset = getPresetById("petroleum_boiler");
+    assert.ok(boilerPreset);
+    assert.strictEqual(boilerPreset.rows.length, 4);
+
+    const evalBoiler = resolveTableTemperatures(boilerPreset.rows, entityMap, elementMap, {
+      netInputTemps: boilerPreset.netInputTemps,
+    });
+    const boilerNet = calculateSystemNet(evalBoiler, {
+      elementMap,
+      netInputTemps: boilerPreset.netInputTemps,
+    });
+
+    const petLoop = evalBoiler._loops.find((l) => l.resource === "Petroleum");
+    assert.ok(petLoop, "Must auto-loop petroleum at 405 °C");
+    assert.strictEqual(Math.round(petLoop.tempC), 405);
+    assert.strictEqual(boilerNet.netInputs.find((i) => i.resource === "Petroleum"), undefined);
+    assert.strictEqual(boilerNet.netInputs.find((i) => i.resource === "Crude Oil").rate, 10000);
   });
 });

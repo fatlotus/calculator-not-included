@@ -740,6 +740,11 @@ export const PROTO_DESCRIPTOR = {
                 "countDouble",
                 "countScaled"
               ]
+            },
+            "_temp_delta": {
+              "oneof": [
+                "tempDelta"
+              ]
             }
           },
           "fields": {
