@@ -1043,24 +1043,26 @@ export function evaluateRow(
     ];
 
     // Completely swap temperatures while conserving enthalpy
-    const outputs = [
-      {
-        resource: hotMat,
-        rate: hotRate,
-        unit: "g/s",
-        state: hotState,
-        tempC: tColdIn,
-        temp: `@ ${formatNumber(tColdIn)} °C`,
-      },
-      {
-        resource: coldMat,
-        rate: coldRate,
-        unit: "g/s",
-        state: coldState,
-        tempC: tHotIn,
-        temp: `@ ${formatNumber(tHotIn)} °C`,
-      },
-    ];
+    // Apply phase transitions to outgoing swapped streams
+    const hotOutputs = applyHeatAndPhaseChange(
+      hotMat,
+      hotRate,
+      tColdIn,
+      0,
+      hotState,
+      elementMap
+    );
+
+    const coldOutputs = applyHeatAndPhaseChange(
+      coldMat,
+      coldRate,
+      tHotIn,
+      0,
+      coldState,
+      elementMap
+    );
+
+    const outputs = [...hotOutputs, ...coldOutputs];
 
     return {
       entity,

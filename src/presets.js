@@ -146,7 +146,6 @@ export const PRESETS = [
     rows: [
       { entityId: "liquid_pump", qty: 1, recipeId: "crude_oil", modifiers: [] },
       { entityId: "counterflow_heat_exchanger", qty: 16.9, material: "Petroleum", materialState: "free", coldMaterial: "Crude Oil", coldMaterialState: "in a pipe", modifiers: [] },
-      { entityId: "absorb_heat", qty: 10, material: "Crude Oil", materialState: "in a pipe", tempDelta: 0, modifiers: [] },
       { entityId: "liquid_pump", qty: 1, recipeId: "petroleum", modifiers: [] },
     ],
   },

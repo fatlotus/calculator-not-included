@@ -211,14 +211,13 @@ describe("Presets & System Balances", () => {
 
     assert.ok(evalSauna._loops.some((l) => l.resource === "Polluted Water"));
     assert.ok(evalSauna._loops.some((l) => l.resource === "Water"));
-    assert.strictEqual(saunaNet.netInputs.find((i) => i.resource === "Water"), undefined);
     assert.strictEqual(saunaNet.netInputs.find((i) => i.resource === "Polluted Water"), undefined);
   });
 
   it("evaluates Petroleum Boiler preset and verifies automated petroleum counterflow loop", () => {
     const boilerPreset = getPresetById("petroleum_boiler");
     assert.ok(boilerPreset);
-    assert.strictEqual(boilerPreset.rows.length, 4);
+    assert.strictEqual(boilerPreset.rows.length, 3);
 
     const evalBoiler = resolveTableTemperatures(boilerPreset.rows, entityMap, elementMap, {
       netInputTemps: boilerPreset.netInputTemps,

@@ -262,7 +262,7 @@ describe("Meta-Machines: Counterflow Heat Exchanger", () => {
       entityMap,
       elementMap,
       20.0,
-      { "Petroleum||free": 400, "Crude Oil||in a pipe": 100 }
+      { "Petroleum||free": 200, "Crude Oil||in a pipe": 100 }
     );
     assert.strictEqual(evExchanger.heat, 0);
     assert.strictEqual(evExchanger.power, 0);
@@ -279,7 +279,7 @@ describe("Meta-Machines: Counterflow Heat Exchanger", () => {
     const oilOut = evExchanger.outputs.find((o) => o.resource === "Crude Oil");
     // Completely swaps incoming temperatures
     assert.strictEqual(petOut.tempC, 100);
-    assert.strictEqual(oilOut.tempC, 400);
+    assert.strictEqual(oilOut.tempC, 200);
     assert.strictEqual(Math.round(petOut.rate * 100) / 100, 2840.91);
     assert.strictEqual(Math.round(oilOut.rate * 100) / 100, 2958.58);
 
@@ -287,6 +287,33 @@ describe("Meta-Machines: Counterflow Heat Exchanger", () => {
     const hIn = petIn.rate * 1.76 * petIn.tempC + oilIn.rate * 1.69 * oilIn.tempC;
     const hOut = petOut.rate * 1.76 * petOut.tempC + oilOut.rate * 1.69 * oilOut.tempC;
     assert.ok(Math.abs(hIn - hOut) < 1e-6);
+  });
+
+  it("converts fluid to new phase if swapped temperature exceeds transition threshold (e.g. Crude Oil -> Petroleum)", () => {
+    const rowExchanger = {
+      entityId: "counterflow_heat_exchanger",
+      qty: 1,
+      material: "Petroleum",
+      materialState: "free",
+      coldMaterial: "Crude Oil",
+      coldMaterialState: "in a pipe",
+    };
+    const evExchanger = evaluateRow(
+      rowExchanger,
+      entityMap,
+      elementMap,
+      20.0,
+      { "Petroleum||free": 405, "Crude Oil||in a pipe": 20 }
+    );
+    // Crude oil heated to 405 °C (> 399.85 °C) must flash into Petroleum
+    assert.strictEqual(evExchanger.outputs.length, 2);
+    // Both outputs are Petroleum (one cooled, one flashed)
+    assert.ok(evExchanger.outputs.every((o) => o.resource === "Petroleum"));
+    const cooledPet = evExchanger.outputs.find((o) => Math.round(o.tempC) === 20);
+    const flashedPet = evExchanger.outputs.find((o) => Math.round(o.tempC) === 405);
+    assert.ok(cooledPet, "Cooled petroleum stream exists at 20 °C");
+    assert.ok(flashedPet, "Flashed crude oil becomes petroleum stream at 405 °C");
+    assert.strictEqual(flashedPet.state, "free", "Flashed pipe stream breaks out to free");
   });
 
   it("matches upstream fluid surplus using standard stream matching", () => {
@@ -407,7 +434,7 @@ describe("Meta-Machines: Dynamic Steam Turbine", () => {
 describe("Automatic Loop Detection & Net Matching", () => {
   it("automatically forms a thermal loop when input and output temperatures match within 0.05 °C", () => {
     // Row 0: Counterflow heat exchanger taking Crude Oil @ 90 °C and Petroleum @ 400 °C
-    // Row 1: Boiler turning Crude Oil into Petroleum @ 400 °C (simulated via absorb_heat flash)
+    // Flashed Petroleum emerging at 400 °C matches incoming Petroleum @ 400 °C
     const rows = [
       {
         entityId: "counterflow_heat_exchanger",
@@ -416,13 +443,6 @@ describe("Automatic Loop Detection & Net Matching", () => {
         materialState: "free",
         coldMaterial: "Crude Oil",
         coldMaterialState: "in a pipe",
-      },
-      {
-        entityId: "absorb_heat",
-        qty: 1000 / (1.69 * 1000), // match crude oil flow
-        material: "Crude Oil",
-        materialState: "in a pipe",
-        tempDelta: 0, // already at 400 °C from counterflow output, so it emerges as Petroleum @ 400 °C
       },
     ];
 
