@@ -200,39 +200,17 @@ class OniApp {
     const tfoot = document.getElementById("calc-table-foot");
 
     if (tbody) {
-      tbody.addEventListener("input", (e) => {
-        if (e.target.classList.contains("qty-input")) {
-          const idx = parseInt(e.target.dataset.rowIndex, 10);
-          const val = parseFloat(e.target.value);
-          if (!isNaN(val) && this.state.rows[idx]) {
-            this.state.rows[idx].qty = Math.max(0, val);
-            this.onStateChange(false);
-          }
-        }
-        if (e.target.classList.contains("temp-delta-input")) {
-          const idx = parseInt(e.target.dataset.rowIndex, 10);
-          const val = parseFloat(e.target.value);
-          if (!isNaN(val) && this.state.rows[idx]) {
-            this.state.rows[idx].tempDelta = val;
-            this.onStateChange(false);
-          }
-        }
-        if (e.target.classList.contains("heat-exchange-input")) {
-          const idx = parseInt(e.target.dataset.rowIndex, 10);
-          const val = parseFloat(e.target.value);
-          if (!isNaN(val) && this.state.rows[idx]) {
-            this.state.rows[idx].heatExchange = Math.max(0, Math.min(100, val));
-            this.onStateChange(false);
-          }
-        }
-        if (e.target.classList.contains("loop-temp-input")) {
-          const key = e.target.dataset.key;
-          const val = parseFloat(e.target.value);
-          if (key && !isNaN(val)) {
-            if (!this.state.netInputTemps) this.state.netInputTemps = {};
-            this.state.netInputTemps[key] = val;
-            this.onStateChange(false);
-          }
+      // Commit and blur inputs on Enter
+      tbody.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Enter" &&
+          (e.target.classList.contains("qty-input") ||
+            e.target.classList.contains("temp-delta-input") ||
+            e.target.classList.contains("heat-exchange-input") ||
+            e.target.classList.contains("loop-temp-input"))
+        ) {
+          e.preventDefault();
+          e.target.blur();
         }
       });
 
@@ -426,15 +404,11 @@ class OniApp {
     }
 
     if (tfoot) {
-      tfoot.addEventListener("input", (e) => {
-        if (e.target.classList.contains("net-temp-input")) {
-          const key = e.target.dataset.key;
-          const val = parseFloat(e.target.value);
-          if (!isNaN(val) && key) {
-            if (!this.state.netInputTemps) this.state.netInputTemps = {};
-            this.state.netInputTemps[key] = val;
-            this.onStateChange(false);
-          }
+      // Commit and blur net-temp-input on Enter
+      tfoot.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && e.target.classList.contains("net-temp-input")) {
+          e.preventDefault();
+          e.target.blur();
         }
       });
 
