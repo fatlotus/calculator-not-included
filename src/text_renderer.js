@@ -139,17 +139,21 @@ export function computeStateData(state, catalog = null) {
   const rateMode = state?.rateMode || state?.unit || "s";
   const rows = state?.rows || [];
   const netInputTemps = state?.netInputTemps || {};
-  const loops = state?.loops || rows?._loops || [];
+  const explicitLoops =
+    state && Array.isArray(state.loops) && state.loops.length > 0 ? state.loops : null;
+  const loops = explicitLoops || rows?._loops || null;
 
   const evaluatedRows = resolveTableTemperatures(rows, catalog.entityMap, catalog.elementMap, {
     netInputTemps,
     loops,
   });
 
+  const activeLoops = explicitLoops || evaluatedRows._loops || [];
+
   const net = calculateSystemNet(evaluatedRows, {
     elementMap: catalog.elementMap,
     netInputTemps,
-    loops,
+    loops: activeLoops,
   });
 
   let loopStartData = null;

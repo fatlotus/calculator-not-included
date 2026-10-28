@@ -463,6 +463,13 @@ describe("Automatic Loop Detection & Net Matching", () => {
     assert.strictEqual(net.loopEndStreams.length, 1);
     assert.strictEqual(net.loopEndStreams[0].resource, "Petroleum");
 
+    // Even if options.loops is explicitly passed as [] (as in browser state), it must fall back to auto-detected loops
+    const netWithEmptyLoops = calculateSystemNet(evaluated, { elementMap, netInputTemps, loops: [] });
+    assert.strictEqual(netWithEmptyLoops.loopStartStreams.length, 1);
+    assert.strictEqual(netWithEmptyLoops.loopStartStreams[0].resource, "Petroleum");
+    assert.strictEqual(netWithEmptyLoops.loopEndStreams.length, 1);
+    assert.strictEqual(netWithEmptyLoops.loopEndStreams[0].resource, "Petroleum");
+
     // Net inputs should only need Crude Oil, NOT Petroleum
     const netPetIn = net.netInputs.find((i) => i.resource === "Petroleum");
     assert.strictEqual(netPetIn, undefined, "Petroleum input is fully looped, no net input required");

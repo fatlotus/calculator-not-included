@@ -480,10 +480,15 @@ class OniApp {
       }
     );
 
+    const activeLoops =
+      (Array.isArray(this.state.loops) && this.state.loops.length > 0
+        ? this.state.loops
+        : evaluatedRows._loops) || [];
+
     const net = calculateSystemNet(evaluatedRows, {
       elementMap: this.catalog.elementMap,
       netInputTemps: this.state.netInputTemps,
-      loops: this.state.loops,
+      loops: activeLoops,
     });
 
     const loopStartHtml = renderLoopStartRowHtml(
@@ -495,7 +500,7 @@ class OniApp {
     const machineRowsHtml = evaluatedRows
       .map((ev, i) => {
         const matches = calculateRowMatchTargets(i, this.state.rows, this.catalog.entityMap, {
-          loops: this.state.loops,
+          loops: activeLoops,
           elementMap: this.catalog.elementMap,
           netInputTemps: this.state.netInputTemps,
           evaluatedRows,
@@ -508,7 +513,7 @@ class OniApp {
           i,
           matches,
           evaluatedRows.length,
-          this.state.loops
+          activeLoops
         );
       })
       .join("");
@@ -553,10 +558,15 @@ class OniApp {
       }
     );
 
+    const activeLoops =
+      (Array.isArray(this.state.loops) && this.state.loops.length > 0
+        ? this.state.loops
+        : evaluatedRows._loops) || [];
+
     const net = calculateSystemNet(evaluatedRows, {
       elementMap: this.catalog.elementMap,
       netInputTemps: this.state.netInputTemps,
-      loops: this.state.loops,
+      loops: activeLoops,
     });
 
     const hasLoopStart = Boolean(document.querySelector(".loop-start-row"));
@@ -600,7 +610,7 @@ class OniApp {
       const ev = evaluatedRows[i];
       if (!ev) return;
       const matches = calculateRowMatchTargets(i, this.state.rows, this.catalog.entityMap, {
-        loops: this.state.loops,
+        loops: activeLoops,
         elementMap: this.catalog.elementMap,
         netInputTemps: this.state.netInputTemps,
         evaluatedRows,
@@ -614,7 +624,7 @@ class OniApp {
         i,
         matches,
         evaluatedRows.length,
-        this.state.loops
+        activeLoops
       );
       const newTr = dummy.firstElementChild;
       if (newTr) {

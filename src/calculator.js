@@ -1588,8 +1588,10 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, option
   if (!targetRow) return {};
 
   const elementMap = options?.elementMap || null;
+  const explicitLoops =
+    options && Array.isArray(options.loops) && options.loops.length > 0 ? options.loops : null;
   const loops =
-    (options && Array.isArray(options.loops) ? options.loops : (options?.evaluatedRows?._loops || rows?._loops)) || [];
+    explicitLoops || (options?.evaluatedRows?._loops || rows?._loops) || [];
 
   const evaluatedRows =
     options?.evaluatedRows ||
@@ -1780,8 +1782,9 @@ export function calculateRowMatchTargets(targetRowIndex, rows, entityMap, option
 export function calculateSystemNet(evaluatedRows, options = {}) {
   const netInputTemps = options.netInputTemps || {};
   const elementMap = options.elementMap || null;
-  const loops =
-    (options && Array.isArray(options.loops) ? options.loops : evaluatedRows?._loops) || [];
+  const explicitLoops =
+    options && Array.isArray(options.loops) && options.loops.length > 0 ? options.loops : null;
+  const loops = explicitLoops || evaluatedRows?._loops || [];
 
   let availPower = 0;
   let deficitPower = 0;
