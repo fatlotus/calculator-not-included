@@ -30,6 +30,7 @@ describe("Presets & System Balances", () => {
 
     const groups = getPresetsByCategory();
     assert.ok(groups["Power"].length >= 3, "Power category must have multiple presets");
+    assert.ok(groups["Manufacturing"].length >= 1, "Manufacturing category must have presets");
     assert.ok(groups["Materials"].length >= 2, "Materials category must have multiple presets");
     assert.ok(groups["Water Purification"].length >= 1, "Water Purification category must have presets");
     assert.ok(groups["Life Support"].length >= 1, "Life Support category must have presets");
@@ -277,5 +278,41 @@ describe("Presets & System Balances", () => {
     const wasteOut = rxNet.netOutputs.find((o) => o.resource === "Liquid Nuclear Waste");
     assert.ok(wasteOut, "Must have Liquid Nuclear Waste net output");
     assert.strictEqual(wasteOut.rate, 1666.67);
+  });
+
+  it("evaluates Washroom Water Purification Loop preset and verifies water surplus", () => {
+    const washPreset = getPresetById("washroom_water_purification");
+    assert.ok(washPreset, "washroom_water_purification preset must exist");
+    assert.strictEqual(washPreset.rows.length, 4);
+
+    const evalWash = resolveTableTemperatures(washPreset.rows, entityMap, elementMap, {
+      netInputTemps: washPreset.netInputTemps,
+    });
+    const washNet = calculateSystemNet(evalWash, {
+      elementMap,
+      netInputTemps: washPreset.netInputTemps,
+    });
+
+    // Net power and heat
+    assert.strictEqual(washNet.netPower, -3.27);
+    assert.strictEqual(washNet.netBuildingHeat, 0.11);
+
+    // Polluted water is 100% eliminated (0 net)
+    assert.strictEqual(washNet.netInputs.find((i) => i.resource === "Polluted Water"), undefined);
+    assert.strictEqual(washNet.netOutputs.find((o) => o.resource === "Polluted Water"), undefined);
+
+    // Net inputs: Sand (~27.27 g/s)
+    const sandIn = washNet.netInputs.find((i) => i.resource === "Sand");
+    assert.ok(sandIn, "Must have Sand input");
+    assert.strictEqual(Math.round(sandIn.rate * 10000) / 10000, 27.2666);
+
+    // Net outputs: Water (+44.6668 g/s) and Polluted Dirt (+5.4533 g/s)
+    const waterOut = washNet.netOutputs.find((o) => o.resource === "Water");
+    assert.ok(waterOut, "Must produce surplus clean Water");
+    assert.strictEqual(Math.round(waterOut.rate * 10000) / 10000, 44.6668);
+
+    const pdOut = washNet.netOutputs.find((o) => o.resource === "Polluted Dirt");
+    assert.ok(pdOut, "Must produce Polluted Dirt");
+    assert.strictEqual(Math.round(pdOut.rate * 10000) / 10000, 5.4533);
   });
 });

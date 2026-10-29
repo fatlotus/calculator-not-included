@@ -3,7 +3,7 @@
 ## 1. System Overview & User Experience
 The web application models an *Oxygen Not Included* resource network as a **sequential top-to-bottom flow table** with explicit feedback loops (`Loop Start` and `Loop End`). Users assemble an ordered pipeline of machines, plants, critters, duplicants, and geysers; configure each row's quantity, active recipe/diet/bathroom mode, and modifiers; optionally loop output streams back to the top at a locked rate and temperature; and immediately see both row-level inputs/outputs and the system-wide **NET** resource balance.
 
-The application features **158 total entities** (comprising **55 buildings/machines**, plants, critters, duplicants, and geysers), **212 elements**, and **11 built-in presets**.
+The application features **161 total entities** (comprising **58 buildings/machines**, plants, critters, duplicants, and geysers), **212 elements**, and **12 built-in presets**.
 
 ### 1.1 Visual Language (GitHub-Inspired Monochrome)
 - **Color Palette**:
@@ -114,7 +114,7 @@ Calculator state is serialized into a compact URL-safe Base64 Protocol Buffer pa
 ## 4. Presets & Component Breakdown
 
 ### 4.1 Built-in Presets (`src/presets.js`)
-The application includes **10 built-in presets**:
+The application includes **12 built-in presets** grouped by category (`Power`, `Manufacturing`, `Materials`, `Water Purification`, `Life Support`, `Food & Ranching`):
 1. `hydra_spom` — **Hydra SPOM** (loops `Power: 896 W`)
 2. `coal_skimmer_loop` — **Coal Generator + Carbon Skimmer Loop** (loops `Water (in a pipe): 1000 g/s @ 20 °C`)
 3. `stone_hatch_coal` — **Stone Hatch Ranch (8x) + Coal Power**
@@ -125,12 +125,14 @@ The application includes **10 built-in presets**:
 8. `drecko_reed_fiber_balm_lily` — **Drecko Ranch (Reed Fiber) via Balm Lily**
 9. `industrial_sauna` — **Industrial Sauna** (loops `Power: 2400 W`, `Polluted Water (in a pipe): 10000 g/s @ 20 °C`, `Water (in a pipe): 4000 g/s @ 95 °C`)
 10. `petroleum_boiler` — **Petroleum Boiler** (loops `Petroleum (free): 10000 g/s @ 405 °C`)
+11. `research_reactor_power` — **Research Reactor Power Plant** (loops `Water (in a pipe): 10000 g/s @ 95 °C`)
+12. `washroom_water_purification` — **Washroom Water Purification Loop** (loops `Water (in a pipe): 91.6664 g/s @ 37 °C`)
 
 ### 4.2 Component Breakdown
 1. `index.html`: Semantic, accessible single-page layout with toolbar (Preset selector, Per-second / Per-cycle toggle, Interactive Table / Plain Text view toggle, Copy Share Link button, Theme switcher), main calculator table, and quick reference footer.
 2. `styles/main.css`: GitHub-inspired monochrome CSS variables for light & dark themes, responsive grid/table rules, `.loop-row` styling for `Loop Start` and `Loop End`, `.btn-loop-stream` / `.btn-unloop-stream` controls, and autocomplete popover styles.
 3. `src/calculator.js`: Pure calculation and formatting engine (row evaluation, meta-machines simulation, dynamic steam turbine scaling, phase-change transitions across 212 elements, counterflow heat exchanger clamping, sequential top-to-bottom thermal resolution, upstream/downstream match target calculation, and sequential NET balance with `Loop Start` / `Loop End`).
 4. `src/state.proto`, `src/proto_catalog.js`, `src/url_state.js`: Zero-string Protocol Buffer schema, enum catalog, and URL-safe Base64 encoder/decoder.
-5. `src/presets.js`: 10 curated presets ordered top-to-bottom with pre-configured `loops`.
+5. `src/presets.js`: 12 curated presets ordered top-to-bottom with pre-configured `loops` and category grouping.
 6. `src/text_renderer.js` & `bin/calc.js`: Plain-text ASCII table and JSON renderer for both the web app's Plain Text view and the CLI tool (`node bin/calc.js`).
 7. `src/app.js` & `src/components/`: Interactive table rendering (`table_row.js`, `net_summary.js`, `autocomplete.js`), row reordering, `[loop]` / `[unloop]` handlers, and instant URL state synchronization.

@@ -360,4 +360,34 @@ describe("Refining & Production Buildings", () => {
     assert.strictEqual(rxEval2.inputs.find((i) => i.resource === "Enriched Uranium").rate, 33.3334);
     assert.strictEqual(rxEval2.outputs.find((o) => o.resource === "Liquid Nuclear Waste").rate, 3333.34);
   });
+
+  it("evaluates Flush Toilet, Wash Sink, and Shower plumbing rates", () => {
+    // Flush Toilet (Lavatory)
+    const toilet = evaluateRow({ entityId: "flush_toilet", qty: 1 }, entityMap, elementMap);
+    assert.strictEqual(toilet.power, 0);
+    assert.strictEqual(toilet.heat, 0);
+    const tIn = toilet.inputs.find((i) => i.resource === "Water");
+    const tOut = toilet.outputs.find((o) => o.resource === "Polluted Water");
+    assert.strictEqual(tIn.rate, 8.3333);
+    assert.strictEqual(tOut.rate, 19.5);
+    assert.strictEqual(tOut.tempC, 37);
+
+    // Wash Sink
+    const sink = evaluateRow({ entityId: "wash_sink", qty: 1 }, entityMap, elementMap);
+    assert.strictEqual(sink.power, 0);
+    assert.strictEqual(sink.heat, 0);
+    const sIn = sink.inputs.find((i) => i.resource === "Water");
+    const sOut = sink.outputs.find((o) => o.resource === "Polluted Water");
+    assert.strictEqual(sIn.rate, 8.3333);
+    assert.strictEqual(sOut.rate, 8.3333);
+
+    // Shower
+    const shower = evaluateRow({ entityId: "shower", qty: 1 }, entityMap, elementMap);
+    assert.strictEqual(shower.power, 0);
+    assert.strictEqual(shower.heat, 0);
+    const shIn = shower.inputs.find((i) => i.resource === "Water");
+    const shOut = shower.outputs.find((o) => o.resource === "Polluted Water");
+    assert.strictEqual(shIn.rate, 25);
+    assert.strictEqual(shOut.rate, 25);
+  });
 });

@@ -24,14 +24,14 @@ export const ONI_DATASET = {
           "rate": 888,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 70 °C+"
+          "temp": "@ 70 \u00b0C+"
         },
         {
           "resource": "Hydrogen",
           "rate": 112,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 70 °C+"
+          "temp": "@ 70 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -62,7 +62,7 @@ export const ONI_DATASET = {
           "rate": 500,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 30 °C+"
+          "temp": "@ 30 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -107,14 +107,14 @@ export const ONI_DATASET = {
           "rate": 40,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 30 °C+"
+          "temp": "@ 30 \u00b0C+"
         },
         {
           "resource": "Polluted Water",
           "rate": 290.33,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 30 °C+"
+          "temp": "@ 30 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -160,21 +160,21 @@ export const ONI_DATASET = {
           "rate": 570,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 75 °C+"
+          "temp": "@ 75 \u00b0C+"
         },
         {
           "resource": "Chlorine",
           "rate": 30,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 75 °C+"
+          "temp": "@ 75 \u00b0C+"
         },
         {
           "resource": "Iron Ore",
           "rate": 400,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 75 °C+"
+          "temp": "@ 75 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -205,7 +205,7 @@ export const ONI_DATASET = {
           "rate": 660,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 30 °C+"
+          "temp": "@ 30 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -326,7 +326,7 @@ export const ONI_DATASET = {
           "rate": 600,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 30 °C+"
+          "temp": "@ 30 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -395,7 +395,7 @@ export const ONI_DATASET = {
           "rate": 20,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 110 °C+"
+          "temp": "@ 110 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -441,7 +441,7 @@ export const ONI_DATASET = {
           "rate": 170,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 110 °C+"
+          "temp": "@ 110 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -487,7 +487,7 @@ export const ONI_DATASET = {
           "rate": 40,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 110 °C+"
+          "temp": "@ 110 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -533,14 +533,14 @@ export const ONI_DATASET = {
           "rate": 67.5,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 40 °C+"
+          "temp": "@ 40 \u00b0C+"
         },
         {
           "resource": "Carbon Dioxide",
           "rate": 22.5,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "@ 110 °C+"
+          "temp": "@ 110 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -586,14 +586,14 @@ export const ONI_DATASET = {
           "rate": 750,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 40 °C+"
+          "temp": "@ 40 \u00b0C+"
         },
         {
           "resource": "Carbon Dioxide",
           "rate": 500,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 110 °C+"
+          "temp": "@ 110 \u00b0C+"
         }
       ],
       "recipes": [
@@ -615,14 +615,14 @@ export const ONI_DATASET = {
               "rate": 750,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C+"
+              "temp": "@ 40 \u00b0C+"
             },
             {
               "resource": "Carbon Dioxide",
               "rate": 500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 110 °C+"
+              "temp": "@ 110 \u00b0C+"
             }
           ],
           "power": 2000,
@@ -646,14 +646,14 @@ export const ONI_DATASET = {
               "rate": 750,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C+"
+              "temp": "@ 40 \u00b0C+"
             },
             {
               "resource": "Carbon Dioxide",
               "rate": 500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 110 °C+"
+              "temp": "@ 110 \u00b0C+"
             }
           ],
           "power": 2000,
@@ -693,7 +693,7 @@ export const ONI_DATASET = {
           "rate": 2000,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 125 °C+"
+          "temp": "@ 125 \u00b0C+"
         }
       ],
       "outputs": [
@@ -702,7 +702,7 @@ export const ONI_DATASET = {
           "rate": 2000,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "@ 95 °C"
+          "temp": "@ 95 \u00b0C"
         }
       ],
       "recipes": [],
@@ -5298,21 +5298,21 @@ export const ONI_DATASET = {
           "rate": 500,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "@ 73.4 °C+"
+          "temp": "@ 73.4 \u00b0C+"
         },
         {
           "resource": "Polluted Dirt",
           "rate": 333.33,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 93.4 °C+"
+          "temp": "@ 93.4 \u00b0C+"
         },
         {
           "resource": "Carbon Dioxide",
           "rate": 166.67,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 93.4 °C+"
+          "temp": "@ 93.4 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -5343,14 +5343,14 @@ export const ONI_DATASET = {
           "rate": 200,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "@ 30 °C+"
+          "temp": "@ 30 \u00b0C+"
         },
         {
           "resource": "Polluted Water",
           "rate": 400,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "@ 30 °C+"
+          "temp": "@ 30 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -5503,7 +5503,7 @@ export const ONI_DATASET = {
           "rate": 100,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 75 °C+"
+          "temp": "@ 75 \u00b0C+"
         }
       ],
       "recipes": [
@@ -5525,7 +5525,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5549,7 +5549,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5573,7 +5573,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5597,7 +5597,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5621,7 +5621,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5645,7 +5645,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5669,7 +5669,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5693,7 +5693,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5717,7 +5717,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5741,7 +5741,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5765,7 +5765,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5789,7 +5789,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5813,7 +5813,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5837,7 +5837,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5861,7 +5861,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": 0,
@@ -5909,14 +5909,14 @@ export const ONI_DATASET = {
           "rate": 120,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 50 °C+"
+          "temp": "@ 50 \u00b0C+"
         },
         {
           "resource": "Natural Gas",
           "rate": 10,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 76.85 °C+"
+          "temp": "@ 76.85 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -5947,21 +5947,21 @@ export const ONI_DATASET = {
           "rate": 500,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 75 °C+"
+          "temp": "@ 75 \u00b0C+"
         },
         {
           "resource": "Steam",
           "rate": 8.33,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 200 °C+"
+          "temp": "@ 200 \u00b0C+"
         },
         {
           "resource": "Carbon Dioxide",
           "rate": 8.33,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "@ 150 °C+"
+          "temp": "@ 150 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -5999,14 +5999,14 @@ export const ONI_DATASET = {
           "rate": 5000,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "@ 75 °C+"
+          "temp": "@ 75 \u00b0C+"
         },
         {
           "resource": "Natural Gas",
           "rate": 90,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 75 °C+"
+          "temp": "@ 75 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -6044,7 +6044,7 @@ export const ONI_DATASET = {
           "rate": 2500,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 80 °C+"
+          "temp": "@ 80 \u00b0C+"
         }
       ],
       "recipes": [
@@ -6073,7 +6073,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 80 °C+"
+              "temp": "@ 80 \u00b0C+"
             }
           ],
           "power": 0,
@@ -6097,7 +6097,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 80 °C+"
+              "temp": "@ 80 \u00b0C+"
             }
           ],
           "power": 0,
@@ -6121,7 +6121,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 80 °C+"
+              "temp": "@ 80 \u00b0C+"
             }
           ],
           "power": 0,
@@ -6715,7 +6715,7 @@ export const ONI_DATASET = {
           "rate": 2500,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 40 °C"
+          "temp": "@ 40 \u00b0C"
         }
       ],
       "recipes": [
@@ -6737,7 +6737,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C"
+              "temp": "@ 40 \u00b0C"
             }
           ],
           "power": -1200,
@@ -6775,7 +6775,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C"
+              "temp": "@ 40 \u00b0C"
             }
           ],
           "power": -1200,
@@ -6799,7 +6799,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C"
+              "temp": "@ 40 \u00b0C"
             }
           ],
           "power": -1200,
@@ -6823,7 +6823,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C"
+              "temp": "@ 40 \u00b0C"
             }
           ],
           "power": -1200,
@@ -6847,7 +6847,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C"
+              "temp": "@ 40 \u00b0C"
             }
           ],
           "power": -1200,
@@ -6871,7 +6871,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C"
+              "temp": "@ 40 \u00b0C"
             }
           ],
           "power": -1200,
@@ -6895,7 +6895,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C"
+              "temp": "@ 40 \u00b0C"
             }
           ],
           "power": -1200,
@@ -6936,7 +6936,7 @@ export const ONI_DATASET = {
           "rate": 625,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "@ 1750 °C"
+          "temp": "@ 1750 \u00b0C"
         }
       ],
       "recipes": [
@@ -6965,7 +6965,7 @@ export const ONI_DATASET = {
               "rate": 625,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "@ 1750 °C"
+              "temp": "@ 1750 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7013,7 +7013,7 @@ export const ONI_DATASET = {
           "rate": 1250,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 40 °C+"
+          "temp": "@ 40 \u00b0C+"
         }
       ],
       "recipes": [
@@ -7049,7 +7049,7 @@ export const ONI_DATASET = {
               "rate": 1250,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C+"
+              "temp": "@ 40 \u00b0C+"
             }
           ],
           "power": -1600,
@@ -7094,7 +7094,7 @@ export const ONI_DATASET = {
               "rate": 1250,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C+"
+              "temp": "@ 40 \u00b0C+"
             }
           ],
           "power": -1600,
@@ -7132,7 +7132,7 @@ export const ONI_DATASET = {
               "rate": 1250,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C+"
+              "temp": "@ 40 \u00b0C+"
             }
           ],
           "power": -1600,
@@ -7177,7 +7177,7 @@ export const ONI_DATASET = {
               "rate": 1250,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C+"
+              "temp": "@ 40 \u00b0C+"
             }
           ],
           "power": -1600,
@@ -7222,7 +7222,7 @@ export const ONI_DATASET = {
               "rate": 1250,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 40 °C+"
+              "temp": "@ 40 \u00b0C+"
             }
           ],
           "power": -1600,
@@ -7392,7 +7392,7 @@ export const ONI_DATASET = {
           "rate": 100,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 75 °C+"
+          "temp": "@ 75 \u00b0C+"
         }
       ],
       "recipes": [
@@ -7428,7 +7428,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": -480,
@@ -7466,7 +7466,7 @@ export const ONI_DATASET = {
               "rate": 100,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 75 °C+"
+              "temp": "@ 75 \u00b0C+"
             }
           ],
           "power": -480,
@@ -7500,13 +7500,13 @@ export const ONI_DATASET = {
           "rate": 10000,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "-14 °C"
+          "temp": "-14 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "water",
-          "name": "Cool Water (-14 °C @ 10 kg/s -> +585.06 kDTU/s)",
+          "name": "Cool Water (-14 \u00b0C @ 10 kg/s -> +585.06 kDTU/s)",
           "inputs": [
             {
               "resource": "Water",
@@ -7522,7 +7522,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7530,7 +7530,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "polluted_water",
-          "name": "Cool Polluted Water (-14 °C @ 10 kg/s -> +585.06 kDTU/s)",
+          "name": "Cool Polluted Water (-14 \u00b0C @ 10 kg/s -> +585.06 kDTU/s)",
           "inputs": [
             {
               "resource": "Polluted Water",
@@ -7546,7 +7546,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7554,7 +7554,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "super_coolant",
-          "name": "Cool Super Coolant (-14 °C @ 10 kg/s -> +1181.6 kDTU/s)",
+          "name": "Cool Super Coolant (-14 \u00b0C @ 10 kg/s -> +1181.6 kDTU/s)",
           "inputs": [
             {
               "resource": "Super Coolant",
@@ -7570,7 +7570,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7578,7 +7578,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "biodiesel",
-          "name": "Cool Biodiesel (-14 °C @ 10 kg/s -> +306.6 kDTU/s)",
+          "name": "Cool Biodiesel (-14 \u00b0C @ 10 kg/s -> +306.6 kDTU/s)",
           "inputs": [
             {
               "resource": "Biodiesel",
@@ -7594,7 +7594,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7602,7 +7602,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "brackene",
-          "name": "Cool Brackene (-14 °C @ 10 kg/s -> +574 kDTU/s)",
+          "name": "Cool Brackene (-14 \u00b0C @ 10 kg/s -> +574 kDTU/s)",
           "inputs": [
             {
               "resource": "Brackene",
@@ -7618,7 +7618,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7626,7 +7626,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "brine",
-          "name": "Cool Brine (-14 °C @ 10 kg/s -> +476 kDTU/s)",
+          "name": "Cool Brine (-14 \u00b0C @ 10 kg/s -> +476 kDTU/s)",
           "inputs": [
             {
               "resource": "Brine",
@@ -7642,7 +7642,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7650,7 +7650,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "crude_oil",
-          "name": "Cool Crude Oil (-14 °C @ 10 kg/s -> +236.6 kDTU/s)",
+          "name": "Cool Crude Oil (-14 \u00b0C @ 10 kg/s -> +236.6 kDTU/s)",
           "inputs": [
             {
               "resource": "Crude Oil",
@@ -7666,7 +7666,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7674,7 +7674,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "ethanol",
-          "name": "Cool Ethanol (-14 °C @ 10 kg/s -> +344.4 kDTU/s)",
+          "name": "Cool Ethanol (-14 \u00b0C @ 10 kg/s -> +344.4 kDTU/s)",
           "inputs": [
             {
               "resource": "Ethanol",
@@ -7690,7 +7690,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7698,7 +7698,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "gunk",
-          "name": "Cool Gunk (-14 °C @ 10 kg/s -> +168 kDTU/s)",
+          "name": "Cool Gunk (-14 \u00b0C @ 10 kg/s -> +168 kDTU/s)",
           "inputs": [
             {
               "resource": "Gunk",
@@ -7714,7 +7714,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7722,7 +7722,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "latex",
-          "name": "Cool Latex (-14 °C @ 10 kg/s -> +281.4 kDTU/s)",
+          "name": "Cool Latex (-14 \u00b0C @ 10 kg/s -> +281.4 kDTU/s)",
           "inputs": [
             {
               "resource": "Latex",
@@ -7738,7 +7738,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7746,7 +7746,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_carbon",
-          "name": "Cool Liquid Carbon (-14 °C @ 10 kg/s -> +99.4 kDTU/s)",
+          "name": "Cool Liquid Carbon (-14 \u00b0C @ 10 kg/s -> +99.4 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Carbon",
@@ -7762,7 +7762,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7770,7 +7770,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_carbon_dioxide",
-          "name": "Cool Liquid Carbon Dioxide (-14 °C @ 10 kg/s -> +118.44 kDTU/s)",
+          "name": "Cool Liquid Carbon Dioxide (-14 \u00b0C @ 10 kg/s -> +118.44 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Carbon Dioxide",
@@ -7786,7 +7786,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7794,7 +7794,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_chlorine",
-          "name": "Cool Liquid Chlorine (-14 °C @ 10 kg/s -> +67.2 kDTU/s)",
+          "name": "Cool Liquid Chlorine (-14 \u00b0C @ 10 kg/s -> +67.2 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Chlorine",
@@ -7810,7 +7810,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7818,7 +7818,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_helium",
-          "name": "Cool Liquid Helium (-14 °C @ 10 kg/s -> +28 kDTU/s)",
+          "name": "Cool Liquid Helium (-14 \u00b0C @ 10 kg/s -> +28 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Helium",
@@ -7834,7 +7834,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7842,7 +7842,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_hydrogen",
-          "name": "Cool Liquid Hydrogen (-14 °C @ 10 kg/s -> +336 kDTU/s)",
+          "name": "Cool Liquid Hydrogen (-14 \u00b0C @ 10 kg/s -> +336 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Hydrogen",
@@ -7858,7 +7858,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7866,7 +7866,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_methane",
-          "name": "Cool Liquid Methane (-14 °C @ 10 kg/s -> +306.74 kDTU/s)",
+          "name": "Cool Liquid Methane (-14 \u00b0C @ 10 kg/s -> +306.74 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Methane",
@@ -7882,7 +7882,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7890,7 +7890,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_naphtha",
-          "name": "Cool Liquid Naphtha (-14 °C @ 10 kg/s -> +306.74 kDTU/s)",
+          "name": "Cool Liquid Naphtha (-14 \u00b0C @ 10 kg/s -> +306.74 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Naphtha",
@@ -7906,7 +7906,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7914,7 +7914,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_nuclear_waste",
-          "name": "Cool Liquid Nuclear Waste (-14 °C @ 10 kg/s -> +1041.6 kDTU/s)",
+          "name": "Cool Liquid Nuclear Waste (-14 \u00b0C @ 10 kg/s -> +1041.6 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Nuclear Waste",
@@ -7930,7 +7930,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7938,7 +7938,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_oxygen",
-          "name": "Cool Liquid Oxygen (-14 °C @ 10 kg/s -> +141.4 kDTU/s)",
+          "name": "Cool Liquid Oxygen (-14 \u00b0C @ 10 kg/s -> +141.4 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Oxygen",
@@ -7954,7 +7954,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7962,7 +7962,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_phosphorus",
-          "name": "Cool Liquid Phosphorus (-14 °C @ 10 kg/s -> +107.758 kDTU/s)",
+          "name": "Cool Liquid Phosphorus (-14 \u00b0C @ 10 kg/s -> +107.758 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Phosphorus",
@@ -7978,7 +7978,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -7986,7 +7986,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_propane",
-          "name": "Cool Liquid Propane (-14 °C @ 10 kg/s -> +336 kDTU/s)",
+          "name": "Cool Liquid Propane (-14 \u00b0C @ 10 kg/s -> +336 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Propane",
@@ -8002,7 +8002,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8010,7 +8010,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_sucrose",
-          "name": "Cool Liquid Sucrose (-14 °C @ 10 kg/s -> +175.7 kDTU/s)",
+          "name": "Cool Liquid Sucrose (-14 \u00b0C @ 10 kg/s -> +175.7 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Sucrose",
@@ -8026,7 +8026,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8034,7 +8034,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_sulfur",
-          "name": "Cool Liquid Sulfur (-14 °C @ 10 kg/s -> +98 kDTU/s)",
+          "name": "Cool Liquid Sulfur (-14 \u00b0C @ 10 kg/s -> +98 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Sulfur",
@@ -8050,7 +8050,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8058,7 +8058,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "liquid_uranium",
-          "name": "Cool Liquid Uranium (-14 °C @ 10 kg/s -> +236.6 kDTU/s)",
+          "name": "Cool Liquid Uranium (-14 \u00b0C @ 10 kg/s -> +236.6 kDTU/s)",
           "inputs": [
             {
               "resource": "Liquid Uranium",
@@ -8074,7 +8074,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8082,7 +8082,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "magma",
-          "name": "Cool Magma (-14 °C @ 10 kg/s -> +140 kDTU/s)",
+          "name": "Cool Magma (-14 \u00b0C @ 10 kg/s -> +140 kDTU/s)",
           "inputs": [
             {
               "resource": "Magma",
@@ -8098,7 +8098,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8106,7 +8106,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "mercury",
-          "name": "Cool Mercury (-14 °C @ 10 kg/s -> +19.6 kDTU/s)",
+          "name": "Cool Mercury (-14 \u00b0C @ 10 kg/s -> +19.6 kDTU/s)",
           "inputs": [
             {
               "resource": "Mercury",
@@ -8122,7 +8122,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8130,7 +8130,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_aluminum",
-          "name": "Cool Molten Aluminum (-14 °C @ 10 kg/s -> +127.4 kDTU/s)",
+          "name": "Cool Molten Aluminum (-14 \u00b0C @ 10 kg/s -> +127.4 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Aluminum",
@@ -8146,7 +8146,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8154,7 +8154,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_cobalt",
-          "name": "Cool Molten Cobalt (-14 °C @ 10 kg/s -> +58.8 kDTU/s)",
+          "name": "Cool Molten Cobalt (-14 \u00b0C @ 10 kg/s -> +58.8 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Cobalt",
@@ -8170,7 +8170,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8178,7 +8178,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_copper",
-          "name": "Cool Molten Copper (-14 °C @ 10 kg/s -> +54.04 kDTU/s)",
+          "name": "Cool Molten Copper (-14 \u00b0C @ 10 kg/s -> +54.04 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Copper",
@@ -8194,7 +8194,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8202,7 +8202,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_glass",
-          "name": "Cool Molten Glass (-14 °C @ 10 kg/s -> +28 kDTU/s)",
+          "name": "Cool Molten Glass (-14 \u00b0C @ 10 kg/s -> +28 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Glass",
@@ -8218,7 +8218,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8226,7 +8226,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_gold",
-          "name": "Cool Molten Gold (-14 °C @ 10 kg/s -> +18.074 kDTU/s)",
+          "name": "Cool Molten Gold (-14 \u00b0C @ 10 kg/s -> +18.074 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Gold",
@@ -8242,7 +8242,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8250,7 +8250,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_iridium",
-          "name": "Cool Molten Iridium (-14 °C @ 10 kg/s -> +18.34 kDTU/s)",
+          "name": "Cool Molten Iridium (-14 \u00b0C @ 10 kg/s -> +18.34 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Iridium",
@@ -8266,7 +8266,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8274,7 +8274,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_iron",
-          "name": "Cool Molten Iron (-14 °C @ 10 kg/s -> +62.86 kDTU/s)",
+          "name": "Cool Molten Iron (-14 \u00b0C @ 10 kg/s -> +62.86 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Iron",
@@ -8290,7 +8290,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8298,7 +8298,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_lead",
-          "name": "Cool Molten Lead (-14 °C @ 10 kg/s -> +17.92 kDTU/s)",
+          "name": "Cool Molten Lead (-14 \u00b0C @ 10 kg/s -> +17.92 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Lead",
@@ -8314,7 +8314,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8322,7 +8322,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_nickel",
-          "name": "Cool Molten Nickel (-14 °C @ 10 kg/s -> +61.6 kDTU/s)",
+          "name": "Cool Molten Nickel (-14 \u00b0C @ 10 kg/s -> +61.6 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Nickel",
@@ -8338,7 +8338,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8346,7 +8346,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_niobium",
-          "name": "Cool Molten Niobium (-14 °C @ 10 kg/s -> +37.1 kDTU/s)",
+          "name": "Cool Molten Niobium (-14 \u00b0C @ 10 kg/s -> +37.1 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Niobium",
@@ -8362,7 +8362,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8370,7 +8370,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_salt",
-          "name": "Cool Molten Salt (-14 °C @ 10 kg/s -> +98 kDTU/s)",
+          "name": "Cool Molten Salt (-14 \u00b0C @ 10 kg/s -> +98 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Salt",
@@ -8386,7 +8386,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8394,7 +8394,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_steel",
-          "name": "Cool Molten Steel (-14 °C @ 10 kg/s -> +54.04 kDTU/s)",
+          "name": "Cool Molten Steel (-14 \u00b0C @ 10 kg/s -> +54.04 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Steel",
@@ -8410,7 +8410,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8418,7 +8418,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_syngas",
-          "name": "Cool Molten Syngas (-14 °C @ 10 kg/s -> +336 kDTU/s)",
+          "name": "Cool Molten Syngas (-14 \u00b0C @ 10 kg/s -> +336 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Syngas",
@@ -8434,7 +8434,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8442,7 +8442,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_tungsten",
-          "name": "Cool Molten Tungsten (-14 °C @ 10 kg/s -> +18.76 kDTU/s)",
+          "name": "Cool Molten Tungsten (-14 \u00b0C @ 10 kg/s -> +18.76 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Tungsten",
@@ -8458,7 +8458,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8466,7 +8466,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "molten_zinc",
-          "name": "Cool Molten Zinc (-14 °C @ 10 kg/s -> +54.32 kDTU/s)",
+          "name": "Cool Molten Zinc (-14 \u00b0C @ 10 kg/s -> +54.32 kDTU/s)",
           "inputs": [
             {
               "resource": "Molten Zinc",
@@ -8482,7 +8482,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8490,7 +8490,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "mucin",
-          "name": "Cool Mucin (-14 °C @ 10 kg/s -> +420 kDTU/s)",
+          "name": "Cool Mucin (-14 \u00b0C @ 10 kg/s -> +420 kDTU/s)",
           "inputs": [
             {
               "resource": "Mucin",
@@ -8506,7 +8506,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8514,7 +8514,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "nectar",
-          "name": "Cool Nectar (-14 °C @ 10 kg/s -> +574 kDTU/s)",
+          "name": "Cool Nectar (-14 \u00b0C @ 10 kg/s -> +574 kDTU/s)",
           "inputs": [
             {
               "resource": "Nectar",
@@ -8530,7 +8530,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8538,7 +8538,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "ovolene",
-          "name": "Cool Ovolene (-14 °C @ 10 kg/s -> +574 kDTU/s)",
+          "name": "Cool Ovolene (-14 \u00b0C @ 10 kg/s -> +574 kDTU/s)",
           "inputs": [
             {
               "resource": "Ovolene",
@@ -8554,7 +8554,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8562,7 +8562,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "petroleum",
-          "name": "Cool Petroleum (-14 °C @ 10 kg/s -> +246.4 kDTU/s)",
+          "name": "Cool Petroleum (-14 \u00b0C @ 10 kg/s -> +246.4 kDTU/s)",
           "inputs": [
             {
               "resource": "Petroleum",
@@ -8578,7 +8578,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8586,7 +8586,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "phyto_oil",
-          "name": "Cool Phyto Oil (-14 °C @ 10 kg/s -> +126 kDTU/s)",
+          "name": "Cool Phyto Oil (-14 \u00b0C @ 10 kg/s -> +126 kDTU/s)",
           "inputs": [
             {
               "resource": "Phyto Oil",
@@ -8602,7 +8602,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8610,7 +8610,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "polluted_brine",
-          "name": "Cool Polluted Brine (-14 °C @ 10 kg/s -> +504 kDTU/s)",
+          "name": "Cool Polluted Brine (-14 \u00b0C @ 10 kg/s -> +504 kDTU/s)",
           "inputs": [
             {
               "resource": "Polluted Brine",
@@ -8626,7 +8626,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8634,7 +8634,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "resin",
-          "name": "Cool Resin (-14 °C @ 10 kg/s -> +155.4 kDTU/s)",
+          "name": "Cool Resin (-14 \u00b0C @ 10 kg/s -> +155.4 kDTU/s)",
           "inputs": [
             {
               "resource": "Resin",
@@ -8650,7 +8650,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8658,7 +8658,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "salt_water",
-          "name": "Cool Salt Water (-14 °C @ 10 kg/s -> +574 kDTU/s)",
+          "name": "Cool Salt Water (-14 \u00b0C @ 10 kg/s -> +574 kDTU/s)",
           "inputs": [
             {
               "resource": "Salt Water",
@@ -8674,7 +8674,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8682,7 +8682,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "sap",
-          "name": "Cool Sap (-14 °C @ 10 kg/s -> +155.4 kDTU/s)",
+          "name": "Cool Sap (-14 \u00b0C @ 10 kg/s -> +155.4 kDTU/s)",
           "inputs": [
             {
               "resource": "Sap",
@@ -8698,7 +8698,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8706,7 +8706,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "squid_ink",
-          "name": "Cool Squid Ink (-14 °C @ 10 kg/s -> +280 kDTU/s)",
+          "name": "Cool Squid Ink (-14 \u00b0C @ 10 kg/s -> +280 kDTU/s)",
           "inputs": [
             {
               "resource": "Squid Ink",
@@ -8722,7 +8722,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8730,7 +8730,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "visco_gel_fluid",
-          "name": "Cool Visco-Gel Fluid (-14 °C @ 10 kg/s -> +217 kDTU/s)",
+          "name": "Cool Visco-Gel Fluid (-14 \u00b0C @ 10 kg/s -> +217 kDTU/s)",
           "inputs": [
             {
               "resource": "Visco-Gel Fluid",
@@ -8746,7 +8746,7 @@ export const ONI_DATASET = {
               "rate": 10000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -1200,
@@ -8780,13 +8780,13 @@ export const ONI_DATASET = {
           "rate": 1000,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "-14 °C"
+          "temp": "-14 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "hydrogen",
-          "name": "Cool Hydrogen (-14 °C @ 1 kg/s -> +33.6 kDTU/s)",
+          "name": "Cool Hydrogen (-14 \u00b0C @ 1 kg/s -> +33.6 kDTU/s)",
           "inputs": [
             {
               "resource": "Hydrogen",
@@ -8802,7 +8802,7 @@ export const ONI_DATASET = {
               "rate": 1000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -240,
@@ -8810,7 +8810,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "oxygen",
-          "name": "Cool Oxygen (-14 °C @ 1 kg/s -> +14.07 kDTU/s)",
+          "name": "Cool Oxygen (-14 \u00b0C @ 1 kg/s -> +14.07 kDTU/s)",
           "inputs": [
             {
               "resource": "Oxygen",
@@ -8826,7 +8826,7 @@ export const ONI_DATASET = {
               "rate": 1000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -240,
@@ -8834,7 +8834,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "natural_gas",
-          "name": "Cool Natural Gas (-14 °C @ 1 kg/s -> +30.67 kDTU/s)",
+          "name": "Cool Natural Gas (-14 \u00b0C @ 1 kg/s -> +30.67 kDTU/s)",
           "inputs": [
             {
               "resource": "Natural Gas",
@@ -8850,7 +8850,7 @@ export const ONI_DATASET = {
               "rate": 1000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -240,
@@ -8858,7 +8858,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "chlorine",
-          "name": "Cool Chlorine (-14 °C @ 1 kg/s -> +6.72 kDTU/s)",
+          "name": "Cool Chlorine (-14 \u00b0C @ 1 kg/s -> +6.72 kDTU/s)",
           "inputs": [
             {
               "resource": "Chlorine",
@@ -8874,7 +8874,7 @@ export const ONI_DATASET = {
               "rate": 1000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -240,
@@ -8882,7 +8882,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "carbon_dioxide",
-          "name": "Cool Carbon Dioxide (-14 °C @ 1 kg/s -> +11.84 kDTU/s)",
+          "name": "Cool Carbon Dioxide (-14 \u00b0C @ 1 kg/s -> +11.84 kDTU/s)",
           "inputs": [
             {
               "resource": "Carbon Dioxide",
@@ -8898,7 +8898,7 @@ export const ONI_DATASET = {
               "rate": 1000,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "-14 °C"
+              "temp": "-14 \u00b0C"
             }
           ],
           "power": -240,
@@ -8947,13 +8947,13 @@ export const ONI_DATASET = {
           "rate": 500,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ -20 °C"
+          "temp": "@ -20 \u00b0C"
         }
       ],
       "recipes": [
         {
           "id": "ice",
-          "name": "Water (30 kg) -> Ice (30 kg) @ -20 °C",
+          "name": "Water (30 kg) -> Ice (30 kg) @ -20 \u00b0C",
           "inputs": [
             {
               "resource": "Water",
@@ -8969,7 +8969,7 @@ export const ONI_DATASET = {
               "rate": 500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ -20 °C"
+              "temp": "@ -20 \u00b0C"
             }
           ],
           "power": -60,
@@ -9003,14 +9003,14 @@ export const ONI_DATASET = {
           "rate": 3333.33,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 90 °C+"
+          "temp": "@ 90 \u00b0C+"
         },
         {
           "resource": "Natural Gas",
           "rate": 33.33,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 300 °C+"
+          "temp": "@ 300 \u00b0C+"
         }
       ],
       "recipes": [],
@@ -10039,7 +10039,7 @@ export const ONI_DATASET = {
           "rate": 20,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "@ 75 °C"
+          "temp": "@ 75 \u00b0C"
         }
       ],
       "recipes": [
@@ -10075,7 +10075,7 @@ export const ONI_DATASET = {
               "rate": 20,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "@ 75 °C"
+              "temp": "@ 75 \u00b0C"
             }
           ],
           "power": 0,
@@ -10113,7 +10113,7 @@ export const ONI_DATASET = {
               "rate": 20,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "@ 75 °C"
+              "temp": "@ 75 \u00b0C"
             }
           ],
           "power": 0,
@@ -10679,12 +10679,105 @@ export const ONI_DATASET = {
           "rate": 1666.67,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 355 °C"
+          "temp": "@ 355 \u00b0C"
         }
       ],
       "recipes": [],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Research_Reactor.png?c9e11d"
+    },
+    {
+      "id": "flush_toilet",
+      "name": "Flush Toilet",
+      "category": "Machine",
+      "subcategory": "Plumbing",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Lavatory",
+      "icon": "images/icons/Flush_Toilet.png",
+      "power": 0,
+      "heat": 0,
+      "inputs": [
+        {
+          "resource": "Water",
+          "rate": 8.3333,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Polluted Water",
+          "rate": 19.5,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": "@ 37 \u00b0C"
+        }
+      ],
+      "recipes": [],
+      "modifiers": [],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Lavatory.png"
+    },
+    {
+      "id": "wash_sink",
+      "name": "Wash Sink",
+      "category": "Machine",
+      "subcategory": "Plumbing",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sink",
+      "icon": "images/icons/Wash_Sink.png",
+      "power": 0,
+      "heat": 0,
+      "inputs": [
+        {
+          "resource": "Water",
+          "rate": 8.3333,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Polluted Water",
+          "rate": 8.3333,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": null
+        }
+      ],
+      "recipes": [],
+      "modifiers": [],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Sink.png"
+    },
+    {
+      "id": "shower",
+      "name": "Shower",
+      "category": "Machine",
+      "subcategory": "Plumbing",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Shower",
+      "icon": "images/icons/Shower.png",
+      "power": 0,
+      "heat": 0,
+      "inputs": [
+        {
+          "resource": "Water",
+          "rate": 25,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Polluted Water",
+          "rate": 25,
+          "unit": "g/s",
+          "state": "in a pipe",
+          "temp": null
+        }
+      ],
+      "recipes": [],
+      "modifiers": [],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Shower.png"
     }
   ],
   "plants": [
@@ -15277,7 +15370,7 @@ export const ONI_DATASET = {
           "rate": 2,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 37 °C"
+          "temp": "@ 37 \u00b0C"
         }
       ],
       "recipes": [
@@ -15306,7 +15399,7 @@ export const ONI_DATASET = {
               "rate": 2,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         },
@@ -15335,7 +15428,7 @@ export const ONI_DATASET = {
               "rate": 2,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         },
@@ -15364,7 +15457,7 @@ export const ONI_DATASET = {
               "rate": 2,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         },
@@ -15393,7 +15486,7 @@ export const ONI_DATASET = {
               "rate": 2,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         },
@@ -15422,7 +15515,7 @@ export const ONI_DATASET = {
               "rate": 2,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         },
@@ -15451,7 +15544,7 @@ export const ONI_DATASET = {
               "rate": 2,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         },
@@ -15480,7 +15573,7 @@ export const ONI_DATASET = {
               "rate": 2,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         }
@@ -15538,7 +15631,7 @@ export const ONI_DATASET = {
               "rate": 5,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         }
@@ -15583,7 +15676,7 @@ export const ONI_DATASET = {
           "rate": 33.33,
           "unit": "g/s",
           "state": "in a pipe",
-          "temp": "@ 37 °C"
+          "temp": "@ 37 \u00b0C"
         }
       ],
       "recipes": [
@@ -15619,7 +15712,7 @@ export const ONI_DATASET = {
               "rate": 33.33,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         },
@@ -15655,7 +15748,7 @@ export const ONI_DATASET = {
               "rate": 33.33,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         },
@@ -15691,7 +15784,7 @@ export const ONI_DATASET = {
               "rate": 33.33,
               "unit": "g/s",
               "state": "in a pipe",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         }
@@ -15756,7 +15849,7 @@ export const ONI_DATASET = {
               "rate": 5,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 37 °C"
+              "temp": "@ 37 \u00b0C"
             }
           ]
         }
@@ -15781,7 +15874,7 @@ export const ONI_DATASET = {
           "rate": 3000,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 95 °C"
+          "temp": "@ 95 \u00b0C"
         }
       ],
       "recipes": [
@@ -15795,7 +15888,7 @@ export const ONI_DATASET = {
               "rate": 3000,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 95 °C"
+              "temp": "@ 95 \u00b0C"
             }
           ]
         },
@@ -15809,7 +15902,7 @@ export const ONI_DATASET = {
               "rate": 5000,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 95 °C"
+              "temp": "@ 95 \u00b0C"
             }
           ]
         }
@@ -15817,7 +15910,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -15831,7 +15924,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -15862,7 +15955,7 @@ export const ONI_DATASET = {
           "rate": 1500,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ -10 °C"
+          "temp": "@ -10 \u00b0C"
         }
       ],
       "recipes": [
@@ -15876,7 +15969,7 @@ export const ONI_DATASET = {
               "rate": 1500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ -10 °C"
+              "temp": "@ -10 \u00b0C"
             }
           ]
         },
@@ -15890,7 +15983,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ -10 °C"
+              "temp": "@ -10 \u00b0C"
             }
           ]
         }
@@ -15898,7 +15991,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -15912,7 +16005,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -15943,7 +16036,7 @@ export const ONI_DATASET = {
           "rate": 1500,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 110 °C"
+          "temp": "@ 110 \u00b0C"
         }
       ],
       "recipes": [
@@ -15957,7 +16050,7 @@ export const ONI_DATASET = {
               "rate": 1500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 110 °C"
+              "temp": "@ 110 \u00b0C"
             }
           ]
         },
@@ -15971,7 +16064,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 110 °C"
+              "temp": "@ 110 \u00b0C"
             }
           ]
         }
@@ -15979,7 +16072,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -15993,7 +16086,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16024,7 +16117,7 @@ export const ONI_DATASET = {
           "rate": 3000,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 95 °C"
+          "temp": "@ 95 \u00b0C"
         }
       ],
       "recipes": [
@@ -16038,7 +16131,7 @@ export const ONI_DATASET = {
               "rate": 3000,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 95 °C"
+              "temp": "@ 95 \u00b0C"
             }
           ]
         },
@@ -16052,7 +16145,7 @@ export const ONI_DATASET = {
               "rate": 5000,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 95 °C"
+              "temp": "@ 95 \u00b0C"
             }
           ]
         }
@@ -16060,7 +16153,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16074,7 +16167,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16105,7 +16198,7 @@ export const ONI_DATASET = {
           "rate": 750,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 500 °C"
+          "temp": "@ 500 \u00b0C"
         }
       ],
       "recipes": [
@@ -16119,7 +16212,7 @@ export const ONI_DATASET = {
               "rate": 750,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 500 °C"
+              "temp": "@ 500 \u00b0C"
             }
           ]
         },
@@ -16133,7 +16226,7 @@ export const ONI_DATASET = {
               "rate": 1250,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 500 °C"
+              "temp": "@ 500 \u00b0C"
             }
           ]
         }
@@ -16141,7 +16234,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16155,7 +16248,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16186,7 +16279,7 @@ export const ONI_DATASET = {
           "rate": 3000,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 30 °C"
+          "temp": "@ 30 \u00b0C"
         }
       ],
       "recipes": [
@@ -16200,7 +16293,7 @@ export const ONI_DATASET = {
               "rate": 3000,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 30 °C"
+              "temp": "@ 30 \u00b0C"
             }
           ]
         },
@@ -16214,7 +16307,7 @@ export const ONI_DATASET = {
               "rate": 5000,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 30 °C"
+              "temp": "@ 30 \u00b0C"
             }
           ]
         }
@@ -16222,7 +16315,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16236,7 +16329,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16267,7 +16360,7 @@ export const ONI_DATASET = {
           "rate": 1500,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ -10 °C"
+          "temp": "@ -10 \u00b0C"
         }
       ],
       "recipes": [
@@ -16281,7 +16374,7 @@ export const ONI_DATASET = {
               "rate": 1500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ -10 °C"
+              "temp": "@ -10 \u00b0C"
             }
           ]
         },
@@ -16295,7 +16388,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ -10 °C"
+              "temp": "@ -10 \u00b0C"
             }
           ]
         }
@@ -16303,7 +16396,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16317,7 +16410,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16348,7 +16441,7 @@ export const ONI_DATASET = {
           "rate": 300,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 2226.85 °C"
+          "temp": "@ 2226.85 \u00b0C"
         }
       ],
       "recipes": [
@@ -16362,7 +16455,7 @@ export const ONI_DATASET = {
               "rate": 300,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 2226.85 °C"
+              "temp": "@ 2226.85 \u00b0C"
             }
           ]
         },
@@ -16376,7 +16469,7 @@ export const ONI_DATASET = {
               "rate": 500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 2226.85 °C"
+              "temp": "@ 2226.85 \u00b0C"
             }
           ]
         }
@@ -16384,7 +16477,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16398,7 +16491,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16429,7 +16522,7 @@ export const ONI_DATASET = {
           "rate": 300,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 2526.85 °C"
+          "temp": "@ 2526.85 \u00b0C"
         }
       ],
       "recipes": [
@@ -16443,7 +16536,7 @@ export const ONI_DATASET = {
               "rate": 300,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 2526.85 °C"
+              "temp": "@ 2526.85 \u00b0C"
             }
           ]
         },
@@ -16457,7 +16550,7 @@ export const ONI_DATASET = {
               "rate": 500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 2526.85 °C"
+              "temp": "@ 2526.85 \u00b0C"
             }
           ]
         }
@@ -16465,7 +16558,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16479,7 +16572,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16510,7 +16603,7 @@ export const ONI_DATASET = {
           "rate": 300,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 2626.85 °C"
+          "temp": "@ 2626.85 \u00b0C"
         }
       ],
       "recipes": [
@@ -16524,7 +16617,7 @@ export const ONI_DATASET = {
               "rate": 300,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 2626.85 °C"
+              "temp": "@ 2626.85 \u00b0C"
             }
           ]
         },
@@ -16538,7 +16631,7 @@ export const ONI_DATASET = {
               "rate": 500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 2626.85 °C"
+              "temp": "@ 2626.85 \u00b0C"
             }
           ]
         }
@@ -16546,7 +16639,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16560,7 +16653,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16591,7 +16684,7 @@ export const ONI_DATASET = {
           "rate": 300,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 1726.85 °C"
+          "temp": "@ 1726.85 \u00b0C"
         }
       ],
       "recipes": [
@@ -16605,7 +16698,7 @@ export const ONI_DATASET = {
               "rate": 300,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 1726.85 °C"
+              "temp": "@ 1726.85 \u00b0C"
             }
           ]
         },
@@ -16619,7 +16712,7 @@ export const ONI_DATASET = {
               "rate": 500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 1726.85 °C"
+              "temp": "@ 1726.85 \u00b0C"
             }
           ]
         }
@@ -16627,7 +16720,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16641,7 +16734,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16672,7 +16765,7 @@ export const ONI_DATASET = {
           "rate": 300,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 3726.85 °C"
+          "temp": "@ 3726.85 \u00b0C"
         }
       ],
       "recipes": [
@@ -16686,7 +16779,7 @@ export const ONI_DATASET = {
               "rate": 300,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 3726.85 °C"
+              "temp": "@ 3726.85 \u00b0C"
             }
           ]
         },
@@ -16700,7 +16793,7 @@ export const ONI_DATASET = {
               "rate": 500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 3726.85 °C"
+              "temp": "@ 3726.85 \u00b0C"
             }
           ]
         }
@@ -16708,7 +16801,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16722,7 +16815,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16753,7 +16846,7 @@ export const ONI_DATASET = {
           "rate": 300,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 2226.85 °C"
+          "temp": "@ 2226.85 \u00b0C"
         }
       ],
       "recipes": [
@@ -16767,7 +16860,7 @@ export const ONI_DATASET = {
               "rate": 300,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 2226.85 °C"
+              "temp": "@ 2226.85 \u00b0C"
             }
           ]
         },
@@ -16781,7 +16874,7 @@ export const ONI_DATASET = {
               "rate": 500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 2226.85 °C"
+              "temp": "@ 2226.85 \u00b0C"
             }
           ]
         }
@@ -16789,7 +16882,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16803,7 +16896,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16834,7 +16927,7 @@ export const ONI_DATASET = {
           "rate": 1200,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 3226.85 °C"
+          "temp": "@ 3226.85 \u00b0C"
         }
       ],
       "recipes": [
@@ -16848,7 +16941,7 @@ export const ONI_DATASET = {
               "rate": 1200,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 3226.85 °C"
+              "temp": "@ 3226.85 \u00b0C"
             }
           ]
         },
@@ -16862,7 +16955,7 @@ export const ONI_DATASET = {
               "rate": 2000,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 3226.85 °C"
+              "temp": "@ 3226.85 \u00b0C"
             }
           ]
         }
@@ -16870,7 +16963,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16884,7 +16977,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16915,7 +17008,7 @@ export const ONI_DATASET = {
           "rate": 1200,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 1726.85 °C"
+          "temp": "@ 1726.85 \u00b0C"
         }
       ],
       "recipes": [
@@ -16929,7 +17022,7 @@ export const ONI_DATASET = {
               "rate": 1200,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 1726.85 °C"
+              "temp": "@ 1726.85 \u00b0C"
             }
           ]
         },
@@ -16943,7 +17036,7 @@ export const ONI_DATASET = {
               "rate": 2000,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 1726.85 °C"
+              "temp": "@ 1726.85 \u00b0C"
             }
           ]
         }
@@ -16951,7 +17044,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -16965,7 +17058,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -16996,7 +17089,7 @@ export const ONI_DATASET = {
           "rate": 600,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 1726.85 °C"
+          "temp": "@ 1726.85 \u00b0C"
         }
       ],
       "recipes": [
@@ -17010,7 +17103,7 @@ export const ONI_DATASET = {
               "rate": 600,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 1726.85 °C"
+              "temp": "@ 1726.85 \u00b0C"
             }
           ]
         },
@@ -17024,7 +17117,7 @@ export const ONI_DATASET = {
               "rate": 1000,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 1726.85 °C"
+              "temp": "@ 1726.85 \u00b0C"
             }
           ]
         }
@@ -17032,7 +17125,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17046,7 +17139,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -17077,7 +17170,7 @@ export const ONI_DATASET = {
           "rate": 105,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 500 °C"
+          "temp": "@ 500 \u00b0C"
         }
       ],
       "recipes": [
@@ -17091,7 +17184,7 @@ export const ONI_DATASET = {
               "rate": 105,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 500 °C"
+              "temp": "@ 500 \u00b0C"
             }
           ]
         },
@@ -17105,7 +17198,7 @@ export const ONI_DATASET = {
               "rate": 175,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 500 °C"
+              "temp": "@ 500 \u00b0C"
             }
           ]
         }
@@ -17113,7 +17206,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17127,7 +17220,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -17158,7 +17251,7 @@ export const ONI_DATASET = {
           "rate": 3000,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 95 °C"
+          "temp": "@ 95 \u00b0C"
         }
       ],
       "recipes": [
@@ -17172,7 +17265,7 @@ export const ONI_DATASET = {
               "rate": 3000,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 95 °C"
+              "temp": "@ 95 \u00b0C"
             }
           ]
         },
@@ -17186,7 +17279,7 @@ export const ONI_DATASET = {
               "rate": 5000,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 95 °C"
+              "temp": "@ 95 \u00b0C"
             }
           ]
         }
@@ -17194,7 +17287,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17208,7 +17301,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -17239,7 +17332,7 @@ export const ONI_DATASET = {
           "rate": 1500,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 165.2 °C"
+          "temp": "@ 165.2 \u00b0C"
         }
       ],
       "recipes": [
@@ -17253,7 +17346,7 @@ export const ONI_DATASET = {
               "rate": 1500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 165.2 °C"
+              "temp": "@ 165.2 \u00b0C"
             }
           ]
         },
@@ -17267,7 +17360,7 @@ export const ONI_DATASET = {
               "rate": 2500,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 165.2 °C"
+              "temp": "@ 165.2 \u00b0C"
             }
           ]
         }
@@ -17275,7 +17368,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17289,7 +17382,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -17320,7 +17413,7 @@ export const ONI_DATASET = {
           "rate": 105,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 500 °C"
+          "temp": "@ 500 \u00b0C"
         }
       ],
       "recipes": [
@@ -17334,7 +17427,7 @@ export const ONI_DATASET = {
               "rate": 105,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 500 °C"
+              "temp": "@ 500 \u00b0C"
             }
           ]
         },
@@ -17348,7 +17441,7 @@ export const ONI_DATASET = {
               "rate": 175,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 500 °C"
+              "temp": "@ 500 \u00b0C"
             }
           ]
         }
@@ -17356,7 +17449,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17370,7 +17463,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -17401,7 +17494,7 @@ export const ONI_DATASET = {
           "rate": 105,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 150 °C"
+          "temp": "@ 150 \u00b0C"
         }
       ],
       "recipes": [
@@ -17415,7 +17508,7 @@ export const ONI_DATASET = {
               "rate": 105,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 150 °C"
+              "temp": "@ 150 \u00b0C"
             }
           ]
         },
@@ -17429,7 +17522,7 @@ export const ONI_DATASET = {
               "rate": 175,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 150 °C"
+              "temp": "@ 150 \u00b0C"
             }
           ]
         }
@@ -17437,7 +17530,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17451,7 +17544,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -17482,7 +17575,7 @@ export const ONI_DATASET = {
           "rate": 125.5,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 326.85 °C"
+          "temp": "@ 326.85 \u00b0C"
         }
       ],
       "recipes": [
@@ -17496,7 +17589,7 @@ export const ONI_DATASET = {
               "rate": 125.5,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 326.85 °C"
+              "temp": "@ 326.85 \u00b0C"
             }
           ]
         },
@@ -17510,7 +17603,7 @@ export const ONI_DATASET = {
               "rate": 209.17,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 326.85 °C"
+              "temp": "@ 326.85 \u00b0C"
             }
           ]
         }
@@ -17518,7 +17611,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17532,7 +17625,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -17563,7 +17656,7 @@ export const ONI_DATASET = {
           "rate": 105,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 60 °C"
+          "temp": "@ 60 \u00b0C"
         }
       ],
       "recipes": [
@@ -17577,7 +17670,7 @@ export const ONI_DATASET = {
               "rate": 105,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 60 °C"
+              "temp": "@ 60 \u00b0C"
             }
           ]
         },
@@ -17591,7 +17684,7 @@ export const ONI_DATASET = {
               "rate": 175,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 60 °C"
+              "temp": "@ 60 \u00b0C"
             }
           ]
         }
@@ -17599,7 +17692,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17613,7 +17706,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -17644,7 +17737,7 @@ export const ONI_DATASET = {
           "rate": 105,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 60 °C"
+          "temp": "@ 60 \u00b0C"
         }
       ],
       "recipes": [
@@ -17658,7 +17751,7 @@ export const ONI_DATASET = {
               "rate": 105,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 60 °C"
+              "temp": "@ 60 \u00b0C"
             }
           ]
         },
@@ -17672,7 +17765,7 @@ export const ONI_DATASET = {
               "rate": 175,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 60 °C"
+              "temp": "@ 60 \u00b0C"
             }
           ]
         }
@@ -17680,7 +17773,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17694,7 +17787,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -17725,7 +17818,7 @@ export const ONI_DATASET = {
           "rate": 105,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 5 °C"
+          "temp": "@ 5 \u00b0C"
         }
       ],
       "recipes": [
@@ -17739,7 +17832,7 @@ export const ONI_DATASET = {
               "rate": 105,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 5 °C"
+              "temp": "@ 5 \u00b0C"
             }
           ]
         },
@@ -17753,7 +17846,7 @@ export const ONI_DATASET = {
               "rate": 175,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 5 °C"
+              "temp": "@ 5 \u00b0C"
             }
           ]
         }
@@ -17761,7 +17854,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17775,7 +17868,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -17806,7 +17899,7 @@ export const ONI_DATASET = {
           "rate": 105,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ 500 °C"
+          "temp": "@ 500 \u00b0C"
         }
       ],
       "recipes": [
@@ -17820,7 +17913,7 @@ export const ONI_DATASET = {
               "rate": 105,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 500 °C"
+              "temp": "@ 500 \u00b0C"
             }
           ]
         },
@@ -17834,7 +17927,7 @@ export const ONI_DATASET = {
               "rate": 175,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ 500 °C"
+              "temp": "@ 500 \u00b0C"
             }
           ]
         }
@@ -17842,7 +17935,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17856,7 +17949,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {
@@ -17887,7 +17980,7 @@ export const ONI_DATASET = {
           "rate": 150,
           "unit": "g/s",
           "state": "free",
-          "temp": "@ -55.15 °C"
+          "temp": "@ -55.15 \u00b0C"
         }
       ],
       "recipes": [
@@ -17901,7 +17994,7 @@ export const ONI_DATASET = {
               "rate": 150,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ -55.15 °C"
+              "temp": "@ -55.15 \u00b0C"
             }
           ]
         },
@@ -17915,7 +18008,7 @@ export const ONI_DATASET = {
               "rate": 250,
               "unit": "g/s",
               "state": "free",
-              "temp": "@ -55.15 °C"
+              "temp": "@ -55.15 \u00b0C"
             }
           ]
         }
@@ -17923,7 +18016,7 @@ export const ONI_DATASET = {
       "modifiers": [
         {
           "id": "geotuned_1",
-          "name": "1x Geotuner (+20% Output, +20 °C)",
+          "name": "1x Geotuner (+20% Output, +20 \u00b0C)",
           "output_multiplier": 1.2,
           "extra_inputs": [
             {
@@ -17937,7 +18030,7 @@ export const ONI_DATASET = {
         },
         {
           "id": "geotuned_5",
-          "name": "5x Geotuners (+100% Output, +100 °C)",
+          "name": "5x Geotuners (+100% Output, +100 \u00b0C)",
           "output_multiplier": 2,
           "extra_inputs": [
             {

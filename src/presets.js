@@ -6,6 +6,7 @@
 
 export const PRESET_CATEGORIES = [
   "Power",
+  "Manufacturing",
   "Materials",
   "Water Purification",
   "Life Support",
@@ -31,7 +32,7 @@ export const PRESETS = [
   {
     id: "coal_skimmer_loop",
     name: "Coal Generator + Carbon Skimmer Loop",
-    category: "Water Purification",
+    category: "Power",
     description: "Continuous 9 kW power generation with closed-loop CO2 scrubbing and water filtration.",
     rateMode: "s",
     loops: [],
@@ -62,7 +63,7 @@ export const PRESETS = [
   {
     id: "arbor_ethanol_loop",
     name: "Arbor Tree Ethanol Power Loop",
-    category: "Power",
+    category: "Materials",
     description: "Closed-loop wood and ethanol cycle producing massive net power, polluted water, and dirt.",
     rateMode: "s",
     loops: [],
@@ -133,7 +134,7 @@ export const PRESETS = [
   {
     id: "industrial_sauna",
     name: "Industrial Sauna",
-    category: "Power",
+    category: "Manufacturing",
     description: "Industrial sauna recycling heat from a glass forge and thermo aquatuner coolant loop into steam turbines, producing net positive power.",
     rateMode: "s",
     loops: [],
@@ -181,6 +182,23 @@ export const PRESETS = [
       { entityId: "research_reactor", qty: 1, recipeId: null, modifiers: [] },
       { entityId: "absorb_heat", qty: 10, material: "Water", materialState: "in a pipe", tempDelta: 142.98, modifiers: [] },
       { entityId: "steam_turbine", qty: 5, recipeId: null, modifiers: [] },
+    ],
+  },
+  {
+    id: "washroom_water_purification",
+    name: "Washroom Water Purification Loop",
+    category: "Water Purification",
+    description: "Closed-loop washroom recycling polluted water from toilets, sinks, and a shower through a water sieve into clean surplus water.",
+    rateMode: "s",
+    loops: [],
+    netInputTemps: {
+      "Water||in a pipe": 37,
+    },
+    rows: [
+      { entityId: "flush_toilet", qty: 4, recipeId: null, modifiers: [] },
+      { entityId: "wash_sink", qty: 4, recipeId: null, modifiers: [] },
+      { entityId: "shower", qty: 1, recipeId: null, modifiers: [] },
+      { entityId: "water_sieve", qty: 0.02726664, recipeId: "sand", modifiers: [] },
     ],
   },
 ];
