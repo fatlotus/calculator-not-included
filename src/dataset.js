@@ -10654,6 +10654,37 @@ export const ONI_DATASET = {
       "recipes": [],
       "modifiers": [],
       "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Radiant_Liquid_Pipe.png"
+    },
+    {
+      "id": "research_reactor",
+      "name": "Research Reactor",
+      "category": "Machine",
+      "subcategory": "Power",
+      "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Research_Reactor",
+      "icon": "images/icons/Research_Reactor.png",
+      "power": 0,
+      "heat": 5975,
+      "inputs": [
+        {
+          "resource": "Enriched Uranium",
+          "rate": 16.6667,
+          "unit": "g/s",
+          "state": "free",
+          "temp": null
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "Liquid Nuclear Waste",
+          "rate": 1666.67,
+          "unit": "g/s",
+          "state": "free",
+          "temp": "@ 355 °C"
+        }
+      ],
+      "recipes": [],
+      "modifiers": [],
+      "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Research_Reactor.png?c9e11d"
     }
   ],
   "plants": [

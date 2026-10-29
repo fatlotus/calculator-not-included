@@ -341,4 +341,23 @@ describe("Refining & Production Buildings", () => {
     assert.strictEqual(ethEval.heat, 688.8, "2x Aquatuner produces 2 * 344.4 = 688.8 kDTU/s");
     assert.strictEqual(ethEval.power, -2400);
   });
+
+  it("evaluates Research Reactor fuel consumption, heat generation, and nuclear waste", () => {
+    const rxEval = evaluateRow({ entityId: "research_reactor", qty: 1 }, entityMap, elementMap);
+    assert.strictEqual(rxEval.power, 0);
+    assert.strictEqual(rxEval.heat, 5975);
+    const uIn = rxEval.inputs.find((i) => i.resource === "Enriched Uranium");
+    assert.ok(uIn, "Research Reactor must consume Enriched Uranium");
+    assert.strictEqual(uIn.rate, 16.6667);
+    const nwOut = rxEval.outputs.find((o) => o.resource === "Liquid Nuclear Waste");
+    assert.ok(nwOut, "Research Reactor must output Liquid Nuclear Waste");
+    assert.strictEqual(nwOut.rate, 1666.67);
+    assert.strictEqual(nwOut.tempC, 355);
+
+    // Scaling with 2x quantity
+    const rxEval2 = evaluateRow({ entityId: "research_reactor", qty: 2 }, entityMap, elementMap);
+    assert.strictEqual(rxEval2.heat, 11950);
+    assert.strictEqual(rxEval2.inputs.find((i) => i.resource === "Enriched Uranium").rate, 33.3334);
+    assert.strictEqual(rxEval2.outputs.find((o) => o.resource === "Liquid Nuclear Waste").rate, 3333.34);
+  });
 });

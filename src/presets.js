@@ -149,6 +149,21 @@ export const PRESETS = [
       { entityId: "liquid_pump", qty: 1, recipeId: "petroleum", modifiers: [] },
     ],
   },
+  {
+    id: "research_reactor_power",
+    name: "Research Reactor Power Plant",
+    description: "Nuclear power plant harnessing 5975 kDTU/s of heat from a Research Reactor to generate 10 kg/s of steam and 4.25 kW of continuous electrical power across 5 steam turbines.",
+    rateMode: "s",
+    loops: [],
+    netInputTemps: {
+      "Water||in a pipe": 95,
+    },
+    rows: [
+      { entityId: "research_reactor", qty: 1, recipeId: null, modifiers: [] },
+      { entityId: "absorb_heat", qty: 10, material: "Water", materialState: "in a pipe", tempDelta: 142.98, modifiers: [] },
+      { entityId: "steam_turbine", qty: 5, recipeId: null, modifiers: [] },
+    ],
+  },
 ];
 
 for (const preset of PRESETS) {

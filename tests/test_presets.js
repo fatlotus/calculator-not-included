@@ -233,4 +233,37 @@ describe("Presets & System Balances", () => {
     assert.strictEqual(boilerNet.netInputs.find((i) => i.resource === "Petroleum"), undefined);
     assert.strictEqual(boilerNet.netInputs.find((i) => i.resource === "Crude Oil").rate, 10000);
   });
+
+  it("evaluates Research Reactor Power Plant preset and verifies heat, steam, power, and closed water loop", () => {
+    const rxPreset = getPresetById("research_reactor_power");
+    assert.ok(rxPreset, "research_reactor_power preset must exist");
+    assert.strictEqual(rxPreset.rows.length, 3);
+
+    const evalRx = resolveTableTemperatures(rxPreset.rows, entityMap, elementMap, {
+      netInputTemps: rxPreset.netInputTemps,
+    });
+    const rxNet = calculateSystemNet(evalRx, {
+      elementMap,
+      netInputTemps: rxPreset.netInputTemps,
+    });
+
+    // 5x Steam Turbines @ 237.98 °C produce 5 * 850 = 4250 W
+    assert.strictEqual(rxNet.netPower, 4250);
+
+    // Water is automatically closed-loop at 95 °C (10 kg/s)
+    const waterLoop = evalRx._loops.find((l) => l.resource === "Water" && l.state === "in a pipe");
+    assert.ok(waterLoop, "Water stream must automatically loop");
+    assert.strictEqual(waterLoop.rate, 10000);
+    assert.strictEqual(waterLoop.tempC, 95);
+    assert.strictEqual(rxNet.netInputs.find((i) => i.resource === "Water"), undefined);
+
+    // Fuel input and waste output
+    const uIn = rxNet.netInputs.find((i) => i.resource === "Enriched Uranium");
+    assert.ok(uIn, "Must have Enriched Uranium net input");
+    assert.strictEqual(uIn.rate, 16.6667);
+
+    const wasteOut = rxNet.netOutputs.find((o) => o.resource === "Liquid Nuclear Waste");
+    assert.ok(wasteOut, "Must have Liquid Nuclear Waste net output");
+    assert.strictEqual(wasteOut.rate, 1666.67);
+  });
 });

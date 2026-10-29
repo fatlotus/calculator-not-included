@@ -3,7 +3,7 @@
 ## 1. System Overview & User Experience
 The web application models an *Oxygen Not Included* resource network as a **sequential top-to-bottom flow table** with explicit feedback loops (`Loop Start` and `Loop End`). Users assemble an ordered pipeline of machines, plants, critters, duplicants, and geysers; configure each row's quantity, active recipe/diet/bathroom mode, and modifiers; optionally loop output streams back to the top at a locked rate and temperature; and immediately see both row-level inputs/outputs and the system-wide **NET** resource balance.
 
-The application features **157 total entities** (comprising **54 buildings/machines**, plants, critters, duplicants, and geysers), **212 elements**, and **10 built-in presets**.
+The application features **158 total entities** (comprising **55 buildings/machines**, plants, critters, duplicants, and geysers), **212 elements**, and **11 built-in presets**.
 
 ### 1.1 Visual Language (GitHub-Inspired Monochrome)
 - **Color Palette**:
@@ -90,7 +90,7 @@ Calculator state is serialized into a compact URL-safe Base64 Protocol Buffer pa
 - `CalculatorState`:
   - `RateMode rate_mode = 1` (`PER_SECOND = 0`, `PER_CYCLE = 1`)
   - `repeated RowState rows = 2`:
-    - `Entity entity = 1` (**157 `Entity` enum values**)
+    - `Entity entity = 1` (**158 `Entity` enum values**)
     - `oneof count { uint32 count_int = 2; double count_double = 3; uint32 count_scaled = 13; }`
     - `Recipe recipe = 4`
     - `Bathroom bathroom = 5`
