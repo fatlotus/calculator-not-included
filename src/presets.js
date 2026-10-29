@@ -4,10 +4,19 @@
  * and top-to-bottom resource flow with explicit loop start/end streams.
  */
 
+export const PRESET_CATEGORIES = [
+  "Power",
+  "Materials",
+  "Water Purification",
+  "Life Support",
+  "Food & Ranching",
+];
+
 export const PRESETS = [
   {
     id: "hydra_spom",
     name: "Hydra SPOM",
+    category: "Life Support",
     description: "Self-Powered Oxygen Machine supporting 8 duplicants with net surplus hydrogen and power.",
     rateMode: "s",
     loops: [],
@@ -22,6 +31,7 @@ export const PRESETS = [
   {
     id: "coal_skimmer_loop",
     name: "Coal Generator + Carbon Skimmer Loop",
+    category: "Water Purification",
     description: "Continuous 9 kW power generation with closed-loop CO2 scrubbing and water filtration.",
     rateMode: "s",
     loops: [],
@@ -38,6 +48,7 @@ export const PRESETS = [
   {
     id: "stone_hatch_coal",
     name: "Stone Hatch Ranch (8x) + Coal Power",
+    category: "Food & Ranching",
     description: "Sustainable ranch of 8 stone hatches consuming igneous rock to feed a coal generator and 8 duplicants.",
     rateMode: "s",
     loops: [],
@@ -51,6 +62,7 @@ export const PRESETS = [
   {
     id: "arbor_ethanol_loop",
     name: "Arbor Tree Ethanol Power Loop",
+    category: "Power",
     description: "Closed-loop wood and ethanol cycle producing massive net power, polluted water, and dirt.",
     rateMode: "s",
     loops: [],
@@ -68,6 +80,7 @@ export const PRESETS = [
   {
     id: "natural_gas_geyser_power",
     name: "Natural Gas Geyser Power Plant",
+    category: "Power",
     description: "Harvesting a natural gas geyser (105 g/s) with fractional gas pump (0.21x) and generator (1.1667x) for 100% fuel efficiency and clean power generation.",
     rateMode: "s",
     loops: [],
@@ -80,6 +93,7 @@ export const PRESETS = [
   {
     id: "oil_refinery_petroleum_loop",
     name: "Oil Refinery + Petroleum Power Plant",
+    category: "Power",
     description: "Refines 10 kg/s Crude Oil into Petroleum and Natural Gas, supporting 5 kW continuous power generation.",
     rateMode: "s",
     loops: [],
@@ -95,6 +109,7 @@ export const PRESETS = [
   {
     id: "glossy_drecko_plastic",
     name: "Glossy Drecko Plastic via Bristle Berry",
+    category: "Materials",
     description: "Renewable plastic ranch utilizing Glossy Dreckos fed by live Bristle Blossom plants to produce plastic and phosphorite.",
     rateMode: "s",
     loops: [],
@@ -106,6 +121,7 @@ export const PRESETS = [
   {
     id: "drecko_reed_fiber_balm_lily",
     name: "Drecko Ranch (Reed Fiber) via Balm Lily",
+    category: "Materials",
     description: "Zero-resource sustainable ranch utilizing regular Dreckos fed by live Balm Lily plants to produce Reed Fiber and Phosphorite in a Chlorine atmosphere.",
     rateMode: "s",
     loops: [],
@@ -117,6 +133,7 @@ export const PRESETS = [
   {
     id: "industrial_sauna",
     name: "Industrial Sauna",
+    category: "Power",
     description: "Industrial sauna recycling heat from a glass forge and thermo aquatuner coolant loop into steam turbines, producing net positive power.",
     rateMode: "s",
     loops: [],
@@ -136,6 +153,7 @@ export const PRESETS = [
   {
     id: "petroleum_boiler",
     name: "Petroleum Boiler",
+    category: "Materials",
     description: "Counterflow petroleum boiler using outgoing hot petroleum to preheat incoming crude oil, requiring only a small volcano magma heat injection to flash 10 kg/s of crude oil into petroleum.",
     rateMode: "s",
     loops: [],
@@ -152,6 +170,7 @@ export const PRESETS = [
   {
     id: "research_reactor_power",
     name: "Research Reactor Power Plant",
+    category: "Power",
     description: "Nuclear power plant harnessing 5975 kDTU/s of heat from a Research Reactor to generate 10 kg/s of steam and 4.25 kW of continuous electrical power across 5 steam turbines.",
     rateMode: "s",
     loops: [],
@@ -172,6 +191,26 @@ for (const preset of PRESETS) {
     enumerable: false,
     writable: true,
   });
+}
+
+/**
+ * Group presets by category.
+ *
+ * @returns {Record<string, Array<Object>>}
+ */
+export function getPresetsByCategory() {
+  const groups = {};
+  for (const cat of PRESET_CATEGORIES) {
+    groups[cat] = [];
+  }
+  for (const preset of PRESETS) {
+    const cat = preset.category || "Other";
+    if (!groups[cat]) {
+      groups[cat] = [];
+    }
+    groups[cat].push(preset);
+  }
+  return groups;
 }
 
 /**

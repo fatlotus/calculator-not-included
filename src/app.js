@@ -10,7 +10,7 @@ import {
   calculateRowMatchTargets,
   isSolidResource,
 } from "./calculator.js";
-import { PRESETS, getPresetById } from "./presets.js";
+import { PRESETS, getPresetById, getPresetsByCategory } from "./presets.js";
 import { syncStateToUrl, loadStateFromUrl } from "./url_state.js";
 import {
   renderTableRowHtml,
@@ -116,8 +116,17 @@ class OniApp {
   bindHeaderControls() {
     const presetSelect = document.getElementById("preset-select");
     if (presetSelect) {
-      presetSelect.innerHTML = `<option value="" disabled selected>Load a Preset...</option>` +
-        PRESETS.map((p) => `<option value="${p.id}">${p.name}</option>`).join("");
+      const groups = getPresetsByCategory();
+      const optionsHtml = Object.entries(groups)
+        .filter(([_, list]) => list.length > 0)
+        .map(
+          ([category, list]) =>
+            `<optgroup label="${category}">` +
+            list.map((p) => `<option value="${p.id}">${p.name}</option>`).join("") +
+            `</optgroup>`
+        )
+        .join("");
+      presetSelect.innerHTML = `<option value="" disabled selected>Load a Preset...</option>` + optionsHtml;
       presetSelect.addEventListener("change", (e) => {
         const preset = getPresetById(e.target.value);
         if (preset) {

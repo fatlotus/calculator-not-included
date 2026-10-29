@@ -10,18 +10,30 @@ import assert from "node:assert";
 import { ONI_DATASET } from "../src/dataset.js";
 import { evaluateRow, resolveTableTemperatures, calculateSystemNet, calculateRowMatchTargets } from "../src/calculator.js";
 import { buildEntityCatalog } from "../src/data_loader.js";
-import { PRESETS, getPresetById } from "../src/presets.js";
+import { PRESETS, getPresetById, PRESET_CATEGORIES, getPresetsByCategory } from "../src/presets.js";
 
 const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
 
 describe("Presets & System Balances", () => {
-  it("verifies built-in preset definitions exist", () => {
+  it("verifies built-in preset definitions and categories exist", () => {
     assert.ok(PRESETS.length >= 5, "Should have at least 5 presets defined");
     for (const preset of PRESETS) {
       assert.ok(preset.id, "Preset must have an id");
       assert.ok(preset.name, "Preset must have a name");
+      assert.ok(preset.category, `Preset ${preset.id} must have a category`);
+      assert.ok(
+        PRESET_CATEGORIES.includes(preset.category),
+        `Preset ${preset.id} category "${preset.category}" must be in PRESET_CATEGORIES`
+      );
       assert.ok(Array.isArray(preset.rows), "Preset must have rows array");
     }
+
+    const groups = getPresetsByCategory();
+    assert.ok(groups["Power"].length >= 3, "Power category must have multiple presets");
+    assert.ok(groups["Materials"].length >= 2, "Materials category must have multiple presets");
+    assert.ok(groups["Water Purification"].length >= 1, "Water Purification category must have presets");
+    assert.ok(groups["Life Support"].length >= 1, "Life Support category must have presets");
+    assert.ok(groups["Food & Ranching"].length >= 1, "Food & Ranching category must have presets");
   });
 
   it("evaluates Hydra SPOM preset net balance and match targets", () => {

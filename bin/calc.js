@@ -17,7 +17,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildEntityCatalog } from "../src/data_loader.js";
-import { PRESETS, getPresetById } from "../src/presets.js";
+import { PRESETS, getPresetById, getPresetsByCategory } from "../src/presets.js";
 import { decodeStateFromParam } from "../src/url_state.js";
 import { renderStateToText, computeStateData } from "../src/text_renderer.js";
 
@@ -55,9 +55,14 @@ Examples:
 
 function printPresets() {
   console.log("\nAvailable Presets:\n");
-  for (const p of PRESETS) {
-    console.log(`  ${p.id.padEnd(30)} ${p.name}`);
-    console.log(`  ${"".padEnd(30)} ${p.description}\n`);
+  const groups = getPresetsByCategory();
+  for (const [cat, list] of Object.entries(groups)) {
+    if (!list || list.length === 0) continue;
+    console.log(`[${cat}]`);
+    for (const p of list) {
+      console.log(`  ${p.id.padEnd(30)} ${p.name}`);
+      console.log(`  ${"".padEnd(30)} ${p.description}\n`);
+    }
   }
 }
 
