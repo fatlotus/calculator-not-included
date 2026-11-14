@@ -423,5 +423,30 @@ describe("Complex Designs & Meta-Machines Serialization", () => {
       assert.strictEqual(decoded.rows[idx].qty, (idx + 1) * 10);
     });
   });
+
+  it("pins liquid_vent and gas_vent enum IDs and round-trips through Protobuf", () => {
+    assert.strictEqual(PROTO_DESCRIPTOR.nested.onimath.nested.Entity.values.ENTITY_LIQUID_VENT, 163);
+    assert.strictEqual(PROTO_DESCRIPTOR.nested.onimath.nested.Entity.values.ENTITY_GAS_VENT, 164);
+
+    const state = {
+      rateMode: "s",
+      rows: [
+        { entityId: "liquid_vent", qty: 1, recipeId: "polluted_water" },
+        { entityId: "gas_vent", qty: 2, recipeId: "oxygen" },
+      ],
+      netInputTemps: {},
+      loops: [],
+    };
+    const catalog = buildEntityCatalog();
+    const encoded = encodeStateToParam(state, catalog.elementMap);
+    const decoded = decodeStateFromParam(encoded);
+    assert.strictEqual(decoded.rows.length, 2);
+    assert.strictEqual(decoded.rows[0].entityId, "liquid_vent");
+    assert.strictEqual(decoded.rows[0].recipeId, "polluted_water");
+    assert.strictEqual(decoded.rows[0].qty, 1);
+    assert.strictEqual(decoded.rows[1].entityId, "gas_vent");
+    assert.strictEqual(decoded.rows[1].recipeId, "oxygen");
+    assert.strictEqual(decoded.rows[1].qty, 2);
+  });
 });
 

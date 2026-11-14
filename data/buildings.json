@@ -23,14 +23,14 @@
         "rate": 888,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 70 \u00b0C+"
+        "temp": "@ 70 °C+"
       },
       {
         "resource": "Hydrogen",
         "rate": 112,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 70 \u00b0C+"
+        "temp": "@ 70 °C+"
       }
     ],
     "recipes": [],
@@ -61,7 +61,7 @@
         "rate": 500,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       }
     ],
     "recipes": [],
@@ -106,14 +106,14 @@
         "rate": 40,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       },
       {
         "resource": "Polluted Water",
         "rate": 290.33,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       }
     ],
     "recipes": [],
@@ -159,21 +159,21 @@
         "rate": 570,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       },
       {
         "resource": "Chlorine",
         "rate": 30,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       },
       {
         "resource": "Iron Ore",
         "rate": 400,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       }
     ],
     "recipes": [],
@@ -204,7 +204,7 @@
         "rate": 660,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       }
     ],
     "recipes": [],
@@ -325,7 +325,7 @@
         "rate": 600,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       }
     ],
     "recipes": [],
@@ -394,7 +394,7 @@
         "rate": 20,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 110 \u00b0C+"
+        "temp": "@ 110 °C+"
       }
     ],
     "recipes": [],
@@ -440,7 +440,7 @@
         "rate": 170,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 110 \u00b0C+"
+        "temp": "@ 110 °C+"
       }
     ],
     "recipes": [],
@@ -486,7 +486,7 @@
         "rate": 40,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 110 \u00b0C+"
+        "temp": "@ 110 °C+"
       }
     ],
     "recipes": [],
@@ -532,14 +532,14 @@
         "rate": 67.5,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 40 \u00b0C+"
+        "temp": "@ 40 °C+"
       },
       {
         "resource": "Carbon Dioxide",
         "rate": 22.5,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 110 \u00b0C+"
+        "temp": "@ 110 °C+"
       }
     ],
     "recipes": [],
@@ -585,14 +585,14 @@
         "rate": 750,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 40 \u00b0C+"
+        "temp": "@ 40 °C+"
       },
       {
         "resource": "Carbon Dioxide",
         "rate": 500,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 110 \u00b0C+"
+        "temp": "@ 110 °C+"
       }
     ],
     "recipes": [
@@ -614,14 +614,14 @@
             "rate": 750,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C+"
+            "temp": "@ 40 °C+"
           },
           {
             "resource": "Carbon Dioxide",
             "rate": 500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 110 \u00b0C+"
+            "temp": "@ 110 °C+"
           }
         ],
         "power": 2000,
@@ -645,14 +645,14 @@
             "rate": 750,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C+"
+            "temp": "@ 40 °C+"
           },
           {
             "resource": "Carbon Dioxide",
             "rate": 500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 110 \u00b0C+"
+            "temp": "@ 110 °C+"
           }
         ],
         "power": 2000,
@@ -692,7 +692,7 @@
         "rate": 2000,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 125 \u00b0C+"
+        "temp": "@ 125 °C+"
       }
     ],
     "outputs": [
@@ -701,7 +701,7 @@
         "rate": 2000,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 95 \u00b0C"
+        "temp": "@ 95 °C"
       }
     ],
     "recipes": [],
@@ -5297,21 +5297,21 @@
         "rate": 500,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 73.4 \u00b0C+"
+        "temp": "@ 73.4 °C+"
       },
       {
         "resource": "Polluted Dirt",
         "rate": 333.33,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 93.4 \u00b0C+"
+        "temp": "@ 93.4 °C+"
       },
       {
         "resource": "Carbon Dioxide",
         "rate": 166.67,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 93.4 \u00b0C+"
+        "temp": "@ 93.4 °C+"
       }
     ],
     "recipes": [],
@@ -5342,14 +5342,14 @@
         "rate": 200,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       },
       {
         "resource": "Polluted Water",
         "rate": 400,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 30 \u00b0C+"
+        "temp": "@ 30 °C+"
       }
     ],
     "recipes": [],
@@ -5502,7 +5502,7 @@
         "rate": 100,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       }
     ],
     "recipes": [
@@ -5524,7 +5524,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5548,7 +5548,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5572,7 +5572,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5596,7 +5596,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5620,7 +5620,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5644,7 +5644,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5668,7 +5668,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5692,7 +5692,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5716,7 +5716,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5740,7 +5740,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5764,7 +5764,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5788,7 +5788,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5812,7 +5812,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5836,7 +5836,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5860,7 +5860,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": 0,
@@ -5908,14 +5908,14 @@
         "rate": 120,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 50 \u00b0C+"
+        "temp": "@ 50 °C+"
       },
       {
         "resource": "Natural Gas",
         "rate": 10,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 76.85 \u00b0C+"
+        "temp": "@ 76.85 °C+"
       }
     ],
     "recipes": [],
@@ -5946,21 +5946,21 @@
         "rate": 500,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       },
       {
         "resource": "Steam",
         "rate": 8.33,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 200 \u00b0C+"
+        "temp": "@ 200 °C+"
       },
       {
         "resource": "Carbon Dioxide",
         "rate": 8.33,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 150 \u00b0C+"
+        "temp": "@ 150 °C+"
       }
     ],
     "recipes": [],
@@ -5998,14 +5998,14 @@
         "rate": 5000,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       },
       {
         "resource": "Natural Gas",
         "rate": 90,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       }
     ],
     "recipes": [],
@@ -6043,7 +6043,7 @@
         "rate": 2500,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 80 \u00b0C+"
+        "temp": "@ 80 °C+"
       }
     ],
     "recipes": [
@@ -6072,7 +6072,7 @@
             "rate": 2500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 80 \u00b0C+"
+            "temp": "@ 80 °C+"
           }
         ],
         "power": 0,
@@ -6096,7 +6096,7 @@
             "rate": 2500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 80 \u00b0C+"
+            "temp": "@ 80 °C+"
           }
         ],
         "power": 0,
@@ -6120,7 +6120,7 @@
             "rate": 2500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 80 \u00b0C+"
+            "temp": "@ 80 °C+"
           }
         ],
         "power": 0,
@@ -6714,7 +6714,7 @@
         "rate": 2500,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 40 \u00b0C"
+        "temp": "@ 40 °C"
       }
     ],
     "recipes": [
@@ -6736,7 +6736,7 @@
             "rate": 2500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200,
@@ -6774,7 +6774,7 @@
             "rate": 2500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200,
@@ -6798,7 +6798,7 @@
             "rate": 2500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200,
@@ -6822,7 +6822,7 @@
             "rate": 2500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200,
@@ -6846,7 +6846,7 @@
             "rate": 2500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200,
@@ -6870,7 +6870,7 @@
             "rate": 2500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200,
@@ -6894,7 +6894,7 @@
             "rate": 2500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C"
+            "temp": "@ 40 °C"
           }
         ],
         "power": -1200,
@@ -6935,7 +6935,7 @@
         "rate": 625,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 1750 \u00b0C"
+        "temp": "@ 1750 °C"
       }
     ],
     "recipes": [
@@ -6964,7 +6964,7 @@
             "rate": 625,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "@ 1750 \u00b0C"
+            "temp": "@ 1750 °C"
           }
         ],
         "power": -1200,
@@ -7012,7 +7012,7 @@
         "rate": 1250,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 40 \u00b0C+"
+        "temp": "@ 40 °C+"
       }
     ],
     "recipes": [
@@ -7048,7 +7048,7 @@
             "rate": 1250,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C+"
+            "temp": "@ 40 °C+"
           }
         ],
         "power": -1600,
@@ -7093,7 +7093,7 @@
             "rate": 1250,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C+"
+            "temp": "@ 40 °C+"
           }
         ],
         "power": -1600,
@@ -7131,7 +7131,7 @@
             "rate": 1250,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C+"
+            "temp": "@ 40 °C+"
           }
         ],
         "power": -1600,
@@ -7176,7 +7176,7 @@
             "rate": 1250,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C+"
+            "temp": "@ 40 °C+"
           }
         ],
         "power": -1600,
@@ -7221,7 +7221,7 @@
             "rate": 1250,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 40 \u00b0C+"
+            "temp": "@ 40 °C+"
           }
         ],
         "power": -1600,
@@ -7391,7 +7391,7 @@
         "rate": 100,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 75 \u00b0C+"
+        "temp": "@ 75 °C+"
       }
     ],
     "recipes": [
@@ -7427,7 +7427,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": -480,
@@ -7465,7 +7465,7 @@
             "rate": 100,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ 75 \u00b0C+"
+            "temp": "@ 75 °C+"
           }
         ],
         "power": -480,
@@ -7499,13 +7499,13 @@
         "rate": 10000,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "-14 \u00b0C"
+        "temp": "-14 °C"
       }
     ],
     "recipes": [
       {
         "id": "water",
-        "name": "Cool Water (-14 \u00b0C @ 10 kg/s -> +585.06 kDTU/s)",
+        "name": "Cool Water (-14 °C @ 10 kg/s -> +585.06 kDTU/s)",
         "inputs": [
           {
             "resource": "Water",
@@ -7521,7 +7521,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7529,7 +7529,7 @@
       },
       {
         "id": "polluted_water",
-        "name": "Cool Polluted Water (-14 \u00b0C @ 10 kg/s -> +585.06 kDTU/s)",
+        "name": "Cool Polluted Water (-14 °C @ 10 kg/s -> +585.06 kDTU/s)",
         "inputs": [
           {
             "resource": "Polluted Water",
@@ -7545,7 +7545,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7553,7 +7553,7 @@
       },
       {
         "id": "super_coolant",
-        "name": "Cool Super Coolant (-14 \u00b0C @ 10 kg/s -> +1181.6 kDTU/s)",
+        "name": "Cool Super Coolant (-14 °C @ 10 kg/s -> +1181.6 kDTU/s)",
         "inputs": [
           {
             "resource": "Super Coolant",
@@ -7569,7 +7569,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7577,7 +7577,7 @@
       },
       {
         "id": "biodiesel",
-        "name": "Cool Biodiesel (-14 \u00b0C @ 10 kg/s -> +306.6 kDTU/s)",
+        "name": "Cool Biodiesel (-14 °C @ 10 kg/s -> +306.6 kDTU/s)",
         "inputs": [
           {
             "resource": "Biodiesel",
@@ -7593,7 +7593,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7601,7 +7601,7 @@
       },
       {
         "id": "brackene",
-        "name": "Cool Brackene (-14 \u00b0C @ 10 kg/s -> +574 kDTU/s)",
+        "name": "Cool Brackene (-14 °C @ 10 kg/s -> +574 kDTU/s)",
         "inputs": [
           {
             "resource": "Brackene",
@@ -7617,7 +7617,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7625,7 +7625,7 @@
       },
       {
         "id": "brine",
-        "name": "Cool Brine (-14 \u00b0C @ 10 kg/s -> +476 kDTU/s)",
+        "name": "Cool Brine (-14 °C @ 10 kg/s -> +476 kDTU/s)",
         "inputs": [
           {
             "resource": "Brine",
@@ -7641,7 +7641,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7649,7 +7649,7 @@
       },
       {
         "id": "crude_oil",
-        "name": "Cool Crude Oil (-14 \u00b0C @ 10 kg/s -> +236.6 kDTU/s)",
+        "name": "Cool Crude Oil (-14 °C @ 10 kg/s -> +236.6 kDTU/s)",
         "inputs": [
           {
             "resource": "Crude Oil",
@@ -7665,7 +7665,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7673,7 +7673,7 @@
       },
       {
         "id": "ethanol",
-        "name": "Cool Ethanol (-14 \u00b0C @ 10 kg/s -> +344.4 kDTU/s)",
+        "name": "Cool Ethanol (-14 °C @ 10 kg/s -> +344.4 kDTU/s)",
         "inputs": [
           {
             "resource": "Ethanol",
@@ -7689,7 +7689,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7697,7 +7697,7 @@
       },
       {
         "id": "gunk",
-        "name": "Cool Gunk (-14 \u00b0C @ 10 kg/s -> +168 kDTU/s)",
+        "name": "Cool Gunk (-14 °C @ 10 kg/s -> +168 kDTU/s)",
         "inputs": [
           {
             "resource": "Gunk",
@@ -7713,7 +7713,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7721,7 +7721,7 @@
       },
       {
         "id": "latex",
-        "name": "Cool Latex (-14 \u00b0C @ 10 kg/s -> +281.4 kDTU/s)",
+        "name": "Cool Latex (-14 °C @ 10 kg/s -> +281.4 kDTU/s)",
         "inputs": [
           {
             "resource": "Latex",
@@ -7737,7 +7737,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7745,7 +7745,7 @@
       },
       {
         "id": "liquid_carbon",
-        "name": "Cool Liquid Carbon (-14 \u00b0C @ 10 kg/s -> +99.4 kDTU/s)",
+        "name": "Cool Liquid Carbon (-14 °C @ 10 kg/s -> +99.4 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Carbon",
@@ -7761,7 +7761,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7769,7 +7769,7 @@
       },
       {
         "id": "liquid_carbon_dioxide",
-        "name": "Cool Liquid Carbon Dioxide (-14 \u00b0C @ 10 kg/s -> +118.44 kDTU/s)",
+        "name": "Cool Liquid Carbon Dioxide (-14 °C @ 10 kg/s -> +118.44 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Carbon Dioxide",
@@ -7785,7 +7785,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7793,7 +7793,7 @@
       },
       {
         "id": "liquid_chlorine",
-        "name": "Cool Liquid Chlorine (-14 \u00b0C @ 10 kg/s -> +67.2 kDTU/s)",
+        "name": "Cool Liquid Chlorine (-14 °C @ 10 kg/s -> +67.2 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Chlorine",
@@ -7809,7 +7809,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7817,7 +7817,7 @@
       },
       {
         "id": "liquid_helium",
-        "name": "Cool Liquid Helium (-14 \u00b0C @ 10 kg/s -> +28 kDTU/s)",
+        "name": "Cool Liquid Helium (-14 °C @ 10 kg/s -> +28 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Helium",
@@ -7833,7 +7833,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7841,7 +7841,7 @@
       },
       {
         "id": "liquid_hydrogen",
-        "name": "Cool Liquid Hydrogen (-14 \u00b0C @ 10 kg/s -> +336 kDTU/s)",
+        "name": "Cool Liquid Hydrogen (-14 °C @ 10 kg/s -> +336 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Hydrogen",
@@ -7857,7 +7857,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7865,7 +7865,7 @@
       },
       {
         "id": "liquid_methane",
-        "name": "Cool Liquid Methane (-14 \u00b0C @ 10 kg/s -> +306.74 kDTU/s)",
+        "name": "Cool Liquid Methane (-14 °C @ 10 kg/s -> +306.74 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Methane",
@@ -7881,7 +7881,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7889,7 +7889,7 @@
       },
       {
         "id": "liquid_naphtha",
-        "name": "Cool Liquid Naphtha (-14 \u00b0C @ 10 kg/s -> +306.74 kDTU/s)",
+        "name": "Cool Liquid Naphtha (-14 °C @ 10 kg/s -> +306.74 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Naphtha",
@@ -7905,7 +7905,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7913,7 +7913,7 @@
       },
       {
         "id": "liquid_nuclear_waste",
-        "name": "Cool Liquid Nuclear Waste (-14 \u00b0C @ 10 kg/s -> +1041.6 kDTU/s)",
+        "name": "Cool Liquid Nuclear Waste (-14 °C @ 10 kg/s -> +1041.6 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Nuclear Waste",
@@ -7929,7 +7929,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7937,7 +7937,7 @@
       },
       {
         "id": "liquid_oxygen",
-        "name": "Cool Liquid Oxygen (-14 \u00b0C @ 10 kg/s -> +141.4 kDTU/s)",
+        "name": "Cool Liquid Oxygen (-14 °C @ 10 kg/s -> +141.4 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Oxygen",
@@ -7953,7 +7953,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7961,7 +7961,7 @@
       },
       {
         "id": "liquid_phosphorus",
-        "name": "Cool Liquid Phosphorus (-14 \u00b0C @ 10 kg/s -> +107.758 kDTU/s)",
+        "name": "Cool Liquid Phosphorus (-14 °C @ 10 kg/s -> +107.758 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Phosphorus",
@@ -7977,7 +7977,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -7985,7 +7985,7 @@
       },
       {
         "id": "liquid_propane",
-        "name": "Cool Liquid Propane (-14 \u00b0C @ 10 kg/s -> +336 kDTU/s)",
+        "name": "Cool Liquid Propane (-14 °C @ 10 kg/s -> +336 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Propane",
@@ -8001,7 +8001,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8009,7 +8009,7 @@
       },
       {
         "id": "liquid_sucrose",
-        "name": "Cool Liquid Sucrose (-14 \u00b0C @ 10 kg/s -> +175.7 kDTU/s)",
+        "name": "Cool Liquid Sucrose (-14 °C @ 10 kg/s -> +175.7 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Sucrose",
@@ -8025,7 +8025,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8033,7 +8033,7 @@
       },
       {
         "id": "liquid_sulfur",
-        "name": "Cool Liquid Sulfur (-14 \u00b0C @ 10 kg/s -> +98 kDTU/s)",
+        "name": "Cool Liquid Sulfur (-14 °C @ 10 kg/s -> +98 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Sulfur",
@@ -8049,7 +8049,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8057,7 +8057,7 @@
       },
       {
         "id": "liquid_uranium",
-        "name": "Cool Liquid Uranium (-14 \u00b0C @ 10 kg/s -> +236.6 kDTU/s)",
+        "name": "Cool Liquid Uranium (-14 °C @ 10 kg/s -> +236.6 kDTU/s)",
         "inputs": [
           {
             "resource": "Liquid Uranium",
@@ -8073,7 +8073,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8081,7 +8081,7 @@
       },
       {
         "id": "magma",
-        "name": "Cool Magma (-14 \u00b0C @ 10 kg/s -> +140 kDTU/s)",
+        "name": "Cool Magma (-14 °C @ 10 kg/s -> +140 kDTU/s)",
         "inputs": [
           {
             "resource": "Magma",
@@ -8097,7 +8097,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8105,7 +8105,7 @@
       },
       {
         "id": "mercury",
-        "name": "Cool Mercury (-14 \u00b0C @ 10 kg/s -> +19.6 kDTU/s)",
+        "name": "Cool Mercury (-14 °C @ 10 kg/s -> +19.6 kDTU/s)",
         "inputs": [
           {
             "resource": "Mercury",
@@ -8121,7 +8121,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8129,7 +8129,7 @@
       },
       {
         "id": "molten_aluminum",
-        "name": "Cool Molten Aluminum (-14 \u00b0C @ 10 kg/s -> +127.4 kDTU/s)",
+        "name": "Cool Molten Aluminum (-14 °C @ 10 kg/s -> +127.4 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Aluminum",
@@ -8145,7 +8145,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8153,7 +8153,7 @@
       },
       {
         "id": "molten_cobalt",
-        "name": "Cool Molten Cobalt (-14 \u00b0C @ 10 kg/s -> +58.8 kDTU/s)",
+        "name": "Cool Molten Cobalt (-14 °C @ 10 kg/s -> +58.8 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Cobalt",
@@ -8169,7 +8169,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8177,7 +8177,7 @@
       },
       {
         "id": "molten_copper",
-        "name": "Cool Molten Copper (-14 \u00b0C @ 10 kg/s -> +54.04 kDTU/s)",
+        "name": "Cool Molten Copper (-14 °C @ 10 kg/s -> +54.04 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Copper",
@@ -8193,7 +8193,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8201,7 +8201,7 @@
       },
       {
         "id": "molten_glass",
-        "name": "Cool Molten Glass (-14 \u00b0C @ 10 kg/s -> +28 kDTU/s)",
+        "name": "Cool Molten Glass (-14 °C @ 10 kg/s -> +28 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Glass",
@@ -8217,7 +8217,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8225,7 +8225,7 @@
       },
       {
         "id": "molten_gold",
-        "name": "Cool Molten Gold (-14 \u00b0C @ 10 kg/s -> +18.074 kDTU/s)",
+        "name": "Cool Molten Gold (-14 °C @ 10 kg/s -> +18.074 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Gold",
@@ -8241,7 +8241,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8249,7 +8249,7 @@
       },
       {
         "id": "molten_iridium",
-        "name": "Cool Molten Iridium (-14 \u00b0C @ 10 kg/s -> +18.34 kDTU/s)",
+        "name": "Cool Molten Iridium (-14 °C @ 10 kg/s -> +18.34 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Iridium",
@@ -8265,7 +8265,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8273,7 +8273,7 @@
       },
       {
         "id": "molten_iron",
-        "name": "Cool Molten Iron (-14 \u00b0C @ 10 kg/s -> +62.86 kDTU/s)",
+        "name": "Cool Molten Iron (-14 °C @ 10 kg/s -> +62.86 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Iron",
@@ -8289,7 +8289,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8297,7 +8297,7 @@
       },
       {
         "id": "molten_lead",
-        "name": "Cool Molten Lead (-14 \u00b0C @ 10 kg/s -> +17.92 kDTU/s)",
+        "name": "Cool Molten Lead (-14 °C @ 10 kg/s -> +17.92 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Lead",
@@ -8313,7 +8313,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8321,7 +8321,7 @@
       },
       {
         "id": "molten_nickel",
-        "name": "Cool Molten Nickel (-14 \u00b0C @ 10 kg/s -> +61.6 kDTU/s)",
+        "name": "Cool Molten Nickel (-14 °C @ 10 kg/s -> +61.6 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Nickel",
@@ -8337,7 +8337,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8345,7 +8345,7 @@
       },
       {
         "id": "molten_niobium",
-        "name": "Cool Molten Niobium (-14 \u00b0C @ 10 kg/s -> +37.1 kDTU/s)",
+        "name": "Cool Molten Niobium (-14 °C @ 10 kg/s -> +37.1 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Niobium",
@@ -8361,7 +8361,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8369,7 +8369,7 @@
       },
       {
         "id": "molten_salt",
-        "name": "Cool Molten Salt (-14 \u00b0C @ 10 kg/s -> +98 kDTU/s)",
+        "name": "Cool Molten Salt (-14 °C @ 10 kg/s -> +98 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Salt",
@@ -8385,7 +8385,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8393,7 +8393,7 @@
       },
       {
         "id": "molten_steel",
-        "name": "Cool Molten Steel (-14 \u00b0C @ 10 kg/s -> +54.04 kDTU/s)",
+        "name": "Cool Molten Steel (-14 °C @ 10 kg/s -> +54.04 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Steel",
@@ -8409,7 +8409,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8417,7 +8417,7 @@
       },
       {
         "id": "molten_syngas",
-        "name": "Cool Molten Syngas (-14 \u00b0C @ 10 kg/s -> +336 kDTU/s)",
+        "name": "Cool Molten Syngas (-14 °C @ 10 kg/s -> +336 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Syngas",
@@ -8433,7 +8433,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8441,7 +8441,7 @@
       },
       {
         "id": "molten_tungsten",
-        "name": "Cool Molten Tungsten (-14 \u00b0C @ 10 kg/s -> +18.76 kDTU/s)",
+        "name": "Cool Molten Tungsten (-14 °C @ 10 kg/s -> +18.76 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Tungsten",
@@ -8457,7 +8457,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8465,7 +8465,7 @@
       },
       {
         "id": "molten_zinc",
-        "name": "Cool Molten Zinc (-14 \u00b0C @ 10 kg/s -> +54.32 kDTU/s)",
+        "name": "Cool Molten Zinc (-14 °C @ 10 kg/s -> +54.32 kDTU/s)",
         "inputs": [
           {
             "resource": "Molten Zinc",
@@ -8481,7 +8481,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8489,7 +8489,7 @@
       },
       {
         "id": "mucin",
-        "name": "Cool Mucin (-14 \u00b0C @ 10 kg/s -> +420 kDTU/s)",
+        "name": "Cool Mucin (-14 °C @ 10 kg/s -> +420 kDTU/s)",
         "inputs": [
           {
             "resource": "Mucin",
@@ -8505,7 +8505,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8513,7 +8513,7 @@
       },
       {
         "id": "nectar",
-        "name": "Cool Nectar (-14 \u00b0C @ 10 kg/s -> +574 kDTU/s)",
+        "name": "Cool Nectar (-14 °C @ 10 kg/s -> +574 kDTU/s)",
         "inputs": [
           {
             "resource": "Nectar",
@@ -8529,7 +8529,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8537,7 +8537,7 @@
       },
       {
         "id": "ovolene",
-        "name": "Cool Ovolene (-14 \u00b0C @ 10 kg/s -> +574 kDTU/s)",
+        "name": "Cool Ovolene (-14 °C @ 10 kg/s -> +574 kDTU/s)",
         "inputs": [
           {
             "resource": "Ovolene",
@@ -8553,7 +8553,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8561,7 +8561,7 @@
       },
       {
         "id": "petroleum",
-        "name": "Cool Petroleum (-14 \u00b0C @ 10 kg/s -> +246.4 kDTU/s)",
+        "name": "Cool Petroleum (-14 °C @ 10 kg/s -> +246.4 kDTU/s)",
         "inputs": [
           {
             "resource": "Petroleum",
@@ -8577,7 +8577,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8585,7 +8585,7 @@
       },
       {
         "id": "phyto_oil",
-        "name": "Cool Phyto Oil (-14 \u00b0C @ 10 kg/s -> +126 kDTU/s)",
+        "name": "Cool Phyto Oil (-14 °C @ 10 kg/s -> +126 kDTU/s)",
         "inputs": [
           {
             "resource": "Phyto Oil",
@@ -8601,7 +8601,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8609,7 +8609,7 @@
       },
       {
         "id": "polluted_brine",
-        "name": "Cool Polluted Brine (-14 \u00b0C @ 10 kg/s -> +504 kDTU/s)",
+        "name": "Cool Polluted Brine (-14 °C @ 10 kg/s -> +504 kDTU/s)",
         "inputs": [
           {
             "resource": "Polluted Brine",
@@ -8625,7 +8625,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8633,7 +8633,7 @@
       },
       {
         "id": "resin",
-        "name": "Cool Resin (-14 \u00b0C @ 10 kg/s -> +155.4 kDTU/s)",
+        "name": "Cool Resin (-14 °C @ 10 kg/s -> +155.4 kDTU/s)",
         "inputs": [
           {
             "resource": "Resin",
@@ -8649,7 +8649,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8657,7 +8657,7 @@
       },
       {
         "id": "salt_water",
-        "name": "Cool Salt Water (-14 \u00b0C @ 10 kg/s -> +574 kDTU/s)",
+        "name": "Cool Salt Water (-14 °C @ 10 kg/s -> +574 kDTU/s)",
         "inputs": [
           {
             "resource": "Salt Water",
@@ -8673,7 +8673,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8681,7 +8681,7 @@
       },
       {
         "id": "sap",
-        "name": "Cool Sap (-14 \u00b0C @ 10 kg/s -> +155.4 kDTU/s)",
+        "name": "Cool Sap (-14 °C @ 10 kg/s -> +155.4 kDTU/s)",
         "inputs": [
           {
             "resource": "Sap",
@@ -8697,7 +8697,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8705,7 +8705,7 @@
       },
       {
         "id": "squid_ink",
-        "name": "Cool Squid Ink (-14 \u00b0C @ 10 kg/s -> +280 kDTU/s)",
+        "name": "Cool Squid Ink (-14 °C @ 10 kg/s -> +280 kDTU/s)",
         "inputs": [
           {
             "resource": "Squid Ink",
@@ -8721,7 +8721,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8729,7 +8729,7 @@
       },
       {
         "id": "visco_gel_fluid",
-        "name": "Cool Visco-Gel Fluid (-14 \u00b0C @ 10 kg/s -> +217 kDTU/s)",
+        "name": "Cool Visco-Gel Fluid (-14 °C @ 10 kg/s -> +217 kDTU/s)",
         "inputs": [
           {
             "resource": "Visco-Gel Fluid",
@@ -8745,7 +8745,7 @@
             "rate": 10000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -1200,
@@ -8779,13 +8779,13 @@
         "rate": 1000,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "-14 \u00b0C"
+        "temp": "-14 °C"
       }
     ],
     "recipes": [
       {
         "id": "hydrogen",
-        "name": "Cool Hydrogen (-14 \u00b0C @ 1 kg/s -> +33.6 kDTU/s)",
+        "name": "Cool Hydrogen (-14 °C @ 1 kg/s -> +33.6 kDTU/s)",
         "inputs": [
           {
             "resource": "Hydrogen",
@@ -8801,7 +8801,7 @@
             "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -240,
@@ -8809,7 +8809,7 @@
       },
       {
         "id": "oxygen",
-        "name": "Cool Oxygen (-14 \u00b0C @ 1 kg/s -> +14.07 kDTU/s)",
+        "name": "Cool Oxygen (-14 °C @ 1 kg/s -> +14.07 kDTU/s)",
         "inputs": [
           {
             "resource": "Oxygen",
@@ -8825,7 +8825,7 @@
             "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -240,
@@ -8833,7 +8833,7 @@
       },
       {
         "id": "natural_gas",
-        "name": "Cool Natural Gas (-14 \u00b0C @ 1 kg/s -> +30.67 kDTU/s)",
+        "name": "Cool Natural Gas (-14 °C @ 1 kg/s -> +30.67 kDTU/s)",
         "inputs": [
           {
             "resource": "Natural Gas",
@@ -8849,7 +8849,7 @@
             "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -240,
@@ -8857,7 +8857,7 @@
       },
       {
         "id": "chlorine",
-        "name": "Cool Chlorine (-14 \u00b0C @ 1 kg/s -> +6.72 kDTU/s)",
+        "name": "Cool Chlorine (-14 °C @ 1 kg/s -> +6.72 kDTU/s)",
         "inputs": [
           {
             "resource": "Chlorine",
@@ -8873,7 +8873,7 @@
             "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -240,
@@ -8881,7 +8881,7 @@
       },
       {
         "id": "carbon_dioxide",
-        "name": "Cool Carbon Dioxide (-14 \u00b0C @ 1 kg/s -> +11.84 kDTU/s)",
+        "name": "Cool Carbon Dioxide (-14 °C @ 1 kg/s -> +11.84 kDTU/s)",
         "inputs": [
           {
             "resource": "Carbon Dioxide",
@@ -8897,7 +8897,7 @@
             "rate": 1000,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "-14 \u00b0C"
+            "temp": "-14 °C"
           }
         ],
         "power": -240,
@@ -8946,13 +8946,13 @@
         "rate": 500,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ -20 \u00b0C"
+        "temp": "@ -20 °C"
       }
     ],
     "recipes": [
       {
         "id": "ice",
-        "name": "Water (30 kg) -> Ice (30 kg) @ -20 \u00b0C",
+        "name": "Water (30 kg) -> Ice (30 kg) @ -20 °C",
         "inputs": [
           {
             "resource": "Water",
@@ -8968,7 +8968,7 @@
             "rate": 500,
             "unit": "g/s",
             "state": "free",
-            "temp": "@ -20 \u00b0C"
+            "temp": "@ -20 °C"
           }
         ],
         "power": -60,
@@ -9002,14 +9002,14 @@
         "rate": 3333.33,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 90 \u00b0C+"
+        "temp": "@ 90 °C+"
       },
       {
         "resource": "Natural Gas",
         "rate": 33.33,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 300 \u00b0C+"
+        "temp": "@ 300 °C+"
       }
     ],
     "recipes": [],
@@ -10038,7 +10038,7 @@
         "rate": 20,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 75 \u00b0C"
+        "temp": "@ 75 °C"
       }
     ],
     "recipes": [
@@ -10074,7 +10074,7 @@
             "rate": 20,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "@ 75 \u00b0C"
+            "temp": "@ 75 °C"
           }
         ],
         "power": 0,
@@ -10112,7 +10112,7 @@
             "rate": 20,
             "unit": "g/s",
             "state": "in a pipe",
-            "temp": "@ 75 \u00b0C"
+            "temp": "@ 75 °C"
           }
         ],
         "power": 0,
@@ -10678,7 +10678,7 @@
         "rate": 1666.67,
         "unit": "g/s",
         "state": "free",
-        "temp": "@ 355 \u00b0C"
+        "temp": "@ 355 °C"
       }
     ],
     "recipes": [],
@@ -10709,7 +10709,7 @@
         "rate": 19.5,
         "unit": "g/s",
         "state": "in a pipe",
-        "temp": "@ 37 \u00b0C"
+        "temp": "@ 37 °C"
       }
     ],
     "recipes": [],
@@ -10992,5 +10992,2088 @@
       }
     ],
     "modifiers": []
+  },
+  {
+    "id": "liquid_vent",
+    "name": "Liquid Vent",
+    "aliases": [
+      "Water Vent"
+    ],
+    "category": "Machine",
+    "subcategory": "Plumbing",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Liquid_Vent",
+    "icon": "images/icons/Liquid_Vent.png",
+    "power": 0,
+    "heat": 0,
+    "inputs": [
+      {
+        "resource": "Water",
+        "rate": 10000,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Water",
+        "rate": 10000,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "water",
+        "name": "Water (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Water",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Water",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "biodiesel",
+        "name": "Biodiesel (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Biodiesel",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Biodiesel",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "brackene",
+        "name": "Brackene (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Brackene",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Brackene",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "brine",
+        "name": "Brine (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Brine",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Brine",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "crude_oil",
+        "name": "Crude Oil (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Crude Oil",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Crude Oil",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "ethanol",
+        "name": "Ethanol (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Ethanol",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Ethanol",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "gunk",
+        "name": "Gunk (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Gunk",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Gunk",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "latex",
+        "name": "Latex (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Latex",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Latex",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_carbon",
+        "name": "Liquid Carbon (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Carbon",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Carbon",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_carbon_dioxide",
+        "name": "Liquid Carbon Dioxide (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Carbon Dioxide",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Carbon Dioxide",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_chlorine",
+        "name": "Liquid Chlorine (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Chlorine",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Chlorine",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_helium",
+        "name": "Liquid Helium (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Helium",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Helium",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_hydrogen",
+        "name": "Liquid Hydrogen (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Hydrogen",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Hydrogen",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_methane",
+        "name": "Liquid Methane (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Methane",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Methane",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_naphtha",
+        "name": "Liquid Naphtha (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Naphtha",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Naphtha",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_nuclear_waste",
+        "name": "Liquid Nuclear Waste (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Nuclear Waste",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Nuclear Waste",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_oxygen",
+        "name": "Liquid Oxygen (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Oxygen",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Oxygen",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_phosphorus",
+        "name": "Liquid Phosphorus (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Phosphorus",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Phosphorus",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_propane",
+        "name": "Liquid Propane (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Propane",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Propane",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_sucrose",
+        "name": "Liquid Sucrose (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Sucrose",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Sucrose",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_sulfur",
+        "name": "Liquid Sulfur (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Sulfur",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Sulfur",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "liquid_uranium",
+        "name": "Liquid Uranium (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Liquid Uranium",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Liquid Uranium",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "magma",
+        "name": "Magma (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Magma",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Magma",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "mercury",
+        "name": "Mercury (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Mercury",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Mercury",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_aluminum",
+        "name": "Molten Aluminum (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Aluminum",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Aluminum",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_cobalt",
+        "name": "Molten Cobalt (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Cobalt",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Cobalt",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_copper",
+        "name": "Molten Copper (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Copper",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Copper",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_glass",
+        "name": "Molten Glass (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Glass",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Glass",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_gold",
+        "name": "Molten Gold (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Gold",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Gold",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_iridium",
+        "name": "Molten Iridium (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Iridium",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Iridium",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_iron",
+        "name": "Molten Iron (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Iron",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Iron",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_lead",
+        "name": "Molten Lead (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Lead",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Lead",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_nickel",
+        "name": "Molten Nickel (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Nickel",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Nickel",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_niobium",
+        "name": "Molten Niobium (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Niobium",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Niobium",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_salt",
+        "name": "Molten Salt (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Salt",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Salt",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_steel",
+        "name": "Molten Steel (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Steel",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Steel",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_syngas",
+        "name": "Molten Syngas (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Syngas",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Syngas",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_tungsten",
+        "name": "Molten Tungsten (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Tungsten",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Tungsten",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "molten_zinc",
+        "name": "Molten Zinc (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Molten Zinc",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Molten Zinc",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "mucin",
+        "name": "Mucin (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Mucin",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Mucin",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "nectar",
+        "name": "Nectar (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Nectar",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Nectar",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "ovolene",
+        "name": "Ovolene (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Ovolene",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Ovolene",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "petroleum",
+        "name": "Petroleum (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Petroleum",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Petroleum",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "phyto_oil",
+        "name": "Phyto Oil (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Phyto Oil",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Phyto Oil",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "polluted_brine",
+        "name": "Polluted Brine (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Polluted Brine",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Polluted Brine",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "polluted_water",
+        "name": "Polluted Water (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Polluted Water",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Polluted Water",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "resin",
+        "name": "Resin (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Resin",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Resin",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "salt_water",
+        "name": "Salt Water (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Salt Water",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Salt Water",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "sap",
+        "name": "Sap (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Sap",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Sap",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "squid_ink",
+        "name": "Squid Ink (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Squid Ink",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Squid Ink",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "super_coolant",
+        "name": "Super Coolant (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Super Coolant",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Super Coolant",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "visco_gel_fluid",
+        "name": "Visco-Gel Fluid (10 kg/s)",
+        "inputs": [
+          {
+            "resource": "Visco-Gel Fluid",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Visco-Gel Fluid",
+            "rate": 10000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      }
+    ],
+    "modifiers": [],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Liquid_Vent.png"
+  },
+  {
+    "id": "gas_vent",
+    "name": "Gas Vent",
+    "category": "Machine",
+    "subcategory": "Ventilation",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Gas_Vent",
+    "icon": "images/icons/Gas_Vent.png",
+    "power": 0,
+    "heat": 0,
+    "inputs": [
+      {
+        "resource": "Oxygen",
+        "rate": 1000,
+        "unit": "g/s",
+        "state": "in a pipe",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Oxygen",
+        "rate": 1000,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "oxygen",
+        "name": "Oxygen (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Oxygen",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Oxygen",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "hydrogen",
+        "name": "Hydrogen (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Hydrogen",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Hydrogen",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "natural_gas",
+        "name": "Natural Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Natural Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Natural Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "carbon_dioxide",
+        "name": "Carbon Dioxide (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Carbon Dioxide",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "aluminum_gas",
+        "name": "Aluminum Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Aluminum Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Aluminum Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "carbon_gas",
+        "name": "Carbon Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Carbon Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Carbon Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "chlorine",
+        "name": "Chlorine (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Chlorine",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Chlorine",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "cobalt_gas",
+        "name": "Cobalt Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Cobalt Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Cobalt Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "copper_gas",
+        "name": "Copper Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Copper Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Copper Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "ethanol_gas",
+        "name": "Ethanol Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Ethanol Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Ethanol Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "gold_gas",
+        "name": "Gold Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Gold Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Gold Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "helium",
+        "name": "Helium (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Helium",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Helium",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "iridium_gas",
+        "name": "Iridium Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Iridium Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Iridium Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "iron_gas",
+        "name": "Iron Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Iron Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Iron Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "lead_gas",
+        "name": "Lead Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Lead Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Lead Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "mercury_gas",
+        "name": "Mercury Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Mercury Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Mercury Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "nickel_gas",
+        "name": "Nickel Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Nickel Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Nickel Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "niobium_gas",
+        "name": "Niobium Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Niobium Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Niobium Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "nuclear_fallout",
+        "name": "Nuclear Fallout (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Nuclear Fallout",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Nuclear Fallout",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "phosphorus_gas",
+        "name": "Phosphorus Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Phosphorus Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Phosphorus Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "polluted_oxygen",
+        "name": "Polluted Oxygen (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Polluted Oxygen",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Polluted Oxygen",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "propane",
+        "name": "Propane (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Propane",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Propane",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "rock_gas",
+        "name": "Rock Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Rock Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Rock Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "salt_gas",
+        "name": "Salt Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Salt Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Salt Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "sour_gas",
+        "name": "Sour Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Sour Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Sour Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "steam",
+        "name": "Steam (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Steam",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Steam",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "steel_gas",
+        "name": "Steel Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Steel Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Steel Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "sulfur_gas",
+        "name": "Sulfur Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Sulfur Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Sulfur Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "super_coolant_gas",
+        "name": "Super Coolant Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Super Coolant Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Super Coolant Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "syngas",
+        "name": "Syngas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Syngas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Syngas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "tungsten_gas",
+        "name": "Tungsten Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Tungsten Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Tungsten Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "zinc_gas",
+        "name": "Zinc Gas (1 kg/s)",
+        "inputs": [
+          {
+            "resource": "Zinc Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "in a pipe",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Zinc Gas",
+            "rate": 1000,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      }
+    ],
+    "modifiers": [],
+    "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Gas_Vent.png"
   }
 ]

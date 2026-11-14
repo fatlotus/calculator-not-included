@@ -198,5 +198,42 @@ describe("Icon Integrity and Accuracy", () => {
       );
     }
   });
+
+  it("includes liquid_vent and gas_vent with ONI icons, flow rates, and pipe-to-free streams", () => {
+    const { entityMap, entities } = buildEntityCatalog(ONI_DATASET);
+
+    const liquidVent = entityMap.get("liquid_vent");
+    assert.ok(liquidVent, "liquid_vent entity must exist");
+    assert.strictEqual(liquidVent.name, "Liquid Vent");
+    assert.strictEqual(liquidVent.category, "Machine");
+    assert.strictEqual(liquidVent.subcategory, "Plumbing");
+    assert.strictEqual(liquidVent.power, 0);
+    assert.strictEqual(liquidVent.heat, 0);
+    assert.strictEqual(liquidVent.icon, "images/icons/Liquid_Vent.png");
+    assert.ok(fs.existsSync(path.resolve(__dirname, "../", liquidVent.icon)));
+    assert.strictEqual(liquidVent.inputs[0].rate, 10000);
+    assert.strictEqual(liquidVent.inputs[0].state, "in a pipe");
+    assert.strictEqual(liquidVent.outputs[0].rate, 10000);
+    assert.strictEqual(liquidVent.outputs[0].state, "free");
+    assert.ok(liquidVent.recipes.length >= 50);
+
+    const gasVent = entityMap.get("gas_vent");
+    assert.ok(gasVent, "gas_vent entity must exist");
+    assert.strictEqual(gasVent.name, "Gas Vent");
+    assert.strictEqual(gasVent.category, "Machine");
+    assert.strictEqual(gasVent.subcategory, "Ventilation");
+    assert.strictEqual(gasVent.power, 0);
+    assert.strictEqual(gasVent.heat, 0);
+    assert.strictEqual(gasVent.icon, "images/icons/Gas_Vent.png");
+    assert.ok(fs.existsSync(path.resolve(__dirname, "../", gasVent.icon)));
+    assert.strictEqual(gasVent.inputs[0].rate, 1000);
+    assert.strictEqual(gasVent.inputs[0].state, "in a pipe");
+    assert.strictEqual(gasVent.outputs[0].rate, 1000);
+    assert.strictEqual(gasVent.outputs[0].state, "free");
+    assert.ok(gasVent.recipes.length >= 30);
+
+    assert.ok(searchEntities(entities, "Liquid Vent", "Machine").some((e) => e.id === "liquid_vent"));
+    assert.ok(searchEntities(entities, "Gas Vent", "Machine").some((e) => e.id === "gas_vent"));
+  });
 });
 
