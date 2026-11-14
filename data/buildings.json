@@ -10777,5 +10777,220 @@
     "recipes": [],
     "modifiers": [],
     "original_icon_url": "https://oxygennotincluded.wiki.gg/images/Shower.png"
+  },
+  {
+    "id": "emission",
+    "name": "Emission",
+    "aliases": [
+      "Emission",
+      "Off-gas",
+      "Sublimation",
+      "Emit",
+      "Polluted Water",
+      "Polluted Dirt",
+      "Polluted Mud",
+      "Slime",
+      "Bleach Stone",
+      "Oxylite",
+      "Rot Pile",
+      "Polluted Oxygen",
+      "Chlorine",
+      "Oxygen"
+    ],
+    "category": "Machine",
+    "subcategory": "Meta",
+    "wiki_url": "https://oxygennotincluded.wiki.gg/wiki/Sublimation_Station",
+    "icon": "images/icons/Polluted_Oxygen.png",
+    "power": 0,
+    "heat": 0,
+    "inputs": [
+      {
+        "resource": "Polluted Water",
+        "rate": 1,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "outputs": [
+      {
+        "resource": "Polluted Oxygen",
+        "rate": 1,
+        "unit": "g/s",
+        "state": "free",
+        "temp": null
+      }
+    ],
+    "recipes": [
+      {
+        "id": "emit_polluted_water",
+        "name": "Polluted Water -> Polluted Oxygen (1 g/s)",
+        "inputs": [
+          {
+            "resource": "Polluted Water",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Polluted Oxygen",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "emit_polluted_dirt",
+        "name": "Polluted Dirt -> Polluted Oxygen (1 g/s)",
+        "inputs": [
+          {
+            "resource": "Polluted Dirt",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Polluted Oxygen",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "emit_polluted_mud",
+        "name": "Polluted Mud -> Polluted Oxygen (1 g/s)",
+        "inputs": [
+          {
+            "resource": "Polluted Mud",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Polluted Oxygen",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "emit_slime",
+        "name": "Slime -> Polluted Oxygen (1 g/s)",
+        "inputs": [
+          {
+            "resource": "Slime",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Polluted Oxygen",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "emit_bleach_stone",
+        "name": "Bleach Stone -> Chlorine (1 g/s)",
+        "inputs": [
+          {
+            "resource": "Bleach Stone",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Chlorine",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "emit_oxylite",
+        "name": "Oxylite -> Oxygen (1 g/s)",
+        "inputs": [
+          {
+            "resource": "Oxylite",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Oxygen",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      },
+      {
+        "id": "emit_rot_pile",
+        "name": "Rot Pile -> Polluted Oxygen (1 g/s)",
+        "inputs": [
+          {
+            "resource": "Rot Pile",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "outputs": [
+          {
+            "resource": "Polluted Oxygen",
+            "rate": 1,
+            "unit": "g/s",
+            "state": "free",
+            "temp": null
+          }
+        ],
+        "power": 0,
+        "heat": 0
+      }
+    ],
+    "modifiers": []
   }
 ]

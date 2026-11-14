@@ -332,9 +332,10 @@ export function encodeStateToProtobuf(state, elementMap = null) {
  * Decode a compact Protocol Buffer binary representation (Uint8Array) into a state object.
  *
  * @param {Uint8Array} bytes
+ * @param {Map<string, Object>|Object|null} [elementMap=null]
  * @returns {Object}
  */
-export function decodeStateFromProtobuf(bytes) {
+export function decodeStateFromProtobuf(bytes, elementMap = null) {
   const defaultState = {
     rateMode: "s",
     unit: "s",
@@ -367,13 +368,13 @@ export function decodeStateFromProtobuf(bytes) {
       qty = r.countInt;
     } else if (r.count === "countScaled" && typeof r.countScaled === "number") {
       qty = r.countScaled / 10000;
-    } else if (r.count === "countDouble" && typeof r.countDouble === "number" && Number.isFinite(r.countDouble)) {
+    } else if (r.count === "countDouble" && typeof r.countDouble === "number" && Number.isFinite(r.countDouble) && r.countDouble >= 0) {
       qty = r.countDouble;
     } else if (typeof r.countScaled === "number" && r.countScaled > 0) {
       qty = r.countScaled / 10000;
     } else if (typeof r.countInt === "number" && r.countInt > 0) {
       qty = r.countInt;
-    } else if (typeof r.countDouble === "number" && Number.isFinite(r.countDouble)) {
+    } else if (typeof r.countDouble === "number" && Number.isFinite(r.countDouble) && r.countDouble >= 0) {
       qty = r.countDouble;
     }
 
@@ -485,7 +486,7 @@ export function decodeStateFromProtobuf(bytes) {
         rateVal = Number(entry.rate);
       } else if (typeof entry.rateInt === "number" && entry.rateInt > 0) {
         rateVal = entry.rateInt;
-      } else if (typeof entry.rateDouble === "number" && Number.isFinite(entry.rateDouble)) {
+      } else if (typeof entry.rateDouble === "number" && Number.isFinite(entry.rateDouble) && entry.rateDouble > 0) {
         rateVal = entry.rateDouble;
       }
       if (!Number.isFinite(rateVal) || rateVal <= 0) continue;
@@ -511,7 +512,7 @@ export function decodeStateFromProtobuf(bytes) {
         if (tempVal !== undefined && Number.isFinite(tempVal)) {
           loopObj.tempC = tempVal;
         } else {
-          loopObj.tempC = getDefaultElementTemp(elementName, null);
+          loopObj.tempC = getDefaultElementTemp(elementName, elementMap);
         }
       }
       loops.push(loopObj);
@@ -556,9 +557,10 @@ export function encodeStateToParam(state, elementMap = null) {
  * Only supports the new compact Protocol Buffer Base64 scheme.
  *
  * @param {string} paramStr
+ * @param {Map<string, Object>|Object|null} [elementMap=null]
  * @returns {Object}
  */
-export function decodeStateFromParam(paramStr) {
+export function decodeStateFromParam(paramStr, elementMap = null) {
   const defaultState = {
     rateMode: "s",
     unit: "s",
@@ -617,7 +619,7 @@ export function decodeStateFromParam(paramStr) {
     return defaultState;
   }
 
-  return decodeStateFromProtobuf(bytes);
+  return decodeStateFromProtobuf(bytes, elementMap);
 }
 
 /**

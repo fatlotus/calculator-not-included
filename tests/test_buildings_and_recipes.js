@@ -11,6 +11,8 @@ import { ONI_DATASET } from "../src/dataset.js";
 import {
   evaluateRow,
   calculateSystemNet,
+  formatStreamLine,
+  calculateRowMatchTargets,
 } from "../src/calculator.js";
 import { buildEntityCatalog } from "../src/data_loader.js";
 
@@ -390,4 +392,50 @@ describe("Refining & Production Buildings", () => {
     assert.strictEqual(shIn.rate, 25);
     assert.strictEqual(shOut.rate, 25);
   });
+
+  it("evaluates all 7 emission recipes at 1 g/s (600 g/cycle) with 0 power and 0 heat", () => {
+    const expected = [
+      ["emit_polluted_water", "Polluted Water", "Polluted Oxygen"],
+      ["emit_polluted_dirt", "Polluted Dirt", "Polluted Oxygen"],
+      ["emit_polluted_mud", "Polluted Mud", "Polluted Oxygen"],
+      ["emit_slime", "Slime", "Polluted Oxygen"],
+      ["emit_bleach_stone", "Bleach Stone", "Chlorine"],
+      ["emit_oxylite", "Oxylite", "Oxygen"],
+      ["emit_rot_pile", "Rot Pile", "Polluted Oxygen"],
+    ];
+
+    for (const [recipeId, inRes, outRes] of expected) {
+      const ev = evaluateRow({ entityId: "emission", qty: 1, recipeId }, entityMap, elementMap);
+      assert.strictEqual(ev.power, 0, `${recipeId} power must be 0`);
+      assert.strictEqual(ev.heat, 0, `${recipeId} heat must be 0`);
+      assert.strictEqual(ev.inputs.length, 1);
+      assert.strictEqual(ev.outputs.length, 1);
+      assert.strictEqual(ev.inputs[0].resource, inRes);
+      assert.strictEqual(ev.inputs[0].rate, 1);
+      assert.strictEqual(ev.inputs[0].unit, "g/s");
+      assert.strictEqual(ev.inputs[0].state, "free");
+      assert.strictEqual(ev.outputs[0].resource, outRes);
+      assert.strictEqual(ev.outputs[0].rate, 1);
+      assert.strictEqual(ev.outputs[0].unit, "g/s");
+      assert.strictEqual(ev.outputs[0].state, "free");
+
+      const formattedIn = formatStreamLine(ev.inputs[0], false, "c", elementMap);
+      assert.ok(formattedIn.includes("600 g/cycle"), `${recipeId} cycle input should be 600 g/cycle, got: ${formattedIn}`);
+      const formattedOut = formatStreamLine(ev.outputs[0], true, "s", elementMap);
+      assert.ok(formattedOut.includes("1 g/s"), `${recipeId} second output should be 1 g/s, got: ${formattedOut}`);
+    }
+  });
+
+  it("computes [match: X×] targets for emission with upstream and downstream rows", () => {
+    // 1x Duplicant consumes 100 g/s Oxygen -> emission emit_oxylite needs 100x to supply 100 g/s Oxygen
+    const rows = [
+      { entityId: "emission", qty: 1, recipeId: "emit_oxylite" },
+      { entityId: "duplicant", qty: 1 },
+    ];
+    const targets = calculateRowMatchTargets(0, rows, entityMap, { elementMap });
+    const o2Match = targets["out:Oxygen||free"];
+    assert.ok(o2Match !== undefined, "Must compute Oxygen match target for emission");
+    assert.strictEqual(o2Match.targetQty, 100);
+  });
 });
+

@@ -893,7 +893,7 @@ export function evaluateRow(
   if (!entity) {
     return {
       entity: null,
-      qty: row.qty || 0,
+      qty: Number.isFinite(Number(row.qty)) ? Math.max(0, Number(row.qty)) : 0,
       power: 0,
       heat: 0,
       buildingHeat: 0,
@@ -904,7 +904,7 @@ export function evaluateRow(
     };
   }
 
-  const qty = Math.max(0, Number(row.qty) || 0);
+  const qty = Number.isFinite(Number(row.qty)) ? Math.max(0, Number(row.qty)) : 0;
   const activeModIds = new Set(
     row.modifiers !== undefined && row.modifiers !== null
       ? row.modifiers
@@ -926,7 +926,7 @@ export function evaluateRow(
       else if (inputTemps[kSingle] !== undefined) inpTemp = Number(inputTemps[kSingle]);
       else if (inputTemps[mat] !== undefined) inpTemp = Number(inputTemps[mat]);
       else inpTemp = getDefaultElementTemp(mat, elementMap);
-    } else if (row.inputTemp !== undefined && row.inputTemp !== null && !isNaN(Number(row.inputTemp))) {
+    } else if (row.inputTemp !== undefined && row.inputTemp !== null && Number.isFinite(Number(row.inputTemp))) {
       inpTemp = Number(row.inputTemp);
     } else {
       inpTemp = getDefaultElementTemp(mat, elementMap);
@@ -1019,7 +1019,7 @@ export function evaluateRow(
       tColdIn = getDefaultElementTemp(coldMat, elementMap);
     }
 
-    if (row.inputTemp !== undefined && row.inputTemp !== null && !isNaN(Number(row.inputTemp))) {
+    if (row.inputTemp !== undefined && row.inputTemp !== null && Number.isFinite(Number(row.inputTemp))) {
       tHotIn = Number(row.inputTemp);
     }
 
@@ -1113,7 +1113,7 @@ export function evaluateRow(
       if (inputTemps[k] !== undefined) inpTemp = Number(inputTemps[k]);
       else if (inputTemps[kSingle] !== undefined) inpTemp = Number(inputTemps[kSingle]);
       else if (inputTemps[s.resource] !== undefined) inpTemp = Number(inputTemps[s.resource]);
-    } else if (row.inputTemp !== undefined && row.inputTemp !== null && !isNaN(Number(row.inputTemp))) {
+    } else if (row.inputTemp !== undefined && row.inputTemp !== null && Number.isFinite(Number(row.inputTemp))) {
       inpTemp = Number(row.inputTemp);
     }
     return { ...s, tempC: inpTemp };
@@ -1157,8 +1157,10 @@ export function evaluateRow(
   // Dynamic Steam Turbine power and heat calculation based on inlet steam temperature
   if (row.entityId === "steam_turbine" || entity.id === "steam_turbine") {
     let inTemp = inputs[0]?.tempC;
-    if (inTemp === undefined || inTemp === null || isNaN(inTemp)) {
-      inTemp = row.inputTemp !== undefined ? Number(row.inputTemp) : (getDefaultElementTemp("Steam", elementMap) || 126.85);
+    if (inTemp === undefined || inTemp === null || !Number.isFinite(inTemp)) {
+      inTemp = (row.inputTemp !== undefined && row.inputTemp !== null && Number.isFinite(Number(row.inputTemp)))
+        ? Number(row.inputTemp)
+        : (getDefaultElementTemp("Steam", elementMap) || 126.85);
       if (inputs[0]) inputs[0].tempC = inTemp;
     }
     if (inTemp < 125.0) {
@@ -1352,7 +1354,7 @@ function simulateRowEvaluation(rows, entityMap, elementMap, netInputTemps, loops
       const k = getKey(inp.resource, st);
       const tNet = getDefNetTemp(inp.resource, st);
 
-      if (row.inputTemp !== undefined && row.inputTemp !== null && !isNaN(Number(row.inputTemp))) {
+      if (row.inputTemp !== undefined && row.inputTemp !== null && Number.isFinite(Number(row.inputTemp))) {
         rowInputTemps[k] = Number(row.inputTemp);
         continue;
       }

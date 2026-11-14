@@ -618,4 +618,49 @@ describe("Automatic Loop Detection & Net Matching", () => {
     assert.strictEqual(net.loopStartStreams[0].resource, "Power");
     assert.strictEqual(net.loopStartStreams[0].rate, 240);
   });
+
+  it("propagates T_out = T_in thermal pass-through for all emission recipes including Rot Pile", () => {
+    const rows = [
+      { entityId: "emission", qty: 5, recipeId: "emit_rot_pile" },
+      { entityId: "emission", qty: 5, recipeId: "emit_bleach_stone" },
+    ];
+    const netInputTemps = {
+      "Rot Pile||free": 45,
+      "Bleach Stone||free": 32.5,
+    };
+    const evaluated = resolveTableTemperatures(rows, entityMap, elementMap, { netInputTemps });
+    assert.strictEqual(evaluated[0].outputs[0].resource, "Polluted Oxygen");
+    assert.strictEqual(evaluated[0].outputs[0].tempC, 45);
+    assert.strictEqual(evaluated[1].outputs[0].resource, "Chlorine");
+    assert.strictEqual(evaluated[1].outputs[0].tempC, 32.5);
+
+    // Upstream heating feeds into emission and passes through to output gas
+    const upstreamRows = [
+      { entityId: "absorb_heat", qty: 1, material: "Polluted Water", materialState: "free", tempDelta: 45 },
+      { entityId: "emission", qty: 1000, recipeId: "emit_polluted_water" },
+    ];
+    const evalUp = resolveTableTemperatures(upstreamRows, entityMap, elementMap, {
+      netInputTemps: { "Polluted Water||free": 20 },
+    });
+    assert.strictEqual(evalUp[1].outputs[0].resource, "Polluted Oxygen");
+    assert.strictEqual(evalUp[1].outputs[0].tempC, 65);
+  });
+
+  it("integrates emission with automatic loop detection", () => {
+    // 1x Duplicant produces 66.6667 g/s Polluted Water (plumbed, in a pipe) or let's loop Oxygen:
+    // emission emit_oxylite -> Oxygen (free) -> duplicant Oxygen (free)
+    const rows = [
+      { entityId: "emission", qty: 100, recipeId: "emit_oxylite" },
+      { entityId: "duplicant", qty: 1 },
+    ];
+    const evaluated = resolveTableTemperatures(rows, entityMap, elementMap, {
+      netInputTemps: { "Oxylite||free": 30 },
+    });
+    const net = calculateSystemNet(evaluated, { elementMap });
+    const o2NetIn = net.netInputs.find((i) => i.resource === "Oxygen");
+    const o2NetOut = net.netOutputs.find((o) => o.resource === "Oxygen");
+    assert.strictEqual(o2NetIn, undefined, "Oxygen demand should be 100% satisfied by emission");
+    assert.strictEqual(o2NetOut, undefined, "Oxygen supply should be 100% consumed by duplicant");
+  });
 });
+

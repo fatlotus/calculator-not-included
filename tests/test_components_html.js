@@ -19,6 +19,7 @@ import {
   renderLoopEndRowHtml,
 } from "../src/components/table_row.js";
 import { renderNetSummaryRowHtml } from "../src/components/net_summary.js";
+import { computeStateData, renderStateToText } from "../src/text_renderer.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const { entityMap, elementMap } = buildEntityCatalog(ONI_DATASET);
@@ -207,4 +208,26 @@ describe("Index HTML & UI Branding", () => {
     assert.ok(!indexHtml.includes("<code>calculatornotincluded.com</code>"), "Must not include old domain code tag");
     assert.ok(!indexHtml.includes("mass-unit-btn"), "Must NOT have deprecated mass-unit-btn selector");
   });
+
+  it("renders emission row in UI HTML and CLI text output across rate modes", () => {
+    const row = { entityId: "emission", qty: 1, recipeId: "emit_rot_pile" };
+    const ev = evaluateRow(row, entityMap, elementMap);
+    const htmlS = renderTableRowHtml(row, ev, elementMap, "s", 0, {}, 1);
+    assert.ok(htmlS.includes("Emission"), "UI row must display Emission");
+    assert.ok(htmlS.includes("emit_rot_pile"), "UI row must include emit_rot_pile recipe option");
+    assert.ok(htmlS.includes("Rot Pile"), "UI row must display Rot Pile input");
+    assert.ok(htmlS.includes("1 g/s"), "UI row must display 1 g/s in /s mode");
+
+    const htmlC = renderTableRowHtml(row, ev, elementMap, "c", 0, {}, 1);
+    assert.ok(htmlC.includes("600 g/cycle"), "UI row must display 600 g/cycle in /cycle mode");
+
+    const state = { rateMode: "s", rows: [row], netInputTemps: {}, loops: [] };
+    const cliData = computeStateData(state, { entityMap, elementMap });
+    assert.strictEqual(cliData.rowsData.length, 1);
+    const cliText = renderStateToText(state, { catalog: { entityMap, elementMap } });
+    assert.ok(cliText.includes("Emission"), "CLI text must include Emission");
+    assert.ok(cliText.includes("Rot Pile"), "CLI text must include Rot Pile");
+    assert.ok(cliText.includes("Polluted Oxygen"), "CLI text must include Polluted Oxygen");
+  });
 });
+

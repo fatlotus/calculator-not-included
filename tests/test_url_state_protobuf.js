@@ -19,6 +19,7 @@ import {
 } from "../src/url_state.js";
 import {
   PROTO_SCHEMA,
+  PROTO_DESCRIPTOR,
   CalculatorStateType,
   RowStateType,
   NetTemperatureType,
@@ -384,4 +385,43 @@ describe("Complex Designs & Meta-Machines Serialization", () => {
     assert.strictEqual(decoded.rows[2].material, "Oxygen");
     assert.strictEqual(decoded.rows[2].materialState, "free");
   });
+
+  it("preserves existing enum IDs and round-trips emission with all 7 recipes", () => {
+    assert.strictEqual(PROTO_DESCRIPTOR.nested.onimath.nested.Entity.values.ENTITY_SHOWER, 161);
+    assert.strictEqual(PROTO_DESCRIPTOR.nested.onimath.nested.Entity.values.ENTITY_EMISSION, 162);
+    assert.strictEqual(PROTO_DESCRIPTOR.nested.onimath.nested.Recipe.values.RECIPE_ZINC_GAS, 207);
+    assert.strictEqual(PROTO_DESCRIPTOR.nested.onimath.nested.Recipe.values.RECIPE_EMIT_POLLUTED_WATER, 208);
+    assert.strictEqual(PROTO_DESCRIPTOR.nested.onimath.nested.Recipe.values.RECIPE_EMIT_ROT_PILE, 214);
+
+    const recipeIds = [
+      "emit_polluted_water",
+      "emit_polluted_dirt",
+      "emit_polluted_mud",
+      "emit_slime",
+      "emit_bleach_stone",
+      "emit_oxylite",
+      "emit_rot_pile",
+    ];
+    const state = {
+      rateMode: "c",
+      rows: recipeIds.map((recipeId, idx) => ({
+        entityId: "emission",
+        qty: (idx + 1) * 10,
+        recipeId,
+      })),
+      netInputTemps: {},
+      loops: [],
+    };
+    const catalog = buildEntityCatalog();
+    const encoded = encodeStateToParam(state, catalog.elementMap);
+    const decoded = decodeStateFromParam(encoded);
+    assert.strictEqual(decoded.rateMode, "c");
+    assert.strictEqual(decoded.rows.length, 7);
+    recipeIds.forEach((recipeId, idx) => {
+      assert.strictEqual(decoded.rows[idx].entityId, "emission");
+      assert.strictEqual(decoded.rows[idx].recipeId, recipeId);
+      assert.strictEqual(decoded.rows[idx].qty, (idx + 1) * 10);
+    });
+  });
 });
+

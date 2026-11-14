@@ -145,4 +145,58 @@ describe("Icon Integrity and Accuracy", () => {
       }
     }
   });
+
+  it("keeps buildings.json, dataset.json, and src/dataset.js in exact sync including emission", () => {
+    const buildingsJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../data/buildings.json"), "utf8")
+    );
+    const datasetJson = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "../data/dataset.json"), "utf8")
+    );
+    assert.deepStrictEqual(buildingsJson, ONI_DATASET.buildings);
+    assert.deepStrictEqual(datasetJson.buildings, ONI_DATASET.buildings);
+
+    const { entityMap } = buildEntityCatalog(ONI_DATASET);
+    const emission = entityMap.get("emission");
+    assert.ok(emission, "emission entity must exist in entityMap");
+    assert.strictEqual(emission.name, "Emission");
+    assert.strictEqual(emission.category, "Machine");
+    assert.strictEqual(emission.subcategory, "Meta");
+    assert.strictEqual(emission.power, 0);
+    assert.strictEqual(emission.heat, 0);
+    assert.strictEqual(emission.icon, "images/icons/Polluted_Oxygen.png");
+    assert.ok(
+      fs.existsSync(path.resolve(__dirname, "../", emission.icon)),
+      "emission icon file must exist on disk"
+    );
+    assert.strictEqual(emission.recipes.length, 7);
+  });
+
+  it("finds emission via searchEntities for all aliases and element names", () => {
+    const { entities } = buildEntityCatalog(ONI_DATASET);
+    const queries = [
+      "Emission",
+      "Off-gas",
+      "Sublimation",
+      "Emit",
+      "Polluted Water",
+      "Polluted Dirt",
+      "Polluted Mud",
+      "Slime",
+      "Bleach Stone",
+      "Oxylite",
+      "Rot Pile",
+      "Polluted Oxygen",
+      "Chlorine",
+      "Oxygen",
+    ];
+    for (const q of queries) {
+      const results = searchEntities(entities, q, "Machine");
+      assert.ok(
+        results.some((e) => e.id === "emission"),
+        `searchEntities("${q}", "Machine") should include emission`
+      );
+    }
+  });
 });
+
